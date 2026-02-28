@@ -96,9 +96,10 @@ function SummaryContent({
           lineHeight: 1.65,
           color: "var(--text-primary)",
           margin: 0,
+          whiteSpace: "pre-wrap",
         }}
       >
-        {visible.join(" ")}
+        {visible.join("\n")}
       </p>
       {shouldTruncate && (
         <button

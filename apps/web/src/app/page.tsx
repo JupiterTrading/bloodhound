@@ -87,10 +87,16 @@ function LandingNav() {
           gap: "20px",
         }}
       >
-        {["Docs", "API", "GitHub"].map((label) => (
+        {[
+          { label: "Docs", href: "/docs" },
+          { label: "API", href: "/api-docs" },
+          { label: "GitHub", href: "https://github.com/JupiterTrading/bloodhound" },
+        ].map(({ label, href }) => (
           <a
             key={label}
-            href="#"
+            href={href}
+            target={href.startsWith("http") ? "_blank" : undefined}
+            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
             style={{
               fontSize: "13px",
               color: "var(--text-secondary)",

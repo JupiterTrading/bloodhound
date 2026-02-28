@@ -132,7 +132,7 @@ export function WalletProfile({ address }: Props) {
 
           {/* Action buttons */}
           <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-            <ActionButton href={`/graph?seed=${address}`} label="Open Graph" />
+            <ActionButton href={`/intelligence?address=${address}`} label="Open Graph" />
             <ActionButton href={`/ai?q=${encodeURIComponent(`Summarize wallet ${address}`)}`} label="Bloodhound AI" primary />
           </div>
         </div>

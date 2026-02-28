@@ -36,7 +36,15 @@ async function proxy(
     }
   }
 
-  const response = await fetch(url, init);
+  let response: Response;
+  try {
+    response = await fetch(url, init);
+  } catch {
+    return NextResponse.json(
+      { error: "Backend unreachable" },
+      { status: 502 }
+    );
+  }
 
   const responseHeaders = new Headers();
   response.headers.forEach((value, key) => {
