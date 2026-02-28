@@ -1,6 +1,26 @@
 "use client";
 
+import { useQuery } from "@tanstack/react-query";
+
+async function fetchSlot(): Promise<number> {
+  const res = await fetch("https://api.mainnet-beta.solana.com", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "getSlot" }),
+  });
+  const json = await res.json() as { result: number };
+  return json.result;
+}
+
 export function StatusBar() {
+  const { data: slot } = useQuery({
+    queryKey: ["solana-slot"],
+    queryFn: fetchSlot,
+    staleTime: 5_000,
+    refetchInterval: 10_000,
+    retry: false,
+  });
+
   return (
     <footer
       style={{
@@ -29,7 +49,7 @@ export function StatusBar() {
           marginLeft: "auto",
         }}
       >
-        Last block: loading...
+        {slot ? `Slot #${slot.toLocaleString()}` : "Slot: connecting..."}
       </span>
     </footer>
   );

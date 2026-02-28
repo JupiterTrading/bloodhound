@@ -159,13 +159,13 @@ export default function IntelligencePage() {
 
 function IntelligencePreview({ address }: { address: string }) {
   const summaryQ = useQuery({
-    queryKey: ["wallet", address, "summary"],
+    queryKey: ["wallet", "summary", address],
     queryFn: () => walletApi.summary(address),
     staleTime: 60_000,
   });
 
   const intelQ = useQuery({
-    queryKey: ["wallet", address, "intelligence"],
+    queryKey: ["wallet", "intelligence", address],
     queryFn: () => walletApi.intelligence(address),
     staleTime: 300_000,
     retry: false,

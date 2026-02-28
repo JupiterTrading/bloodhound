@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useRef, useEffect, useId } from "react";
-import { useMutation } from "@tanstack/react-query";
-import { aiApi, type AIQueryResponse } from "@/lib/api";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+import { aiApi, trackedApi, type AIQueryResponse } from "@/lib/api";
 import { AddressTag } from "@/components/ui/AddressTag";
 import { ConfidenceBadge, type Confidence } from "@/components/ui/ConfidenceBadge";
 
@@ -29,9 +31,21 @@ export function AITerminal() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
+  const { isSignedIn } = useUser();
+  const { data: trackedData } = useQuery({
+    queryKey: ["tracked"],
+    queryFn: () => trackedApi.list(),
+    enabled: !!isSignedIn,
+    staleTime: 60_000,
+  });
+  const trackedWallets = (trackedData?.tracked ?? []).map((w) => ({
+    label: w.label,
+    address: w.address,
+  }));
+
   const mutation = useMutation({
     mutationFn: (q: string) =>
-      aiApi.query(q, sessionId, { tracked_wallets: [] }),
+      aiApi.query(q, sessionId, { tracked_wallets: trackedWallets }),
   });
 
   useEffect(() => {
@@ -345,6 +359,10 @@ function ResponseCard({ response }: { response: AIQueryResponse }) {
     ? response.evidence
     : response.evidence.slice(0, 2);
 
+  // Derive graph address from actions if available
+  const graphAction = response.actions.find((a) => a.type === "open_graph");
+  const graphAddress = graphAction?.parameters?.address as string | undefined;
+
   return (
     <div
       style={{
@@ -488,10 +506,10 @@ function ResponseCard({ response }: { response: AIQueryResponse }) {
         {response.viz_type !== "none" && (
           <div style={{ display: "flex", gap: "8px", marginLeft: "auto" }}>
             {response.viz_type === "graph" && (
-              <VizButton label="Show Graph" />
+              <VizButton label="Show Graph" targetHref={graphAddress ? `/graph/${graphAddress}` : null} />
             )}
             {response.viz_type === "table" && (
-              <VizButton label="Show Table" />
+              <VizButton label="Show Table" targetHref={null} />
             )}
           </div>
         )}
@@ -566,42 +584,92 @@ function EvidenceRow({
 }
 
 function ActionChip({ action }: { action: { type: string; parameters: Record<string, unknown> } }) {
+  const router = useRouter();
+  const qc = useQueryClient();
+  const [done, setDone] = useState(false);
+  const [busy, setBusy] = useState(false);
+
   const labels: Record<string, string> = {
     track_wallet: "Track wallet",
     set_alert: "Set alert",
     add_label: "Add label",
     open_graph: "Open graph",
   };
+
+  async function handleClick() {
+    if (done || busy) return;
+
+    if (action.type === "open_graph") {
+      const addr = action.parameters.address as string | undefined;
+      if (addr) router.push(`/graph/${addr}`);
+      return;
+    }
+
+    if (action.type === "track_wallet") {
+      const addr = action.parameters.address as string | undefined;
+      const label = (action.parameters.label as string | undefined) ?? addr?.slice(0, 8) ?? "wallet";
+      if (!addr) return;
+      setBusy(true);
+      try {
+        await trackedApi.add({ address: addr, label });
+        qc.invalidateQueries({ queryKey: ["tracked"] });
+        setDone(true);
+      } catch {
+        // silently fail — user may not be logged in
+      } finally {
+        setBusy(false);
+      }
+      return;
+    }
+
+    // set_alert and add_label — coming soon
+    if (action.type === "set_alert" || action.type === "add_label") {
+      router.push("/tracked");
+    }
+  }
+
   return (
     <button
+      onClick={handleClick}
+      disabled={done || busy}
       style={{
-        background: "var(--bg-elevated)",
-        border: "1px solid var(--border)",
+        background: done ? "var(--bg-surface)" : "var(--bg-elevated)",
+        border: `1px solid ${done ? "var(--accent)" : "var(--border)"}`,
         borderRadius: "4px",
         padding: "4px 10px",
         fontSize: "12px",
-        color: "var(--text-secondary)",
-        cursor: "pointer",
+        color: done ? "var(--accent)" : "var(--text-secondary)",
+        cursor: done || busy ? "default" : "pointer",
         fontFamily: "inherit",
-        transition: "border-color 80ms",
+        transition: "border-color 80ms, color 80ms",
+        opacity: busy ? 0.6 : 1,
       }}
-      onMouseEnter={(e) =>
-        ((e.currentTarget as HTMLButtonElement).style.borderColor =
-          "var(--accent)")
-      }
-      onMouseLeave={(e) =>
-        ((e.currentTarget as HTMLButtonElement).style.borderColor =
-          "var(--border)")
-      }
+      onMouseEnter={(e) => {
+        if (!done && !busy)
+          (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--accent)";
+      }}
+      onMouseLeave={(e) => {
+        if (!done)
+          (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)";
+      }}
     >
-      {labels[action.type] ?? action.type}
+      {done ? "✓ Done" : busy ? "..." : (labels[action.type] ?? action.type)}
     </button>
   );
 }
 
-function VizButton({ label }: { label: string }) {
+function VizButton({ label, targetHref }: { label: string; targetHref: string | null }) {
+  const router = useRouter();
+
+  function handleClick() {
+    if (targetHref) {
+      router.push(targetHref);
+    }
+  }
+
   return (
     <button
+      onClick={handleClick}
       style={{
         background: "transparent",
         border: "1px solid var(--border)",
@@ -609,21 +677,19 @@ function VizButton({ label }: { label: string }) {
         padding: "4px 10px",
         fontSize: "12px",
         color: "var(--text-secondary)",
-        cursor: "pointer",
+        cursor: targetHref ? "pointer" : "default",
         fontFamily: "inherit",
         transition: "border-color 80ms, color 80ms",
       }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.borderColor =
-          "var(--text-muted)";
-        (e.currentTarget as HTMLButtonElement).style.color =
-          "var(--text-primary)";
+        if (targetHref) {
+          (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--text-muted)";
+          (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)";
+        }
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.borderColor =
-          "var(--border)";
-        (e.currentTarget as HTMLButtonElement).style.color =
-          "var(--text-secondary)";
+        (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)";
+        (e.currentTarget as HTMLButtonElement).style.color = "var(--text-secondary)";
       }}
     >
       {label}

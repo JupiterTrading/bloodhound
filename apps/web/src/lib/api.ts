@@ -183,7 +183,8 @@ export const walletApi = {
       date_from?: string;
       date_to?: string;
     } = {}
-  ): Promise<{ transactions: Transaction[]; total: number }> => {
+  ): Promise<{ transactions: Transaction[]; total: number; has_more: boolean }> => {
+    const limit = params.limit ?? 25;
     const qs = new URLSearchParams(
       Object.entries(params)
         .filter(([, v]) => v !== undefined)
@@ -222,7 +223,9 @@ export const walletApi = {
         realized_pnl_usd: null,
       };
     });
-    return { transactions, total: transactions.length };
+    // If we received a full page, assume there are more pages
+    const has_more = data.transfers.length === limit;
+    return { transactions, total: transactions.length, has_more };
   },
 
   holdings: (address: string) =>

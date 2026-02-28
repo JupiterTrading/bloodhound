@@ -220,6 +220,10 @@ function AddWalletForm({
     e.preventDefault();
     setError(null);
     if (!address.trim() || !label.trim()) return;
+    if (!/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(address.trim())) {
+      setError("Invalid Solana address format.");
+      return;
+    }
     mutation.mutate();
   }
 

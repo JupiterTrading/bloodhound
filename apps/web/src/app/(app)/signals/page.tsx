@@ -344,18 +344,47 @@ function SignalCard({ signal }: { signal: Signal }) {
         </div>
       </div>
 
-      {/* Time */}
-      <span
-        style={{
-          fontSize: "11px",
-          color: "var(--text-muted)",
-          flexShrink: 0,
-          whiteSpace: "nowrap",
-          fontFamily: "JetBrains Mono, monospace",
-        }}
-      >
-        {timeAgo}
-      </span>
+      {/* Actions */}
+      <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
+        {typeof meta["tx_signature"] === "string" && (
+          <a
+            href={`https://solscan.io/tx/${meta["tx_signature"] as string}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontSize: "11px",
+              color: "var(--text-muted)",
+              textDecoration: "none",
+              padding: "3px 8px",
+              border: "1px solid var(--border)",
+              borderRadius: "4px",
+              fontFamily: "inherit",
+              whiteSpace: "nowrap",
+              transition: "border-color 80ms, color 80ms",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--text-muted)";
+              (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-primary)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)";
+              (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-muted)";
+            }}
+          >
+            View Tx ↗
+          </a>
+        )}
+        <span
+          style={{
+            fontSize: "11px",
+            color: "var(--text-muted)",
+            whiteSpace: "nowrap",
+            fontFamily: "JetBrains Mono, monospace",
+          }}
+        >
+          {timeAgo}
+        </span>
+      </div>
     </div>
   );
 }

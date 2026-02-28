@@ -1,17 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-const RECENT_SEARCHES = [
-  { type: "wallet", label: "punk.sol", id: "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263" },
-  { type: "wallet", label: "poop", id: "So11111111111111111111111111111111111111112" },
-  { type: "token", label: "BONK", id: "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263" },
-];
+const LS_KEY = "bh_recent_searches";
+const MAX_RECENT = 6;
+
+type RecentItem = { type: "wallet" | "token"; label: string; id: string };
+
+function loadRecent(): RecentItem[] {
+  if (typeof window === "undefined") return [];
+  try {
+    return JSON.parse(localStorage.getItem(LS_KEY) ?? "[]") as RecentItem[];
+  } catch {
+    return [];
+  }
+}
+
+function saveRecent(item: RecentItem) {
+  const current = loadRecent().filter((r) => r.id !== item.id);
+  const next = [item, ...current].slice(0, MAX_RECENT);
+  localStorage.setItem(LS_KEY, JSON.stringify(next));
+}
 
 export function ExplorerPage() {
   const router = useRouter();
   const [query, setQuery] = useState("");
+  const [recent, setRecent] = useState<RecentItem[]>([]);
+
+  useEffect(() => {
+    setRecent(loadRecent());
+  }, []);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -19,6 +38,9 @@ export function ExplorerPage() {
     const q = query.trim();
     // Detect if it looks like a wallet address (base58, 32-44 chars)
     if (/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(q)) {
+      const item: RecentItem = { type: "wallet", label: `${q.slice(0, 6)}...${q.slice(-4)}`, id: q };
+      saveRecent(item);
+      setRecent(loadRecent());
       router.push(`/wallet/${q}`);
     } else {
       router.push(`/search?q=${encodeURIComponent(q)}`);
@@ -124,6 +146,7 @@ export function ExplorerPage() {
       </form>
 
       {/* Quick access */}
+      {recent.length > 0 && (
       <div style={{ width: "100%" }}>
         <div
           style={{
@@ -138,7 +161,7 @@ export function ExplorerPage() {
           Recently Viewed
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
-          {RECENT_SEARCHES.map((item) => (
+          {recent.map((item) => (
             <button
               key={item.id}
               onClick={() =>
@@ -205,6 +228,7 @@ export function ExplorerPage() {
           ))}
         </div>
       </div>
+      )}
 
       {/* Tip */}
       <p

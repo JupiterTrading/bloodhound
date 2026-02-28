@@ -18,6 +18,8 @@ const TX_TYPE_LABELS: Record<string, string> = {
   OTHER: "Other",
 };
 
+const TX_TYPES = ["", "SWAP", "TRANSFER", "NFT_SALE", "MINT", "BURN", "STAKE"];
+
 const DIRECTION_COLORS = {
   in: "#22c55e",
   out: "var(--accent)",
@@ -30,19 +32,33 @@ interface Props {
 
 export function TransactionHistory({ address }: Props) {
   const [page, setPage] = useState(0);
+  const [typeFilter, setTypeFilter] = useState("");
+  const [dirFilter, setDirFilter] = useState<"in" | "out" | "both" | "">("");
   const limit = 25;
 
+  const params = {
+    page,
+    limit,
+    ...(typeFilter ? { tx_type: typeFilter } : {}),
+    ...(dirFilter ? { direction: dirFilter as "in" | "out" | "both" } : {}),
+  };
+
   const { data, isLoading, isFetching } = useQuery({
-    queryKey: ["wallet", "transactions", address, page],
-    queryFn: () =>
-      walletApi.transactions(address, { page, limit }),
+    queryKey: ["wallet", "transactions", address, page, typeFilter, dirFilter],
+    queryFn: () => walletApi.transactions(address, params),
     staleTime: 30_000,
     placeholderData: (prev) => prev,
   });
 
   const txs = data?.transactions ?? [];
-  const total = data?.total ?? 0;
-  const totalPages = Math.ceil(total / limit);
+  const hasMore = data?.has_more ?? false;
+  const hasFilters = typeFilter !== "" || dirFilter !== "";
+
+  function clearFilters() {
+    setTypeFilter("");
+    setDirFilter("");
+    setPage(0);
+  }
 
   return (
     <section
@@ -61,6 +77,8 @@ export function TransactionHistory({ address }: Props) {
           justifyContent: "space-between",
           padding: "16px 20px",
           borderBottom: "1px solid var(--border)",
+          gap: "12px",
+          flexWrap: "wrap",
         }}
       >
         <h2
@@ -71,20 +89,91 @@ export function TransactionHistory({ address }: Props) {
             textTransform: "uppercase",
             color: "var(--text-muted)",
             margin: 0,
+            flexShrink: 0,
           }}
         >
           Transaction History
-          {total > 0 && (
-            <span style={{ marginLeft: "8px", fontWeight: 400 }}>
-              ({total.toLocaleString()})
+        </h2>
+
+        {/* Filters */}
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+          {/* Type filter */}
+          <select
+            value={typeFilter}
+            onChange={(e) => { setTypeFilter(e.target.value); setPage(0); }}
+            style={{
+              background: "var(--bg-base)",
+              border: `1px solid ${typeFilter ? "var(--accent)" : "var(--border)"}`,
+              borderRadius: "5px",
+              padding: "4px 8px",
+              fontSize: "12px",
+              color: typeFilter ? "var(--text-primary)" : "var(--text-muted)",
+              fontFamily: "inherit",
+              cursor: "pointer",
+              outline: "none",
+            }}
+          >
+            <option value="">All types</option>
+            {TX_TYPES.filter(Boolean).map((t) => (
+              <option key={t} value={t}>{TX_TYPE_LABELS[t] ?? t}</option>
+            ))}
+          </select>
+
+          {/* Direction filter */}
+          <select
+            value={dirFilter}
+            onChange={(e) => { setDirFilter(e.target.value as typeof dirFilter); setPage(0); }}
+            style={{
+              background: "var(--bg-base)",
+              border: `1px solid ${dirFilter ? "var(--accent)" : "var(--border)"}`,
+              borderRadius: "5px",
+              padding: "4px 8px",
+              fontSize: "12px",
+              color: dirFilter ? "var(--text-primary)" : "var(--text-muted)",
+              fontFamily: "inherit",
+              cursor: "pointer",
+              outline: "none",
+            }}
+          >
+            <option value="">All directions</option>
+            <option value="in">Incoming</option>
+            <option value="out">Outgoing</option>
+          </select>
+
+          {/* Clear filters */}
+          {hasFilters && (
+            <button
+              onClick={clearFilters}
+              style={{
+                background: "none",
+                border: "1px solid var(--border)",
+                borderRadius: "5px",
+                padding: "4px 8px",
+                fontSize: "12px",
+                color: "var(--text-muted)",
+                cursor: "pointer",
+                fontFamily: "inherit",
+                transition: "border-color 80ms, color 80ms",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--text-muted)";
+                (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)";
+                (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)";
+              }}
+            >
+              Clear ×
+            </button>
+          )}
+
+          {isFetching && (
+            <span style={{ fontSize: 11, color: "var(--text-muted)" }}>
+              Loading...
             </span>
           )}
-        </h2>
-        {isFetching && (
-          <span style={{ fontSize: 11, color: "var(--text-muted)" }}>
-            Loading...
-          </span>
-        )}
+        </div>
       </div>
 
       {/* Table */}
@@ -134,7 +223,9 @@ export function TransactionHistory({ address }: Props) {
                       fontSize: "13px",
                     }}
                   >
-                    This address has no recorded on-chain activity.
+                    {hasFilters
+                      ? "No transactions match the current filters."
+                      : "This address has no recorded on-chain activity."}
                   </td>
                 </tr>
               )
@@ -146,7 +237,7 @@ export function TransactionHistory({ address }: Props) {
       </div>
 
       {/* Pagination */}
-      {totalPages > 1 && (
+      {(page > 0 || hasMore) && (
         <div
           style={{
             display: "flex",
@@ -158,9 +249,7 @@ export function TransactionHistory({ address }: Props) {
             color: "var(--text-muted)",
           }}
         >
-          <span>
-            Page {page + 1} of {totalPages}
-          </span>
+          <span>Page {page + 1}</span>
           <div style={{ display: "flex", gap: "8px" }}>
             <PaginationBtn
               label="← Prev"
@@ -169,8 +258,8 @@ export function TransactionHistory({ address }: Props) {
             />
             <PaginationBtn
               label="Next →"
-              disabled={page >= totalPages - 1}
-              onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+              disabled={!hasMore}
+              onClick={() => setPage((p) => p + 1)}
             />
           </div>
         </div>
