@@ -1,0 +1,350 @@
+BLOODHOUND — What This Tool Is
+
+BLOODHOUND is an on-chain intelligence terminal for Solana.
+Not a generic explorer, not a chatbot, not a hype dashboard.
+
+It’s built to do one thing better than anyone:
+turn raw on-chain data into readable intelligence fast — especially around wallet behavior, relationships, and money flow.
+
+People use Solscan to look stuff up.
+People use BLOODHOUND to understand what’s going on.
+
+Core Positioning
+
+BLOODHOUND should feel:
+
+reputable, stable, infra-grade
+
+team-run and long-term
+
+built for profit, but executed like a serious product (not a “quick swipe off the shoulder”)
+
+“this looks like a real company / real tool” from first glance (site, GitHub, docs, API)
+
+Brand vibe: digitized black & white, high contrast, clean and technical
+Tone: calm, confident, minimal hype
+Identity: tracking, hunting, following trails, detection, signals
+
+The Main Differentiator (Your Moat)
+Named + Tracked Wallet System (the signature feature)
+
+The tool lets you name and track wallets like entities.
+
+Instead of only using raw addresses, users can label wallets:
+
+“poop”
+
+“punk”
+
+“dev wallet”
+
+“lp wallet”
+
+“whale1”
+
+“insider cluster”
+
+Then they can ask questions in plain language:
+
+“does poop send money to punk”
+
+“show transfers between dev wallet and lp wallet”
+
+“has deployer wallet funded any wallets that bought early”
+
+“track money trail from X to Y”
+
+“who funded this wallet originally”
+
+“show wallets connected to this wallet”
+
+This is what makes BLOODHOUND feel like intelligence, not just an explorer.
+
+Product Modules (What BLOODHOUND Contains)
+1) Search / Explorer Core (Baseline)
+
+Must support the basics like Solscan:
+
+search by wallet address
+
+tx hash
+
+token mint
+
+program/contract address
+
+blocks and recent activity
+
+But the UX is cleaner, faster, less cluttered than Solscan.
+
+2) Intelligence Layer (This is the main product)
+
+This is where BLOODHOUND wins.
+
+Intelligence outputs should include:
+
+wallet summaries (balances, tokens, NFT holdings if needed)
+
+top counterparties
+
+inflows/outflows over time
+
+first funding source (who funded it initially)
+
+clustering signals (wallet likely belongs to X cluster)
+
+interaction patterns with contracts
+
+exposure (tokens interacted with, DEX activity)
+
+3) Relationship + Flow Mapping
+
+A relationship graph like “Arkham-lite” but focused and usable:
+
+wallet → wallet transfers (direct + multi-hop)
+
+contract interaction relationships
+
+entity clusters
+
+money trails (trace path across hops)
+
+Must have:
+
+graph view
+
+timeline view
+
+table view (exportable)
+
+4) “Ask the Hive” (Natural Language Query Engine)
+
+This is your AI interface, but it should be positioned like a query terminal.
+
+It should:
+
+translate plain English into on-chain queries
+
+query multiple sources/indexers
+
+return a structured answer + proof links
+
+Example responses:
+
+“Yes, poop sent punk 12.4 SOL on Feb 21; total 88.7 SOL across 5 transactions; last interaction 14 hours ago.”
+
+“No direct transfers found. Indirect funding path exists: poop → walletX → punk.”
+
+Outputs should be:
+
+short summary
+
+key numbers
+
+clickable evidence (tx links, wallets)
+
+confidence level if inference is used
+
+5) Tracked Wallets Dashboard
+
+A persistent panel where users manage saved wallets and get updates.
+
+Features:
+
+add wallet + label + tags
+
+private tags vs public tags
+
+group wallets into lists (“insiders”, “whales”, “my targets”, “dev wallets”)
+
+alerts: “if poop sends to punk again, alert me”
+
+“watchlist feed” of tracked wallet activity
+
+6) Signals (Optional but strong)
+
+This is where you monetize later.
+
+Signals examples:
+
+abnormal inflow spike
+
+new wallet cluster forming around a token
+
+deployer funding wallets that buy early
+
+liquidity movement
+
+large swaps
+
+suspected wash patterns
+
+Signals should be:
+
+clearly explained
+
+not spammy
+
+toggleable
+
+“infra-grade” not “call channel vibes”
+
+7) Public API + Documentation (Legitimacy + Developers)
+
+You explicitly said you want:
+
+GitHub link
+
+proper API documentation
+
+BLOODHOUND should have an API that supports:
+
+get wallet summary
+
+get wallet transfers
+
+get relationship between wallets
+
+get token top holders
+
+get tx decode details
+
+get tracked wallet events
+
+Docs should look clean and serious:
+
+endpoints
+
+auth
+
+rate limits
+
+examples
+
+response schemas
+
+This is a major credibility move even if API is v1.
+
+UI/UX Principles (How It Should Feel)
+The UI should feel like:
+
+a terminal + dashboard hybrid
+
+calm and focused
+
+“serious intel tool”
+
+Must include:
+
+a universal search bar (“Search wallet, token, tx…”)
+
+“Ask the Hive” input (query + explain results)
+
+a live activity feed (so it feels alive)
+
+a tracked wallets panel (signature identity)
+
+top nav: Explorer, Intelligence, Tracked, Signals, API, Docs
+
+status indicators: network health, indexer sync, API uptime
+
+Visual identity:
+
+digitized black & white palette
+
+subtle scanlines / grid / minimal noise texture
+
+high contrast typography
+
+no Solana gradient theme (avoid looking like a clone)
+
+Credibility / Launch Requirements (Non-Negotiables)
+
+For early perception and legitimacy:
+
+Twitter/X presence with clean branding
+
+GitHub org live with README and activity
+
+docs page live
+
+API docs visible even if limited
+
+landing page that looks real
+
+consistent tone (no chaotic posting)
+
+Monetization Path (Aligned with “we’re all here to profit”)
+
+Start free for basics, then monetize intelligence and scale features:
+
+Pro plan: more tracked wallets, deeper history, more rate limit
+
+Team plan: shared watchlists + shared tags
+
+Alerts/signal subscription
+
+API access tiers
+
+But keep the product looking like infra first, monetization second.
+
+MVP Scope (What “Two Weeks” Should Ship)
+
+If you want a “full proof” v1 that feels real:
+
+Must ship:
+
+universal search
+
+wallet page with clean summary
+
+transactions list
+
+tracked wallets (save label + quick view)
+
+“does X send to Y” relationship query
+
+Ask the Hive answering basic relationship + wallet summary questions
+
+public landing + GitHub org + docs skeleton
+
+Can be v1 simplified:
+
+graph view can be basic
+
+signals can be minimal
+
+clustering can be basic heuristics
+
+But it must feel stable and legit.
+
+What BLOODHOUND Is NOT
+
+not a meme tool
+
+not an “alpha call” bot
+
+not a clone explorer with a new skin
+
+not a half finished dashboard
+
+not hype-first
+
+It’s:
+a serious on-chain intelligence product built to last, run like a team, and make money because it’s actually useful.
+
+If you want, I can also format this into a Claude prompt that forces it to output:
+
+product requirements doc
+
+UI sitemap
+
+API endpoint list
+
+database schema
+
+user flows
+
+MVP sprint plan
+
+Just say “turn this into a Claude mega prompt” and I’ll deliver it clean.
