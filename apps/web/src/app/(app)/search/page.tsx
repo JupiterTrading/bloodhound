@@ -1,11 +1,13 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { searchApi, type SearchResult } from "@/lib/api";
 import Link from "next/link";
 
-export default function SearchPage() {
+// Inner component: all useSearchParams() calls live here, inside <Suspense>
+function SearchContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const q = searchParams.get("q") ?? "";
@@ -90,6 +92,15 @@ export default function SearchPage() {
         </div>
       )}
     </div>
+  );
+}
+
+// Page wrapper: required so useSearchParams() is inside a Suspense boundary
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<SearchSkeleton />}>
+      <SearchContent />
+    </Suspense>
   );
 }
 
