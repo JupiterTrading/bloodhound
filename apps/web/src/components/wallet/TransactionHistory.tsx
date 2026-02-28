@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 import { walletApi, type Transaction } from "@/lib/api";
 import { AddressTag } from "@/components/ui/AddressTag";
 import { TxSourceLogo } from "@/components/ui/TxSourceLogo";
@@ -34,6 +35,8 @@ export function TransactionHistory({ address }: Props) {
   const [page, setPage] = useState(0);
   const [typeFilter, setTypeFilter] = useState("");
   const [dirFilter, setDirFilter] = useState<"in" | "out" | "both" | "">("");
+  const [dateFrom, setDateFrom] = useState("");
+  const [dateTo, setDateTo] = useState("");
   const limit = 25;
 
   const params = {
@@ -41,10 +44,12 @@ export function TransactionHistory({ address }: Props) {
     limit,
     ...(typeFilter ? { tx_type: typeFilter } : {}),
     ...(dirFilter ? { direction: dirFilter as "in" | "out" | "both" } : {}),
+    ...(dateFrom ? { date_from: dateFrom } : {}),
+    ...(dateTo ? { date_to: dateTo } : {}),
   };
 
   const { data, isLoading, isFetching } = useQuery({
-    queryKey: ["wallet", "transactions", address, page, typeFilter, dirFilter],
+    queryKey: ["wallet", "transactions", address, page, typeFilter, dirFilter, dateFrom, dateTo],
     queryFn: () => walletApi.transactions(address, params),
     staleTime: 30_000,
     placeholderData: (prev) => prev,
@@ -52,11 +57,13 @@ export function TransactionHistory({ address }: Props) {
 
   const txs = data?.transactions ?? [];
   const hasMore = data?.has_more ?? false;
-  const hasFilters = typeFilter !== "" || dirFilter !== "";
+  const hasFilters = typeFilter !== "" || dirFilter !== "" || dateFrom !== "" || dateTo !== "";
 
   function clearFilters() {
     setTypeFilter("");
     setDirFilter("");
+    setDateFrom("");
+    setDateTo("");
     setPage(0);
   }
 
@@ -139,6 +146,45 @@ export function TransactionHistory({ address }: Props) {
             <option value="in">Incoming</option>
             <option value="out">Outgoing</option>
           </select>
+
+          {/* Date range */}
+          <input
+            type="date"
+            value={dateFrom}
+            onChange={(e) => { setDateFrom(e.target.value); setPage(0); }}
+            title="From date"
+            style={{
+              background: "var(--bg-base)",
+              border: `1px solid ${dateFrom ? "var(--accent)" : "var(--border)"}`,
+              borderRadius: "5px",
+              padding: "4px 8px",
+              fontSize: "12px",
+              color: dateFrom ? "var(--text-primary)" : "var(--text-muted)",
+              fontFamily: "inherit",
+              cursor: "pointer",
+              outline: "none",
+              colorScheme: "dark",
+            }}
+          />
+          <span style={{ fontSize: "11px", color: "var(--text-muted)" }}>→</span>
+          <input
+            type="date"
+            value={dateTo}
+            onChange={(e) => { setDateTo(e.target.value); setPage(0); }}
+            title="To date"
+            style={{
+              background: "var(--bg-base)",
+              border: `1px solid ${dateTo ? "var(--accent)" : "var(--border)"}`,
+              borderRadius: "5px",
+              padding: "4px 8px",
+              fontSize: "12px",
+              color: dateTo ? "var(--text-primary)" : "var(--text-muted)",
+              fontFamily: "inherit",
+              cursor: "pointer",
+              outline: "none",
+              colorScheme: "dark",
+            }}
+          />
 
           {/* Clear filters */}
           {hasFilters && (
@@ -416,20 +462,34 @@ function TxRow({
 
       {/* Tx link */}
       <td style={{ padding: "10px 16px 10px 8px" }}>
-        <a
-          href={`https://solscan.io/tx/${tx.tx_signature}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            fontSize: "11px",
-            color: "var(--text-muted)",
-            textDecoration: "none",
-            fontFamily: "JetBrains Mono, monospace",
-          }}
-          onClick={(e) => e.stopPropagation()}
-        >
-          ↗
-        </a>
+        <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+          <Link
+            href={`/tx/${tx.tx_signature}`}
+            style={{
+              fontSize: "11px",
+              color: "var(--text-muted)",
+              textDecoration: "none",
+              fontFamily: "JetBrains Mono, monospace",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            detail
+          </Link>
+          <a
+            href={`https://solscan.io/tx/${tx.tx_signature}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontSize: "11px",
+              color: "var(--text-muted)",
+              textDecoration: "none",
+              fontFamily: "JetBrains Mono, monospace",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            ↗
+          </a>
+        </div>
       </td>
     </tr>
   );

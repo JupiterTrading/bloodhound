@@ -273,6 +273,15 @@ export interface TopTrader {
   known_wallet: { label: string } | null;
 }
 
+export interface OHLCVItem {
+  unixTime: number;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+}
+
 export const tokenApi = {
   summary: (mint: string) =>
     apiFetch<TokenSummary>(`/v1/token/${mint}/summary`),
@@ -299,6 +308,42 @@ export const tokenApi = {
     apiFetch<{ mint: string; early_buyers: unknown[]; is_pump_fun: boolean | null }>(
       `/v1/token/${mint}/launch-intel`
     ),
+
+  ohlcv: (mint: string, resolution = "1D", timeFrom?: number, timeTo?: number) => {
+    const params = new URLSearchParams({ resolution });
+    if (timeFrom) params.set("time_from", String(timeFrom));
+    if (timeTo) params.set("time_to", String(timeTo));
+    return apiFetch<{ mint: string; resolution: string; items: OHLCVItem[] }>(
+      `/v1/token/${mint}/ohlcv?${params.toString()}`
+    );
+  },
+};
+
+// --- Transaction ---
+
+export interface TxDetail {
+  signature: string;
+  timestamp: number;
+  slot: number;
+  fee: number;
+  feePayer: string;
+  type: string;
+  source: string;
+  description: string;
+  nativeTransfers: { fromUserAccount: string; toUserAccount: string; amount: number }[];
+  tokenTransfers: {
+    fromUserAccount: string;
+    toUserAccount: string;
+    fromTokenAccount: string;
+    toTokenAccount: string;
+    tokenAmount: number;
+    mint: string;
+  }[];
+  accountData: { account: string; nativeBalanceChange: number }[];
+}
+
+export const txApi = {
+  get: (sig: string) => apiFetch<TxDetail>(`/v1/tx/${sig}`),
 };
 
 // --- Tracked Wallets ---

@@ -32,11 +32,12 @@ async def health():
 # ---------------------------------------------------------------------------
 # Routers
 # ---------------------------------------------------------------------------
-from app.routers import wallet, webhooks, search, token, tracked, known, signals, ai
+from app.routers import wallet, webhooks, search, token, tracked, known, signals, ai, tx
 
 app.include_router(wallet.router,    prefix="/v1/wallet",  tags=["wallet"])
 app.include_router(search.router,    prefix="/v1/search",  tags=["search"])
 app.include_router(token.router,     prefix="/v1/token",   tags=["token"])
+app.include_router(tx.router,        prefix="/v1/tx",      tags=["tx"])
 app.include_router(tracked.router,   prefix="/v1/me",      tags=["tracked"])
 app.include_router(known.router,     prefix="/v1/known",   tags=["known"])
 app.include_router(signals.router,   prefix="/v1/signals", tags=["signals"])

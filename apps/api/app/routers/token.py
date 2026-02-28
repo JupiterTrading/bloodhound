@@ -194,6 +194,24 @@ async def token_launch_intel(mint: str):
     }
 
 
+@router.get("/{mint}/ohlcv")
+async def token_ohlcv(
+    mint: str,
+    resolution: str = Query("1D", pattern="^(1m|5m|15m|1H|4H|1D|1W)$"),
+    time_from: int | None = None,
+    time_to: int | None = None,
+):
+    """OHLCV price history for a token. resolution: 1m, 5m, 15m, 1H, 4H, 1D, 1W."""
+    cache_key = token_key(mint, f"ohlcv:{resolution}:{time_from}:{time_to}")
+    if cached := await cache_get(cache_key):
+        return cached
+
+    items = await _safe(birdeye.get_token_ohlcv(mint, resolution, time_from, time_to), default=[])
+    result = {"mint": mint, "resolution": resolution, "items": items}
+    await cache_set(cache_key, result, TTL_PRICE)
+    return result
+
+
 def _is_pump_fun(mint: str, overview: dict) -> bool | None:
     """Heuristic: if the token was created via pump.fun program."""
     # Pump.fun tokens often have a recognizable metadata pattern

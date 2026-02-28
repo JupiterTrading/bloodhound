@@ -125,6 +125,22 @@ async def get_account_info(address: str) -> dict[str, Any]:
     return (data.get("result") or {}).get("value") or {}
 
 
+async def get_transaction(sig: str) -> dict[str, Any] | None:
+    """
+    Fetch a single enriched transaction by signature from Helius Enhanced API.
+    Returns None if not found.
+    """
+    url = f"{HELIUS_BASE}/transactions"
+    params = {"api-key": settings.helius_api_key}
+    async with httpx.AsyncClient(timeout=15) as client:
+        response = await client.post(url, params=params, json=[sig])
+        response.raise_for_status()
+        data = response.json()
+    if not data:
+        return None
+    return data[0]
+
+
 async def fetch_full_history(address: str) -> list[dict[str, Any]]:
     """
     Paginate through ALL available transaction history for a wallet.

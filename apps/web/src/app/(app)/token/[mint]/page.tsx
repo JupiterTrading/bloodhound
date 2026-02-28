@@ -1,9 +1,9 @@
 "use client";
 
-import { use } from "react";
+import { use, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
-import { tokenApi, type TokenSummary, type TokenHolder, type TopTrader } from "@/lib/api";
+import { tokenApi, type TokenSummary, type TokenHolder, type TopTrader, type OHLCVItem } from "@/lib/api";
 import { AddressTag } from "@/components/ui/AddressTag";
 import { Skeleton } from "@/components/ui/Skeleton";
 
@@ -28,6 +28,9 @@ export default function TokenPage({
       {/* Stats grid */}
       <TokenStatsGrid summary={summary} isLoading={isLoading} />
 
+      {/* Price chart */}
+      <PriceChart mint={mint} />
+
       {/* Two columns: holders + top traders */}
       <div
         style={{
@@ -41,6 +44,229 @@ export default function TokenPage({
         <TopTradersPanel mint={mint} />
       </div>
     </div>
+  );
+}
+
+// ── Price chart ───────────────────────────────────────────────────────────────
+
+const RESOLUTIONS = [
+  { label: "15m", value: "15m" },
+  { label: "1H",  value: "1H"  },
+  { label: "4H",  value: "4H"  },
+  { label: "1D",  value: "1D"  },
+  { label: "1W",  value: "1W"  },
+];
+
+function PriceChart({ mint }: { mint: string }) {
+  const [resolution, setResolution] = useState("1D");
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["token", mint, "ohlcv", resolution],
+    queryFn: () => tokenApi.ohlcv(mint, resolution),
+    staleTime: 60_000,
+  });
+
+  const items: OHLCVItem[] = data?.items ?? [];
+
+  return (
+    <div
+      style={{
+        background: "var(--bg-surface)",
+        border: "1px solid var(--border)",
+        borderRadius: "8px",
+        overflow: "hidden",
+        marginTop: "16px",
+      }}
+    >
+      {/* Chart header */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "12px 16px",
+          borderBottom: "1px solid var(--border)",
+        }}
+      >
+        <span
+          style={{
+            fontSize: "11px",
+            fontWeight: 600,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "var(--text-muted)",
+          }}
+        >
+          Price History
+        </span>
+        <div style={{ display: "flex", gap: "4px" }}>
+          {RESOLUTIONS.map((r) => (
+            <button
+              key={r.value}
+              onClick={() => setResolution(r.value)}
+              style={{
+                background: resolution === r.value ? "var(--accent)" : "transparent",
+                border: `1px solid ${resolution === r.value ? "var(--accent)" : "var(--border)"}`,
+                borderRadius: "4px",
+                padding: "3px 8px",
+                fontSize: "11px",
+                color: resolution === r.value ? "#fff" : "var(--text-muted)",
+                cursor: "pointer",
+                fontFamily: "JetBrains Mono, monospace",
+                transition: "all 80ms",
+              }}
+            >
+              {r.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Chart area */}
+      <div style={{ padding: "8px 0", height: "200px" }}>
+        {isLoading ? (
+          <div
+            style={{
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Skeleton width={600} height={150} />
+          </div>
+        ) : items.length < 2 ? (
+          <div
+            style={{
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "12px",
+              color: "var(--text-muted)",
+            }}
+          >
+            No price data available.
+          </div>
+        ) : (
+          <OHLCVLineChart items={items} />
+        )}
+      </div>
+    </div>
+  );
+}
+
+function OHLCVLineChart({ items }: { items: OHLCVItem[] }) {
+  const W = 1000;
+  const H = 160;
+  const PAD_L = 64;
+  const PAD_R = 12;
+  const PAD_T = 12;
+  const PAD_B = 28;
+
+  const closes = items.map((d) => d.close);
+  const minP = Math.min(...closes);
+  const maxP = Math.max(...closes);
+  const rangeP = maxP - minP || 1;
+
+  const chartW = W - PAD_L - PAD_R;
+  const chartH = H - PAD_T - PAD_B;
+
+  const toX = (i: number) => PAD_L + (i / (items.length - 1)) * chartW;
+  const toY = (p: number) => PAD_T + chartH - ((p - minP) / rangeP) * chartH;
+
+  // Build polyline points
+  const pts = items.map((d, i) => `${toX(i)},${toY(d.close)}`).join(" ");
+
+  // Build filled area path
+  const firstX = toX(0);
+  const lastX = toX(items.length - 1);
+  const baseY = PAD_T + chartH;
+  const areaPath = `M${firstX},${baseY} L${pts.replace(/ /g, " L")} L${lastX},${baseY} Z`;
+
+  const trendUp = closes[closes.length - 1] >= closes[0];
+  const lineColor = trendUp ? "#22c55e" : "var(--accent)";
+  const areaColor = trendUp ? "rgba(34,197,94,0.08)" : "rgba(220,38,38,0.08)";
+
+  // Y-axis labels (3 ticks)
+  const yTicks = [minP, minP + rangeP / 2, maxP];
+
+  // X-axis labels (4 ticks)
+  const xTickIdxs = [0, Math.floor(items.length / 3), Math.floor((2 * items.length) / 3), items.length - 1];
+
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      style={{ width: "100%", height: "100%" }}
+      preserveAspectRatio="none"
+    >
+      {/* Grid lines */}
+      {yTicks.map((_, i) => {
+        const y = PAD_T + (i / (yTicks.length - 1)) * chartH;
+        return (
+          <line
+            key={i}
+            x1={PAD_L}
+            y1={y}
+            x2={W - PAD_R}
+            y2={y}
+            stroke="var(--border)"
+            strokeWidth={0.5}
+          />
+        );
+      })}
+
+      {/* Area fill */}
+      <path d={areaPath} fill={areaColor} />
+
+      {/* Line */}
+      <polyline
+        points={pts}
+        fill="none"
+        stroke={lineColor}
+        strokeWidth={1.5}
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+
+      {/* Y-axis labels */}
+      {yTicks.map((price, i) => (
+        <text
+          key={i}
+          x={PAD_L - 6}
+          y={PAD_T + ((yTicks.length - 1 - i) / (yTicks.length - 1)) * chartH + 4}
+          textAnchor="end"
+          fontSize={10}
+          fill="var(--text-muted)"
+          fontFamily="JetBrains Mono, monospace"
+        >
+          {formatPrice(price)}
+        </text>
+      ))}
+
+      {/* X-axis labels */}
+      {xTickIdxs.map((idx) => {
+        const d = items[idx];
+        if (!d) return null;
+        const label = new Date(d.unixTime * 1000).toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+        });
+        return (
+          <text
+            key={idx}
+            x={toX(idx)}
+            y={H - 6}
+            textAnchor="middle"
+            fontSize={9}
+            fill="var(--text-muted)"
+            fontFamily="JetBrains Mono, monospace"
+          >
+            {label}
+          </text>
+        );
+      })}
+    </svg>
   );
 }
 
