@@ -1,0 +1,416 @@
+"""
+Bloodhound AI pipeline.
+Intent classifier (haiku) → Context injector → Tool loop (sonnet) → Response formatter.
+"""
+
+import json
+import re
+from typing import Any
+
+import anthropic
+
+from app.core.config import get_settings
+from app.services import clickhouse, supabase as supabase_svc
+
+settings = get_settings()
+
+# ---------------------------------------------------------------------------
+# Tool definitions (Anthropic tool_use format)
+# ---------------------------------------------------------------------------
+
+BLOODHOUND_TOOLS: list[dict] = [
+    {
+        "name": "check_transfers",
+        "description": (
+            "Check if wallet A has ever sent SOL or tokens to wallet B. "
+            "Returns transfer count, total SOL sent, last transfer date, and up to 10 evidence tx signatures."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "from_address": {"type": "string", "description": "Sender wallet address"},
+                "to_address": {"type": "string", "description": "Receiver wallet address"},
+                "min_amount_sol": {"type": "number", "default": 0.1, "description": "Minimum SOL amount"},
+                "time_from": {"type": "string", "nullable": True, "description": "ISO datetime filter start"},
+                "time_to": {"type": "string", "nullable": True, "description": "ISO datetime filter end"},
+            },
+            "required": ["from_address", "to_address"],
+        },
+    },
+    {
+        "name": "trace_funding",
+        "description": (
+            "Trace the original funding source of a wallet. "
+            "Follows the first SOL transfer received, hop by hop, up to max_hops deep. "
+            "Stops early if a known entity is found."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "address": {"type": "string"},
+                "max_hops": {"type": "integer", "default": 3, "minimum": 1, "maximum": 5},
+            },
+            "required": ["address"],
+        },
+    },
+    {
+        "name": "get_wallet_summary",
+        "description": "Get behavioral stats, classification labels, and known identity for a wallet.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "address": {"type": "string"},
+                "days_back": {"type": "integer", "default": 90},
+            },
+            "required": ["address"],
+        },
+    },
+    {
+        "name": "get_relationships",
+        "description": "Get the top counterparties (wallets this address interacts with most).",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "address": {"type": "string"},
+                "limit": {"type": "integer", "default": 10, "maximum": 20},
+            },
+            "required": ["address"],
+        },
+    },
+    {
+        "name": "take_action",
+        "description": (
+            "Take an agentic action in the app on behalf of the user. "
+            "Use when the user says: 'track this wallet', 'alert me when...', 'show me the graph', 'export CSV'."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "action_type": {
+                    "type": "string",
+                    "enum": ["track_wallet", "set_alert", "add_label", "open_graph", "export_csv"],
+                },
+                "parameters": {
+                    "type": "object",
+                    "description": "Action-specific parameters (e.g. address, label, alert conditions)",
+                },
+            },
+            "required": ["action_type", "parameters"],
+        },
+    },
+]
+
+
+# ---------------------------------------------------------------------------
+# Intent classifier
+# ---------------------------------------------------------------------------
+
+async def classify_intent(query: str) -> str:
+    """
+    Quick haiku call to classify query intent.
+    Returns: relationship_query | wallet_summary | fund_trace | token_query | agentic_action | unknown
+    """
+    client = anthropic.AsyncAnthropic(api_key=settings.anthropic_api_key)
+    response = await client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=20,
+        system=(
+            "Classify the following query into exactly one category:\n"
+            "relationship_query | wallet_summary | fund_trace | token_query | agentic_action | unknown\n"
+            "Respond with only the category name, nothing else."
+        ),
+        messages=[{"role": "user", "content": query}],
+    )
+    text = response.content[0].text.strip().lower()
+    valid = {
+        "relationship_query", "wallet_summary", "fund_trace",
+        "token_query", "agentic_action", "unknown",
+    }
+    return text if text in valid else "unknown"
+
+
+# ---------------------------------------------------------------------------
+# Tool executor
+# ---------------------------------------------------------------------------
+
+async def execute_tool(name: str, inputs: dict[str, Any]) -> dict[str, Any]:
+    """Dispatch a tool call to the appropriate data layer."""
+    if name == "check_transfers":
+        return await clickhouse.check_transfers_between(
+            from_addr=inputs["from_address"],
+            to_addr=inputs["to_address"],
+            min_amount_sol=inputs.get("min_amount_sol", 0.1),
+            date_from=inputs.get("time_from"),
+            date_to=inputs.get("time_to"),
+        )
+
+    elif name == "trace_funding":
+        return await _trace_funding(
+            address=inputs["address"],
+            max_hops=inputs.get("max_hops", 3),
+        )
+
+    elif name == "get_wallet_summary":
+        from app.services.classification import classify_wallet
+        stats, known, cls = await _gather(
+            clickhouse.get_wallet_stats(inputs["address"], inputs.get("days_back", 90)),
+            supabase_svc.get_known_wallet(inputs["address"]),
+            classify_wallet(inputs["address"]),
+        )
+        return {
+            "stats": stats,
+            "known_wallet": known,
+            "classification": (cls or {}).get("labels", []),
+            "confidence": (cls or {}).get("confidence", {}),
+        }
+
+    elif name == "get_relationships":
+        counterparties = await clickhouse.get_top_counterparties(
+            inputs["address"], limit=inputs.get("limit", 10)
+        )
+        return {"counterparties": counterparties}
+
+    elif name == "take_action":
+        # Returned to frontend for execution; no server-side effect here
+        return {"status": "queued", "action_type": inputs["action_type"]}
+
+    else:
+        return {"error": f"Unknown tool: {name}"}
+
+
+async def _trace_funding(address: str, max_hops: int) -> dict[str, Any]:
+    """Hop-by-hop funding trace: follow first SOL received, stop at known entity."""
+    client = clickhouse.get_client()
+    trail: list[dict] = []
+    current = address
+
+    for hop in range(max_hops):
+        result = client.query(
+            """
+            SELECT from_address, amount, tx_signature, block_time
+            FROM transfers
+            WHERE to_address = {address:String}
+              AND token_mint = 'SOL'
+            ORDER BY block_time ASC
+            LIMIT 1
+            """,
+            parameters={"address": current},
+        )
+        if not result.result_rows:
+            break
+
+        row = result.result_rows[0]
+        funder, amount, sig, block_time = row[0], float(row[1] or 0), row[2], str(row[3])
+        known = await _safe(supabase_svc.get_known_wallet(funder))
+
+        trail.append(
+            {
+                "hop": hop + 1,
+                "address": funder,
+                "known_label": (known or {}).get("label"),
+                "known_category": (known or {}).get("category"),
+                "amount_sol": round(amount, 4),
+                "tx_signature": sig,
+                "block_time": block_time,
+            }
+        )
+        if known:
+            break  # Found a known entity — trail is complete
+        current = funder
+
+    return {"address": address, "trail": trail, "depth": len(trail)}
+
+
+# ---------------------------------------------------------------------------
+# Main AI query pipeline
+# ---------------------------------------------------------------------------
+
+async def run_bloodhound_ai(
+    query: str,
+    session_id: str,
+    context: dict[str, Any],
+    user_id: str | None = None,
+) -> dict[str, Any]:
+    """
+    Full Bloodhound AI pipeline.
+    Returns: {answer, numbers, evidence, confidence, viz_type, actions}
+    """
+    tracked_wallets: list[dict] = context.get("tracked_wallets", [])
+    label_map = {w["label"].lower(): w["address"] for w in tracked_wallets}
+
+    # Resolve labels to addresses in the query
+    resolved_query = query
+    for label, address in label_map.items():
+        resolved_query = re.sub(re.escape(label), address, resolved_query, flags=re.IGNORECASE)
+
+    system_prompt = _build_system_prompt(label_map)
+    messages: list[dict] = [{"role": "user", "content": resolved_query}]
+    actions: list[dict] = []
+    evidence: list[dict] = []
+
+    ai_client = anthropic.AsyncAnthropic(api_key=settings.anthropic_api_key)
+    max_iterations = 5
+    answer_text = ""
+
+    for _ in range(max_iterations):
+        response = await ai_client.messages.create(
+            model="claude-sonnet-4-6",
+            max_tokens=2000,
+            system=system_prompt,
+            tools=BLOODHOUND_TOOLS,
+            messages=messages,
+        )
+
+        if response.stop_reason == "end_turn":
+            for block in response.content:
+                if block.type == "text":
+                    answer_text = block.text
+            break
+
+        if response.stop_reason == "tool_use":
+            tool_calls = [b for b in response.content if b.type == "tool_use"]
+            tool_results: list[dict] = []
+
+            for tool_call in tool_calls:
+                result = await execute_tool(tool_call.name, tool_call.input)
+
+                # Collect evidence tx signatures
+                if "evidence" in result:
+                    evidence.extend(result["evidence"])
+
+                # Collect agentic actions
+                if tool_call.name == "take_action" and result.get("status") == "queued":
+                    actions.append(
+                        {
+                            "type": tool_call.input.get("action_type"),
+                            "parameters": tool_call.input.get("parameters", {}),
+                        }
+                    )
+
+                tool_results.append(
+                    {
+                        "type": "tool_result",
+                        "tool_use_id": tool_call.id,
+                        "content": json.dumps(result, default=str),
+                    }
+                )
+
+            # Continue the conversation with tool results
+            messages.append({"role": "assistant", "content": response.content})
+            messages.append({"role": "user", "content": tool_results})
+        else:
+            # Unexpected stop reason
+            for block in response.content:
+                if hasattr(block, "text"):
+                    answer_text = block.text
+            break
+    else:
+        # Hit max iterations
+        if not answer_text:
+            answer_text = "[SUSPECTED] Analysis incomplete — reached maximum reasoning steps."
+
+    return {
+        "answer": answer_text,
+        "numbers": _extract_numbers(answer_text),
+        "evidence": evidence[:10],  # cap at 10 evidence items
+        "confidence": _extract_confidence(answer_text),
+        "viz_type": _infer_viz_type(answer_text, actions),
+        "actions": actions,
+    }
+
+
+async def generate_wallet_intelligence(address: str) -> dict[str, Any]:
+    """
+    Generate an AI narrative summary for a wallet profile page.
+    Lightweight version of the main AI pipeline with pre-loaded wallet context.
+    """
+    query = f"Give me a comprehensive intelligence summary for wallet {address}. Include their classification, trading behavior, key relationships, and any notable patterns."
+    result = await run_bloodhound_ai(
+        query=query,
+        session_id=f"intel:{address}",
+        context={"tracked_wallets": []},
+    )
+    return {
+        "address": address,
+        "summary": result["answer"],
+        "confidence": result["confidence"],
+    }
+
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+def _build_system_prompt(label_map: dict[str, str]) -> str:
+    label_context = (
+        f"\nTracked wallets (label → address):\n{json.dumps(label_map, indent=2)}"
+        if label_map
+        else ""
+    )
+    return f"""You are Bloodhound AI, an on-chain intelligence assistant for Solana.
+
+RULES — NEVER:
+- Link wallet addresses to real-world identities beyond approved database labels
+- Make accusations about illegal activity — use "suspected", "may indicate", "possible"
+- Speculate on future price movements
+- Fabricate transaction evidence — every claim must reference a real tx signature
+- Answer confidently about wallets with zero on-chain history
+
+CONFIDENCE TIERS (always end your answer with one):
+- [CONFIRMED] — Direct on-chain proof, evidence tx signatures provided
+- [PROBABLE] — Strong multi-signal pattern, multiple supporting signals
+- [SUSPECTED] — Weak or single-signal inference
+- [UNKNOWN] — Insufficient data
+
+WHEN DATA IS ABSENT:
+- Zero history → "This address has no recorded on-chain activity. [UNKNOWN]"
+- Partial data → Attempt inference, clearly mark [SUSPECTED], offer to clarify
+- Ambiguous query → Ask the user to clarify
+
+FORMAT:
+- Lead with a clear 1-2 sentence answer
+- Follow with key numbers (amounts, dates, counts)
+- List evidence tx signatures if available
+- End with confidence tier in brackets
+{label_context}"""
+
+
+def _extract_confidence(text: str) -> str:
+    for tier in ("CONFIRMED", "PROBABLE", "SUSPECTED", "UNKNOWN"):
+        if f"[{tier}]" in text:
+            return tier
+    return "UNKNOWN"
+
+
+def _extract_numbers(text: str) -> list[dict]:
+    """Pull out number mentions (SOL amounts, USD values, counts) from the answer."""
+    numbers: list[dict] = []
+    # SOL amounts
+    for m in re.finditer(r"([\d,]+\.?\d*)\s*SOL", text):
+        numbers.append({"label": "SOL", "value": m.group(1).replace(",", "")})
+    # USD amounts
+    for m in re.finditer(r"\$([\d,]+\.?\d*)", text):
+        numbers.append({"label": "USD", "value": m.group(1).replace(",", "")})
+    return numbers[:10]
+
+
+def _infer_viz_type(text: str, actions: list[dict]) -> str:
+    """Determine what visualization to show with the response."""
+    for action in actions:
+        if action.get("type") == "open_graph":
+            return "graph"
+    if "transfer" in text.lower() or "sent" in text.lower():
+        return "table"
+    return "none"
+
+
+async def _safe(coro, default=None):
+    try:
+        return await coro
+    except Exception:
+        return default
+
+
+async def _gather(*coros):
+    import asyncio
+    return await asyncio.gather(*coros, return_exceptions=False)

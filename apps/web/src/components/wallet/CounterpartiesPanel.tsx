@@ -1,0 +1,233 @@
+"use client";
+
+import { useQuery } from "@tanstack/react-query";
+import { walletApi } from "@/lib/api";
+import { AddressTag } from "@/components/ui/AddressTag";
+import { Skeleton } from "@/components/ui/Skeleton";
+import Link from "next/link";
+
+interface Props {
+  address: string;
+}
+
+export function CounterpartiesPanel({ address }: Props) {
+  const { data, isLoading } = useQuery({
+    queryKey: ["wallet", "relationships", address],
+    queryFn: () => walletApi.relationships(address),
+    staleTime: 60_000,
+  });
+
+  const counterparties = (data?.counterparties ?? []).slice(0, 5);
+
+  return (
+    <PanelShell title="Top Counterparties">
+      {isLoading ? (
+        <SkeletonList count={4} />
+      ) : counterparties.length === 0 ? (
+        <EmptyState text="No counterparties found." />
+      ) : (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          {counterparties.map((cp, i) => (
+            <div
+              key={cp.counterparty}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "10px 0",
+                borderBottom:
+                  i < counterparties.length - 1
+                    ? "1px solid var(--border)"
+                    : "none",
+              }}
+            >
+              <div>
+                <Link
+                  href={`/wallet/${cp.counterparty}`}
+                  style={{ display: "block", marginBottom: "2px" }}
+                >
+                  <AddressTag address={cp.counterparty} />
+                </Link>
+                <span
+                  style={{ fontSize: "11px", color: "var(--text-muted)" }}
+                >
+                  {cp.interaction_count} interactions
+                </span>
+              </div>
+              <div style={{ textAlign: "right" }}>
+                <div
+                  style={{
+                    fontFamily: "JetBrains Mono, monospace",
+                    fontSize: "12px",
+                    color: "var(--text-primary)",
+                  }}
+                >
+                  ${cp.total_volume_usd.toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                </div>
+                <div style={{ fontSize: "11px", color: "var(--text-muted)" }}>
+                  {formatRelative(cp.last_interaction)}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </PanelShell>
+  );
+}
+
+export function SideWalletsPanel({ address }: Props) {
+  const { data, isLoading } = useQuery({
+    queryKey: ["wallet", "side-wallets", address],
+    queryFn: () => walletApi.sideWalletsTyped(address),
+    staleTime: 120_000,
+  });
+
+  const candidates = data?.candidates ?? [];
+
+  return (
+    <PanelShell title="Potential Side Wallets">
+      {isLoading ? (
+        <SkeletonList count={3} />
+      ) : candidates.length === 0 ? (
+        <EmptyState text="No side wallets detected above threshold." />
+      ) : (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          {candidates.map((cand, i) => (
+            <div
+              key={cand.address}
+              style={{
+                padding: "10px 0",
+                borderBottom:
+                  i < candidates.length - 1
+                    ? "1px solid var(--border)"
+                    : "none",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginBottom: "4px",
+                }}
+              >
+                <Link href={`/wallet/${cand.address}`}>
+                  {cand.known_label ? (
+                    <span
+                      style={{
+                        fontSize: "13px",
+                        color: "var(--text-primary)",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {cand.known_label}
+                    </span>
+                  ) : (
+                    <AddressTag address={cand.address} />
+                  )}
+                </Link>
+                <ConfidenceBar value={cand.confidence} />
+              </div>
+              <p
+                style={{
+                  fontSize: "11px",
+                  color: "var(--text-muted)",
+                  margin: 0,
+                }}
+              >
+                {cand.signals.slice(0, 2).join(" · ")}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+    </PanelShell>
+  );
+}
+
+function PanelShell({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section
+      style={{
+        background: "var(--bg-surface)",
+        border: "1px solid var(--border)",
+        borderRadius: "8px",
+        padding: "16px 20px",
+      }}
+    >
+      <h2
+        style={{
+          fontSize: "11px",
+          fontWeight: 600,
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+          color: "var(--text-muted)",
+          marginBottom: "12px",
+        }}
+      >
+        {title}
+      </h2>
+      {children}
+    </section>
+  );
+}
+
+function ConfidenceBar({ value }: { value: number }) {
+  const pct = Math.round(value * 100);
+  const color =
+    pct >= 80 ? "var(--accent)" : pct >= 60 ? "#b36a00" : "var(--text-muted)";
+  return (
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "4px",
+        fontSize: "11px",
+        fontFamily: "JetBrains Mono, monospace",
+        color,
+        fontWeight: 600,
+      }}
+    >
+      {pct}%
+    </span>
+  );
+}
+
+function SkeletonList({ count }: { count: number }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+      {Array.from({ length: count }).map((_, i) => (
+        <div key={i} style={{ display: "flex", justifyContent: "space-between" }}>
+          <Skeleton width={120} height={12} />
+          <Skeleton width={50} height={12} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function EmptyState({ text }: { text: string }) {
+  return (
+    <p style={{ fontSize: "13px", color: "var(--text-muted)", margin: 0 }}>
+      {text}
+    </p>
+  );
+}
+
+function formatRelative(iso: string) {
+  const diff = Date.now() - new Date(iso).getTime();
+  const days = Math.floor(diff / 86_400_000);
+  if (days < 1) return "today";
+  if (days < 7) return `${days}d ago`;
+  if (days < 30) return `${Math.floor(days / 7)}w ago`;
+  return `${Math.floor(days / 30)}mo ago`;
+}

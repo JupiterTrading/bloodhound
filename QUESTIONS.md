@@ -31,7 +31,8 @@ The logo should be a black silhouette of a bloodhound just the head ideally, I w
 13. How does "BLOODHOUND" render — all caps always? Mixed case? Stylized characters? All Caps. Stylized maybe.
 
 ### A4. Layout & Density
-14. Primary use case device — desktop power tool first, or mobile-friendly from launch? Desktop power tool first. Built with a mobile friendly version in mind. (Good apps with good guis work well on both)
+14. Primary use case device — 
+desktop power tool first, or mobile-friendly from launch? Desktop power tool first. Built with a mobile friendly version in mind. (Good apps with good guis work well on both)
 15. Dashboard density preference — Bloomberg-dense (max info visible) or more breathable/modern? I'd like to keep things visually simple BUT tailored with depth in mind for the target user. 
 16. Is there a sidebar for tracked wallets or is everything top-nav accessible? Leving this up to you, will depend on what type of tooling we end up building. 
 17. Should the app feel more like a terminal (single screen, no pages) or a traditional multi-page dashboard? Traditional multi-page dashboard.
@@ -42,15 +43,19 @@ The logo should be a black silhouette of a bloodhound just the head ideally, I w
     - Glitch/distortion effect (similar to Nexus)
     - Pure text/typography play
     - Abstract data visualization
-    - A real-time data feed visible in hero
+    - A real-time data feed visible in hero 
+It should be a real-time data feed visible in hero, Tracking KOL transactions and wallet activity. Idendifying and tracking potential interesting movements (Big sells on popular meme tokens, large wallet movemenets, etc. I want the twitter API tracked as well (so wallets can be identified by their twitter handle))
 19. Does the landing page have a waitlist / early access form, or goes straight to the app?
+Straight to the app
 20. What's the hero headline? ("On-Chain Intelligence for Solana" level copy or do you have a line already?)
-
+On-Chain Intelligence for Solana
 ### A6. Motion & Animation
-21. Should the site feel alive with constant subtle motion (like a live terminal — data streaming, nodes pulsing, scanlines running)? Or controlled/static with animations only on interaction?
+21. Should the site feel alive with constant subtle motion (like a live terminal — data streaming, nodes pulsing, scanlines running)? Or controlled/static with animations only on interaction? 
+Yes it should feel alive with constant subtle motion (like a live terminal — data streaming, nodes pulsing, scanlines running)
 22. Page transitions — instant or animated?
+Instant but with quick animations/beautification for all the transitions and loading (loading should be subtle and quick)
 23. Graph animations when new transactions arrive — aggressive (highly visible) or subtle?
-
+In between
 ---
 
 ## SECTION B — AI Rules & Intelligence System (BUILD Agent)
@@ -70,37 +75,39 @@ These are the rules the AI uses to label and understand wallet types.
     - Known KOL (from known wallets DB)
     - Bundler (part of launch bundles)
     - Wash Trader (suspected fake volume)
-
+Should also note transaction source w/ logos in the gui (Axiom, Coinbase, Phantom, Jupiter, Raydium, etc.)
 25. **Whale threshold** — what defines a whale?
     - By SOL balance? (e.g. >1000 SOL)
     - By portfolio USD value? (e.g. >$100k)
     - By transaction volume? (e.g. >X SOL moved in 30 days)
     - Should this be dynamic/relative to token context?
-
+Whale Wallet vs Whale Holder discrepancy (Holding 1% of a token or more than 1% of the total supply makes you a whale holder of a coin. Whale wallet is a wallet with 50k or more in total value (real liquidity i.e $ ammount if they sold or similar, build this narrative out, completely factor in transaction volume make it dynamic))
 26. **Sniper definition** — how early is a sniper?
     - First N transactions after pool creation? (define N)
     - Within first X seconds/minutes of launch?
     - What's the minimum buy size to qualify?
+As long as the snipe ammount is significant (meaning it is not a near zero amount, as ghost transactions that are not meaningful in the context of the data are irrelevant and shouldnt be dispalyed usually. Usually snipers are bots, axiom has a system that they use to tell the difference for diffeent wallet classes kols, etc, there may be some places where the data relevant to the site could be available, like on trading platforms and other adjacent tools like axiom that you could look at to gain more relevant information and other things that help contextualize what we've got on chain, for example, axiom has a list of known KOLs or named wallets, differentites between bots and snipers insiders, wwallet transfers etc. We need that same granularity throughout the site.)
 
 27. **Smart Money definition** — what makes a wallet "smart money"?
     - Win rate threshold? (e.g. >60% of trades profitable)
     - Minimum trade count to qualify?
     - Time window for measuring performance? (30d, 90d, all time?)
     - Should it be token-specific smart money or general?
-
+Win rate threshold with a minimum trade count(We aren't looking for one hit wonders here) We should track wallets(Kols) based on all time perfomance via profiles. 
 28. **Insider signals** — what on-chain patterns suggest insider status?
     - Funded by deployer wallet?
     - Bought within first N blocks of deployment?
     - In same bundle as deployer?
     - Holds tokens with no public announcement/prior history?
     - Combination required or any single signal flags as "potential insider"?
+Combination required but use disgression and context to make it more dynamic in identifying potential insiders.
 
 29. **Bot detection signals** — what patterns indicate bot behavior?
     - Transaction frequency (X txs per minute)?
     - Identical transaction timing patterns?
     - Same program interactions in rapid succession?
     - Zero failed transactions (too clean)?
-
+These are a good start, also understand that we need to track source of the transaction which could also help identify (solscan may have this data)
 ### B2. Side Wallet Detection Rules
 This is the system for identifying wallets that likely belong to the same entity.
 
@@ -112,21 +119,21 @@ This is the system for identifying wallets that likely belong to the same entity
     - Consistent interaction timing (consistently transact within N minutes of each other)
     - Shared token holdings (hold many of the same unusual tokens)
     - Cross-chain origination (same CEX withdrawal to multiple Solana wallets)
-
+Use logic here to identify this. All these are great signals but use disgression and context to make it more dynamic in identifying potential side wallets.
 31. **Confidence scoring** — should side wallets show a confidence % or just be flagged?
     - Example: "87% likely side wallet of [label]" vs just "possible side wallet"
     - What evidence does the UI show to justify the flag?
-
+The ai should explain connections, its confidence level, and reasoning when indentifying wallets in the chatbox, in the gui there should be an intuitive manner of display.
 32. **Display rules** — when should side wallets appear:
     - Automatically listed under a wallet's profile?
     - Only shown in graph view?
     - Behind a toggle ("Show potential side wallets")?
     - Only shown above a confidence threshold?
-
+They should automatically be listed under a wallet's profile, and only shown above a reasonable confidence threshold as potential side wallets.
 33. **User can dispute/confirm** — should users be able to:
     - Mark a flagged side wallet as "confirmed" or "incorrect"?
     - Does community confirmation affect the confidence score?
-
+There should be a reporting system that allows users to dispute side wallets and also a form for them to submit wallets that they suspect belong to people, this will be put into a review queue and gui where the dev(me) can review and make a final decision on the wallet, then add it to the database/make the changes easily.
 ### B3. Relationship Classification Rules
 How the AI describes and labels connections between wallets.
 
@@ -153,7 +160,7 @@ How the AI describes and labels connections between wallets.
 37. **Time decay** — should old connections be weighted less than recent ones?
     - "Active connection" (last 30 days) vs "historical connection"?
     - Should connections older than X months be grayed out or hidden?
-
+Yes connection age should be taken into account
 ### B4. Ask the Hive Rules
 Governing what the AI says, how confident it is, and what it refuses.
 
@@ -162,42 +169,42 @@ Governing what the AI says, how confident it is, and what it refuses.
     - "Probable" (strong multi-signal pattern)
     - "Suspected" (weak signal, inference only)
     - "Unknown" (insufficient data)
-
+Yes
 39. **What should Ask the Hive NEVER do?**
     - Identify real-world names/identities from wallet addresses?
     - Make accusations about illegal activity?
     - Answer questions about wallets with no on-chain history?
     - Speculate about future price movements?
     - Anything else?
-
+This is not "Ask the Hive" that was a suggestion/example noted in one of the idea docs. This is Bloodhound. Also these are good notes yes.
 40. **When data is absent** — if the AI can't find relevant data, should it:
     - Say "no data found" clearly
     - Attempt to infer and flag as inference
     - Ask the user to clarify
-
-41. **Multi-turn memory** — within a session, should Ask the Hive:
+Should depend on the situation, if the user is asking about a wallet that has no on-chain history, it should say "no data found" clearly, if there is some information it should attempt to infer and flag as inference and or ask for clarification if it makes sense.
+41. **Multi-turn memory** — within a session, should Bloodhounf:
     - Remember all labeled wallets you've defined in your tracked list
     - Remember prior questions in the session ("now check the same for punk")
     - Reference prior answers ("as I mentioned earlier, poop sent...")
-
-42. **Response format** — does every Ask the Hive response include:
+Yes, there should be user profiles and a gui that saves their tracked wallets and the profiles of them, and a notification system for what tracked wallets are doing (profiles that already exist in the database can also be added to the user profile and then )
+42. **Response format** — does every Bloodhoundresponse include:
     - A short plain-English answer (1-3 sentences)
     - Key numbers (amounts, dates, transaction counts)
     - Clickable evidence (tx signatures, wallet links)
     - Confidence indicator
     - A "show graph" / "show table" option
-
+I like these ideas, the responses should be logical and include all the information needed to answer the question, and maybe some good extra information to help the user understand the context better.
 ### B5. Known Wallets Database Rules
 
 43. **Who can submit** a wallet for review?
     - Any user (including anonymous)?
     - Registered users only?
     - Pro tier only?
-
+Registered users only
 44. **What submission includes:**
     - Solana wallet address (required)
     - Proposed label/name (required)
-    - Category (KOL / Known Figure / Profitable Trader / Other)
+    - Category (KOL / Whale / Profitable Trader(Shark) / Other)
     - Evidence: images/screenshots (file types: PNG, JPG, max file size?)
     - Evidence: text/links in comments field
     - Submitter identity shown or anonymous?
@@ -207,12 +214,12 @@ Governing what the AI says, how confident it is, and what it refuses.
     - Is there an internal admin panel for reviewing submissions?
     - What are the approval criteria? What gets rejected?
     - Can submissions be escalated for community discussion?
-
+For now the dev team only
 46. **Post-approval:**
     - Does the wallet appear in all users' searches automatically?
     - Can approved wallets be challenged/updated?
     - Version history of labels (wallet was "poop" then identified as "KOL X")?
-
+Yes yes yes, the main identifier, if it exists should be a telegram or X profile or both, that way their related x api tweets to any ticker or references of it on their page can be linked as well
 47. **Known Wallets categories** — confirm or add:
     - KOL (Key Opinion Leader / influencer)
     - Known Figure (founders, VC wallets, public figures)
@@ -220,7 +227,7 @@ Governing what the AI says, how confident it is, and what it refuses.
     - Protocol / Team (project treasuries, dev wallets)
     - Exchange (CEX hot/cold wallets)
     - Suspected Bad Actor (rug puller, scammer — requires higher evidence bar?)
-
+Yes
 48. **Public vs. private known wallets** — are all approved wallets visible to:
     - All users including anonymous?
     - Registered users only?
@@ -235,17 +242,16 @@ Governing what the AI says, how confident it is, and what it refuses.
 49. **Can anonymous users use the site?** What's accessible without an account:
     - Basic search (wallet lookup, tx history)?
     - Intelligence layer outputs?
-    - Ask the Hive?
     - Tracked wallets (no — requires account)?
     - Graph view?
 
 50. **Wallet-based auth (Web3 login)** — is "Sign in with Phantom/Backpack" offered as an alternative to email auth? Or email only?
-
+Potentially, there should be an X log in option as well, it should be optional, and not ask for any strange or unnecessary account access like posting or liking.
 51. **Free vs. Pro features** — define the line. Current proposal:
     - Free: basic search, wallet page, tx history, limited tracked wallets (10), basic graph
     - Pro: unlimited tracked wallets, full history depth, advanced alerts, API access, team workspaces
-    - Is Ask the Hive free (limited queries/day) or Pro only?
-
+    - Is Bloodhound free (limited queries/day) or Pro only?
+Bloodhound will have a limited free tier and pro tier where the free tier allows users to try our best features for a bit, and the pro tier allows users to use all features without any limits. this way people can try it out and get value from it before committing to a paid plan.
 ### C2. Explorer Core
 
 52. **What's searchable?** Confirm:
@@ -256,7 +262,7 @@ Governing what the AI says, how confident it is, and what it refuses.
     - Block number
     - Token name/symbol (search "BONK" and get the token page)
     - User-defined label ("poop" searches your tracked wallets first, then public tags)
-
+Yes all of these. You should be able to ask for a wallets connections, which kols have traded a token, which wallets have interacted with a token, etc.
 53. **Wallet page sections** — what panels appear on a wallet profile page:
     - Summary (balance, portfolio value, first/last active)
     - Token holdings
@@ -266,7 +272,7 @@ Governing what the AI says, how confident it is, and what it refuses.
     - Intelligence summary (AI-generated profile)
     - Known connections / potential side wallets
     - Tracked by X users (social proof)
-
+Yes, also wallets should show how many users track it total (so that popularly tracked wallets/people can be found easily)
 54. **Transaction history filters** — what filters exist on the tx list:
     - Type (swap, transfer, mint, burn, stake, NFT sale)
     - Token
@@ -275,7 +281,7 @@ Governing what the AI says, how confident it is, and what it refuses.
     - Program
     - Direction (in / out / both)
     - Success/failed
-
+Yes
 55. **Token pages** — how deep does token data go:
     - Price chart (OHLCV) — yes
     - Holder list — yes
@@ -285,45 +291,45 @@ Governing what the AI says, how confident it is, and what it refuses.
     - Launch info (deployer, date, initial supply) — yes
     - Security score (rug risk) — yes
     - Anything else?
-
+Yes
 ### C3. Graph & Visualization
 
 56. **Default graph view** — when a user opens the graph for a wallet, what do they see by default:
     - The wallet + all direct connections (1 hop)?
     - Only labeled/known connections?
     - Only connections above a transaction threshold?
-
+Direct connections and their connections, if a user clicks a connection you can see further. Etc
 57. **Graph node types / colors** — since the palette is black & white, how do we visually differentiate:
     - The selected/seed wallet
     - Known labeled wallets
     - Unknown wallets
     - Side wallet candidates
     - Exchange/protocol nodes
-
+Red and white and maybe another accent color if needed
 58. **Graph interactions:**
     - Click node → opens wallet profile in sidebar?
     - Click edge → shows the transactions between those two wallets?
     - Right-click node → context menu (label this wallet, track this wallet, expand connections)?
     - Drag to rearrange nodes?
-
+Yes
 59. **Timeline view** — what is this exactly:
     - A horizontal time axis showing when transactions happened between connected wallets?
     - A chronological feed of interactions?
     - Something else?
-
+1.2 and also it should show tokens bought, sold, the profit/loss
 60. **Graph export** — what format(s): PNG image, JSON data, CSV of edges?
-
+Whichever is best and most useful
 ### C4. Tracked Wallets Dashboard
 
 61. **Wallet groups/lists** — users can organize tracked wallets into named lists ("insiders", "my targets", etc.). Is there a limit on lists or wallets per list for free users?
-
-62. **Watchlist feed** — when viewing the feed, what events appear:
+Lets say 1 list for free users with 50 wallets in it
+ Pro users are unlimited.62. **Watchlist feed** — when viewing the feed, what events appear:
     - Any transaction by any tracked wallet?
     - Only transactions above a value threshold?
     - Only interactions between tracked wallets?
     - Large swaps only?
     - Filtered by token?
-
+Any transactions, this can be edited in that section's settings. 
 63. **Alert conditions** — what alert rules can users create:
     - "Alert me when [wallet] makes any transaction"
     - "Alert me when [wallet A] sends to [wallet B]"
@@ -331,14 +337,14 @@ Governing what the AI says, how confident it is, and what it refuses.
     - "Alert me when [wallet] balance crosses [amount]"
     - "Alert me when any tracked wallet interacts with each other"
     - Custom threshold on any of the above?
-
+Nice, these are good
 64. **Alert delivery** — how do alerts reach users:
-    - In-app notification (notification bell)
+    - In-app/site notification (notification bell)
     - Email
     - Push notification (browser)
     - Telegram bot integration?
     - Webhook (Pro)?
-
+All of these, with the option to disable any of them.
 ### C5. Signals
 
 65. **Signal types** — confirm/add to this list:
@@ -349,17 +355,17 @@ Governing what the AI says, how confident it is, and what it refuses.
     - Large liquidity removal
     - Known wallet waking up (dormant wallet suddenly active)
     - New insider wallet identified
-
+Yes
 66. **Signal scope** — are signals:
     - Global (any wallet on Solana triggers signals)?
     - Personalized (only wallets related to your tracked list)?
     - Token-specific (signals about tokens you follow)?
     - All three, filterable?
-
+All three, filterable with discression used, untracked wallets should require more confluence/bigger reasons for a global symbol (trumb coin launch for example as a huuuge event)
 67. **Signal confidence** — same confidence tier system as AI queries, or different?
-
+You choose what makes sense
 68. **Signals as a feed vs. alerts** — is the Signals page a public feed anyone can browse, or is it only relevant if you have tracked wallets?
-
+You choose
 ### C6. Public API
 
 69. **API v1 endpoints** — confirm this list from message.txt:
@@ -370,16 +376,16 @@ Governing what the AI says, how confident it is, and what it refuses.
     - `GET /tx/{signature}`
     - `GET /wallet/{address}/events` (tracked wallet events)
     - Anything to add or remove?
-
+There may be other things you want to add that would broaden context/the data we have, these are just some examples. 
 70. **API auth** — API key based? JWT? Both?
-
+What is JWT? 
 71. **Rate limits by tier** — define:
     - Free tier: X requests/day
     - Pro tier: X requests/day
     - Enterprise: custom
-
+Pick whats best, we need it to be economically viable, ideally cheap for testing right now while I'm building it, then scale up.
 72. **Docs format** — OpenAPI/Swagger spec, or hand-written markdown docs?
-
+The docs should be sprints with user stories and test cases. PRD, tech stack, etc. So that the ais never get lost while building. THese should update as needed and as changes are made.
 ---
 
 ## SECTION D — User Stories & QA Targets
@@ -393,9 +399,9 @@ These define the QA test cases.
     - Protocol team tracking their own ecosystem
     - Developer building on top of the API
     - Security researcher investigating rugs/scams
-
+Retail Traders, Analysts, and security researchers, with others being secondary.
 74. **Which persona is the MVP optimized for?** (Influences which flows must be perfect at launch)
-
+Retail Traders/Memecoin Traders on Solana
 ### D2. User Stories — Confirm These Are Correct
 These are the stories QA will test against. Add, remove, or correct any.
 
@@ -404,7 +410,7 @@ These are the stories QA will test against. Add, remove, or correct any.
 - US-002: As a user, I can see all tokens held by a wallet with live USD values
 - US-003: As a user, I can filter a wallet's transaction history by type, token, date, and amount
 - US-004: As a user, I can look up any token and see its price chart, top holders, and recent large trades
-- US-005: As a user, I can search by a user-defined label ("poop") and it resolves to the correct wallet
+- US-005: As a user, I can search by a user-defined label ("poop") and it resolves to the correct wallet that I assigned it to or that exists in the database.
 
 **Intelligence Stories:**
 - US-006: As a trader, I can view an AI-generated summary of any wallet's behavior and classification
@@ -412,10 +418,10 @@ These are the stories QA will test against. Add, remove, or correct any.
 - US-008: As a user, I can see a wallet's top counterparties (who it interacts with most)
 - US-009: As a user, I can see potential side wallets for any tracked labeled wallet
 
-**Ask the Hive Stories:**
+**Bloodhound Stories:**
 - US-010: As a user, I can type "does [label] send to [label]" and get a confirmed/denied answer with tx evidence
 - US-011: As a user, I can ask "who funded this wallet" and get the origin chain traced
-- US-012: As a user, Ask the Hive remembers my wallet labels so I don't need to paste addresses
+- US-012: As a user, Bloodhound remembers my wallet labels so I don't need to paste addresses
 - US-013: As a user, I can follow up on a previous query without restating context
 
 **Tracked Wallets Stories:**
@@ -444,14 +450,14 @@ These are the stories QA will test against. Add, remove, or correct any.
 75. **Are any of these stories wrong or missing?**
 
 76. **What's the single most important user story for MVP?** (The one that, if broken, the launch is a failure)
-
+All of them
 ### D3. Performance & Quality Standards
 
 77. **Page load target** — wallet profile page should load in under how many seconds?
-
+5
 78. **Search response time** — universal search should return results within how many milliseconds?
-
-79. **Ask the Hive response time** — acceptable wait time for an AI response? (5 seconds? 10 seconds? Show a typing/thinking indicator?)
+5
+79. **Bloodhound response time** — acceptable wait time for an AI response? (5 seconds? 10 seconds? Show a typing/thinking indicator?)
 
 80. **Graph render performance** — how many nodes before the graph is allowed to paginate or simplify?
 
@@ -461,20 +467,20 @@ These are the stories QA will test against. Add, remove, or correct any.
 
 ## SECTION E — Open Architecture Questions
 
-82. **Portfolio tracking** — does BLOODHOUND track the user's OWN portfolio (sign in with wallet, track your own performance), or is it strictly an intelligence tool for watching OTHER wallets?
-
+82. **Portfolio tracking** — does BLOODHOUND track the user's OWN portfolio (sign in with wallet, track your own performance), or is it strictly an intelligence tool for watching OTHER Wallets?
+The user can add their own wallets if they like. These will not be made public unless submitted and approved.
 83. **NFT depth** — how deep does NFT data go:
     - Just holdings (list of NFTs owned)?
     - Full provenance/sales history?
     - Collection floor and volume?
     - Trait rarity and analytics?
-
+Deep as possible, with simple interface that shows the most important data but can be dove into. Images etc.
 84. **Cross-chain future** — is Solana-only the firm plan, or should the architecture assume multi-chain expansion eventually?
-
+Multi-chain in the future. Solana is the focus now.
 85. **Pump.fun / Memecoin focus** — is this a primary use case? The wallet tracking use case described (insiders, snipers, bundlers) is heavily memecoin/launch oriented. Should the UX lean into this explicitly or stay neutral?
-
+Yes a bit, but I want a serious looking US
 86. **Mobile** — web responsive only, or is a native mobile app in the roadmap?
-
+No app on roadmap yet, just web
 87. **Team/collaboration** — the Team plan includes shared watchlists and labels. How does this work:
     - Invite team members by email?
     - Shared namespace for labels?
@@ -488,7 +494,7 @@ These are the stories QA will test against. Add, remove, or correct any.
 89. **Competitor awareness** — are there specific Solscan, SolanaFM, or Nansen features that must be matched or deliberately excluded?
 
 90. **What is the one thing BLOODHOUND must absolutely nail at launch that no other tool does well?**
-
+Wallet Tracking interface that is advanced with a smart AI assistant that can do things in the site for you like save wallets, and
 ---
 
 *Answer as many of these as possible. Anything left blank will be decided by the agent assigned to that domain and reviewed in the next planning session.*

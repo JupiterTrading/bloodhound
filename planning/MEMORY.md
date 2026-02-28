@@ -1,118 +1,120 @@
-# Bloodhound — Project Memory
+# BLOODHOUND — Project Memory
+**Last updated: 2026-02-28 — QUESTIONS.md fully answered, all three agent briefs written**
 
 ## What We're Building
-Solana-based AI intelligence platform. Three products in one:
-1. Solana block explorer (foundation, legitimacy layer)
+Solana on-chain intelligence terminal. Three products in one:
+1. Block explorer (foundation / legitimacy layer)
 2. Wallet intelligence layer (named wallets, relationship mapping, flow graphs) — THE differentiator
-3. AI natural language interface ("does poop send to punk?")
+3. Bloodhound AI — agentic NL query interface (can take actions: save wallets, set alerts, open graphs)
 
 ## Product Positioning
-"Intelligence layer" not just a block explorer. Beyond Solscan. Competitor reference: Arkham Intelligence (closest product), Nansen (aesthetic), Bubblemaps (graph viz), Dune Analytics (data-forward UX).
+"Intelligence layer" not a generic explorer. Beyond Solscan. Competitors: Arkham Intelligence (closest), Nansen (aesthetic), Bubblemaps (graph viz), Dune Analytics (data-forward UX). Axiom (classification granularity reference).
 
 ## Core Differentiator
-Named/tracked wallet system — users assign human-readable labels to addresses, then query relationships in plain language. Removes friction from on-chain analysis. Keeps users on platform vs bouncing to multiple tools.
+Named/tracked wallet system + AI that ACTS. Users label wallets, query in plain language, and the AI executes actions on their behalf. Goal: Axiom-level granularity for wallet classification, applied to an intelligence tool, not a trading terminal.
 
-## Key Features
-- Wallet labeling (private + public tags)
-- Tracked wallet dashboards
-- Relationship mapping (wallet → wallet flows)
-- Visual flow graphs showing fund movement
-- Alerts for interactions between tracked wallets
-- AI natural language query interface
-- Cluster detection / smart money tagging
+## Branding (CONFIRMED — all QUESTIONS.md answers reviewed)
+- **Background**: near-black with slight warmth (`#0d0a0a`)
+- **Text**: off-white with slight warmth (`#f0eded`)
+- **Accent**: BLOOD RED (`#b30000`) — single accent. CTAs, active states, alerts, seed nodes
+- **Palette**: black / off-white / blood red — three colors. Amber for warnings only, green for confirmed status only.
+- **Texture**: subtle scanlines + grid (hero only), constant ambient motion (live terminal feel)
+- **Typography**: JetBrains Mono (addresses/data/code) + NHGrotesk (UI/headings)
+- **Logo**: Bloodhound head silhouette (left-facing), blood red narrowed eye or crosshair. Icon + wordmark lockup. All caps "BLOODHOUND."
+- **Layout**: Multi-page dashboard. Desktop first, responsive for mobile. No left sidebar (global nav = top nav only).
+- **Vibe**: calm, confident, infra-grade. "Serious intel tool."
+- **Motion**: ALIVE — constant subtle motion (live feed scrolling, pulsing badges, streaming data). Page transitions instant but animated.
+- **Hero**: Real-time live data feed visible in hero (KOL txs, large wallet movements). Headline: "On-Chain Intelligence for Solana."
+- **Agent notation**: PLAN decisions marked `[PLAN]` in all brief documents.
 
-## Agreed Stack
-- **Frontend**: Next.js 14 App Router, Tailwind CSS, Framer Motion, React Flow (graphs), Recharts or TradingView Lightweight Charts, TanStack Query
-- **Data Layer (Phase 1)**: Helius API (primary Solana RPC, enriched tx data, webhooks), QuickNode (fallback), Birdeye/Jupiter (price/DEX data)
-- **Backend**: Next.js API routes (light), separate Node.js or Python FastAPI (heavy: graph compute, AI queries)
-- **DB**: PostgreSQL via Supabase (user data, wallet labels, alerts)
-- **Cache**: Redis via Upstash
-- **AI**: Claude API (function calling, structured tool use)
-- **Real-time**: Helius webhooks + WebSockets via Ably or Pusher
+## AI Feature Name
+**Bloodhound AI** — NOT "Ask the Hive" (planning placeholder, now retired). The AI IS the product.
+
+## Product Modules (Canonical)
+1. **Search / Explorer Core** — universal search (wallet, token, tx, program, block, @handle)
+2. **Intelligence Layer** — wallet classification, summaries, counterparties, funding trace, side wallets
+3. **Relationship + Flow Mapping** — graph (G6 v5, default 2-hop), timeline (time axis + PnL), table (exportable)
+4. **Bloodhound AI** — agentic NL interface. Takes actions: save wallet, set alert, open graph, label wallet.
+5. **Tracked Wallets Dashboard** — 1 group / 50 wallets (free), unlimited (pro), live feed, alerts
+6. **Signals** — public feed + personal filter. Same 4-tier confidence system.
+7. **Public API + Docs** — API keys for Pro tier. External docs = Mintlify. Internal docs = sprint PRDs (this folder).
+
+## Navigation
+Top nav: Explorer | Intelligence | Tracked | Signals | Bloodhound AI | API | Docs
+Status bar (bottom, fixed): network health, indexer sync, API uptime
+
+## Key Confirmed Decisions (from QUESTIONS.md)
+- **Whale Wallet** = $50k+ portfolio value (dynamic, real liquidity). Distinct from **Whale Holder** (≥1% of a token's supply — token-specific label)
+- **Graph default depth**: 2 hops (wallet + direct connections + their connections). Click to expand further. Max 5.
+- **Free tier**: 1 group, 50 wallets. Pro: unlimited.
+- **Transaction source logos**: Show Axiom, Phantom, Jupiter, Raydium, Orca, Pump.fun, Coinbase, Jito logos on all tx lists.
+- **Known wallets main identifier**: Twitter/X handle AND/OR Telegram handle (linked on approval)
+- **Hero visual**: Real-time live data feed (KOL activity, large movements) — NOT a node network animation
+- **Docs format**: Internal docs = sprint PRDs for AI agents. Public API docs = Mintlify for developers.
+- **Auth**: Email + Google + X/Twitter OAuth + Solana Wallet Adapter (Phantom/Backpack). Optional, no unnecessary permissions.
+- **Portfolio**: Users can add their own wallets (private unless submitted/approved)
+- **Pump.fun**: Lean in explicitly — bundler detection, insider wallets tab, dev wallet trace. Keep it serious.
+- **Cross-chain**: Solana only now. All DB tables include `chain` field for future expansion.
+- **Mobile**: Web responsive only. No native app on roadmap.
+- **NFT depth**: As deep as possible. MVP = holdings + images. Later = full provenance, rarity, analytics.
+- **Signals scope**: All three (global, personalized, token-specific), filterable. Global requires higher threshold.
+- **#1 thing to nail**: Wallet Tracking + Bloodhound AI that takes actions for the user.
+
+## Performance Targets (confirmed or PLAN-set)
+- Wallet profile: < 5s (owner confirmed)
+- Universal search: < 5s (owner confirmed)
+- Bloodhound AI response: < 8s (PLAN)
+- Autocomplete: < 100ms (PLAN, Redis-cached)
+
+## Agreed Stack (FINAL)
+- **Frontend**: Next.js 15 App Router, Tailwind CSS v4, shadcn/ui, TanStack Query v5, Zustand
+- **Graph**: G6 v5 (WebGL) + graphology
+- **Charts**: TradingView Lightweight Charts (price) + Tremor + Nivo (Sankey)
+- **Backend**: FastAPI (Python 3.12) on Railway
+- **DB**: Supabase (PostgreSQL + pgvector) + ClickHouse (analytics, Hetzner AX41) + Upstash Redis
+- **ORM**: Drizzle (not Prisma)
+- **AI**: claude-sonnet-4-6 (primary), claude-haiku-4-5-20251001 (intent classifier), Claude Opus 4 (complex fallback)
+- **AI orchestration**: instructor library + custom tool-use. NO LangChain.
+- **Auth**: Clerk + Solana Wallet Adapter
+- **Payments**: Stripe + Stripe Meters
+- **Real-time**: Helius webhooks + Ably
 - **Email**: Resend
-- **Auth/Payments**: Supabase auth + Stripe
+- **Data APIs**: Helius ($199/mo) + Birdeye ($200/mo) + Jupiter (free) + Solana FM (free) + Pump.fun (free) + Twitter/X API
 
-## Phase Roadmap
-- **Phase 1 (Wks 1–6)**: Explorer UI, wallet search/history, token/NFT info, landing page, GitHub org, docs skeleton, Twitter
-- **Phase 2 (Wks 7–14)**: Named wallet system, tracked dashboards, basic relationship queries, flow visualization
-- **Phase 3 (Wks 14–20)**: NL query AI interface, wallet AI summaries, smart money tagging, insider cluster detection
-- **Phase 4 (Mo 6+)**: API tiers, premium features, alerts, portfolio tracking, team workspaces
+## Project State (as of 2026-02-28)
+- Working directory: `C:\Users\guestarino\CascadeProjects\bloodhound`
+- Repo: https://github.com/JupiterTrading/bloodhound.git
+- Planning phase complete — no code scaffolded yet
+- QUESTIONS.md: ALL sections A–E answered by owner ✓
+- Agent briefs generated ✓
 
-## Monthly Infrastructure Costs (Bootstrap)
-- Helius Growth: ~$99
-- Supabase Pro: ~$25
-- Vercel Pro: ~$20
-- Upstash Redis: ~$10–30
-- Claude API: ~$50–200
-- Ably/Pusher: ~$0–29
-- Domain + Email: ~$20
-- **Total: ~$225–425/mo**
+## Agent Briefs Status
+- `planning/DESIGN_BRIEF.md` ✓ — ready for UI/UX agent
+- `planning/BUILD_SPEC.md` ✓ — ready for BUILD agent
+- `planning/QA_PLAN.md` ✓ — ready for QA agent
 
-## Funding Strategy
-1. Bootstrap to first users
-2. Early monetization: $15/mo Pro tier at 200 users = $3k/mo covers infra
-3. Solana Foundation grants (developer tooling, $5k–$100k+)
-4. Superteam DAO, Phantom ecosystem fund
-5. Angel/seed round post-traction (1k+ users)
+## Next Actions
+1. **Pre-build blockers** (owner to complete before agents start):
+   - Confirm name "Bloodhound" — check @bloodhound on Twitter/X, bloodhound.so / .xyz / .app
+   - Lock Twitter/X handle immediately
+   - Register domain
+   - Create GitHub org (JupiterTrading or BloodhoundHQ?)
+   - Set up Helius account + API key
+   - Set up Supabase project
+2. **BUILD agent** starts with Week 1–2: Helius webhook → ClickHouse ingestion pipeline
+3. **UI/UX agent** starts with: landing page design + wallet profile page design
+4. **QA agent** starts with: test environment setup + US-010 (relationship query) test harness
 
-## Branding Notes (CONFIRMED from QUESTIONS.md answers)
-- **Background**: near-black with slight warmth (not pure #000)
-- **Text**: off-white (not pure #fff)
-- **Accent**: BLOOD RED — confirmed as the single accent color. Used for CTAs, active states, alerts, graph highlights
-- **Palette summary**: black / off-white / blood red — three colors only
-- **Texture**: subtle scanlines + grid, hero animation. Not heavy.
-- **Typography**: JetBrains Mono (addresses/data/code) + Neue Haas Grotesk / NHGrotesk (UI sans-serif). Design weight/size left to UI/UX agent.
-- **Logo**: Black bloodhound head silhouette, simple red narrowed eye (possibly crosshair). Simple and brandable. Both icon + wordmark lockup.
-- **Name render**: BLOODHOUND — all caps, stylized
-- **Layout**: Traditional multi-page dashboard (NOT single-screen terminal). Desktop power tool first, mobile-friendly responsive in mind.
-- **Density**: Visually simple but depth for the target user — not Bloomberg dense, not sparse
-- **Sidebar**: Left to UI/UX agent based on final tooling structure
-- **Tone**: calm, confident, minimal hype. Infra-grade language.
-- **Identity language**: tracking, hunting, following trails, detection, signals
-- **NOT**: meme tool, alpha call bot, clone explorer, hype-first
-- **Graph viz**: animated, restrained
-- **Agent design note**: UI/UX agent answers should be marked distinctly (e.g. with `> [AGENT]:` prefix) so they're distinguishable from owner answers
-
-## Product Module Names (Canonical — from message.txt)
-1. **Search / Explorer Core** — universal search bar (wallet, token, tx, program, block)
-2. **Intelligence Layer** — wallet summaries, counterparties, inflows/outflows, first funding source, clustering signals
-3. **Relationship + Flow Mapping** — graph view + timeline view + table view (exportable). "Arkham-lite but focused."
-4. **"Ask the Hive"** — NL query terminal (NOT called a chatbot). Returns: short summary + key numbers + clickable evidence (tx links) + confidence level
-5. **Tracked Wallets Dashboard** — save wallets with labels, group into lists, set alerts
-6. **Signals** — monetization feature: abnormal inflows, new clusters, deployer patterns, wash trading flags. Must be infra-grade, not spammy.
-7. **Public API + Docs** — legitimacy + developer layer
-
-## Navigation Structure
-Top nav: Explorer | Intelligence | Tracked | Signals | API | Docs
-Status bar: network health, indexer sync, API uptime
-
-## MVP Must-Ship (2-week v1)
-- Universal search
-- Wallet page with clean summary
-- Transactions list
-- Tracked wallets (save label + quick view)
-- "Does X send to Y" relationship query
-- Ask the Hive answering basic relationship + wallet summary questions
-- Public landing + GitHub org + docs skeleton
-MVP can simplify: graph view basic, signals minimal, clustering = basic heuristics
-MVP must NOT: feel unfinished or rushed
-
-## Project State
-- Working directory: C:\Users\Miri\CascadeProjects\bloodhound (empty — fresh start)
-- No GitHub org yet
-- No domain secured yet
-- No Twitter/X secured yet
-
-## Reference Sites
-- **content.png**: "Nexus — Dominating Digital Markets" — primary visual reference. Dark/black bg, glitchy distorted hero figure, high contrast white text, nav: Markets|Tokens|Chain Data|Terminal|Docs|Premium, CTAs: "Free Register" / "Launch Terminal". Charts in lower right. This is the aesthetic direction.
-- **talk-2-solana-phi.vercel.app**: Internal test build. Called "Quorum" in UI. Next.js SPA on Vercel. NL→Solana query interface. No API keys wired (barebones test). Source files not yet in repo — get from user. Architecture and data source methodology to be reviewed when files available.
-
-## Key Decisions Still Needed
-- Final product name (Bloodhound is working name — need Twitter + domain check)
-- Color palette decision (green vs purple)
-- Solo build or hiring?
-- Claude vs OpenAI for AI layer (currently leaning Claude)
+## Reference Assets in Repo
+- `content.png`: Nexus visual reference (dark bg, high contrast, live data, nav structure)
+- `message.txt`: Authoritative product descriptor / positioning doc
+- `QUESTIONS.md`: All 90 questions answered (A–E complete)
+- `SETUP.md`: New machine onboarding instructions
+- `planning/DESIGN_BRIEF.md`: Full design spec for UI/UX agent
+- `planning/BUILD_SPEC.md`: Full technical spec for BUILD agent
+- `planning/QA_PLAN.md`: Full QA plan with all user stories and test cases
+- `planning/architecture.md`: Stack research notes (Feb 2026)
+- `planning/roadmap.md`: Sprint breakdown
 
 ## Links to Topic Files
-- [architecture.md](./architecture.md) — detailed technical architecture notes
-- [roadmap.md](./roadmap.md) — sprint-by-sprint breakdown
+- [architecture.md](./architecture.md) — detailed technical architecture and API research
