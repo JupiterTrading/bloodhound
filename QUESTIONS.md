@@ -1,4 +1,4 @@
-# BLOODHOUND — Pre-Build Questions
+  # BLOODHOUND — Pre-Build Questions
 # For PLAN review before agents are briefed
 # Answer everything here. Leave blank = decision deferred to agent defaults.
 
@@ -8,6 +8,7 @@
 
 ### A1. Color Palette
 1. Pure black (#000000) background or near-black with slight warmth/coolness (e.g. #0a0a0a, #080810)?
+Near Black with a slight warmth. The Website Colors should be black, white(most of text), and a sort of red or maroon(bloodhound/blood themed accents) The use intuitive deign to fill out a site color pallete that keeps the theme consistent and well designed. I am thinking slightly off white, I like the blood red accent. 4. Yes allowed. Scanlines could be cool if they were subtle with some sort of grid hero animation.
 2. Text: pure white (#ffffff) or slightly off-white (e.g. #e8e8e8, #f0f0f0)?
 3. Is there ANY accent color allowed — for CTAs, active states, alert indicators, graph nodes? Or truly monochrome?
    - If yes: one accent only? Options: blood red, amber/gold, electric green, cold blue, violet
@@ -17,21 +18,23 @@
 
 ### A2. Typography
 6. Monospace font preference for addresses/data/code? (IBM Plex Mono, JetBrains Mono, Courier New, Space Mono, custom?)
-7. UI sans-serif preference? (Geist, Inter, Neue Haas Grotesk, custom?)
+Jetbrains Mono looks good! NHGrotesk is also nice! Leaving headline design font weight and size up to you (for all design choices you make put in your own question answers maybe do this in hashtags or change the color some way so I can easily differentiate between mine and your answers. I just want the site well designed.)
+7. UI sans-serif preference? (Geist, Inter, Neue Haas Grotesk, custom?) 
 8. Headline style — large, sparse, confident (like Nexus: "Dominating Digital Markets")? Or more technical/understated?
 9. Font weight philosophy — heavy headlines with light body? All medium weight? Purely monospace throughout?
 
 ### A3. Logo & Identity
 10. Is there a logo concept, sketch, or direction already? Or is it to be designed from scratch?
-11. Wordmark only (BLOODHOUND in styled text), icon only, or both lockup?
-12. If icon — any direction? Hound silhouette, crosshair, signal trace, eye, graph node? Abstract?
-13. How does "BLOODHOUND" render — all caps always? Mixed case? Stylized characters?
+The logo should be a black silhouette of a bloodhound just the head ideally, I want its eye to be a simple red narrowed eye, maybe a crosshair, but keep it simple and brandable. I uploaded an EXAMPLE bloodhound silohette for reference. (Screenshot 2025-10-12 173250.png and 360_F_1744890973_500x500.jpg)
+11. Wordmark only (BLOODHOUND in styled text), icon only, or both lockup? Both
+12. If icon — any direction? Hound silhouette, crosshair, signal trace, eye, graph node? Abstract? Hound Hed Silhouette. 
+13. How does "BLOODHOUND" render — all caps always? Mixed case? Stylized characters? All Caps. Stylized maybe.
 
 ### A4. Layout & Density
-14. Primary use case device — desktop power tool first, or mobile-friendly from launch?
-15. Dashboard density preference — Bloomberg-dense (max info visible) or more breathable/modern?
-16. Is there a sidebar for tracked wallets or is everything top-nav accessible?
-17. Should the app feel more like a terminal (single screen, no pages) or a traditional multi-page dashboard?
+14. Primary use case device — desktop power tool first, or mobile-friendly from launch? Desktop power tool first. Built with a mobile friendly version in mind. (Good apps with good guis work well on both)
+15. Dashboard density preference — Bloomberg-dense (max info visible) or more breathable/modern? I'd like to keep things visually simple BUT tailored with depth in mind for the target user. 
+16. Is there a sidebar for tracked wallets or is everything top-nav accessible? Leving this up to you, will depend on what type of tooling we end up building. 
+17. Should the app feel more like a terminal (single screen, no pages) or a traditional multi-page dashboard? Traditional multi-page dashboard.
 
 ### A5. Hero / Landing Page
 18. Is there a hero visual concept? Content.png (Nexus) uses a glitchy distorted human figure. Options:

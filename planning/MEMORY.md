@@ -55,15 +55,23 @@ Named/tracked wallet system — users assign human-readable labels to addresses,
 4. Superteam DAO, Phantom ecosystem fund
 5. Angel/seed round post-traction (1k+ users)
 
-## Branding Notes (from message.txt — authoritative)
-- **Palette**: digitized BLACK & WHITE — high contrast, NOT the Solana purple/green gradient. No colored accents cloning the ecosystem look.
-- **Texture**: subtle scanlines / grid / minimal noise texture — terminal aesthetic
-- **Typography**: high contrast, monospace mixed with clean sans-serif
-- **Vibe**: terminal + dashboard hybrid. Calm, focused, "serious intel tool"
-- **Tone**: calm, confident, minimal hype. No chaotic posting. Infra-grade language.
+## Branding Notes (CONFIRMED from QUESTIONS.md answers)
+- **Background**: near-black with slight warmth (not pure #000)
+- **Text**: off-white (not pure #fff)
+- **Accent**: BLOOD RED — confirmed as the single accent color. Used for CTAs, active states, alerts, graph highlights
+- **Palette summary**: black / off-white / blood red — three colors only
+- **Texture**: subtle scanlines + grid, hero animation. Not heavy.
+- **Typography**: JetBrains Mono (addresses/data/code) + Neue Haas Grotesk / NHGrotesk (UI sans-serif). Design weight/size left to UI/UX agent.
+- **Logo**: Black bloodhound head silhouette, simple red narrowed eye (possibly crosshair). Simple and brandable. Both icon + wordmark lockup.
+- **Name render**: BLOODHOUND — all caps, stylized
+- **Layout**: Traditional multi-page dashboard (NOT single-screen terminal). Desktop power tool first, mobile-friendly responsive in mind.
+- **Density**: Visually simple but depth for the target user — not Bloomberg dense, not sparse
+- **Sidebar**: Left to UI/UX agent based on final tooling structure
+- **Tone**: calm, confident, minimal hype. Infra-grade language.
 - **Identity language**: tracking, hunting, following trails, detection, signals
 - **NOT**: meme tool, alpha call bot, clone explorer, hype-first
-- Graph viz: animated, but restrained — not flashy
+- **Graph viz**: animated, restrained
+- **Agent design note**: UI/UX agent answers should be marked distinctly (e.g. with `> [AGENT]:` prefix) so they're distinguishable from owner answers
 
 ## Product Module Names (Canonical — from message.txt)
 1. **Search / Explorer Core** — universal search bar (wallet, token, tx, program, block)
