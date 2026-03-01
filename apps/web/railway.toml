@@ -1,0 +1,11 @@
+# Railway service config for Bloodhound Web (Next.js)
+# Root directory in Railway dashboard must be set to: apps/web
+[build]
+builder = "railpack"
+
+[deploy]
+startCommand = "pnpm start"
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
