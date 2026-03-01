@@ -3,6 +3,7 @@ ClickHouse client — analytical queries and bulk inserts.
 All transaction history lives here.
 """
 
+import asyncio
 import clickhouse_connect
 from functools import lru_cache
 from typing import Any
@@ -119,7 +120,7 @@ async def get_wallet_transfers(
     """
 
     client = get_client()
-    result = client.query(query, parameters=params)
+    result = await asyncio.to_thread(client.query, query, parameters=params)
     return [dict(zip(result.column_names, row)) for row in result.result_rows]
 
 
@@ -140,7 +141,7 @@ async def get_wallet_stats(address: str, days: int = 90) -> dict[str, Any]:
           AND date >= today() - {days:UInt32}
     """
     client = get_client()
-    result = client.query(query, parameters={"address": address, "days": days})
+    result = await asyncio.to_thread(client.query, query, parameters={"address": address, "days": days})
     row = result.result_rows[0] if result.result_rows else None
     if not row:
         return {"total_txs": 0, "total_volume_usd": 0.0, "active_days": 0}
@@ -166,7 +167,7 @@ async def get_top_counterparties(
         LIMIT {limit:UInt32}
     """
     client = get_client()
-    result = client.query(query, parameters={"address": address, "limit": limit})
+    result = await asyncio.to_thread(client.query, query, parameters={"address": address, "limit": limit})
     return [dict(zip(result.column_names, row)) for row in result.result_rows]
 
 
@@ -180,7 +181,7 @@ async def get_sol_volume_30d(address: str) -> float:
           AND block_time >= now() - INTERVAL 30 DAY
     """
     client = get_client()
-    result = client.query(query, parameters={"address": address})
+    result = await asyncio.to_thread(client.query, query, parameters={"address": address})
     if not result.result_rows:
         return 0.0
     return float(result.result_rows[0][0] or 0)
@@ -205,7 +206,7 @@ async def get_wallet_holdings(address: str) -> list[dict[str, Any]]:
         LIMIT 100
     """
     client = get_client()
-    result = client.query(query, parameters={"address": address})
+    result = await asyncio.to_thread(client.query, query, parameters={"address": address})
     return [dict(zip(result.column_names, row)) for row in result.result_rows]
 
 
@@ -218,8 +219,8 @@ async def search_wallets_by_prefix(prefix: str, limit: int = 10) -> list[str]:
         LIMIT {limit:UInt32}
     """
     client = get_client()
-    result = client.query(
-        query, parameters={"prefix": f"{prefix}%", "limit": limit}
+    result = await asyncio.to_thread(
+        client.query, query, parameters={"prefix": f"{prefix}%", "limit": limit}
     )
     return [row[0] for row in result.result_rows]
 
@@ -264,7 +265,7 @@ async def get_recent_signals(
         OFFSET {{offset:UInt32}}
     """
     client = get_client()
-    result = client.query(query, parameters=params)
+    result = await asyncio.to_thread(client.query, query, parameters=params)
     return [dict(zip(result.column_names, row)) for row in result.result_rows]
 
 
@@ -315,8 +316,10 @@ async def check_transfers_between(
     """
 
     client = get_client()
-    summary = client.query(summary_q, parameters=params)
-    evidence = client.query(evidence_q, parameters=params)
+    summary, evidence = await asyncio.gather(
+        asyncio.to_thread(client.query, summary_q, parameters=params),
+        asyncio.to_thread(client.query, evidence_q, parameters=params),
+    )
 
     s = summary.result_rows[0] if summary.result_rows else (0, 0.0, None)
     return {

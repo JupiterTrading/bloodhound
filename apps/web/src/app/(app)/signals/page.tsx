@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { signalsApi, type Signal } from "@/lib/api";
+import { CONFIDENCE_COLORS } from "@/components/ui/ConfidenceBadge";
 
 const SIGNAL_TYPE_LABELS: Record<string, string> = {
   abnormal_inflow: "Abnormal Inflow",
@@ -31,11 +32,6 @@ const SIGNAL_ICONS: Record<string, string> = {
   dev_sold_supply: "!",
 };
 
-const CONFIDENCE_COLORS: Record<string, string> = {
-  CONFIRMED: "#22c55e",
-  PROBABLE: "#f59e0b",
-  SUSPECTED: "var(--text-muted)",
-};
 
 const TYPE_FILTERS = [
   { value: "", label: "All" },

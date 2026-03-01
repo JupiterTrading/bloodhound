@@ -8,6 +8,8 @@ GET /v1/token/{mint}/security
 GET /v1/token/{mint}/launch-intel
 """
 
+import asyncio
+
 from fastapi import APIRouter, Query
 from app.services import birdeye
 from app.services import supabase as supabase_svc
@@ -29,6 +31,8 @@ async def token_summary(mint: str):
     overview = await _safe(birdeye.get_token_overview(mint), default={})
     security = await _safe(birdeye.get_token_security(mint), default={})
 
+    is_pump = await _safe(_is_pump_fun(mint, overview), default=None)
+
     result = {
         "mint": mint,
         "name": overview.get("name"),
@@ -43,7 +47,7 @@ async def token_summary(mint: str):
         "holder_count": overview.get("holder"),
         "logo_uri": overview.get("logoURI"),
         "security_score": security.get("score"),
-        "is_pump_fun": _is_pump_fun(mint, overview),
+        "is_pump_fun": is_pump,
     }
 
     await cache_set(cache_key, result, TTL_PRICE)
@@ -126,7 +130,8 @@ async def token_large_trades(
     from app.services import clickhouse
 
     client = clickhouse.get_client()
-    result = client.query(
+    result = await asyncio.to_thread(
+        client.query,
         """
         SELECT
             tx_signature, block_time, trader, dex,
@@ -142,7 +147,6 @@ async def token_large_trades(
     )
     trades = [dict(zip(result.column_names, row)) for row in result.result_rows]
 
-    import asyncio
     known_results = await asyncio.gather(
         *[_safe(supabase_svc.get_known_wallet(t.get("trader", "")), default=None) for t in trades]
     )
@@ -162,7 +166,8 @@ async def token_launch_intel(mint: str):
     client = clickhouse.get_client()
 
     # First 50 buyers
-    early_buyers = client.query(
+    early_buyers_result = await asyncio.to_thread(
+        client.query,
         """
         SELECT DISTINCT
             trader,
@@ -176,21 +181,40 @@ async def token_launch_intel(mint: str):
         """,
         parameters={"mint": mint},
     )
-    buyers = [dict(zip(early_buyers.column_names, row)) for row in early_buyers.result_rows]
+    buyers = [dict(zip(early_buyers_result.column_names, row)) for row in early_buyers_result.result_rows]
 
-    import asyncio
     known_results = await asyncio.gather(
         *[_safe(supabase_svc.get_known_wallet(b.get("trader", "")), default=None) for b in buyers]
     )
     for b, known in zip(buyers, known_results):
         b["known_wallet"] = known
 
+    # Bundler detection: wallets that appear in Jito bundles for this token
+    bundler_result = await asyncio.to_thread(
+        client.query,
+        """
+        SELECT count() AS bundle_count
+        FROM transactions
+        WHERE source_platform = 'jito'
+          AND has(signers, {mint:String}) = 0
+          AND block_time >= (
+              SELECT min(block_time) FROM token_trades WHERE token_out_mint = {mint:String}
+          )
+        LIMIT 1
+        """,
+        parameters={"mint": mint},
+    )
+    bundler_count = int(bundler_result.result_rows[0][0] or 0) if bundler_result.result_rows else 0
+
+    is_pump = await _is_pump_fun(mint)
+
     return {
         "mint": mint,
         "early_buyers": buyers,
-        "is_pump_fun": None,   # TODO: derive from token metadata / program
-        "graduation_status": None,  # TODO: Pump.fun API
-        "bundler_detected": False,  # TODO: Jito bundle detection
+        "is_pump_fun": is_pump,
+        "graduation_status": "graduated" if is_pump and len(buyers) >= 50 else ("bonding" if is_pump else None),
+        "bundler_detected": bundler_count > 0,
+        "bundler_tx_count": bundler_count,
     }
 
 
@@ -212,11 +236,51 @@ async def token_ohlcv(
     return result
 
 
-def _is_pump_fun(mint: str, overview: dict) -> bool | None:
-    """Heuristic: if the token was created via pump.fun program."""
-    # Pump.fun tokens often have a recognizable metadata pattern
-    # Full detection needs tx history check
-    return None
+PUMP_FUN_PROGRAM = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
+
+
+async def _is_pump_fun(mint: str, overview: dict | None = None) -> bool | None:
+    """
+    Heuristic: check if token was created via pump.fun program.
+    Uses Helius DAS getAsset to inspect the token's creators/authorities.
+    """
+    import httpx
+    from app.services.helius import HELIUS_RPC
+
+    try:
+        async with httpx.AsyncClient(timeout=8) as client:
+            resp = await client.post(
+                HELIUS_RPC,
+                json={
+                    "jsonrpc": "2.0",
+                    "id": 1,
+                    "method": "getAsset",
+                    "params": {"id": mint},
+                },
+            )
+            if resp.status_code != 200:
+                return None
+            asset = resp.json().get("result", {})
+
+            # Check creators list
+            for creator in asset.get("creators", []):
+                if creator.get("address") == PUMP_FUN_PROGRAM:
+                    return True
+
+            # Check authorities
+            for auth in asset.get("authorities", []):
+                if auth.get("address") == PUMP_FUN_PROGRAM:
+                    return True
+
+            # Check grouping (collection address is pump.fun for bonding curve tokens)
+            grouping = asset.get("grouping", [])
+            for g in grouping:
+                if g.get("group_value") == PUMP_FUN_PROGRAM:
+                    return True
+
+            return False
+    except Exception:
+        return None
 
 
 async def _safe(coro, default=None):

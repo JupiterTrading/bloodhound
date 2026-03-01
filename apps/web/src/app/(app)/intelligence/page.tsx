@@ -9,13 +9,19 @@ import { ClassificationBadge } from "@/components/ui/ClassificationBadge";
 import { ConfidenceBadge, type Confidence } from "@/components/ui/ConfidenceBadge";
 import { AddressTag } from "@/components/ui/AddressTag";
 
-// Known wallets to feature on the landing
-const FEATURED_WALLETS = [
-  { address: "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263", label: "punk.sol", note: "BONK deployer" },
-  { address: "5Q544fKrFoe6tsEbD7S8EmxGTJYAKtTVhAW5Q5pge4j1", note: "Raydium: AMM v4" },
-  { address: "9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM", note: "Pump.fun: program" },
-  { address: "So11111111111111111111111111111111111111112", label: "Wrapped SOL", note: "Native mint" },
-];
+interface KnownWalletEntry {
+  address: string;
+  label: string;
+  category: string;
+  note?: string;
+}
+
+async function fetchNotableWallets(): Promise<KnownWalletEntry[]> {
+  const res = await fetch("/api/v1/known?limit=6");
+  if (!res.ok) return [];
+  const data = (await res.json()) as { wallets?: KnownWalletEntry[] };
+  return data.wallets ?? [];
+}
 
 export default function IntelligencePage() {
   const router = useRouter();
@@ -128,23 +134,8 @@ export default function IntelligencePage() {
       {/* Featured wallets */}
       {!searched && (
         <div>
-          <div
-            style={{
-              fontSize: "10px",
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--text-muted)",
-              marginBottom: "12px",
-            }}
-          >
-            Notable Addresses
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-            {FEATURED_WALLETS.map((fw) => (
-              <FeaturedRow key={fw.address} {...fw} />
-            ))}
-          </div>
+          <NotableAddresses />
+
 
           <div style={{ marginTop: "40px" }}>
             <ClassificationGuide />
@@ -306,6 +297,71 @@ function IntelligencePreview({ address }: { address: string }) {
             <Link href={`/wallet/${address}`} style={{ color: "var(--accent)", textDecoration: "none" }}>
               View full profile →
             </Link>
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ── Notable addresses (fetched from API) ──────────────────────────────────────
+
+function NotableAddresses() {
+  const { data, isLoading } = useQuery({
+    queryKey: ["known-wallets-notable"],
+    queryFn: fetchNotableWallets,
+    staleTime: 300_000,
+    retry: false,
+  });
+
+  if (isLoading) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+        {[...Array(4)].map((_, i) => (
+          <div
+            key={i}
+            style={{
+              height: "52px",
+              background: "var(--bg-surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "8px",
+              opacity: 0.5,
+            }}
+          />
+        ))}
+      </div>
+    );
+  }
+
+  const wallets = data ?? [];
+
+  return (
+    <div>
+      <div
+        style={{
+          fontSize: "10px",
+          fontWeight: 600,
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          color: "var(--text-muted)",
+          marginBottom: "12px",
+        }}
+      >
+        Notable Addresses
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+        {wallets.length > 0 ? (
+          wallets.map((w) => (
+            <FeaturedRow
+              key={w.address}
+              address={w.address}
+              label={w.label}
+              note={w.category}
+            />
+          ))
+        ) : (
+          <p style={{ fontSize: "13px", color: "var(--text-muted)" }}>
+            No notable addresses indexed yet.
           </p>
         )}
       </div>

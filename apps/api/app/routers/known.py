@@ -5,7 +5,7 @@ POST /v1/known/submit
 POST /v1/known/{address}/dispute
 """
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel
 from app.auth import get_current_user_id
 from app.services import supabase as supabase_svc
@@ -20,6 +20,16 @@ VALID_CATEGORIES = {
     "exchange",
     "suspected_bad_actor",
 }
+
+
+@router.get("")
+async def list_known_wallets(
+    category: str | None = Query(None),
+    limit: int = Query(20, ge=1, le=100),
+):
+    """List approved known wallets, optionally filtered by category."""
+    wallets = await supabase_svc.list_known_wallets(category=category, limit=limit)
+    return {"wallets": wallets, "count": len(wallets)}
 
 
 @router.get("/{address}")

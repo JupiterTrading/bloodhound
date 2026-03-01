@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 import { BloodhoundLogo } from "@/components/ui/BloodhoundLogo";
 import { LandingHero } from "@/components/landing/LandingHero";
 
@@ -147,14 +148,41 @@ function LandingNav() {
 
 // ── Stats strip ───────────────────────────────────────────────────────────────
 
-const STATS = [
-  { value: "12.4M+", label: "Transactions Indexed" },
-  { value: "847K", label: "Wallets Tracked" },
-  { value: "Real-time", label: "Solana Mainnet" },
-  { value: "<100ms", label: "Autocomplete Latency" },
-];
+function formatCount(n: number): string {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M+`;
+  if (n >= 1_000) return `${Math.round(n / 1_000)}K+`;
+  return n.toLocaleString();
+}
 
 function StatsStrip() {
+  const { data } = useQuery({
+    queryKey: ["platform-stats"],
+    queryFn: () =>
+      fetch("/api/v1/stats").then((r) => (r.ok ? r.json() : null)) as Promise<{
+        tx_count: number;
+        wallet_count: number;
+        latency_p50_ms: number;
+      } | null>,
+    staleTime: 300_000,
+    retry: false,
+  });
+
+  const stats = [
+    {
+      value: data?.tx_count ? formatCount(data.tx_count) : "—",
+      label: "Transactions Indexed",
+    },
+    {
+      value: data?.wallet_count ? formatCount(data.wallet_count) : "—",
+      label: "Wallets Tracked",
+    },
+    { value: "Real-time", label: "Solana Mainnet" },
+    {
+      value: data?.latency_p50_ms ? `<${data.latency_p50_ms}ms` : "<100ms",
+      label: "Autocomplete Latency",
+    },
+  ];
+
   return (
     <div
       style={{
@@ -175,7 +203,7 @@ function StatsStrip() {
           gap: "24px",
         }}
       >
-        {STATS.map((s) => (
+        {stats.map((s) => (
           <div key={s.label} style={{ textAlign: "center" }}>
             <div
               style={{
@@ -766,10 +794,18 @@ function LandingFooter() {
       </div>
 
       <nav style={{ display: "flex", gap: "20px" }}>
-        {["Explorer", "Docs", "API", "GitHub", "Twitter/X"].map((label) => (
+        {[
+          { label: "Explorer", href: "/explorer" },
+          { label: "Docs", href: "/docs" },
+          { label: "API", href: "/api-docs" },
+          { label: "GitHub", href: "https://github.com/JupiterTrading/bloodhound" },
+          { label: "Twitter/X", href: "https://x.com/bloodhoundxyz" },
+        ].map(({ label, href }) => (
           <a
             key={label}
-            href="#"
+            href={href}
+            target={href.startsWith("http") ? "_blank" : undefined}
+            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
             style={{
               fontSize: "12px",
               color: "var(--text-muted)",

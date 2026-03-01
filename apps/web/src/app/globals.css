@@ -25,7 +25,8 @@ body {
   overflow-x: hidden;
   background-color: var(--bg-base);
   color: var(--text-primary);
-  font-family: "Neue Haas Grotesk", "Helvetica Neue", Arial, sans-serif;
+  /* Inter as the UI sans-serif. JetBrains Mono is applied inline for data. */
+  font-family: "Inter", "Neue Haas Grotesk", "Helvetica Neue", Arial, sans-serif;
 }
 
 /* Subtle scanline texture on body background */

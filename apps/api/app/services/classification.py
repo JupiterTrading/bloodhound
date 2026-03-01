@@ -141,7 +141,8 @@ async def _check_smart_money(address: str) -> dict[str, Any] | None:
     Confidence scales with trade count.
     """
     client = clickhouse.get_client()
-    result = client.query(
+    result = await asyncio.to_thread(
+        client.query,
         """
         SELECT
             count()                        AS total_trades,
@@ -186,7 +187,8 @@ async def _check_deployer(address: str) -> dict[str, Any] | None:
     DEPLOYER: has created token mints or deployed programs (deterministic, conf 1.0).
     """
     client = clickhouse.get_client()
-    result = client.query(
+    result = await asyncio.to_thread(
+        client.query,
         """
         SELECT count() AS deploy_count
         FROM transactions
@@ -213,7 +215,8 @@ async def _check_bot(address: str) -> dict[str, Any] | None:
     client = clickhouse.get_client()
 
     # Frequency check
-    freq = client.query(
+    freq = await asyncio.to_thread(
+        client.query,
         """
         SELECT count() AS tx_count_24h
         FROM transactions
@@ -233,7 +236,8 @@ async def _check_bot(address: str) -> dict[str, Any] | None:
 
     # Same-program pattern check (only if enough txs)
     if tx_count_24h >= 20:
-        prog = client.query(
+        prog = await asyncio.to_thread(
+            client.query,
             """
             SELECT
                 source_program,
@@ -267,7 +271,8 @@ async def _check_bundler(address: str) -> dict[str, Any] | None:
     Confidence 0.80.
     """
     client = clickhouse.get_client()
-    result = client.query(
+    result = await asyncio.to_thread(
+        client.query,
         """
         SELECT count() AS bundle_count
         FROM transactions
@@ -288,7 +293,8 @@ async def _check_bundler(address: str) -> dict[str, Any] | None:
 async def _check_lp_provider(address: str) -> dict[str, Any] | None:
     """LP_PROVIDER: interacts with AMM pool creation / liquidity instructions."""
     client = clickhouse.get_client()
-    result = client.query(
+    result = await asyncio.to_thread(
+        client.query,
         """
         SELECT count() AS lp_count
         FROM transactions
@@ -312,7 +318,8 @@ async def _check_exchange_or_protocol(address: str) -> dict[str, Any] | None:
     Confidence 0.70 from hub pattern.
     """
     client = clickhouse.get_client()
-    result = client.query(
+    result = await asyncio.to_thread(
+        client.query,
         """
         SELECT uniqExact(
             if(from_address = {address:String}, to_address, from_address)

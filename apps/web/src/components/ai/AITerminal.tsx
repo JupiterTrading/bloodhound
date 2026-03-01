@@ -17,11 +17,11 @@ interface SessionEntry {
 }
 
 const EXAMPLE_QUERIES = [
-  "does poop send to punk?",
-  "who funded dev_wallet?",
-  "show me poop's largest transactions",
-  "what's the relationship between punk and insider_A?",
-  "track punk.sol",
+  "does GJRs6FyJPejgMkRdnmtJTGBJPNqvMNqShpbFPkdmBeR4 send to 5Q544fKrFoe6tsEbD7S8EmxGTJYAKtTVhAW5Q5pge4j1?",
+  "who funded GJRs6FyJPejgMkRdnmtJTGBJPNqvMNqShpbFPkdmBeR4?",
+  "show me the largest transfers for 9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM",
+  "classify wallet 5Q544fKrFoe6tsEbD7S8EmxGTJYAKtTVhAW5Q5pge4j1",
+  "track GJRs6FyJPejgMkRdnmtJTGBJPNqvMNqShpbFPkdmBeR4",
 ];
 
 export function AITerminal() {
@@ -346,7 +346,7 @@ function ErrorCard({ error }: { error: string }) {
         color: "var(--text-secondary)",
       }}
     >
-      Couldn't reach the indexer. Check status at status.bloodhound.xyz
+      Couldn't reach the indexer — the backend may be temporarily unavailable. Try again in a moment.
     </div>
   );
 }
@@ -622,9 +622,51 @@ function ActionChip({ action }: { action: { type: string; parameters: Record<str
       return;
     }
 
-    // set_alert and add_label — coming soon
-    if (action.type === "set_alert" || action.type === "add_label") {
-      router.push("/tracked");
+    if (action.type === "set_alert") {
+      const addr = action.parameters.address as string | undefined;
+      if (!addr) return;
+      setBusy(true);
+      try {
+        // Ensure wallet is tracked first, then navigate to set up alert
+        await trackedApi.add({
+          address: addr,
+          label: (action.parameters.label as string | undefined) ?? addr.slice(0, 8),
+        });
+        qc.invalidateQueries({ queryKey: ["tracked"] });
+        setDone(true);
+        // Brief delay so user sees ✓ Done before navigating
+        setTimeout(() => router.push(`/tracked`), 800);
+      } catch {
+        // Wallet may already be tracked — still navigate
+        setDone(true);
+        setTimeout(() => router.push(`/tracked`), 800);
+      } finally {
+        setBusy(false);
+      }
+      return;
+    }
+
+    if (action.type === "add_label") {
+      const addr = action.parameters.address as string | undefined;
+      const label = action.parameters.label as string | undefined;
+      if (!addr || !label) return;
+      setBusy(true);
+      try {
+        await trackedApi.update(addr, { label });
+        qc.invalidateQueries({ queryKey: ["tracked"] });
+        setDone(true);
+      } catch {
+        // Wallet not tracked yet — add it
+        try {
+          await trackedApi.add({ address: addr, label });
+          qc.invalidateQueries({ queryKey: ["tracked"] });
+          setDone(true);
+        } catch {
+          // silently fail
+        }
+      } finally {
+        setBusy(false);
+      }
     }
   }
 

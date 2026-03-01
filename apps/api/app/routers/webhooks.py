@@ -3,6 +3,7 @@ Helius webhook endpoint.
 Receives real-time parsed transaction payloads and writes to ClickHouse.
 """
 
+import asyncio
 import hmac
 import hashlib
 import json
@@ -73,14 +74,67 @@ async def _trigger_alerts(
     transfers: list[dict],
 ) -> None:
     """
-    Evaluate alert conditions and publish notifications via Ably.
-    TODO: Connect to Ably and implement per-condition matching.
+    Evaluate alert conditions and publish notifications via Ably REST API.
+    Publishes to channel alerts:{user_id} when conditions are met.
     """
+    import httpx
+
+    ably_key = settings.ably_api_key if hasattr(settings, "ably_api_key") else None
+
     for alert in alerts:
         alert_type = alert.get("alert_type", "")
-        if alert_type == "any_tx":
-            # Always fires for any transaction involving this wallet
-            print(f"[alert] any_tx triggered for {wallet[:8]}... user={alert['user_id'][:8]}...")
+        user_id = alert.get("user_id", "")
+        triggered = False
+        trigger_data: dict = {
+            "alert_id": alert.get("id"),
+            "alert_type": alert_type,
+            "wallet": wallet,
+        }
+
+        if alert_type == "any_tx" and transactions:
+            triggered = True
+            trigger_data["tx_count"] = len(transactions)
+
+        elif alert_type == "sends_to":
+            target = alert.get("conditions", {}).get("to_address", "")
+            matching = [t for t in transfers if t.get("to_address") == target]
+            if matching:
+                triggered = True
+                trigger_data["tx_count"] = len(matching)
+
+        elif alert_type == "receives_from":
+            source = alert.get("conditions", {}).get("from_address", "")
+            matching = [t for t in transfers if t.get("from_address") == source]
+            if matching:
+                triggered = True
+                trigger_data["tx_count"] = len(matching)
+
+        elif alert_type == "balance_threshold":
+            threshold = float(alert.get("conditions", {}).get("min_usd", 0))
+            large = [t for t in transfers if float(t.get("amount_usd") or 0) >= threshold]
+            if large:
+                triggered = True
+                trigger_data["tx_count"] = len(large)
+
+        if not triggered or not user_id:
+            continue
+
+        print(f"[alert] {alert_type} triggered for {wallet[:8]}... user={user_id[:8]}...")
+
+        if ably_key:
+            try:
+                # Ably REST publish — basic auth with API key
+                key_name, key_secret = ably_key.split(":", 1)
+                channel_name = f"alerts:{user_id}"
+                url = f"https://rest.ably.io/channels/{channel_name}/messages"
+                async with httpx.AsyncClient(timeout=5) as http:
+                    await http.post(
+                        url,
+                        auth=(key_name, key_secret),
+                        json={"name": "alert", "data": trigger_data},
+                    )
+            except Exception as e:
+                print(f"[alert] Ably publish error: {e}")
 
 
 @router.post("/helius")

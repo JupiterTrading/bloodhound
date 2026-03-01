@@ -35,6 +35,25 @@ async def get_known_wallet(address: str) -> dict[str, Any] | None:
     return result.data
 
 
+async def list_known_wallets(
+    category: str | None = None,
+    limit: int = 20,
+) -> list[dict[str, Any]]:
+    """Return a list of approved known wallets, optionally filtered by category."""
+    client = get_client()
+    query = (
+        client.table("known_wallets")
+        .select("address,label,category,description,twitter_handle,confidence")
+        .eq("status", "approved")
+        .order("confidence", desc=True)
+        .limit(limit)
+    )
+    if category:
+        query = query.eq("category", category)
+    result = query.execute()
+    return result.data or []
+
+
 # ---------------------------------------------------------------------------
 # Wallet Classifications (cache layer)
 # ---------------------------------------------------------------------------

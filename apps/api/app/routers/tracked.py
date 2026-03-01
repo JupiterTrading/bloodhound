@@ -13,6 +13,8 @@ PUT    /v1/me/alerts/{id}
 DELETE /v1/me/alerts/{id}
 """
 
+import asyncio
+
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from app.auth import get_current_user_id
@@ -168,7 +170,8 @@ async def activity_feed(
     params["limit"] = limit
     params["offset"] = offset
 
-    result = client.query(
+    result = await asyncio.to_thread(
+        client.query,
         f"""
         SELECT
             t.tx_signature, t.block_time, t.from_address, t.to_address,

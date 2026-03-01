@@ -1,38 +1,27 @@
 /**
  * AI confidence level badge.
  * Used in Bloodhound AI responses, intelligence summaries, and side wallet panels.
+ *
+ * Colors are shared constants — keep in sync with CONFIDENCE_COLORS in signals/page.tsx.
  */
 
 export type Confidence = "CONFIRMED" | "PROBABLE" | "SUSPECTED" | "UNKNOWN";
 
+export const CONFIDENCE_COLORS: Record<Confidence, string> = {
+  CONFIRMED: "#22c55e",
+  PROBABLE: "#f59e0b",
+  SUSPECTED: "#b45309",
+  UNKNOWN: "var(--text-muted)",
+};
+
 const CONFIG: Record<
   Confidence,
-  { dot: string; color: string; label: string; symbol: string }
+  { label: string; symbol: string }
 > = {
-  CONFIRMED: {
-    dot: "#1a7a1a",
-    color: "#1a7a1a",
-    label: "CONFIRMED",
-    symbol: "●",
-  },
-  PROBABLE: {
-    dot: "#b36a00",
-    color: "#b36a00",
-    label: "PROBABLE",
-    symbol: "◐",
-  },
-  SUSPECTED: {
-    dot: "#c45200",
-    color: "#c45200",
-    label: "SUSPECTED",
-    symbol: "○",
-  },
-  UNKNOWN: {
-    dot: "var(--text-muted)",
-    color: "var(--text-muted)",
-    label: "UNKNOWN",
-    symbol: "✗",
-  },
+  CONFIRMED: { label: "CONFIRMED", symbol: "●" },
+  PROBABLE:  { label: "PROBABLE",  symbol: "◐" },
+  SUSPECTED: { label: "SUSPECTED", symbol: "○" },
+  UNKNOWN:   { label: "UNKNOWN",   symbol: "✗" },
 };
 
 interface ConfidenceBadgeProps {
@@ -49,6 +38,7 @@ export function ConfidenceBadge({
   dotOnly = false,
 }: ConfidenceBadgeProps) {
   const cfg = CONFIG[confidence];
+  const color = CONFIDENCE_COLORS[confidence];
 
   if (dotOnly) {
     return (
@@ -59,7 +49,7 @@ export function ConfidenceBadge({
           width: "8px",
           height: "8px",
           borderRadius: "50%",
-          background: cfg.dot,
+          background: color,
           flexShrink: 0,
         }}
       />
@@ -75,7 +65,7 @@ export function ConfidenceBadge({
         fontSize: "11px",
         fontWeight: 600,
         letterSpacing: "0.06em",
-        color: cfg.color,
+        color,
       }}
     >
       <span style={{ fontSize: "10px" }}>{cfg.symbol}</span>
