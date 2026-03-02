@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { searchApi, type SearchResult } from "@/lib/api";
@@ -11,15 +11,6 @@ function SearchContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const q = searchParams.get("q") ?? "";
-
-  // Redirect immediately if the query is unambiguously an address or tx signature
-  useEffect(() => {
-    if (/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(q)) {
-      router.replace(`/wallet/${q}`);
-    } else if (/^[1-9A-HJ-NP-Za-km-z]{86,88}$/.test(q)) {
-      router.replace(`/tx/${q}`);
-    }
-  }, [q, router]);
 
   const { data, isLoading } = useQuery({
     queryKey: ["search", q],

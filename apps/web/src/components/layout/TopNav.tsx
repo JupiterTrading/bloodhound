@@ -165,24 +165,12 @@ function SearchBar() {
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter" && query.trim()) {
-      navigate(query.trim());
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+      setOpen(false);
+      setQuery("");
     }
     if (e.key === "Escape") {
       setOpen(false);
-    }
-  }
-
-  function navigate(q: string) {
-    setOpen(false);
-    setQuery("");
-    // Wallet address: base58, 32–44 chars
-    if (/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(q)) {
-      router.push(`/wallet/${q}`);
-    // Transaction signature: base58, 86–88 chars
-    } else if (/^[1-9A-HJ-NP-Za-km-z]{86,88}$/.test(q)) {
-      router.push(`/tx/${q}`);
-    } else {
-      router.push(`/search?q=${encodeURIComponent(q)}`);
     }
   }
 
