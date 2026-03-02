@@ -204,11 +204,11 @@ async function main() {
   // Merge all sources — deduplicate by address, Dune takes priority for Twitter
   const byAddress = new Map();
   for (const w of [...leaderboard]) {
-    byAddress.set(w.address, { ...w, twitter_handle: null });
+    byAddress.set(w.address, { ...w, twitter_handle: null, source: 'kolscan_leaderboard' });
   }
   for (const w of duneWallets) {
     if (!byAddress.has(w.address)) {
-      byAddress.set(w.address, w);
+      byAddress.set(w.address, { ...w, source: 'dune_query' });
     } else {
       const existing = byAddress.get(w.address);
       byAddress.set(w.address, {
@@ -216,6 +216,8 @@ async function main() {
         ...w,
         label: w.label || existing.label,
         twitter_handle: w.twitter_handle || existing.twitter_handle,
+        // Keep original source if already set, or note it came from both
+        source: existing.source === 'kolscan_leaderboard' ? 'kolscan_leaderboard,dune_query' : 'dune_query',
       });
     }
   }
@@ -239,6 +241,7 @@ async function main() {
       telegram_handle: null,
       confidence: 0.80,
       status: 'approved',
+      source: data.source || 'kolscan_leaderboard',
     });
   }
 
