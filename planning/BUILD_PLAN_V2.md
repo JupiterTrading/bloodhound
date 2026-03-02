@@ -92,6 +92,21 @@ result = await asyncio.to_thread(client.query, sql, parameters=params)
 | **What** | On startup or on first request, if Redis has no autocomplete entries, load from `known_wallets` table and populate Redis sorted set |
 | **DONE when** | Typing a known KOL's handle in the search bar shows their wallet as a suggestion |
 
+### US-B303 — Automated KOL Wallet Seeding (Amendment — added Mar 2026)
+> As the system, I automatically populate the known_wallets table from public leaderboard data so the table stays current without manual effort.
+
+| | |
+|---|---|
+| **Script** | `scripts/seed-known-wallets.mjs` — Node.js, no Python dependency |
+| **Source 1** | KOLscan leaderboard (`kolscan.io/leaderboard`) — scrapes top ~50 traders via cheerio. Extracts wallet address from `href="/account/{addr}"` and name from `<h1 style="font-size:20px">` inside the account link. |
+| **Source 2** | Dune Analytics queries 4838225 + 4868517 — curated KOL lists with Twitter handles. Requires `DUNE_API_KEY` env var (free tier at dune.com). |
+| **Source 3** | Helius identity API (`/v0/addresses/{addr}/names`) — enriches with Helius's 5,100+ labeled account DB. |
+| **Upsert** | `POST /rest/v1/known_wallets?on_conflict=address` with `Prefer: resolution=merge-duplicates` — safe to re-run idempotently. |
+| **Twitter handles** | Not reliably extractable from KOLscan SSR HTML (site-wide spotlight elements contaminate per-wallet scraping). Handles come from Dune source when `DUNE_API_KEY` is set. |
+| **Current state** | 49 KOL wallets seeded (Mar 2 2026). 14 protocol/exchange rows from `001_known_wallets.sql`. Total: 63 rows. |
+| **To re-run** | `cd scripts && node seed-known-wallets.mjs` — or with Dune: `DUNE_API_KEY=xxx node seed-known-wallets.mjs` |
+| **DONE when** | ✅ 49 KOL wallets in Supabase with correct addresses and labels. Upsert is idempotent. |
+
 ---
 
 ## Sprint B4 — Signal Detection Engine
