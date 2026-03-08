@@ -1,7 +1,28 @@
+import asyncio
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.middleware.rate_limit import RateLimitMiddleware
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Start background services on startup, cancel cleanly on shutdown."""
+    from app.services.wallet_poller import run_poller
+    from app.services.pumpfun import run_pumpfun_monitor
+    from app.services.new_pair_monitor import run_new_pair_monitor
+
+    tasks = [
+        asyncio.create_task(run_poller()),
+        asyncio.create_task(run_pumpfun_monitor()),
+        asyncio.create_task(run_new_pair_monitor()),
+    ]
+    yield
+    for task in tasks:
+        task.cancel()
+    await asyncio.gather(*tasks, return_exceptions=True)
+
 
 app = FastAPI(
     title="BLOODHOUND API",
@@ -9,6 +30,7 @@ app = FastAPI(
     version="0.1.0",
     docs_url="/docs",
     redoc_url="/redoc",
+    lifespan=lifespan,
 )
 
 # CORS — allow Next.js dev server and production domain
@@ -74,14 +96,17 @@ async def platform_stats():
 # ---------------------------------------------------------------------------
 # Routers
 # ---------------------------------------------------------------------------
-from app.routers import wallet, webhooks, search, token, tracked, known, signals, ai, tx
+from app.routers import wallet, webhooks, search, token, tracked, known, signals, ai, tx, leaderboard, events, entity
 
-app.include_router(wallet.router,    prefix="/v1/wallet",  tags=["wallet"])
-app.include_router(search.router,    prefix="/v1/search",  tags=["search"])
-app.include_router(token.router,     prefix="/v1/token",   tags=["token"])
-app.include_router(tx.router,        prefix="/v1/tx",      tags=["tx"])
-app.include_router(tracked.router,   prefix="/v1/me",      tags=["tracked"])
-app.include_router(known.router,     prefix="/v1/known",   tags=["known"])
-app.include_router(signals.router,   prefix="/v1/signals", tags=["signals"])
-app.include_router(ai.router,        prefix="/v1/ai",      tags=["ai"])
-app.include_router(webhooks.router,  prefix="/webhooks",   tags=["webhooks"])
+app.include_router(wallet.router,      prefix="/v1/wallet",      tags=["wallet"])
+app.include_router(search.router,      prefix="/v1/search",      tags=["search"])
+app.include_router(token.router,       prefix="/v1/token",       tags=["token"])
+app.include_router(tx.router,          prefix="/v1/tx",          tags=["tx"])
+app.include_router(tracked.router,     prefix="/v1/me",          tags=["tracked"])
+app.include_router(known.router,       prefix="/v1/known",       tags=["known"])
+app.include_router(signals.router,     prefix="/v1/signals",     tags=["signals"])
+app.include_router(leaderboard.router, prefix="/v1/leaderboard", tags=["leaderboard"])
+app.include_router(events.router,      prefix="/v1/events",      tags=["events"])
+app.include_router(entity.router,      prefix="/v1/entity",      tags=["entity"])
+app.include_router(ai.router,          prefix="/v1/ai",          tags=["ai"])
+app.include_router(webhooks.router,    prefix="/webhooks",       tags=["webhooks"])

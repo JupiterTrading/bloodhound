@@ -96,3 +96,61 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }
+
+/* ── Mobile responsive utilities ────────────────────────────────────────────── */
+
+/* Responsive grid: 2-col → 1-col on mobile */
+.grid-responsive-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Responsive grid: 3-col → 1-col on mobile */
+.grid-responsive-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+/* Page container with responsive padding */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+/* Overflow-scrollable table wrapper */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  /* Nav: hide links and search, show hamburger */
+  .nav-links { display: none !important; }
+  .nav-search { display: none !important; }
+  .nav-network { display: none !important; }
+  .nav-hamburger { display: flex !important; }
+
+  /* Collapse grids to single column */
+  .grid-responsive-2 { grid-template-columns: 1fr !important; }
+  .grid-responsive-3 { grid-template-columns: 1fr !important; }
+
+  /* Tighten page padding */
+  .page-container { padding-inline: 16px !important; }
+
+  /* Landing hero: single column */
+  .landing-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* Hide secondary columns on wallet/token detail pages */
+  .hide-mobile { display: none !important; }
+}
+
+@media (max-width: 480px) {
+  /* Even tighter on phones */
+  .page-container { padding-inline: 12px !important; }
+}

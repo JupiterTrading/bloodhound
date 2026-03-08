@@ -32,7 +32,8 @@ async def insert_transactions(rows: list[dict[str, Any]]) -> None:
     if not rows:
         return
     client = get_client()
-    client.insert(
+    await asyncio.to_thread(
+        client.insert,
         "transactions",
         [list(r.values()) for r in rows],
         column_names=list(rows[0].keys()),
@@ -44,7 +45,8 @@ async def insert_transfers(rows: list[dict[str, Any]]) -> None:
     if not rows:
         return
     client = get_client()
-    client.insert(
+    await asyncio.to_thread(
+        client.insert,
         "transfers",
         [list(r.values()) for r in rows],
         column_names=list(rows[0].keys()),
@@ -56,8 +58,22 @@ async def insert_trades(rows: list[dict[str, Any]]) -> None:
     if not rows:
         return
     client = get_client()
-    client.insert(
+    await asyncio.to_thread(
+        client.insert,
         "token_trades",
+        [list(r.values()) for r in rows],
+        column_names=list(rows[0].keys()),
+    )
+
+
+async def insert_signals(rows: list[dict[str, Any]]) -> None:
+    """Bulk insert signal rows into ClickHouse."""
+    if not rows:
+        return
+    client = get_client()
+    await asyncio.to_thread(
+        client.insert,
+        "signals",
         [list(r.values()) for r in rows],
         column_names=list(rows[0].keys()),
     )
@@ -229,6 +245,7 @@ async def get_recent_signals(
     signal_types: list[str] | None = None,
     confidence: str | None = None,
     wallet_address: str | None = None,
+    wallet_addresses: list[str] | None = None,
     limit: int = 50,
     offset: int = 0,
 ) -> list[dict[str, Any]]:
@@ -249,7 +266,15 @@ async def get_recent_signals(
         conditions.append("confidence = {confidence:String}")
         params["confidence"] = confidence
 
-    if wallet_address:
+    # wallet_addresses (multi) takes precedence over wallet_address (single)
+    if wallet_addresses:
+        placeholders = ", ".join(
+            [f"{{wa_{i}:String}}" for i in range(len(wallet_addresses))]
+        )
+        conditions.append(f"wallet_address IN ({placeholders})")
+        for i, addr in enumerate(wallet_addresses):
+            params[f"wa_{i}"] = addr
+    elif wallet_address:
         conditions.append("wallet_address = {wallet_address:String}")
         params["wallet_address"] = wallet_address
 
@@ -267,6 +292,121 @@ async def get_recent_signals(
     client = get_client()
     result = await asyncio.to_thread(client.query, query, parameters=params)
     return [dict(zip(result.column_names, row)) for row in result.result_rows]
+
+
+async def get_leaderboard_pnl(
+    addresses: list[str],
+    timeframe: str = "1d",
+) -> dict[str, dict]:
+    """
+    Realized PnL from the token_trades table for a set of wallets.
+    Returns {} per address when table is empty (graceful degradation).
+    timeframe: 1d | 7d | 30d
+    """
+    if not addresses:
+        return {}
+
+    days_map = {"1d": 1, "7d": 7, "30d": 30}
+    days = days_map.get(timeframe, 1)
+
+    placeholders = ", ".join([f"{{addr_{i}:String}}" for i in range(len(addresses))])
+    params: dict = {f"addr_{i}": addr for i, addr in enumerate(addresses)}
+    params["days"] = days
+
+    query = f"""
+        SELECT
+            trader,
+            sum(realized_pnl_usd)                     AS realized_pnl_usd,
+            count()                                   AS trade_count,
+            countIf(realized_pnl_usd > 0) / count()   AS win_rate,
+            argMax(token_out_mint, realized_pnl_usd)  AS best_token
+        FROM token_trades
+        WHERE trader IN ({placeholders})
+          AND block_time >= now() - INTERVAL {{days:UInt32}} DAY
+        GROUP BY trader
+    """
+    try:
+        client = get_client()
+        result = await asyncio.to_thread(client.query, query, parameters=params)
+        out: dict[str, dict] = {}
+        for row in result.result_rows:
+            trader, pnl, count, win_rate, best = row
+            out[trader] = {
+                "realized_pnl_usd": round(float(pnl or 0), 2),
+                "trade_count": int(count or 0),
+                "win_rate": round(float(win_rate or 0), 3),
+                "best_token": best or None,
+            }
+        return out
+    except Exception:
+        return {}
+
+
+async def get_kol_overlap_batch(
+    mints: list[str],
+    kol_addresses: list[str],
+) -> dict[str, dict]:
+    """
+    For each mint in the list, count how many KOL addresses have traded it
+    in the last 30 days and return their addresses.
+    Returns: {mint: {"kol_count": int, "kol_traders": [address, ...]}}
+    """
+    if not mints or not kol_addresses:
+        return {}
+
+    mint_phs = ", ".join([f"{{m_{i}:String}}" for i in range(len(mints))])
+    kol_phs  = ", ".join([f"{{k_{i}:String}}" for i in range(len(kol_addresses))])
+    params: dict = {f"m_{i}": m for i, m in enumerate(mints)}
+    params.update({f"k_{i}": k for i, k in enumerate(kol_addresses)})
+
+    query = f"""
+        SELECT
+            token_out_mint,
+            uniqExact(trader)     AS kol_count,
+            groupArray(trader)    AS kol_traders
+        FROM token_trades
+        WHERE token_out_mint IN ({mint_phs})
+          AND trader IN ({kol_phs})
+          AND block_time >= now() - INTERVAL 30 DAY
+        GROUP BY token_out_mint
+    """
+    try:
+        client = get_client()
+        result = await asyncio.to_thread(client.query, query, parameters=params)
+        out: dict[str, dict] = {}
+        for row in result.result_rows:
+            mint, count, traders = row
+            out[mint] = {"kol_count": int(count or 0), "kol_traders": list(traders or [])}
+        return out
+    except Exception:
+        return {}
+
+
+async def get_recent_signals_for_wallets(
+    addresses: list[str],
+    limit: int = 20,
+) -> list[dict[str, Any]]:
+    """Recent signals for a set of wallet addresses (used for portfolio AI report)."""
+    if not addresses:
+        return []
+
+    placeholders = ", ".join([f"{{wa_{i}:String}}" for i in range(len(addresses))])
+    params: dict = {f"wa_{i}": a for i, a in enumerate(addresses)}
+    params["limit"] = limit
+
+    query = f"""
+        SELECT id, detected_at, signal_type, confidence, wallet_address, token_mint, description
+        FROM signals
+        WHERE wallet_address IN ({placeholders})
+        ORDER BY detected_at DESC
+        LIMIT {{limit:UInt32}}
+    """
+    try:
+        client = get_client()
+        result = await asyncio.to_thread(client.query, query, parameters=params)
+        return [dict(zip(result.column_names, row)) for row in result.result_rows]
+    except Exception:
+        return []
 
 
 async def check_transfers_between(

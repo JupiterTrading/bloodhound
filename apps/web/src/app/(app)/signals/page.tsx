@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
-import { signalsApi, type Signal } from "@/lib/api";
+import { signalsApi, trackedApi, kolFeedApi, type Signal, type KolTrade } from "@/lib/api";
 import { CONFIDENCE_COLORS } from "@/components/ui/ConfidenceBadge";
 
 const SIGNAL_TYPE_LABELS: Record<string, string> = {
@@ -44,16 +44,31 @@ const TYPE_FILTERS = [
 ];
 
 export default function SignalsPage() {
+  const [activeTab, setActiveTab] = useState<"signals" | "kol-activity">("signals");
   const [typeFilter, setTypeFilter] = useState("");
   const [confidenceFilter, setConfidenceFilter] = useState("");
+  const [myWalletsOnly, setMyWalletsOnly] = useState(false);
   const [page, setPage] = useState(1);
 
+  const { data: trackedData } = useQuery({
+    queryKey: ["tracked"],
+    queryFn: trackedApi.list,
+    staleTime: 60_000,
+  });
+  const trackedAddresses = (trackedData?.tracked ?? []).map((w) => w.address);
+
+  const walletsParam =
+    myWalletsOnly && trackedAddresses.length > 0
+      ? trackedAddresses.join(",")
+      : undefined;
+
   const { data, isLoading } = useQuery({
-    queryKey: ["signals", typeFilter, confidenceFilter, page],
+    queryKey: ["signals", typeFilter, confidenceFilter, page, myWalletsOnly ? "my" : "all"],
     queryFn: () =>
       signalsApi.feed({
         types: typeFilter || undefined,
         confidence: confidenceFilter || undefined,
+        wallets: walletsParam,
         page,
         limit: 50,
       }),
@@ -72,7 +87,7 @@ export default function SignalsPage() {
       }}
     >
       {/* Header */}
-      <div style={{ marginBottom: "24px" }}>
+      <div style={{ marginBottom: "20px" }}>
         <h1
           style={{
             fontSize: "20px",
@@ -85,9 +100,37 @@ export default function SignalsPage() {
           Signals
         </h1>
         <p style={{ fontSize: "13px", color: "var(--text-muted)" }}>
-          Detected anomalies, insider activity, and on-chain patterns — updated every 60s.
+          Detected anomalies, insider activity, and on-chain patterns.
         </p>
       </div>
+
+      {/* Tabs */}
+      <div style={{ display: "flex", gap: "4px", marginBottom: "20px", borderBottom: "1px solid var(--border)", paddingBottom: "0" }}>
+        {(["signals", "kol-activity"] as const).map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            style={{
+              padding: "8px 16px",
+              fontSize: "13px",
+              fontWeight: activeTab === tab ? 600 : 400,
+              color: activeTab === tab ? "var(--text-primary)" : "var(--text-muted)",
+              background: "none",
+              border: "none",
+              borderBottom: activeTab === tab ? "2px solid var(--accent)" : "2px solid transparent",
+              cursor: "pointer",
+              fontFamily: "inherit",
+              marginBottom: "-1px",
+              transition: "color 80ms",
+            }}
+          >
+            {tab === "signals" ? "Signals" : "KOL Activity"}
+          </button>
+        ))}
+      </div>
+
+      {activeTab === "kol-activity" && <KolActivityFeed />}
+      {activeTab !== "kol-activity" && (<>
 
       {/* Filter row */}
       <div
@@ -128,6 +171,41 @@ export default function SignalsPage() {
             </button>
           ))}
         </div>
+
+        {/* My Wallets toggle */}
+        <button
+          onClick={() => {
+            setMyWalletsOnly((v) => !v);
+            setPage(1);
+          }}
+          title={
+            trackedAddresses.length === 0
+              ? "Track wallets to enable this filter"
+              : myWalletsOnly
+              ? "Show all signals"
+              : "Show only signals for your tracked wallets"
+          }
+          disabled={trackedAddresses.length === 0}
+          style={{
+            padding: "5px 12px",
+            fontSize: "12px",
+            fontWeight: myWalletsOnly ? 600 : 400,
+            background: myWalletsOnly ? "var(--accent)" : "var(--bg-surface)",
+            border: `1px solid ${myWalletsOnly ? "var(--accent)" : "var(--border)"}`,
+            borderRadius: "20px",
+            color: myWalletsOnly
+              ? "#fff"
+              : trackedAddresses.length === 0
+              ? "var(--text-muted)"
+              : "var(--text-secondary)",
+            cursor: trackedAddresses.length === 0 ? "not-allowed" : "pointer",
+            fontFamily: "inherit",
+            transition: "all 80ms",
+            opacity: trackedAddresses.length === 0 ? 0.5 : 1,
+          }}
+        >
+          My Wallets{trackedAddresses.length > 0 ? ` (${trackedAddresses.length})` : ""}
+        </button>
 
         {/* Confidence selector */}
         <div style={{ marginLeft: "auto" }}>
@@ -224,6 +302,77 @@ export default function SignalsPage() {
           </button>
         </div>
       )}
+      </>)}
+    </div>
+  );
+}
+
+// ── KOL Activity feed ─────────────────────────────────────────────────────────
+
+function KolActivityFeed() {
+  const { data, isLoading } = useQuery({
+    queryKey: ["kol-feed"],
+    queryFn: () => kolFeedApi.feed({ limit: 100 }),
+    staleTime: 30_000,
+    refetchInterval: 60_000,
+  });
+
+  const trades = data?.trades ?? [];
+
+  if (isLoading) return <SignalsSkeleton />;
+
+  if (trades.length === 0) {
+    return (
+      <div style={{ background: "var(--bg-surface)", border: "1px solid var(--border)", borderRadius: "8px", padding: "48px 32px", textAlign: "center" }}>
+        <p style={{ fontSize: "14px", color: "var(--text-secondary)", marginBottom: "6px" }}>No KOL trades indexed yet.</p>
+        <p style={{ fontSize: "12px", color: "var(--text-muted)" }}>KOL wallets are polled every 5 minutes. Check back shortly after initial indexing completes.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+      {trades.map((t, i) => (
+        <KolTradeCard key={`${t.tx_signature}-${i}`} trade={t} />
+      ))}
+    </div>
+  );
+}
+
+function KolTradeCard({ trade }: { trade: KolTrade }) {
+  const isBuy = trade.direction === "buy";
+  const dirColor = isBuy ? "#22c55e" : "var(--accent)";
+  const mint = isBuy ? trade.token_out_mint : trade.token_in_mint;
+  const shortMint = `${mint.slice(0, 6)}...${mint.slice(-4)}`;
+  const timeAgo = formatTimeAgo(trade.block_time);
+
+  return (
+    <div style={{ background: "var(--bg-surface)", border: "1px solid var(--border)", borderRadius: "8px", padding: "12px 18px", display: "flex", alignItems: "center", gap: "14px" }}>
+      <span style={{ fontSize: "13px", color: dirColor, width: "36px", textAlign: "center", fontWeight: 700, flexShrink: 0 }}>
+        {isBuy ? "BUY" : "SELL"}
+      </span>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "3px" }}>
+          <Link href={`/wallet/${trade.trader}`} style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)", textDecoration: "none", fontFamily: "inherit" }}>
+            {trade.kol_label ?? `${trade.trader.slice(0, 8)}...`}
+          </Link>
+          {trade.kol_twitter && (
+            <span style={{ fontSize: "11px", color: "var(--text-muted)" }}>@{trade.kol_twitter}</span>
+          )}
+        </div>
+        <div style={{ fontSize: "12px", color: "var(--text-muted)", display: "flex", gap: "8px", flexWrap: "wrap" }}>
+          <Link href={`/token/${mint}`} style={{ fontFamily: "JetBrains Mono, monospace", color: "var(--accent)", textDecoration: "none", fontSize: "11px" }}>
+            {shortMint}
+          </Link>
+          <span style={{ fontFamily: "JetBrains Mono, monospace" }}>{trade.dex}</span>
+        </div>
+      </div>
+      <div style={{ textAlign: "right", flexShrink: 0 }}>
+        <div style={{ fontSize: "13px", fontWeight: 700, color: "var(--text-primary)", fontFamily: "JetBrains Mono, monospace" }}>
+          {trade.amount_usd > 0 ? `$${trade.amount_usd.toLocaleString("en-US", { maximumFractionDigits: 0 })}` : "—"}
+        </div>
+        <div style={{ fontSize: "11px", color: "var(--text-muted)", fontFamily: "JetBrains Mono, monospace" }}>{timeAgo}</div>
+      </div>
     </div>
   );
 }

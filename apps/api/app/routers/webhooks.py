@@ -29,10 +29,13 @@ def verify_helius_signature(payload: bytes, signature: str) -> bool:
 
 async def process_webhook_payload(transactions: list[dict]) -> None:
     """
-    Background task: parse transactions, write to ClickHouse, evaluate alert rules.
+    Background task: parse transactions, enrich with USD prices, write to ClickHouse,
+    then evaluate alert rules.
     """
     from app.services import clickhouse
     from app.services.supabase import get_active_alerts_for_wallet
+    from app.services.jupiter import get_prices_batch
+    from app.services.ingestion import enrich_with_prices
 
     tx_rows: list[dict] = []
     transfer_rows: list[dict] = []
@@ -48,6 +51,19 @@ async def process_webhook_payload(transactions: list[dict]) -> None:
             all_signers.update(parsed["transaction"].get("signers", []))
         except Exception as e:
             print(f"[webhook] parse error: {e}")
+
+    # Collect unique mints across all transfers and trades, then batch-fetch prices
+    unique_mints = list({
+        *(t["token_mint"] for t in transfer_rows if t.get("token_mint")),
+        *(t["token_out_mint"] for t in trade_rows if t.get("token_out_mint")),
+        *(t["token_in_mint"] for t in trade_rows if t.get("token_in_mint")),
+    })
+    try:
+        prices = await get_prices_batch(unique_mints)
+        enrich_with_prices(transfer_rows, trade_rows, prices)
+        print(f"[webhook] enriched {len(unique_mints)} mints, {len(prices)} prices resolved")
+    except Exception as e:
+        print(f"[webhook] price enrichment error (continuing with 0.0): {e}")
 
     # Bulk write to ClickHouse
     try:

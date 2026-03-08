@@ -32,7 +32,7 @@ interface Props {
 }
 
 export function TransactionHistory({ address }: Props) {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [typeFilter, setTypeFilter] = useState("");
   const [dirFilter, setDirFilter] = useState<"in" | "out" | "both" | "">("");
   const [dateFrom, setDateFrom] = useState("");
@@ -64,7 +64,7 @@ export function TransactionHistory({ address }: Props) {
     setDirFilter("");
     setDateFrom("");
     setDateTo("");
-    setPage(0);
+    setPage(1);
   }
 
   return (
@@ -107,7 +107,7 @@ export function TransactionHistory({ address }: Props) {
           {/* Type filter */}
           <select
             value={typeFilter}
-            onChange={(e) => { setTypeFilter(e.target.value); setPage(0); }}
+            onChange={(e) => { setTypeFilter(e.target.value); setPage(1); }}
             style={{
               background: "var(--bg-base)",
               border: `1px solid ${typeFilter ? "var(--accent)" : "var(--border)"}`,
@@ -129,7 +129,7 @@ export function TransactionHistory({ address }: Props) {
           {/* Direction filter */}
           <select
             value={dirFilter}
-            onChange={(e) => { setDirFilter(e.target.value as typeof dirFilter); setPage(0); }}
+            onChange={(e) => { setDirFilter(e.target.value as typeof dirFilter); setPage(1); }}
             style={{
               background: "var(--bg-base)",
               border: `1px solid ${dirFilter ? "var(--accent)" : "var(--border)"}`,
@@ -151,7 +151,7 @@ export function TransactionHistory({ address }: Props) {
           <input
             type="date"
             value={dateFrom}
-            onChange={(e) => { setDateFrom(e.target.value); setPage(0); }}
+            onChange={(e) => { setDateFrom(e.target.value); setPage(1); }}
             title="From date"
             style={{
               background: "var(--bg-base)",
@@ -170,7 +170,7 @@ export function TransactionHistory({ address }: Props) {
           <input
             type="date"
             value={dateTo}
-            onChange={(e) => { setDateTo(e.target.value); setPage(0); }}
+            onChange={(e) => { setDateTo(e.target.value); setPage(1); }}
             title="To date"
             style={{
               background: "var(--bg-base)",
@@ -283,7 +283,7 @@ export function TransactionHistory({ address }: Props) {
       </div>
 
       {/* Pagination */}
-      {(page > 0 || hasMore) && (
+      {(page > 1 || hasMore) && (
         <div
           style={{
             display: "flex",
@@ -295,12 +295,12 @@ export function TransactionHistory({ address }: Props) {
             color: "var(--text-muted)",
           }}
         >
-          <span>Page {page + 1}</span>
+          <span>Page {page}</span>
           <div style={{ display: "flex", gap: "8px" }}>
             <PaginationBtn
               label="← Prev"
-              disabled={page === 0}
-              onClick={() => setPage((p) => Math.max(0, p - 1))}
+              disabled={page === 1}
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
             />
             <PaginationBtn
               label="Next →"

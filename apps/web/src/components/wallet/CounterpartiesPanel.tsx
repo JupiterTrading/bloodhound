@@ -1,6 +1,8 @@
 "use client";
 
+import { useState, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useUser } from "@clerk/nextjs";
 import { walletApi } from "@/lib/api";
 import { AddressTag } from "@/components/ui/AddressTag";
 import { Skeleton } from "@/components/ui/Skeleton";
@@ -11,17 +13,35 @@ interface Props {
 }
 
 export function CounterpartiesPanel({ address }: Props) {
-  const { data, isLoading } = useQuery({
+  const mountedAt = useRef(Date.now());
+  const POLL_WINDOW_MS = 30_000;
+
+  const { data, isLoading, isFetching } = useQuery({
     queryKey: ["wallet", "relationships", address],
     queryFn: () => walletApi.relationships(address),
     staleTime: 60_000,
+    refetchInterval: (query) => {
+      const cps = query.state.data?.counterparties ?? [];
+      if (cps.length > 0) return false;
+      if (Date.now() - mountedAt.current > POLL_WINDOW_MS) return false;
+      return 5_000;
+    },
   });
 
   const counterparties = (data?.counterparties ?? []).slice(0, 5);
+  const isPolling = !isLoading && counterparties.length === 0 &&
+    Date.now() - mountedAt.current < POLL_WINDOW_MS;
 
   return (
-    <PanelShell title="Top Counterparties">
-      {isLoading ? (
+    <PanelShell
+      title="Top Counterparties"
+      headerRight={isPolling ? (
+        <span style={{ fontSize: "10px", color: "var(--text-muted)", fontFamily: "JetBrains Mono, monospace" }}>
+          {isFetching ? "checking..." : "analyzing"}
+        </span>
+      ) : undefined}
+    >
+      {isLoading || isPolling ? (
         <SkeletonList count={4} />
       ) : counterparties.length === 0 ? (
         <EmptyState text="No counterparties found." />
@@ -79,17 +99,47 @@ export function CounterpartiesPanel({ address }: Props) {
 }
 
 export function SideWalletsPanel({ address }: Props) {
-  const { data, isLoading } = useQuery({
+  const { user } = useUser();
+  const mountedAt = useRef(Date.now());
+  const POLL_WINDOW_MS = 30_000;
+
+  const { data, isLoading, isFetching } = useQuery({
     queryKey: ["wallet", "side-wallets", address],
     queryFn: () => walletApi.sideWalletsTyped(address),
     staleTime: 120_000,
+    refetchInterval: (query) => {
+      const candidates = query.state.data?.candidates ?? [];
+      if (candidates.length > 0) return false;
+      if (Date.now() - mountedAt.current > POLL_WINDOW_MS) return false;
+      return 5_000;
+    },
   });
 
   const candidates = data?.candidates ?? [];
+  const isPolling = !isLoading && candidates.length === 0 &&
+    Date.now() - mountedAt.current < POLL_WINDOW_MS;
 
   return (
-    <PanelShell title="Potential Side Wallets">
+    <PanelShell
+      title="Potential Side Wallets"
+      headerRight={
+        candidates.length > 0 ? (
+          <Link
+            href={`/entity/${address}`}
+            style={{ fontSize: "11px", color: "var(--text-muted)", textDecoration: "none" }}
+          >
+            Entity profile →
+          </Link>
+        ) : isPolling ? (
+          <span style={{ fontSize: "10px", color: "var(--text-muted)", fontFamily: "JetBrains Mono, monospace" }}>
+            {isFetching ? "checking..." : "analyzing"}
+          </span>
+        ) : undefined
+      }
+    >
       {isLoading ? (
+        <SkeletonList count={3} />
+      ) : isPolling ? (
         <SkeletonList count={3} />
       ) : candidates.length === 0 ? (
         <EmptyState text="No side wallets detected above threshold." />
@@ -131,15 +181,17 @@ export function SideWalletsPanel({ address }: Props) {
                 </Link>
                 <ConfidenceBar value={cand.confidence} />
               </div>
-              <p
-                style={{
-                  fontSize: "11px",
-                  color: "var(--text-muted)",
-                  margin: 0,
-                }}
-              >
-                {cand.signals.slice(0, 2).join(" · ")}
-              </p>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <p style={{ fontSize: "11px", color: "var(--text-muted)", margin: 0 }}>
+                  {cand.signals.slice(0, 2).join(" · ")}
+                </p>
+                {user && (
+                  <DisputeButton
+                    walletAddress={address}
+                    relatedAddress={cand.address}
+                  />
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -148,11 +200,57 @@ export function SideWalletsPanel({ address }: Props) {
   );
 }
 
+function DisputeButton({
+  walletAddress,
+  relatedAddress,
+}: {
+  walletAddress: string;
+  relatedAddress: string;
+}) {
+  const [state, setState] = useState<"idle" | "loading" | "done">("idle");
+
+  async function handleDispute() {
+    setState("loading");
+    try {
+      await fetch(`/api/v1/entity/${walletAddress}/dispute/${relatedAddress}`, {
+        method: "POST",
+      });
+      setState("done");
+    } catch {
+      setState("idle");
+    }
+  }
+
+  return (
+    <button
+      onClick={handleDispute}
+      disabled={state !== "idle"}
+      title="Flag this relationship as incorrect"
+      style={{
+        fontSize: "10px",
+        color: state === "done" ? "var(--text-muted)" : "var(--text-muted)",
+        background: "none",
+        border: "none",
+        cursor: state === "idle" ? "pointer" : "default",
+        padding: "2px 4px",
+        fontFamily: "inherit",
+        opacity: state === "loading" ? 0.5 : 1,
+        textDecoration: state === "idle" ? "underline" : "none",
+        textDecorationStyle: "dotted",
+      }}
+    >
+      {state === "done" ? "Disputed ✓" : "Dispute"}
+    </button>
+  );
+}
+
 function PanelShell({
   title,
+  headerRight,
   children,
 }: {
   title: string;
+  headerRight?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
@@ -164,18 +262,21 @@ function PanelShell({
         padding: "16px 20px",
       }}
     >
-      <h2
-        style={{
-          fontSize: "11px",
-          fontWeight: 600,
-          letterSpacing: "0.08em",
-          textTransform: "uppercase",
-          color: "var(--text-muted)",
-          marginBottom: "12px",
-        }}
-      >
-        {title}
-      </h2>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
+        <h2
+          style={{
+            fontSize: "11px",
+            fontWeight: 600,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "var(--text-muted)",
+            margin: 0,
+          }}
+        >
+          {title}
+        </h2>
+        {headerRight}
+      </div>
       {children}
     </section>
   );

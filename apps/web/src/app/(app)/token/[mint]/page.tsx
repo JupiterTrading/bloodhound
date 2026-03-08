@@ -3,7 +3,7 @@
 import { use, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
-import { tokenApi, type TokenSummary, type TokenHolder, type TopTrader, type OHLCVItem } from "@/lib/api";
+import { tokenApi, kolFeedApi, type TokenSummary, type TokenHolder, type TopTrader, type SmartMoneyKol } from "@/lib/api";
 import { AddressTag } from "@/components/ui/AddressTag";
 import { Skeleton } from "@/components/ui/Skeleton";
 
@@ -29,10 +29,14 @@ export default function TokenPage({
       <TokenStatsGrid summary={summary} isLoading={isLoading} />
 
       {/* Price chart */}
-      <PriceChart mint={mint} />
+      <PriceChart mint={mint} pairAddress={summary?.pair_address} />
+
+      {/* Smart money consensus */}
+      <SmartMoneyPanel mint={mint} />
 
       {/* Two columns: holders + top traders */}
       <div
+        className="grid-responsive-2"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
@@ -47,26 +51,14 @@ export default function TokenPage({
   );
 }
 
-// ── Price chart ───────────────────────────────────────────────────────────────
+// ── Price chart (GeckoTerminal embed) ────────────────────────────────────────
 
-const RESOLUTIONS = [
-  { label: "15m", value: "15m" },
-  { label: "1H",  value: "1H"  },
-  { label: "4H",  value: "4H"  },
-  { label: "1D",  value: "1D"  },
-  { label: "1W",  value: "1W"  },
-];
-
-function PriceChart({ mint }: { mint: string }) {
-  const [resolution, setResolution] = useState("1D");
-
-  const { data, isLoading } = useQuery({
-    queryKey: ["token", mint, "ohlcv", resolution],
-    queryFn: () => tokenApi.ohlcv(mint, resolution),
-    staleTime: 60_000,
-  });
-
-  const items: OHLCVItem[] = data?.items ?? [];
+function PriceChart({ mint, pairAddress }: { mint: string; pairAddress: string | null | undefined }) {
+  // GeckoTerminal uses the same pool address as DexScreener for Raydium/Orca/Meteora pools.
+  // Swap to DexScreener embed as fallback — it accepts the same pair address.
+  const embedUrl = pairAddress
+    ? `https://www.geckoterminal.com/solana/pools/${pairAddress}?embed=1&info=0&swaps=0`
+    : null;
 
   return (
     <div
@@ -78,7 +70,6 @@ function PriceChart({ mint }: { mint: string }) {
         marginTop: "16px",
       }}
     >
-      {/* Chart header */}
       <div
         style={{
           display: "flex",
@@ -99,174 +90,63 @@ function PriceChart({ mint }: { mint: string }) {
         >
           Price History
         </span>
-        <div style={{ display: "flex", gap: "4px" }}>
-          {RESOLUTIONS.map((r) => (
-            <button
-              key={r.value}
-              onClick={() => setResolution(r.value)}
-              style={{
-                background: resolution === r.value ? "var(--accent)" : "transparent",
-                border: `1px solid ${resolution === r.value ? "var(--accent)" : "var(--border)"}`,
-                borderRadius: "4px",
-                padding: "3px 8px",
-                fontSize: "11px",
-                color: resolution === r.value ? "#fff" : "var(--text-muted)",
-                cursor: "pointer",
-                fontFamily: "JetBrains Mono, monospace",
-                transition: "all 80ms",
-              }}
-            >
-              {r.label}
-            </button>
-          ))}
-        </div>
+        {pairAddress && (
+          <a
+            href={`https://www.geckoterminal.com/solana/pools/${pairAddress}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontSize: "11px",
+              color: "var(--text-muted)",
+              textDecoration: "none",
+              transition: "color 80ms",
+            }}
+            onMouseEnter={(e) =>
+              ((e.currentTarget as HTMLAnchorElement).style.color = "var(--text-secondary)")
+            }
+            onMouseLeave={(e) =>
+              ((e.currentTarget as HTMLAnchorElement).style.color = "var(--text-muted)")
+            }
+          >
+            GeckoTerminal ↗
+          </a>
+        )}
       </div>
 
-      {/* Chart area */}
-      <div style={{ padding: "8px 0", height: "200px" }}>
-        {isLoading ? (
-          <div
+      <div style={{ height: "400px" }}>
+        {embedUrl ? (
+          <iframe
+            src={embedUrl}
             style={{
+              width: "100%",
               height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              border: "none",
+              display: "block",
             }}
-          >
-            <Skeleton width={600} height={150} />
-          </div>
-        ) : items.length < 2 ? (
-          <div
-            style={{
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "12px",
-              color: "var(--text-muted)",
-            }}
-          >
-            No price data available.
-          </div>
+            title="Price Chart"
+            allow="clipboard-write"
+          />
         ) : (
-          <OHLCVLineChart items={items} />
+          <div
+            style={{
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+            }}
+          >
+            <span style={{ fontSize: "13px", color: "var(--text-muted)" }}>
+              Chart not yet available
+            </span>
+            <span style={{ fontSize: "11px", color: "var(--text-muted)" }}>
+              Token may be too new or not yet listed on GeckoTerminal
+            </span>
+          </div>
         )}
       </div>
     </div>
-  );
-}
-
-function OHLCVLineChart({ items }: { items: OHLCVItem[] }) {
-  const W = 1000;
-  const H = 160;
-  const PAD_L = 64;
-  const PAD_R = 12;
-  const PAD_T = 12;
-  const PAD_B = 28;
-
-  const closes = items.map((d) => d.close);
-  const minP = Math.min(...closes);
-  const maxP = Math.max(...closes);
-  const rangeP = maxP - minP || 1;
-
-  const chartW = W - PAD_L - PAD_R;
-  const chartH = H - PAD_T - PAD_B;
-
-  const toX = (i: number) => PAD_L + (i / (items.length - 1)) * chartW;
-  const toY = (p: number) => PAD_T + chartH - ((p - minP) / rangeP) * chartH;
-
-  // Build polyline points
-  const pts = items.map((d, i) => `${toX(i)},${toY(d.close)}`).join(" ");
-
-  // Build filled area path
-  const firstX = toX(0);
-  const lastX = toX(items.length - 1);
-  const baseY = PAD_T + chartH;
-  const areaPath = `M${firstX},${baseY} L${pts.replace(/ /g, " L")} L${lastX},${baseY} Z`;
-
-  const trendUp = closes[closes.length - 1] >= closes[0];
-  const lineColor = trendUp ? "#22c55e" : "var(--accent)";
-  const areaColor = trendUp ? "rgba(34,197,94,0.08)" : "rgba(220,38,38,0.08)";
-
-  // Y-axis labels (3 ticks)
-  const yTicks = [minP, minP + rangeP / 2, maxP];
-
-  // X-axis labels (4 ticks)
-  const xTickIdxs = [0, Math.floor(items.length / 3), Math.floor((2 * items.length) / 3), items.length - 1];
-
-  return (
-    <svg
-      viewBox={`0 0 ${W} ${H}`}
-      style={{ width: "100%", height: "100%" }}
-      preserveAspectRatio="none"
-    >
-      {/* Grid lines */}
-      {yTicks.map((_, i) => {
-        const y = PAD_T + (i / (yTicks.length - 1)) * chartH;
-        return (
-          <line
-            key={i}
-            x1={PAD_L}
-            y1={y}
-            x2={W - PAD_R}
-            y2={y}
-            stroke="var(--border)"
-            strokeWidth={0.5}
-          />
-        );
-      })}
-
-      {/* Area fill */}
-      <path d={areaPath} fill={areaColor} />
-
-      {/* Line */}
-      <polyline
-        points={pts}
-        fill="none"
-        stroke={lineColor}
-        strokeWidth={1.5}
-        strokeLinejoin="round"
-        strokeLinecap="round"
-      />
-
-      {/* Y-axis labels */}
-      {yTicks.map((price, i) => (
-        <text
-          key={i}
-          x={PAD_L - 6}
-          y={PAD_T + ((yTicks.length - 1 - i) / (yTicks.length - 1)) * chartH + 4}
-          textAnchor="end"
-          fontSize={10}
-          fill="var(--text-muted)"
-          fontFamily="JetBrains Mono, monospace"
-        >
-          {formatPrice(price)}
-        </text>
-      ))}
-
-      {/* X-axis labels */}
-      {xTickIdxs.map((idx) => {
-        const d = items[idx];
-        if (!d) return null;
-        const label = new Date(d.unixTime * 1000).toLocaleDateString("en-US", {
-          month: "short",
-          day: "numeric",
-        });
-        return (
-          <text
-            key={idx}
-            x={toX(idx)}
-            y={H - 6}
-            textAnchor="middle"
-            fontSize={9}
-            fill="var(--text-muted)"
-            fontFamily="JetBrains Mono, monospace"
-          >
-            {label}
-          </text>
-        );
-      })}
-    </svg>
   );
 }
 
@@ -779,4 +659,102 @@ function formatCompact(n: number): string {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(2)}M`;
   if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
   return n.toFixed(2);
+}
+
+// ── Smart Money Consensus ─────────────────────────────────────────────────────
+
+function SmartMoneyPanel({ mint }: { mint: string }) {
+  const { data, isLoading } = useQuery({
+    queryKey: ["smart-money", mint],
+    queryFn: () => kolFeedApi.smartMoney(mint, 48),
+    staleTime: 5 * 60_000,
+    retry: false,
+  });
+
+  if (isLoading) {
+    return (
+      <div style={{ marginTop: "24px" }}>
+        <Skeleton style={{ height: "80px", borderRadius: "8px" }} />
+      </div>
+    );
+  }
+
+  if (!data || data.kol_count === 0) return null;
+
+  const { buyers, sellers, net_score, kols } = data;
+  const total = buyers + sellers;
+  const buyPct = total > 0 ? Math.round((buyers / total) * 100) : 50;
+  const scoreColor = net_score > 0.2 ? "#22c55e" : net_score < -0.2 ? "var(--accent)" : "#f59e0b";
+
+  return (
+    <div style={{ marginTop: "24px" }}>
+      <div style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "10px" }}>
+        Smart Money — 48h Consensus
+      </div>
+      <div
+        style={{
+          background: "var(--bg-surface)",
+          border: "1px solid var(--border)",
+          borderRadius: "8px",
+          padding: "16px 20px",
+          display: "flex",
+          gap: "24px",
+          alignItems: "center",
+          flexWrap: "wrap",
+        }}
+      >
+        {/* Score */}
+        <div style={{ textAlign: "center", minWidth: "80px" }}>
+          <div style={{ fontSize: "24px", fontWeight: 800, color: scoreColor, fontFamily: "JetBrains Mono, monospace", lineHeight: 1 }}>
+            {net_score > 0 ? "+" : ""}{Math.round(net_score * 100)}%
+          </div>
+          <div style={{ fontSize: "10px", color: "var(--text-muted)", marginTop: "4px" }}>net bullish</div>
+        </div>
+
+        {/* Buy/sell bar */}
+        <div style={{ flex: 1, minWidth: "160px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: "11px", color: "var(--text-muted)", marginBottom: "6px" }}>
+            <span style={{ color: "#22c55e" }}>{buyers} buying</span>
+            <span style={{ color: "var(--accent)" }}>{sellers} selling</span>
+          </div>
+          <div style={{ height: "8px", borderRadius: "4px", background: "var(--border)", overflow: "hidden" }}>
+            <div style={{ height: "100%", width: `${buyPct}%`, background: "#22c55e", borderRadius: "4px", transition: "width 400ms" }} />
+          </div>
+          <div style={{ fontSize: "10px", color: "var(--text-muted)", marginTop: "4px" }}>{total} KOLs tracked</div>
+        </div>
+
+        {/* Top KOLs */}
+        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+          {kols.slice(0, 5).map((kol) => (
+            <SmartMoneyKolChip key={kol.address} kol={kol} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SmartMoneyKolChip({ kol }: { kol: SmartMoneyKol }) {
+  const isBuying = kol.direction === "buying";
+  const color = isBuying ? "#22c55e" : kol.direction === "selling" ? "var(--accent)" : "var(--text-muted)";
+  return (
+    <Link
+      href={`/wallet/${kol.address}`}
+      style={{ textDecoration: "none" }}
+    >
+      <div
+        style={{
+          padding: "4px 10px",
+          borderRadius: "5px",
+          border: `1px solid ${color}`,
+          fontSize: "11px",
+          color,
+          fontFamily: "inherit",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {kol.label ?? kol.address.slice(0, 8)} {isBuying ? "↑" : kol.direction === "selling" ? "↓" : "—"}
+      </div>
+    </Link>
+  );
 }

@@ -28,26 +28,32 @@ async def token_summary(mint: str):
     if cached := await cache_get(cache_key):
         return cached
 
-    overview = await _safe(birdeye.get_token_overview(mint), default={})
-    security = await _safe(birdeye.get_token_security(mint), default={})
+    overview, security, meta = await asyncio.gather(
+        _safe(birdeye.get_token_overview(mint), default={}),
+        _safe(birdeye.get_token_security(mint), default={}),
+        _safe(birdeye.get_token_metadata(mint), default={}),
+    )
 
     is_pump = await _safe(_is_pump_fun(mint, overview), default=None)
 
     result = {
         "mint": mint,
-        "name": overview.get("name"),
-        "symbol": overview.get("symbol"),
-        "decimals": overview.get("decimals"),
-        "supply": overview.get("supply"),
-        "price_usd": overview.get("price"),
-        "market_cap_usd": overview.get("mc"),
-        "volume_24h_usd": overview.get("v24hUSD"),
-        "price_change_24h_pct": overview.get("priceChange24hPercent"),
-        "liquidity_usd": overview.get("liquidity"),
-        "holder_count": overview.get("holder"),
-        "logo_uri": overview.get("logoURI"),
+        "name": overview.get("name") or meta.get("name"),
+        "symbol": overview.get("symbol") or meta.get("symbol"),
+        "decimals": meta.get("decimals"),
+        "supply": None,
+        "price_usd": overview.get("price_usd"),
+        "market_cap_usd": overview.get("market_cap_usd"),
+        "volume_24h_usd": overview.get("volume_24h_usd"),
+        "price_change_24h_pct": overview.get("price_change_24h"),
+        "liquidity_usd": overview.get("liquidity_usd"),
+        "holder_count": None,
+        "logo_uri": meta.get("logoURI"),
         "security_score": security.get("score"),
         "is_pump_fun": is_pump,
+        "pair_address": overview.get("pair_address"),
+        "dex": overview.get("dex"),
+        "fdv": overview.get("fdv"),
     }
 
     await cache_set(cache_key, result, TTL_PRICE)
@@ -216,6 +222,32 @@ async def token_launch_intel(mint: str):
         "bundler_detected": bundler_count > 0,
         "bundler_tx_count": bundler_count,
     }
+
+
+@router.get("/{mint}/twitter")
+async def token_twitter(mint: str):
+    """
+    Tweet narrative for a token: recent mention count + sample tweets.
+    Uses the token symbol from Birdeye to search Twitter.
+    Requires Twitter Elevated API access for search — returns requires_elevated flag if not available.
+    """
+    cache_key = token_key(mint, "twitter")
+    if cached := await cache_get(cache_key):
+        return cached
+
+    # Get symbol from summary
+    overview = await _safe(birdeye.get_token_overview(mint), default={})
+    symbol = (overview or {}).get("symbol")
+
+    if not symbol:
+        return {"mint": mint, "symbol": None, "twitter": None}
+
+    from app.services.twitter import get_token_tweet_volume
+    twitter_data = await _safe(get_token_tweet_volume(symbol), default={"tweet_count": 0, "sample_tweets": [], "requires_elevated": False})
+
+    result = {"mint": mint, "symbol": symbol, "twitter": twitter_data}
+    await cache_set(cache_key, result, 900)  # 15 min
+    return result
 
 
 @router.get("/{mint}/ohlcv")

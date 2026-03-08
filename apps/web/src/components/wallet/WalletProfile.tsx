@@ -10,6 +10,9 @@ import { IntelligenceSummary } from "@/components/wallet/IntelligenceSummary";
 import { TransactionHistory } from "@/components/wallet/TransactionHistory";
 import { CounterpartiesPanel, SideWalletsPanel } from "@/components/wallet/CounterpartiesPanel";
 import { TokenHoldings } from "@/components/wallet/TokenHoldings";
+import { NftHoldings } from "@/components/wallet/NftHoldings";
+import { KolTwitterCard } from "@/components/wallet/KolTwitterCard";
+import { WalletEventsPanel } from "@/components/wallet/WalletEventsPanel";
 
 interface Props {
   address: string;
@@ -33,10 +36,11 @@ export function WalletProfile({ address }: Props) {
   if (!data) return null;
 
   const short = `${address.slice(0, 4)}...${address.slice(-4)}`;
-  const displayName = data.known_wallet?.label ?? short;
+  const displayName = data.known_wallet?.label ?? data.entity_label?.label ?? short;
 
   return (
     <div
+      className="page-container"
       style={{
         padding: "24px 32px",
         maxWidth: "1400px",
@@ -66,6 +70,23 @@ export function WalletProfile({ address }: Props) {
           {data.classification.map((label) => (
             <ClassificationBadge key={label} label={label} />
           ))}
+          {!data.known_wallet && data.entity_label && (
+            <span
+              style={{
+                fontSize: "11px",
+                fontWeight: 600,
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                padding: "2px 8px",
+                borderRadius: "4px",
+                background: "rgba(255,255,255,0.06)",
+                color: "var(--text-muted)",
+                border: "1px solid var(--border)",
+              }}
+            >
+              {data.entity_label.category}
+            </span>
+          )}
           {trackerData?.tracker_count != null && (
             <span
               style={{
@@ -189,6 +210,7 @@ export function WalletProfile({ address }: Props) {
 
       {/* ── Two-column layout ───────────────────────────────── */}
       <div
+        className="grid-responsive-2"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 300px",
@@ -200,11 +222,16 @@ export function WalletProfile({ address }: Props) {
         <div>
           <IntelligenceSummary address={address} />
           <TokenHoldings address={address} />
+          <NftHoldings address={address} />
           <TransactionHistory address={address} />
         </div>
 
-        {/* Right: counterparties + side wallets */}
+        {/* Right: KOL Twitter + event involvement + counterparties + side wallets */}
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          {data.known_wallet?.twitter_handle && (
+            <KolTwitterCard address={address} />
+          )}
+          <WalletEventsPanel address={address} />
           <CounterpartiesPanel address={address} />
           <SideWalletsPanel address={address} />
         </div>
@@ -380,6 +407,7 @@ function WalletProfileSkeleton() {
 function WalletProfileError({ address }: { address: string }) {
   return (
     <div
+      className="page-container"
       style={{
         padding: "24px 32px",
         maxWidth: "1400px",

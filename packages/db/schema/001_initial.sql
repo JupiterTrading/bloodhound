@@ -11,7 +11,7 @@ CREATE EXTENSION IF NOT EXISTS "vector";
 -- USERS
 -- ============================================================
 CREATE TABLE IF NOT EXISTS users (
-  id            uuid PRIMARY KEY,         -- Clerk user ID (synced on sign-in)
+  id            text PRIMARY KEY,         -- Clerk user ID e.g. "user_2abc..." (not a UUID)
   email         text UNIQUE,
   display_name  text,
   twitter_handle text,
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS users (
 -- ============================================================
 CREATE TABLE IF NOT EXISTS wallet_groups (
   id          uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-  user_id     uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  user_id     text NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   name        text NOT NULL,
   created_at  timestamptz NOT NULL DEFAULT now()
 );
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS wallet_groups (
 -- ============================================================
 CREATE TABLE IF NOT EXISTS tracked_wallets (
   id          uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-  user_id     uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  user_id     text NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   address     text NOT NULL,
   label       text NOT NULL,
   group_id    uuid REFERENCES wallet_groups(id) ON DELETE SET NULL,
@@ -64,8 +64,8 @@ CREATE TABLE IF NOT EXISTS known_wallets (
   twitter_handle  text,
   telegram_handle text,
   confidence      float NOT NULL DEFAULT 1.0,
-  submitted_by    uuid REFERENCES users(id),
-  approved_by     uuid REFERENCES users(id),
+  submitted_by    text REFERENCES users(id),
+  approved_by     text REFERENCES users(id),
   approved_at     timestamptz,
   status          text NOT NULL DEFAULT 'pending'
     CHECK (status IN ('pending', 'approved', 'rejected')),
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS known_wallet_history (
   label       text,
   category    text,
   description text,
-  changed_by  uuid REFERENCES users(id),
+  changed_by  text REFERENCES users(id),
   changed_at  timestamptz NOT NULL DEFAULT now()
 );
 
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS known_wallet_submissions (
   evidence_urls   text[],           -- Supabase Storage paths (PNG/JPG max 10MB)
   twitter_handle  text,
   telegram_handle text,
-  submitter_id    uuid NOT NULL REFERENCES users(id),
+  submitter_id    text NOT NULL REFERENCES users(id),
   status          text NOT NULL DEFAULT 'pending'
     CHECK (status IN ('pending', 'approved', 'rejected', 'needs_info')),
   reviewer_note   text,
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS wallet_classifications (
 -- ============================================================
 CREATE TABLE IF NOT EXISTS alerts (
   id              uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-  user_id         uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  user_id         text NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   wallet_address  text NOT NULL,
   alert_type      text NOT NULL
     CHECK (alert_type IN (
@@ -167,7 +167,7 @@ CREATE INDEX idx_alerts_active ON alerts(is_active) WHERE is_active = true;
 -- ============================================================
 CREATE TABLE IF NOT EXISTS notifications (
   id          uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-  user_id     uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  user_id     text NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   type        text NOT NULL,
   content     jsonb NOT NULL,
   is_read     boolean NOT NULL DEFAULT false,

@@ -29,6 +29,36 @@ interface Props {
   address: string;
 }
 
+function downloadCSV(address: string, counterparties: Counterparty[]) {
+  const header = "counterparty,interaction_count,total_volume_usd,last_interaction";
+  const rows = counterparties.map(
+    (c) =>
+      `${c.counterparty},${c.interaction_count},${c.total_volume_usd},${c.last_interaction}`
+  );
+  const csv = [header, ...rows].join("\n");
+  const blob = new Blob([csv], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `bh-graph-${address.slice(0, 8)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function downloadSVG(address: string) {
+  const svg = document.getElementById("bh-graph-svg");
+  if (!svg) return;
+  const serializer = new XMLSerializer();
+  const svgStr = serializer.serializeToString(svg);
+  const blob = new Blob([svgStr], { type: "image/svg+xml" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `bh-graph-${address.slice(0, 8)}.svg`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 export function RelationshipGraph({ address }: Props) {
   const [mode, setMode] = useState<"graph" | "table">("graph");
 
@@ -104,6 +134,48 @@ export function RelationshipGraph({ address }: Props) {
               {m === "graph" ? "Graph View" : "Table View"}
             </button>
           ))}
+          {!isLoading && counterparties.length > 0 && (
+            <>
+              <button
+                onClick={() => downloadCSV(address, counterparties)}
+                title="Download counterparties as CSV"
+                style={{
+                  padding: "6px 12px",
+                  fontSize: "12px",
+                  background: "transparent",
+                  border: "1px solid var(--border)",
+                  borderRadius: "5px",
+                  color: "var(--text-secondary)",
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                  transition: "border-color 80ms",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                ↓ CSV
+              </button>
+              {mode === "graph" && (
+                <button
+                  onClick={() => downloadSVG(address)}
+                  title="Download graph as SVG"
+                  style={{
+                    padding: "6px 12px",
+                    fontSize: "12px",
+                    background: "transparent",
+                    border: "1px solid var(--border)",
+                    borderRadius: "5px",
+                    color: "var(--text-secondary)",
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                    transition: "border-color 80ms",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  ↓ SVG
+                </button>
+              )}
+            </>
+          )}
           <Link
             href={`/wallet/${address}`}
             style={{
@@ -229,6 +301,7 @@ function ForceGraph({
   return (
     <div style={{ flex: 1, position: "relative", overflow: "hidden" }}>
       <svg
+        id="bh-graph-svg"
         ref={canvasRef}
         style={{ width: "100%", height: "100%", display: "block" }}
         onClick={() => setSelected(null)}

@@ -69,6 +69,75 @@ async def get_token_accounts(address: str) -> dict[str, Any]:
         return response.json()
 
 
+async def get_nft_holdings(address: str) -> list[dict[str, Any]]:
+    """
+    Fetch NFT holdings for a wallet via Helius DAS getAssetsByOwner.
+    Returns non-fungible assets only. Paginates up to 5 pages (500 NFTs).
+    """
+    NFT_INTERFACES = {"V1_NFT", "ProgrammableNFT", "MplCoreAsset", "V1_PRINT"}
+    all_items: list[dict[str, Any]] = []
+
+    for page in range(1, 6):
+        payload = {
+            "jsonrpc": "2.0",
+            "id": page,
+            "method": "getAssetsByOwner",
+            "params": {
+                "ownerAddress": address,
+                "page": page,
+                "limit": 100,
+                "displayOptions": {
+                    "showFungible": False,
+                    "showNativeBalance": False,
+                },
+            },
+        }
+        async with httpx.AsyncClient(timeout=30) as client:
+            response = await client.post(HELIUS_RPC, json=payload)
+            response.raise_for_status()
+            data = response.json()
+
+        items = data.get("result", {}).get("items", [])
+        if not items:
+            break
+        all_items.extend(items)
+        if len(items) < 100:
+            break
+
+    nfts: list[dict[str, Any]] = []
+    for item in all_items:
+        if item.get("interface") not in NFT_INTERFACES:
+            continue
+
+        content = item.get("content", {})
+        metadata = content.get("metadata", {})
+        links = content.get("links", {})
+        files = content.get("files") or []
+        grouping = item.get("grouping") or []
+        collection_address = next(
+            (g.get("group_value") for g in grouping if g.get("group_key") == "collection"),
+            None,
+        )
+        # Best image: links.image → first file cdn_uri → first file uri
+        image = (
+            links.get("image")
+            or (files[0].get("cdn_uri") if files else None)
+            or (files[0].get("uri") if files else None)
+        )
+
+        nfts.append({
+            "mint": item.get("id", ""),
+            "name": metadata.get("name") or "Unknown NFT",
+            "symbol": metadata.get("symbol"),
+            "image": image,
+            "collection_address": collection_address,
+            "attributes": metadata.get("attributes", []),
+            "interface": item.get("interface"),
+        })
+
+    return nfts
+
+
 def detect_source_platform(tx: dict[str, Any]) -> str:
     """
     Detect which platform/app originated a transaction.

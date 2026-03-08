@@ -45,7 +45,7 @@ PARTITION BY toYYYYMM(block_time)
 ORDER BY (from_address, block_time)
 SETTINGS index_granularity = 8192;
 
-CREATE INDEX idx_transfers_to ON transfers (to_address) TYPE bloom_filter GRANULARITY 4;
+CREATE INDEX IF NOT EXISTS idx_transfers_to ON transfers (to_address) TYPE bloom_filter GRANULARITY 4;
 
 -- ============================================================
 -- TOKEN TRADES (DEX swap events)
@@ -67,8 +67,8 @@ PARTITION BY toYYYYMM(block_time)
 ORDER BY (trader, block_time)
 SETTINGS index_granularity = 8192;
 
-CREATE INDEX idx_trades_token_in ON token_trades (token_in_mint) TYPE bloom_filter GRANULARITY 4;
-CREATE INDEX idx_trades_token_out ON token_trades (token_out_mint) TYPE bloom_filter GRANULARITY 4;
+CREATE INDEX IF NOT EXISTS idx_trades_token_in ON token_trades (token_in_mint) TYPE bloom_filter GRANULARITY 4;
+CREATE INDEX IF NOT EXISTS idx_trades_token_out ON token_trades (token_out_mint) TYPE bloom_filter GRANULARITY 4;
 
 -- ============================================================
 -- WALLET STATS DAILY (materialized view — fast aggregates)

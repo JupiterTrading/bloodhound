@@ -17,6 +17,7 @@ from fastapi import APIRouter, Query, HTTPException
 from app.services import clickhouse, helius
 from app.services import supabase as supabase_svc
 from app.services import birdeye, classification as classification_svc
+from app.services import solscan as solscan_svc
 from app.services.redis_cache import (
     cache_get, cache_set, wallet_key,
     TTL_PRICE, TTL_WALLET_STATS, TTL_CLASSIFICATION, TTL_KNOWN_WALLET,
@@ -41,15 +42,32 @@ async def wallet_summary(address: str):
     Core wallet summary: stats, SOL balance, portfolio USD, classification.
     Combines ClickHouse aggregate + Helius RPC + Birdeye + Supabase.
     """
+    import asyncio
     _validate_address(address)
+
+    # Backfill gate (24h) — prevents redundant Helius API calls.
+    # Cluster gate (1h) — re-runs clustering separately so it can pick up data
+    #   that exists in ClickHouse after backfill completes, even on subsequent visits.
+    backfill_gate_key = f"bh:backfill:{address}"
+    cluster_gate_key = f"bh:cluster:{address}"
+
+    if not await cache_get(backfill_gate_key):
+        # First view — fetch full history + cluster (clustering runs after backfill inside task)
+        await cache_set(backfill_gate_key, 1, 86400)
+        await cache_set(cluster_gate_key, 1, 3600)  # suppress duplicate cluster run
+        from app.services.wallet_poller import backfill_wallet_and_sides
+        asyncio.create_task(backfill_wallet_and_sides(address))
+    elif not await cache_get(cluster_gate_key):
+        # Already backfilled — ClickHouse has data now, re-run clustering (cheap)
+        await cache_set(cluster_gate_key, 1, 3600)
+        from app.services.clustering import run_clustering_for_wallet
+        asyncio.create_task(run_clustering_for_wallet(address))
 
     cache_key = wallet_key(address, "summary")
     if cached := await cache_get(cache_key):
         return cached
 
     # Fetch in parallel
-    import asyncio
-
     (
         stats,
         sol_balance_result,
@@ -66,6 +84,11 @@ async def wallet_summary(address: str):
         _safe(supabase_svc.get_tracker_count(address), default=0),
     )
 
+    # If not in our curated DB, try to resolve a label from programs/Helius entity index
+    entity_label = None
+    if not known_wallet:
+        entity_label = await _safe(solscan_svc.get_entity_label(address), default=None)
+
     result = {
         "address": address,
         "sol_balance": sol_balance_result,
@@ -78,6 +101,7 @@ async def wallet_summary(address: str):
         "classification": classification_result.get("labels", []),
         "classification_confidence": classification_result.get("confidence", {}),
         "known_wallet": known_wallet,
+        "entity_label": entity_label,
         "tracker_count": tracker_count,
     }
 
@@ -109,15 +133,23 @@ async def wallet_transfers(
         date_to=date_to,
         tx_type=tx_type,
     )
-    # Enrich with known wallet labels
-    known_cache: dict[str, dict | None] = {}
-    addresses = {t["from_address"] for t in transfers} | {t["to_address"] for t in transfers}
+    # Enrich counterparty addresses: known_wallets (curated) → entity labels (programs/exchanges)
     import asyncio
-    labels = await asyncio.gather(
+    addresses = list({t["from_address"] for t in transfers} | {t["to_address"] for t in transfers})
+    known_results = await asyncio.gather(
         *[_safe(supabase_svc.get_known_wallet(a), default=None) for a in addresses]
     )
-    for addr, label in zip(addresses, labels):
-        known_cache[addr] = label
+    known_cache: dict[str, dict | None] = dict(zip(addresses, known_results))
+
+    # For any address not in known_wallets, fall back to entity label resolution
+    unresolved = [a for a in addresses if not known_cache[a]]
+    if unresolved:
+        entity_results = await asyncio.gather(
+            *[_safe(solscan_svc.get_entity_label(a), default=None) for a in unresolved]
+        )
+        for addr, entity in zip(unresolved, entity_results):
+            if entity:
+                known_cache[addr] = entity
 
     for t in transfers:
         t["from_known"] = known_cache.get(t["from_address"])
@@ -156,31 +188,15 @@ async def wallet_holdings(address: str):
 @router.get("/{address}/nft-holdings")
 async def wallet_nft_holdings(address: str):
     """
-    NFT holdings via Helius DAS API.
-    Returns collection name, floor price estimate, image URI.
+    NFT holdings via Helius DAS getAssetsByOwner (non-fungible only).
+    Returns name, image URI, collection address, and trait attributes.
     """
     _validate_address(address)
     cache_key = wallet_key(address, "nfts")
     if cached := await cache_get(cache_key):
         return cached
 
-    try:
-        das_response = await helius.get_token_accounts(address)
-        items = das_response.get("result", {}).get("items", [])
-        nfts = [
-            {
-                "mint": item.get("id", ""),
-                "name": item.get("content", {}).get("metadata", {}).get("name"),
-                "symbol": item.get("content", {}).get("metadata", {}).get("symbol"),
-                "image": item.get("content", {}).get("links", {}).get("image"),
-                "collection": (item.get("grouping") or [{}])[0].get("group_value"),
-            }
-            for item in items
-            if item.get("interface") in ("V1_NFT", "ProgrammableNFT", "MplCoreAsset")
-        ]
-    except Exception:
-        nfts = []
-
+    nfts = await _safe(helius.get_nft_holdings(address), default=[])
     result = {"address": address, "nfts": nfts, "count": len(nfts)}
     await cache_set(cache_key, result, TTL_WALLET_STATS)
     return result
@@ -366,6 +382,49 @@ async def wallet_graph(
         "edges": edges,
         "warning": "Graph may be very large at this depth." if depth > 3 else None,
     }
+
+
+@router.get("/{address}/events")
+async def wallet_events(address: str):
+    """
+    Events this wallet was involved in — US-B606.
+    Cross-references against the known_events + event_wallets tables.
+    Returns event metadata + the wallet's role/description for each event.
+    """
+    _validate_address(address)
+    cache_key = wallet_key(address, "events")
+    if cached := await cache_get(cache_key):
+        return cached
+
+    events = await _safe(supabase_svc.get_wallet_events(address), default=[])
+    result = {"address": address, "events": events, "count": len(events)}
+    await cache_set(cache_key, result, 300)  # 5 min
+    return result
+
+
+@router.get("/{address}/twitter")
+async def wallet_twitter(address: str):
+    """
+    KOL Twitter profile + recent tweets for a wallet.
+    Returns null if the wallet has no twitter_handle in known_wallets.
+    Cached 15min (tweet freshness).
+    """
+    _validate_address(address)
+    cache_key = wallet_key(address, "twitter")
+    if cached := await cache_get(cache_key):
+        return cached
+
+    known = await _safe(supabase_svc.get_known_wallet(address), default=None)
+    handle = (known or {}).get("twitter_handle")
+    if not handle:
+        return {"address": address, "twitter": None}
+
+    from app.services.twitter import get_kol_profile_with_tweets
+    profile = await _safe(get_kol_profile_with_tweets(handle), default=None)
+
+    result = {"address": address, "twitter": profile}
+    await cache_set(cache_key, result, 900)  # 15 min
+    return result
 
 
 @router.get("/{address}/tracker-count")

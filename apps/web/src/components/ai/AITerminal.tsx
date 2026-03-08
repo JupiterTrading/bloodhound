@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useId } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
-import { aiApi, trackedApi, type AIQueryResponse } from "@/lib/api";
+import { aiApi, alertsApi, trackedApi, type AIQueryResponse } from "@/lib/api";
 import { AddressTag } from "@/components/ui/AddressTag";
 import { ConfidenceBadge, type Confidence } from "@/components/ui/ConfidenceBadge";
 
@@ -17,11 +17,12 @@ interface SessionEntry {
 }
 
 const EXAMPLE_QUERIES = [
+  "who are the top 5 KOL traders today?",
+  "what tokens are trending right now?",
+  "show me the top 10 traders this week by portfolio",
   "does GJRs6FyJPejgMkRdnmtJTGBJPNqvMNqShpbFPkdmBeR4 send to 5Q544fKrFoe6tsEbD7S8EmxGTJYAKtTVhAW5Q5pge4j1?",
   "who funded GJRs6FyJPejgMkRdnmtJTGBJPNqvMNqShpbFPkdmBeR4?",
-  "show me the largest transfers for 9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM",
   "classify wallet 5Q544fKrFoe6tsEbD7S8EmxGTJYAKtTVhAW5Q5pge4j1",
-  "track GJRs6FyJPejgMkRdnmtJTGBJPNqvMNqShpbFPkdmBeR4",
 ];
 
 export function AITerminal() {
@@ -44,8 +45,8 @@ export function AITerminal() {
   }));
 
   const mutation = useMutation({
-    mutationFn: (q: string) =>
-      aiApi.query(q, sessionId, { tracked_wallets: trackedWallets }),
+    mutationFn: ({ q, priorMessages }: { q: string; priorMessages: { role: string; content: string }[] }) =>
+      aiApi.query(q, sessionId, { tracked_wallets: trackedWallets, prior_messages: priorMessages }),
   });
 
   useEffect(() => {
@@ -55,6 +56,15 @@ export function AITerminal() {
   function handleSubmit() {
     const q = query.trim();
     if (!q || mutation.isPending) return;
+
+    // Build prior messages from completed history entries (last 5 exchanges)
+    const priorMessages = history
+      .filter((e) => e.response)
+      .slice(-5)
+      .flatMap((e) => [
+        { role: "user", content: e.query },
+        { role: "assistant", content: e.response!.answer },
+      ]);
 
     const entryId = crypto.randomUUID();
     const entry: SessionEntry = {
@@ -68,7 +78,7 @@ export function AITerminal() {
     setHistory((prev) => [...prev, entry]);
     setQuery("");
 
-    mutation.mutate(q, {
+    mutation.mutate({ q, priorMessages }, {
       onSuccess: (data) => {
         setHistory((prev) =>
           prev.map((e) =>
@@ -624,20 +634,31 @@ function ActionChip({ action }: { action: { type: string; parameters: Record<str
 
     if (action.type === "set_alert") {
       const addr = action.parameters.address as string | undefined;
+      const alertType = (action.parameters.alert_type as string | undefined) ?? "any_tx";
       if (!addr) return;
       setBusy(true);
       try {
-        // Ensure wallet is tracked first, then navigate to set up alert
-        await trackedApi.add({
-          address: addr,
-          label: (action.parameters.label as string | undefined) ?? addr.slice(0, 8),
+        // Ensure wallet is tracked first
+        try {
+          await trackedApi.add({
+            address: addr,
+            label: (action.parameters.label as string | undefined) ?? addr.slice(0, 8),
+          });
+        } catch {
+          // Already tracked — that's fine
+        }
+        // Create the alert
+        await alertsApi.create({
+          wallet_address: addr,
+          alert_type: alertType,
+          conditions: {},
+          delivery: ["in_app"],
         });
         qc.invalidateQueries({ queryKey: ["tracked"] });
         setDone(true);
-        // Brief delay so user sees ✓ Done before navigating
         setTimeout(() => router.push(`/tracked`), 800);
       } catch {
-        // Wallet may already be tracked — still navigate
+        // Navigate anyway so user can configure manually
         setDone(true);
         setTimeout(() => router.push(`/tracked`), 800);
       } finally {

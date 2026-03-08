@@ -63,10 +63,12 @@ async def _run_classification(address: str) -> dict[str, Any]:
         _check_whale(address),
         _check_smart_money(address),
         _check_deployer(address),
+        _check_sniper(address),
         _check_bot(address),
         _check_bundler(address),
         _check_lp_provider(address),
         _check_exchange_or_protocol(address),
+        _check_wash_trader(address),
         return_exceptions=True,
     )
 
@@ -207,6 +209,53 @@ async def _check_deployer(address: str) -> dict[str, Any] | None:
     return None
 
 
+async def _check_sniper(address: str) -> dict[str, Any] | None:
+    """
+    SNIPER: bought a token when it had fewer than 100 prior trades on-chain.
+    Minimum buy size ≥ $0.50 USD to filter ghost/dust transactions.
+    Confidence: 0.85 (timing is deterministic; "significance" is a threshold heuristic).
+    """
+    client = clickhouse.get_client()
+    result = await asyncio.to_thread(
+        client.query,
+        """
+        WITH trader_tokens AS (
+            SELECT DISTINCT token_out_mint
+            FROM token_trades
+            WHERE trader = {address:String}
+              AND amount_usd >= 0.5
+        ),
+        ranked_buys AS (
+            SELECT
+                tt.trader,
+                tt.token_out_mint,
+                row_number() OVER (
+                    PARTITION BY tt.token_out_mint
+                    ORDER BY tt.block_time ASC
+                ) AS buy_rank
+            FROM token_trades tt
+            INNER JOIN trader_tokens trt ON tt.token_out_mint = trt.token_out_mint
+            WHERE tt.amount_usd >= 0.5
+        )
+        SELECT count() AS snipe_count
+        FROM ranked_buys
+        WHERE trader = {address:String}
+          AND buy_rank <= 100
+        """,
+        parameters={"address": address},
+    )
+    if not result.result_rows:
+        return None
+    snipe_count = int(result.result_rows[0][0] or 0)
+    if snipe_count < 1:
+        return None
+    return {
+        "label": "sniper",
+        "confidence": 0.85,
+        "signals": {"early_buy_count": snipe_count},
+    }
+
+
 async def _check_bot(address: str) -> dict[str, Any] | None:
     """
     BOT: high frequency (>300 txs/24h) or dominant single-program usage (>80%).
@@ -310,6 +359,58 @@ async def _check_lp_provider(address: str) -> dict[str, Any] | None:
             "signals": {"lp_interactions": int(result.result_rows[0][0])},
         }
     return None
+
+
+async def _check_wash_trader(address: str) -> dict[str, Any] | None:
+    """
+    WASH_TRADER: wallet repeatedly buys and sells the same token in both directions
+    (≥3 buys AND ≥3 sells of the same token) across ≥3 distinct tokens.
+    Indicates artificial volume creation. Confidence 0.75.
+    """
+    # Native SOL mint + USDC + USDT used as "base" tokens to distinguish buy from sell
+    SOL_MINT = "So11111111111111111111111111111111111111112"
+    USDC_MINT = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+    USDT_MINT = "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB"
+    BASE_TOKENS = (SOL_MINT, USDC_MINT, USDT_MINT)
+
+    client = clickhouse.get_client()
+    result = await asyncio.to_thread(
+        client.query,
+        """
+        SELECT count() AS round_trip_tokens
+        FROM (
+            SELECT
+                if(
+                    token_in_mint NOT IN {base:Array(String)},
+                    token_in_mint,
+                    token_out_mint
+                ) AS token,
+                countIf(token_in_mint IN {base:Array(String)}) AS buys,
+                countIf(token_out_mint IN {base:Array(String)}) AS sells
+            FROM token_trades
+            WHERE trader = {address:String}
+              AND (
+                token_in_mint IN {base:Array(String)}
+                OR token_out_mint IN {base:Array(String)}
+              )
+            GROUP BY token
+            HAVING buys >= 3 AND sells >= 3
+        )
+        """,
+        parameters={"address": address, "base": list(BASE_TOKENS)},
+    )
+    if not result.result_rows:
+        return None
+
+    round_trip_tokens = int(result.result_rows[0][0] or 0)
+    if round_trip_tokens < 3:
+        return None
+
+    return {
+        "label": "wash_trader",
+        "confidence": 0.75,
+        "signals": {"round_trip_token_count": round_trip_tokens},
+    }
 
 
 async def _check_exchange_or_protocol(address: str) -> dict[str, Any] | None:

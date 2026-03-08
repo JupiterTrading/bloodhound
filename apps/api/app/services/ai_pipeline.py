@@ -78,6 +78,65 @@ BLOODHOUND_TOOLS: list[dict] = [
         },
     },
     {
+        "name": "get_leaderboard",
+        "description": (
+            "Get the top performing wallets (KOLs, known traders) ranked by portfolio value or realized PnL. "
+            "Use for questions like: 'top 5 traders today', 'best KOL performers this week', "
+            "'who made the most money on Solana', 'top traders by PnL'."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "category": {
+                    "type": "string",
+                    "enum": ["kol", "profitable_trader", "all"],
+                    "default": "kol",
+                    "description": "kol = key opinion leaders / known names; profitable_trader = volume-ranked DEX traders; all = both",
+                },
+                "timeframe": {
+                    "type": "string",
+                    "enum": ["1d", "7d", "30d"],
+                    "default": "1d",
+                    "description": "Performance window: 1d = today, 7d = this week, 30d = this month",
+                },
+                "limit": {
+                    "type": "integer",
+                    "default": 10,
+                    "minimum": 5,
+                    "maximum": 50,
+                    "description": "Number of wallets to return",
+                },
+            },
+            "required": [],
+        },
+    },
+    {
+        "name": "get_trending_tokens",
+        "description": (
+            "Get currently trending tokens on Solana DEXes by trade count and momentum. "
+            "Use for: 'what tokens are trending', 'hot tokens right now', "
+            "'what are people trading today', 'biggest movers'."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "limit": {
+                    "type": "integer",
+                    "default": 10,
+                    "minimum": 5,
+                    "maximum": 20,
+                },
+                "sort_type": {
+                    "type": "string",
+                    "enum": ["trending", "gainers", "losers"],
+                    "default": "trending",
+                    "description": "trending = by trade activity; gainers = top % price gain; losers = top % price drop",
+                },
+            },
+            "required": [],
+        },
+    },
+    {
         "name": "take_action",
         "description": (
             "Take an agentic action in the app on behalf of the user. "
@@ -108,7 +167,7 @@ BLOODHOUND_TOOLS: list[dict] = [
 async def classify_intent(query: str) -> str:
     """
     Quick haiku call to classify query intent.
-    Returns: relationship_query | wallet_summary | fund_trace | token_query | agentic_action | unknown
+    Returns one of the valid intent categories.
     """
     client = anthropic.AsyncAnthropic(api_key=settings.anthropic_api_key)
     response = await client.messages.create(
@@ -116,7 +175,10 @@ async def classify_intent(query: str) -> str:
         max_tokens=20,
         system=(
             "Classify the following query into exactly one category:\n"
-            "relationship_query | wallet_summary | fund_trace | token_query | agentic_action | unknown\n"
+            "relationship_query | wallet_summary | fund_trace | token_query | leaderboard_query | event_query | entity_lookup | agentic_action | unknown\n"
+            "Use leaderboard_query for: top traders, best performers, who made money, KOL rankings, trending tokens.\n"
+            "Use event_query for: historical Solana events — Libra, $TRUMP launch, $DJT, $BONK, FTX, specific coin launches or scandals.\n"
+            "Use entity_lookup for: 'who is [person]', 'what is [project/protocol]', 'tell me about [KOL name]', background on any crypto entity.\n"
             "Respond with only the category name, nothing else."
         ),
         messages=[{"role": "user", "content": query}],
@@ -124,7 +186,8 @@ async def classify_intent(query: str) -> str:
     text = response.content[0].text.strip().lower()
     valid = {
         "relationship_query", "wallet_summary", "fund_trace",
-        "token_query", "agentic_action", "unknown",
+        "token_query", "leaderboard_query", "event_query", "entity_lookup",
+        "agentic_action", "unknown",
     }
     return text if text in valid else "unknown"
 
@@ -136,6 +199,20 @@ async def classify_intent(query: str) -> str:
 async def execute_tool(name: str, inputs: dict[str, Any]) -> dict[str, Any]:
     """Dispatch a tool call to the appropriate data layer."""
     if name == "check_transfers":
+        import asyncio as _asyncio
+        from app.services.redis_cache import cache_get as _cg, cache_set as _cs
+        from app.services.wallet_poller import backfill_wallet_and_sides
+        from app.services.clustering import run_clustering_for_wallet as _rcfw
+        for _addr in (inputs["from_address"], inputs["to_address"]):
+            _bfk = f"bh:backfill:{_addr}"
+            _cfk = f"bh:cluster:{_addr}"
+            if not await _cg(_bfk):
+                await _cs(_bfk, 1, 86400)
+                await _cs(_cfk, 1, 3600)
+                _asyncio.create_task(backfill_wallet_and_sides(_addr))
+            elif not await _cg(_cfk):
+                await _cs(_cfk, 1, 3600)
+                _asyncio.create_task(_rcfw(_addr))
         return await clickhouse.check_transfers_between(
             from_addr=inputs["from_address"],
             to_addr=inputs["to_address"],
@@ -152,10 +229,26 @@ async def execute_tool(name: str, inputs: dict[str, Any]) -> dict[str, Any]:
 
     elif name == "get_wallet_summary":
         from app.services.classification import classify_wallet
+        import asyncio as _asyncio
+        from app.services.redis_cache import cache_get as _cg, cache_set as _cs
+
+        address = inputs["address"]
+        _bfk = f"bh:backfill:{address}"
+        _cfk = f"bh:cluster:{address}"
+        if not await _cg(_bfk):
+            await _cs(_bfk, 1, 86400)
+            await _cs(_cfk, 1, 3600)
+            from app.services.wallet_poller import backfill_wallet_and_sides
+            _asyncio.create_task(backfill_wallet_and_sides(address))
+        elif not await _cg(_cfk):
+            await _cs(_cfk, 1, 3600)
+            from app.services.clustering import run_clustering_for_wallet as _rcfw
+            _asyncio.create_task(_rcfw(address))
+
         stats, known, cls = await _gather(
-            clickhouse.get_wallet_stats(inputs["address"], inputs.get("days_back", 90)),
-            supabase_svc.get_known_wallet(inputs["address"]),
-            classify_wallet(inputs["address"]),
+            clickhouse.get_wallet_stats(address, inputs.get("days_back", 90)),
+            supabase_svc.get_known_wallet(address),
+            classify_wallet(address),
         )
         return {
             "stats": stats,
@@ -170,6 +263,68 @@ async def execute_tool(name: str, inputs: dict[str, Any]) -> dict[str, Any]:
         )
         return {"counterparties": counterparties}
 
+    elif name == "get_leaderboard":
+        from app.routers.leaderboard import _batch_portfolio, _batch_pnl_from_clickhouse
+        from app.services import supabase as _sb
+
+        category = inputs.get("category", "kol")
+        timeframe = inputs.get("timeframe", "1d")
+        limit = inputs.get("limit", 10)
+
+        db_category = None if category == "all" else category
+        wallets = await _sb.list_known_wallets(category=db_category, limit=limit * 2)
+        addresses = [w["address"] for w in wallets[:limit]]
+        portfolio_map = await _batch_portfolio(addresses)
+        pnl_map = await _batch_pnl_from_clickhouse(addresses, timeframe)
+
+        entries = []
+        for w in wallets[:limit]:
+            addr = w["address"]
+            port = portfolio_map.get(addr, {})
+            pnl = pnl_map.get(addr, {})
+            entries.append({
+                "address": addr,
+                "label": w.get("label"),
+                "twitter_handle": w.get("twitter_handle"),
+                "portfolio_usd": port.get("total_usd"),
+                "realized_pnl_usd": pnl.get("realized_pnl_usd"),
+                "trade_count": pnl.get("trade_count"),
+                "win_rate": pnl.get("win_rate"),
+            })
+
+        def _sort(e):
+            if e["realized_pnl_usd"] is not None:
+                return e["realized_pnl_usd"]
+            return e["portfolio_usd"] or 0
+
+        entries.sort(key=_sort, reverse=True)
+        for i, e in enumerate(entries, 1):
+            e["rank"] = i
+
+        return {
+            "category": category,
+            "timeframe": timeframe,
+            "entries": entries,
+            "metric": "realized_pnl_usd" if any(e["realized_pnl_usd"] is not None for e in entries) else "portfolio_usd",
+        }
+
+    elif name == "get_trending_tokens":
+        from app.services import birdeye as _birdeye
+
+        sort_type = inputs.get("sort_type", "trending")
+        limit = inputs.get("limit", 10)
+
+        if sort_type == "trending":
+            tokens = await _birdeye.get_trending_tokens(limit=limit)
+        elif sort_type in ("gainers", "losers"):
+            tokens = await _birdeye.get_gainers_losers(
+                timeframe="24h", limit=limit, sort_type=sort_type
+            )
+        else:
+            tokens = await _birdeye.get_trending_tokens(limit=limit)
+
+        return {"tokens": tokens, "sort_type": sort_type}
+
     elif name == "take_action":
         # Returned to frontend for execution; no server-side effect here
         return {"status": "queued", "action_type": inputs["action_type"]}
@@ -180,12 +335,14 @@ async def execute_tool(name: str, inputs: dict[str, Any]) -> dict[str, Any]:
 
 async def _trace_funding(address: str, max_hops: int) -> dict[str, Any]:
     """Hop-by-hop funding trace: follow first SOL received, stop at known entity."""
+    import asyncio as _asyncio
     client = clickhouse.get_client()
     trail: list[dict] = []
     current = address
 
     for hop in range(max_hops):
-        result = client.query(
+        result = await _asyncio.to_thread(
+            client.query,
             """
             SELECT from_address, amount, tx_signature, block_time
             FROM transfers
@@ -244,7 +401,19 @@ async def run_bloodhound_ai(
         resolved_query = re.sub(re.escape(label), address, resolved_query, flags=re.IGNORECASE)
 
     system_prompt = _build_system_prompt(label_map)
-    messages: list[dict] = [{"role": "user", "content": resolved_query}]
+
+    # Build message history: prepend prior exchanges for multi-turn context
+    prior: list[dict] = context.get("prior_messages", [])
+    # Resolve labels in prior assistant messages too
+    resolved_prior: list[dict] = []
+    for msg in prior:
+        content = msg["content"]
+        if msg["role"] == "user":
+            for lbl, addr in label_map.items():
+                content = re.sub(re.escape(lbl), addr, content, flags=re.IGNORECASE)
+        resolved_prior.append({"role": msg["role"], "content": content})
+
+    messages: list[dict] = [*resolved_prior, {"role": "user", "content": resolved_query}]
     actions: list[dict] = []
     evidence: list[dict] = []
 
@@ -252,12 +421,15 @@ async def run_bloodhound_ai(
     max_iterations = 5
     answer_text = ""
 
+    # Native Anthropic web_search tool — Anthropic executes it server-side, no executor needed
+    all_tools = [{"type": "web_search_20250305"}, *BLOODHOUND_TOOLS]
+
     for _ in range(max_iterations):
         response = await ai_client.messages.create(
             model="claude-sonnet-4-6",
             max_tokens=2000,
             system=system_prompt,
-            tools=BLOODHOUND_TOOLS,
+            tools=all_tools,
             messages=messages,
         )
 
@@ -349,17 +521,29 @@ def _build_system_prompt(label_map: dict[str, str]) -> str:
     )
     return f"""You are Bloodhound AI, an on-chain intelligence assistant for Solana.
 
+You have access to:
+- On-chain data: wallet transfers, trades, funding traces, counterparties (ClickHouse)
+- Known entity database: labeled wallets, KOLs, exchanges (Supabase)
+- Live market data: trending tokens, leaderboard PnL (Birdeye)
+- Web search: use the web_search tool to find background on events, projects, people, or tokens
+
 RULES — NEVER:
-- Link wallet addresses to real-world identities beyond approved database labels
-- Make accusations about illegal activity — use "suspected", "may indicate", "possible"
+- Link wallet addresses to real-world identities beyond what evidence supports — use "suspected", "may indicate", "possible"
+- Make accusations about illegal activity without clear on-chain evidence
 - Speculate on future price movements
 - Fabricate transaction evidence — every claim must reference a real tx signature
 - Answer confidently about wallets with zero on-chain history
 
+WHEN TO USE WEB SEARCH:
+- User asks about a historical Solana event (Libra, $TRUMP, $DJT, $BONK, pump.fun launches, FTX)
+- User asks "who is [person]" or "what is [project]"
+- User wants background context before or alongside on-chain analysis
+- Combine web context + on-chain data to give the fullest picture
+
 CONFIDENCE TIERS (always end your answer with one):
 - [CONFIRMED] — Direct on-chain proof, evidence tx signatures provided
 - [PROBABLE] — Strong multi-signal pattern, multiple supporting signals
-- [SUSPECTED] — Weak or single-signal inference
+- [SUSPECTED] — Weak or single-signal inference, or web-only without on-chain corroboration
 - [UNKNOWN] — Insufficient data
 
 WHEN DATA IS ABSENT:
@@ -371,6 +555,7 @@ FORMAT:
 - Lead with a clear 1-2 sentence answer
 - Follow with key numbers (amounts, dates, counts)
 - List evidence tx signatures if available
+- Cite web search sources in parentheses if used
 - End with confidence tier in brackets
 {label_context}"""
 

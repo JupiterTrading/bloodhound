@@ -10,18 +10,24 @@ import { searchApi } from "@/lib/api";
 
 const NAV_LINKS = [
   { href: "/explorer", label: "Explorer" },
+  { href: "/new-pairs", label: "New Pairs" },
   { href: "/intelligence", label: "Intelligence" },
-  { href: "/tracked", label: "Tracked" },
   { href: "/signals", label: "Signals" },
-  { href: "/ai", label: "Bloodhound AI" },
-  { href: "/api-docs", label: "API" },
+  { href: "/tracked", label: "Tracked" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/ai", label: "AI" },
   { href: "/docs", label: "Docs" },
 ];
 
 export function TopNav() {
   const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Close mobile menu on route change
+  useEffect(() => { setMobileOpen(false); }, [pathname]);
 
   return (
+    <>
     <header
       style={{
         position: "fixed",
@@ -63,13 +69,13 @@ export function TopNav() {
         </span>
       </Link>
 
-      {/* Universal search */}
-      <div style={{ flex: 1, maxWidth: "460px" }}>
+      {/* Universal search — hide on very small screens */}
+      <div className="nav-search" style={{ flex: 1, maxWidth: "460px" }}>
         <SearchBar />
       </div>
 
-      {/* Nav links */}
-      <nav
+      {/* Nav links — hidden on mobile */}
+      <nav className="nav-links"
         style={{
           display: "flex",
           alignItems: "center",
@@ -113,12 +119,76 @@ export function TopNav() {
           alignItems: "center",
           gap: "12px",
           flexShrink: 0,
+          marginLeft: "auto",
         }}
       >
-        <NetworkPill />
+        <div className="nav-network"><NetworkPill /></div>
         <AuthButton />
+        {/* Hamburger — mobile only */}
+        <button
+          className="nav-hamburger"
+          onClick={() => setMobileOpen((v) => !v)}
+          aria-label="Toggle menu"
+          style={{
+            display: "none",
+            background: "none",
+            border: "1px solid var(--border)",
+            borderRadius: "6px",
+            padding: "5px 8px",
+            cursor: "pointer",
+            color: "var(--text-secondary)",
+            fontSize: "18px",
+            lineHeight: 1,
+          }}
+        >
+          {mobileOpen ? "✕" : "☰"}
+        </button>
       </div>
     </header>
+
+    {/* Mobile menu drawer */}
+    {mobileOpen && (
+      <div
+        className="nav-mobile-drawer"
+        style={{
+          position: "fixed",
+          top: "56px",
+          left: 0,
+          right: 0,
+          background: "var(--bg-elevated)",
+          borderBottom: "1px solid var(--border)",
+          zIndex: 199,
+          padding: "16px 24px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "4px",
+          animation: "fadeSlideIn 100ms ease-out",
+        }}
+      >
+        {NAV_LINKS.map((link) => {
+          const isActive = pathname.startsWith(link.href);
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              style={{
+                display: "block",
+                padding: "10px 12px",
+                borderRadius: "6px",
+                fontSize: "14px",
+                fontWeight: isActive ? 600 : 400,
+                color: isActive ? "var(--accent)" : "var(--text-secondary)",
+                background: isActive ? "var(--bg-surface)" : "transparent",
+                textDecoration: "none",
+              }}
+            >
+              {link.label}
+            </Link>
+          );
+        })}
+      </div>
+    )}
+    </>
   );
 }
 
@@ -165,7 +235,13 @@ function SearchBar() {
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter" && query.trim()) {
-      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+      const q = query.trim();
+      // Solana address: base58, 32–44 chars
+      if (/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(q)) {
+        router.push(`/wallet/${q}`);
+      } else {
+        router.push(`/search?q=${encodeURIComponent(q)}`);
+      }
       setOpen(false);
       setQuery("");
     }
@@ -410,13 +486,28 @@ function AuthButton() {
 
   if (isSignedIn) {
     return (
-      <UserButton
-        appearance={{
-          elements: {
-            avatarBox: { width: 28, height: 28 },
-          },
-        }}
-      />
+      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        <Link
+          href="/billing"
+          style={{
+            fontSize: "12px",
+            color: "var(--text-muted)",
+            textDecoration: "none",
+            padding: "4px 8px",
+            borderRadius: "4px",
+            border: "1px solid var(--border)",
+          }}
+        >
+          Billing
+        </Link>
+        <UserButton
+          appearance={{
+            elements: {
+              avatarBox: { width: 28, height: 28 },
+            },
+          }}
+        />
+      </div>
     );
   }
 

@@ -245,6 +245,62 @@ async def delete_tracked_wallet(user_id: str, address: str) -> bool:
     return bool(result.data)
 
 
+async def count_trackers_for_wallet(address: str) -> int:
+    """Count how many users (across all users) are tracking a given address."""
+    client = get_client()
+    result = (
+        client.table("tracked_wallets")
+        .select("address", count="exact")
+        .eq("address", address)
+        .execute()
+    )
+    return result.count or 0
+
+
+async def get_all_tracked_wallet_addresses() -> list[str]:
+    """
+    Return distinct wallet addresses tracked by any user.
+    Used by the background polling service to know what to poll.
+    """
+    client = get_client()
+    result = client.table("tracked_wallets").select("address").execute()
+    seen: set[str] = set()
+    addresses: list[str] = []
+    for row in result.data or []:
+        addr = row.get("address")
+        if addr and addr not in seen:
+            seen.add(addr)
+            addresses.append(addr)
+    return addresses
+
+
+async def get_own_wallets(user_id: str) -> list[dict[str, Any]]:
+    """Return tracked wallets where is_own=True for a user (their personal wallets)."""
+    client = get_client()
+    result = (
+        client.table("tracked_wallets")
+        .select("address,label,tags,created_at")
+        .eq("user_id", user_id)
+        .eq("is_own", True)
+        .order("created_at")
+        .execute()
+    )
+    return result.data or []
+
+
+async def get_kol_addresses() -> list[str]:
+    """Return all approved KOL wallet addresses from known_wallets."""
+    client = get_client()
+    result = (
+        client.table("known_wallets")
+        .select("address")
+        .eq("status", "approved")
+        .eq("category", "kol")
+        .execute()
+    )
+    return [row["address"] for row in (result.data or [])]
+
+
 async def count_user_tracked_wallets(user_id: str) -> int:
     client = get_client()
     result = (
@@ -413,3 +469,143 @@ async def get_user_tier(user_id: str) -> str:
         .execute()
     )
     return (result.data or {}).get("tier", "free")
+
+
+# ---------------------------------------------------------------------------
+# Known Events  (US-B604)
+# ---------------------------------------------------------------------------
+
+async def list_events(
+    category: str | None = None,
+    significance: str | None = None,
+    limit: int = 20,
+) -> list[dict[str, Any]]:
+    """List published known events, newest first."""
+    client = get_client()
+    query = (
+        client.table("known_events")
+        .select("id,slug,title,category,significance,occurred_at,token_symbol,token_mint,description")
+        .eq("is_published", True)
+        .order("occurred_at", desc=True)
+        .limit(limit)
+    )
+    if category:
+        query = query.eq("category", category)
+    if significance:
+        query = query.eq("significance", significance)
+    result = query.execute()
+    return result.data or []
+
+
+async def get_event_by_slug(slug: str) -> dict[str, Any] | None:
+    """Get a single event with its involved wallets."""
+    client = get_client()
+    result = (
+        client.table("known_events")
+        .select("*")
+        .eq("slug", slug)
+        .eq("is_published", True)
+        .maybe_single()
+        .execute()
+    )
+    if not result.data:
+        return None
+
+    event = result.data
+
+    # Fetch involved wallets
+    wallets_result = (
+        client.table("event_wallets")
+        .select("address,role,description,amount_usd")
+        .eq("event_id", event["id"])
+        .order("amount_usd", desc=True)
+        .execute()
+    )
+    event["wallets"] = wallets_result.data or []
+    return event
+
+
+async def validate_api_key(key_hash: str) -> dict | None:
+    """
+    Look up an API key by its SHA-256 hash.
+    Returns {"id": ..., "user_id": ...} or None.
+    Used by the rate-limit middleware to authenticate bh_* bearer tokens.
+    """
+    client = get_client()
+    try:
+        result = (
+            client.table("api_keys")
+            .select("id,user_id")
+            .eq("key_hash", key_hash)
+            .eq("is_active", True)
+            .limit(1)
+            .execute()
+        )
+        rows = result.data or []
+        return rows[0] if rows else None
+    except Exception:
+        return None
+
+
+async def touch_api_key(key_id: str) -> None:
+    """Update last_used_at for an API key. Fire-and-forget."""
+    from datetime import datetime, timezone
+    client = get_client()
+    try:
+        client.table("api_keys").update(
+            {"last_used_at": datetime.now(timezone.utc).isoformat()}
+        ).eq("id", key_id).execute()
+    except Exception:
+        pass
+
+
+async def add_dispute(
+    wallet_address: str, related_address: str, user_id: str
+) -> bool:
+    """
+    Insert a dispute for a side-wallet pair. Ignores duplicates.
+    Returns True if inserted, False if already exists.
+    """
+    client = get_client()
+    try:
+        client.table("side_wallet_disputes").insert(
+            {
+                "wallet_address": wallet_address,
+                "related_address": related_address,
+                "user_id": user_id,
+            }
+        ).execute()
+        return True
+    except Exception:
+        return False
+
+
+async def get_dispute_count(wallet_address: str, related_address: str) -> int:
+    """Count distinct user disputes for a side-wallet pair."""
+    client = get_client()
+    result = (
+        client.table("side_wallet_disputes")
+        .select("id", count="exact")
+        .eq("wallet_address", wallet_address)
+        .eq("related_address", related_address)
+        .execute()
+    )
+    return result.count or 0
+
+
+async def get_wallet_events(address: str) -> list[dict[str, Any]]:
+    """Return events that a wallet was involved in (US-B606)."""
+    client = get_client()
+    result = (
+        client.table("event_wallets")
+        .select("role,description,amount_usd,known_events(slug,title,category,significance,occurred_at,token_symbol)")
+        .eq("address", address)
+        .execute()
+    )
+    rows = result.data or []
+    # Flatten: merge event fields into the row
+    out = []
+    for row in rows:
+        event = row.pop("known_events", {}) or {}
+        out.append({**event, **row})
+    return out

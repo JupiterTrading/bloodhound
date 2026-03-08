@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     # Helius
     helius_api_key: str = ""
     helius_webhook_secret: str = ""
+    helius_webhook_id: str = ""
 
     # ClickHouse
     clickhouse_host: str = ""
@@ -27,6 +28,9 @@ class Settings(BaseSettings):
 
     # Birdeye
     birdeye_api_key: str = ""
+
+    # Solscan (optional — Pro API for broader entity labels)
+    solscan_api_key: str = ""
 
     # Ably (real-time alerts)
     ably_api_key: str = ""
@@ -48,6 +52,9 @@ class Settings(BaseSettings):
     next_public_clerk_publishable_key: str = ""
     clerk_secret_key: str = ""
     clerk_jwks_url: str = ""
+
+    # Admin
+    admin_api_key: str = ""          # Set in Railway — protects /admin endpoints
 
     # App
     api_url: str = "http://localhost:8000"

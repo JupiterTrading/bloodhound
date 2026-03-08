@@ -1,34 +1,52 @@
 "use client";
 
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
+import { kolFeedApi, type KolTrade } from "@/lib/api";
 
-// Mock live feed data — will be replaced by real Ably data
-const FEED_EVENTS = [
-  { label: "poop", action: "bought", token: "BONK", amount: "420K", amountUsd: "$12.4K", time: "2s", type: "buy" },
-  { label: "punk.sol", action: "sold", token: "WIF", amount: "1.2M", amountUsd: "$8.1K", time: "5s", type: "sell" },
-  { label: "DEZ...4kPz", action: "sniped", token: "GOAT", amount: "50K", amountUsd: "$4.2K", time: "12s", type: "snipe" },
-  { label: "whale_12", action: "transferred", token: "SOL", amount: "850", amountUsd: "$124K", time: "18s", type: "transfer" },
-  { label: "insider_A", action: "bought", token: "MOODENG", amount: "2.8M", amountUsd: "$31K", time: "24s", type: "buy" },
-  { label: "dev_wallet", action: "minted", token: "NEWTOKEN", amount: "1B", amountUsd: "—", time: "31s", type: "mint" },
-  { label: "bundler_3", action: "bundled", token: "PEPE2", amount: "200K", amountUsd: "$9.8K", time: "38s", type: "bundle" },
-  { label: "smartmoney9", action: "bought", token: "POPCAT", amount: "500K", amountUsd: "$22K", time: "44s", type: "buy" },
-  { label: "MiDa...9xPz", action: "sold", token: "DOGWIF", amount: "180K", amountUsd: "$7.2K", time: "52s", type: "sell" },
-  { label: "kol_larry", action: "transferred", token: "SOL", amount: "200", amountUsd: "$29K", time: "1m", type: "transfer" },
-  { label: "rug_watch", action: "sold", token: "SHIB2", amount: "99%", amountUsd: "$44K", time: "1m", type: "sell" },
-  { label: "sniper_X", action: "sniped", token: "PNUT", amount: "900K", amountUsd: "$18K", time: "2m", type: "snipe" },
+// Fallback shown while real data loads
+const FALLBACK_EVENTS = [
+  { label: "punk.sol", action: "bought", amountUsd: "$22K", dex: "Raydium", time: "3s", type: "buy" },
+  { label: "dev_wallet", action: "sold", amountUsd: "$44K", dex: "Pump.fun", time: "9s", type: "sell" },
+  { label: "sniper_X", action: "bought", amountUsd: "$18K", dex: "Raydium", time: "15s", type: "buy" },
+  { label: "whale_12", action: "sold", amountUsd: "$124K", dex: "Jupiter", time: "22s", type: "sell" },
+  { label: "smartmoney9", action: "bought", amountUsd: "$9.8K", dex: "Pump.fun", time: "31s", type: "buy" },
+  { label: "kol_larry", action: "bought", amountUsd: "$29K", dex: "Raydium", time: "40s", type: "buy" },
+  { label: "insider_A", action: "sold", amountUsd: "$31K", dex: "Jupiter", time: "55s", type: "sell" },
+  { label: "bundler_3", action: "bought", amountUsd: "$9.8K", dex: "Pump.fun", time: "1m", type: "buy" },
 ];
 
-// Duplicate so the CSS scroll loop works seamlessly
-const DOUBLED = [...FEED_EVENTS, ...FEED_EVENTS];
-
-const EVENT_COLORS: Record<string, string> = {
-  buy: "#22c55e",
-  sell: "var(--accent)",
-  snipe: "#facc15",
-  bundle: "#c084fc",
-  transfer: "var(--text-muted)",
-  mint: "#38bdf8",
+const DEX_LABELS: Record<string, string> = {
+  raydium: "Raydium",
+  pump_fun: "Pump.fun",
+  jupiter_agg: "Jupiter",
+  orca: "Orca",
+  meteora: "Meteora",
 };
+
+function formatUsd(n: number): string {
+  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
+  if (n >= 1_000) return `$${Math.round(n / 1_000)}K`;
+  return `$${n.toFixed(0)}`;
+}
+
+function timeAgo(iso: string): string {
+  const secs = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
+  if (secs < 60) return `${secs}s`;
+  if (secs < 3600) return `${Math.floor(secs / 60)}m`;
+  return `${Math.floor(secs / 3600)}h`;
+}
+
+function tradeToRow(t: KolTrade) {
+  return {
+    label: t.kol_label ?? `${t.trader.slice(0, 4)}…${t.trader.slice(-4)}`,
+    action: t.direction === "buy" ? "bought" : "sold",
+    amountUsd: formatUsd(t.amount_usd),
+    dex: DEX_LABELS[t.dex] ?? t.dex ?? "DEX",
+    time: timeAgo(t.block_time),
+    type: t.direction,
+  };
+}
 
 export function LandingHero() {
   return (
@@ -59,6 +77,7 @@ export function LandingHero() {
 
       {/* Centered content */}
       <div
+        className="landing-hero-grid"
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
@@ -198,6 +217,21 @@ export function LandingHero() {
 }
 
 function LiveFeedPanel() {
+  const { data } = useQuery({
+    queryKey: ["kol-feed-hero"],
+    queryFn: () => kolFeedApi.feed({ limit: 40, min_usd: 1000 }),
+    staleTime: 30_000,
+    refetchInterval: 30_000,
+    retry: false,
+  });
+
+  const rows = data?.trades?.length
+    ? data.trades.map(tradeToRow)
+    : FALLBACK_EVENTS;
+
+  // Duplicate for seamless CSS loop
+  const doubled = [...rows, ...rows];
+
   return (
     <div
       style={{
@@ -216,42 +250,49 @@ function LiveFeedPanel() {
           borderBottom: "1px solid var(--border)",
           display: "flex",
           alignItems: "center",
-          gap: "8px",
+          justifyContent: "space-between",
           background: "var(--bg-elevated)",
         }}
       >
-        <span
-          style={{
-            width: "7px",
-            height: "7px",
-            borderRadius: "50%",
-            background: "#22c55e",
-            animation: "pulse 2s ease-in-out infinite",
-            display: "inline-block",
-          }}
-        />
-        <span
-          style={{
-            fontFamily: "JetBrains Mono, monospace",
-            fontSize: "11px",
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "var(--text-muted)",
-          }}
-        >
-          Live · KOL & Whale Activity
-        </span>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span
+            style={{
+              width: "7px",
+              height: "7px",
+              borderRadius: "50%",
+              background: data?.trades?.length ? "#22c55e" : "#f59e0b",
+              animation: "pulse 2s ease-in-out infinite",
+              display: "inline-block",
+            }}
+          />
+          <span
+            style={{
+              fontFamily: "JetBrains Mono, monospace",
+              fontSize: "11px",
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "var(--text-muted)",
+            }}
+          >
+            Live · KOL Activity
+          </span>
+        </div>
+        {data?.count != null && (
+          <span style={{ fontSize: "10px", color: "var(--text-muted)", fontFamily: "JetBrains Mono, monospace" }}>
+            {data.count} trades
+          </span>
+        )}
       </div>
 
-      {/* Fades at top and bottom */}
+      {/* Fade overlays */}
       <div
         style={{
           position: "absolute",
           top: "50px",
           left: 0,
           right: 0,
-          height: "40px",
+          height: "32px",
           background: "linear-gradient(to bottom, var(--bg-surface), transparent)",
           zIndex: 2,
           pointerEvents: "none",
@@ -263,7 +304,7 @@ function LiveFeedPanel() {
           bottom: 0,
           left: 0,
           right: 0,
-          height: "60px",
+          height: "56px",
           background: "linear-gradient(to top, var(--bg-surface), transparent)",
           zIndex: 2,
           pointerEvents: "none",
@@ -271,20 +312,9 @@ function LiveFeedPanel() {
       />
 
       {/* Scrolling feed */}
-      <div
-        style={{
-          height: "calc(100% - 50px)",
-          overflow: "hidden",
-          position: "relative",
-        }}
-      >
-        <div
-          style={{
-            animation: "ticker 28s linear infinite",
-            willChange: "transform",
-          }}
-        >
-          {DOUBLED.map((event, i) => (
+      <div style={{ height: "calc(100% - 50px)", overflow: "hidden", position: "relative" }}>
+        <div style={{ animation: "ticker 32s linear infinite", willChange: "transform" }}>
+          {doubled.map((event, i) => (
             <FeedEventRow key={i} event={event} />
           ))}
         </div>
@@ -293,12 +323,11 @@ function LiveFeedPanel() {
   );
 }
 
-function FeedEventRow({
-  event,
-}: {
-  event: (typeof FEED_EVENTS)[0];
-}) {
-  const color = EVENT_COLORS[event.type] ?? "var(--text-muted)";
+type FeedRow = { label: string; action: string; amountUsd: string; dex: string; time: string; type: string };
+
+function FeedEventRow({ event }: { event: FeedRow }) {
+  const isBuy = event.type === "buy";
+  const amountColor = isBuy ? "#22c55e" : "var(--accent)";
 
   return (
     <div
@@ -311,19 +340,17 @@ function FeedEventRow({
         fontSize: "12px",
       }}
     >
-      {/* Time */}
+      {/* Direction dot */}
       <span
         style={{
-          fontFamily: "JetBrains Mono, monospace",
-          fontSize: "10px",
-          color: "var(--text-muted)",
-          width: "28px",
+          width: "6px",
+          height: "6px",
+          borderRadius: "50%",
+          background: amountColor,
           flexShrink: 0,
-          textAlign: "right",
+          opacity: 0.8,
         }}
-      >
-        {event.time}
-      </span>
+      />
 
       {/* Wallet label */}
       <span
@@ -331,7 +358,8 @@ function FeedEventRow({
           fontWeight: 600,
           color: "var(--text-primary)",
           fontSize: "12px",
-          minWidth: "90px",
+          minWidth: "80px",
+          maxWidth: "110px",
           overflow: "hidden",
           textOverflow: "ellipsis",
           whiteSpace: "nowrap",
@@ -345,31 +373,45 @@ function FeedEventRow({
         {event.action}
       </span>
 
-      {/* Amount + token */}
+      {/* Amount */}
       <span
         style={{
           fontFamily: "JetBrains Mono, monospace",
           fontSize: "12px",
-          color,
-          fontWeight: 500,
+          color: amountColor,
+          fontWeight: 600,
           whiteSpace: "nowrap",
           flexShrink: 0,
         }}
       >
-        {event.amount} {event.token}
+        {event.amountUsd}
       </span>
 
-      {/* USD value */}
+      {/* DEX */}
       <span
         style={{
-          fontFamily: "JetBrains Mono, monospace",
-          fontSize: "11px",
+          fontSize: "10px",
           color: "var(--text-muted)",
           marginLeft: "auto",
           whiteSpace: "nowrap",
+          flexShrink: 0,
         }}
       >
-        {event.amountUsd}
+        {event.dex}
+      </span>
+
+      {/* Time */}
+      <span
+        style={{
+          fontFamily: "JetBrains Mono, monospace",
+          fontSize: "10px",
+          color: "var(--text-muted)",
+          width: "28px",
+          flexShrink: 0,
+          textAlign: "right",
+        }}
+      >
+        {event.time}
       </span>
     </div>
   );

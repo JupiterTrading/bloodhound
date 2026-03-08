@@ -86,6 +86,50 @@ async function scrapeKolscanLeaderboard() {
 // ---------------------------------------------------------------------------
 // 2. Dune Analytics — optional curated KOL list with Twitter handles
 // ---------------------------------------------------------------------------
+async function duneGetOrExecute(queryId) {
+  const DUNE_HEADERS = { 'X-DUNE-API-KEY': DUNE_API_KEY };
+
+  // Try cached results first
+  let res = await fetch(
+    `https://api.dune.com/api/v1/query/${queryId}/results/csv`,
+    { headers: DUNE_HEADERS }
+  );
+
+  // 409 = no cached results, need to execute the query first
+  if (res.status === 409) {
+    console.log(`  Query ${queryId}: no cache, executing...`);
+    const execRes = await fetch(
+      `https://api.dune.com/api/v1/query/${queryId}/execute`,
+      { method: 'POST', headers: DUNE_HEADERS }
+    );
+    if (!execRes.ok) { console.warn(`  Query ${queryId}: execute failed ${execRes.status}`); return null; }
+    const { execution_id } = await execRes.json();
+
+    // Poll until complete (max 60s)
+    for (let i = 0; i < 30; i++) {
+      await sleep(2000);
+      const statusRes = await fetch(
+        `https://api.dune.com/api/v1/execution/${execution_id}/status`,
+        { headers: DUNE_HEADERS }
+      );
+      const status = await statusRes.json();
+      process.stdout.write(`  Query ${queryId}: ${status.state}...\r`);
+      if (status.state === 'QUERY_STATE_COMPLETED') break;
+      if (status.state === 'QUERY_STATE_FAILED') { console.warn(`\n  Query ${queryId}: failed`); return null; }
+    }
+    console.log('');
+
+    // Fetch results now that query is done
+    res = await fetch(
+      `https://api.dune.com/api/v1/execution/${execution_id}/results/csv`,
+      { headers: DUNE_HEADERS }
+    );
+  }
+
+  if (!res.ok) { console.warn(`  Query ${queryId}: ${res.status}`); return null; }
+  return res.text();
+}
+
 async function fetchDuneKols() {
   if (!DUNE_API_KEY) {
     console.log('\n[2/3] Dune: no DUNE_API_KEY — skipping');
@@ -93,38 +137,69 @@ async function fetchDuneKols() {
     return [];
   }
 
-  console.log('\n[2/3] Fetching Dune KOL wallet lists...');
+  console.log('\n[2/3] Fetching Dune wallet data...');
   const wallets = [];
 
-  for (const queryId of ['4838225', '4868517']) {
-    try {
-      const res = await fetch(
-        `https://api.dune.com/api/v1/query/${queryId}/results/csv`,
-        { headers: { 'X-DUNE-API-KEY': DUNE_API_KEY } }
-      );
-      if (!res.ok) { console.warn(`  Query ${queryId}: ${res.status}`); continue; }
-
-      const csv = await res.text();
+  // Query 4868517 — curated KOL address list (addresses only, no labels)
+  // Used for cross-referencing, not directly inserted (requires label)
+  try {
+    const csv = await duneGetOrExecute('4868517');
+    if (csv) {
       const lines = csv.trim().split('\n');
       const hdrs = lines[0].split(',').map(h => h.trim().toLowerCase().replace(/"/g, ''));
       const ai = hdrs.findIndex(h => h.includes('address') || h.includes('wallet'));
-      const ni = hdrs.findIndex(h => h.includes('name') || h.includes('label'));
-      const ti = hdrs.findIndex(h => h.includes('twitter') || h.includes('handle'));
-
-      if (ai === -1) continue;
-      for (const line of lines.slice(1)) {
-        const cols = line.split(',').map(c => c.trim().replace(/"/g, ''));
-        const address = cols[ai];
-        if (!address || address.length < 32) continue;
-        wallets.push({
-          address,
-          label: ni !== -1 ? cols[ni] : null,
-          twitter_handle: ti !== -1 ? cols[ti]?.replace('@', '') || null : null,
-        });
+      if (ai !== -1) {
+        let count = 0;
+        for (const line of lines.slice(1)) {
+          const cols = line.split(',').map(c => c.trim().replace(/"/g, ''));
+          const address = cols[ai];
+          if (!address || address.length < 32) continue;
+          wallets.push({ address, label: null, twitter_handle: null, _source: 'dune_4868517' });
+          count++;
+        }
+        console.log(`  Query 4868517: ${count} addresses (no labels — used for cross-ref)`);
       }
-      console.log(`  Query ${queryId}: ${lines.length - 1} rows`);
-    } catch (e) { console.warn(`  Query ${queryId}: ${e.message}`); }
-  }
+    }
+  } catch (e) { console.warn(`  Query 4868517: ${e.message}`); }
+
+  // Query 3832067 — top Solana DEX traders by volume (has rank + volume data)
+  // Generate meaningful labels from rank + volume metadata
+  try {
+    const csv = await duneGetOrExecute('3832067');
+    if (csv) {
+      const lines = csv.trim().split('\n');
+      const hdrs = lines[0].split(',').map(h => h.trim().toLowerCase().replace(/"/g, ''));
+      const rankI  = hdrs.findIndex(h => h.includes('rank'));
+      const addrI  = hdrs.findIndex(h => h === 'useraddress' || h === 'user_address');
+      const volI   = hdrs.findIndex(h => h.includes('totalvolumeusd') || h.includes('total_volume'));
+      const tradeI = hdrs.findIndex(h => h.includes('numberoftrades') || h.includes('trade'));
+
+      if (addrI === -1) { console.warn('  Query 3832067: no address column'); }
+      else {
+        let count = 0;
+        for (const line of lines.slice(1)) {
+          const cols = line.split(',').map(c => c.trim().replace(/"/g, ''));
+          const address = cols[addrI];
+          if (!address || address.length < 32) continue;
+          const rank    = rankI  !== -1 ? parseInt(cols[rankI])   : null;
+          const vol     = volI   !== -1 ? parseFloat(cols[volI])  : null;
+          const trades  = tradeI !== -1 ? parseInt(cols[tradeI])  : null;
+          const volStr  = vol ? `$${(vol / 1000).toFixed(0)}k` : '';
+          const label   = rank ? `Solana DEX Trader #${rank}` : 'Solana DEX Trader';
+          const desc    = [
+            `High-volume Solana DEX trader.`,
+            rank   ? `Ranked #${rank} by total volume.` : '',
+            volStr ? `${volStr} total volume.`          : '',
+            trades ? `${trades} trades recorded.`       : '',
+          ].filter(Boolean).join(' ');
+
+          wallets.push({ address, label, twitter_handle: null, _description: desc, _category: 'profitable_trader', _source: 'dune_3832067' });
+          count++;
+        }
+        console.log(`  Query 3832067: ${count} volume-ranked traders`);
+      }
+    }
+  } catch (e) { console.warn(`  Query 3832067: ${e.message}`); }
 
   const seen = new Set();
   const unique = wallets.filter(w => { if (seen.has(w.address)) return false; seen.add(w.address); return true; });
@@ -171,20 +246,34 @@ async function upsertToSupabase(rows) {
   console.log(`\n[3/3] Upserting ${rows.length} rows to Supabase...`);
 
   let inserted = 0;
+  let sourceColumnExists = true;
+
   for (let i = 0; i < rows.length; i += 50) {
-    const batch = rows.slice(i, i + 50);
-    // ?on_conflict=address tells PostgREST which column to use for the upsert
+    let batch = rows.slice(i, i + 50);
+    if (!sourceColumnExists) batch = batch.map(({ source, ...r }) => r);
+
     const res = await fetch(`${SUPABASE_URL}/rest/v1/known_wallets?on_conflict=address`, {
       method: 'POST',
       headers: SB_HEADERS,
       body: JSON.stringify(batch),
     });
+
     if (!res.ok) {
-      console.error(`  Batch error: ${await res.text()}`);
+      const err = await res.text();
+      // If source column doesn't exist yet, retry without it
+      if (err.includes("'source'") && sourceColumnExists) {
+        console.warn('  source column not found — run 003_known_wallets_source.sql in Supabase SQL editor to enable it');
+        console.warn('  Retrying without source field...');
+        sourceColumnExists = false;
+        i -= 50; // retry this batch
+        continue;
+      }
+      console.error(`  Batch error: ${err}`);
     } else {
       inserted += batch.length;
     }
   }
+  if (!sourceColumnExists) console.warn('\n  ⚠ source column missing — run packages/db/schema/003_known_wallets_source.sql in Supabase to track wallet origins');
   console.log(`  Inserted/updated: ${inserted}`);
   return inserted;
 }
@@ -201,23 +290,24 @@ async function main() {
   // Step 2: Dune (optional — includes Twitter handles)
   const duneWallets = await fetchDuneKols();
 
-  // Merge all sources — deduplicate by address, Dune takes priority for Twitter
+  // Merge all sources — deduplicate by address
+  // Priority order: KOLscan > Dune (KOLscan label wins if overlap)
   const byAddress = new Map();
-  for (const w of [...leaderboard]) {
-    byAddress.set(w.address, { ...w, twitter_handle: null, source: 'kolscan_leaderboard' });
+
+  for (const w of leaderboard) {
+    byAddress.set(w.address, { ...w, twitter_handle: null, source: 'kolscan_leaderboard', _category: 'kol' });
   }
+
   for (const w of duneWallets) {
     if (!byAddress.has(w.address)) {
-      byAddress.set(w.address, { ...w, source: 'dune_query' });
+      byAddress.set(w.address, { ...w, source: w._source || 'dune_query' });
     } else {
       const existing = byAddress.get(w.address);
+      // Merge: prefer existing label and twitter, pick up Dune twitter if missing
       byAddress.set(w.address, {
         ...existing,
-        ...w,
-        label: w.label || existing.label,
-        twitter_handle: w.twitter_handle || existing.twitter_handle,
-        // Keep original source if already set, or note it came from both
-        source: existing.source === 'kolscan_leaderboard' ? 'kolscan_leaderboard,dune_query' : 'dune_query',
+        twitter_handle: existing.twitter_handle || w.twitter_handle,
+        source: `${existing.source},${w._source || 'dune_query'}`,
       });
     }
   }
@@ -232,14 +322,17 @@ async function main() {
     const label = data.label || heliusData[address]?.helius_label;
     if (!label || label.length < 2) continue;
 
+    const category = data._category || (data._source === 'dune_3832067' ? 'profitable_trader' : 'kol');
+    const description = data._description ||
+      (category === 'kol' ? 'KOLscan leaderboard trader. Ranked by realized PnL.' : 'Notable Solana wallet.');
     rows.push({
       address,
       label,
-      category: 'kol',
-      description: `KOLscan leaderboard trader. Ranked by realized PnL.`,
+      category,
+      description,
       twitter_handle: data.twitter_handle || null,
       telegram_handle: null,
-      confidence: 0.80,
+      confidence: category === 'kol' ? 0.80 : 0.70,
       status: 'approved',
       source: data.source || 'kolscan_leaderboard',
     });

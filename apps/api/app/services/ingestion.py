@@ -1,6 +1,6 @@
 """
 Transaction ingestion pipeline.
-Helius webhook payload → parsed records → ClickHouse write.
+Helius webhook payload → parsed records → USD enrichment → ClickHouse write.
 """
 
 from datetime import datetime
@@ -92,6 +92,33 @@ def _extract_transfers(
         })
 
     return transfers
+
+
+def enrich_with_prices(
+    transfers: list[dict[str, Any]],
+    trades: list[dict[str, Any]],
+    prices: dict[str, float],
+) -> None:
+    """
+    Backfill amount_usd in-place using a price map {mint: price_usd}.
+
+    For transfers: amount_usd = amount * price of token_mint.
+    For trades: amount_usd = amount_out * price of token_out_mint
+                (value of what the trader received).
+    Non-fatal — rows without a known price retain amount_usd = 0.0.
+    """
+    for t in transfers:
+        mint = t.get("token_mint", "")
+        price = prices.get(mint)
+        if price is not None and price > 0:
+            t["amount_usd"] = round(float(t.get("amount", 0)) * price, 4)
+
+    for trade in trades:
+        # Value by output token (what the trader received)
+        mint_out = trade.get("token_out_mint", "")
+        price = prices.get(mint_out)
+        if price is not None and price > 0:
+            trade["amount_usd"] = round(float(trade.get("amount_out", 0)) * price, 4)
 
 
 def _extract_trades(

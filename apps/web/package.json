@@ -25,7 +25,8 @@
     "lucide-react": "^0.400.0",
     "date-fns": "^3.0.0",
     "react-use-websocket": "^4.0.0",
-    "ably": "^2.0.0"
+    "ably": "^2.0.0",
+    "stripe": "^17.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

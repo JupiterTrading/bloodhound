@@ -5,6 +5,144 @@ import { useQuery } from "@tanstack/react-query";
 import { BloodhoundLogo } from "@/components/ui/BloodhoundLogo";
 import { LandingHero } from "@/components/landing/LandingHero";
 
+// CoinGecko free API — no key needed, CORS allowed from browser
+const COINGECKO_URL =
+  "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true";
+
+interface CoinData {
+  usd: number;
+  usd_24h_change: number;
+}
+interface MacroPrices {
+  bitcoin: CoinData;
+  ethereum: CoinData;
+  solana: CoinData;
+}
+
+const MACRO_COINS = [
+  { id: "bitcoin", symbol: "BTC" },
+  { id: "ethereum", symbol: "ETH" },
+  { id: "solana", symbol: "SOL" },
+] as const;
+
+function formatMacroPrice(n: number): string {
+  if (n >= 1000) return n.toLocaleString("en-US", { maximumFractionDigits: 0 });
+  if (n >= 1) return n.toFixed(2);
+  return n.toPrecision(4);
+}
+
+function MacroTicker() {
+  const { data } = useQuery<MacroPrices>({
+    queryKey: ["macro-prices"],
+    queryFn: () => fetch(COINGECKO_URL).then((r) => r.json()),
+    staleTime: 60_000,
+    refetchInterval: 60_000,
+    retry: false,
+  });
+
+  return (
+    <div
+      style={{
+        borderBottom: "1px solid var(--border)",
+        background: "var(--bg-elevated)",
+        padding: "0 40px",
+        display: "flex",
+        alignItems: "center",
+        gap: "0",
+        overflowX: "auto",
+        scrollbarWidth: "none",
+      }}
+    >
+      {/* Label */}
+      <span
+        style={{
+          fontSize: "9px",
+          fontWeight: 700,
+          letterSpacing: "0.12em",
+          textTransform: "uppercase",
+          color: "var(--text-muted)",
+          paddingRight: "20px",
+          borderRight: "1px solid var(--border)",
+          marginRight: "20px",
+          whiteSpace: "nowrap",
+          flexShrink: 0,
+          lineHeight: "40px",
+        }}
+      >
+        Markets
+      </span>
+
+      {MACRO_COINS.map(({ id, symbol }) => {
+        const coin = data?.[id as keyof MacroPrices];
+        const change = coin?.usd_24h_change ?? 0;
+        const isUp = change >= 0;
+        return (
+          <div
+            key={id}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+              padding: "0 20px",
+              borderRight: "1px solid var(--border)",
+              height: "40px",
+              flexShrink: 0,
+            }}
+          >
+            <span
+              style={{
+                fontSize: "11px",
+                fontWeight: 700,
+                color: "var(--text-secondary)",
+                letterSpacing: "0.04em",
+              }}
+            >
+              {symbol}
+            </span>
+            <span
+              style={{
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: "12px",
+                color: "var(--text-primary)",
+                fontWeight: 500,
+              }}
+            >
+              {coin ? `$${formatMacroPrice(coin.usd)}` : "—"}
+            </span>
+            {coin && (
+              <span
+                style={{
+                  fontFamily: "JetBrains Mono, monospace",
+                  fontSize: "10px",
+                  fontWeight: 600,
+                  color: isUp ? "#22c55e" : "var(--accent)",
+                }}
+              >
+                {isUp ? "+" : ""}
+                {change.toFixed(2)}%
+              </span>
+            )}
+          </div>
+        );
+      })}
+
+      {/* Solana-specific note */}
+      <span
+        style={{
+          fontSize: "10px",
+          color: "var(--text-muted)",
+          padding: "0 20px",
+          whiteSpace: "nowrap",
+          flexShrink: 0,
+          fontFamily: "JetBrains Mono, monospace",
+        }}
+      >
+        Solana Mainnet · Live
+      </span>
+    </div>
+  );
+}
+
 export default function LandingPage() {
   return (
     <div
@@ -19,6 +157,9 @@ export default function LandingPage() {
 
       {/* Hero */}
       <LandingHero />
+
+      {/* Macro price ticker */}
+      <MacroTicker />
 
       {/* Stats strip */}
       <StatsStrip />
@@ -796,6 +937,7 @@ function LandingFooter() {
       <nav style={{ display: "flex", gap: "20px" }}>
         {[
           { label: "Explorer", href: "/explorer" },
+          { label: "Pricing", href: "/pricing" },
           { label: "Docs", href: "/docs" },
           { label: "API", href: "/api-docs" },
           { label: "GitHub", href: "https://github.com/JupiterTrading/bloodhound" },

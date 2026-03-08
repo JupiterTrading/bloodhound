@@ -1,12 +1,13 @@
 /**
  * Catch-all proxy route: forwards all /api/* requests to the FastAPI backend.
  * Keeps the backend URL server-side (never exposed to the client).
- * Handles GET, POST, PUT, DELETE.
+ * Automatically injects Clerk session JWT as Bearer token so FastAPI auth works.
  */
 
 import { NextRequest, NextResponse } from "next/server";
+import { auth } from "@clerk/nextjs/server";
 
-const API_URL = process.env.API_URL ?? "http://localhost:8000";
+const API_URL = (process.env.API_URL ?? "http://localhost:8000").replace(/\/$/, "");
 
 async function proxy(
   request: NextRequest,
@@ -19,9 +20,20 @@ async function proxy(
   const headers = new Headers();
   // Forward relevant headers, skip hop-by-hop headers
   for (const [key, value] of request.headers.entries()) {
-    if (!["host", "connection", "transfer-encoding"].includes(key.toLowerCase())) {
+    if (!["host", "connection", "transfer-encoding", "authorization"].includes(key.toLowerCase())) {
       headers.set(key, value);
     }
+  }
+
+  // Inject Clerk JWT so FastAPI get_current_user_id() works for /v1/me/* endpoints
+  try {
+    const { getToken } = await auth();
+    const token = await getToken();
+    if (token) {
+      headers.set("Authorization", `Bearer ${token}`);
+    }
+  } catch {
+    // Not signed in — leave Authorization unset (public endpoints still work)
   }
 
   const init: RequestInit = {
