@@ -7,7 +7,7 @@ import json
 from typing import Any
 from functools import lru_cache
 
-from upstash_redis import Redis
+from upstash_redis.asyncio import Redis
 from app.core.config import get_settings
 
 settings = get_settings()
@@ -38,7 +38,7 @@ async def cache_get(key: str) -> Any | None:
     if not redis:
         return None
     try:
-        value = redis.get(key)
+        value = await redis.get(key)
         if value is None:
             return None
         return json.loads(value) if isinstance(value, str) else value
@@ -52,7 +52,7 @@ async def cache_set(key: str, value: Any, ttl: int = TTL_WALLET_STATS) -> None:
     if not redis:
         return
     try:
-        redis.set(key, json.dumps(value, default=str), ex=ttl)
+        await redis.set(key, json.dumps(value, default=str), ex=ttl)
     except Exception:
         pass
 
@@ -63,7 +63,7 @@ async def cache_delete(key: str) -> None:
     if not redis:
         return
     try:
-        redis.delete(key)
+        await redis.delete(key)
     except Exception:
         pass
 
@@ -74,9 +74,9 @@ async def cache_incr(key: str, ttl: int = 86400) -> int:
     if not redis:
         return 0
     try:
-        val = redis.incr(key)
+        val = await redis.incr(key)
         if val == 1:
-            redis.expire(key, ttl)
+            await redis.expire(key, ttl)
         return val
     except Exception:
         return 0
