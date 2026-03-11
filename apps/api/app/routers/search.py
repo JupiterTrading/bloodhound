@@ -5,9 +5,17 @@ GET /v1/search/autocomplete?q=...
 """
 
 import re
+import logging
+import httpx
 from fastapi import APIRouter, Query
 from app.services import clickhouse, supabase as supabase_svc
 from app.services.redis_cache import cache_get, cache_set, search_key, TTL_SEARCH
+
+logger = logging.getLogger(__name__)
+
+# DexScreener API endpoints
+DEXSCREENER_SEARCH_URL = "https://api.dexscreener.com/latest/dex/search"
+DEXSCREENER_TOKEN_URL = "https://api.dexscreener.com/latest/dex/tokens"
 
 router = APIRouter()
 
@@ -24,7 +32,7 @@ def _classify_query(q: str) -> str:
         return "transaction"
     if _ADDR_RE.match(q):
         return "address"
-    if q.startswith("@") or _HANDLE_RE.match(q):
+    if q.startswith("@") and _HANDLE_RE.match(q):
         return "handle"
     return "text"
 
@@ -63,50 +71,60 @@ async def universal_search(
 
     elif query_type == "handle":
         handle = q.lstrip("@")
-        # Search known_wallets by twitter_handle
-        client = supabase_svc.get_client()
-        result = (
-            client.table("known_wallets")
-            .select("address,label,category,twitter_handle")
-            .ilike("twitter_handle", handle)
-            .eq("status", "approved")
-            .limit(limit)
-            .execute()
-        )
-        for row in result.data or []:
-            results.append(
-                {
-                    "type": "wallet",
-                    "id": row["address"],
-                    "label": row["label"],
-                    "sublabel": f"@{row.get('twitter_handle', '')}",
-                    "href": f"/wallet/{row['address']}",
-                    "known": row,
-                }
+        # Search known_wallets by twitter_handle (partial match)
+        try:
+            client = supabase_svc.get_client()
+            result = (
+                client.table("known_wallets")
+                .select("address,label,category,twitter_handle")
+                .ilike("twitter_handle", f"%{handle}%")
+                .eq("status", "approved")
+                .limit(limit)
+                .execute()
             )
+            for row in result.data or []:
+                results.append(
+                    {
+                        "type": "wallet",
+                        "id": row["address"],
+                        "label": row["label"],
+                        "sublabel": f"@{row.get('twitter_handle', '')}",
+                        "href": f"/wallet/{row['address']}",
+                        "known": row,
+                    }
+                )
+        except Exception as e:
+            logger.warning(f"Supabase handle search error: {e}")
 
     else:
-        # Text search — search known wallet labels
-        client = supabase_svc.get_client()
-        wallet_results = (
-            client.table("known_wallets")
-            .select("address,label,category,twitter_handle")
-            .ilike("label", f"%{q}%")
-            .eq("status", "approved")
-            .limit(limit)
-            .execute()
-        )
-        for row in wallet_results.data or []:
-            results.append(
-                {
-                    "type": "wallet",
-                    "id": row["address"],
-                    "label": row["label"],
-                    "sublabel": row.get("category"),
-                    "href": f"/wallet/{row['address']}",
-                    "known": row,
-                }
+        # Text search — known wallet labels + DexScreener token search
+        try:
+            client = supabase_svc.get_client()
+            wallet_results = (
+                client.table("known_wallets")
+                .select("address,label,category,twitter_handle")
+                .ilike("label", f"%{q}%")
+                .eq("status", "approved")
+                .limit(limit)
+                .execute()
             )
+            for row in wallet_results.data or []:
+                results.append(
+                    {
+                        "type": "wallet",
+                        "id": row["address"],
+                        "label": row["label"],
+                        "sublabel": row.get("category"),
+                        "href": f"/wallet/{row['address']}",
+                        "known": row,
+                    }
+                )
+        except Exception as e:
+            logger.warning(f"Supabase text search error: {e}")
+
+        # Token search via DexScreener (free, no key required)
+        token_results = await _search_dexscreener(q, limit - len(results))
+        results.extend(token_results)
 
     return {"q": q, "query_type": query_type, "results": results[:limit]}
 
@@ -131,27 +149,40 @@ async def search_autocomplete(
         suggestions.append(
             {"type": "wallet", "id": q, "label": f"{q[:8]}...", "href": f"/wallet/{q}"}
         )
+    elif query_type == "transaction":
+        # Transaction signature — suggest navigating to tx detail
+        suggestions.append(
+            {"type": "transaction", "id": q, "label": f"{q[:16]}...", "href": f"/tx/{q}"}
+        )
     else:
         # Label prefix match from Supabase known_wallets
-        client = supabase_svc.get_client()
-        result = (
-            client.table("known_wallets")
-            .select("address,label,category")
-            .ilike("label", f"{q}%")
-            .eq("status", "approved")
-            .limit(8)
-            .execute()
-        )
-        for row in result.data or []:
-            suggestions.append(
-                {
-                    "type": "wallet",
-                    "id": row["address"],
-                    "label": row["label"],
-                    "sublabel": row.get("category"),
-                    "href": f"/wallet/{row['address']}",
-                }
+        try:
+            client = supabase_svc.get_client()
+            result = (
+                client.table("known_wallets")
+                .select("address,label,category")
+                .ilike("label", f"{q}%")
+                .eq("status", "approved")
+                .limit(5)
+                .execute()
             )
+            for row in result.data or []:
+                suggestions.append(
+                    {
+                        "type": "wallet",
+                        "id": row["address"],
+                        "label": row["label"],
+                        "sublabel": row.get("category"),
+                        "href": f"/wallet/{row['address']}",
+                    }
+                )
+        except Exception as e:
+            logger.warning(f"Supabase autocomplete error: {e}")
+
+        # Token autocomplete via DexScreener
+        if len(suggestions) < 8:
+            token_results = await _search_dexscreener(q, 8 - len(suggestions))
+            suggestions.extend(token_results)
 
     result_payload = {"q": q, "suggestions": suggestions}
     await cache_set(cache_key, result_payload, TTL_SEARCH)
@@ -161,5 +192,70 @@ async def search_autocomplete(
 async def _safe(coro, default=None):
     try:
         return await coro
-    except Exception:
+    except Exception as e:
+        logger.debug(f"_safe caught exception: {e}")
         return default
+
+
+async def _search_dexscreener(query: str, limit: int = 10) -> list[dict]:
+    """
+    Search DexScreener for Solana tokens.
+    Handles multiple API response formats gracefully.
+    """
+    results: list[dict] = []
+    seen_mints: set[str] = set()
+    
+    try:
+        async with httpx.AsyncClient(timeout=5.0) as http:
+            # Try the search endpoint first
+            resp = await http.get(DEXSCREENER_SEARCH_URL, params={"q": query})
+            
+            if resp.status_code == 200:
+                data = resp.json()
+                
+                # Handle different response formats
+                pairs = []
+                if isinstance(data, dict):
+                    # Standard format: {"pairs": [...]}
+                    pairs = data.get("pairs") or []
+                    # Alternative format: {"data": {"pairs": [...]}}
+                    if not pairs and "data" in data:
+                        pairs = data.get("data", {}).get("pairs") or []
+                elif isinstance(data, list):
+                    # Direct array of pairs
+                    pairs = data
+                
+                for pair in pairs:
+                    if not isinstance(pair, dict):
+                        continue
+                    # Filter to Solana only
+                    chain_id = pair.get("chainId", "").lower()
+                    if chain_id != "solana":
+                        continue
+                    
+                    base = pair.get("baseToken") or {}
+                    mint = base.get("address", "")
+                    if not mint or mint in seen_mints:
+                        continue
+                    
+                    seen_mints.add(mint)
+                    results.append(
+                        {
+                            "type": "token",
+                            "id": mint,
+                            "label": base.get("name") or base.get("symbol") or mint[:8],
+                            "sublabel": base.get("symbol"),
+                            "href": f"/token/{mint}",
+                        }
+                    )
+                    if len(results) >= limit:
+                        break
+            else:
+                logger.warning(f"DexScreener search returned status {resp.status_code}")
+                
+    except httpx.TimeoutException:
+        logger.debug(f"DexScreener search timeout for query: {query}")
+    except Exception as e:
+        logger.warning(f"DexScreener search error: {e}")
+    
+    return results

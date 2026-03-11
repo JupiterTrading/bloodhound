@@ -1,12 +1,30 @@
+from pathlib import Path
 from pydantic_settings import BaseSettings
 from functools import lru_cache
 
+# Resolve .env.local path robustly (works regardless of cwd)
+_THIS_DIR = Path(__file__).resolve().parent
+_ENV_FILE = _THIS_DIR.parents[3] / ".env.local"  # bloodhound/.env.local
+
 
 class Settings(BaseSettings):
-    # Supabase
-    supabase_url: str = ""
-    supabase_anon_key: str = ""
+    # Supabase - env uses NEXT_PUBLIC_ prefix
+    next_public_supabase_url: str = ""
+    next_public_supabase_anon_key: str = ""
     supabase_service_role_key: str = ""
+
+    # Dune (optional)
+    dune_api_key: str = ""
+
+    @property
+    def supabase_url(self) -> str:
+        """Map NEXT_PUBLIC_SUPABASE_URL to supabase_url for backend use."""
+        return self.next_public_supabase_url
+
+    @property
+    def supabase_anon_key(self) -> str:
+        """Map NEXT_PUBLIC_SUPABASE_ANON_KEY to supabase_anon_key for backend use."""
+        return self.next_public_supabase_anon_key
 
     # Helius
     helius_api_key: str = ""
@@ -69,9 +87,10 @@ class Settings(BaseSettings):
     side_wallet_min_confidence: float = 0.50
 
     class Config:
-        env_file = "../../.env.local"
+        env_file = str(_ENV_FILE)
         env_file_encoding = "utf-8"
         case_sensitive = False
+        extra = "ignore"  # Ignore extra env vars not defined in Settings
 
 
 @lru_cache()

@@ -74,7 +74,7 @@ export function StatusBar() {
           marginLeft: "auto",
         }}
       >
-        {slotData ? `Slot #${slotData.slot.toLocaleString()}` : "Slot: connecting..."}
+        {slotData?.slot != null ? `Slot #${slotData.slot.toLocaleString()}` : "Slot: connecting..."}
       </span>
     </footer>
   );

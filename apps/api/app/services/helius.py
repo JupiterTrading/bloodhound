@@ -73,6 +73,7 @@ async def get_nft_holdings(address: str) -> list[dict[str, Any]]:
     """
     Fetch NFT holdings for a wallet via Helius DAS getAssetsByOwner.
     Returns non-fungible assets only. Paginates up to 5 pages (500 NFTs).
+    Includes compressed NFT detection via compression field.
     """
     NFT_INTERFACES = {"V1_NFT", "ProgrammableNFT", "MplCoreAsset", "V1_PRINT"}
     all_items: list[dict[str, Any]] = []
@@ -89,6 +90,7 @@ async def get_nft_holdings(address: str) -> list[dict[str, Any]]:
                 "displayOptions": {
                     "showFungible": False,
                     "showNativeBalance": False,
+                    "showCollectionMetadata": True,
                 },
             },
         }
@@ -114,6 +116,8 @@ async def get_nft_holdings(address: str) -> list[dict[str, Any]]:
         links = content.get("links", {})
         files = content.get("files") or []
         grouping = item.get("grouping") or []
+        compression = item.get("compression", {})
+        
         collection_address = next(
             (g.get("group_value") for g in grouping if g.get("group_key") == "collection"),
             None,
@@ -124,6 +128,9 @@ async def get_nft_holdings(address: str) -> list[dict[str, Any]]:
             or (files[0].get("cdn_uri") if files else None)
             or (files[0].get("uri") if files else None)
         )
+        
+        # Detect compressed NFT (cNFT)
+        is_compressed = compression.get("compressed", False) if compression else False
 
         nfts.append({
             "mint": item.get("id", ""),
@@ -133,9 +140,88 @@ async def get_nft_holdings(address: str) -> list[dict[str, Any]]:
             "collection_address": collection_address,
             "attributes": metadata.get("attributes", []),
             "interface": item.get("interface"),
+            "is_compressed": is_compressed,
         })
 
+    # Fetch floor prices for collections
+    collection_addresses = list(set(n["collection_address"] for n in nfts if n["collection_address"]))
+    floor_prices = await _get_collection_floors(collection_addresses)
+    
+    # Fetch listing prices for individual NFTs
+    nft_mints = [n["mint"] for n in nfts]
+    listings = await _get_nft_listings(nft_mints)
+    
+    # Add floor prices and listing info to NFTs
+    for nft in nfts:
+        if nft["collection_address"]:
+            nft["floor_price_sol"] = floor_prices.get(nft["collection_address"])
+        else:
+            nft["floor_price_sol"] = None
+        
+        listing = listings.get(nft["mint"])
+        if listing:
+            nft["listing_price_sol"] = listing.get("price_sol")
+            nft["is_listed"] = True
+        else:
+            nft["listing_price_sol"] = None
+            nft["is_listed"] = False
+    
     return nfts
+
+
+async def _get_collection_floors(collection_addresses: list[str]) -> dict[str, float]:
+    """Fetch floor prices for NFT collections from Magic Eden API."""
+    if not collection_addresses:
+        return {}
+    
+    floors: dict[str, float] = {}
+    
+    # Magic Eden collection stats API
+    for addr in collection_addresses[:20]:  # Limit to avoid rate limits
+        try:
+            url = f"https://api-mainnet.magiceden.dev/v2/collections/{addr}/stats"
+            async with httpx.AsyncClient(timeout=5) as client:
+                r = await client.get(url)
+                if r.is_success:
+                    data = r.json()
+                    floor = data.get("floorPrice")
+                    if floor:
+                        floors[addr] = floor / 1_000_000_000  # lamports to SOL
+        except Exception:
+            pass
+    
+    return floors
+
+
+async def _get_nft_listings(mints: list[str]) -> dict[str, dict]:
+    """Fetch listing info for individual NFTs from Magic Eden API."""
+    if not mints:
+        return {}
+    
+    listings: dict[str, dict] = {}
+    
+    # Magic Eden token listing API - batch query
+    for mint in mints[:30]:  # Limit to avoid rate limits
+        try:
+            url = f"https://api-mainnet.magiceden.dev/v2/tokens/{mint}/listings"
+            async with httpx.AsyncClient(timeout=5) as client:
+                r = await client.get(url)
+                if r.is_success:
+                    data = r.json()
+                    # Get the lowest active listing
+                    if data and len(data) > 0:
+                        lowest = min(data, key=lambda x: x.get("price", float("inf")))
+                        price = lowest.get("price")
+                        if price:
+                            listings[mint] = {
+                                "price_sol": price / 1_000_000_000,  # lamports to SOL
+                                "seller": lowest.get("seller"),
+                                "marketplace": lowest.get("source", "magic_eden"),
+                            }
+        except Exception:
+            pass
+    
+    return listings
 
 
 def detect_source_platform(tx: dict[str, Any]) -> str:

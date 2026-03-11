@@ -135,7 +135,7 @@ export function WalletProfile({ address }: Props) {
                 flexWrap: "wrap",
               }}
             >
-              <AddressTag address={address} chars={6} size={13} />
+              <AddressTag address={address} chars={44} size={13} />
               {data.known_wallet?.twitter_handle && (
                 <SocialHandle
                   platform="twitter"

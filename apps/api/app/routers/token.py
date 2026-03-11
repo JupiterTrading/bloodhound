@@ -84,6 +84,9 @@ async def token_holders(
     result = {
         "mint": mint,
         "total": holder_data.get("total", len(holders)),
+        "holder_count": holder_data.get("holder_count", len(holders)),
+        "top10_pct": holder_data.get("top10_pct", 0),
+        "price_usd": holder_data.get("price_usd", 0),
         "holders": holders,
     }
     await cache_set(cache_key, result, TTL_HISTORICAL)
@@ -124,6 +127,19 @@ async def token_security(mint: str):
     security = await _safe(birdeye.get_token_security(mint), default={})
     result = {"mint": mint, **security}
     await cache_set(cache_key, result, TTL_HISTORICAL)
+    return result
+
+
+@router.get("/{mint}/dex-info")
+async def token_dex_info(mint: str):
+    """DexScreener enhanced info: paid orders, boosts, profile."""
+    cache_key = token_key(mint, "dex-info")
+    if cached := await cache_get(cache_key):
+        return cached
+
+    enhanced = await _safe(birdeye.get_token_enhanced_info(mint), default={})
+    result = {"mint": mint, **enhanced}
+    await cache_set(cache_key, result, TTL_PRICE)  # Cache 5 min
     return result
 
 

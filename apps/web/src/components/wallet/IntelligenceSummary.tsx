@@ -79,12 +79,12 @@ function SummaryContent({
   expanded,
   onToggle,
 }: {
-  summary: string;
+  summary: string | null | undefined;
   expanded: boolean;
   onToggle: () => void;
 }) {
   const LINES_VISIBLE = 3;
-  const lines = summary.split("\n").filter(Boolean);
+  const lines = (summary ?? "").split("\n").filter(Boolean);
   const shouldTruncate = lines.length > LINES_VISIBLE;
   const visible = expanded ? lines : lines.slice(0, LINES_VISIBLE);
 

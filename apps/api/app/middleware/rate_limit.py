@@ -15,9 +15,9 @@ from starlette.responses import JSONResponse
 from app.services.redis_cache import cache_get, cache_set, cache_incr, rate_key
 
 # Limits: (requests, window_seconds)
-ANON_LIMIT    = (200,    86400)   # 200/day  — anonymous (IP-based)
-FREE_LIMIT    = (1000,   86400)   # 1K/day   — free signed-in user
-PRO_API_LIMIT = (10_000, 86400)   # 10K/day  — Pro API key holder
+ANON_LIMIT    = (10_000, 86400)   # 10K/day  — anonymous (IP-based) - high for dev
+FREE_LIMIT    = (10_000, 86400)   # 10K/day  — free signed-in user
+PRO_API_LIMIT = (100_000, 86400)  # 100K/day — Pro API key holder
 
 
 def _get_window_bucket(window_seconds: int) -> str:

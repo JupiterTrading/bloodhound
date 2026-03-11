@@ -27,34 +27,104 @@ FUNGIBLE_INTERFACES = {"FungibleToken", "FungibleAsset"}
 
 # ── Shared helper ─────────────────────────────────────────────────────────────
 
+import time
+
+# Track DexScreener rate limit state
+_dexscreener_rate_limited_until = 0.0
+
 async def _get(url: str, params: dict | None = None, headers: dict | None = None, timeout: int = 10) -> dict | None:
+    global _dexscreener_rate_limited_until
+    
+    # Skip DexScreener calls if rate limited
+    if "dexscreener" in url and time.time() < _dexscreener_rate_limited_until:
+        return None
+    
     try:
         async with httpx.AsyncClient(timeout=timeout) as client:
             r = await client.get(url, params=params, headers=headers or {})
             if r.is_success:
                 return r.json()
+            # Handle rate limit - back off for 1 hour
+            if r.status_code == 429 and "dexscreener" in url:
+                _dexscreener_rate_limited_until = time.time() + 3600
+                return None
     except Exception:
         pass
     return None
 
 
-# ── Jupiter — batch token prices ──────────────────────────────────────────────
+# ── Token prices with caching (DexScreener + GeckoTerminal fallback) ─────────
 
-async def _jupiter_prices(mints: list[str]) -> dict[str, float]:
-    """Batch price lookup. Returns {mint: price_usd}. Free, no key needed."""
+from app.services.redis_cache import cache_get, cache_set
+
+PRICE_CACHE_TTL = 1800  # Cache prices for 30 minutes to reduce API calls
+
+async def _gecko_prices(mints: list[str]) -> dict[str, float]:
+    """Fallback price lookup via GeckoTerminal. No strict rate limits."""
     if not mints:
         return {}
     prices: dict[str, float] = {}
-    for i in range(0, len(mints), 100):
-        chunk = mints[i : i + 100]
-        data = await _get(JUPITER_PRICE_URL, params={"ids": ",".join(chunk)})
-        for mint, info in (data or {}).get("data", {}).items():
-            prices[mint] = float(info.get("price", 0) or 0)
+    # GeckoTerminal accepts comma-separated addresses
+    for i in range(0, len(mints), 25):
+        chunk = mints[i : i + 25]
+        data = await _get(
+            f"{GECKO_BASE}/simple/networks/solana/token_price/{','.join(chunk)}",
+            headers=GECKO_HEADERS
+        )
+        if data and "data" in data:
+            attrs = data["data"].get("attributes", {})
+            for mint, info in attrs.get("token_prices", {}).items():
+                if info:
+                    prices[mint] = float(info)
+    return prices
+
+
+async def _dexscreener_prices(mints: list[str]) -> dict[str, float]:
+    """Batch price lookup via DexScreener with caching. Returns {mint: price_usd}."""
+    if not mints:
+        return {}
+    
+    prices: dict[str, float] = {}
+    uncached_mints: list[str] = []
+    
+    # Check cache first
+    for mint in mints:
+        cached = await cache_get(f"price:{mint}")
+        if cached is not None:
+            prices[mint] = cached
+        else:
+            uncached_mints.append(mint)
+    
+    if not uncached_mints:
+        return prices
+    
+    # Try GeckoTerminal first (more lenient rate limits)
+    gecko_prices = await _gecko_prices(uncached_mints)
+    for mint, price in gecko_prices.items():
+        prices[mint] = price
+        await cache_set(f"price:{mint}", price, PRICE_CACHE_TTL)
+    
+    # For remaining uncached mints, try DexScreener
+    still_uncached = [m for m in uncached_mints if m not in gecko_prices]
+    if still_uncached and time.time() >= _dexscreener_rate_limited_until:
+        for i in range(0, len(still_uncached), 30):
+            chunk = still_uncached[i : i + 30]
+            data = await _get(f"{DEXSCREENER_BASE}/latest/dex/tokens/{','.join(chunk)}")
+            if data is None:
+                continue
+            for pair in (data or {}).get("pairs") or []:
+                base_addr = pair.get("baseToken", {}).get("address")
+                if base_addr and base_addr not in prices:
+                    price = float(pair.get("priceUsd", 0) or 0)
+                    prices[base_addr] = price
+                    await cache_set(f"price:{base_addr}", price, PRICE_CACHE_TTL)
+            await asyncio.sleep(0.1)
+    
     return prices
 
 
 async def get_token_price(mint: str) -> float:
-    prices = await _jupiter_prices([mint])
+    prices = await _dexscreener_prices([mint])
     return prices.get(mint, 0.0)
 
 
@@ -106,6 +176,10 @@ async def get_wallet_portfolio(address: str) -> dict[str, Any]:
     for item in items:
         if item.get("interface") not in FUNGIBLE_INTERFACES:
             continue
+        # Skip wrapped SOL - we already added native SOL above
+        mint_id = item.get("id", "")
+        if mint_id == SOL_MINT:
+            continue
         token_info = item.get("token_info", {})
         decimals = int(token_info.get("decimals", 6) or 6)
         raw_amount = int(token_info.get("balance", 0) or 0)
@@ -116,16 +190,16 @@ async def get_wallet_portfolio(address: str) -> dict[str, Any]:
         metadata = content.get("metadata", {})
         links = content.get("links", {})
         raw_holdings.append({
-            "mint": item.get("id", ""),
+            "mint": mint_id,
             "symbol": metadata.get("symbol", ""),
             "name": metadata.get("name", ""),
             "amount": amount,
             "logo_uri": links.get("image"),
         })
 
-    # Price all mints in one batch
+    # Price all mints in one batch via DexScreener
     mints = [h["mint"] for h in raw_holdings if h["mint"]]
-    prices = await _jupiter_prices(mints)
+    prices = await _dexscreener_prices(mints)
 
     holdings = []
     total_usd = 0.0
@@ -282,21 +356,61 @@ async def get_token_holders(mint: str, limit: int = 100, offset: int = 0) -> dic
         "method": "getTokenAccounts",
         "params": {"page": page, "limit": limit, "mint": mint},
     }
+    
+    # Also fetch token metadata for supply info
+    price_usd = 0.0
+    decimals = 9
+    
     try:
         async with httpx.AsyncClient(timeout=15) as client:
             r = await client.post(HELIUS_RPC, json=payload)
             r.raise_for_status()
             accounts = r.json().get("result", {}).get("token_accounts", [])
     except Exception:
-        return {"items": [], "total": 0}
+        return {"items": [], "total": 0, "holder_count": 0, "top10_pct": 0}
 
-    items = [
-        {"address": a.get("owner", ""), "amount": float(a.get("amount", 0) or 0)}
-        for a in accounts
-        if a.get("owner")
-    ]
+    # Get price for value calculation
+    prices = await _dexscreener_prices([mint])
+    price_usd = prices.get(mint, 0)
+    
+    # Get decimals from Jupiter token list
+    meta = await _get(f"https://tokens.jup.ag/token/{mint}")
+    if meta:
+        decimals = meta.get("decimals", 9)
+
+    items = []
+    for a in accounts:
+        owner = a.get("owner", "")
+        if not owner:
+            continue
+        raw_amount = float(a.get("amount", 0) or 0)
+        # Convert from raw to decimal amount
+        amount = raw_amount / (10 ** decimals)
+        value_usd = amount * price_usd
+        items.append({
+            "owner": owner,
+            "amount": amount,
+            "value_usd": round(value_usd, 2),
+        })
+    
     items.sort(key=lambda x: x["amount"], reverse=True)
-    return {"items": items, "total": len(items)}
+    
+    # Calculate percentages based on total of top holders
+    total_amount = sum(h["amount"] for h in items)
+    for h in items:
+        h["percentage"] = round((h["amount"] / total_amount * 100) if total_amount > 0 else 0, 2)
+    
+    # Calculate top 10 concentration
+    top10_amount = sum(h["amount"] for h in items[:10])
+    top10_pct = round((top10_amount / total_amount * 100) if total_amount > 0 else 0, 2)
+    
+    return {
+        "items": items,
+        "total": len(items),
+        "holder_count": len(items),
+        "top10_pct": top10_pct,
+        "price_usd": price_usd,
+    }
 
 
 # ── ClickHouse — top traders from ingested data ───────────────────────────────
@@ -309,38 +423,137 @@ async def get_token_metadata(mint: str) -> dict[str, Any]:
 
 async def get_token_top_traders(mint: str, limit: int = 20) -> list[dict[str, Any]]:
     """
-    Top traders by volume from ClickHouse (wallets we've ingested).
-    Coverage grows as users search/track wallets and backfills accumulate.
+    Top traders for a token - combines holder data with DexScreener pair info.
+    Shows holders ranked by position value with percentage ownership.
     """
-    from app.services import clickhouse
-
-    client = clickhouse.get_client()
-    try:
-        result = await asyncio.to_thread(
-            client.query,
-            """
-            SELECT
-                trader,
-                count()            AS trade_count,
-                sum(amount_usd)    AS volume_usd,
-                sum(realized_pnl_usd) AS pnl_usd
-            FROM token_trades
-            WHERE token_out_mint = {mint:String}
-               OR token_in_mint  = {mint:String}
-            GROUP BY trader
-            ORDER BY volume_usd DESC
-            LIMIT {limit:UInt32}
-            """,
-            parameters={"mint": mint, "limit": limit},
-        )
-        return [
-            {
-                "address":     row[0],
-                "trade_count": int(row[1]),
-                "volume_usd":  float(row[2]),
-                "pnl_usd":     float(row[3]),
-            }
-            for row in result.result_rows
-        ]
-    except Exception:
+    # Get token pair data for price and volume info
+    trades_data = await _get(f"{DEXSCREENER_BASE}/latest/dex/tokens/{mint}")
+    
+    pair = {}
+    price_usd = 0.0
+    if trades_data and trades_data.get("pairs"):
+        pair = trades_data["pairs"][0]
+        try:
+            price_usd = float(pair.get("priceUsd", 0) or 0)
+        except:
+            price_usd = 0.0
+    
+    # Get top token holders with calculated percentages
+    holders_data = await get_token_holders(mint, limit=50)
+    holders = holders_data.get("items", [])
+    
+    if not holders:
         return []
+    
+    # Build enhanced trader list from holders
+    traders = []
+    for h in holders[:limit]:
+        address = h.get("owner", "")
+        amount = h.get("amount", 0)
+        percentage = h.get("percentage", 0)
+        value_usd = h.get("value_usd", 0)
+        
+        if not address:
+            continue
+            
+        traders.append({
+            "address": address,
+            "holding_amount": amount,
+            "holding_pct": percentage,
+            "value_usd": value_usd,
+            "volume": value_usd,  # For backwards compat
+            "pnl": None,  # Would need historical data
+            "trade_count": None,
+        })
+    
+    # Sort by value
+    traders.sort(key=lambda x: x["value_usd"], reverse=True)
+    return traders[:limit]
+
+
+# ── DexScreener Enhanced Token Info ──────────────────────────────────────────
+
+async def get_dex_paid_orders(mint: str) -> dict[str, Any]:
+    """
+    Check if a token has paid for enhanced info on DexScreener.
+    Returns order types: tokenProfile, communityTakeover, tokenAd, trendingBarAd
+    """
+    data = await _get(f"{DEXSCREENER_BASE}/orders/v1/solana/{mint}")
+    if not data:
+        return {"has_paid": False, "orders": []}
+    
+    orders = data if isinstance(data, list) else []
+    approved = [o for o in orders if o.get("status") == "approved"]
+    
+    return {
+        "has_paid": len(approved) > 0,
+        "orders": orders,
+        "has_token_profile": any(o.get("type") == "tokenProfile" and o.get("status") == "approved" for o in orders),
+        "has_community_takeover": any(o.get("type") == "communityTakeover" and o.get("status") == "approved" for o in orders),
+        "has_token_ad": any(o.get("type") == "tokenAd" and o.get("status") == "approved" for o in orders),
+    }
+
+
+async def get_token_boosts(mint: str) -> dict[str, Any]:
+    """
+    Get boost information for a token from DexScreener.
+    """
+    # Check if token is in top boosted
+    data = await _get(f"{DEXSCREENER_BASE}/token-boosts/top/v1")
+    if not data:
+        return {"is_boosted": False, "boost_count": 0}
+    
+    tokens = data if isinstance(data, list) else []
+    for t in tokens:
+        if t.get("tokenAddress", "").lower() == mint.lower():
+            return {
+                "is_boosted": True,
+                "boost_count": t.get("amount", 0),
+                "chain_id": t.get("chainId"),
+                "url": t.get("url"),
+                "description": t.get("description"),
+                "icon": t.get("icon"),
+            }
+    
+    return {"is_boosted": False, "boost_count": 0}
+
+
+async def get_token_profile(mint: str) -> dict[str, Any]:
+    """
+    Get enhanced token profile from DexScreener (if available).
+    Includes logo, description, links, socials.
+    """
+    # Get from token pairs endpoint which includes profile info
+    data = await _get(f"{DEXSCREENER_BASE}/latest/dex/tokens/{mint}")
+    if not data or not data.get("pairs"):
+        return {}
+    
+    pair = data["pairs"][0]
+    info = pair.get("info", {})
+    
+    return {
+        "image_url": info.get("imageUrl"),
+        "header_url": info.get("header"),
+        "description": info.get("description"),
+        "websites": info.get("websites", []),
+        "socials": info.get("socials", []),
+    }
+
+
+async def get_token_enhanced_info(mint: str) -> dict[str, Any]:
+    """
+    Combined call for all DexScreener enhanced info.
+    """
+    import asyncio
+    
+    paid_orders, boosts, profile = await asyncio.gather(
+        get_dex_paid_orders(mint),
+        get_token_boosts(mint),
+        get_token_profile(mint),
+    )
+    
+    return {
+        "dex_paid": paid_orders,
+        "boosts": boosts,
+        "profile": profile,
+    }

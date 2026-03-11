@@ -19,7 +19,11 @@ import json
 import time
 from typing import Any
 
+from app.services.redis_cache import get_redis
+
 PUMPFUN_WS_URL = "wss://pumpportal.fun/api/data"
+REDIS_NEW_PAIRS_KEY = "bh:live:new_pairs"
+REDIS_MAX_PAIRS = 200
 EARLY_BUYER_WINDOW_SECS = 120   # track trades within 2 min of launch
 MAX_EARLY_BUYERS = 50           # cap per token
 RECONNECT_BASE = 2.0            # initial reconnect delay in seconds
@@ -96,10 +100,33 @@ async def _connect_and_listen() -> None:
                         "bonding_curve": event.get("bondingCurveKey", ""),
                     }),
                 }
+                # Store in Redis for instant access
+                try:
+                    redis = await get_redis()
+                    pair_data = {
+                        "token_mint": mint,
+                        "signal_type": "pump_fun_new_token",
+                        "source": "pump_fun",
+                        "detected_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                        "description": signal["description"],
+                        "metadata": {
+                            "mint": mint,
+                            "symbol": symbol,
+                            "name": name,
+                            "deployer": deployer,
+                            "market_cap_sol": market_cap_sol,
+                        },
+                    }
+                    await redis.lpush(REDIS_NEW_PAIRS_KEY, json.dumps(pair_data))
+                    await redis.ltrim(REDIS_NEW_PAIRS_KEY, 0, REDIS_MAX_PAIRS - 1)
+                except Exception as e:
+                    print(f"[pumpfun] redis store error: {e}")
+                
+                # Also try ClickHouse
                 try:
                     await clickhouse.insert_signals([signal])
                 except Exception as e:
-                    print(f"[pumpfun] signal insert error: {e}")
+                    print(f"[pumpfun] clickhouse insert error: {e}")
 
                 # Subscribe to trade stream for this token to capture early buyers
                 await ws.send(json.dumps({"method": "subscribeTokenTrade", "keys": [mint]}))

@@ -30,7 +30,7 @@ These are **complete** — do NOT redo them:
 | | |
 |---|---|
 | **Steps** | 1. Push `apps/api` to Railway. 2. Set all 16 env vars (see `.env.example`). 3. Verify `/health` returns `{"status":"ok"}`. |
-| **Env vars required** | `HELIUS_API_KEY`, `BIRDEYE_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `UPSTASH_REDIS_URL`, `UPSTASH_REDIS_TOKEN`, `CLICKHOUSE_HOST`, `CLICKHOUSE_DATABASE`, `CLICKHOUSE_USER`, `CLICKHOUSE_PASSWORD`, `ANTHROPIC_API_KEY`, `HELIUS_WEBHOOK_SECRET`, `ABLY_API_KEY`, `CLERK_SECRET_KEY`, `CLERK_PUBLISHABLE_KEY` |
+| **Env vars required** | `HELIUS_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `UPSTASH_REDIS_URL`, `UPSTASH_REDIS_TOKEN`, `CLICKHOUSE_HOST`, `CLICKHOUSE_DATABASE`, `CLICKHOUSE_USER`, `CLICKHOUSE_PASSWORD`, `ANTHROPIC_API_KEY`, `HELIUS_WEBHOOK_SECRET`, `ABLY_API_KEY`, `CLERK_SECRET_KEY`, `CLERK_PUBLISHABLE_KEY` |
 | **Vercel** | Set `NEXT_PUBLIC_API_URL=https://<your-railway-url>` and redeploy |
 | **DONE when** | `curl https://<railway-url>/health` → `{"status":"ok"}` and wallet page loads real data |
 
@@ -109,11 +109,51 @@ result = await asyncio.to_thread(client.query, sql, parameters=params)
 
 ---
 
-## Sprint B4 — Signal Detection Engine
-**Goal:** The signals feed currently only reads from the `signals` table — nothing writes to it. This is the biggest missing piece. Signals must be auto-detected from incoming webhook transactions.
+## Sprint B4 — Leaderboard + Ingest Data Quality + Signal Detection
+**Goal (amended Mar 2 2026):** Three related concerns around the ingest → analytics pipeline: (1) leaderboard/performance data layer [DONE], (2) USD enrichment on ingest [PENDING — known gap], (3) signal detection from webhook transactions [PENDING].
 
-### US-B401 — Signal Detection on Webhook Ingest
+### ✅ US-B400 — Leaderboard + Trending Data Layer (DONE Mar 2 2026)
+> As a user, I can see ranked KOL wallets and trending tokens on the Intelligence page and ask the AI "who are the top traders today?"
+
+| | |
+|---|---|
+| **New endpoint** | `GET /v1/leaderboard?category=kol\|profitable_trader\|all&timeframe=1d\|7d\|30d&limit=5..50` |
+| **New endpoints** | `GET /v1/leaderboard/trending`, `GET /v1/leaderboard/gainers?sort_type=gainers\|losers` |
+| **Data sources** | Birdeye portfolio (Phase 1: ranked by `portfolio_usd`). Upgrades automatically to `realized_pnl_usd` from ClickHouse `token_trades` once indexing is running. |
+| **AI tools added** | `get_leaderboard`, `get_trending_tokens` — intent classifier updated with `leaderboard_query` |
+| **Frontend** | `/intelligence` page rebuilt: `LeaderboardPanel` (KOL/Traders, 1d/7d/30d tabs), `TrendingPanel` (trending/gainers/losers tabs) |
+| **Files changed** | `birdeye.py`, `clickhouse.py`, `routers/leaderboard.py` (new), `main.py`, `ai_pipeline.py`, `lib/api.ts`, `intelligence/page.tsx`, `AITerminal.tsx` |
+| **DONE when** | ✅ Intelligence page shows leaderboard table. AI answers "top 5 KOL traders today" with real wallet data. |
+
+---
+
+### US-B401 — USD Enrichment on Ingest (KNOWN GAP)
+> As an analyst, wallet volume stats and leaderboard PnL reflect real dollar values, not zeroes.
+
+**The gap:** `ingestion.py` writes `amount_usd = 0.0` for all transfers and trades. This means:
+- `wallet_summary.total_volume_usd` → always 0 (queries `sum(amount_usd) FROM transfers`)
+- `get_leaderboard_pnl()` → PnL understated (trade amounts have no USD value)
+- Signals relying on USD thresholds (e.g. `large_transfer > $50k`) → never fire correctly
+
+**Fix — price enrichment step in the ingest pipeline:**
+
+| | |
+|---|---|
+| **File** | `apps/api/app/services/ingestion.py` + `apps/api/app/routers/webhooks.py` |
+| **Approach** | After parsing a webhook batch, collect all unique `token_mint` values seen in transfers/trades. Batch-fetch their current USD prices from Jupiter (free, no rate limit). Backfill `amount_usd` before writing to ClickHouse. |
+| **Price source** | Jupiter Price API v2: `GET https://price.jup.ag/v6/price?ids=MINT1,MINT2,...` — returns `{ data: { MINT: { price: float } } }`. Handles up to 100 mints per call. SOL = use `So11111111111111111111111111111111111111112`. |
+| **Why Jupiter not Birdeye** | Jupiter is free and fast for batch price lookups. Birdeye price endpoint is single-mint and counts against quota. Reserve Birdeye for portfolio/OHLCV where it has no free alternative. |
+| **Implementation sketch** | `async def enrich_usd(transfers, trades) -> (transfers, trades)`: collect unique mints → 1 Jupiter call → build `price_map` → multiply `amount * price` → return enriched rows. Called in `process_webhook_payload()` before `clickhouse.insert_*()`. |
+| **Edge cases** | Unknown mints (new pump.fun tokens) will have no Jupiter price → leave `amount_usd = 0.0`. Do not fail the entire ingest batch on a price lookup error. |
+| **Cache** | Cache Jupiter price responses in Redis for 30 seconds (`bh:price:{mint}`) to avoid duplicate lookups across rapid webhook batches. |
+| **DONE when** | After a test webhook, `SELECT amount_usd FROM transfers LIMIT 10` shows non-zero values for SOL and major SPL transfers |
+
+---
+
+### US-B402 — Signal Detection on Webhook Ingest
 > As a user on the Signals page, I see real signals being generated from on-chain activity, not an empty feed.
+
+**Dependency:** US-B401 (USD enrichment) should be done first — signal thresholds like `> $50,000` require `amount_usd` to be non-zero.
 
 | | |
 |---|---|
@@ -126,7 +166,7 @@ result = await asyncio.to_thread(client.query, sql, parameters=params)
 
 | Signal Type | Condition | Confidence |
 |---|---|---|
-| `large_transfer` | SOL transfer > 1000 SOL OR token transfer > $50,000 USD value | PROBABLE |
+| `large_transfer` | SOL transfer > 1000 SOL OR `amount_usd > 50000` | PROBABLE |
 | `new_wallet_funded` | Receiving wallet has 0 prior transactions, funded ≥ 0.1 SOL | SUSPECTED |
 | `known_wallet_active` | Sender or receiver matches a `known_wallets` entry with `status=approved` | CONFIRMED |
 | `multiple_sends` | Same sender → 5+ different recipients in same block | SUSPECTED |
@@ -141,22 +181,333 @@ INSERT INTO signals (
 ) VALUES (...)
 ```
 
-### US-B402 — Signal Confidence Scoring
+### US-B403 — Signal Confidence Scoring
 > As an analyst, I trust signals that come with calibrated confidence levels.
 
 | | |
 |---|---|
 | **File** | `apps/api/app/routers/webhooks.py` signal detection function |
 | **What** | Each signal written to ClickHouse must include a `confidence` value: `CONFIRMED`, `PROBABLE`, or `SUSPECTED` |
-| **Rules** | See confidence column in table above |
+| **Rules** | See confidence column in US-B402 table above |
 | **DONE when** | All signals in the feed have a non-null confidence field |
 
 ---
 
-## Sprint B5 — Program Caller Analytics
+### US-B404 — AI Web Search Tool (NEW — Mar 4 2026)
+> As a user, when I ask Bloodhound AI about a project, event, or person, it can fetch real-world context — not just on-chain data.
+
+**Why this matters:** Without web search, the AI can only answer questions about wallet addresses and transactions. With it, the AI can answer "what happened with the $TRUMP coin launch?", "who is Martin Shkrelli?", "what was the Libra scandal?" and then cross-reference those events against on-chain data it pulls from ClickHouse. This is the feature that makes the AI feel genuinely intelligent rather than a glorified SQL interface.
+
+| | |
+|---|---|
+| **New service** | `apps/api/app/services/brave_search.py` |
+| **API** | Brave Search API — `GET https://api.search.brave.com/res/v1/web/search?q={query}&count=5` |
+| **Auth** | `X-Subscription-Token: {BRAVE_SEARCH_API_KEY}` header |
+| **Cost** | $5/mo (2,000 queries) → $50/mo (50,000 queries). Start on basic. |
+| **New AI tool** | `web_search(query: str) -> { results: [{ title, url, description }] }` — added to `ai_pipeline.py` tool definitions |
+| **Intent routing** | Add `event_query` and `entity_lookup` to intent classifier. These route to web_search before or alongside on-chain tools. |
+| **Sequence** | For `event_query`: web_search first → get context → then check on-chain (ClickHouse/Supabase) for corroborating wallet data → combine into answer |
+| **Cache** | Redis 1hr TTL per query string (`bh:brave:{query_hash}`) — event context doesn't change minute to minute |
+| **Example queries it enables** | "What happened with $TRUMP coin?", "Who is Zach XBT?", "What wallets were involved in the FTX collapse?", "What is pump.fun?", "Tell me about the Libra scandal" |
+| **DONE when** | AI answers "what is $TRUMP coin and who launched it?" with real project context followed by on-chain data |
+
+---
+
+### US-B405 — Historical Backfill Trigger on Wallet Track (NEW — Mar 4 2026)
+> As a user who just tracked a new wallet, I see its full historical activity immediately — not just transactions from the moment I started tracking it.
+
+**The gap:** Currently when a user tracks a wallet, the poller starts fetching its last 10 txs every 5 minutes going forward. But the user sees an empty feed for any wallet they just added because ClickHouse has no history for it yet.
+
+| | |
+|---|---|
+| **File** | `apps/api/app/routers/tracked.py` — `add_tracked_wallet` endpoint |
+| **What** | After saving to Supabase, trigger a background `asyncio.create_task()` to call `fetch_full_history(address)` from `helius.py`, parse + enrich + write the results to ClickHouse |
+| **Function exists** | `helius.fetch_full_history(address)` already written — paginates until no more results |
+| **Enrichment** | Run USD enrichment via Jupiter batch call on the backfill batch (same as webhook ingest) |
+| **Deduplication** | ClickHouse `ReplacingMergeTree` on `tx_signature` handles re-inserts safely |
+| **Rate limiting** | Helius Business tier: 50 RPS. Paginating a wallet with 10,000 txs = 100 API calls — run with small `asyncio.sleep(0.1)` between pages |
+| **Cap** | Max 1,000 txs per backfill (10 pages of 100). Users can request deeper backfill in a future Pro feature. |
+| **DONE when** | Track a new wallet → within 30 seconds its last 1,000 transactions appear in the activity feed |
+
+---
+
+### US-B406 — AI Signal + Events Context Tool (NEW — Mar 4 2026)
+> As a user, when I ask the AI about a wallet or token, it automatically checks whether there are any active signals or known events involving that address.
+
+| | |
+|---|---|
+| **New AI tool** | `get_signals(wallet_address?: str, token_mint?: str) -> { signals: [...] }` — queries ClickHouse `signals` table |
+| **New AI tool** | `get_events(query?: str, wallet_address?: str) -> { events: [...] }` — queries `known_events` Supabase table (built in B6) |
+| **Intent routing** | Added to all intent paths — AI always checks signals for any wallet/token it's discussing |
+| **Response enrichment** | If active signals exist, AI includes them in answer: "This wallet has a `kol_pre_buy` signal from 2 hours ago." |
+| **DONE when** | AI answering a wallet summary question also mentions any active signals for that wallet |
+
+---
+
+## Sprint B5 — Social Layer (Twitter / KOL Intelligence)
+**Goal:** Connect on-chain wallet activity to Twitter identity. Surface who KOLs are, what they're saying, and whether their tweets correlate with their trades. This is a core product differentiator — nobody else does this for Solana at this depth.
+
+### Background — What a KOL Is
+A KOL (Key Opinion Leader) is a crypto influencer with significant Twitter/Telegram following. Their buys and sells move charts. Their tweets about tokens drive retail buying. Bloodhound's edge: showing users what KOLs are doing on-chain **before** or **as** they post about it publicly.
+
+---
+
+### US-B501 — KOL Twitter Profile Enrichment
+> As a user viewing a known wallet, I see the KOL's Twitter identity — followers, bio, and recent tweets — alongside their on-chain activity.
+
+| | |
+|---|---|
+| **New service** | `apps/api/app/services/twitter.py` |
+| **API** | Twitter API v2 — `GET /2/users/by/username/:handle` (profile + followers), `GET /2/users/:id/tweets?max_results=10` (recent tweets) |
+| **Auth** | Bearer token — set `TWITTER_BEARER_TOKEN` env var |
+| **Where to call** | In `wallet.py` `wallet_summary()` — if `known_wallet.twitter_handle` exists, fetch and attach Twitter data |
+| **Response additions** | `twitter: { followers: int, bio: str, recent_tweets: [{ text, created_at, likes, retweets }] }` |
+| **Cache** | Redis 1hr TTL — `bh:twitter:profile:{handle}`. Followers change slowly. |
+| **Frontend** | Add Twitter panel to `WalletProfile` — shows handle, follower count, last 3 tweets with timestamps |
+| **DONE when** | A known KOL wallet page shows their Twitter bio, follower count, and last tweet |
+
+---
+
+### US-B502 — Token Narrative Tracker (Tweet Volume)
+> As a user on a token page, I can see how much Twitter activity $TOKEN is generating right now and whether it's accelerating.
+
+| | |
+|---|---|
+| **New endpoint** | `GET /v1/token/{mint}/social` |
+| **API** | Twitter API v2 search — `GET /2/tweets/search/recent?query=$SYMBOL OR $NAME&max_results=100` |
+| **Metrics to return** | `{ tweet_count_24h, tweet_count_7d, trending_direction: "up"\|"down"\|"flat", top_tweets: [...], kol_mentions: [{ handle, followers, tweet_text, created_at }] }` |
+| **KOL mentions** | Cross-reference tweet authors against `known_wallets.twitter_handle` — if a KOL tweeted about this token, surface them prominently |
+| **Cache** | Redis 15min TTL — tweet volume doesn't need to be real-time |
+| **Frontend** | Add "Social" tab to token page — tweet volume chart + KOL mentions list |
+| **Signal** | If tweet_count_24h > 3× the 7d daily average → fire `narrative_forming` signal |
+| **DONE when** | Token page for a major memecoin shows tweet count, trending direction, and any KOL mentions |
+
+---
+
+### US-B503 — Tweet → Trade Correlation (Pre-Buy Detection)
+> As an analyst, I can see when a KOL bought a token before tweeting about it — the most powerful signal in the product.
+
+| | |
+|---|---|
+| **How it works** | When a KOL tweets about a token: (1) get tweet timestamp, (2) query ClickHouse `token_trades` for that KOL's wallet buying that token in the 6 hours prior, (3) if match → fire signal |
+| **Trigger** | Periodic job (every 15 min) — fetch recent tweets from all KOLs in `known_wallets`, check against trade history |
+| **New endpoint** | `GET /v1/kol/{address}/tweet-trades` — returns list of tweet→trade correlations for a specific KOL |
+| **Signal type** | `kol_pre_buy` — confidence CONFIRMED if trade is >30 min before tweet, PROBABLE if <30 min |
+| **Signal metadata** | `{ kol_label, kol_twitter, token_mint, token_symbol, trade_amount_usd, trade_time, tweet_text, tweet_time, minutes_before_tweet }` |
+| **New file** | `apps/api/app/services/kol_social.py` — contains the correlation job |
+| **Scheduler** | FastAPI `lifespan` startup event or Railway cron — runs every 15 minutes |
+| **Frontend** | On KOL wallet page: "Tweet → Trade History" section. On signals page: `kol_pre_buy` signal type shows in feed. |
+| **DONE when** | A KOL who tweeted about a token they bought shows a `kol_pre_buy` signal in the signals feed |
+
+---
+
+### US-B504 — KOL Telegram Channel Tracking
+> As a user, I can see how large a KOL's Telegram following is alongside their Twitter, giving a full picture of their influence.
+
+| | |
+|---|---|
+| **Scope** | Read-only — fetch member count for public Telegram channels/groups |
+| **API** | Telegram Bot API — `getChat` method returns `member_count` for public channels |
+| **Storage** | Add `telegram_followers` column to `known_wallets` — updated weekly |
+| **Where to surface** | KOL wallet profile page alongside Twitter followers |
+| **Priority** | Lower — Twitter is more important for signal detection. Build after B501–503. |
+| **DONE when** | Known KOL wallets with `telegram_handle` show member count on their profile page |
+
+---
+
+## Sprint B6 — My Portfolio + Own Wallet Intelligence
+**Goal:** Users can add their own wallet(s), see a live portfolio dashboard with USD values and PnL, and ask the AI questions about their own holdings. This is the personal intelligence layer — Bloodhound as your own on-chain analyst.
+
+---
+
+### US-B601 — Multi-Wallet Portfolio Dashboard
+> As a user, I can add my own wallet addresses, see all my holdings aggregated in one view with live USD values, and track my PnL over time.
+
+| | |
+|---|---|
+| **UI** | New page: `/portfolio` — accessible from TopNav when logged in |
+| **How wallets are added** | User marks a tracked wallet as `is_own = true` (already supported in schema). Portfolio page filters to `is_own` wallets only. |
+| **Holdings** | Birdeye `get_wallet_portfolio()` called for each own wallet — aggregate holdings across all wallets, deduplicate by mint |
+| **PnL calculation** | Cost basis: from ClickHouse `token_trades` where `trader = address`. Current value: Birdeye portfolio. PnL = current_value − cost_basis. Shown per token and total. |
+| **Timeline** | "Today", "7D", "30D" PnL toggle — ClickHouse aggregate on `token_trades` for the window |
+| **New endpoint** | `GET /v1/me/portfolio` — aggregates holdings + PnL across all `is_own = true` tracked wallets |
+| **Frontend components** | `PortfolioSummaryBar` (total USD, total PnL, best/worst position), `HoldingsTable` (token, amount, cost basis, current value, PnL, KOL overlap count) |
+| **DONE when** | Logged-in user sees all their holdings with USD values and PnL on `/portfolio` |
+
+---
+
+### US-B602 — KOL Overlap on Holdings ("Who Else Holds This")
+> As a user looking at my portfolio, I can see which KOLs are also holding each token I hold — and whether they've been buying or selling recently.
+
+| | |
+|---|---|
+| **How it works** | For each token in user's portfolio: batch-fetch Birdeye portfolio for all KOL wallets in `known_wallets`. Check which KOLs hold that mint. |
+| **New endpoint** | `GET /v1/token/{mint}/kol-holders` — returns list of KOL wallets holding the token, with amount, USD value, first buy date (from ClickHouse), and recent direction (buying/selling/holding) |
+| **Performance** | Birdeye portfolio calls for 50+ KOL wallets is expensive. Cache aggressively: Redis 30min TTL per mint. |
+| **Response shape** | `{ mint, kol_count, kols: [{ address, label, twitter_handle, followers, amount_usd, first_bought, recent_direction }] }` |
+| **Frontend** | In `HoldingsTable`: each row shows KOL overlap count as a badge — e.g. "4 KOLs". Click → modal showing KOL list with their positions. |
+| **AI tool** | Add `get_kol_overlap(token_mint)` to AI pipeline — AI can answer "who else holds $GEM?" |
+| **DONE when** | User's portfolio shows KOL overlap count per token. Clicking reveals which KOLs and their position sizes. |
+
+---
+
+### US-B603 — AI Portfolio Report
+> As a user, I can ask Bloodhound AI for a report on my holdings — what I own, what smart money thinks, and any risks or opportunities in my portfolio.
+
+| | |
+|---|---|
+| **Trigger** | "Holdings Report" button on `/portfolio` page, or ask the AI: "give me a report on my portfolio" |
+| **Context injected** | AI receives: full holdings list with USD values, KOL overlap per token, any active signals on held tokens, recent PnL |
+| **AI output structure** | Summary paragraph → per-token breakdown (what it is, KOL sentiment, signals, your position) → overall risk assessment → confidence tier |
+| **Example output** | "You hold $GEM ($4,200, +34% this week). 4 KOLs hold this token — 2 have been adding in the last 48 hours. No sell signals detected. $MONKEY ($800, -12%) — 0 KOL overlap, wash trading signal detected 6 hours ago. Consider your risk here. [PROBABLE]" |
+| **New AI tool** | `get_portfolio_report` — calls `/v1/me/portfolio` + `get_kol_overlap` for each holding, assembles context |
+| **Frontend** | Button on portfolio page: "Ask AI about my portfolio". Opens AI terminal pre-loaded with portfolio context. |
+| **DONE when** | User can click "Holdings Report" and receive a structured AI analysis of their portfolio with KOL overlap and signal context |
+
+---
+
+### US-B604 — Historical Events Database (NEW — Mar 4 2026)
+> As a user, I can browse or search a curated database of significant on-chain events and see which wallets were involved, what they did, and what happened.
+
+**Vision:** Think of this as a "case file" system. Each event has a slug, a narrative, a timeline, and a list of wallets with their roles. The AI can reference these events when answering questions. A user can ask "what wallets were involved in the $TRUMP coin launch?" and the AI cross-references the events DB with on-chain data.
+
+**Example events to seed:**
+- `trump-coin-launch` — $TRUMP memecoin, January 2025. Dev wallets, early buyers, insider wallets.
+- `djt-schkrelli` — Martin Shkrelli's $DJT token. Launch wallets, team wallets, bundlers.
+- `libra-scandal` — Meta's Libra/Diem project and associated wallets.
+- `ftx-collapse` — FTX exchange wallets, Alameda Research, fund flows.
+- `solana-saga-airdrop` — Early Saga phone holders, claim wallets, dump patterns.
+- `bonk-launch` — $BONK initial distribution, key insider wallets.
+
+| | |
+|---|---|
+| **New Supabase table** | `known_events` — see schema below |
+| **Schema** | `id (uuid), slug (text unique), title (text), description (text), event_date (date), category (text: memecoin_launch, exchange, scandal, airdrop, protocol), tags (text[]), wallets (jsonb: [{address, label, role, notes}]), external_links (jsonb: [{title, url}]), created_at` |
+| **Seed data** | Start with 6–10 manually curated events. AI enriches descriptions. |
+| **New endpoint** | `GET /v1/events` — list events, filterable by category/tag |
+| **New endpoint** | `GET /v1/events/{slug}` — full event detail with wallets and timeline |
+| **New endpoint** | `GET /v1/events/search?q={query}` — text search across event titles + descriptions |
+| **AI tool** | `get_events(query)` (from US-B406) queries this table |
+| **DONE when** | `GET /v1/events/trump-coin-launch` returns full event data with associated wallet addresses |
+
+---
+
+### US-B605 — Event Pages UI (NEW — Mar 4 2026)
+> As a user, I can click into any known event and see a rich page: what happened, the timeline, the wallets involved and their roles, and a flow graph of the money.
+
+| | |
+|---|---|
+| **New page** | `/event/[slug]` |
+| **Layout** | Header (event title, date, category badge, description) → Timeline section → Involved Wallets table (address, label, role, link to wallet page) → Flow graph (pre-filtered to event wallets) → External links (news, Twitter threads, Solscan) |
+| **Wallet roles** | Examples: `deployer`, `early_buyer`, `insider`, `team_wallet`, `bundler`, `dump_wallet`, `victim` |
+| **Flow graph** | Reuse existing `RelationshipGraph` component — pre-seeded with event wallet addresses |
+| **AI button** | "Ask AI about this event" — opens AI terminal with event context pre-loaded |
+| **Discovery** | Events listed on Intelligence page under new "Notable Events" section. Also surfaced when a wallet is involved in an event (see US-B606). |
+| **DONE when** | `/event/trump-coin-launch` renders with full narrative, wallets table, and working graph |
+
+---
+
+### US-B606 — Wallet → Event Cross-Reference (NEW — Mar 4 2026)
+> As a user viewing a wallet, I can see if that wallet was involved in any known historical events — with their role in the event.
+
+**This is the Zach XBT move.** When someone looks up an unknown wallet, Bloodhound checks it against the events DB. If it shows up as an early buyer in the $TRUMP launch, a bundler in the $DJT launch, or an Alameda Research wallet from FTX — that's the kind of intelligence that no other tool surfaces.
+
+| | |
+|---|---|
+| **Where to add** | `wallet.py` summary endpoint — add `events` field to response |
+| **Query** | On wallet summary load: `SELECT * FROM known_events WHERE wallets @> '[{"address": "{addr}"}]'` (Postgres JSONB contains) |
+| **Response addition** | `events: [{ slug, title, role, event_date }]` — empty array if no matches |
+| **Frontend** | On `WalletProfile` right sidebar: "Known Events" section. Shows event title (linked to `/event/{slug}`), role badge, date. Only shown if array non-empty. |
+| **AI integration** | `get_wallet_summary` tool includes event matches in its output → AI mentions event involvement in narratives |
+| **DONE when** | A wallet address seeded into an event appears with an "Events" section on its profile page |
+
+---
+
+## Sprint B7 — KOL Intelligence Layer (Advanced)
+**Goal:** Advanced cross-wallet intelligence features that make Bloodhound the definitive tool for tracking smart money on Solana.
+
+---
+
+### US-B701 — KOL Activity Feed
+> As a user, I can see a real-time feed of what all tracked KOLs are doing on-chain right now — buys, sells, large moves — in one unified view.
+
+| | |
+|---|---|
+| **New endpoint** | `GET /v1/kol/feed?limit=50` |
+| **Data source** | ClickHouse `token_trades` WHERE `trader IN (SELECT address FROM known_wallets WHERE category = 'kol')` ORDER BY block_time DESC |
+| **Response shape** | `{ trades: [{ kol_label, kol_twitter, trader, token_out_mint, token_symbol, amount_usd, direction: buy\|sell, block_time, tx_signature }] }` |
+| **Frontend** | New tab on `/signals` page: "KOL Activity" — live feed of KOL trades, auto-refreshes every 30s |
+| **Filter** | By specific KOL, by token, by min trade size |
+| **DONE when** | Signals page KOL Activity tab shows recent KOL trades with labels and token symbols |
+
+---
+
+### US-B702 — Smart Money Consensus Score
+> As a user, I can see a "smart money consensus" score for any token — how many KOLs are net buying vs. net selling in the last 48 hours.
+
+| | |
+|---|---|
+| **New endpoint** | `GET /v1/token/{mint}/smart-money` |
+| **Calculation** | For each KOL in known_wallets: net flow = buys − sells in last 48h from ClickHouse. Score = (net_buyers − net_sellers) / total_kols_with_position |
+| **Response** | `{ mint, consensus_score: -1.0 to 1.0, buyers: int, sellers: int, holders: int, net_flow_usd: float, verdict: "accumulating"\|"distributing"\|"mixed"\|"no_data" }` |
+| **Frontend** | Token page: "Smart Money" widget showing score bar, buyer/seller count, verdict label |
+| **AI tool** | `get_smart_money_consensus(token_mint)` — AI can answer "are KOLs buying or selling $GEM?" |
+| **DONE when** | Token page shows smart money consensus for a token with known KOL activity |
+
+---
+
+### US-B703 — KOL Win Rate Leaderboard
+> As a user, I can see which KOLs have the best track record — ranked by win rate, average return, and total realized PnL over time.
+
+| | |
+|---|---|
+| **Builds on** | Leaderboard (B400) + ClickHouse trade data (fills over time) |
+| **New metric** | Win rate = % of closed positions where realized_pnl_usd > 0 |
+| **New metric** | Average return per trade = avg(realized_pnl_usd / cost_basis) |
+| **New metric** | Best trade ever — highest single realized_pnl_usd |
+| **Endpoint addition** | Extend `GET /v1/leaderboard` to return win_rate, avg_return, best_trade when ClickHouse data available |
+| **Frontend** | Add columns to LeaderboardPanel on `/intelligence`: Win Rate, Avg Return, Best Trade |
+| **DONE when** | Leaderboard shows win rate and avg return for KOLs with sufficient trade history |
+
+---
+
+### US-B704 — Enhanced Identity Clustering (NEW — Mar 4 2026)
+> As an analyst, I can see a confidence-scored list of wallets likely controlled by the same person, with an explanation of why Bloodhound thinks so — Zach XBT style.
+
+**What makes this different from the existing side_wallet_candidates:** The existing system uses basic heuristics (same funder, similar timing). This sprint adds AI-assisted reasoning: the AI reviews the behavioral fingerprint and produces a natural language explanation of why these wallets cluster.
+
+| | |
+|---|---|
+| **Signals used for clustering** | (1) Funded by same source wallet, (2) Same transaction timing pattern (variance < 200ms), (3) Same DEX platform preference (>70% same platform), (4) Swap same tokens within same time windows, (5) Identical gas/fee patterns, (6) Same program interaction sequence |
+| **New ClickHouse query** | Behavioral fingerprint per wallet: `{ avg_tx_hour, avg_fee, primary_dex, top_tokens[], tx_timing_variance }` — computed over last 90 days |
+| **Clustering method** | For a seed wallet: fetch behavioral fingerprint → query ClickHouse for wallets with similar fingerprint → rank by similarity score → pass top candidates to Claude with on-chain evidence → Claude produces confidence score + explanation |
+| **New endpoint** | `GET /v1/wallet/{address}/cluster` — returns `{ candidates: [{ address, confidence, signals: [...], ai_reasoning: str }] }` |
+| **AI tool** | `cluster_identity(address)` — callable from AI terminal: "find all wallets that might be this person" |
+| **Response example** | `{ address: "abc...", confidence: 0.87, signals: ["funded_by_same_source", "same_dex_pattern", "same_token_timing"], ai_reasoning: "Both wallets are funded by XYZ, trade on Raydium exclusively, and bought $BONK within the same 4-minute window on Dec 3. Pattern is consistent with a single operator using multiple wallets to obscure position size." }` |
+| **Frontend** | Enhance existing `SideWalletsPanel` on wallet profile to show AI reasoning text per candidate |
+| **DONE when** | Wallet page shows cluster candidates with AI-generated reasoning for each |
+
+---
+
+### US-B705 — Cross-Wallet Identity Profile (NEW — Mar 4 2026)
+> As an analyst, I can view a unified profile that aggregates all wallets believed to be controlled by one entity — their combined holdings, full trade history, PnL, and event involvement.
+
+| | |
+|---|---|
+| **Trigger** | User clicks "View as Single Entity" on the side wallets panel, or the AI suggests it after identifying a cluster |
+| **New page** | `/entity/[address]` — seed wallet address as the canonical identifier |
+| **Data aggregated** | Combined token holdings across all cluster wallets (summed by mint), total portfolio USD, combined realized PnL from ClickHouse, full merged tx history, any known events any cluster wallet is involved in |
+| **Identity header** | If any wallet in the cluster is a `known_wallet`, show that label prominently. Otherwise: "Unknown Entity — {N} linked wallets" |
+| **New endpoint** | `GET /v1/wallet/{address}/entity-profile` — returns aggregated data across cluster |
+| **Frontend components** | `EntityHeader` (combined identity, wallet count, total portfolio), `MergedHoldingsTable`, `MergedActivityFeed`, `ClusterWalletList` (shows each wallet with its confidence + signals) |
+| **DONE when** | `/entity/{seed_address}` renders with combined holdings and tx history across all cluster wallets |
+
+---
+
+## Sprint B8 — Program Caller Analytics
 **Goal:** The `/program/[address]` page exists but has no real data. Provide an endpoint that returns recent callers and top interactors for any program address.
 
-### US-B501 — `GET /v1/program/{address}/callers`
+### US-B801 — `GET /v1/program/{address}/callers`
 > As a researcher, I can see which wallets call a given program most frequently.
 
 | | |
@@ -169,7 +520,7 @@ INSERT INTO signals (
 | **Register in** | `apps/api/app/main.py` as `router.include_router(program_router, prefix="/v1/program")` |
 | **DONE when** | `GET /v1/program/JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4/callers` returns ≥ 1 caller row |
 
-### US-B502 — `GET /v1/program/{address}/summary`
+### US-B802 — `GET /v1/program/{address}/summary`
 > As a user, I can see basic stats about any program: name, total calls, unique callers.
 
 | | |
@@ -181,10 +532,10 @@ INSERT INTO signals (
 
 ---
 
-## Sprint B6 — Landing Hero Real Feed
+## Sprint B9 — Landing Hero Real Feed
 **Goal:** `LandingHero.tsx` shows a live scrolling feed of transactions. It's currently 100% fake hardcoded data. Wire it to a real endpoint.
 
-### US-B601 — `GET /v1/feed/live`
+### US-B901 — `GET /v1/feed/live`
 > As a landing page visitor, I see real on-chain activity scrolling by, building trust in the product.
 
 | | |
@@ -199,10 +550,10 @@ INSERT INTO signals (
 
 ---
 
-## Sprint B7 — Rate Limiting by User Tier
+## Sprint B10 — Rate Limiting by User Tier
 **Goal:** Currently all users (free and pro) get the same rate limits. The code has `# TODO: pull from user tier.` comments.
 
-### US-B701 — Tier-Aware Rate Limiting
+### US-B1001 — Tier-Aware Rate Limiting
 > As a Pro user, I get higher API rate limits than free tier users.
 
 | | |
@@ -216,10 +567,10 @@ INSERT INTO signals (
 
 ---
 
-## Sprint B8 — Stripe Integration (Phase 4 — do last)
+## Sprint B11 — Stripe Integration (Phase 4 — do last)
 **Goal:** Monetization. Users can upgrade from free → pro tier. Stripe handles billing.
 
-### US-B801 — Stripe Checkout for Pro Tier
+### US-B1101 — Stripe Checkout for Pro Tier
 > As a free user, I can upgrade to Pro for $15/month via Stripe.
 
 | | |
@@ -232,6 +583,79 @@ INSERT INTO signals (
 
 ---
 
+
+---
+
+## Sprint B15 — Free API Stack + Universal Wallet Intelligence
+**Updated: Mar 6 2026**
+**Goal:** Make the product work for ANY wallet without paid API dependencies. Replace Birdeye ($200/mo) with free alternatives. Wire backfill to any wallet search. Add real-time new pair monitoring.
+
+### ✅ US-B1500 — Replace Birdeye with Free APIs (DONE Mar 6 2026)
+| | |
+|---|---|
+| **File** | `apps/api/app/services/birdeye.py` — fully rewritten, same function signatures |
+| **Jupiter** | `get_token_price()`, `get_wallet_portfolio()` — free batch pricing, no key |
+| **DexScreener** | `get_token_overview()`, `get_token_ohlcv()` — free, no key |
+| **RugCheck** | `get_token_security()` — free, better rug detection than Birdeye |
+| **GeckoTerminal** | `get_trending_tokens()`, `get_gainers_losers()` — free, no key |
+| **Helius DAS** | `get_token_holders()`, portfolio token accounts — existing free tier |
+| **ClickHouse** | `get_token_top_traders()` — our own ingested data |
+| **Saving** | $200/mo removed. BIRDEYE_API_KEY env var no longer needed. |
+
+---
+
+### US-B1501 — Backfill on Any Wallet Search
+> As a user searching any random wallet, I see full analytics within 60 seconds — not just token holdings.
+
+**The problem:** ClickHouse only has data for tracked wallets. Any other wallet search returns empty analytics panels (no counterparties, no classification signals, no PnL).
+
+| | |
+|---|---|
+| **File** | `apps/api/app/routers/wallet.py` — main wallet summary endpoint |
+| **What** | On wallet page load, check Redis `bh:backfill:{address}`. If absent: fire `backfill_wallet(address)` as background task, set key 24h TTL |
+| **Non-blocking** | `asyncio.create_task()` — page loads immediately from Helius/Jupiter, analytics appear ~30-60s later |
+| **Gate** | 24h Redis key prevents re-running for popular wallets |
+| **DONE when** | Searching an unknown wallet → holdings show instantly → counterparties + classification appear within 60 seconds |
+
+---
+
+### US-B1502 — Pump.fun WebSocket New Launch Monitor
+> New token launches on Pump.fun are detected within seconds and surfaced in the signals feed.
+
+| | |
+|---|---|
+| **New service** | `apps/api/app/services/pumpfun.py` |
+| **WebSocket** | `wss://pumpportal.fun/api/data` — free, no key needed |
+| **On new token** | Extract mint + dev wallet → backfill dev wallet → fetch first 50 buyers via Helius → cross-reference against known_wallets → write signal if insider found |
+| **Signal type** | `insider_launch` — CONFIRMED if known wallet, PROBABLE if side-wallet-linked |
+| **Startup** | Connect in FastAPI lifespan alongside wallet poller |
+| **DONE when** | New Pump.fun launch appears in signals feed within 30 seconds |
+
+---
+
+### US-B1503 — New Pair Monitor (DexScreener Polling)
+> Newly launched pairs on Raydium and other DEXes are detected and cross-referenced.
+
+| | |
+|---|---|
+| **Source** | DexScreener `/latest/dex/tokens/solana/new` — poll every 60s, free |
+| **Dedup** | Redis set `bh:seen_pairs` with 24h TTL |
+| **On new pair** | Same pipeline as Pump.fun: backfill dev wallet, cross-reference early buyers, write signals |
+| **DONE when** | New Raydium pair triggers cross-reference within 2 minutes of launch |
+
+---
+
+### US-B1504 — Funding Source Tracing (Graph-Based Identity)
+> Side wallet detection based on SOL funding chains — "follow the SOL."
+
+| | |
+|---|---|
+| **The insight** | Wallet A funded Wallet B = likely same person. Especially if B was new before the funding. |
+| **New function** | `clickhouse.trace_funding_sources(address, max_hops=2)` — queries transfers table for funding relationships |
+| **Integration** | New signal in `classification.py` `_run_classification()` |
+| **Signal** | `funding_linked` — confidence 0.85 for 1 hop, 0.65 for 2 hops |
+| **DONE when** | A wallet funded from the same source as a known KOL is flagged with `funding_linked` |
+
 ## File Reference
 
 | File | Purpose |
@@ -242,9 +666,16 @@ INSERT INTO signals (
 | `apps/api/app/routers/token.py` | Token endpoints (pump.fun detection done) |
 | `apps/api/app/routers/tracked.py` | Tracked wallet + activity feed |
 | `apps/api/app/routers/signals.py` | Signals read endpoint (detection runs in webhooks.py) |
+| `apps/api/app/routers/leaderboard.py` | Leaderboard, trending tokens, gainers/losers |
 | `apps/api/app/services/supabase.py` | Supabase client + ORM-style helpers |
-| `apps/api/app/services/clickhouse.py` | ClickHouse client + query helpers (needs async wrap) |
-| `apps/api/app/services/classification.py` | Wallet classification heuristics (async wrap done) |
+| `apps/api/app/services/clickhouse.py` | ClickHouse client + query helpers |
+| `apps/api/app/services/birdeye.py` | Birdeye API — portfolio, prices, OHLCV, trending, gainers |
+| `apps/api/app/services/twitter.py` | Twitter API v2 — KOL profile enrichment, tweet search (to build in B5) |
+| `apps/api/app/services/kol_social.py` | Tweet→trade correlation job, KOL feed aggregation (to build in B5/B7) |
+| `apps/api/app/services/classification.py` | Wallet classification heuristics |
+| `apps/api/app/services/brave_search.py` | Brave Search API — web search tool for AI (to build in B4) |
+| `apps/api/app/routers/events.py` | Known events CRUD + wallet cross-reference (to build in B6) |
+| `apps/api/app/services/identity_cluster.py` | Enhanced behavioral clustering + AI reasoning (to build in B7) |
 
 ---
 
@@ -265,8 +696,6 @@ CLICKHOUSE_PASSWORD=
 HELIUS_API_KEY=
 HELIUS_WEBHOOK_SECRET=
 
-# Birdeye
-BIRDEYE_API_KEY=
 
 # Upstash Redis
 UPSTASH_REDIS_URL=
@@ -282,7 +711,16 @@ ABLY_API_KEY=
 CLERK_SECRET_KEY=
 CLERK_PUBLISHABLE_KEY=
 
-# Stripe (Phase 4)
+# Twitter API v2 (Sprint B5)
+TWITTER_BEARER_TOKEN=
+
+# Brave Search API (Sprint B4 — AI web search tool)
+BRAVE_SEARCH_API_KEY=
+
+# Helius webhook management (set after running setup-helius-webhook.mjs)
+HELIUS_WEBHOOK_ID=
+
+# Stripe (Phase 4 — Sprint B11)
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
 ```

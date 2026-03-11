@@ -81,30 +81,60 @@ async def signals_feed(
 @router.get("/new-pairs")
 async def new_pairs_feed(
     limit: int = Query(50, ge=1, le=100),
-    source: str | None = Query(None, pattern="^(pump_fun|dex)$"),
+    source: str | None = Query(None),
+    enrich: bool = Query(False),
 ):
     """
     Live feed of newly detected Solana token launches.
     Sources: Pump.fun WebSocket + DexScreener new pair monitor.
+    Falls back to Redis when ClickHouse is empty/unavailable.
+    Set enrich=true to fetch live market data (slower but more complete).
     """
-    cache_key = f"bh:new-pairs:{limit}:{source}"
-    if cached := await cache_get(cache_key):
-        return cached
-
+    import json
+    import asyncio
+    from app.services.redis_cache import get_redis
+    
+    # Try Redis first (real-time data from monitors)
+    pairs = []
+    try:
+        redis = await get_redis()
+        raw_pairs = await redis.lrange("bh:live:new_pairs", 0, limit * 2 - 1)
+        for raw in raw_pairs:
+            try:
+                pair = json.loads(raw)
+                # Apply source filter
+                if source and pair.get("source") != source:
+                    continue
+                pairs.append(pair)
+                if len(pairs) >= limit:
+                    break
+            except Exception:
+                continue
+    except Exception as e:
+        print(f"[signals] redis fetch error: {e}")
+    
+    # If Redis has data, optionally enrich with live market data
+    if pairs:
+        if enrich:
+            pairs = await _enrich_pairs(pairs[:limit])
+        return {"pairs": pairs[:limit], "count": len(pairs)}
+    
+    # Fallback to ClickHouse
     types = ["new_dex_pair", "pump_fun_new_token"]
     if source == "pump_fun":
         types = ["pump_fun_new_token"]
     elif source == "dex":
         types = ["new_dex_pair"]
 
-    rows = await clickhouse.get_recent_signals(
-        signal_types=types,
-        limit=limit,
-        offset=0,
-    )
+    try:
+        rows = await clickhouse.get_recent_signals(
+            signal_types=types,
+            limit=limit,
+            offset=0,
+        )
+    except Exception:
+        rows = []
 
-    import json
-    pairs = []
     for row in rows:
         meta = row.get("metadata", {})
         if isinstance(meta, str):
@@ -123,6 +153,64 @@ async def new_pairs_feed(
             "metadata": meta,
         })
 
-    result = {"pairs": pairs, "count": len(pairs)}
-    await cache_set(cache_key, result, 30)  # 30s cache
-    return result
+    if enrich and pairs:
+        pairs = await _enrich_pairs(pairs)
+
+    return {"pairs": pairs, "count": len(pairs)}
+
+
+async def _enrich_pairs(pairs: list[dict]) -> list[dict]:
+    """Enrich pairs with live market data from DexScreener."""
+    import asyncio
+    from app.services import birdeye
+    
+    # Collect unique mints
+    mints = list(set(p.get("token_mint") for p in pairs if p.get("token_mint")))
+    if not mints:
+        return pairs
+    
+    # Batch fetch prices
+    prices = await birdeye._dexscreener_prices(mints)
+    
+    # Batch fetch token data from DexScreener (up to 30 at a time)
+    token_data = {}
+    for i in range(0, len(mints), 30):
+        chunk = mints[i:i+30]
+        try:
+            data = await birdeye._get(f"{birdeye.DEXSCREENER_BASE}/latest/dex/tokens/{','.join(chunk)}")
+            if data and data.get("pairs"):
+                for pair in data["pairs"]:
+                    base = pair.get("baseToken", {})
+                    addr = base.get("address")
+                    if addr and addr not in token_data:
+                        token_data[addr] = {
+                            "price_usd": float(pair.get("priceUsd") or 0),
+                            "price_change_5m": float((pair.get("priceChange") or {}).get("m5") or 0),
+                            "price_change_1h": float((pair.get("priceChange") or {}).get("h1") or 0),
+                            "price_change_24h": float((pair.get("priceChange") or {}).get("h24") or 0),
+                            "volume_5m": float((pair.get("volume") or {}).get("m5") or 0),
+                            "volume_1h": float((pair.get("volume") or {}).get("h1") or 0),
+                            "volume_24h": float((pair.get("volume") or {}).get("h24") or 0),
+                            "liquidity_usd": float((pair.get("liquidity") or {}).get("usd") or 0),
+                            "market_cap": float(pair.get("marketCap") or pair.get("fdv") or 0),
+                            "txns_5m_buys": int((pair.get("txns", {}).get("m5") or {}).get("buys") or 0),
+                            "txns_5m_sells": int((pair.get("txns", {}).get("m5") or {}).get("sells") or 0),
+                            "txns_1h_buys": int((pair.get("txns", {}).get("h1") or {}).get("buys") or 0),
+                            "txns_1h_sells": int((pair.get("txns", {}).get("h1") or {}).get("sells") or 0),
+                            "pair_address": pair.get("pairAddress"),
+                            "dex_id": pair.get("dexId"),
+                            "pair_created_at": pair.get("pairCreatedAt"),
+                        }
+        except Exception as e:
+            print(f"[signals] enrich error: {e}")
+            continue
+    
+    # Merge enriched data into pairs
+    for p in pairs:
+        mint = p.get("token_mint")
+        if mint and mint in token_data:
+            p["market"] = token_data[mint]
+        elif mint and mint in prices:
+            p["market"] = {"price_usd": prices[mint]}
+    
+    return pairs

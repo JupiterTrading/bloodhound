@@ -3,7 +3,7 @@
 import { use, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
-import { tokenApi, kolFeedApi, type TokenSummary, type TokenHolder, type TopTrader, type SmartMoneyKol } from "@/lib/api";
+import { tokenApi, kolFeedApi, type TokenSummary, type TokenHolder, type TopTrader, type SmartMoneyKol, type DexInfo } from "@/lib/api";
 import { AddressTag } from "@/components/ui/AddressTag";
 import { Skeleton } from "@/components/ui/Skeleton";
 
@@ -20,10 +20,16 @@ export default function TokenPage({
     staleTime: 60_000,
   });
 
+  const { data: dexInfo } = useQuery({
+    queryKey: ["token", mint, "dex-info"],
+    queryFn: () => tokenApi.dexInfo(mint),
+    staleTime: 120_000,
+  });
+
   return (
     <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "32px 24px" }}>
       {/* Token header */}
-      <TokenHeader mint={mint} summary={summary} isLoading={isLoading} />
+      <TokenHeader mint={mint} summary={summary} dexInfo={dexInfo} isLoading={isLoading} />
 
       {/* Stats grid */}
       <TokenStatsGrid summary={summary} isLoading={isLoading} />
@@ -155,10 +161,12 @@ function PriceChart({ mint, pairAddress }: { mint: string; pairAddress: string |
 function TokenHeader({
   mint,
   summary,
+  dexInfo,
   isLoading,
 }: {
   mint: string;
   summary: TokenSummary | undefined;
+  dexInfo: DexInfo | undefined;
   isLoading: boolean;
 }) {
   return (
@@ -257,6 +265,38 @@ function TokenHeader({
                   }}
                 >
                   PUMP.FUN
+                </span>
+              )}
+              {dexInfo?.dex_paid?.has_paid && (
+                <span
+                  style={{
+                    fontSize: "10px",
+                    fontWeight: 600,
+                    padding: "2px 7px",
+                    borderRadius: "3px",
+                    background: "#22c55e",
+                    color: "#000",
+                    letterSpacing: "0.06em",
+                  }}
+                  title="Token has paid for DexScreener Enhanced Info"
+                >
+                  DEX PAID
+                </span>
+              )}
+              {dexInfo?.boosts?.is_boosted && (
+                <span
+                  style={{
+                    fontSize: "10px",
+                    fontWeight: 600,
+                    padding: "2px 7px",
+                    borderRadius: "3px",
+                    background: "#f59e0b",
+                    color: "#000",
+                    letterSpacing: "0.06em",
+                  }}
+                  title={`Boosted ${dexInfo.boosts.boost_count}x on DexScreener`}
+                >
+                  🔥 {dexInfo.boosts.boost_count}
                 </span>
               )}
             </div>
@@ -392,9 +432,14 @@ function HoldersPanel({ mint }: { mint: string }) {
   });
 
   const holders = data?.holders ?? [];
+  const top10Pct = data?.top10_pct ?? 0;
+  const holderCount = data?.holder_count ?? 0;
 
   return (
-    <Panel title="Top Holders">
+    <Panel 
+      title="Top Holders" 
+      subtitle={holderCount > 0 ? `${holderCount} holders · Top 10 own ${top10Pct.toFixed(1)}%` : undefined}
+    >
       {isLoading ? (
         <RowSkeleton count={6} />
       ) : holders.length === 0 ? (
@@ -402,7 +447,7 @@ function HoldersPanel({ mint }: { mint: string }) {
       ) : (
         <div>
           {holders.slice(0, 15).map((h, i) => (
-            <HolderRow key={h.owner} holder={h} rank={i + 1} />
+            <HolderRow key={`${h.owner}-${i}`} holder={h} rank={i + 1} />
           ))}
         </div>
       )}
@@ -411,6 +456,10 @@ function HoldersPanel({ mint }: { mint: string }) {
 }
 
 function HolderRow({ holder, rank }: { holder: TokenHolder; rank: number }) {
+  const ownerAddress = holder?.owner ?? "";
+  
+  if (!ownerAddress) return null;
+  
   return (
     <div
       style={{
@@ -437,7 +486,7 @@ function HolderRow({ holder, rank }: { holder: TokenHolder; rank: number }) {
       <div style={{ flex: 1, minWidth: 0 }}>
         {holder.known_wallet?.label ? (
           <Link
-            href={`/wallet/${holder.owner}`}
+            href={`/wallet/${ownerAddress}`}
             style={{
               fontSize: "12px",
               fontWeight: 600,
@@ -455,20 +504,39 @@ function HolderRow({ holder, rank }: { holder: TokenHolder; rank: number }) {
           </Link>
         ) : (
           <Link
-            href={`/wallet/${holder.owner}`}
+            href={`/wallet/${ownerAddress}`}
             style={{ textDecoration: "none" }}
           >
-            <AddressTag address={holder.owner} chars={5} size={11} />
+            <AddressTag address={ownerAddress} chars={5} size={11} />
           </Link>
         )}
       </div>
 
+      {/* USD Value */}
+      {holder.value_usd != null && holder.value_usd > 0 && (
+        <span
+          style={{
+            fontFamily: "JetBrains Mono, monospace",
+            fontSize: "11px",
+            color: "var(--text-muted)",
+            flexShrink: 0,
+            minWidth: "70px",
+            textAlign: "right",
+          }}
+        >
+          ${formatCompact(holder.value_usd)}
+        </span>
+      )}
+
+      {/* Percentage */}
       <span
         style={{
           fontFamily: "JetBrains Mono, monospace",
           fontSize: "11px",
           color: "var(--text-secondary)",
           flexShrink: 0,
+          minWidth: "50px",
+          textAlign: "right",
         }}
       >
         {holder.percentage?.toFixed(2) ?? "—"}%
@@ -487,13 +555,17 @@ function TopTradersPanel({ mint }: { mint: string }) {
   });
 
   const traders = data?.traders ?? [];
+  const totalValue = traders.reduce((sum, t) => sum + (t.value_usd || 0), 0);
 
   return (
-    <Panel title="Top Traders">
+    <Panel 
+      title="Top Positions" 
+      subtitle={totalValue > 0 ? `$${formatCompact(totalValue)} total` : undefined}
+    >
       {isLoading ? (
         <RowSkeleton count={6} />
       ) : traders.length === 0 ? (
-        <EmptyPanel text="No trader data available." />
+        <EmptyPanel text="No position data available." />
       ) : (
         <div>
           {traders.slice(0, 15).map((t, i) => (
@@ -506,8 +578,6 @@ function TopTradersPanel({ mint }: { mint: string }) {
 }
 
 function TraderRow({ trader, rank }: { trader: TopTrader; rank: number }) {
-  const hasPnl = trader.pnl != null;
-
   return (
     <div
       style={{
@@ -556,36 +626,44 @@ function TraderRow({ trader, rank }: { trader: TopTrader; rank: number }) {
         )}
       </div>
 
-      {hasPnl && (
+      {/* Position Value */}
+      {trader.value_usd != null && trader.value_usd > 0 && (
         <span
           style={{
             fontFamily: "JetBrains Mono, monospace",
             fontSize: "11px",
-            color: (trader.pnl ?? 0) >= 0 ? "#22c55e" : "var(--accent)",
+            color: "var(--text-primary)",
             flexShrink: 0,
+            minWidth: "70px",
+            textAlign: "right",
           }}
         >
-          {(trader.pnl ?? 0) >= 0 ? "+" : ""}${formatCompact(Math.abs(trader.pnl ?? 0))}
+          ${formatCompact(trader.value_usd)}
         </span>
       )}
 
-      <span
-        style={{
-          fontFamily: "JetBrains Mono, monospace",
-          fontSize: "11px",
-          color: "var(--text-secondary)",
-          flexShrink: 0,
-        }}
-      >
-        ${formatCompact(trader.volume)}
-      </span>
+      {/* Holding Percentage */}
+      {trader.holding_pct != null && trader.holding_pct > 0 && (
+        <span
+          style={{
+            fontFamily: "JetBrains Mono, monospace",
+            fontSize: "11px",
+            color: "var(--text-secondary)",
+            flexShrink: 0,
+            minWidth: "50px",
+            textAlign: "right",
+          }}
+        >
+          {trader.holding_pct.toFixed(2)}%
+        </span>
+      )}
     </div>
   );
 }
 
 // ── Shared panel shell ────────────────────────────────────────────────────────
 
-function Panel({ title, children }: { title: string; children: React.ReactNode }) {
+function Panel({ title, subtitle, children }: { title: string; subtitle?: string; children: React.ReactNode }) {
   return (
     <div
       style={{
@@ -599,14 +677,34 @@ function Panel({ title, children }: { title: string; children: React.ReactNode }
         style={{
           padding: "12px 16px",
           borderBottom: "1px solid var(--border)",
-          fontSize: "11px",
-          fontWeight: 600,
-          letterSpacing: "0.08em",
-          textTransform: "uppercase",
-          color: "var(--text-muted)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "12px",
         }}
       >
-        {title}
+        <span
+          style={{
+            fontSize: "11px",
+            fontWeight: 600,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "var(--text-muted)",
+          }}
+        >
+          {title}
+        </span>
+        {subtitle && (
+          <span
+            style={{
+              fontSize: "11px",
+              color: "var(--text-muted)",
+              fontWeight: 400,
+            }}
+          >
+            {subtitle}
+          </span>
+        )}
       </div>
       {children}
     </div>

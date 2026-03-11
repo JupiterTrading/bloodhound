@@ -12,7 +12,7 @@ function SearchContent() {
   const router = useRouter();
   const q = searchParams.get("q") ?? "";
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ["search", q],
     queryFn: () => searchApi.search(q),
     enabled: q.length >= 2,
@@ -72,6 +72,8 @@ function SearchContent() {
           >
             {isLoading
               ? "Searching..."
+              : isError
+              ? "Search failed"
               : `${results.length} result${results.length !== 1 ? "s" : ""} for "${q}"`}
           </p>
         )}
@@ -82,6 +84,35 @@ function SearchContent() {
         <SearchTips />
       ) : isLoading ? (
         <SearchSkeleton />
+      ) : isError ? (
+        <div
+          style={{
+            background: "var(--bg-surface)",
+            border: "1px solid var(--border)",
+            borderRadius: "10px",
+            padding: "16px 18px",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "14px",
+              fontWeight: 600,
+              color: "var(--text-primary)",
+              marginBottom: "6px",
+            }}
+          >
+            Couldn’t reach the search service
+          </div>
+          <div
+            style={{
+              fontSize: "13px",
+              color: "var(--text-muted)",
+              lineHeight: 1.4,
+            }}
+          >
+            {error instanceof Error ? error.message : "Unknown error"}
+          </div>
+        </div>
       ) : results.length === 0 ? (
         <NoResults q={q} />
       ) : (

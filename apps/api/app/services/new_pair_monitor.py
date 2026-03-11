@@ -20,22 +20,65 @@ from typing import Any
 
 import httpx
 
+from app.services.redis_cache import get_redis
+
 DEXSCREENER_NEW_PAIRS_URL = "https://api.dexscreener.com/token-profiles/latest/v1"
-POLL_INTERVAL = 60          # seconds between polls
+DEXSCREENER_NEW_TOKENS_URL = "https://api.dexscreener.com/token-boosts/latest/v1"
+POLL_INTERVAL = 45          # seconds between polls (faster refresh)
 SEEN_WINDOW_SECS = 3600     # 1h — pairs older than this are not re-announced
 MAX_SEEN_ENTRIES = 5000     # cap memory usage
+REDIS_NEW_PAIRS_KEY = "bh:live:new_pairs"
+REDIS_MAX_PAIRS = 200       # keep last 200 pairs in Redis
+
+# Launchpad detection patterns
+LAUNCHPAD_PATTERNS = {
+    "pump_fun": ["pump.fun", "pumpfun"],
+    "moonshot": ["moonshot", "dexscreener.com/moonshot"],
+    "raydium": ["raydium"],
+    "meteora": ["meteora"],
+    "orca": ["orca"],
+    "jupiter": ["jupiter", "jup.ag"],
+}
 
 
 async def _fetch_new_pairs() -> list[dict[str, Any]]:
     """Fetch newest Solana token profiles from DexScreener."""
+    all_profiles = []
     try:
         async with httpx.AsyncClient(timeout=15) as client:
+            # Fetch token profiles
             r = await client.get(DEXSCREENER_NEW_PAIRS_URL)
             if r.is_success:
-                return r.json() if isinstance(r.json(), list) else []
+                data = r.json()
+                if isinstance(data, list):
+                    all_profiles.extend(data)
+            
+            # Also fetch boosted tokens (often new launches)
+            r2 = await client.get(DEXSCREENER_NEW_TOKENS_URL)
+            if r2.is_success:
+                data2 = r2.json()
+                if isinstance(data2, list):
+                    # Dedupe by tokenAddress
+                    seen = {p.get("tokenAddress") for p in all_profiles}
+                    for t in data2:
+                        if t.get("tokenAddress") not in seen:
+                            all_profiles.append(t)
     except Exception:
         pass
-    return []
+    return all_profiles
+
+
+def _detect_launchpad(profile: dict) -> str:
+    """Detect which launchpad a token was launched on."""
+    url = (profile.get("url") or "").lower()
+    description = (profile.get("description") or "").lower()
+    
+    for launchpad, patterns in LAUNCHPAD_PATTERNS.items():
+        for pattern in patterns:
+            if pattern in url or pattern in description:
+                return launchpad
+    
+    return "dex"  # Default to generic DEX
 
 
 async def run_new_pair_monitor() -> None:
@@ -79,7 +122,8 @@ async def run_new_pair_monitor() -> None:
                 icon = profile.get("icon") or ""
                 header = profile.get("header") or ""
 
-                print(f"[pairs] new token profile: {mint[:8]}...")
+                launchpad = _detect_launchpad(profile)
+                print(f"[pairs] new token profile: {mint[:8]}... ({launchpad})")
 
                 signals.append({
                     "signal_type": "new_dex_pair",
@@ -88,7 +132,7 @@ async def run_new_pair_monitor() -> None:
                     "wallet_address": "",
                     "token_mint": mint,
                     "tx_signature": "",
-                    "description": f"New Solana token profile detected: {mint} — {description[:100]}",
+                    "description": f"New {launchpad.upper()} token: {mint} — {description[:100]}",
                     "metadata": json.dumps({
                         "mint": mint,
                         "chain": chain,
@@ -96,15 +140,36 @@ async def run_new_pair_monitor() -> None:
                         "icon": icon,
                         "header": header,
                         "dexscreener_url": profile.get("url", ""),
+                        "launchpad": launchpad,
                     }),
                 })
 
             if signals:
+                # Store in Redis for instant access (fallback when ClickHouse empty)
+                try:
+                    redis = await get_redis()
+                    for sig in signals:
+                        meta = json.loads(sig["metadata"]) if isinstance(sig["metadata"], str) else sig["metadata"]
+                        launchpad = meta.get("launchpad", "dex")
+                        pair_data = {
+                            "token_mint": sig["token_mint"],
+                            "signal_type": sig["signal_type"],
+                            "source": launchpad,
+                            "detected_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                            "description": sig["description"],
+                            "metadata": meta,
+                        }
+                        await redis.lpush(REDIS_NEW_PAIRS_KEY, json.dumps(pair_data))
+                    await redis.ltrim(REDIS_NEW_PAIRS_KEY, 0, REDIS_MAX_PAIRS - 1)
+                except Exception as e:
+                    print(f"[pairs] redis store error: {e}")
+                
+                # Also try ClickHouse (may fail if not configured)
                 try:
                     await clickhouse.insert_signals(signals)
                     print(f"[pairs] {len(signals)} new token signals written")
                 except Exception as e:
-                    print(f"[pairs] signal insert error: {e}")
+                    print(f"[pairs] clickhouse insert error: {e}")
 
         except asyncio.CancelledError:
             print("[pairs] shutting down")

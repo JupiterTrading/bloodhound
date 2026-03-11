@@ -1,23 +1,52 @@
 "use client";
 
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 import { walletApi, type TokenHolding } from "@/lib/api";
 import { Skeleton } from "@/components/ui/Skeleton";
+
+const DUST_THRESHOLD = 2; // Hide tokens worth less than $2 by default
 
 interface Props {
   address: string;
 }
 
 export function TokenHoldings({ address }: Props) {
+  const [showDust, setShowDust] = useState(false);
+
   const { data, isLoading } = useQuery({
     queryKey: ["wallet", "holdings", address],
     queryFn: () => walletApi.holdings(address),
     staleTime: 60_000,
   });
 
-  const holdings = (data?.holdings ?? []).sort(
+  // Deduplicate by mint address (combine amounts if same token appears twice)
+  const deduped = (data?.holdings ?? []).reduce((acc, h) => {
+    const existing = acc.get(h.mint);
+    if (existing) {
+      existing.amount += h.amount;
+      existing.usd_value = (existing.usd_value ?? 0) + (h.usd_value ?? 0);
+    } else {
+      acc.set(h.mint, { ...h });
+    }
+    return acc;
+  }, new Map<string, TokenHolding>());
+
+  const allHoldings = Array.from(deduped.values()).sort(
     (a, b) => (b.usd_value ?? 0) - (a.usd_value ?? 0)
   );
+
+  const totalPortfolioUsd = allHoldings.reduce(
+    (sum, h) => sum + (h.usd_value ?? 0),
+    0
+  );
+
+  const visibleHoldings = showDust
+    ? allHoldings
+    : allHoldings.filter((h) => (h.usd_value ?? 0) >= DUST_THRESHOLD);
+
+  const dustCount = allHoldings.length - visibleHoldings.length;
 
   return (
     <section
@@ -33,25 +62,62 @@ export function TokenHoldings({ address }: Props) {
         style={{
           padding: "16px 20px",
           borderBottom: "1px solid var(--border)",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: "8px",
         }}
       >
-        <h2
-          style={{
-            fontSize: "11px",
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "var(--text-muted)",
-            margin: 0,
-          }}
-        >
-          Token Holdings
-          {holdings.length > 0 && (
-            <span style={{ marginLeft: "8px", fontWeight: 400 }}>
-              ({holdings.length})
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <h2
+            style={{
+              fontSize: "11px",
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "var(--text-muted)",
+              margin: 0,
+            }}
+          >
+            Token Holdings
+            {visibleHoldings.length > 0 && (
+              <span style={{ marginLeft: "8px", fontWeight: 400 }}>
+                ({visibleHoldings.length})
+              </span>
+            )}
+          </h2>
+          {totalPortfolioUsd > 0 && (
+            <span
+              style={{
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: "14px",
+                fontWeight: 600,
+                color: "var(--text-primary)",
+              }}
+            >
+              ${totalPortfolioUsd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </span>
           )}
-        </h2>
+        </div>
+        {dustCount > 0 && (
+          <button
+            onClick={() => setShowDust(!showDust)}
+            style={{
+              background: showDust ? "var(--accent)" : "transparent",
+              border: "1px solid var(--border)",
+              borderRadius: "4px",
+              padding: "4px 10px",
+              fontSize: "11px",
+              fontWeight: 500,
+              color: showDust ? "white" : "var(--text-muted)",
+              cursor: "pointer",
+              transition: "all 0.15s ease",
+            }}
+          >
+            {showDust ? "Hide Dust" : `Show Dust (${dustCount})`}
+          </button>
+        )}
       </div>
 
       {isLoading ? (
@@ -71,7 +137,7 @@ export function TokenHoldings({ address }: Props) {
             </div>
           ))}
         </div>
-      ) : holdings.length === 0 ? (
+      ) : allHoldings.length === 0 ? (
         <p
           style={{
             padding: "24px 20px",
@@ -91,7 +157,7 @@ export function TokenHoldings({ address }: Props) {
             background: "var(--border)",
           }}
         >
-          {holdings.map((h) => (
+          {visibleHoldings.map((h) => (
             <TokenCard key={h.mint} holding={h} />
           ))}
         </div>
@@ -102,14 +168,19 @@ export function TokenHoldings({ address }: Props) {
 
 function TokenCard({ holding }: { holding: TokenHolding }) {
   return (
-    <div
+    <Link
+      href={`/token/${holding.mint}`}
       style={{
         background: "var(--bg-surface)",
         padding: "16px",
         display: "flex",
         flexDirection: "column",
         gap: "4px",
+        textDecoration: "none",
+        transition: "background 0.15s ease",
       }}
+      onMouseEnter={(e) => (e.currentTarget.style.background = "var(--bg-elevated)")}
+      onMouseLeave={(e) => (e.currentTarget.style.background = "var(--bg-surface)")}
     >
       {/* Logo + symbol */}
       <div
@@ -156,7 +227,7 @@ function TokenCard({ holding }: { holding: TokenHolding }) {
           ${holding.usd_value.toLocaleString(undefined, { maximumFractionDigits: 2 })}
         </div>
       )}
-    </div>
+    </Link>
   );
 }
 

@@ -32,6 +32,11 @@ def _get_redis() -> Redis | None:
     )
 
 
+async def get_redis() -> Redis | None:
+    """Get Redis client for direct operations (lpush, lrange, etc.)."""
+    return _get_redis()
+
+
 async def cache_get(key: str) -> Any | None:
     """Get a cached value. Returns deserialized value or None."""
     redis = _get_redis()

@@ -12,11 +12,13 @@ async def lifespan(app: FastAPI):
     from app.services.wallet_poller import run_poller
     from app.services.pumpfun import run_pumpfun_monitor
     from app.services.new_pair_monitor import run_new_pair_monitor
+    from app.services.launchpad_monitor import run_launchpad_monitor
 
     tasks = [
         asyncio.create_task(run_poller()),
         asyncio.create_task(run_pumpfun_monitor()),
         asyncio.create_task(run_new_pair_monitor()),
+        asyncio.create_task(run_launchpad_monitor()),
     ]
     yield
     for task in tasks:

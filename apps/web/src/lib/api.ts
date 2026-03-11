@@ -117,6 +117,10 @@ export interface NftHolding {
   collection_address: string | null;
   attributes: { trait_type: string; value: string }[];
   interface: string;
+  is_compressed: boolean;
+  floor_price_sol?: number | null;
+  listing_price_sol?: number | null;
+  is_listed?: boolean;
 }
 
 export interface SideWalletCandidate {
@@ -291,13 +295,27 @@ export interface TokenHolder {
   owner: string;
   amount: number;
   percentage: number;
+  value_usd: number;
   known_wallet: { label: string; category: string } | null;
+}
+
+export interface TokenHoldersResponse {
+  mint: string;
+  total: number;
+  holder_count: number;
+  top10_pct: number;
+  price_usd: number;
+  holders: TokenHolder[];
 }
 
 export interface TopTrader {
   address: string;
-  volume: number;
-  pnl?: number;
+  holding_amount: number;
+  holding_pct: number;
+  value_usd: number;
+  volume?: number;
+  pnl?: number | null;
+  trade_count?: number | null;
   known_wallet: { label: string } | null;
 }
 
@@ -315,7 +333,7 @@ export const tokenApi = {
     apiFetch<TokenSummary>(`/v1/token/${mint}/summary`),
 
   holders: (mint: string, limit = 100, offset = 0) =>
-    apiFetch<{ mint: string; total: number; holders: TokenHolder[] }>(
+    apiFetch<TokenHoldersResponse>(
       `/v1/token/${mint}/holders?limit=${limit}&offset=${offset}`
     ),
 
@@ -345,7 +363,35 @@ export const tokenApi = {
       `/v1/token/${mint}/ohlcv?${params.toString()}`
     );
   },
+
+  dexInfo: (mint: string) =>
+    apiFetch<DexInfo>(`/v1/token/${mint}/dex-info`),
 };
+
+export interface DexInfo {
+  mint: string;
+  dex_paid: {
+    has_paid: boolean;
+    orders: { type: string; status: string }[];
+    has_token_profile: boolean;
+    has_community_takeover: boolean;
+    has_token_ad: boolean;
+  };
+  boosts: {
+    is_boosted: boolean;
+    boost_count: number;
+    url?: string;
+    description?: string;
+    icon?: string;
+  };
+  profile: {
+    image_url?: string;
+    header_url?: string;
+    description?: string;
+    websites?: { label: string; url: string }[];
+    socials?: { type: string; url: string }[];
+  };
+}
 
 // --- Transaction ---
 
@@ -736,17 +782,37 @@ export interface NewPairMetadata {
   description?: string;
 }
 
+export interface NewPairMarket {
+  price_usd: number;
+  price_change_5m?: number;
+  price_change_1h?: number;
+  price_change_24h?: number;
+  volume_5m?: number;
+  volume_1h?: number;
+  volume_24h?: number;
+  liquidity_usd?: number;
+  market_cap?: number;
+  txns_5m_buys?: number;
+  txns_5m_sells?: number;
+  txns_1h_buys?: number;
+  txns_1h_sells?: number;
+  pair_address?: string;
+  dex_id?: string;
+  pair_created_at?: number;
+}
+
 export interface NewPair {
   token_mint: string;
   signal_type: string;
-  source: "pump_fun" | "dex";
+  source: string;
   detected_at: string;
   description: string;
   metadata: NewPairMetadata;
+  market?: NewPairMarket;
 }
 
 export const newPairsApi = {
-  list: (params: { limit?: number; source?: "pump_fun" | "dex" } = {}) => {
+  list: (params: { limit?: number; source?: string; enrich?: boolean } = {}) => {
     const qs = new URLSearchParams(
       Object.entries(params)
         .filter(([, v]) => v !== undefined)

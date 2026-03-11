@@ -67,7 +67,7 @@ async def wallet_summary(address: str):
     if cached := await cache_get(cache_key):
         return cached
 
-    # Fetch in parallel
+    # Fetch in parallel — all wrapped in _safe to handle service outages gracefully
     (
         stats,
         sol_balance_result,
@@ -76,7 +76,7 @@ async def wallet_summary(address: str):
         classification_result,
         tracker_count,
     ) = await asyncio.gather(
-        clickhouse.get_wallet_stats(address),
+        _safe(clickhouse.get_wallet_stats(address), default={}),
         _safe(helius.get_sol_balance(address), default=None),
         _safe(birdeye.get_wallet_portfolio(address), default={}),
         _safe(supabase_svc.get_known_wallet(address), default=None),
@@ -120,40 +120,53 @@ async def wallet_transfers(
     date_to: str | None = None,
     tx_type: str | None = None,
 ):
-    """Paginated transfer history with filters."""
+    """Paginated transfer history with filters. Falls back to Helius if ClickHouse empty."""
     _validate_address(address)
     offset = (page - 1) * limit
-    transfers = await clickhouse.get_wallet_transfers(
-        address=address,
-        limit=limit,
-        offset=offset,
-        token_mint=token,
-        direction=direction,
-        date_from=date_from,
-        date_to=date_to,
-        tx_type=tx_type,
-    )
-    # Enrich counterparty addresses: known_wallets (curated) → entity labels (programs/exchanges)
-    import asyncio
-    addresses = list({t["from_address"] for t in transfers} | {t["to_address"] for t in transfers})
-    known_results = await asyncio.gather(
-        *[_safe(supabase_svc.get_known_wallet(a), default=None) for a in addresses]
-    )
-    known_cache: dict[str, dict | None] = dict(zip(addresses, known_results))
-
-    # For any address not in known_wallets, fall back to entity label resolution
-    unresolved = [a for a in addresses if not known_cache[a]]
-    if unresolved:
-        entity_results = await asyncio.gather(
-            *[_safe(solscan_svc.get_entity_label(a), default=None) for a in unresolved]
+    
+    # Try ClickHouse first
+    transfers = []
+    try:
+        transfers = await clickhouse.get_wallet_transfers(
+            address=address,
+            limit=limit,
+            offset=offset,
+            token_mint=token,
+            direction=direction,
+            date_from=date_from,
+            date_to=date_to,
+            tx_type=tx_type,
         )
-        for addr, entity in zip(unresolved, entity_results):
-            if entity:
-                known_cache[addr] = entity
-
+    except Exception:
+        pass
+    
+    # Fallback to Helius enriched transactions if ClickHouse empty
+    if not transfers and page == 1:
+        try:
+            helius_txs = await helius.get_wallet_transactions(address, limit=limit)
+            transfers = _parse_helius_transfers(address, helius_txs)
+        except Exception:
+            pass
+    
+    # Enrich counterparty addresses
+    import asyncio
+    all_addresses = set()
     for t in transfers:
-        t["from_known"] = known_cache.get(t["from_address"])
-        t["to_known"] = known_cache.get(t["to_address"])
+        if t.get("from_address"):
+            all_addresses.add(t["from_address"])
+        if t.get("to_address"):
+            all_addresses.add(t["to_address"])
+    
+    addresses = list(all_addresses)
+    if addresses:
+        known_results = await asyncio.gather(
+            *[_safe(supabase_svc.get_known_wallet(a), default=None) for a in addresses]
+        )
+        known_cache: dict[str, dict | None] = dict(zip(addresses, known_results))
+
+        for t in transfers:
+            t["from_known"] = known_cache.get(t.get("from_address"))
+            t["to_known"] = known_cache.get(t.get("to_address"))
 
     return {
         "address": address,
@@ -161,6 +174,54 @@ async def wallet_transfers(
         "limit": limit,
         "transfers": transfers,
     }
+
+
+def _parse_helius_transfers(wallet: str, txs: list[dict]) -> list[dict]:
+    """Convert Helius enriched transactions to transfer format."""
+    transfers = []
+    for tx in txs:
+        sig = tx.get("signature", "")
+        timestamp = tx.get("timestamp")
+        tx_type = tx.get("type", "UNKNOWN")
+        
+        # Parse native transfers
+        for nt in tx.get("nativeTransfers", []):
+            from_addr = nt.get("fromUserAccount", "")
+            to_addr = nt.get("toUserAccount", "")
+            amount = (nt.get("amount", 0) or 0) / 1_000_000_000  # lamports to SOL
+            
+            transfers.append({
+                "tx_signature": sig,
+                "block_time": timestamp,
+                "from_address": from_addr,
+                "to_address": to_addr,
+                "token_mint": "So11111111111111111111111111111111111111112",
+                "token_symbol": "SOL",
+                "amount": amount,
+                "amount_usd": None,
+                "tx_type": tx_type,
+            })
+        
+        # Parse token transfers
+        for tt in tx.get("tokenTransfers", []):
+            from_addr = tt.get("fromUserAccount", "")
+            to_addr = tt.get("toUserAccount", "")
+            amount = tt.get("tokenAmount", 0) or 0
+            mint = tt.get("mint", "")
+            
+            transfers.append({
+                "tx_signature": sig,
+                "block_time": timestamp,
+                "from_address": from_addr,
+                "to_address": to_addr,
+                "token_mint": mint,
+                "token_symbol": tt.get("tokenStandard"),
+                "amount": amount,
+                "amount_usd": None,
+                "tx_type": tx_type,
+            })
+    
+    return transfers
 
 
 @router.get("/{address}/holdings")
@@ -213,18 +274,69 @@ async def wallet_relationships(
     if cached := await cache_get(cache_key):
         return cached
 
-    counterparties = await clickhouse.get_top_counterparties(address, limit=limit)
+    counterparties = []
+    try:
+        counterparties = await clickhouse.get_top_counterparties(address, limit=limit)
+    except Exception:
+        pass
+    
+    # Fallback to Helius if ClickHouse empty
+    if not counterparties:
+        try:
+            helius_txs = await helius.get_wallet_transactions(address, limit=100)
+            counterparties = _extract_counterparties(address, helius_txs, limit=limit)
+        except Exception:
+            pass
 
     import asyncio
-    known_results = await asyncio.gather(
-        *[_safe(supabase_svc.get_known_wallet(c["counterparty"]), default=None) for c in counterparties]
-    )
-    for cp, known in zip(counterparties, known_results):
-        cp["known_wallet"] = known
+    if counterparties:
+        known_results = await asyncio.gather(
+            *[_safe(supabase_svc.get_known_wallet(c["counterparty"]), default=None) for c in counterparties]
+        )
+        for cp, known in zip(counterparties, known_results):
+            cp["known_wallet"] = known
 
     result = {"address": address, "counterparties": counterparties}
     await cache_set(cache_key, result, TTL_WALLET_STATS)
     return result
+
+
+def _extract_counterparties(wallet: str, txs: list[dict], limit: int = 10) -> list[dict]:
+    """Extract top counterparties from Helius transactions."""
+    from collections import defaultdict
+    
+    counts: dict[str, int] = defaultdict(int)
+    
+    for tx in txs:
+        # Native transfers
+        for nt in tx.get("nativeTransfers", []):
+            from_addr = nt.get("fromUserAccount", "")
+            to_addr = nt.get("toUserAccount", "")
+            if from_addr == wallet and to_addr and to_addr != wallet:
+                counts[to_addr] += 1
+            elif to_addr == wallet and from_addr and from_addr != wallet:
+                counts[from_addr] += 1
+        
+        # Token transfers
+        for tt in tx.get("tokenTransfers", []):
+            from_addr = tt.get("fromUserAccount", "")
+            to_addr = tt.get("toUserAccount", "")
+            if from_addr == wallet and to_addr and to_addr != wallet:
+                counts[to_addr] += 1
+            elif to_addr == wallet and from_addr and from_addr != wallet:
+                counts[from_addr] += 1
+    
+    # Sort by count and return top N
+    sorted_counterparties = sorted(counts.items(), key=lambda x: x[1], reverse=True)[:limit]
+    return [
+        {
+            "counterparty": addr,
+            "interaction_count": count,
+            "total_volume_usd": 0,
+            "last_interaction": None,
+        }
+        for addr, count in sorted_counterparties
+    ]
 
 
 @router.get("/{address}/side-wallets")
@@ -406,7 +518,7 @@ async def wallet_events(address: str):
 async def wallet_twitter(address: str):
     """
     KOL Twitter profile + recent tweets for a wallet.
-    Returns null if the wallet has no twitter_handle in known_wallets.
+    Checks known_wallets first, then tries Pump.fun profile scraping.
     Cached 15min (tweet freshness).
     """
     _validate_address(address)
@@ -414,15 +526,26 @@ async def wallet_twitter(address: str):
     if cached := await cache_get(cache_key):
         return cached
 
+    # Check known_wallets first
     known = await _safe(supabase_svc.get_known_wallet(address), default=None)
     handle = (known or {}).get("twitter_handle")
+    
+    # Fallback: try Pump.fun profile scraping
+    pumpfun_data = {}
     if not handle:
-        return {"address": address, "twitter": None}
+        from app.services.pumpfun_profiles import enrich_wallet_with_pumpfun
+        pumpfun_data = await _safe(enrich_wallet_with_pumpfun(address), default={})
+        handle = pumpfun_data.get("twitter_handle")
+    
+    if not handle:
+        result = {"address": address, "twitter": None, "pumpfun": pumpfun_data or None}
+        await cache_set(cache_key, result, 900)
+        return result
 
     from app.services.twitter import get_kol_profile_with_tweets
     profile = await _safe(get_kol_profile_with_tweets(handle), default=None)
 
-    result = {"address": address, "twitter": profile}
+    result = {"address": address, "twitter": profile, "pumpfun": pumpfun_data or None}
     await cache_set(cache_key, result, 900)  # 15 min
     return result
 
