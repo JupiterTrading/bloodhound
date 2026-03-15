@@ -1,0 +1,2269 @@
+{
+  "endpoint": "GET /v2/leaderboard/7d",
+  "url": "https://prod-api.fomo.family/v2/leaderboard/7d?limit=100",
+  "request_headers": {
+    "content-type": "application/json",
+    "x-app-installation-id": "install_bc7884b4-0c4a-465b-903a-33e17158ff11",
+    "accept": "*/*",
+    "baggage": "sentry-environment=production,sentry-public_key=4e163b6befe2112027dfa32cd92ca3ba,sentry-trace_id=48e7ffb949954dd49b73e1cf1ca02073,sentry-org_id=4508656189702144,sentry-transaction=social,sentry-sampled=false,sentry-sample_rand=0.6545443429495768,sentry-sample_rate=0.0001",
+    "authorization": "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkI4SXlObWU1V0lZRnJIclJRVDBLdFlPRlFIUjFKVXFnaGVTMHhSZHR1QVkifQ.eyJzaWQiOiJjbWt6ZW5oa2MwNXM4am8wY3RrbHo1cmpqIiwiaXNzIjoicHJpdnkuaW8iLCJpYXQiOjE3NzM0MjE3NTcsImF1ZCI6ImNtNmg0ODVvMzAwbjN6ajl5bDZ2cGVkcTciLCJzdWIiOiJkaWQ6cHJpdnk6Y21rejA2N2RkMDF5Z2puMGNhaXc5aWNrcCIsImV4cCI6MTc3MzQyNTM1N30.KSKe7Zlqq97fc4QPfjM7DRQFJn2TbIjhiI5oDtSDVmm1sYOZq8Vd2Zn-4ks9I-Iepjj6jRmPmI_rhyeOayLexA",
+    "priority": "u=3, i",
+    "x-supported-chains": "1399811149,8453,56,143",
+    "accept-encoding": "gzip, deflate, br",
+    "if-none-match": "W/\"11641-exkOhYuYiPSJGMi1q1GxoApuaqo\"",
+    "accept-language": "en-US,en;q=0.9",
+    "sentry-trace": "48e7ffb949954dd49b73e1cf1ca02073-978b42ab1d4e3514-0",
+    "user-agent": "fomo/1.60.4/280/ios/iPhone 17 Pro Max/Apple"
+  },
+  "request_body": null,
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:09:22 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "cf-ray": "9dbca5622e4bfb24-BNA",
+    "cf-cache-status": "DYNAMIC",
+    "content-encoding": "gzip",
+    "etag": "W/\"10fde-/D4dCVUiaZWLlWmOR9ky0N6eU2w\"",
+    "server": "cloudflare",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "vary": "Origin, Accept-Encoding",
+    "access-control-allow-credentials": "true",
+    "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+    "cross-origin-opener-policy": "same-origin",
+    "cross-origin-resource-policy": "same-origin",
+    "origin-agent-cluster": "?1",
+    "referrer-policy": "no-referrer",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-download-options": "noopen",
+    "x-frame-options": "SAMEORIGIN",
+    "x-permitted-cross-domain-policies": "none",
+    "x-request-id": "c2dbeb28-56a7-4cf6-8831-c57292496690",
+    "x-xss-protection": "0",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "response_body": {
+    "success": true,
+    "message": "7D Leaderboard found",
+    "responseObject": {
+      "leaderboard": [
+        {
+          "id": "2e955ffc-6fac-578a-93d8-3324605f6bed",
+          "address": "5ECuREzbvnxfrmo9cnvrcfKLgMJ7zd2ZP1C3XbPKbHhd",
+          "evmAddress": "0x4ac3da3e752932f3ec08cf98f778a055e039f3b8",
+          "createdAt": "2026-01-22T09:58:12.218Z",
+          "displayName": "change",
+          "userHandle": "change",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/28e6f5ac73f7361f02980d1b36f723d3.jpg",
+          "description": "Take a chance and you might lose; take not a chance and you have lost already.",
+          "following": 42,
+          "followers": 89085,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 3740,
+          "numTrades": 327,
+          "totalVolume": 9738830.073471,
+          "private": false,
+          "thumbhash": "3+QJHwAFN4x2h4iQhHiIKJaIi4oHyXkA",
+          "pnl7d": 169349.7307569464,
+          "totalHoldings": 5,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf_thumb_680c64c49ecf.png",
+              "tokenAddress": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+              "networkId": 8453,
+              "humanAmount": 71378.85689761228,
+              "price": 6.92380172088,
+              "value": 494213.0522221352
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png",
+              "tokenAddress": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+              "networkId": 8453,
+              "humanAmount": 3278023836.84254,
+              "price": 3.0161069033e-05,
+              "value": 98868.70323482738
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump_thumb_630aaea11290.png",
+              "tokenAddress": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump",
+              "networkId": 1399811149,
+              "humanAmount": 1043402.94129,
+              "price": 0.00279291484312,
+              "value": 2914.135562083907
+            }
+          ]
+        },
+        {
+          "id": "346a54e7-7b6b-5fbe-b17a-a0da405abda0",
+          "address": "8RREEr3ttGuhjC4kfoKViwrDufJZeuHxL5MD79BPbBho",
+          "evmAddress": "0x7d49dc688c3eb832c8a173b5a8b65ab257f90b8b",
+          "createdAt": "2026-02-01T07:31:10.534Z",
+          "displayName": "donotchase",
+          "userHandle": "dncdoteth",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/d6d2f124109fd65f7a4084ca54dd9a67.jpg",
+          "description": "follow on X for wisdom.",
+          "following": 0,
+          "followers": 6160,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 100,
+          "numTrades": 31,
+          "totalVolume": 71819.34173,
+          "private": false,
+          "thumbhash": "zAcGDwKQWjqvdmeWczeHVXhoZYEGcV8C",
+          "pnl7d": 110514.01501756863,
+          "totalHoldings": 4,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_4QCrScUe8Tn4wGXiVTr9iBmS9jS9T1N1D54gEqBnjLdU_thumb_0b2da185307e.png",
+              "tokenAddress": "4QCrScUe8Tn4wGXiVTr9iBmS9jS9T1N1D54gEqBnjLdU",
+              "networkId": 1399811149,
+              "humanAmount": 260.655147,
+              "price": 0.141200635775,
+              "value": 36.804672474426084
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv_thumb_c2dfc93a71f7.png",
+              "tokenAddress": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+              "networkId": 1399811149,
+              "humanAmount": 1365.206174,
+              "price": 0.00751046189215,
+              "value": 10.253328944754902
+            },
+            {
+              "imageUrl": "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+              "tokenAddress": "7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs",
+              "networkId": 1399811149,
+              "humanAmount": 0.00126444,
+              "price": 2135.42498398,
+              "value": 2.700116766743671
+            }
+          ]
+        },
+        {
+          "id": "ff03cead-db17-5f20-b8aa-b2cae7e15d6a",
+          "address": "7TAMgUTRR2J8iUpPVuevFRFq8oX1kmhKTx4Y4BUNF9Eb",
+          "evmAddress": "0x8eaee4a0379e2e1f7faace70222255b437b7286e",
+          "createdAt": "2025-09-10T09:03:20.132Z",
+          "displayName": "RC",
+          "userHandle": "ResellCalendar",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/867ed6dec9d1ee779bf7d3438f7801ac",
+          "description": "t.me/robthinks",
+          "following": 122,
+          "followers": 13829,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 3873,
+          "numTrades": 1254,
+          "totalVolume": 4893927.038491,
+          "private": false,
+          "thumbhash": "UigKFwbDWGd5Z4eAlKmXV2iId2BYB4YE",
+          "pnl7d": 92740.44406829859,
+          "totalHoldings": 45,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png",
+              "tokenAddress": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+              "networkId": 8453,
+              "humanAmount": 1277428217.0232577,
+              "price": 3.0161069033e-05,
+              "value": 38528.600638340584
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x65021a79aeef22b17cdc1b768f5e79a8618beba3_thumb_4742ba90fd7f.png",
+              "tokenAddress": "0x65021a79aeef22b17cdc1b768f5e79a8618beba3",
+              "networkId": 8453,
+              "humanAmount": 1571598184.041014,
+              "price": 1.68805415216e-05,
+              "value": 26529.428400975496
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3_thumb_97e7e52cd982.png",
+              "tokenAddress": "0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3",
+              "networkId": 8453,
+              "humanAmount": 823460182.4715825,
+              "price": 1.40498443269e-05,
+              "value": 11569.487373126403
+            }
+          ]
+        },
+        {
+          "id": "993c17d5-0a04-5608-83c2-41a218987e35",
+          "address": "9QNeV6XrAJJFHDSps6NCVpbA9ne2PBHQaA6Ekt2fBi5y",
+          "evmAddress": "0x8045ff81ef330c65efba80d86ffc830819574d75",
+          "createdAt": "2025-11-03T12:20:20.927Z",
+          "displayName": "six",
+          "userHandle": "Leeyde911",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/48f4f4ff94ad93db744138b90d459631.jpg",
+          "description": "no pain no gain",
+          "following": 0,
+          "followers": 2053,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 289,
+          "numTrades": 115,
+          "totalVolume": 193687.384017,
+          "private": false,
+          "thumbhash": "DkgKDwZnmZiAdIaHepiHSIh2V/js15AN",
+          "pnl7d": 72451.34299769896,
+          "totalHoldings": 1,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959_thumb_ea082f4c7d03.png",
+              "tokenAddress": "0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959",
+              "networkId": 8453,
+              "humanAmount": 2028479736.2028522,
+              "price": 6.40492225185e-05,
+              "value": 129922.54999832467
+            }
+          ]
+        },
+        {
+          "id": "1a93bb52-aefc-5128-844d-c144f3f14762",
+          "address": "9WunTXX7PKeEngkPM6uqc7AjEsQFudNvbLWAEemioD89",
+          "evmAddress": "0x0bf96f77708bb7b832b2019817eb47bf31a7b072",
+          "createdAt": "2025-11-14T04:02:51.744Z",
+          "displayName": "s",
+          "userHandle": "svntyxsvn",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/578fe00e77ce9808ddabfac486e358eb.jpg",
+          "description": null,
+          "following": 0,
+          "followers": 2389,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 147,
+          "numTrades": 98,
+          "totalVolume": 288189.333321,
+          "private": false,
+          "thumbhash": "lBcKDwKueIfPeHiUimmJxnl5CQf8YIML",
+          "pnl7d": 67798.27093772056,
+          "totalHoldings": 3,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png",
+              "tokenAddress": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+              "networkId": 8453,
+              "humanAmount": 2912929502.504349,
+              "price": 3.0268007993e-05,
+              "value": 88168.57346484716
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_9mfKc66yLkNpfBKfAGXUZBe3AyZetoP8tVFofXbfpump_thumb_bcca6278311b.png",
+              "tokenAddress": "9mfKc66yLkNpfBKfAGXUZBe3AyZetoP8tVFofXbfpump",
+              "networkId": 1399811149,
+              "humanAmount": 35899594.605233,
+              "price": 3.47716098267e-05,
+              "value": 1248.286696549866
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump_thumb_fe3c14e95b9f.png",
+              "tokenAddress": "Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump",
+              "networkId": 1399811149,
+              "humanAmount": 33142755.221358,
+              "price": 3.28526972928e-05,
+              "value": 1088.828904736641
+            }
+          ]
+        },
+        {
+          "id": "9f0e41ce-633e-5b52-b079-fab7c6c93ff6",
+          "address": "853yxZmJZVnPoWzUsQiGkk9DWgrA8v2uFN8fJvWNo1JN",
+          "evmAddress": "0xab3e898271e67a4c4fc8a6d04c061436a8d30777",
+          "createdAt": "2025-11-16T22:29:53.896Z",
+          "displayName": "downhorrendously",
+          "userHandle": "downhorrndously",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/9363036193364691424a11285325fed1.jpg",
+          "description": "or up horrendously, there\u2019s no in between",
+          "following": 120,
+          "followers": 8890,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 3045,
+          "numTrades": 1226,
+          "totalVolume": 717043.251595,
+          "private": false,
+          "thumbhash": "2jgGHwZpzLmQg4l3iDmnqGeIZ6CIB4kH",
+          "pnl7d": 57360.3650657018,
+          "totalHoldings": 3,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/56_0xeccbb861c0dda7efd964010085488b69317e4444_thumb_c721875cf316.png",
+              "tokenAddress": "0xeccbb861c0dda7efd964010085488b69317e4444",
+              "networkId": 56,
+              "humanAmount": 1258616.925754584,
+              "price": 0.0191094818716,
+              "value": 24051.517325996145
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump_thumb_f920afb62f1a.png",
+              "tokenAddress": "4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump",
+              "networkId": 1399811149,
+              "humanAmount": 13216485.842164,
+              "price": 0.00151952156629,
+              "value": 20082.73526773465
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_Bvw2FxYydatywgjttTngUuHTpqnJQ7zxcZDAkk1zpump_thumb_6a1ddda1ccec.png",
+              "tokenAddress": "Bvw2FxYydatywgjttTngUuHTpqnJQ7zxcZDAkk1zpump",
+              "networkId": 1399811149,
+              "humanAmount": 21822003.749123,
+              "price": 8.50349401132e-05,
+              "value": 1855.6327819567002
+            }
+          ]
+        },
+        {
+          "id": "b7046ff5-5698-5596-afd1-302ef6e66adc",
+          "address": "DvgX5mbRiwKXb8BLYNqGx21i2nnXAqPasvSRopzgTQgh",
+          "evmAddress": "0xd4e1038ef6774523c8073feb905bc2ef91a46ea6",
+          "createdAt": "2025-10-25T00:23:37.382Z",
+          "displayName": "Clav",
+          "userHandle": "Clavtard",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/1a0ce5ffd7ed71537c707e687e0ca39b.jpg",
+          "description": null,
+          "following": 21,
+          "followers": 2906,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 471,
+          "numTrades": 87,
+          "totalVolume": 72125.156664,
+          "private": false,
+          "thumbhash": "lTgKHwQBs3pQe4iGmzaHuId2eWB0InAC",
+          "pnl7d": 42378.48838595578,
+          "totalHoldings": 2,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_32CdQdBUxbCsLy5AUHWmyidfwhgGUr9N573NBUrDpump_thumb_5ef2c3edec8d.png",
+              "tokenAddress": "32CdQdBUxbCsLy5AUHWmyidfwhgGUr9N573NBUrDpump",
+              "networkId": 1399811149,
+              "humanAmount": 31841376.83232,
+              "price": 0.00323969247048,
+              "value": 103156.26877338343
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_GkyPYa7NnCFbduLknCfBfP7p8564X1VZhwZYJ6CZpump_thumb_3d75386f7bf6.png",
+              "tokenAddress": "GkyPYa7NnCFbduLknCfBfP7p8564X1VZhwZYJ6CZpump",
+              "networkId": 1399811149,
+              "humanAmount": 718.757266,
+              "price": 0.00301344519782,
+              "value": 2.165935631625932
+            }
+          ]
+        },
+        {
+          "id": "14854c53-e262-51dd-a577-a1a1d1ffbc32",
+          "address": "EVPZtVguANq53bmoK4gBaQrzTaCXMr6ERSEpQC137QjF",
+          "evmAddress": "0x0b54f34d42c5414bc22e934c349d3393a14b7fde",
+          "createdAt": "2025-10-25T18:22:59.803Z",
+          "displayName": "*",
+          "userHandle": "onchainsorcerer",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/65adb475faf00ad4f5375d55cd468729.jpg",
+          "description": null,
+          "following": 25,
+          "followers": 2332,
+          "activated": true,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 552,
+          "numTrades": 228,
+          "totalVolume": 2487751.777348,
+          "private": false,
+          "thumbhash": "YAgSFwKQuInHaZd6hsZnl5d3lqBpGo8O",
+          "pnl7d": 42284.815650666365,
+          "totalHoldings": 4,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png",
+              "tokenAddress": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+              "networkId": 8453,
+              "humanAmount": 1598145309.3934839,
+              "price": 3.0161069033e-05,
+              "value": 48201.77100138201
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_8116V1BW9zaXUM6pVhWVaAduKrLcEBi3RGXedKTrBAGS_thumb_009b6ba91d53.png",
+              "tokenAddress": "8116V1BW9zaXUM6pVhWVaAduKrLcEBi3RGXedKTrBAGS",
+              "networkId": 1399811149,
+              "humanAmount": 8116899.244885388,
+              "price": 0.00149970292791,
+              "value": 12172.937563105084
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/56_0x2f301934c2f4647c7ec0b89f8983938d7bdc4444_thumb_58b24a96e4da.png",
+              "tokenAddress": "0x2f301934c2f4647c7ec0b89f8983938d7bdc4444",
+              "networkId": 56,
+              "humanAmount": 21741076.0021892,
+              "price": 7.94430302729e-06,
+              "value": 172.71769590073364
+            }
+          ]
+        },
+        {
+          "id": "d0348993-3478-5f50-932c-572c7564c02a",
+          "address": "Bs8s1QzhkxDdYD9exTCdMYSi776cGtqYZFLFb5A2cFtV",
+          "evmAddress": "0xf0244ddb9c126ed836381c11d730257ba36929c9",
+          "createdAt": "2026-01-14T03:04:44.135Z",
+          "displayName": "Dinh Hung",
+          "userHandle": "dinhhung493",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/950378efce1485ca6e75856181eb5da1.jpg",
+          "description": "dont rotate too much",
+          "following": 32,
+          "followers": 507,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 859,
+          "numTrades": 263,
+          "totalVolume": 758949.695869,
+          "private": false,
+          "thumbhash": "4egNLwTXeWifinenh2doiIeGlgVoi6EA",
+          "pnl7d": 38677.33374705115,
+          "totalHoldings": 9,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959_thumb_ea082f4c7d03.png",
+              "tokenAddress": "0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959",
+              "networkId": 8453,
+              "humanAmount": 649999999.5921326,
+              "price": 6.40492225185e-05,
+              "value": 41631.994610901405
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x4e6c9f48f73e54ee5f3ab7e2992b2d733d0d0b07_thumb_3e94edd3a6d0.png",
+              "tokenAddress": "0x4e6c9f48f73e54ee5f3ab7e2992b2d733d0d0b07",
+              "networkId": 8453,
+              "humanAmount": 1362019914.88077,
+              "price": 1.6818183433e-05,
+              "value": 22906.700767863837
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x65021a79aeef22b17cdc1b768f5e79a8618beba3_thumb_4742ba90fd7f.png",
+              "tokenAddress": "0x65021a79aeef22b17cdc1b768f5e79a8618beba3",
+              "networkId": 8453,
+              "humanAmount": 334574584.45060927,
+              "price": 1.66078604292e-05,
+              "value": 5556.568001713308
+            }
+          ]
+        },
+        {
+          "id": "3d8284b4-725b-5974-8766-1d4978c1de3b",
+          "address": "G9kNVrM2Pk3CvVzne8JUEhWBTKbfXANJ6SstU7Wb9fnK",
+          "evmAddress": "0x6ec6ccc9c6a99559ff5baead3d2b1747d1657467",
+          "createdAt": "2025-10-24T22:26:03.166Z",
+          "displayName": "jay",
+          "userHandle": "_traderjay",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/3c664655d972ff83b3c6ec8b1eef1716.jpg",
+          "description": "wagmi",
+          "following": 11,
+          "followers": 621,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 367,
+          "numTrades": 164,
+          "totalVolume": 695984.125798,
+          "private": false,
+          "thumbhash": "GnmGPRIPB3dtknZaefaHbH+4Bwd4d4iIiA==",
+          "pnl7d": 37421.67979932484,
+          "totalHoldings": 3,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_8G5ayEsJF4Q7FEWEGeF4jtnUWZBEKCqhySTFQf9Ppump_thumb_949a0b2ffa6b.png",
+              "tokenAddress": "8G5ayEsJF4Q7FEWEGeF4jtnUWZBEKCqhySTFQf9Ppump",
+              "networkId": 1399811149,
+              "humanAmount": 6602662.317784,
+              "price": 0.00100164261783,
+              "value": 6613.507968632661
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_64Xtqbivo92rDWQ7RruN6c4VkkfD3pNoZTHjMjyNBAGS_thumb_5308318ebf23.png",
+              "tokenAddress": "64Xtqbivo92rDWQ7RruN6c4VkkfD3pNoZTHjMjyNBAGS",
+              "networkId": 1399811149,
+              "humanAmount": 28506880.82691944,
+              "price": 7.89350213513e-05,
+              "value": 2250.1912467318507
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png",
+              "tokenAddress": "So11111111111111111111111111111111111111112",
+              "networkId": 1399811149,
+              "humanAmount": 0.105168273,
+              "price": 89.8251061192,
+              "value": 9.446751282597997
+            }
+          ]
+        },
+        {
+          "id": "c0fc051d-9502-515e-a549-5e912a167a4e",
+          "address": "4xAAf8Epr3APAjsLwqMtyfAS2acDSwDgYKi4gL7cwT7K",
+          "evmAddress": "0xd49d1e7f050fc2bf1a6a7d514f1ddf02a5933877",
+          "createdAt": "2025-10-28T01:04:54.107Z",
+          "displayName": "Don Alpha",
+          "userHandle": "AlphaCrew23",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/2b416e8d30d8b56ba6aec43190fbcaec.jpg",
+          "description": "I\u2019m going to show holding one main Token is the way you become the most profitable trader by publicly holding $AMETA and being number one on fomo All Time",
+          "following": 12,
+          "followers": 21256,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 987,
+          "numTrades": 303,
+          "totalVolume": 929957.686117,
+          "private": false,
+          "thumbhash": "SvcFHwRZxqWfdohziYaHl3h3dweGSGAF",
+          "pnl7d": 36088.66370228038,
+          "totalHoldings": 3,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x90ec58ef4cc9f37b96de1e203b65bd4e6e79580e_thumb_051924fc076e.png",
+              "tokenAddress": "0x90ec58ef4cc9f37b96de1e203b65bd4e6e79580e",
+              "networkId": 8453,
+              "humanAmount": 303112024.04658896,
+              "price": 0.000508162305732,
+              "value": 154030.10503460807
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_DVyef8whPmeLhaZXJoeJArdohj8CuQjX83DpNH7apump:1399811149_thumb_13b415bb621d.png",
+              "tokenAddress": "DVyef8whPmeLhaZXJoeJArdohj8CuQjX83DpNH7apump",
+              "networkId": 1399811149,
+              "humanAmount": 71642591.563455,
+              "price": 6.03157590132e-06,
+              "value": 432.11772878224673
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png",
+              "tokenAddress": "So11111111111111111111111111111111111111112",
+              "networkId": 1399811149,
+              "humanAmount": 0.047034759,
+              "price": 89.8251061192,
+              "value": 4.2249022184659974
+            }
+          ]
+        },
+        {
+          "id": "c5e4d760-3107-5f31-b4d8-6773ee019a92",
+          "address": "8nwzLRBBQyW9BndxZn3YLaEVVoNp91iAxMpuWgczGZB7",
+          "evmAddress": "0xa48f376c87adc1ae7821ce7a5a909a3583a5451f",
+          "createdAt": "2025-10-24T23:10:54.331Z",
+          "displayName": "dns (\ud83d\udfe1, \ud83d\udfe9)",
+          "userHandle": "DNS_ERR",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/44c635c84e006e9ae742b29971021d07.jpg",
+          "description": "GOD LOVES YOU. WE ALL SIN, BUT JESUS DIED & ROSE ON THE THIRD DAY TO FORGIVE & SAVE US. TURN TO HIM, TRUST HIM, AND RECEIVE NEW LIFE WITH GOD. JESUS SAVES. \u271d\ufe0f",
+          "following": 77,
+          "followers": 5387,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 1195,
+          "numTrades": 405,
+          "totalVolume": 760375.295888,
+          "private": false,
+          "thumbhash": "o3sKJwT4x3h5iHh9jXhop4h1h3IIZoQA",
+          "pnl7d": 34971.743265731995,
+          "totalHoldings": 8,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump_thumb_f920afb62f1a.png",
+              "tokenAddress": "4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump",
+              "networkId": 1399811149,
+              "humanAmount": 13929685.865336,
+              "price": 0.00151952156629,
+              "value": 21166.458084023034
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/56_0xeccbb861c0dda7efd964010085488b69317e4444_thumb_c721875cf316.png",
+              "tokenAddress": "0xeccbb861c0dda7efd964010085488b69317e4444",
+              "networkId": 56,
+              "humanAmount": 1063552.9036468656,
+              "price": 0.0190949487701,
+              "value": 20308.488209428004
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_DaTGaE6uhCfzz6Eh8hWQwL4yw3AJbXWbfvbeccdXJWED_thumb_3d84e2308ef2.png",
+              "tokenAddress": "DaTGaE6uhCfzz6Eh8hWQwL4yw3AJbXWbfvbeccdXJWED",
+              "networkId": 1399811149,
+              "humanAmount": 10306390.185973,
+              "price": 0.000644909495556,
+              "value": 6646.688895839156
+            }
+          ]
+        },
+        {
+          "id": "5035bc84-c8f0-5c54-a649-a99282d852ce",
+          "address": "ExxadAeGwmrfS3NnHxEqWX3qmVTFNXhk7DmSScUpp1t3",
+          "evmAddress": "0xbf7741d22ddc76c6bd162aa77e564c544c32cfe9",
+          "createdAt": "2025-11-08T18:37:23.341Z",
+          "displayName": "logjam",
+          "userHandle": "_logjam",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/ae494b59a6f1350bf0fe12377df2204f.jpg",
+          "description": "gambling to stack more neet",
+          "following": 143,
+          "followers": 53382,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 1121,
+          "numTrades": 315,
+          "totalVolume": 1865294.579605,
+          "private": false,
+          "thumbhash": "FRgODwCnVWp/eHetqLeHiXmIh2EIAE0B",
+          "pnl7d": 31479.958553313027,
+          "totalHoldings": 9,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_thumb_11979a61b580.png",
+              "tokenAddress": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+              "networkId": 1399811149,
+              "humanAmount": 10109435.758436,
+              "price": 0.0271181628202,
+              "value": 274149.3249176195
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump_thumb_421ff757ad23.png",
+              "tokenAddress": "J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump",
+              "networkId": 1399811149,
+              "humanAmount": 17953931.761424,
+              "price": 0.00174018259058,
+              "value": 31243.119483691364
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_89S7oVB4hui8ceJqhHreWB7fcxdthfvoB7z2pfJtpump_thumb_49281b9bd876.png",
+              "tokenAddress": "89S7oVB4hui8ceJqhHreWB7fcxdthfvoB7z2pfJtpump",
+              "networkId": 1399811149,
+              "humanAmount": 10467427.205502,
+              "price": 0.00104592467023,
+              "value": 10948.140348071209
+            }
+          ]
+        },
+        {
+          "id": "1ff3027e-b9ce-50d6-b04e-9f61ee13abe9",
+          "address": "JPVrNNoBePhir8t7eBwTAysBsTf8VEBPbBdVb3oJu5J",
+          "evmAddress": "0x0cd74a75b565f77b564b118a2cbe34b49cf98851",
+          "createdAt": "2026-02-05T01:16:54.411Z",
+          "displayName": "rev",
+          "userHandle": "solrevv",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/21093771c09547ebf753f1730cdf68e6.jpg",
+          "description": "washed",
+          "following": 10,
+          "followers": 439,
+          "activated": true,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 284,
+          "numTrades": 73,
+          "totalVolume": 261359.451048,
+          "private": false,
+          "thumbhash": "FQgKDwT/dnd/V3Z0h1h4aHmHBbOIIpAG",
+          "pnl7d": 27606.126792685933,
+          "totalHoldings": 4,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3_thumb_97e7e52cd982.png",
+              "tokenAddress": "0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3",
+              "networkId": 8453,
+              "humanAmount": 2492920503.5820394,
+              "price": 1.40498443269e-05,
+              "value": 35025.144994664806
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/56_0x640c04ca09c5c5140e62fef42c59e3afdbbd4444_thumb_b73c93973cee.png",
+              "tokenAddress": "0x640c04ca09c5c5140e62fef42c59e3afdbbd4444",
+              "networkId": 56,
+              "humanAmount": 1545431.1752524127,
+              "price": 0.00143628034516,
+              "value": 2219.6724218125596
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_DVZMdNkcET3852usHEi1e6WB9ShffZsxbkbW55eEpump_thumb_e16ce3c15214.png",
+              "tokenAddress": "DVZMdNkcET3852usHEi1e6WB9ShffZsxbkbW55eEpump",
+              "networkId": 1399811149,
+              "humanAmount": 5008800.536162,
+              "price": 6.64940627302e-05,
+              "value": 333.05549705461544
+            }
+          ]
+        },
+        {
+          "id": "5880e9f3-18dc-597f-9061-576bc88dfb8d",
+          "address": "CqbQqfWknWs6eHpizQ8nhApbxA7fZTX21iyBe5LjpJEF",
+          "evmAddress": "0x4a9787173610ebe5ef68d94ba43edc0c3bb92aaf",
+          "createdAt": "2025-10-25T15:20:55.763Z",
+          "displayName": "(\u2014<>\u2014)",
+          "userHandle": "spiceys",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/ffb32e0f08bfe70adca99d42a63eb666.jpg",
+          "description": null,
+          "following": 39,
+          "followers": 294,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 391,
+          "numTrades": 230,
+          "totalVolume": 1525248.414163,
+          "private": false,
+          "thumbhash": "TxgGFwSxqGmglWmAd6bDV2ppZ5A2BWgF",
+          "pnl7d": 27216.319510704063,
+          "totalHoldings": 2,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959_thumb_ea082f4c7d03.png",
+              "tokenAddress": "0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959",
+              "networkId": 8453,
+              "humanAmount": 893600221.983264,
+              "price": 6.40492225185e-05,
+              "value": 57234.39946038707
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x316ffb9c875f900adcf04889e415cc86b564eba3_thumb_e5e400c555d9.png",
+              "tokenAddress": "0x316ffb9c875f900adcf04889e415cc86b564eba3",
+              "networkId": 8453,
+              "humanAmount": 450307677.67118514,
+              "price": 5.425242525e-06,
+              "value": 2443.0283622357065
+            }
+          ]
+        },
+        {
+          "id": "c0f26d14-de23-536a-aa0b-11512d0ecd6a",
+          "address": "FbNUmcixxfQ4LVtNdh5hRwMAD98QBM2sLtKNrFwChGE1",
+          "evmAddress": "0xb0d717901a642497fe20329f99fc76090a02880b",
+          "createdAt": "2026-03-12T05:03:40.215Z",
+          "displayName": "Eric Voorhees",
+          "userHandle": "erlkvoorhees",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/d50876c2600307282a78db899641a33b.jpg",
+          "description": null,
+          "following": 0,
+          "followers": 325,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 6,
+          "numTrades": 5,
+          "totalVolume": 16145.662914,
+          "private": false,
+          "thumbhash": "necJBwA7uHlsr3ZaZJinuIeZ5y/G87AI",
+          "pnl7d": 27053.984931177187,
+          "totalHoldings": 3,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3_thumb_97e7e52cd982.png",
+              "tokenAddress": "0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3",
+              "networkId": 8453,
+              "humanAmount": 1482003876.4579616,
+              "price": 1.40498443269e-05,
+              "value": 20821.9237560967
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x65021a79aeef22b17cdc1b768f5e79a8618beba3_thumb_4742ba90fd7f.png",
+              "tokenAddress": "0x65021a79aeef22b17cdc1b768f5e79a8618beba3",
+              "networkId": 8453,
+              "humanAmount": 615534469.4064093,
+              "price": 1.68990460251e-05,
+              "value": 10401.945328534417
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png",
+              "tokenAddress": "So11111111111111111111111111111111111111112",
+              "networkId": 1399811149,
+              "humanAmount": 0.10001,
+              "price": 89.8251061192,
+              "value": 8.983408862981193
+            }
+          ]
+        },
+        {
+          "id": "dd55fdd0-39c3-57e6-9b90-32cf70ee135e",
+          "address": "6487sppMrk14kHhDfoHjnRthQwSqcKaYk9e26tukGucR",
+          "evmAddress": "0xd985d752e6123ab1e70458550fdda1be974a790f",
+          "createdAt": "2026-01-19T10:14:06.797Z",
+          "displayName": "KJS16",
+          "userHandle": "KJS16",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/1f2281208133544cbd00368fe5d13645.jpg",
+          "description": "soldier of misfortune. doing it for fam",
+          "following": 12,
+          "followers": 3817,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 2071,
+          "numTrades": 332,
+          "totalVolume": 8989066.389724,
+          "private": false,
+          "thumbhash": "DwgOBwDrm4d5eYlgZYiJiXeI6XI/eaYA",
+          "pnl7d": 25192.819512671107,
+          "totalHoldings": 4,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x50d2280441372486beecdd328c1854743ebacb07_thumb_d0f960f20bbd.png",
+              "tokenAddress": "0x50d2280441372486beecdd328c1854743ebacb07",
+              "networkId": 8453,
+              "humanAmount": 1515002805.4503522,
+              "price": 5.91457901333e-05,
+              "value": 89606.03798252725
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x9b5e262cf9bb04869ab40b19af91d2dc85761722_large_small_thumb_1f9ef89f-038c-421f-9ad3-298f71cb9068.png",
+              "tokenAddress": "0x9b5e262cf9bb04869ab40b19af91d2dc85761722",
+              "networkId": 8453,
+              "humanAmount": 4015424.865966074,
+              "price": 0.0104793523199,
+              "value": 42079.051884545726
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x65021a79aeef22b17cdc1b768f5e79a8618beba3_thumb_4742ba90fd7f.png",
+              "tokenAddress": "0x65021a79aeef22b17cdc1b768f5e79a8618beba3",
+              "networkId": 8453,
+              "humanAmount": 2197388969.1115837,
+              "price": 1.68805415216e-05,
+              "value": 37093.11573219391
+            }
+          ]
+        },
+        {
+          "id": "f5d24280-7583-5684-a5ea-52cd1d932bf1",
+          "address": "HsowDyoy5zH4tTUTZWyiL8GGHUWNRvb3ySMqmCohtGoE",
+          "evmAddress": "0x141b98804ad9401feff16b07f7cf3b6a6799893f",
+          "createdAt": "2025-10-03T22:09:30.205Z",
+          "displayName": "PeacefulLovelyWildfowl",
+          "userHandle": "PeacefulLovelyWildfowl",
+          "profilePictureLink": null,
+          "description": "DownOnly",
+          "following": 15,
+          "followers": 548,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 159,
+          "numTrades": 82,
+          "totalVolume": 292932.426309,
+          "private": false,
+          "thumbhash": null,
+          "pnl7d": 22659.146495143188,
+          "totalHoldings": 4,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x9d0e8f5b25384c7310cb8c6ae32c8fbeb645d083_thumb_46e7ed502358.png",
+              "tokenAddress": "0x9d0e8f5b25384c7310cb8c6ae32c8fbeb645d083",
+              "networkId": 8453,
+              "humanAmount": 346356.7296158118,
+              "price": 0.0996614099355,
+              "value": 34518.40001416055
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn_thumb_750a355e7f63.png",
+              "tokenAddress": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+              "networkId": 1399811149,
+              "humanAmount": 12912189.75581,
+              "price": 0.00206612051569,
+              "value": 26678.140156961294
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0xbaa5cc21fd487b8fcc2f632f3f4e8d37262a0842_thumb_83d534f7a6b2.png",
+              "tokenAddress": "0xbaa5cc21fd487b8fcc2f632f3f4e8d37262a0842",
+              "networkId": 8453,
+              "humanAmount": 1827.5773601568305,
+              "price": 1.87918305846,
+              "value": 3434.3524132317657
+            }
+          ]
+        },
+        {
+          "id": "fb18f49a-77d9-5a81-88d0-6a3c16e94410",
+          "address": "GrR7ETq5FMQdVDgMGpVD63GndeETzVFoJFaT9yyEVFL9",
+          "evmAddress": "0x2048c968c4c3228658191b9265cec4d2caa76ff3",
+          "createdAt": "2025-12-28T10:45:14.668Z",
+          "displayName": "raychan",
+          "userHandle": "raychan",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/ec2b8f4a09fc62b4c998b8f2f8c5a252.jpg",
+          "description": "believer",
+          "following": 105,
+          "followers": 829,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 420,
+          "numTrades": 107,
+          "totalVolume": 658604.76838,
+          "private": false,
+          "thumbhash": "HggKBwD74IalvWJFhsSYl8yc+C/VvzML",
+          "pnl7d": 21902.441205029954,
+          "totalHoldings": 2,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_C4yDhKwkikpVGCQWD9BT2SJyHAtRFFnKPDM9Nyshpump_thumb_01596cae06c2.png",
+              "tokenAddress": "C4yDhKwkikpVGCQWD9BT2SJyHAtRFFnKPDM9Nyshpump",
+              "networkId": 1399811149,
+              "humanAmount": 22417209.195638,
+              "price": 0.00052227823511,
+              "value": 11708.020454789477
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png",
+              "tokenAddress": "So11111111111111111111111111111111111111112",
+              "networkId": 1399811149,
+              "humanAmount": 0.190316701,
+              "price": 89.8251061192,
+              "value": 17.09521786358106
+            }
+          ]
+        },
+        {
+          "id": "14fafdc2-b375-5edd-8c08-613d82cc06b6",
+          "address": "E6czeBZEvfiscJa6NgQpTxjKvsvvwK4zaPZ2G2nf7y76",
+          "evmAddress": "0x52bfd45d37f45f73f0555be6ca9a645ba6b6deb3",
+          "createdAt": "2025-10-23T00:43:29.922Z",
+          "displayName": "profit | eca.eth",
+          "userHandle": "FlippingProfits",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/296adcce217e728917e79ff80e68cfd2.jpg",
+          "description": "most coins i ape i will sell at a  -50% so be wary of that",
+          "following": 86,
+          "followers": 10384,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 895,
+          "numTrades": 487,
+          "totalVolume": 7593036.342381,
+          "private": false,
+          "thumbhash": "I9cRJwSYZ3hwd3h7hniXZ4l5h0B3GXAH",
+          "pnl7d": 21482.78056745702,
+          "totalHoldings": 33,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png",
+              "tokenAddress": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+              "networkId": 8453,
+              "humanAmount": 1936800753.1812441,
+              "price": 3.0161069033e-05,
+              "value": 58415.9812198659
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/56_0x3e17ee3b1895dd1a7cf993a89769c5e029584444_thumb_fc54cc94aa7f.png",
+              "tokenAddress": "0x3e17ee3b1895dd1a7cf993a89769c5e029584444",
+              "networkId": 56,
+              "humanAmount": 3415287.3814515183,
+              "price": 0.011243777489,
+              "value": 38400.73137803034
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_3qq54YqAKG3TcrwNHXFSpMCWoL8gmMuPceJ4FG9npump_thumb_3ed0cabcc8a5.png",
+              "tokenAddress": "3qq54YqAKG3TcrwNHXFSpMCWoL8gmMuPceJ4FG9npump",
+              "networkId": 1399811149,
+              "humanAmount": 18817641.853619,
+              "price": 0.000761584049572,
+              "value": 14331.215886274715
+            }
+          ]
+        },
+        {
+          "id": "6571eca7-cf7f-5508-9379-a1192bf82a04",
+          "address": "CZLadaJS9AQpiPqrAaX5KHLpMeeQLJooYGN1CJU2a9Fd",
+          "evmAddress": "0xa1058ea8203e2180060464535fce9f9ffde33be2",
+          "createdAt": "2026-02-15T16:30:20.751Z",
+          "displayName": "101KittenRainbow",
+          "userHandle": "101KittenRainbow",
+          "profilePictureLink": null,
+          "description": null,
+          "following": 2,
+          "followers": 254,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 52,
+          "numTrades": 13,
+          "totalVolume": 161493.29465,
+          "private": false,
+          "thumbhash": null,
+          "pnl7d": 21374.846217639264,
+          "totalHoldings": 1,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x9d0e8f5b25384c7310cb8c6ae32c8fbeb645d083_thumb_46e7ed502358.png",
+              "tokenAddress": "0x9d0e8f5b25384c7310cb8c6ae32c8fbeb645d083",
+              "networkId": 8453,
+              "humanAmount": 884050.3820220717,
+              "price": 0.0996520766563,
+              "value": 88097.4564372948
+            }
+          ]
+        },
+        {
+          "id": "cbd819eb-7209-5b35-9b20-ba84b5e152f3",
+          "address": "51kmQvJFpUtptHT31aQ7BpSo6q8xhu3DGsj842XxwjZj",
+          "evmAddress": "0x363f2268d334cc9bca19793f7355bddfb80cd9e4",
+          "createdAt": "2025-10-27T05:11:26.454Z",
+          "displayName": "Laolu",
+          "userHandle": "Laolu",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/95ed7f34ad793ea096f940af7bb6d045.jpg",
+          "description": "love",
+          "following": 34,
+          "followers": 34618,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 63,
+          "numTrades": 121,
+          "totalVolume": 73128.249783,
+          "private": false,
+          "thumbhash": "nhYKFwAGN0dUlaeFh1mXaHh3ZlYJH4wO",
+          "pnl7d": 21239.715341940977,
+          "totalHoldings": 8,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp_thumb_1e1b256dad55.png",
+              "tokenAddress": "CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
+              "networkId": 1399811149,
+              "humanAmount": 7057737.766864,
+              "price": 0.0372272359054,
+              "value": 262740.06880549714
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB_large_small_thumb_7f4c3eaa-b174-47d7-aa6b-1e5a3577d9d9.png",
+              "tokenAddress": "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB",
+              "networkId": 1399811149,
+              "humanAmount": 1102.802941,
+              "price": 0.999551106169,
+              "value": 1102.3078995629764
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB_thumb_6b5fce2cd871.png",
+              "tokenAddress": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+              "networkId": 1399811149,
+              "humanAmount": 527.695516,
+              "price": 1.00020598819,
+              "value": 527.804215044212
+            }
+          ]
+        },
+        {
+          "id": "a12342ba-6094-5c45-b2fe-2daa93538e12",
+          "address": "4SYq4htJwgs7gn4QdTpG2pDm3xNH9MCUEA6zo5EryjEP",
+          "evmAddress": "0x4c0a5cc50817d34569995a3cd6e31b19917e6e2f",
+          "createdAt": "2025-12-28T14:26:37.416Z",
+          "displayName": "aaaa",
+          "userHandle": "holiday_inn_express",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/ec41d798e0945cf83f63a0ede564d4d1.jpg",
+          "description": "",
+          "following": 83,
+          "followers": 351,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 1213,
+          "numTrades": 558,
+          "totalVolume": 969374.300835,
+          "private": false,
+          "thumbhash": "jHgGDISilmavd3eFaHWF+QHLPg==",
+          "pnl7d": 19272.270320646796,
+          "totalHoldings": 20,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_EPuZ1X6pPzac3ELPsT59LStmgaSr4kBJvaAbL15Fpump_thumb_5c44bf181cc8.png",
+              "tokenAddress": "EPuZ1X6pPzac3ELPsT59LStmgaSr4kBJvaAbL15Fpump",
+              "networkId": 1399811149,
+              "humanAmount": 4616273.914133,
+              "price": 0.00111727722847,
+              "value": 5157.657724640877
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/56_0x824768fbcf4133c84cbe741ba89dcf507f014444_thumb_374a6bb5ed13.png",
+              "tokenAddress": "0x824768fbcf4133c84cbe741ba89dcf507f014444",
+              "networkId": 56,
+              "humanAmount": 39556018.22738559,
+              "price": 7.73615567468e-05,
+              "value": 3060.115148775345
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_6JhpWAPCa4DXA67mfWznfqQFq1SpMwes65kH6Xmupump_thumb_caf75f4dd940.png",
+              "tokenAddress": "6JhpWAPCa4DXA67mfWznfqQFq1SpMwes65kH6Xmupump",
+              "networkId": 1399811149,
+              "humanAmount": 27636957.828645997,
+              "price": 4.49932997828e-05,
+              "value": 1243.4779286688706
+            }
+          ]
+        },
+        {
+          "id": "3b181b84-e974-55d0-ac26-5c756aeed2ff",
+          "address": "D8P5Wy4Nssuqh7woNVvq7wei65Meom8fuxPnoi9d5YZV",
+          "evmAddress": "0x41f9be0f1ee6fb8b89887afe887e3600dac75c1b",
+          "createdAt": "2025-04-22T00:52:19.836Z",
+          "displayName": "Genetic",
+          "userHandle": "Genetic",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/b65fede6da9179f5ee89ceacbb6c9624.jpg",
+          "description": "10k-1 mil Prly to zero",
+          "following": 145,
+          "followers": 1239,
+          "activated": true,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 380,
+          "numTrades": 233,
+          "totalVolume": 607749.389589,
+          "private": false,
+          "thumbhash": "1oUFJwYOWmallHpCemeZVod3BhzUkHYP",
+          "pnl7d": 18943.41931834784,
+          "totalHoldings": 11,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_thumb_11979a61b580.png",
+              "tokenAddress": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+              "networkId": 1399811149,
+              "humanAmount": 2436802.146364,
+              "price": 0.0271181628202,
+              "value": 66081.59736571179
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_fRfKGCriduzDwSudCwpL7ySCEiboNuryhZDVJtr1a1C_thumb_2a581c8c-1efa-4646-b96f-0b29e84a5382.png",
+              "tokenAddress": "fRfKGCriduzDwSudCwpL7ySCEiboNuryhZDVJtr1a1C",
+              "networkId": 1399811149,
+              "humanAmount": 1549143.937271265,
+              "price": 0.00896715140878,
+              "value": 13891.40823950502
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_BeFtLwLtS9Rva12KrHKRMY1H5WoeM1Y2ULMnNJKopump_thumb_f894148157c6.png",
+              "tokenAddress": "BeFtLwLtS9Rva12KrHKRMY1H5WoeM1Y2ULMnNJKopump",
+              "networkId": 1399811149,
+              "humanAmount": 3311793.113819,
+              "price": 0.00181669194789,
+              "value": 6016.507882952527
+            }
+          ]
+        },
+        {
+          "id": "4a5648a1-5c32-5619-a926-88f52f1c8b08",
+          "address": "HeufDSztrxjDjDhcahDDAZgAD6gtWuPK7jXGcNUgGwmk",
+          "evmAddress": "0xe07ef6e4380a31545c51f505e7bd970002db319e",
+          "createdAt": "2025-11-11T21:27:23.907Z",
+          "displayName": "Streetjesus",
+          "userHandle": "Streetjesus_eth",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/d8135c51d38a647139f24f0e9187b71e.jpg",
+          "description": "1 SOL and a dream",
+          "following": 186,
+          "followers": 320,
+          "activated": true,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 519,
+          "numTrades": 167,
+          "totalVolume": 101721.315168,
+          "private": false,
+          "thumbhash": "VtcJFwa8mid7e4Wjdwc2dmZodAVpRpAH",
+          "pnl7d": 18846.828443127863,
+          "totalHoldings": 12,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_H5b4iYiZYycr7fmQ1dMj7hdfLGAEPcDH261K4hugpump_thumb_c918f120cabe.png",
+              "tokenAddress": "H5b4iYiZYycr7fmQ1dMj7hdfLGAEPcDH261K4hugpump",
+              "networkId": 1399811149,
+              "humanAmount": 8960668.664023,
+              "price": 0.000422301001025,
+              "value": 3784.0993466702625
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_a3W4qutoEJA4232T2gwZUfgYJTetr96pU4SJMwppump_thumb_90a2dea7e409.png",
+              "tokenAddress": "a3W4qutoEJA4232T2gwZUfgYJTetr96pU4SJMwppump",
+              "networkId": 1399811149,
+              "humanAmount": 1011.923633,
+              "price": 0.0420272947251,
+              "value": 42.52841276338493
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/56_0xce501131d0229c3843add6977002c7d9908e4444_thumb.png",
+              "tokenAddress": "0xce501131d0229c3843add6977002c7d9908e4444",
+              "networkId": 56,
+              "humanAmount": 1258587.0413163917,
+              "price": 1.40248630978e-05,
+              "value": 17.651510951127545
+            }
+          ]
+        },
+        {
+          "id": "2a21e621-b428-5dd9-a23a-097a2dd6642c",
+          "address": "J6BoyLeMx5QfXbLbJbw5fozH2pK1BqxwHFEEoa8HbXHB",
+          "evmAddress": "0x11aabb67360646e14af11b66d3b4ddbe0cf37062",
+          "createdAt": "2026-02-06T06:40:33.519Z",
+          "displayName": "trewbuilt",
+          "userHandle": "trewbuilt",
+          "profilePictureLink": null,
+          "description": null,
+          "following": 8,
+          "followers": 54,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 135,
+          "numTrades": 63,
+          "totalVolume": 27676.315746,
+          "private": false,
+          "thumbhash": null,
+          "pnl7d": 18807.022821085415,
+          "totalHoldings": 1,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_8opvqaWysX1oYbXuTL8PHaoaTiXD69VFYAX4smPebonk_thumb_3c3597c81008.png",
+              "tokenAddress": "8opvqaWysX1oYbXuTL8PHaoaTiXD69VFYAX4smPebonk",
+              "networkId": 1399811149,
+              "humanAmount": 60732.862946,
+              "price": 0.00364717149182,
+              "value": 221.50316635326243
+            }
+          ]
+        },
+        {
+          "id": "bb47dd32-9432-562a-b385-30afc05325fb",
+          "address": "3vNX8FGnFrc6uhyVyzDrRFpFLxT52eZBAaYXyK1YR9Qx",
+          "evmAddress": "0x81d10de94eef60e39c814cae935788dca4b70e95",
+          "createdAt": "2025-11-09T02:25:23.378Z",
+          "displayName": "Mabon",
+          "userHandle": "mabon_zsq",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/d828535f5fc57d4ec48077c27e6a9bce.jpg",
+          "description": "BUY BUY BUY",
+          "following": 33,
+          "followers": 1307,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 26,
+          "numTrades": 161,
+          "totalVolume": 178533.248718,
+          "private": false,
+          "thumbhash": "5fcJFwJWrYiPfol7dpZpqHd6egN5J5AH",
+          "pnl7d": 18723.403604972606,
+          "totalHoldings": 17,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_AzVCECC5zr21ikYQne4Xtoh3SVg848duPHUHb3M7bonk_thumb.png",
+              "tokenAddress": "AzVCECC5zr21ikYQne4Xtoh3SVg848duPHUHb3M7bonk",
+              "networkId": 1399811149,
+              "humanAmount": 7106933.93329,
+              "price": 0.00725023753728,
+              "value": 51526.959178108154
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp_thumb_1e1b256dad55.png",
+              "tokenAddress": "CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
+              "networkId": 1399811149,
+              "humanAmount": 1326229.5366699998,
+              "price": 0.0372272359054,
+              "value": 49371.85982632342
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0xc729777d0470f30612b1564fd96e8dd26f5814e3_thumb_045b71441e09.png",
+              "tokenAddress": "0xc729777d0470f30612b1564fd96e8dd26f5814e3",
+              "networkId": 8453,
+              "humanAmount": 450131.46332832996,
+              "price": 0.077590430508,
+              "value": 34925.89402484114
+            }
+          ]
+        },
+        {
+          "id": "03ee6cab-4862-5927-82ad-20aee8d58209",
+          "address": "6S2Ktt28Wtq5jBG3FXWaD6doXEC6A2LYkuNsvHHXTkXu",
+          "evmAddress": "0x9407059eae270e956d29d736d3f09f68a762a13b",
+          "createdAt": "2026-01-28T00:11:27.142Z",
+          "displayName": "Masha",
+          "userHandle": "masha",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/69329562852827c5090e04c6923536b6.jpg",
+          "description": "one day I\u2019ll make it.",
+          "following": 0,
+          "followers": 333,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 169,
+          "numTrades": 85,
+          "totalVolume": 455585.77835,
+          "private": false,
+          "thumbhash": "RygGD4QJlJh5eHdhq2iHiYiIiKAYDZgB",
+          "pnl7d": 17845.017837304433,
+          "totalHoldings": 0,
+          "topHoldings": []
+        },
+        {
+          "id": "2c10d848-efd7-5c91-86ca-569a33a0e8cf",
+          "address": "4R1jY68qvn2y6qrwR5otYbvGyVYfkbKfbaPCBZvzwE5e",
+          "evmAddress": "0x09536ca7218fabfb12e2d46529bb0cd11eedee78",
+          "createdAt": "2025-11-26T22:11:47.216Z",
+          "displayName": "Eric",
+          "userHandle": "ericceth",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/8c25ff5f7412777f1aff16047081e19c.jpg",
+          "description": "Ben",
+          "following": 101,
+          "followers": 896,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 608,
+          "numTrades": 203,
+          "totalVolume": 2061890.36259,
+          "private": false,
+          "thumbhash": "NAgGBwCrpVisY4lOpgfodppvAwAAAAAA",
+          "pnl7d": 17692.744074729628,
+          "totalHoldings": 14,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3_thumb_97e7e52cd982.png",
+              "tokenAddress": "0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3",
+              "networkId": 8453,
+              "humanAmount": 392292087.5873335,
+              "price": 1.40965058688e-05,
+              "value": 5529.94771495865
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x12cfb53c685ee7e3f8234d60f20478a1739ecba3_thumb_df047354d166.png",
+              "tokenAddress": "0x12cfb53c685ee7e3f8234d60f20478a1739ecba3",
+              "networkId": 8453,
+              "humanAmount": 1049423094.1046404,
+              "price": 3.11763512803e-06,
+              "value": 3271.7183023465595
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_3guyMhp6p7USQUzwTYgXrKoer98rE398grT5RcPKpump_thumb_715c82b0e636.png",
+              "tokenAddress": "3guyMhp6p7USQUzwTYgXrKoer98rE398grT5RcPKpump",
+              "networkId": 1399811149,
+              "humanAmount": 18091730.50671,
+              "price": 0.000124543307364,
+              "value": 2253.203953243839
+            }
+          ]
+        },
+        {
+          "id": "3e9932c9-ee60-5780-8fff-17591332c537",
+          "address": "FtYu3mCMaFEw2b8BXkP2xLq6JNqCYXuL5LusTPA1m47M",
+          "evmAddress": "0x2b9bf5eaa5daffad7af2f4a74dd43f69b4f039a6",
+          "createdAt": "2026-01-11T07:13:55.896Z",
+          "displayName": "Dr. Hehe",
+          "userHandle": "doctorHehe",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/222d129c40dafb71af7ef8ed18cee43d.jpg",
+          "description": "Where to start? First, I\u2019m a doctor of chshow more",
+          "following": 168,
+          "followers": 1287,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 462,
+          "numTrades": 64,
+          "totalVolume": 58718.136287,
+          "private": false,
+          "thumbhash": "E2oGFwLfpYped5dTo4VoeZZF5c9E/DwI",
+          "pnl7d": 16399.960313986776,
+          "totalHoldings": 2,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_GkyPYa7NnCFbduLknCfBfP7p8564X1VZhwZYJ6CZpump_thumb_3d75386f7bf6.png",
+              "tokenAddress": "GkyPYa7NnCFbduLknCfBfP7p8564X1VZhwZYJ6CZpump",
+              "networkId": 1399811149,
+              "humanAmount": 9300261.483588,
+              "price": 0.00301360978786,
+              "value": 28027.35903659816
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump_thumb_f920afb62f1a.png",
+              "tokenAddress": "4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump",
+              "networkId": 1399811149,
+              "humanAmount": 9896657.615082,
+              "price": 0.00152487232608,
+              "value": 15091.139317927435
+            }
+          ]
+        },
+        {
+          "id": "193f2a7c-704e-577f-9229-23b8f2dfba0d",
+          "address": "3nq29KyuzRT7xmk1Abg9eJ7fJaf5ossQHL1igpSCrHfm",
+          "evmAddress": "0x7e226400f9dac345dd19e673280a0ffac492e79d",
+          "createdAt": "2026-02-01T23:25:19.785Z",
+          "displayName": "Ciel",
+          "userHandle": "iamcIoud",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/77dcd8df63ab4a2fa7fe4b3ab946f83a.jpg",
+          "description": "https://www.pixelthoughts.co/\n0.25E to 100E",
+          "following": 4,
+          "followers": 67,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 60,
+          "numTrades": 44,
+          "totalVolume": 42215.978469,
+          "private": false,
+          "thumbhash": "IQgKDwD45ml8iHV1iOZYt1h4iJEHOHoA",
+          "pnl7d": 16118.39116318024,
+          "totalHoldings": 2,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x799e7c0811e3ad741b45eab15773888e5996db07_thumb_9eb98ecd86d1.png",
+              "tokenAddress": "0x799e7c0811e3ad741b45eab15773888e5996db07",
+              "networkId": 8453,
+              "humanAmount": 387996527.94430846,
+              "price": 2.63631376513e-06,
+              "value": 1022.8805874422271
+            },
+            {
+              "imageUrl": null,
+              "tokenAddress": "C4FKopmouYrKWGmTnYfvPQABN3XL53LrHNdezucs89F8",
+              "networkId": 1399811149,
+              "humanAmount": 5206599.448965,
+              "price": 0.000130875167263,
+              "value": 681.414573754738
+            }
+          ]
+        },
+        {
+          "id": "dcf40072-45ba-5ae3-af7f-7250dd77e215",
+          "address": "CJDjRAjigb3UdsjxaV7AiMchhJV6qAcc3SjrSLFyytE3",
+          "evmAddress": "0x67cb01f8472f4e37d98ef323721a36254c1402e1",
+          "createdAt": "2025-10-25T15:31:16.239Z",
+          "displayName": "\u209b\u2098\u2092\u2097 intern \ud83d\udca1",
+          "userHandle": "smol_intern",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/0644435cb72d8961b400767f08eadae3.jpg",
+          "description": "Farming some volume. Only gambling here",
+          "following": 104,
+          "followers": 1194,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 2704,
+          "numTrades": 333,
+          "totalVolume": 1481629.388612,
+          "private": false,
+          "thumbhash": "L/gJDwbotrZ/h4d9lleGmIiHCZotxY8D",
+          "pnl7d": 16025.37697907578,
+          "totalHoldings": 18,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_8116V1BW9zaXUM6pVhWVaAduKrLcEBi3RGXedKTrBAGS_thumb_009b6ba91d53.png",
+              "tokenAddress": "8116V1BW9zaXUM6pVhWVaAduKrLcEBi3RGXedKTrBAGS",
+              "networkId": 1399811149,
+              "humanAmount": 13707196.982144095,
+              "price": 0.00149970292791,
+              "value": 20556.723447560616
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_B1rGc4HM4Q6q4nU78ADM7fGguxqiasH53fh6ViDXpump_thumb_ee187ed81782.png",
+              "tokenAddress": "B1rGc4HM4Q6q4nU78ADM7fGguxqiasH53fh6ViDXpump",
+              "networkId": 1399811149,
+              "humanAmount": 14609846.746372007,
+              "price": 0.000463604575565,
+              "value": 6773.19179992149
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_aqQRs3UJmHs7ktoLo46HZAzvG9P3oCoZ41nENqFbory_thumb.png",
+              "tokenAddress": "aqQRs3UJmHs7ktoLo46HZAzvG9P3oCoZ41nENqFbory",
+              "networkId": 1399811149,
+              "humanAmount": 7391.856393000006,
+              "price": 0.901419926516,
+              "value": 6663.16664659489
+            }
+          ]
+        },
+        {
+          "id": "b51ec65e-cd93-57c4-b32e-6bc389c7d363",
+          "address": "69V3ZD77v6VHmWVjdymcpX9HsepTx9fb1HTprtkLm242",
+          "evmAddress": "0xf31b607623a173fd9810eaea970f0e2f6fe61cf8",
+          "createdAt": "2025-09-09T21:21:52.450Z",
+          "displayName": "quinn",
+          "userHandle": "quinn",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/8a633ba8b231f0c05e4d822dd85128ea.jpg",
+          "description": null,
+          "following": 17,
+          "followers": 3996,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 464,
+          "numTrades": 254,
+          "totalVolume": 1019856.609596,
+          "private": false,
+          "thumbhash": "WggKD4KeWmfAW4hohutnl3aI9116v3YH",
+          "pnl7d": 15699.687144363079,
+          "totalHoldings": 34,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_61Wj56QgGyyB966T7YsMzEAKRLcMvJpDbPzjkrCZc4Bi_large_thumb_small_56ce7327-fdff-48f8-8c76-929ce04409a6.png",
+              "tokenAddress": "61Wj56QgGyyB966T7YsMzEAKRLcMvJpDbPzjkrCZc4Bi",
+              "networkId": 1399811149,
+              "humanAmount": 8863411.770582002,
+              "price": 0.0047474369141,
+              "value": 42078.488224529436
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x50d2280441372486beecdd328c1854743ebacb07_thumb_d0f960f20bbd.png",
+              "tokenAddress": "0x50d2280441372486beecdd328c1854743ebacb07",
+              "networkId": 8453,
+              "humanAmount": 504605229.6168543,
+              "price": 5.91457901333e-05,
+              "value": 29845.275011084123
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump_thumb_f920afb62f1a.png",
+              "tokenAddress": "4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump",
+              "networkId": 1399811149,
+              "humanAmount": 8056811.891823,
+              "price": 0.00151952156629,
+              "value": 12242.499425166783
+            }
+          ]
+        },
+        {
+          "id": "46401e93-65d0-5d5b-bd13-f1bd46568c9f",
+          "address": "9oER4xGiZCRLHmZFpH793CfUzAB8zK9cVQDh1cDZ9a3w",
+          "evmAddress": "0x400f9781e13d38523b164ac50bb9a4c85829a8c0",
+          "createdAt": "2025-10-26T15:34:02.589Z",
+          "displayName": "Abruzy.hl.\ud83d\udd6f\ufe0f\ud83e\udd87\ud83d\udd0a",
+          "userHandle": "0xAbruzy",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/39997acf05e62e60c52041daf493e3a3.jpg",
+          "description": null,
+          "following": 0,
+          "followers": 428,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 201,
+          "numTrades": 154,
+          "totalVolume": 228238.184125,
+          "private": false,
+          "thumbhash": "CggKDwKTalZliKSAWntqmGiXF/pCkDwD",
+          "pnl7d": 15366.234505518683,
+          "totalHoldings": 4,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump_thumb_4d3b5920a127.png",
+              "tokenAddress": "AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump",
+              "networkId": 1399811149,
+              "humanAmount": 3354410.800818,
+              "price": 0.00323201169339,
+              "value": 10841.49493267749
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_7oXNE1dbpHUp6dn1JF8pRgCtzfCy4P2FuBneWjZHpump_thumb_2edc9a026e0d.png",
+              "tokenAddress": "7oXNE1dbpHUp6dn1JF8pRgCtzfCy4P2FuBneWjZHpump",
+              "networkId": 1399811149,
+              "humanAmount": 6983193.841063,
+              "price": 0.00115290046233,
+              "value": 8050.927407901541
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_GQmbR27sqRUpkLMN46dLmiSVjtc6Q4bT9rwV8p9Ypump_thumb_cb8935c56027.png",
+              "tokenAddress": "GQmbR27sqRUpkLMN46dLmiSVjtc6Q4bT9rwV8p9Ypump",
+              "networkId": 1399811149,
+              "humanAmount": 16356540.794205,
+              "price": 1.98199285294e-05,
+              "value": 324.1854695293586
+            }
+          ]
+        },
+        {
+          "id": "aef7a425-6374-5863-97cb-23fe4815fafd",
+          "address": "CbfECPomSocQGCEdghcq1zkYEDSVUVP761QMnRXwvyD9",
+          "evmAddress": "0x3a6a4aa63348f06e059e00d5bdb3a87d7563cc6c",
+          "createdAt": "2026-02-17T13:57:51.440Z",
+          "displayName": "Clewguo",
+          "userHandle": "clewguo",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/3c1171f96c163f697ff733fc5908e0f5.jpg",
+          "description": "all roads lead to neet.",
+          "following": 20,
+          "followers": 2016,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 8,
+          "numTrades": 64,
+          "totalVolume": 2366.265055,
+          "private": false,
+          "thumbhash": "lAeKDQIsCudmh3iamF5rIOILCFh3h4CDWA==",
+          "pnl7d": 15296.962388960252,
+          "totalHoldings": 7,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_thumb_11979a61b580.png",
+              "tokenAddress": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+              "networkId": 1399811149,
+              "humanAmount": 5000000,
+              "price": 0.0271181628202,
+              "value": 135590.814101
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png",
+              "tokenAddress": "So11111111111111111111111111111111111111112",
+              "networkId": 1399811149,
+              "humanAmount": 135.55550570099916,
+              "price": 89.8251061192,
+              "value": 12176.287684634071
+            },
+            {
+              "imageUrl": "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+              "tokenAddress": "0x4200000000000000000000000000000000000006",
+              "networkId": 8453,
+              "humanAmount": 1.807029044978143,
+              "price": 2137.03926152,
+              "value": 3861.6920158252815
+            }
+          ]
+        },
+        {
+          "id": "526c8b1b-d873-594d-b27c-efabe06d6ecd",
+          "address": "4Y2MgwWzHzGVFeq52o6BP1nFXA8NQFxSW9q3peVyzTfh",
+          "evmAddress": "0xdb32bd16e5b7405d43f68a0006b7d2242d278ded",
+          "createdAt": "2025-10-24T22:49:16.388Z",
+          "displayName": "neetguy",
+          "userHandle": "neetguy",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/7ddef1f1c2249dd5d1670d3786a78b89.jpg",
+          "description": "quit your job\nbecome a $neet",
+          "following": 0,
+          "followers": 1587,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 79,
+          "numTrades": 135,
+          "totalVolume": 509249.117355,
+          "private": false,
+          "thumbhash": "lQgGNwibgGhlp3afmKd2lWhmlQZ4OIAG",
+          "pnl7d": 14539.64495727426,
+          "totalHoldings": 7,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_thumb_11979a61b580.png",
+              "tokenAddress": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+              "networkId": 1399811149,
+              "humanAmount": 4637602.736202,
+              "price": 0.0271181628202,
+              "value": 125763.26609573085
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x1bc0c42215582d5a085795f4badbac3ff36d1bcb_thumb_04ad861a-af17-488e-b742-bc7e24073b8d.png",
+              "tokenAddress": "0x1bc0c42215582d5a085795f4badbac3ff36d1bcb",
+              "networkId": 8453,
+              "humanAmount": 2955.009627482436,
+              "price": 27.0730596858,
+              "value": 80001.15201694562
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x2b5050f01d64fbb3e4ac44dc07f0732bfb5ecadf_thumb.png",
+              "tokenAddress": "0x2b5050f01d64fbb3e4ac44dc07f0732bfb5ecadf",
+              "networkId": 8453,
+              "humanAmount": 796246755.3000889,
+              "price": 6.15311680624e-06,
+              "value": 4899.399291951046
+            }
+          ]
+        },
+        {
+          "id": "9ba39cb4-23c2-5a1c-ab0a-236726226564",
+          "address": "H3jGitWGsrMnuvsQcCJoDfS6spJGS4AKguagaa6EnfQX",
+          "evmAddress": "0x0b462af5fd96891bfda3829bd6eb3060b35026b6",
+          "createdAt": "2025-07-20T16:20:23.661Z",
+          "displayName": "lesabre",
+          "userHandle": "lesabre",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/cf376d9db72920be54d4035e8e5cb89d.jpg",
+          "description": "shooters shoot",
+          "following": 69,
+          "followers": 27011,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 1846,
+          "numTrades": 567,
+          "totalVolume": 6919995.096584,
+          "private": false,
+          "thumbhash": "MAgSBYDIh5iad3d/hkeGiAKTkgRX",
+          "pnl7d": 14193.578088230206,
+          "totalHoldings": 14,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x50d2280441372486beecdd328c1854743ebacb07_thumb_d0f960f20bbd.png",
+              "tokenAddress": "0x50d2280441372486beecdd328c1854743ebacb07",
+              "networkId": 8453,
+              "humanAmount": 987719749.7600133,
+              "price": 5.91457901333e-05,
+              "value": 58419.46502982134
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf_thumb_680c64c49ecf.png",
+              "tokenAddress": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+              "networkId": 8453,
+              "humanAmount": 7599.873016952399,
+              "price": 6.92380301813,
+              "value": 52620.02373217977
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump_thumb_4d3b5920a127.png",
+              "tokenAddress": "AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump",
+              "networkId": 1399811149,
+              "humanAmount": 7617708.05939,
+              "price": 0.00323201169339,
+              "value": 24620.521524779724
+            }
+          ]
+        },
+        {
+          "id": "4f7e70db-a1dc-57d1-8ae4-a84470d15580",
+          "address": "DATMkmVrFbZt7isGoxyDSpAuF9vJycpkDKwhbf978eUw",
+          "evmAddress": "0x490b0e93fe28989e70cddbcbfcc635d383baf322",
+          "createdAt": "2025-09-25T17:43:34.344Z",
+          "displayName": "game",
+          "userHandle": "game_for_one",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/8b5b6845aef69bb1b641a8587d44abe4.jpg",
+          "description": "don\u2019t borrow conviction.",
+          "following": 0,
+          "followers": 8678,
+          "activated": true,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 1239,
+          "numTrades": 362,
+          "totalVolume": 1816956.48481,
+          "private": false,
+          "thumbhash": "DvgFBwAf9kc1mGhAWbSsyIp4Of5FOgAL",
+          "pnl7d": 13838.608193315435,
+          "totalHoldings": 5,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x50d2280441372486beecdd328c1854743ebacb07_thumb_d0f960f20bbd.png",
+              "tokenAddress": "0x50d2280441372486beecdd328c1854743ebacb07",
+              "networkId": 8453,
+              "humanAmount": 305364238.12624955,
+              "price": 5.91457901333e-05,
+              "value": 18061.0091424302
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0xb233bdffd437e60fa451f62c6c09d3804d285ba3_thumb_938203e1fb17.png",
+              "tokenAddress": "0xb233bdffd437e60fa451f62c6c09d3804d285ba3",
+              "networkId": 8453,
+              "humanAmount": 694998629.7062583,
+              "price": 2.28689215374e-05,
+              "value": 15893.869131352938
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_4QCrScUe8Tn4wGXiVTr9iBmS9jS9T1N1D54gEqBnjLdU_thumb_0b2da185307e.png",
+              "tokenAddress": "4QCrScUe8Tn4wGXiVTr9iBmS9jS9T1N1D54gEqBnjLdU",
+              "networkId": 1399811149,
+              "humanAmount": 125.811023,
+              "price": 0.141200635775,
+              "value": 17.764596435103147
+            }
+          ]
+        },
+        {
+          "id": "684b9477-bdb9-5cd0-84b3-929ff28fdbf0",
+          "address": "1MZHGYQysPw3qaLX8GGFUZw9x9VKhKmnYBow1ZKLN9D",
+          "evmAddress": "0x0be7e3a34346094224b6bf41d71d2a9b01cdc982",
+          "createdAt": "2026-01-15T04:30:20.316Z",
+          "displayName": "Ayovex\ud83e\udd95",
+          "userHandle": "VexRex23",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/47205fdaa95a5778db4bcc2fbfe11da7.jpg",
+          "description": "if anyone asks why I bought a coin, the thesis is simple, @change bought \ud83d\udc4d",
+          "following": 41,
+          "followers": 1748,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 784,
+          "numTrades": 95,
+          "totalVolume": 1645862.562317,
+          "private": false,
+          "thumbhash": "axgGDwbYM2pwlml/hKhoV3eIF3AHBncC",
+          "pnl7d": 13334.163668173482,
+          "totalHoldings": 0,
+          "topHoldings": []
+        },
+        {
+          "id": "5ab3b1fe-9bdf-539f-96fa-775f57f72f4a",
+          "address": "AvxQArzPD6G5wXzybKAzpBZSe2t5FWRQyyj4YjDL7e1a",
+          "evmAddress": "0x113572076e5a407ec42fa432f7c2293efbedf90e",
+          "createdAt": "2026-01-09T01:49:27.565Z",
+          "displayName": "YODA",
+          "userHandle": "Yodatrader",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/65e47a07a2cd3ff8cf0c0f55db0553ac.jpg",
+          "description": null,
+          "following": 20,
+          "followers": 203,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 1844,
+          "numTrades": 701,
+          "totalVolume": 478899.407286,
+          "private": false,
+          "thumbhash": "SfgFD4IGeWaNg3mBg0eXV5eCdKAoaIAJ",
+          "pnl7d": 13036.099220425165,
+          "totalHoldings": 7,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x90ec58ef4cc9f37b96de1e203b65bd4e6e79580e_thumb_051924fc076e.png",
+              "tokenAddress": "0x90ec58ef4cc9f37b96de1e203b65bd4e6e79580e",
+              "networkId": 8453,
+              "humanAmount": 104680000,
+              "price": 0.000508147790047,
+              "value": 53192.91066211995
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_63hyGSmSM5UYp19woKuhx31WTD97R8yNMVqHmDpApump_thumb_5c88553c4657.png",
+              "tokenAddress": "63hyGSmSM5UYp19woKuhx31WTD97R8yNMVqHmDpApump",
+              "networkId": 1399811149,
+              "humanAmount": 10888657.306612,
+              "price": 0.000135892902926,
+              "value": 1479.691250361905
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_3aQ9yDtRAEbif7x4GsjDPmeZ61AcX8AmzfuFKThYpump_thumb_53272d67a25a.png",
+              "tokenAddress": "3aQ9yDtRAEbif7x4GsjDPmeZ61AcX8AmzfuFKThYpump",
+              "networkId": 1399811149,
+              "humanAmount": 9458538.424948,
+              "price": 2.05075962951e-05,
+              "value": 193.97188756052458
+            }
+          ]
+        },
+        {
+          "id": "b8fb8d0f-0091-5735-b6a7-70d560408495",
+          "address": "duEu1pmuK8c7nP5jQwVdvHkpTUrtAAD13DywuVDstRs",
+          "evmAddress": "0xb19158374d1fd2ab98b299df4ee5cc15b2ded492",
+          "createdAt": "2026-02-04T16:51:44.742Z",
+          "displayName": "BDAWGZ",
+          "userHandle": "BDAWGZ",
+          "profilePictureLink": null,
+          "description": null,
+          "following": 10,
+          "followers": 18,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 128,
+          "numTrades": 53,
+          "totalVolume": 12354.127392,
+          "private": false,
+          "thumbhash": null,
+          "pnl7d": 12925.487918804223,
+          "totalHoldings": 1,
+          "topHoldings": [
+            {
+              "imageUrl": null,
+              "tokenAddress": "0x561b382672ab4c297ba68e6c919e4973c4886b66",
+              "networkId": 8453,
+              "humanAmount": 13867743447.27855,
+              "price": 1.91232851975e-06,
+              "value": 26519.68129880695
+            }
+          ]
+        },
+        {
+          "id": "b832abfb-f710-5d7a-a8f1-0603dd8ef354",
+          "address": "55hpyoNn4d3SRCLE1C3Cmh9GsfXa6b9gXKcprX3LVnui",
+          "evmAddress": "0x675ddd094ad244d99647ab0215105a0c25779204",
+          "createdAt": "2025-10-26T17:31:17.404Z",
+          "displayName": "rynzo",
+          "userHandle": "rynzoeth",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/6a3f571d709355532e6c0263b93308c3.jpg",
+          "description": "failing and learning.\n\nx - @rynzoeth",
+          "following": 173,
+          "followers": 4124,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 1385,
+          "numTrades": 349,
+          "totalVolume": 3225829.393293,
+          "private": false,
+          "thumbhash": "J7YRFwQ/Z4Z5iXilimhnd5eH9wtOmKAF",
+          "pnl7d": 12872.623652904276,
+          "totalHoldings": 2,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_thumb_11979a61b580.png",
+              "tokenAddress": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+              "networkId": 1399811149,
+              "humanAmount": 1251488.538102,
+              "price": 0.0271181628202,
+              "value": 33938.06994386411
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png",
+              "tokenAddress": "So11111111111111111111111111111111111111112",
+              "networkId": 1399811149,
+              "humanAmount": 3.28174,
+              "price": 89.6666704392,
+              "value": 294.26269904714025
+            }
+          ]
+        },
+        {
+          "id": "78c56d1d-73cb-551d-93e0-5af2bb73dbd3",
+          "address": "5QEXbHAYhSMPfGY5sCZ2hBqUL54qNQ8f2QN14ST95nvb",
+          "evmAddress": "0x6e7a8cf88159b3f21d02d65a45ee7e40f21cf4dd",
+          "createdAt": "2026-01-31T20:40:04.080Z",
+          "displayName": "\u1f0c\u03c1\u03c4\u03b5\u03bc\u03b9\u03c2",
+          "userHandle": "artemisjpl",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/1e66ec6dd5c52feac5319e1bca7d12c0.jpg",
+          "description": null,
+          "following": 0,
+          "followers": 345,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 671,
+          "numTrades": 167,
+          "totalVolume": 280265.820498,
+          "private": false,
+          "thumbhash": "EggKBwAIe4OIiXaCaIdmWIiGBwAAAAAA",
+          "pnl7d": 12696.744925980032,
+          "totalHoldings": 19,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_89S7oVB4hui8ceJqhHreWB7fcxdthfvoB7z2pfJtpump_thumb_49281b9bd876.png",
+              "tokenAddress": "89S7oVB4hui8ceJqhHreWB7fcxdthfvoB7z2pfJtpump",
+              "networkId": 1399811149,
+              "humanAmount": 10541296.507039,
+              "price": 0.00104592467023,
+              "value": 11025.402072921415
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_4btUt5tQrN9MSfiHzZMdHf2ognjQZrWErjSJ9aiApump_thumb_944820e66943.png",
+              "tokenAddress": "4btUt5tQrN9MSfiHzZMdHf2ognjQZrWErjSJ9aiApump",
+              "networkId": 1399811149,
+              "humanAmount": 9169330.691601003,
+              "price": 0.000437212712837,
+              "value": 4008.94794657444
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_Ex3QnfFRethVJmvErdnvtNG3QRgALVYLA3QmQu6upump_thumb.png",
+              "tokenAddress": "Ex3QnfFRethVJmvErdnvtNG3QRgALVYLA3QmQu6upump",
+              "networkId": 1399811149,
+              "humanAmount": 10872312.044143,
+              "price": 0.000226031691942,
+              "value": 2457.487086659027
+            }
+          ]
+        },
+        {
+          "id": "d6c311c6-3628-50e1-a1e9-dc21f268ba30",
+          "address": "APgFrGsRk2huQoLXq4MSYbm5PgMrv1cgct8MbNb18bBV",
+          "evmAddress": "0x6bb03c8e2a005344e9a001dc9542b54f92dd867f",
+          "createdAt": "2026-03-01T23:05:58.847Z",
+          "displayName": ",,",
+          "userHandle": "CHR4LLE",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/638c1c570f0a5e138ad4efb5d0051085.jpg",
+          "description": "\ud83e\udde9",
+          "following": 0,
+          "followers": 19,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 229,
+          "numTrades": 58,
+          "totalVolume": 106577.751286,
+          "private": false,
+          "thumbhash": "YxgSDwL6eXd+i2Vmh5Z4Z4h4ORcIY4MA",
+          "pnl7d": 12690.25147213701,
+          "totalHoldings": 7,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0xb5b0f722d6d4a803d3df94c9ed12a191603eab07_thumb_0f236a863024.png",
+              "tokenAddress": "0xb5b0f722d6d4a803d3df94c9ed12a191603eab07",
+              "networkId": 8453,
+              "humanAmount": 1220658941.4668343,
+              "price": 5.26424607715e-06,
+              "value": 6425.849044154854
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0xe6725be5ac8dff03538a9ef3e3a7a6bed256bb4f_thumb_59ca92c03fee.png",
+              "tokenAddress": "0xe6725be5ac8dff03538a9ef3e3a7a6bed256bb4f",
+              "networkId": 8453,
+              "humanAmount": 11482499.360281866,
+              "price": 0.00038235421078,
+              "value": 4390.381980682428
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x65021a79aeef22b17cdc1b768f5e79a8618beba3_thumb_4742ba90fd7f.png",
+              "tokenAddress": "0x65021a79aeef22b17cdc1b768f5e79a8618beba3",
+              "networkId": 8453,
+              "humanAmount": 146869271.70180976,
+              "price": 1.64823829217e-05,
+              "value": 2420.7555756204265
+            }
+          ]
+        },
+        {
+          "id": "35a98e8f-d962-5256-9b39-89624b524e57",
+          "address": "5zVedvk9ffJKwaoueQWKEAAAa1nutXKhaqmFxzwmvVkW",
+          "evmAddress": "0xa9f7da8979d0ed6aaf3181354a522ac53e69a682",
+          "createdAt": "2025-10-06T03:35:36.994Z",
+          "displayName": "AJC",
+          "userHandle": "AvgJoesCrypto",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/be589800533de1c866a58c639a35e9db.jpg",
+          "description": null,
+          "following": 98,
+          "followers": 2741,
+          "activated": false,
+          "isReferred": true,
+          "isRestricted": false,
+          "swapCount": 286,
+          "numTrades": 170,
+          "totalVolume": 705908.307156,
+          "private": false,
+          "thumbhash": "IggGHwTomHZ/c4mLiDWniIeJmVAHZpoA",
+          "pnl7d": 12640.54985095813,
+          "totalHoldings": 3,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_Eg2ymQ2aQqjMcibnmTt8erC6Tvk9PVpJZCxvVPJz2agu_thumb_d8ec2d8361b7.png",
+              "tokenAddress": "Eg2ymQ2aQqjMcibnmTt8erC6Tvk9PVpJZCxvVPJz2agu",
+              "networkId": 1399811149,
+              "humanAmount": 4272846.005163999,
+              "price": 0.00672926212034,
+              "value": 28753.100768596192
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_DLGRpmkMGr7J4KD1xR5x2XjaGeQH64PLFQkyxNNSpump_thumb_cbc45e89e6ef.png",
+              "tokenAddress": "DLGRpmkMGr7J4KD1xR5x2XjaGeQH64PLFQkyxNNSpump",
+              "networkId": 1399811149,
+              "humanAmount": 10216614.904499,
+              "price": 0.000750311996154,
+              "value": 7665.648722931353
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x21cfcfc3d8f98fc728f48341d10ad8283f6eb7ab_thumb.png",
+              "tokenAddress": "0x21cfcfc3d8f98fc728f48341d10ad8283f6eb7ab",
+              "networkId": 8453,
+              "humanAmount": 113456.70066213119,
+              "price": 0.0256382048727,
+              "value": 2908.8261357563174
+            }
+          ]
+        },
+        {
+          "id": "f75f8fee-d996-590a-9c37-34db544b65c5",
+          "address": "6NGPu8gCKN9L2TSEHTiMLa45DBKkWHXZpGC1m2WaMBam",
+          "evmAddress": "0x7e1865606cd3182952d009d16898551c0f4af80d",
+          "createdAt": "2025-10-29T21:53:15.579Z",
+          "displayName": "LostEverythingAgain",
+          "userHandle": "LostEverythingAgain",
+          "profilePictureLink": null,
+          "description": "Ran up 4 figs to 6 figs and then lost it all 10 times this cycle. 11th time is the charm\nEDIT: Lost everything again on $GAS, AI meta done made me homeless",
+          "following": 111,
+          "followers": 109,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 3077,
+          "numTrades": 638,
+          "totalVolume": 3814249.191724,
+          "private": false,
+          "thumbhash": null,
+          "pnl7d": 12469.693777229777,
+          "totalHoldings": 1,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png",
+              "tokenAddress": "So11111111111111111111111111111111111111112",
+              "networkId": 1399811149,
+              "humanAmount": 0.173656345,
+              "price": 89.6637727821,
+              "value": 15.570683060249966
+            }
+          ]
+        },
+        {
+          "id": "88ffe1cd-0061-5ba1-a3f8-c7335574cafb",
+          "address": "DSFZsRgGS2sUTxpLKtwJCdYDN7GDHtn5tjgMqSzPDb3q",
+          "evmAddress": "0x22b542fec428ed1b5d96c53772e711c76ddc3042",
+          "createdAt": "2025-09-14T15:20:14.124Z",
+          "displayName": "Trench Daddy",
+          "userHandle": "PewPew",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/7e229b1a9036b2b1ffb293e9f8cb35cf.jpg",
+          "description": "I can feel it coming in the air tonight, oh Lord\nAnd I've been waiting for this moment for all my life, oh Lord.",
+          "following": 284,
+          "followers": 30,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 460,
+          "numTrades": 207,
+          "totalVolume": 142495.479852,
+          "private": false,
+          "thumbhash": "0PcFFwRwYKcli4pTq2eGd6mXtIBXDHcG",
+          "pnl7d": 12381.025149211098,
+          "totalHoldings": 2,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png",
+              "tokenAddress": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+              "networkId": 8453,
+              "humanAmount": 457718943.93628585,
+              "price": 3.01653011505e-05,
+              "value": 13807.229786126889
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x716f8e756f9277f8c9949926141c2666b86b5809_thumb_079b0767fe81.png",
+              "tokenAddress": "0x716f8e756f9277f8c9949926141c2666b86b5809",
+              "networkId": 8453,
+              "humanAmount": 505389990.6270976,
+              "price": 5.53534966912e-06,
+              "value": 2797.5103173942643
+            }
+          ]
+        },
+        {
+          "id": "e2927381-64d6-5faa-99d5-0b5ef1448858",
+          "address": "6otsrYCbmidUAK3y9ZG638m8BUCsNJw4iq9Yr9t4mtyb",
+          "evmAddress": "0xbb0897ecee9392760fd5957bf9ccb22676eff73d",
+          "createdAt": "2025-10-25T08:43:35.733Z",
+          "displayName": "gera",
+          "userHandle": "gera_eth",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/6df05fc8287e6f7c9498754a13f98836.jpg",
+          "description": "sup jackass\nprofessional jeet",
+          "following": 85,
+          "followers": 519,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 797,
+          "numTrades": 145,
+          "totalVolume": 1610966.207477,
+          "private": false,
+          "thumbhash": "F/gJDwJlqpR8i4mQimhnt6iGSDMHBIoB",
+          "pnl7d": 12098.072858309548,
+          "totalHoldings": 5,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump_thumb_f920afb62f1a.png",
+              "tokenAddress": "4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump",
+              "networkId": 1399811149,
+              "humanAmount": 3365046.334659,
+              "price": 0.00151952156629,
+              "value": 5113.260477079467
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_EPuZ1X6pPzac3ELPsT59LStmgaSr4kBJvaAbL15Fpump_thumb_5c44bf181cc8.png",
+              "tokenAddress": "EPuZ1X6pPzac3ELPsT59LStmgaSr4kBJvaAbL15Fpump",
+              "networkId": 1399811149,
+              "humanAmount": 4179645.27939,
+              "price": 0.00111727722847,
+              "value": 4669.8224937445775
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_8FSsdMVHLxbNqgWDDq2ihhKx69ja7QP6ZW5xy1Z8pump_thumb_c1f9fd3c35a4.png",
+              "tokenAddress": "8FSsdMVHLxbNqgWDDq2ihhKx69ja7QP6ZW5xy1Z8pump",
+              "networkId": 1399811149,
+              "humanAmount": 9562530.123854,
+              "price": 0.000105021041915,
+              "value": 1004.2668769507211
+            }
+          ]
+        },
+        {
+          "id": "314b131c-60ad-5c9c-a4fb-992b31d8d707",
+          "address": "7yFfK5PCorQqbCAHrvdshYBFCe3nuuSot3SjtoycN5sW",
+          "evmAddress": "0x63b193f41f176f9e22838600bda129dae54aeb90",
+          "createdAt": "2025-07-07T08:37:50.095Z",
+          "displayName": "everythingempty",
+          "userHandle": "everythingempt0",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/9143af9c504dd7ef3115d1c75a835f92.jpg",
+          "description": "dont follow me",
+          "following": 11,
+          "followers": 11046,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 16,
+          "numTrades": 47,
+          "totalVolume": 600108.175901,
+          "private": false,
+          "thumbhash": "3KYFHwZxc6enZ5hApVmaiph3GCBXJHAB",
+          "pnl7d": 12092.64928947243,
+          "totalHoldings": 3,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x1c4cca7c5db003824208adda61bd749e55f463a3_thumb_b98be4f3047d.png",
+              "tokenAddress": "0x1c4cca7c5db003824208adda61bd749e55f463a3",
+              "networkId": 8453,
+              "humanAmount": 11549050.268955292,
+              "price": 0.0114335620516,
+              "value": 132046.782887148
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/8453_0x55cd6469f597452b5a7536e2cd98fde4c1247ee4_thumb_1fabb1e780d5.png",
+              "tokenAddress": "0x55cd6469f597452b5a7536e2cd98fde4c1247ee4",
+              "networkId": 8453,
+              "humanAmount": 8844623.53277878,
+              "price": 0.00710401304388,
+              "value": 62832.320945068466
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/143_0x3bd359c1119da7da1d913d1c4d2b7c461115433a_large_small_thumb_150a1368-be39-4209-99f1-f78a7d3c1192.png",
+              "tokenAddress": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+              "networkId": 143,
+              "humanAmount": 5000,
+              "price": 0.0221541772046,
+              "value": 110.770886023
+            }
+          ]
+        },
+        {
+          "id": "c37df01f-06b9-5447-8fb3-1d447c122202",
+          "address": "CvP9Gs587N8iYCNzd7ZWZKQ5jxvdmi9C5g3FJyw8MFDA",
+          "evmAddress": "0xf06df94e8977934fd3fcfc950ce6e3767bb5b956",
+          "createdAt": "2026-01-24T23:41:46.728Z",
+          "displayName": "\ud83e\udd81L\u00e9on",
+          "userHandle": "BonBon_1769",
+          "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/711cbd6a84ff0eedcff63f050bc5c015.jpg",
+          "description": "a few conviction plays, that\u2019s all it takes",
+          "following": 0,
+          "followers": 84,
+          "activated": false,
+          "isReferred": false,
+          "isRestricted": false,
+          "swapCount": 36,
+          "numTrades": 11,
+          "totalVolume": 12031.630615,
+          "private": false,
+          "thumbhash": "lQgODwAIxmh0inaIeHeId4d3N9aAAgkK",
+          "pnl7d": 11794.841220941978,
+          "totalHoldings": 5,
+          "topHoldings": [
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_32CdQdBUxbCsLy5AUHWmyidfwhgGUr9N573NBUrDpump_thumb_5ef2c3edec8d.png",
+              "tokenAddress": "32CdQdBUxbCsLy5AUHWmyidfwhgGUr9N573NBUrDpump",
+              "networkId": 1399811149,
+              "humanAmount": 8991782.654520001,
+              "price": 0.00324021468497,
+              "value": 29135.306201234234
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_DCzCshB6Uu5uA2jMaTscghQx4ojD5bXFgeJDzZVJpump_thumb_88ff1f85db0c.png",
+              "tokenAddress": "DCzCshB6Uu5uA2jMaTscghQx4ojD5bXFgeJDzZVJpump",
+              "networkId": 1399811149,
+              "humanAmount": 4952906.148832,
+              "price": 0.00011998131259,
+              "value": 594.2561808719453
+            },
+            {
+              "imageUrl": "https://token-media.defined.fi/1399811149_2tkoGDwxfhGhHQrFFMJeVKwif75yGwgoyE9WM7UDpump_thumb_b270bc83541e.png",
+              "tokenAddress": "2tkoGDwxfhGhHQrFFMJeVKwif75yGwgoyE9WM7UDpump",
+              "networkId": 1399811149,
+              "humanAmount": 14602653.736364998,
+              "price": 3.43792242043e-05,
+              "value": 502.0279067802514
+            }
+          ]
+        }
+      ]
+    },
+    "statusCode": 200
+  },
+  "captured_at": "2026-03-13T12:09:22.955018"
+}

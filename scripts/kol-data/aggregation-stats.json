@@ -1,0 +1,18 @@
+{
+  "total_wallets": 54770,
+  "kols": 52615,
+  "smart_money": 2155,
+  "by_source": {
+    "axiom": 399,
+    "gmgn": 373,
+    "kolscan": 480,
+    "stalkchain": 52077,
+    "dexscreener": 1699
+  },
+  "multi_source": 189,
+  "with_twitter": 248,
+  "with_telegram": 0,
+  "with_name": 248,
+  "with_metrics": 616,
+  "generated_at": "2026-03-14T05:20:53.871Z"
+}

@@ -1,0 +1,3060 @@
+{
+  "endpoint": "GET /api/v1/notification/daily_report",
+  "url": "https://gmgn.gracematrix.net/api/v1/notification/daily_report?device_id=724039AA-A424-4805-8706-9F47ABC12322&client_id=memetracker_ios_2030304&from_app=memetracker&app_ver=2030304&pkg=io.gracematrix.gmgn&app_lang=en&sys_lang=en-US&brand=Apple&model=iPhone&os=ios&os_api=26.2.1&tz_name=America%2FChicago&tz_offset=300&wallet_address=3npU8oT7nRTSbsRmJSpMFwn3jjdDaYWW4HjDzj5DsSTM&chain=sol",
+  "request_headers": {
+    "cookie": "__cf_bm=XVxn952ZdGLKFzfyxUai7oK4mwR0Rjaz0vy3GFtsoBY-1773423760.3898044-1.0.1.1-ezHHXUqS7p479eRTeLxdn6hosQKuC7HKBlN6Kn2au.FdC5Jzkd3KF9p00G67a6.4Z_rvxRUoObQ1t7_ZukeQCKLymbuAJnk6ZyLdNbu1bxwyYrDRgPqqyhUbJfhSd_OO",
+    "accept": "application/json, text/plain, */*",
+    "authorization": "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnbWduLmFpL2FjY2VzcyIsImRhdGEiOnsidXNlcl9pZCI6ImJhNGY1ZTNiLTcxM2ItNDExMi1hMDcwLWExZTY5Y2FiYTdiOCIsImNsaWVudF9pZCI6Im1lbWV0cmFja2VyX2lvc18yMDMwMzA0IiwiZGV2aWNlX2lkIjoiNzI0MDM5QUEtQTQyNC00ODA1LTg3MDYtOUY0N0FCQzEyMzIyIiwiZmF0aGVyX2lkIjoiNzY0MTEwNjMtNGFjNy00ZjM2LTllMjEtYzAwYTEwMTQ4ZTNhIiwiZmluZ2VycHJpbnQiOiJ2MTA0ODA5MjhlZTM2ZjcxMTEyMTFiMmYyMzkxOGZjZjI4IiwiYXBwIjoibWVtZXRyYWNrZXIiLCJwbGF0Zm9ybSI6ImlvcyJ9LCJleHAiOjE3NzM0MjY1MTUsImlhdCI6MTc3MzQyMjkxNSwiaXNzIjoiZ21nbi5haS9zaWduZXIiLCJqdGkiOiJkM2Y2MGYxZC04MjE1LTRlMDItYjFkZS03NDcxNGNlYjJjYjUiLCJuYmYiOjE3NzM0MjI5MTUsInN1YiI6ImdtZ24uYWkvYWNjZXNzIiwidXNlcl9pZCI6ImJhNGY1ZTNiLTcxM2ItNDExMi1hMDcwLWExZTY5Y2FiYTdiOCIsInZlciI6IjEuMCJ9.mOJVnArObYrY22BjW58XuBH4a1jhR_CaVONyh_poeOsYDAuZi6P--9z53hGCd8aq0-RtuHsywN7Ney0X5qLaVA",
+    "accept-encoding": "gzip, deflate, br",
+    "sentry-trace": "713cc02b08e94c6bbfac12e152daf254-b1043f5f458aec78-0",
+    "baggage": "sentry-environment=production,sentry-public_key=d4979c342f6dba6bf527fa2eddfcfe31,sentry-trace_id=713cc02b08e94c6bbfac12e152daf254,sentry-sample_rate=0.01,sentry-transaction=NativeGMGNReportPage,sentry-sampled=false",
+    "user-agent": "GMGN/2030304 CFNetwork/3860.300.31 Darwin/25.2.0",
+    "priority": "u=3, i",
+    "accept-language": "en-US,en;q=0.9"
+  },
+  "request_body": null,
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:42:48 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "x-envoy-upstream-service-time": "46",
+    "server": "cloudflare",
+    "vary": "Accept-Encoding",
+    "content-encoding": "gzip",
+    "cf-cache-status": "DYNAMIC",
+    "x-xss-protection": "1; mode=block",
+    "expect-ct": "max-age=86400, enforce",
+    "referrer-policy": "same-origin",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "SAMEORIGIN",
+    "cf-ray": "9dbcd658d8b6fb1c-BNA"
+  },
+  "response_body": {
+    "code": 0,
+    "reason": "",
+    "message": "success",
+    "data": {
+      "id": "r#163",
+      "date": "2026-03-13",
+      "type": "night_paper",
+      "sol_greed_index": [
+        {
+          "value": "56.820000",
+          "date": "2025-09-15"
+        },
+        {
+          "value": "55.900002",
+          "date": "2025-09-16"
+        },
+        {
+          "value": "49.340000",
+          "date": "2025-09-17"
+        },
+        {
+          "value": "48.980000",
+          "date": "2025-09-18"
+        },
+        {
+          "value": "51.720001",
+          "date": "2025-09-19"
+        },
+        {
+          "value": "41.430000",
+          "date": "2025-09-20"
+        },
+        {
+          "value": "36.830002",
+          "date": "2025-09-21"
+        },
+        {
+          "value": "36.820000",
+          "date": "2025-09-22"
+        },
+        {
+          "value": "41.820000",
+          "date": "2025-09-23"
+        },
+        {
+          "value": "36.730000",
+          "date": "2025-09-24"
+        },
+        {
+          "value": "36.820000",
+          "date": "2025-09-25"
+        },
+        {
+          "value": "37.720001",
+          "date": "2025-09-26"
+        },
+        {
+          "value": "35.630001",
+          "date": "2025-09-27"
+        },
+        {
+          "value": "30.709999",
+          "date": "2025-09-28"
+        },
+        {
+          "value": "39.720001",
+          "date": "2025-09-29"
+        },
+        {
+          "value": "42.419998",
+          "date": "2025-09-30"
+        },
+        {
+          "value": "43.970001",
+          "date": "2025-10-01"
+        },
+        {
+          "value": "46.639999",
+          "date": "2025-10-02"
+        },
+        {
+          "value": "44.830002",
+          "date": "2025-10-03"
+        },
+        {
+          "value": "39.459999",
+          "date": "2025-10-04"
+        },
+        {
+          "value": "36.650002",
+          "date": "2025-10-05"
+        },
+        {
+          "value": "46.500000",
+          "date": "2025-10-06"
+        },
+        {
+          "value": "42.189999",
+          "date": "2025-10-07"
+        },
+        {
+          "value": "35.820000",
+          "date": "2025-10-08"
+        },
+        {
+          "value": "38.580002",
+          "date": "2025-10-09"
+        },
+        {
+          "value": "34.590000",
+          "date": "2025-10-10"
+        },
+        {
+          "value": "44.669998",
+          "date": "2025-10-11"
+        },
+        {
+          "value": "38.150002",
+          "date": "2025-10-12"
+        },
+        {
+          "value": "42.930000",
+          "date": "2025-10-13"
+        },
+        {
+          "value": "43.009998",
+          "date": "2025-10-14"
+        },
+        {
+          "value": "40.189999",
+          "date": "2025-10-15"
+        },
+        {
+          "value": "38.029999",
+          "date": "2025-10-16"
+        },
+        {
+          "value": "36.380001",
+          "date": "2025-10-17"
+        },
+        {
+          "value": "36.110001",
+          "date": "2025-10-18"
+        },
+        {
+          "value": "32.849998",
+          "date": "2025-10-19"
+        },
+        {
+          "value": "36.349998",
+          "date": "2025-10-20"
+        },
+        {
+          "value": "37.189999",
+          "date": "2025-10-21"
+        },
+        {
+          "value": "36.459999",
+          "date": "2025-10-22"
+        },
+        {
+          "value": "34.590000",
+          "date": "2025-10-23"
+        },
+        {
+          "value": "34.980000",
+          "date": "2025-10-24"
+        },
+        {
+          "value": "32.849998",
+          "date": "2025-10-25"
+        },
+        {
+          "value": "31.120001",
+          "date": "2025-10-26"
+        },
+        {
+          "value": "36.689999",
+          "date": "2025-10-27"
+        },
+        {
+          "value": "36.630001",
+          "date": "2025-10-28"
+        },
+        {
+          "value": "36.540001",
+          "date": "2025-10-29"
+        },
+        {
+          "value": "40.099998",
+          "date": "2025-10-30"
+        },
+        {
+          "value": "36.900002",
+          "date": "2025-10-31"
+        },
+        {
+          "value": "35.939999",
+          "date": "2025-11-01"
+        },
+        {
+          "value": "34.130001",
+          "date": "2025-11-02"
+        },
+        {
+          "value": "34.439999",
+          "date": "2025-11-03"
+        },
+        {
+          "value": "34.779999",
+          "date": "2025-11-04"
+        },
+        {
+          "value": "39.139999",
+          "date": "2025-11-05"
+        },
+        {
+          "value": "37.439999",
+          "date": "2025-11-06"
+        },
+        {
+          "value": "34.450001",
+          "date": "2025-11-07"
+        },
+        {
+          "value": "38.020000",
+          "date": "2025-11-08"
+        },
+        {
+          "value": "32.240002",
+          "date": "2025-11-09"
+        },
+        {
+          "value": "37.840000",
+          "date": "2025-11-10"
+        },
+        {
+          "value": "37.959999",
+          "date": "2025-11-11"
+        },
+        {
+          "value": "33.799999",
+          "date": "2025-11-12"
+        },
+        {
+          "value": "32.290001",
+          "date": "2025-11-13"
+        },
+        {
+          "value": "33.040001",
+          "date": "2025-11-14"
+        },
+        {
+          "value": "31.980000",
+          "date": "2025-11-15"
+        },
+        {
+          "value": "30.170000",
+          "date": "2025-11-16"
+        },
+        {
+          "value": "31.059999",
+          "date": "2025-11-17"
+        },
+        {
+          "value": "32.410000",
+          "date": "2025-11-18"
+        },
+        {
+          "value": "35.560001",
+          "date": "2025-11-19"
+        },
+        {
+          "value": "33.279999",
+          "date": "2025-11-20"
+        },
+        {
+          "value": "33.369999",
+          "date": "2025-11-21"
+        },
+        {
+          "value": "34.490002",
+          "date": "2025-11-22"
+        },
+        {
+          "value": "29.410000",
+          "date": "2025-11-23"
+        },
+        {
+          "value": "30.299999",
+          "date": "2025-11-24"
+        },
+        {
+          "value": "35.810001",
+          "date": "2025-11-25"
+        },
+        {
+          "value": "35.470001",
+          "date": "2025-11-26"
+        },
+        {
+          "value": "35.090000",
+          "date": "2025-11-27"
+        },
+        {
+          "value": "33.980000",
+          "date": "2025-11-28"
+        },
+        {
+          "value": "33.779999",
+          "date": "2025-11-29"
+        },
+        {
+          "value": "30.120001",
+          "date": "2025-11-30"
+        },
+        {
+          "value": "31.440001",
+          "date": "2025-12-01"
+        },
+        {
+          "value": "37.080002",
+          "date": "2025-12-02"
+        },
+        {
+          "value": "42.080002",
+          "date": "2025-12-03"
+        },
+        {
+          "value": "38.320000",
+          "date": "2025-12-04"
+        },
+        {
+          "value": "36.820000",
+          "date": "2025-12-05"
+        },
+        {
+          "value": "32.610001",
+          "date": "2025-12-06"
+        },
+        {
+          "value": "30.200001",
+          "date": "2025-12-07"
+        },
+        {
+          "value": "35.639999",
+          "date": "2025-12-08"
+        },
+        {
+          "value": "35.060001",
+          "date": "2025-12-09"
+        },
+        {
+          "value": "38.459999",
+          "date": "2025-12-10"
+        },
+        {
+          "value": "34.950001",
+          "date": "2025-12-11"
+        },
+        {
+          "value": "34.860001",
+          "date": "2025-12-12"
+        },
+        {
+          "value": "30.709999",
+          "date": "2025-12-13"
+        },
+        {
+          "value": "29.959999",
+          "date": "2025-12-14"
+        },
+        {
+          "value": "29.139999",
+          "date": "2025-12-15"
+        },
+        {
+          "value": "31.790001",
+          "date": "2025-12-16"
+        },
+        {
+          "value": "30.969999",
+          "date": "2025-12-17"
+        },
+        {
+          "value": "30.280001",
+          "date": "2025-12-18"
+        },
+        {
+          "value": "32.000000",
+          "date": "2025-12-19"
+        },
+        {
+          "value": "33.849998",
+          "date": "2025-12-20"
+        },
+        {
+          "value": "29.780001",
+          "date": "2025-12-21"
+        },
+        {
+          "value": "32.669998",
+          "date": "2025-12-22"
+        },
+        {
+          "value": "33.299999",
+          "date": "2025-12-23"
+        },
+        {
+          "value": "31.000000",
+          "date": "2025-12-24"
+        },
+        {
+          "value": "31.240000",
+          "date": "2025-12-25"
+        },
+        {
+          "value": "29.900000",
+          "date": "2025-12-26"
+        },
+        {
+          "value": "31.360001",
+          "date": "2025-12-27"
+        },
+        {
+          "value": "30.840000",
+          "date": "2025-12-28"
+        },
+        {
+          "value": "31.170000",
+          "date": "2025-12-29"
+        },
+        {
+          "value": "36.400002",
+          "date": "2025-12-30"
+        },
+        {
+          "value": "35.099998",
+          "date": "2025-12-31"
+        },
+        {
+          "value": "34.910000",
+          "date": "2026-01-01"
+        },
+        {
+          "value": "36.299999",
+          "date": "2026-01-02"
+        },
+        {
+          "value": "43.669998",
+          "date": "2026-01-03"
+        },
+        {
+          "value": "39.799999",
+          "date": "2026-01-04"
+        },
+        {
+          "value": "60.389999",
+          "date": "2026-01-05"
+        },
+        {
+          "value": "49.480000",
+          "date": "2026-01-06"
+        },
+        {
+          "value": "51.180000",
+          "date": "2026-01-07"
+        },
+        {
+          "value": "50.610001",
+          "date": "2026-01-08"
+        },
+        {
+          "value": "50.580002",
+          "date": "2026-01-09"
+        },
+        {
+          "value": "49.990002",
+          "date": "2026-01-10"
+        },
+        {
+          "value": "43.040001",
+          "date": "2026-01-11"
+        },
+        {
+          "value": "45.599998",
+          "date": "2026-01-12"
+        },
+        {
+          "value": "47.290001",
+          "date": "2026-01-13"
+        },
+        {
+          "value": "54.520000",
+          "date": "2026-01-14"
+        },
+        {
+          "value": "52.639999",
+          "date": "2026-01-15"
+        },
+        {
+          "value": "47.240002",
+          "date": "2026-01-16"
+        },
+        {
+          "value": "46.279999",
+          "date": "2026-01-17"
+        },
+        {
+          "value": "43.099998",
+          "date": "2026-01-18"
+        },
+        {
+          "value": "45.639999",
+          "date": "2026-01-19"
+        },
+        {
+          "value": "47.840000",
+          "date": "2026-01-20"
+        },
+        {
+          "value": "45.330002",
+          "date": "2026-01-21"
+        },
+        {
+          "value": "49.490002",
+          "date": "2026-01-22"
+        },
+        {
+          "value": "44.310001",
+          "date": "2026-01-23"
+        },
+        {
+          "value": "44.209999",
+          "date": "2026-01-24"
+        },
+        {
+          "value": "41.740002",
+          "date": "2026-01-25"
+        },
+        {
+          "value": "44.549999",
+          "date": "2026-01-26"
+        },
+        {
+          "value": "44.200001",
+          "date": "2026-01-27"
+        },
+        {
+          "value": "44.919998",
+          "date": "2026-01-28"
+        },
+        {
+          "value": "46.619999",
+          "date": "2026-01-29"
+        },
+        {
+          "value": "45.529999",
+          "date": "2026-01-30"
+        },
+        {
+          "value": "46.240002",
+          "date": "2026-01-31"
+        },
+        {
+          "value": "46.529999",
+          "date": "2026-02-01"
+        },
+        {
+          "value": "44.610001",
+          "date": "2026-02-02"
+        },
+        {
+          "value": "46.270000",
+          "date": "2026-02-03"
+        },
+        {
+          "value": "44.990002",
+          "date": "2026-02-04"
+        },
+        {
+          "value": "41.700001",
+          "date": "2026-02-05"
+        },
+        {
+          "value": "43.180000",
+          "date": "2026-02-06"
+        },
+        {
+          "value": "48.000000",
+          "date": "2026-02-07"
+        },
+        {
+          "value": "38.619999",
+          "date": "2026-02-08"
+        },
+        {
+          "value": "36.680000",
+          "date": "2026-02-09"
+        },
+        {
+          "value": "35.980000",
+          "date": "2026-02-10"
+        },
+        {
+          "value": "35.590000",
+          "date": "2026-02-11"
+        },
+        {
+          "value": "37.529999",
+          "date": "2026-02-12"
+        },
+        {
+          "value": "34.169998",
+          "date": "2026-02-13"
+        },
+        {
+          "value": "32.480000",
+          "date": "2026-02-14"
+        },
+        {
+          "value": "35.660000",
+          "date": "2026-02-15"
+        },
+        {
+          "value": "33.250000",
+          "date": "2026-02-16"
+        },
+        {
+          "value": "32.349998",
+          "date": "2026-02-17"
+        },
+        {
+          "value": "31.219999",
+          "date": "2026-02-18"
+        },
+        {
+          "value": "31.340000",
+          "date": "2026-02-19"
+        },
+        {
+          "value": "31.330000",
+          "date": "2026-02-20"
+        },
+        {
+          "value": "33.209999",
+          "date": "2026-02-21"
+        },
+        {
+          "value": "30.120001",
+          "date": "2026-02-22"
+        },
+        {
+          "value": "30.879999",
+          "date": "2026-02-23"
+        },
+        {
+          "value": "33.400002",
+          "date": "2026-02-24"
+        },
+        {
+          "value": "32.599998",
+          "date": "2026-02-25"
+        },
+        {
+          "value": "34.419998",
+          "date": "2026-02-26"
+        },
+        {
+          "value": "32.360001",
+          "date": "2026-02-27"
+        },
+        {
+          "value": "31.299999",
+          "date": "2026-02-28"
+        },
+        {
+          "value": "32.759998",
+          "date": "2026-03-01"
+        },
+        {
+          "value": "31.610001",
+          "date": "2026-03-02"
+        },
+        {
+          "value": "31.549999",
+          "date": "2026-03-03"
+        },
+        {
+          "value": "30.070000",
+          "date": "2026-03-04"
+        },
+        {
+          "value": "33.099998",
+          "date": "2026-03-05"
+        },
+        {
+          "value": "30.559999",
+          "date": "2026-03-06"
+        },
+        {
+          "value": "29.959999",
+          "date": "2026-03-07"
+        },
+        {
+          "value": "28.059999",
+          "date": "2026-03-08"
+        },
+        {
+          "value": "28.660000",
+          "date": "2026-03-09"
+        },
+        {
+          "value": "30.879999",
+          "date": "2026-03-10"
+        },
+        {
+          "value": "30.959999",
+          "date": "2026-03-11"
+        },
+        {
+          "value": "29.990000",
+          "date": "2026-03-12"
+        },
+        {
+          "value": "31.920000",
+          "date": "2026-03-13"
+        }
+      ],
+      "bsc_greed_index": [
+        {
+          "value": "18.830000",
+          "date": "2025-09-15"
+        },
+        {
+          "value": "22.030001",
+          "date": "2025-09-16"
+        },
+        {
+          "value": "36.119999",
+          "date": "2025-09-17"
+        },
+        {
+          "value": "55.189999",
+          "date": "2025-09-18"
+        },
+        {
+          "value": "44.869999",
+          "date": "2025-09-19"
+        },
+        {
+          "value": "25.850000",
+          "date": "2025-09-20"
+        },
+        {
+          "value": "54.590000",
+          "date": "2025-09-21"
+        },
+        {
+          "value": "53.259998",
+          "date": "2025-09-22"
+        },
+        {
+          "value": "53.400002",
+          "date": "2025-09-23"
+        },
+        {
+          "value": "54.639999",
+          "date": "2025-09-24"
+        },
+        {
+          "value": "53.919998",
+          "date": "2025-09-25"
+        },
+        {
+          "value": "52.889999",
+          "date": "2025-09-26"
+        },
+        {
+          "value": "53.529999",
+          "date": "2025-09-27"
+        },
+        {
+          "value": "53.889999",
+          "date": "2025-09-28"
+        },
+        {
+          "value": "53.450001",
+          "date": "2025-09-29"
+        },
+        {
+          "value": "52.509998",
+          "date": "2025-09-30"
+        },
+        {
+          "value": "53.419998",
+          "date": "2025-10-01"
+        },
+        {
+          "value": "54.259998",
+          "date": "2025-10-02"
+        },
+        {
+          "value": "62.540001",
+          "date": "2025-10-03"
+        },
+        {
+          "value": "59.680000",
+          "date": "2025-10-04"
+        },
+        {
+          "value": "59.230000",
+          "date": "2025-10-05"
+        },
+        {
+          "value": "61.020000",
+          "date": "2025-10-06"
+        },
+        {
+          "value": "74.629997",
+          "date": "2025-10-07"
+        },
+        {
+          "value": "87.019997",
+          "date": "2025-10-08"
+        },
+        {
+          "value": "81.900002",
+          "date": "2025-10-09"
+        },
+        {
+          "value": "79.470001",
+          "date": "2025-10-10"
+        },
+        {
+          "value": "59.139999",
+          "date": "2025-10-11"
+        },
+        {
+          "value": "72.470001",
+          "date": "2025-10-12"
+        },
+        {
+          "value": "77.949997",
+          "date": "2025-10-13"
+        },
+        {
+          "value": "72.629997",
+          "date": "2025-10-14"
+        },
+        {
+          "value": "70.410004",
+          "date": "2025-10-15"
+        },
+        {
+          "value": "65.389999",
+          "date": "2025-10-16"
+        },
+        {
+          "value": "60.810001",
+          "date": "2025-10-17"
+        },
+        {
+          "value": "58.529999",
+          "date": "2025-10-18"
+        },
+        {
+          "value": "59.410000",
+          "date": "2025-10-19"
+        },
+        {
+          "value": "64.010002",
+          "date": "2025-10-20"
+        },
+        {
+          "value": "61.860001",
+          "date": "2025-10-21"
+        },
+        {
+          "value": "61.139999",
+          "date": "2025-10-22"
+        },
+        {
+          "value": "63.740002",
+          "date": "2025-10-23"
+        },
+        {
+          "value": "57.959999",
+          "date": "2025-10-24"
+        },
+        {
+          "value": "56.189999",
+          "date": "2025-10-25"
+        },
+        {
+          "value": "57.320000",
+          "date": "2025-10-26"
+        },
+        {
+          "value": "58.860001",
+          "date": "2025-10-27"
+        },
+        {
+          "value": "56.290001",
+          "date": "2025-10-28"
+        },
+        {
+          "value": "57.139999",
+          "date": "2025-10-29"
+        },
+        {
+          "value": "55.750000",
+          "date": "2025-10-30"
+        },
+        {
+          "value": "55.509998",
+          "date": "2025-10-31"
+        },
+        {
+          "value": "55.820000",
+          "date": "2025-11-01"
+        },
+        {
+          "value": "55.500000",
+          "date": "2025-11-02"
+        },
+        {
+          "value": "54.500000",
+          "date": "2025-11-03"
+        },
+        {
+          "value": "52.389999",
+          "date": "2025-11-04"
+        },
+        {
+          "value": "53.169998",
+          "date": "2025-11-05"
+        },
+        {
+          "value": "54.189999",
+          "date": "2025-11-06"
+        },
+        {
+          "value": "53.139999",
+          "date": "2025-11-07"
+        },
+        {
+          "value": "55.150002",
+          "date": "2025-11-08"
+        },
+        {
+          "value": "53.810001",
+          "date": "2025-11-09"
+        },
+        {
+          "value": "53.990002",
+          "date": "2025-11-10"
+        },
+        {
+          "value": "54.860001",
+          "date": "2025-11-11"
+        },
+        {
+          "value": "54.160000",
+          "date": "2025-11-12"
+        },
+        {
+          "value": "51.910000",
+          "date": "2025-11-13"
+        },
+        {
+          "value": "52.410000",
+          "date": "2025-11-14"
+        },
+        {
+          "value": "53.259998",
+          "date": "2025-11-15"
+        },
+        {
+          "value": "53.139999",
+          "date": "2025-11-16"
+        },
+        {
+          "value": "53.669998",
+          "date": "2025-11-17"
+        },
+        {
+          "value": "52.700001",
+          "date": "2025-11-18"
+        },
+        {
+          "value": "51.459999",
+          "date": "2025-11-19"
+        },
+        {
+          "value": "51.799999",
+          "date": "2025-11-20"
+        },
+        {
+          "value": "49.959999",
+          "date": "2025-11-21"
+        },
+        {
+          "value": "49.509998",
+          "date": "2025-11-22"
+        },
+        {
+          "value": "48.650002",
+          "date": "2025-11-23"
+        },
+        {
+          "value": "48.099998",
+          "date": "2025-11-24"
+        },
+        {
+          "value": "50.630001",
+          "date": "2025-11-25"
+        },
+        {
+          "value": "48.209999",
+          "date": "2025-11-26"
+        },
+        {
+          "value": "46.950001",
+          "date": "2025-11-27"
+        },
+        {
+          "value": "47.209999",
+          "date": "2025-11-28"
+        },
+        {
+          "value": "42.939999",
+          "date": "2025-11-29"
+        },
+        {
+          "value": "50.139999",
+          "date": "2025-11-30"
+        },
+        {
+          "value": "47.639999",
+          "date": "2025-12-01"
+        },
+        {
+          "value": "52.709999",
+          "date": "2025-12-02"
+        },
+        {
+          "value": "50.119999",
+          "date": "2025-12-03"
+        },
+        {
+          "value": "50.430000",
+          "date": "2025-12-04"
+        },
+        {
+          "value": "47.040001",
+          "date": "2025-12-05"
+        },
+        {
+          "value": "47.730000",
+          "date": "2025-12-06"
+        },
+        {
+          "value": "49.209999",
+          "date": "2025-12-07"
+        },
+        {
+          "value": "45.799999",
+          "date": "2025-12-08"
+        },
+        {
+          "value": "44.279999",
+          "date": "2025-12-09"
+        },
+        {
+          "value": "42.470001",
+          "date": "2025-12-10"
+        },
+        {
+          "value": "42.650002",
+          "date": "2025-12-11"
+        },
+        {
+          "value": "43.160000",
+          "date": "2025-12-12"
+        },
+        {
+          "value": "43.919998",
+          "date": "2025-12-13"
+        },
+        {
+          "value": "45.320000",
+          "date": "2025-12-14"
+        },
+        {
+          "value": "46.509998",
+          "date": "2025-12-15"
+        },
+        {
+          "value": "46.939999",
+          "date": "2025-12-16"
+        },
+        {
+          "value": "47.340000",
+          "date": "2025-12-17"
+        },
+        {
+          "value": "45.360001",
+          "date": "2025-12-18"
+        },
+        {
+          "value": "45.880001",
+          "date": "2025-12-19"
+        },
+        {
+          "value": "48.860001",
+          "date": "2025-12-20"
+        },
+        {
+          "value": "48.770000",
+          "date": "2025-12-21"
+        },
+        {
+          "value": "53.419998",
+          "date": "2025-12-22"
+        },
+        {
+          "value": "53.830002",
+          "date": "2025-12-23"
+        },
+        {
+          "value": "49.090000",
+          "date": "2025-12-24"
+        },
+        {
+          "value": "51.570000",
+          "date": "2025-12-25"
+        },
+        {
+          "value": "47.549999",
+          "date": "2025-12-26"
+        },
+        {
+          "value": "48.549999",
+          "date": "2025-12-27"
+        },
+        {
+          "value": "47.650002",
+          "date": "2025-12-28"
+        },
+        {
+          "value": "48.040001",
+          "date": "2025-12-29"
+        },
+        {
+          "value": "53.130001",
+          "date": "2025-12-30"
+        },
+        {
+          "value": "53.619999",
+          "date": "2025-12-31"
+        },
+        {
+          "value": "53.419998",
+          "date": "2026-01-01"
+        },
+        {
+          "value": "53.549999",
+          "date": "2026-01-02"
+        },
+        {
+          "value": "53.889999",
+          "date": "2026-01-03"
+        },
+        {
+          "value": "53.500000",
+          "date": "2026-01-04"
+        },
+        {
+          "value": "56.480000",
+          "date": "2026-01-05"
+        },
+        {
+          "value": "53.389999",
+          "date": "2026-01-06"
+        },
+        {
+          "value": "54.130001",
+          "date": "2026-01-07"
+        },
+        {
+          "value": "53.480000",
+          "date": "2026-01-08"
+        },
+        {
+          "value": "56.169998",
+          "date": "2026-01-09"
+        },
+        {
+          "value": "56.500000",
+          "date": "2026-01-10"
+        },
+        {
+          "value": "58.250000",
+          "date": "2026-01-11"
+        },
+        {
+          "value": "58.580002",
+          "date": "2026-01-12"
+        },
+        {
+          "value": "61.509998",
+          "date": "2026-01-13"
+        },
+        {
+          "value": "63.099998",
+          "date": "2026-01-14"
+        },
+        {
+          "value": "64.199997",
+          "date": "2026-01-15"
+        },
+        {
+          "value": "60.259998",
+          "date": "2026-01-16"
+        },
+        {
+          "value": "61.919998",
+          "date": "2026-01-17"
+        },
+        {
+          "value": "60.139999",
+          "date": "2026-01-18"
+        },
+        {
+          "value": "59.040001",
+          "date": "2026-01-19"
+        },
+        {
+          "value": "58.799999",
+          "date": "2026-01-20"
+        },
+        {
+          "value": "57.700001",
+          "date": "2026-01-21"
+        },
+        {
+          "value": "61.389999",
+          "date": "2026-01-22"
+        },
+        {
+          "value": "60.250000",
+          "date": "2026-01-23"
+        },
+        {
+          "value": "60.130001",
+          "date": "2026-01-24"
+        },
+        {
+          "value": "60.380001",
+          "date": "2026-01-25"
+        },
+        {
+          "value": "58.540001",
+          "date": "2026-01-26"
+        },
+        {
+          "value": "60.610001",
+          "date": "2026-01-27"
+        },
+        {
+          "value": "60.290001",
+          "date": "2026-01-28"
+        },
+        {
+          "value": "59.450001",
+          "date": "2026-01-29"
+        },
+        {
+          "value": "59.549999",
+          "date": "2026-01-30"
+        },
+        {
+          "value": "59.990002",
+          "date": "2026-01-31"
+        },
+        {
+          "value": "58.849998",
+          "date": "2026-02-01"
+        },
+        {
+          "value": "60.330002",
+          "date": "2026-02-02"
+        },
+        {
+          "value": "59.570000",
+          "date": "2026-02-03"
+        },
+        {
+          "value": "60.639999",
+          "date": "2026-02-04"
+        },
+        {
+          "value": "60.509998",
+          "date": "2026-02-05"
+        },
+        {
+          "value": "57.290001",
+          "date": "2026-02-06"
+        },
+        {
+          "value": "61.490002",
+          "date": "2026-02-07"
+        },
+        {
+          "value": "64.440002",
+          "date": "2026-02-08"
+        },
+        {
+          "value": "56.230000",
+          "date": "2026-02-09"
+        },
+        {
+          "value": "61.150002",
+          "date": "2026-02-10"
+        },
+        {
+          "value": "60.599998",
+          "date": "2026-02-11"
+        },
+        {
+          "value": "60.400002",
+          "date": "2026-02-12"
+        },
+        {
+          "value": "61.970001",
+          "date": "2026-02-13"
+        },
+        {
+          "value": "60.980000",
+          "date": "2026-02-14"
+        },
+        {
+          "value": "62.529999",
+          "date": "2026-02-15"
+        },
+        {
+          "value": "60.270000",
+          "date": "2026-02-16"
+        },
+        {
+          "value": "62.669998",
+          "date": "2026-02-17"
+        },
+        {
+          "value": "59.169998",
+          "date": "2026-02-18"
+        },
+        {
+          "value": "59.410000",
+          "date": "2026-02-19"
+        },
+        {
+          "value": "60.930000",
+          "date": "2026-02-20"
+        },
+        {
+          "value": "61.880001",
+          "date": "2026-02-21"
+        },
+        {
+          "value": "62.240002",
+          "date": "2026-02-22"
+        },
+        {
+          "value": "61.130001",
+          "date": "2026-02-23"
+        },
+        {
+          "value": "61.939999",
+          "date": "2026-02-24"
+        },
+        {
+          "value": "63.230000",
+          "date": "2026-02-25"
+        },
+        {
+          "value": "62.810001",
+          "date": "2026-02-26"
+        },
+        {
+          "value": "61.279999",
+          "date": "2026-02-27"
+        },
+        {
+          "value": "62.330002",
+          "date": "2026-02-28"
+        },
+        {
+          "value": "59.020000",
+          "date": "2026-03-01"
+        },
+        {
+          "value": "59.700001",
+          "date": "2026-03-02"
+        },
+        {
+          "value": "67.309998",
+          "date": "2026-03-03"
+        },
+        {
+          "value": "61.209999",
+          "date": "2026-03-04"
+        },
+        {
+          "value": "60.970001",
+          "date": "2026-03-05"
+        },
+        {
+          "value": "63.959999",
+          "date": "2026-03-06"
+        },
+        {
+          "value": "62.310001",
+          "date": "2026-03-07"
+        },
+        {
+          "value": "60.060001",
+          "date": "2026-03-08"
+        },
+        {
+          "value": "62.939999",
+          "date": "2026-03-09"
+        },
+        {
+          "value": "63.880001",
+          "date": "2026-03-10"
+        },
+        {
+          "value": "63.270000",
+          "date": "2026-03-11"
+        },
+        {
+          "value": "63.070000",
+          "date": "2026-03-12"
+        },
+        {
+          "value": "63.520000",
+          "date": "2026-03-13"
+        }
+      ],
+      "ai_narrative_hunter": [
+        {
+          "id": "a#163#1",
+          "order_number": 1,
+          "title": "Giant Elephant Domination Rampage",
+          "title_lang": {
+            "en": "Giant Elephant Domination Rampage",
+            "zh_hans": "\u5de8\u8c61\u78be\u538b\u5929\u4e0b",
+            "zh_hant": "\u5de8\u8c61\u78be\u58d3\u5929\u4e0b"
+          },
+          "reason": "Community KOL Ansem shares giant elephant meme image sparking viral spread, ELEPHANT and others surge in on-chain trading, degens FOMO rush boosting market cap, consensus forms monopoly narrative.",
+          "reason_lang": {
+            "en": "Community KOL Ansem shares giant elephant meme image sparking viral spread, ELEPHANT and others surge in on-chain trading, degens FOMO rush boosting market cap, consensus forms monopoly narrative.",
+            "zh_hans": "\u793e\u533a KOL Ansem \u5206\u4eab\u5de8\u8c61 meme \u56fe\u5f15\u53d1\u75c5\u6bd2\u4f20\u64ad\uff0c$ELEPHANT \u7b49\u4ee3\u5e01\u501f\u52bf\u94fe\u4e0a\u4ea4\u6613\u4e95\u55b7\uff0cdegen \u73a9\u5bb6\u8702\u62e5 FOMO \u63a8\u9ad8\u5e02\u503c\uff0c\u5171\u8bc6\u8fc5\u901f\u5f62\u6210\u5784\u65ad\u53d9\u4e8b\u3002",
+            "zh_hant": "\u793e\u7fa4 KOL Ansem \u5206\u4eab\u5de8\u8c61 meme \u5716\u5f15\u767c\u75c5\u6bd2\u50b3\u64ad\uff0c$ELEPHANT \u7b49\u4ee3\u5e63\u501f\u52e2\u93c8\u4e0a\u4ea4\u6613\u4e95\u5674\uff0cdegen \u73a9\u5bb6\u8702\u64c1 FOMO \u63a8\u9ad8\u5e02\u503c\uff0c\u5171\u8b58\u8fc5\u901f\u5f62\u6210\u58df\u65b7\u6558\u4e8b\u3002"
+          },
+          "hot_tokens": [
+            {
+              "chain": "",
+              "address": "",
+              "symbol": "",
+              "name": "ELEPHANT",
+              "logo": "",
+              "market_cap": "0",
+              "market_cap_24h": "0",
+              "call_out_multiple": "0"
+            },
+            {
+              "chain": "",
+              "address": "",
+              "symbol": "",
+              "name": "Craig",
+              "logo": "",
+              "market_cap": "0",
+              "market_cap_24h": "0",
+              "call_out_multiple": "0"
+            },
+            {
+              "chain": "",
+              "address": "",
+              "symbol": "",
+              "name": "TJ",
+              "logo": "",
+              "market_cap": "0",
+              "market_cap_24h": "0",
+              "call_out_multiple": "0"
+            }
+          ],
+          "source": [
+            {
+              "username": "solbrdl",
+              "name": "Bradley (\ud83d\udc38)",
+              "icon": "https://gmgn.ai/defi/images/twitter/4a598c5a4c7ceaa724a274e299137320.jpg"
+            },
+            {
+              "username": "SharkyCT",
+              "name": "Sharky",
+              "icon": "https://gmgn.ai/defi/images/twitter/fc011b4b5242609bb90fc8b77f5ff2d4.jpg"
+            },
+            {
+              "username": "fihleetho",
+              "name": "fih leetho",
+              "icon": "https://gmgn.ai/defi/images/twitter/ac107686d26e7a22cfcba302451f4986.jpg"
+            },
+            {
+              "username": "prottlegang3",
+              "name": "prottle",
+              "icon": "https://gmgn.ai/defi/images/twitter/eb967b0c33b875c26bf8c6a0a70c5764.jpg"
+            },
+            {
+              "username": "trashtoshy",
+              "name": "Trashtoshy \ud83c\udfaf\ud83d\udc2b\ud83d\udc2b\ud83d\udc2b",
+              "icon": "https://gmgn.ai/defi/images/twitter/aeb0f0d3103567da863b4038ac00c82c.jpg"
+            },
+            {
+              "username": "kurama718",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "kositia",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "N0ah63",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MageArez",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Cryptoadoul",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "raminder1970",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "skneshakhan",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "DaDuder_",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MakeOrigamis",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Nerotix3",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Taitao_f",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Ftftmia_limw",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "hellkatai",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "mikasasolslayer",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "SuzanMelva41478",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "TendersAlt",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "mooncatcherxbt",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "degendaveb",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "bytebrox",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "whalewatchalert",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "LexiasManning",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "sol_chef1",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "ArchieDegen",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "GlynisMyun23749",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Dex_King1",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "WavexCaller",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "gampsito2",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "xMrChow",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "WILD_SOLS",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "vinhodler",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "laserrXBT",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MWilliams0X",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "germanarc1",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "ibraquant",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "SOLxWatcher",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "0xWOLF_AI",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "laohan_web3",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "leydev_",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Bancrypto__",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "newAnoncoins",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "cryptokillua99",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MintDetector1",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "cookindotfunbot",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "_youridolo",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Putrickk",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "WolverCrypto",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Zghire_",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "SelfSuccessSaga",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Chain_AlphaX",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "sammy_crypt_",
+              "name": "",
+              "icon": ""
+            }
+          ],
+          "vote_type": 0
+        },
+        {
+          "id": "a#163#2",
+          "order_number": 2,
+          "title": "Invincible Soul Frenzy",
+          "title_lang": {
+            "en": "Invincible Soul Frenzy",
+            "zh_hans": "\u7075\u9b42\u4e0d\u8d25\u72c2\u6b22",
+            "zh_hant": "\u9748\u9b42\u4e0d\u6557\u72c2\u6b61"
+          },
+          "reason": "HODLER community erupts in invincible soul mechanism discussions, SOUL and others backed by KOLs, on-chain holdings explode triggering FOMO loop, players embrace eternal HODL faith.",
+          "reason_lang": {
+            "en": "HODLER community erupts in invincible soul mechanism discussions, SOUL and others backed by KOLs, on-chain holdings explode triggering FOMO loop, players embrace eternal HODL faith.",
+            "zh_hans": "HODLER \u793e\u7fa4\u7a81\u53d1\u4e0d\u8d25\u7075\u9b42\u673a\u5236\u8ba8\u8bba\uff0c$SOUL \u7b49\u4ee3\u5e01\u83b7 KOL \u80cc\u4e66\uff0c\u94fe\u4e0a\u6301\u4ed3\u66b4\u589e\u5f15\u53d1 FOMO \u5faa\u73af\uff0c\u73a9\u5bb6\u96c6\u4f53\u62e5\u62b1\u6c38\u6052 HODL \u4fe1\u4ef0\u3002",
+            "zh_hant": "HODLER \u793e\u7fa4\u7206\u767c\u4e0d\u6557\u9748\u9b42\u6a5f\u5236\u8a0e\u8ad6\uff0c$SOUL \u7b49\u4ee3\u5e63\u7372 KOL \u80cc\u66f8\uff0c\u93c8\u4e0a\u6301\u5009\u66b4\u589e\u5f15\u767c FOMO \u5faa\u74b0\uff0c\u73a9\u5bb6\u96c6\u9ad4\u64c1\u62b1\u6c38\u6046 HODL \u4fe1\u4ef0\u3002"
+          },
+          "hot_tokens": [
+            {
+              "chain": "",
+              "address": "",
+              "symbol": "",
+              "name": "SOUL",
+              "logo": "",
+              "market_cap": "0",
+              "market_cap_24h": "0",
+              "call_out_multiple": "0"
+            },
+            {
+              "chain": "",
+              "address": "",
+              "symbol": "",
+              "name": "HODLER",
+              "logo": "",
+              "market_cap": "0",
+              "market_cap_24h": "0",
+              "call_out_multiple": "0"
+            },
+            {
+              "chain": "",
+              "address": "",
+              "symbol": "",
+              "name": "UNDEFEATED",
+              "logo": "",
+              "market_cap": "0",
+              "market_cap_24h": "0",
+              "call_out_multiple": "0"
+            }
+          ],
+          "source": [
+            {
+              "username": "sylix_x",
+              "name": "Sil",
+              "icon": "https://gmgn.ai/defi/images/twitter/3feda37d4bcd1d99f0807e628e7cef74.jpg"
+            },
+            {
+              "username": "MintDetector1",
+              "name": "MemeClaud",
+              "icon": "https://gmgn.ai/defi/images/twitter/45fa2e46507ff023c1d8e54a21a8155d.jpg"
+            },
+            {
+              "username": "SeekrTrending",
+              "name": "Seekr Trending",
+              "icon": "https://gmgn.ai/defi/images/twitter/3b03e1ca0e9446a88db169ebcf906a1b.jpg"
+            },
+            {
+              "username": "dexsignals",
+              "name": "Dex signals",
+              "icon": "https://gmgn.ai/defi/images/twitter/84b0aa4bd54044ea3a547f54e0d57af7.jpg"
+            },
+            {
+              "username": "ChainSoul_AI",
+              "name": "ChainSoul AI",
+              "icon": "https://gmgn.ai/defi/images/twitter/ecb06b966d27d4042bceaf5a66c876fb.jpg"
+            },
+            {
+              "username": "F1yogs",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "CryptoExpert101",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Dex_King1",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Btbd21404",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MontyAlerts",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "SoulGiftCards",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MWilliams0X",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "aixbt_agent",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "BEASTMODECRYPTO",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "ArchieDegen",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "whalewatchalert",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "LQP2021",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "SelfSuccessSaga",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "soulscape_ai",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "richsolnow",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "SekinahOluwato2",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MadeshiaPramod",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "JMania402",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "xMrChow",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "SarDooms",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "NoahTradesSol",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "bankrbot",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "abrawlerj",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "laohan_web3",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "madapescall",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Btcniumowang",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "AlphxInsights",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Clawmode",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "daxbt_",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "GrinderBil",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "maki1000x",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "jorgedoyle87",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "H4mze_",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "ChainCTOScan",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "blowfishbot",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "LaunchOnBags",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "aamirqureshiof1",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "noahbenbtc",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Andy404x",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "WavexCaller",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "bsemaloie",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "AzFlin",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "BagsEarnings",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "wenexit",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "furan86999",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Hadaira10766253",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "BscPulseTrend",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "CryptoDongwang",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "0xOracaller",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "milong060",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Andrew0xSOL",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "n1neshards",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "ilove_suii",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "hypedetectorbor",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "cookindotfunbot",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "kingpings_",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "diaomao2023",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "xPapaDonnie",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "hg13131313",
+              "name": "",
+              "icon": ""
+            }
+          ],
+          "vote_type": 0
+        },
+        {
+          "id": "a#163#3",
+          "order_number": 3,
+          "title": "Righteous Sheep Uprising",
+          "title_lang": {
+            "en": "Righteous Sheep Uprising",
+            "zh_hans": "\u7f8a\u7fa4\u6b63\u4e49\u66b4\u52a8",
+            "zh_hant": "\u7f8a\u7fa4\u6b63\u7fa9\u66b4\u52d5"
+          },
+          "reason": "Righteous Sheep image forwarded by KOLs ignites animal awakening buzz, Sheep and others see trading volume spike, community meme interactions explode forming reversal justice consensus.",
+          "reason_lang": {
+            "en": "Righteous Sheep image forwarded by KOLs ignites animal awakening buzz, Sheep and others see trading volume spike, community meme interactions explode forming reversal justice consensus.",
+            "zh_hans": "Righteous Sheep \u56fe\u7247\u88ab KOL \u8f6c\u53d1\u70b9\u71c3\u52a8\u7269\u89c9\u9192\u70ed\u8bae\uff0c$Sheep \u7b49\u4ee3\u5e01\u4ea4\u6613\u91cf\u6fc0\u589e\uff0c\u793e\u533a meme \u4e92\u52a8\u7206\u70b8\u5f0f\u4f20\u64ad\uff0c\u5f62\u6210\u53cd\u8f6c\u6b63\u4e49\u5171\u8bc6\u3002",
+            "zh_hant": "Righteous Sheep \u5716\u7247\u88ab KOL \u8f49\u767c\u9ede\u71c3\u52d5\u7269\u89ba\u9192\u71b1\u8b70\uff0c$Sheep \u7b49\u4ee3\u5e63\u4ea4\u6613\u91cf\u6fc0\u589e\uff0c\u793e\u7fa4 meme \u4e92\u52d5\u7206\u70b8\u5f0f\u50b3\u64ad\uff0c\u5f62\u6210\u53cd\u8f49\u6b63\u7fa9\u5171\u8b58\u3002"
+          },
+          "hot_tokens": [
+            {
+              "chain": "",
+              "address": "",
+              "symbol": "",
+              "name": "Sheep",
+              "logo": "",
+              "market_cap": "0",
+              "market_cap_24h": "0",
+              "call_out_multiple": "0"
+            },
+            {
+              "chain": "",
+              "address": "",
+              "symbol": "",
+              "name": "HAMSTER",
+              "logo": "",
+              "market_cap": "0",
+              "market_cap_24h": "0",
+              "call_out_multiple": "0"
+            }
+          ],
+          "source": [
+            {
+              "username": "arangotrades",
+              "name": "Arango",
+              "icon": "https://gmgn.ai/defi/images/twitter/ddfc2abd6fcdf357017e71854b7d567e.jpg"
+            },
+            {
+              "username": "DaDuder_",
+              "name": "DaDuder",
+              "icon": "https://gmgn.ai/defi/images/twitter/9b9f5dbd15c37f61850a5ea966c44360.jpg"
+            },
+            {
+              "username": "dexsignals",
+              "name": "Dex signals",
+              "icon": "https://gmgn.ai/defi/images/twitter/84b0aa4bd54044ea3a547f54e0d57af7.jpg"
+            },
+            {
+              "username": "Chain_AlphaX",
+              "name": "Chain Alpha",
+              "icon": "https://gmgn.ai/defi/images/twitter/3d7189b048b6d6f731c50c9d2343880c.jpg"
+            },
+            {
+              "username": "badattrading_",
+              "name": "Nova",
+              "icon": "https://gmgn.ai/defi/images/twitter/b87566b643726f96158c62cee8c63dcf.jpg"
+            },
+            {
+              "username": "isnotbadcmon",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "callerhills",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MintDetector1",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "SharkyCT",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "aidenfts",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "xMrChow",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "sharkapescall",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "aresvlt",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "NoahTradesSol",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "sol_chef1",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "BigOBrAIn",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "cookindotfunbot",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "raminder1970",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "illustriou99814",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MWilliams0X",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MadeshiaPramod",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "AlphxInsights",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "bigboygui",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Great_cook123",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "SeekrTrending",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "CharlsieC38317",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "ChainCTOScan",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Btbd21404",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Nerotix3",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "0xMetaliac",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "mmmaaaatt",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "GlynisMyun23749",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "xPapaDonnie",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "BreadGiver",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "AlphaWhalesX",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "chinapumprocket",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "y0lloo",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Andy404x",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "DexSignalRadar",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "KibiBot",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "PainCrypt0",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Dex_King1",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "inside_gemm",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "ilove_suii",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "fibonacki",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "newAnoncoins",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Trencherrz",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Zeeko_Sol",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "_logjam",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "chilldeployer",
+              "name": "",
+              "icon": ""
+            }
+          ],
+          "vote_type": 0
+        },
+        {
+          "id": "a#163#4",
+          "order_number": 4,
+          "title": "Anime Fist Soul Awakening",
+          "title_lang": {
+            "en": "Anime Fist Soul Awakening",
+            "zh_hans": "\u65e5\u6f2b\u62f3\u9b42\u89c9\u9192",
+            "zh_hant": "\u65e5\u6f2b\u62f3\u9b42\u89ba\u9192"
+          },
+          "reason": "Punch and Fatecoin anime character fusion memes promoted by Japanese fan KOLs, on-chain volume syncs eruption, cross-cultural players FOMO elevating narrative heat.",
+          "reason_lang": {
+            "en": "Punch and Fatecoin anime character fusion memes promoted by Japanese fan KOLs, on-chain volume syncs eruption, cross-cultural players FOMO elevating narrative heat.",
+            "zh_hans": "\u30d1\u30f3\u30c1 \u548c\u30d5\u30a7\u30a4\u30c8\u30b3\u30a4\u30f3 \u52a8\u6f2b\u89d2\u8272\u878d\u5408 meme \u83b7\u65e5\u7c89 KOL \u63a8\u5e7f\uff0c\u94fe\u4e0a Vol \u540c\u6b65\u7206\u53d1\uff0c\u73a9\u5bb6\u8de8\u6587\u5316 FOMO \u63a8\u5347\u53d9\u4e8b\u70ed\u5ea6\u3002",
+            "zh_hant": "\u30d1\u30f3\u30c1 \u548c\u30d5\u30a7\u30a4\u30c8\u30b3\u30a4\u30f3 \u52d5\u6f2b\u89d2\u8272\u878d\u5408 meme \u7372\u65e5\u7c89 KOL \u63a8\u5ee3\uff0c\u93c8\u4e0a Vol \u540c\u6b65\u7206\u767c\uff0c\u73a9\u5bb6\u8de8\u6587\u5316 FOMO \u63a8\u5347\u6558\u4e8b\u71b1\u5ea6\u3002"
+          },
+          "hot_tokens": [
+            {
+              "chain": "",
+              "address": "",
+              "symbol": "",
+              "name": "Punch",
+              "logo": "",
+              "market_cap": "0",
+              "market_cap_24h": "0",
+              "call_out_multiple": "0"
+            },
+            {
+              "chain": "",
+              "address": "",
+              "symbol": "",
+              "name": "Fatecoin",
+              "logo": "",
+              "market_cap": "0",
+              "market_cap_24h": "0",
+              "call_out_multiple": "0"
+            }
+          ],
+          "source": [
+            {
+              "username": "MemememHen",
+              "name": "haru (punch/acc)",
+              "icon": "https://gmgn.ai/defi/images/twitter/86b5efd6186862f4552264312f39eb1b.jpg"
+            },
+            {
+              "username": "gazegnx",
+              "name": "Gaze",
+              "icon": "https://gmgn.ai/defi/images/twitter/35b1a3218f6988dcd8efd56cb435a5c8.jpg"
+            },
+            {
+              "username": "whalewatchalert",
+              "name": "Whale Watch by Moby",
+              "icon": "https://gmgn.ai/defi/images/twitter/f9e39815ecf2e45f24d5457d3db1b6c7.jpg"
+            },
+            {
+              "username": "Chain_AlphaX",
+              "name": "Chain Alpha",
+              "icon": "https://gmgn.ai/defi/images/twitter/3d7189b048b6d6f731c50c9d2343880c.jpg"
+            },
+            {
+              "username": "kkashi_yt",
+              "name": "Kakashi",
+              "icon": "https://gmgn.ai/defi/images/twitter/689df7136e172c94a7338574adc30cf6.jpg"
+            },
+            {
+              "username": "minwage777",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "0xrhoddy",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Cryptodiane",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "kazuyam3k",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "realTrenchCap",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "saracrypto_eth",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "daumenxyz",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "mobyagent",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Brian_Degens",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "wei_crypto8888",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "arangotrades",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "deceasedcold_",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "cryptofrags",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "SolLunix",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Crypt0_Andrew",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MoonDexo",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "SeiBull",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "golocojp",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "AlphaWhalesX",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "itspyrored",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Senshi7777777",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "natathedancer_",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Kr1yo1",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "adeadmarket",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "tikopumps",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "AshxMeta",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "BravemanToken",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MintDetector1",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "SOLxmilli",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "CheesyBun0211",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "0xBiZzy",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "maduza",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "SolChainDogg",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "rutradebtc",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Jakegallen",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "shrebobo",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "rise_crypt",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "OptimusVibee",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "markeology",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MadeshiaPramod",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "4050Q",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "VirusSendski",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "ilove_suii",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "bundledbyhaan",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "The__Solstice",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "ofasya_",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "furan86999",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "xunle111",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "cookindotfunbot",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MontyAlerts",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Luck_MrWei",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "HubertFlips",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "tige_seal",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Clifford587617",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "MichaelPudner1",
+              "name": "",
+              "icon": ""
+            }
+          ],
+          "vote_type": 0
+        },
+        {
+          "id": "a#163#5",
+          "order_number": 5,
+          "title": "Lobster Claw BSC Conquest",
+          "title_lang": {
+            "en": "Lobster Claw BSC Conquest",
+            "zh_hans": "\u9f99\u867e\u722a\u9738BSC",
+            "zh_hant": "\u9f8d\u8766\u722a\u9738BSC"
+          },
+          "reason": "Chinese community Openclaw Lobster image goes viral, \u5c0f\u9f99\u867e\ud83e\udd9e and others dominate BSC charts, players frenzy buy-in sparking claw animal frenzy.",
+          "reason_lang": {
+            "en": "Chinese community Openclaw Lobster image goes viral, \u5c0f\u9f99\u867e\ud83e\udd9e and others dominate BSC charts, players frenzy buy-in sparking claw animal frenzy.",
+            "zh_hans": "\u4e2d\u6587\u793e\u533a Openclaw \u5c0f\u9f99\u867e\ud83e\udd9e \u56fe\u7247\u75c5\u6bd2\u5f0f\u6d41\u4f20\uff0c$\u5c0f\u9f99\u867e\ud83e\udd9e \u7b49\u4ee3\u5e01 BSC \u699c\u9996\u9738\u699c\uff0c\u73a9\u5bb6\u72c2\u70ed\u8ddf\u6295\u6380\u8d77\u722a\u5b50\u52a8\u7269\u70ed\u6f6e\u3002",
+            "zh_hant": "\u4e2d\u6587\u793e\u7fa4 Openclaw \u5c0f\u9f8d\u8766\ud83e\udd9e \u5716\u7247\u75c5\u6bd2\u5f0f\u6d41\u50b3\uff0c$\u5c0f\u9f8d\u8766\ud83e\udd9e \u7b49\u4ee3\u5e63 BSC \u699c\u9996\u9738\u699c\uff0c\u73a9\u5bb6\u72c2\u71b1\u8ddf\u6295\u6380\u8d77\u722a\u5b50\u52d5\u7269\u71b1\u6f6e\u3002"
+          },
+          "hot_tokens": [
+            {
+              "chain": "",
+              "address": "",
+              "symbol": "",
+              "name": "\u5c0f\u9f99\u867e\ud83e\udd9e",
+              "logo": "",
+              "market_cap": "0",
+              "market_cap_24h": "0",
+              "call_out_multiple": "0"
+            },
+            {
+              "chain": "",
+              "address": "",
+              "symbol": "",
+              "name": "TagClaw",
+              "logo": "",
+              "market_cap": "0",
+              "market_cap_24h": "0",
+              "call_out_multiple": "0"
+            }
+          ],
+          "source": [
+            {
+              "username": "gxqcheng199097",
+              "name": "\u6eda\u96ea\u7403",
+              "icon": "https://gmgn.ai/defi/images/twitter/438f45fcdc523ad5e6dcf0284955e07a.jpg"
+            },
+            {
+              "username": "0xNought",
+              "name": "0xNought\uff08\u74dc\u5b50\uff09",
+              "icon": "https://gmgn.ai/defi/images/twitter/df446329e45ae979662d9f2ab6ee6e32.jpg"
+            },
+            {
+              "username": "TagClaw",
+              "name": "TagClaw",
+              "icon": "https://gmgn.ai/defi/images/twitter/89076ccadd4eb90f2b6bedfd8b8b2236.jpg"
+            },
+            {
+              "username": "TagAIDAO",
+              "name": "TagAI",
+              "icon": "https://gmgn.ai/defi/images/twitter/3acce97a5bcd3952daf52a91e60c9318.jpg"
+            },
+            {
+              "username": "R2zUjipvim21450",
+              "name": "0x\u65f6\u5149",
+              "icon": "https://gmgn.ai/defi/images/twitter/3fe7d8dbbc86973db9eea5428e215497.jpg"
+            },
+            {
+              "username": "xeogy92298766",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "sinner2118",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "GemFactory24",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "CyptoVVV",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "A8Yomi",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Super_Guyue",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "JMania402",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Lssm888",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Red_pandamen",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "jumpbot_launch",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "ChenCanfeng199",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "shenshou888",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "msq22ka",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "TagClaw_CTO",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Web3Pig",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "Jason_YF8888",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "yaolan886",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "cryptoht88",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "paopaoc95718151",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "BscPulseTrend",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "XinTuWeb3",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "dimqtdl",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "bankrbot",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "clanker_world",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "xiaoyaBtc",
+              "name": "",
+              "icon": ""
+            },
+            {
+              "username": "BuildTuna",
+              "name": "",
+              "icon": ""
+            }
+          ],
+          "vote_type": 0
+        }
+      ],
+      "my_performance": {
+        "unrealized_pnl": "0",
+        "tokens": null,
+        "token_count": 0
+      },
+      "daily_alpha_tip": {
+        "id": "t#163#63",
+        "order_number": 63,
+        "category": "Smart Money",
+        "core_functional_point": "Wallet Group Sort",
+        "daily_tips": "Prioritize. Custom sort wallet groups to put the highest win-rate group at the top for easy copying."
+      },
+      "call_out_info": {
+        "top_tokens": [
+          {
+            "chain": "sol",
+            "address": "EXHJjQ5R7cfv9pZ65SDxtUXobK88NEDY9XBFBdqBZRnQ",
+            "symbol": "MM",
+            "name": "MEMES MANAGEMENT",
+            "logo": "https://gmgn.ai/external-res/2c560e2306084ef26f083601bff8ed83.gif",
+            "market_cap": "2623.7474623157864",
+            "market_cap_24h": "2623.7474623157864",
+            "call_out_multiple": "1"
+          },
+          {
+            "chain": "sol",
+            "address": "AukyjhMSmN5VEGjQ9npeu6Eu9X21feL1qCbZSPeJpump",
+            "symbol": "Doom",
+            "name": "Doom Neuron",
+            "logo": "https://gmgn.ai/external-res/29f408e51044d92e56eb107902b2e6a9_v2.webp",
+            "market_cap": "128074.20374134216",
+            "market_cap_24h": "217811.03911832112",
+            "call_out_multiple": "25.0522270595152388"
+          },
+          {
+            "chain": "sol",
+            "address": "9CW8ChxfpakqEi6KMb3vRVjamZtbdVnfp9xB1sQhaCWv",
+            "symbol": "twttr",
+            "name": "@jack",
+            "logo": "https://gmgn.ai/external-res/2c419afd95d93d6da1c544c91d480f39.webp",
+            "market_cap": "7012.7151776770308",
+            "market_cap_24h": "7012.7151776770308",
+            "call_out_multiple": "1"
+          }
+        ]
+      }
+    }
+  },
+  "captured_at": "2026-03-13T12:42:48.591158"
+}

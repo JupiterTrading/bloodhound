@@ -31,12 +31,6 @@ class Settings(BaseSettings):
     helius_webhook_secret: str = ""
     helius_webhook_id: str = ""
 
-    # ClickHouse
-    clickhouse_host: str = ""
-    clickhouse_user: str = "default"
-    clickhouse_password: str = ""
-    clickhouse_db: str = "bloodhound"
-
     # Anthropic
     anthropic_api_key: str = ""
 

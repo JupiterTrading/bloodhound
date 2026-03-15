@@ -41,7 +41,7 @@ async def _connect_and_listen() -> None:
         print("[pumpfun] websockets package not installed — skipping monitor")
         return
 
-    from app.services import clickhouse
+    from app.services import analytics
     from app.services.supabase import get_known_wallet
 
     async with websockets.connect(PUMPFUN_WS_URL, ping_interval=20, ping_timeout=30) as ws:
@@ -122,11 +122,11 @@ async def _connect_and_listen() -> None:
                 except Exception as e:
                     print(f"[pumpfun] redis store error: {e}")
                 
-                # Also try ClickHouse
+                # Also store in Supabase
                 try:
-                    await clickhouse.insert_signals([signal])
+                    await analytics.insert_signals([signal])
                 except Exception as e:
-                    print(f"[pumpfun] clickhouse insert error: {e}")
+                    print(f"[pumpfun] signal insert error: {e}")
 
                 # Subscribe to trade stream for this token to capture early buyers
                 await ws.send(json.dumps({"method": "subscribeTokenTrade", "keys": [mint]}))
@@ -188,7 +188,7 @@ async def _connect_and_listen() -> None:
                             }),
                         }
                         try:
-                            await clickhouse.insert_signals([insider_signal])
+                            await analytics.insert_signals([insider_signal])
                         except Exception as e:
                             print(f"[pumpfun] insider signal insert error: {e}")
 

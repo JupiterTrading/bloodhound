@@ -1,0 +1,80 @@
+{
+  "endpoint": "GET /manifest.json",
+  "url": "https://axiom.trade/manifest.json",
+  "request_headers": {
+    "sec-fetch-dest": "manifest",
+    "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.2 Mobile/15E148 Safari/604.1",
+    "accept": "*/*",
+    "referer": "https://axiom.trade/",
+    "sec-fetch-site": "same-origin",
+    "sec-fetch-mode": "cors",
+    "accept-language": "en-US,en;q=0.9",
+    "priority": "u=5, i",
+    "accept-encoding": "gzip, deflate, br",
+    "cookie": "__cf_bm=syIXEGClUTXhROQd136cjpFsYGCxYFYV6bsKZJLIlxw-1773424355-1.0.1.1-06nuKU_SdLenqU37aQ6vYhvCJgsi.jh85YxX0LLlVLQza9tBUrfzhjwgAKAicDQ2CFpOKEOTh9xSx8xJOjtKsFF4GfvUq2Dx5xCcfLK4j94"
+  },
+  "request_body": null,
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:52:35 GMT",
+    "content-type": "application/manifest+json; charset=utf-8",
+    "content-encoding": "gzip",
+    "access-control-allow-origin": "*",
+    "age": "48672",
+    "cache-control": "public, max-age=86400",
+    "content-disposition": "inline; filename=\"manifest.json\"",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'self'; script-src 'nonce-YTIwMDQyOGQtNzRiMC00MzhhLTliZjUtMTUzYzA2ODYzOWI1' 'sha256-Imv8rgvxn2GP4QJH/s+T5I8tEtsRwclyX3+LH36ke+U=' 'sha256-pVP3wiRK6EgotPvbJ2R65xpjHaVawiUq7xpvmES7HRA=' 'sha256-ArebEu1OuKzyogDfGdnHoTlXs2FtG4UFApOVtwQcY0Y=' 'strict-dynamic' 'unsafe-eval'; script-src-elem self         https://translate.axiom.trade https://axiom.trade https://*.axiom.trade wss://*.axiom.trade    http://localhost:3000 https://*.0slot.trade https://*.blocksprint.io https://*.temporal.xyz https://quicksol.merkle.io https://*.astralane.io https://*.arbitrum.io/rpc https://*.arbitrum.io https://hardworking-magical-replica.arbitrum-mainnet.quiknode.pro https://*.hyperliquid.xyz wss://*.hyperliquid.xyz https://*.jito.wtf https://solanadefiprice.com wss://solanadefiprice.com https://bsc-dataseed.bnbchain.org https://empty-boldest-putty.bsc.quiknode.pro https://*.helius-rpc.com wss://*.helius-rpc.com https://*.turnkey.com https://*.relay.link https://*.google.com https://www.tiktok.com https://*.truthsocial.com https://*.googleapis.com https://accounts.google.com http://*.google-analytics.com https://*.instagram.com https://*.twitch.tv https://*.tiktokcdn-us.com https://*.torque.so https://*.axiomext.net https://friends.axiom.trade https://telegram.org/js/telegram-widget.js https://oauth.telegram.org/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://bsc-dataseed.binance.org https://axiom.rpc.48.club https://bsc.blockrazor.xyz https://mempool.merkle.io https://tokyo.builder.blockrazor.io https://axiom-private.48.club https://*.quiknode.pro https://axiom-bnb.rpc.blxrbdn.com https://*.taxbit.com https://*.digitaloceanspaces.com https://s3.us-east-1.amazonaws.com https://*.githubusercontent.com https://*.phantom.app https://challenges.cloudflare.com https://api.moixa.trade 'nonce-YTIwMDQyOGQtNzRiMC00MzhhLTliZjUtMTUzYzA2ODYzOWI1' 'sha256-Imv8rgvxn2GP4QJH/s+T5I8tEtsRwclyX3+LH36ke+U=' 'sha256-pVP3wiRK6EgotPvbJ2R65xpjHaVawiUq7xpvmES7HRA=' 'sha256-ArebEu1OuKzyogDfGdnHoTlXs2FtG4UFApOVtwQcY0Y='; worker-src 'self' blob:; style-src 'self' self         https://translate.axiom.trade https://axiom.trade https://*.axiom.trade wss://*.axiom.trade    http://localhost:3000 https://*.0slot.trade https://*.blocksprint.io https://*.temporal.xyz https://quicksol.merkle.io https://*.astralane.io https://*.arbitrum.io/rpc https://*.arbitrum.io https://hardworking-magical-replica.arbitrum-mainnet.quiknode.pro https://*.hyperliquid.xyz wss://*.hyperliquid.xyz https://*.jito.wtf https://solanadefiprice.com wss://solanadefiprice.com https://bsc-dataseed.bnbchain.org https://empty-boldest-putty.bsc.quiknode.pro https://*.helius-rpc.com wss://*.helius-rpc.com https://*.turnkey.com https://*.relay.link https://*.google.com https://www.tiktok.com https://*.truthsocial.com https://*.googleapis.com https://accounts.google.com http://*.google-analytics.com https://*.instagram.com https://*.twitch.tv https://*.tiktokcdn-us.com https://*.torque.so https://*.axiomext.net https://friends.axiom.trade https://telegram.org/js/telegram-widget.js https://oauth.telegram.org/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://bsc-dataseed.binance.org https://axiom.rpc.48.club https://bsc.blockrazor.xyz https://mempool.merkle.io https://tokyo.builder.blockrazor.io https://axiom-private.48.club https://*.quiknode.pro https://axiom-bnb.rpc.blxrbdn.com https://*.taxbit.com https://*.digitaloceanspaces.com https://s3.us-east-1.amazonaws.com https://*.githubusercontent.com https://*.phantom.app https://challenges.cloudflare.com https://api.moixa.trade 'unsafe-inline'; style-src-elem 'self' self         https://translate.axiom.trade https://axiom.trade https://*.axiom.trade wss://*.axiom.trade    http://localhost:3000 https://*.0slot.trade https://*.blocksprint.io https://*.temporal.xyz https://quicksol.merkle.io https://*.astralane.io https://*.arbitrum.io/rpc https://*.arbitrum.io https://hardworking-magical-replica.arbitrum-mainnet.quiknode.pro https://*.hyperliquid.xyz wss://*.hyperliquid.xyz https://*.jito.wtf https://solanadefiprice.com wss://solanadefiprice.com https://bsc-dataseed.bnbchain.org https://empty-boldest-putty.bsc.quiknode.pro https://*.helius-rpc.com wss://*.helius-rpc.com https://*.turnkey.com https://*.relay.link https://*.google.com https://www.tiktok.com https://*.truthsocial.com https://*.googleapis.com https://accounts.google.com http://*.google-analytics.com https://*.instagram.com https://*.twitch.tv https://*.tiktokcdn-us.com https://*.torque.so https://*.axiomext.net https://friends.axiom.trade https://telegram.org/js/telegram-widget.js https://oauth.telegram.org/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://bsc-dataseed.binance.org https://axiom.rpc.48.club https://bsc.blockrazor.xyz https://mempool.merkle.io https://tokyo.builder.blockrazor.io https://axiom-private.48.club https://*.quiknode.pro https://axiom-bnb.rpc.blxrbdn.com https://*.taxbit.com https://*.digitaloceanspaces.com https://s3.us-east-1.amazonaws.com https://*.githubusercontent.com https://*.phantom.app https://challenges.cloudflare.com https://api.moixa.trade 'unsafe-inline'; img-src self         https://translate.axiom.trade https://axiom.trade https://*.axiom.trade wss://*.axiom.trade    http://localhost:3000 https://*.0slot.trade https://*.blocksprint.io https://*.temporal.xyz https://quicksol.merkle.io https://*.astralane.io https://*.arbitrum.io/rpc https://*.arbitrum.io https://hardworking-magical-replica.arbitrum-mainnet.quiknode.pro https://*.hyperliquid.xyz wss://*.hyperliquid.xyz https://*.jito.wtf https://solanadefiprice.com wss://solanadefiprice.com https://bsc-dataseed.bnbchain.org https://empty-boldest-putty.bsc.quiknode.pro https://*.helius-rpc.com wss://*.helius-rpc.com https://*.turnkey.com https://*.relay.link https://*.google.com https://www.tiktok.com https://*.truthsocial.com https://*.googleapis.com https://accounts.google.com http://*.google-analytics.com https://*.instagram.com https://*.twitch.tv https://*.tiktokcdn-us.com https://*.torque.so https://*.axiomext.net https://friends.axiom.trade https://telegram.org/js/telegram-widget.js https://oauth.telegram.org/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://bsc-dataseed.binance.org https://axiom.rpc.48.club https://bsc.blockrazor.xyz https://mempool.merkle.io https://tokyo.builder.blockrazor.io https://axiom-private.48.club https://*.quiknode.pro https://axiom-bnb.rpc.blxrbdn.com https://*.taxbit.com https://*.digitaloceanspaces.com https://s3.us-east-1.amazonaws.com https://*.githubusercontent.com https://*.phantom.app https://challenges.cloudflare.com https://api.moixa.trade https://*.digitaloceanspaces.com https://pbs.twimg.com https://abs.twimg.com https://twproxy.twproxy.workers.dev https://proxy1axiom.world https://ipfs.io https://*.amazonaws.com https://cdn.jsdelivr.net https://cf-ipfs.com https://thumbnails.pump.fun https://clips.pump.fun https://cdnjs.cloudflare.com/ajax/libs/twemoji https://media.launchonsoar.com https://*.wikimedia.org https://*.githubusercontent.com https://*.coingecko.com https://*.github.io https://*.optimism.io https://*.geckoterminal.com https://*.kolscan.io https://*.tronscan.org https://*.defined.fi https://*.coinmarketcap.com https://t.me/ https://*.telesco.pe https://kick.com data: blob:; font-src self         https://translate.axiom.trade https://axiom.trade https://*.axiom.trade wss://*.axiom.trade    http://localhost:3000 https://*.0slot.trade https://*.blocksprint.io https://*.temporal.xyz https://quicksol.merkle.io https://*.astralane.io https://*.arbitrum.io/rpc https://*.arbitrum.io https://hardworking-magical-replica.arbitrum-mainnet.quiknode.pro https://*.hyperliquid.xyz wss://*.hyperliquid.xyz https://*.jito.wtf https://solanadefiprice.com wss://solanadefiprice.com https://bsc-dataseed.bnbchain.org https://empty-boldest-putty.bsc.quiknode.pro https://*.helius-rpc.com wss://*.helius-rpc.com https://*.turnkey.com https://*.relay.link https://*.google.com https://www.tiktok.com https://*.truthsocial.com https://*.googleapis.com https://accounts.google.com http://*.google-analytics.com https://*.instagram.com https://*.twitch.tv https://*.tiktokcdn-us.com https://*.torque.so https://*.axiomext.net https://friends.axiom.trade https://telegram.org/js/telegram-widget.js https://oauth.telegram.org/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://bsc-dataseed.binance.org https://axiom.rpc.48.club https://bsc.blockrazor.xyz https://mempool.merkle.io https://tokyo.builder.blockrazor.io https://axiom-private.48.club https://*.quiknode.pro https://axiom-bnb.rpc.blxrbdn.com https://*.taxbit.com https://*.digitaloceanspaces.com https://s3.us-east-1.amazonaws.com https://*.githubusercontent.com https://*.phantom.app https://challenges.cloudflare.com https://api.moixa.trade data: https:; frame-src self         https://translate.axiom.trade https://axiom.trade https://*.axiom.trade wss://*.axiom.trade    http://localhost:3000 https://*.0slot.trade https://*.blocksprint.io https://*.temporal.xyz https://quicksol.merkle.io https://*.astralane.io https://*.arbitrum.io/rpc https://*.arbitrum.io https://hardworking-magical-replica.arbitrum-mainnet.quiknode.pro https://*.hyperliquid.xyz wss://*.hyperliquid.xyz https://*.jito.wtf https://solanadefiprice.com wss://solanadefiprice.com https://bsc-dataseed.bnbchain.org https://empty-boldest-putty.bsc.quiknode.pro https://*.helius-rpc.com wss://*.helius-rpc.com https://*.turnkey.com https://*.relay.link https://*.google.com https://www.tiktok.com https://*.truthsocial.com https://*.googleapis.com https://accounts.google.com http://*.google-analytics.com https://*.instagram.com https://*.twitch.tv https://*.tiktokcdn-us.com https://*.torque.so https://*.axiomext.net https://friends.axiom.trade https://telegram.org/js/telegram-widget.js https://oauth.telegram.org/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://bsc-dataseed.binance.org https://axiom.rpc.48.club https://bsc.blockrazor.xyz https://mempool.merkle.io https://tokyo.builder.blockrazor.io https://axiom-private.48.club https://*.quiknode.pro https://axiom-bnb.rpc.blxrbdn.com https://*.taxbit.com https://*.digitaloceanspaces.com https://s3.us-east-1.amazonaws.com https://*.githubusercontent.com https://*.phantom.app https://challenges.cloudflare.com https://api.moixa.trade https://*.cabalspy.xyz:* https://*.bubblemaps.io https://faster100x.com https://*.insightx.network https://*.youtube.com/ https://*.truthsocial.com https://truthsocial.com https://*.pinterest.com https://*.instagram.com https://instagram.com https://zauthx402.com blob:; media-src 'self' https: blob: data:; object-src 'none'; form-action 'self'; base-uri 'self'; manifest-src 'self'; connect-src self https://translate.axiom.trade https://axiom.trade https://*.axiom.trade wss://*.axiom.trade http://localhost:3000 https://*.0slot.trade https://*.blocksprint.io https://*.temporal.xyz https://quicksol.merkle.io https://*.astralane.io https://*.arbitrum.io/rpc https://*.arbitrum.io https://hardworking-magical-replica.arbitrum-mainnet.quiknode.pro https://*.hyperliquid.xyz wss://*.hyperliquid.xyz https://*.jito.wtf https://solanadefiprice.com wss://solanadefiprice.com https://bsc-dataseed.bnbchain.org https://empty-boldest-putty.bsc.quiknode.pro https://*.helius-rpc.com wss://*.helius-rpc.com https://*.turnkey.com https://*.relay.link https://*.google.com https://www.tiktok.com https://*.truthsocial.com https://*.googleapis.com https://accounts.google.com http://*.google-analytics.com https://*.instagram.com https://*.twitch.tv https://*.tiktokcdn-us.com https://*.torque.so https://*.axiomext.net https://friends.axiom.trade https://telegram.org/js/telegram-widget.js https://oauth.telegram.org/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://bsc-dataseed.binance.org https://axiom.rpc.48.club https://bsc.blockrazor.xyz https://mempool.merkle.io https://tokyo.builder.blockrazor.io https://axiom-private.48.club https://*.quiknode.pro https://axiom-bnb.rpc.blxrbdn.com https://*.taxbit.com https://*.digitaloceanspaces.com https://s3.us-east-1.amazonaws.com https://*.githubusercontent.com https://*.phantom.app https://challenges.cloudflare.com https://api.moixa.trade data:",
+    "etag": "W/\"eed5ac7156ec68853c41639c98d060ff\"",
+    "last-modified": "Fri, 13 Mar 2026 04:01:39 GMT",
+    "strict-transport-security": "max-age=63072000",
+    "x-frame-options": "SAMEORIGIN",
+    "x-matched-path": "/manifest.json",
+    "x-nonce": "YTIwMDQyOGQtNzRiMC00MzhhLTliZjUtMTUzYzA2ODYzOWI1",
+    "x-vercel-cache": "HIT",
+    "x-vercel-id": "iad1::5f49v-1773424355683-0891c763563b",
+    "cf-cache-status": "DYNAMIC",
+    "speculation-rules": "\"/cdn-cgi/speculation\"",
+    "server": "cloudflare",
+    "cf-ray": "9dbce4aed94efb27-BNA"
+  },
+  "response_body": {
+    "name": "Axiom",
+    "short_name": "Axiom",
+    "description": "The Gateway to DeFi",
+    "theme_color": "#090909",
+    "background_color": "#090909",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+      {
+        "src": "https://axiom-assets.sfo3.cdn.digitaloceanspaces.com/images/app-icons/192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "https://axiom-assets.sfo3.cdn.digitaloceanspaces.com/images/app-icons/512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "https://axiom-assets.sfo3.cdn.digitaloceanspaces.com/images/app-icons/ios.png",
+        "sizes": "180x180",
+        "type": "image/png"
+      },
+      {
+        "src": "/axiom.svg",
+        "sizes": "any",
+        "type": "image/svg+xml"
+      },
+      {
+        "src": "/favicon.ico",
+        "sizes": "48x48",
+        "type": "image/x-icon"
+      }
+    ]
+  },
+  "captured_at": "2026-03-13T12:52:35.757305"
+}

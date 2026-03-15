@@ -1,5 +1,5 @@
 """
-Data services — Birdeye replaced with free APIs.
+Data services — free API integrations.
 
 Sources:
   Jupiter Price API   (free, no key)  — token prices, batch pricing
@@ -7,7 +7,6 @@ Sources:
   RugCheck            (free, no key)  — token security / rug risk
   GeckoTerminal       (free, no key)  — trending pools, gainers / losers
   Helius DAS          (free tier)     — wallet token accounts, token holders
-  ClickHouse          (self-hosted)   — top traders from ingested data
 """
 
 import asyncio

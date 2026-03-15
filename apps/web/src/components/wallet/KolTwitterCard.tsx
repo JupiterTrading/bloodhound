@@ -42,46 +42,25 @@ export function KolTwitterCard({ address }: Props) {
   const tw = data.twitter as TwitterProfile;
 
   return (
-    <div
-      style={{
-        background: "var(--bg-surface)",
-        border: "1px solid var(--border)",
-        borderRadius: "8px",
-        padding: "16px",
-      }}
-    >
+    <div className="card p-4">
       {/* Profile header */}
-      <div style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "12px" }}>
+      <div className="flex items-start gap-2.5 mb-3">
         <ProfileImage url={tw.profile_image_url} name={tw.name} />
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-            <span
-              style={{
-                fontSize: "13px",
-                fontWeight: 600,
-                color: "var(--text-primary)",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-            >
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-1.5">
+            <span className="text-[13px] font-semibold text-[var(--text-primary)] whitespace-nowrap overflow-hidden text-ellipsis">
               {tw.name}
             </span>
             <a
               href={`https://x.com/${tw.handle}`}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                fontSize: "11px",
-                color: "var(--text-muted)",
-                textDecoration: "none",
-                flexShrink: 0,
-              }}
+              className="text-[11px] text-[var(--text-muted)] no-underline shrink-0 hover:text-[var(--text-secondary)]"
             >
               𝕏 @{tw.handle}
             </a>
           </div>
-          <div style={{ display: "flex", gap: "12px", marginTop: "4px" }}>
+          <div className="flex gap-3 mt-1">
             <Metric label="Followers" value={formatCount(tw.followers)} />
             <Metric label="Tweets" value={formatCount(tw.tweet_count)} />
           </div>
@@ -90,18 +69,7 @@ export function KolTwitterCard({ address }: Props) {
 
       {/* Bio */}
       {tw.bio && (
-        <p
-          style={{
-            fontSize: "12px",
-            color: "var(--text-secondary)",
-            lineHeight: 1.5,
-            marginBottom: "12px",
-            display: "-webkit-box",
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
-          }}
-        >
+        <p className="text-[12px] text-[var(--text-secondary)] leading-relaxed mb-3 line-clamp-2">
           {tw.bio}
         </p>
       )}
@@ -109,18 +77,10 @@ export function KolTwitterCard({ address }: Props) {
       {/* Recent tweets */}
       {tw.recent_tweets.length > 0 && (
         <div>
-          <div
-            style={{
-              fontSize: "10px",
-              color: "var(--text-muted)",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              marginBottom: "8px",
-            }}
-          >
+          <div className="text-[10px] text-[var(--text-muted)] tracking-wide uppercase mb-2">
             Recent Posts
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          <div className="flex flex-col gap-2">
             {tw.recent_tweets.slice(0, 3).map((tweet) => (
               <TweetRow key={tweet.tweet_id} tweet={tweet} />
             ))}
@@ -139,7 +99,7 @@ function ProfileImage({ url, name }: { url: string; name: string }) {
         alt={name}
         width={36}
         height={36}
-        style={{ borderRadius: "50%", flexShrink: 0, objectFit: "cover" }}
+        className="rounded-full shrink-0 object-cover"
         onError={(e) => {
           (e.currentTarget as HTMLImageElement).style.display = "none";
         }}
@@ -147,21 +107,7 @@ function ProfileImage({ url, name }: { url: string; name: string }) {
     );
   }
   return (
-    <div
-      style={{
-        width: 36,
-        height: 36,
-        borderRadius: "50%",
-        background: "var(--border)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontSize: "14px",
-        fontWeight: 600,
-        color: "var(--text-muted)",
-        flexShrink: 0,
-      }}
-    >
+    <div className="w-9 h-9 rounded-full bg-[var(--border)] flex items-center justify-center text-[14px] font-semibold text-[var(--text-muted)] shrink-0">
       {name?.[0]?.toUpperCase() ?? "?"}
     </div>
   );
@@ -170,8 +116,8 @@ function ProfileImage({ url, name }: { url: string; name: string }) {
 function Metric({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <span style={{ fontSize: "12px", fontWeight: 600, color: "var(--text-primary)" }}>{value}</span>
-      <span style={{ fontSize: "11px", color: "var(--text-muted)", marginLeft: "3px" }}>{label}</span>
+      <span className="text-[12px] font-semibold text-[var(--text-primary)]">{value}</span>
+      <span className="text-[11px] text-[var(--text-muted)] ml-1">{label}</span>
     </div>
   );
 }
@@ -182,43 +128,22 @@ function TweetRow({ tweet }: { tweet: Tweet }) {
       href={tweet.url}
       target="_blank"
       rel="noopener noreferrer"
-      style={{
-        display: "block",
-        padding: "8px 10px",
-        background: "var(--bg-elevated)",
-        borderRadius: "6px",
-        textDecoration: "none",
-        border: "1px solid transparent",
-        transition: "border-color 0.1s",
-      }}
-      onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)")}
-      onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.borderColor = "transparent")}
+      className="block p-2 px-2.5 bg-[var(--bg-elevated)] rounded-md no-underline border border-transparent hover:border-[var(--border)] transition-colors"
     >
-      <p
-        style={{
-          fontSize: "12px",
-          color: "var(--text-secondary)",
-          lineHeight: 1.45,
-          marginBottom: "5px",
-          display: "-webkit-box",
-          WebkitLineClamp: 2,
-          WebkitBoxOrient: "vertical",
-          overflow: "hidden",
-        }}
-      >
+      <p className="text-[12px] text-[var(--text-secondary)] leading-snug mb-1 line-clamp-2">
         {tweet.text}
       </p>
-      <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-        <span style={{ fontSize: "10px", color: "var(--text-muted)" }}>
+      <div className="flex gap-2.5 items-center">
+        <span className="text-[10px] text-[var(--text-muted)]">
           {formatRelative(tweet.created_at)}
         </span>
         {tweet.likes > 0 && (
-          <span style={{ fontSize: "10px", color: "var(--text-muted)" }}>
+          <span className="text-[10px] text-[var(--text-muted)]">
             ♥ {formatCount(tweet.likes)}
           </span>
         )}
         {tweet.retweets > 0 && (
-          <span style={{ fontSize: "10px", color: "var(--text-muted)" }}>
+          <span className="text-[10px] text-[var(--text-muted)]">
             ↺ {formatCount(tweet.retweets)}
           </span>
         )}

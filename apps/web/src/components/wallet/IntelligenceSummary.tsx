@@ -20,32 +20,9 @@ export function IntelligenceSummary({ address }: Props) {
   });
 
   return (
-    <section
-      style={{
-        background: "var(--bg-surface)",
-        border: "1px solid var(--border)",
-        borderRadius: "8px",
-        padding: "20px",
-        marginBottom: "16px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          marginBottom: "12px",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "11px",
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "var(--text-muted)",
-          }}
-        >
+    <section className="card p-5 mb-4">
+      <div className="flex items-center justify-between mb-3">
+        <h2 className="text-[11px] font-semibold tracking-wide uppercase text-[var(--text-muted)]">
           Intelligence Summary
         </h2>
         {data && (
@@ -54,7 +31,7 @@ export function IntelligenceSummary({ address }: Props) {
       </div>
 
       {isLoading ? (
-        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+        <div className="flex flex-col gap-2">
           <Skeleton height={14} width="95%" />
           <Skeleton height={14} width="80%" />
           <Skeleton height={14} width="88%" />
@@ -66,7 +43,7 @@ export function IntelligenceSummary({ address }: Props) {
           onToggle={() => setExpanded((v) => !v)}
         />
       ) : (
-        <p style={{ fontSize: "13px", color: "var(--text-muted)", fontStyle: "italic" }}>
+        <p className="text-[13px] text-[var(--text-muted)] italic">
           No intelligence data available for this wallet.
         </p>
       )}
@@ -90,30 +67,13 @@ function SummaryContent({
 
   return (
     <div>
-      <p
-        style={{
-          fontSize: "13px",
-          lineHeight: 1.65,
-          color: "var(--text-primary)",
-          margin: 0,
-          whiteSpace: "pre-wrap",
-        }}
-      >
+      <p className="text-[13px] leading-relaxed text-[var(--text-primary)] whitespace-pre-wrap">
         {visible.join("\n")}
       </p>
       {shouldTruncate && (
         <button
           onClick={onToggle}
-          style={{
-            marginTop: "8px",
-            background: "none",
-            border: "none",
-            color: "var(--accent)",
-            fontSize: "12px",
-            cursor: "pointer",
-            padding: 0,
-            fontFamily: "inherit",
-          }}
+          className="mt-2 bg-transparent border-none text-[var(--accent)] text-[12px] cursor-pointer p-0 hover:underline"
         >
           {expanded ? "Show less" : "Show more"}
         </button>

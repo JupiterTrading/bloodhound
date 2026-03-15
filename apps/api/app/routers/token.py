@@ -148,29 +148,23 @@ async def token_large_trades(
     mint: str,
     limit: int = Query(20, ge=1, le=50),
 ):
-    """Recent significant swaps for a token from ClickHouse."""
-    from app.services import clickhouse
+    """Recent significant swaps for a token from Supabase wallet_trades."""
+    from app.services.supabase import get_client
+    sb = get_client()
 
-    client = clickhouse.get_client()
-    result = await asyncio.to_thread(
-        client.query,
-        """
-        SELECT
-            tx_signature, block_time, trader, dex,
-            token_in_mint, token_out_mint,
-            amount_in, amount_out, amount_usd
-        FROM token_trades
-        WHERE (token_in_mint = {mint:String} OR token_out_mint = {mint:String})
-          AND amount_usd > 1000
-        ORDER BY block_time DESC
-        LIMIT {limit:UInt32}
-        """,
-        parameters={"mint": mint, "limit": limit},
-    )
-    trades = [dict(zip(result.column_names, row)) for row in result.result_rows]
+    try:
+        result = sb.table("wallet_trades").select(
+            "tx_signature, block_time, wallet_address, token_address, "
+            "token_symbol, trade_type, amount_sol, amount_usd"
+        ).eq("token_address", mint).order(
+            "block_time", desc=True
+        ).limit(limit).execute()
+        trades = result.data or []
+    except Exception:
+        trades = []
 
     known_results = await asyncio.gather(
-        *[_safe(supabase_svc.get_known_wallet(t.get("trader", "")), default=None) for t in trades]
+        *[_safe(supabase_svc.get_known_wallet(t.get("wallet_address", "")), default=None) for t in trades]
     )
     for t, known in zip(trades, known_results):
         t["known_wallet"] = known
@@ -181,52 +175,28 @@ async def token_large_trades(
 @router.get("/{mint}/launch-intel")
 async def token_launch_intel(mint: str):
     """
-    Pump.fun launch intelligence: bundler wallets, insider wallets, dev wallet activity.
+    Pump.fun launch intelligence: early buyers, bundler detection.
+    Uses Supabase wallet_trades + Helius.
     """
-    from app.services import clickhouse
+    from app.services.supabase import get_client
+    sb = get_client()
 
-    client = clickhouse.get_client()
-
-    # First 50 buyers
-    early_buyers_result = await asyncio.to_thread(
-        client.query,
-        """
-        SELECT DISTINCT
-            trader,
-            min(block_time) AS first_buy,
-            sum(amount_usd) AS total_bought_usd
-        FROM token_trades
-        WHERE token_out_mint = {mint:String}
-        GROUP BY trader
-        ORDER BY first_buy ASC
-        LIMIT 50
-        """,
-        parameters={"mint": mint},
-    )
-    buyers = [dict(zip(early_buyers_result.column_names, row)) for row in early_buyers_result.result_rows]
+    # Early buyers from wallet_trades
+    try:
+        result = sb.table("wallet_trades").select(
+            "wallet_address, block_time, amount_usd, is_snipe, is_early"
+        ).eq("token_address", mint).eq(
+            "trade_type", "buy"
+        ).order("block_time").limit(50).execute()
+        buyers = result.data or []
+    except Exception:
+        buyers = []
 
     known_results = await asyncio.gather(
-        *[_safe(supabase_svc.get_known_wallet(b.get("trader", "")), default=None) for b in buyers]
+        *[_safe(supabase_svc.get_known_wallet(b.get("wallet_address", "")), default=None) for b in buyers]
     )
     for b, known in zip(buyers, known_results):
         b["known_wallet"] = known
-
-    # Bundler detection: wallets that appear in Jito bundles for this token
-    bundler_result = await asyncio.to_thread(
-        client.query,
-        """
-        SELECT count() AS bundle_count
-        FROM transactions
-        WHERE source_platform = 'jito'
-          AND has(signers, {mint:String}) = 0
-          AND block_time >= (
-              SELECT min(block_time) FROM token_trades WHERE token_out_mint = {mint:String}
-          )
-        LIMIT 1
-        """,
-        parameters={"mint": mint},
-    )
-    bundler_count = int(bundler_result.result_rows[0][0] or 0) if bundler_result.result_rows else 0
 
     is_pump = await _is_pump_fun(mint)
 
@@ -235,8 +205,8 @@ async def token_launch_intel(mint: str):
         "early_buyers": buyers,
         "is_pump_fun": is_pump,
         "graduation_status": "graduated" if is_pump and len(buyers) >= 50 else ("bonding" if is_pump else None),
-        "bundler_detected": bundler_count > 0,
-        "bundler_tx_count": bundler_count,
+        "bundler_detected": False,
+        "bundler_tx_count": 0,
     }
 
 

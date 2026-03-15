@@ -27,29 +27,12 @@ export default function TokenPage({
   });
 
   return (
-    <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "32px 24px" }}>
-      {/* Token header */}
+    <div className="max-w-[1100px] mx-auto px-6 py-8">
       <TokenHeader mint={mint} summary={summary} dexInfo={dexInfo} isLoading={isLoading} />
-
-      {/* Stats grid */}
       <TokenStatsGrid summary={summary} isLoading={isLoading} />
-
-      {/* Price chart */}
       <PriceChart mint={mint} pairAddress={summary?.pair_address} />
-
-      {/* Smart money consensus */}
       <SmartMoneyPanel mint={mint} />
-
-      {/* Two columns: holders + top traders */}
-      <div
-        className="grid-responsive-2"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "20px",
-          marginTop: "24px",
-        }}
-      >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-6">
         <HoldersPanel mint={mint} />
         <TopTradersPanel mint={mint} />
       </div>
@@ -60,40 +43,14 @@ export default function TokenPage({
 // ── Price chart (GeckoTerminal embed) ────────────────────────────────────────
 
 function PriceChart({ mint, pairAddress }: { mint: string; pairAddress: string | null | undefined }) {
-  // GeckoTerminal uses the same pool address as DexScreener for Raydium/Orca/Meteora pools.
-  // Swap to DexScreener embed as fallback — it accepts the same pair address.
   const embedUrl = pairAddress
     ? `https://www.geckoterminal.com/solana/pools/${pairAddress}?embed=1&info=0&swaps=0`
     : null;
 
   return (
-    <div
-      style={{
-        background: "var(--bg-surface)",
-        border: "1px solid var(--border)",
-        borderRadius: "8px",
-        overflow: "hidden",
-        marginTop: "16px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "12px 16px",
-          borderBottom: "1px solid var(--border)",
-        }}
-      >
-        <span
-          style={{
-            fontSize: "11px",
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "var(--text-muted)",
-          }}
-        >
+    <div className="card overflow-hidden mt-4">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)]">
+        <span className="text-[11px] font-semibold tracking-wide uppercase text-[var(--text-muted)]">
           Price History
         </span>
         {pairAddress && (
@@ -101,52 +58,27 @@ function PriceChart({ mint, pairAddress }: { mint: string; pairAddress: string |
             href={`https://www.geckoterminal.com/solana/pools/${pairAddress}`}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              fontSize: "11px",
-              color: "var(--text-muted)",
-              textDecoration: "none",
-              transition: "color 80ms",
-            }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLAnchorElement).style.color = "var(--text-secondary)")
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLAnchorElement).style.color = "var(--text-muted)")
-            }
+            className="text-[11px] text-[var(--text-muted)] no-underline hover:text-[var(--text-secondary)] transition-colors"
           >
             GeckoTerminal ↗
           </a>
         )}
       </div>
 
-      <div style={{ height: "400px" }}>
+      <div className="h-[400px]">
         {embedUrl ? (
           <iframe
             src={embedUrl}
-            style={{
-              width: "100%",
-              height: "100%",
-              border: "none",
-              display: "block",
-            }}
+            className="w-full h-full border-none block"
             title="Price Chart"
             allow="clipboard-write"
           />
         ) : (
-          <div
-            style={{
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "8px",
-            }}
-          >
-            <span style={{ fontSize: "13px", color: "var(--text-muted)" }}>
+          <div className="h-full flex flex-col items-center justify-center gap-2">
+            <span className="text-[13px] text-[var(--text-muted)]">
               Chart not yet available
             </span>
-            <span style={{ fontSize: "11px", color: "var(--text-muted)" }}>
+            <span className="text-[11px] text-[var(--text-muted)]">
               Token may be too new or not yet listed on GeckoTerminal
             </span>
           </div>
@@ -170,59 +102,29 @@ function TokenHeader({
   isLoading: boolean;
 }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "16px",
-        marginBottom: "24px",
-      }}
-    >
+    <div className="flex items-center gap-4 mb-6">
       {/* Logo */}
       {isLoading ? (
-        <div
-          style={{
-            width: "44px",
-            height: "44px",
-            borderRadius: "50%",
-            background: "var(--bg-surface)",
-            border: "1px solid var(--border)",
-            flexShrink: 0,
-          }}
-        />
+        <div className="w-11 h-11 rounded-full bg-[var(--bg-surface)] border border-[var(--border)] shrink-0" />
       ) : summary?.logo_uri ? (
         <img
           src={summary.logo_uri}
           alt={summary.symbol ?? ""}
           width={44}
           height={44}
-          style={{ borderRadius: "50%", border: "1px solid var(--border)", flexShrink: 0 }}
+          className="rounded-full border border-[var(--border)] shrink-0"
           onError={(e) => {
             (e.currentTarget as HTMLImageElement).style.display = "none";
           }}
         />
       ) : (
-        <div
-          style={{
-            width: "44px",
-            height: "44px",
-            borderRadius: "50%",
-            background: "var(--bg-surface)",
-            border: "1px solid var(--border)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "18px",
-            color: "var(--text-muted)",
-            flexShrink: 0,
-          }}
-        >
+        <div className="w-11 h-11 rounded-full bg-[var(--bg-surface)] border border-[var(--border)] flex items-center justify-center text-lg text-[var(--text-muted)] shrink-0">
           ◈
         </div>
       )}
 
       {/* Name / symbol */}
-      <div style={{ flex: 1, minWidth: 0 }}>
+      <div className="flex-1 min-w-0">
         {isLoading ? (
           <>
             <Skeleton height={20} width={160} style={{ marginBottom: 6 }} />
@@ -230,72 +132,25 @@ function TokenHeader({
           </>
         ) : (
           <>
-            <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
-              <h1
-                style={{
-                  fontSize: "20px",
-                  fontWeight: 700,
-                  letterSpacing: "-0.02em",
-                  color: "var(--text-primary)",
-                }}
-              >
+            <div className="flex items-baseline gap-2 flex-wrap">
+              <h1 className="text-xl font-bold tracking-tight text-[var(--text-primary)]">
                 {summary?.name ?? "Unknown Token"}
               </h1>
               {summary?.symbol && (
-                <span
-                  style={{
-                    fontFamily: "JetBrains Mono, monospace",
-                    fontSize: "14px",
-                    color: "var(--text-muted)",
-                  }}
-                >
+                <span className="font-mono text-[14px] text-[var(--text-muted)]">
                   {summary.symbol}
                 </span>
               )}
               {summary?.is_pump_fun && (
-                <span
-                  style={{
-                    fontSize: "10px",
-                    fontWeight: 600,
-                    padding: "2px 7px",
-                    borderRadius: "3px",
-                    border: "1px solid var(--accent)",
-                    color: "var(--accent)",
-                    letterSpacing: "0.06em",
-                  }}
-                >
-                  PUMP.FUN
-                </span>
+                <span className="badge badge-accent">PUMP.FUN</span>
               )}
               {dexInfo?.dex_paid?.has_paid && (
-                <span
-                  style={{
-                    fontSize: "10px",
-                    fontWeight: 600,
-                    padding: "2px 7px",
-                    borderRadius: "3px",
-                    background: "#22c55e",
-                    color: "#000",
-                    letterSpacing: "0.06em",
-                  }}
-                  title="Token has paid for DexScreener Enhanced Info"
-                >
+                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-[#22c55e] text-black tracking-wide" title="Token has paid for DexScreener Enhanced Info">
                   DEX PAID
                 </span>
               )}
               {dexInfo?.boosts?.is_boosted && (
-                <span
-                  style={{
-                    fontSize: "10px",
-                    fontWeight: 600,
-                    padding: "2px 7px",
-                    borderRadius: "3px",
-                    background: "#f59e0b",
-                    color: "#000",
-                    letterSpacing: "0.06em",
-                  }}
-                  title={`Boosted ${dexInfo.boosts.boost_count}x on DexScreener`}
-                >
+                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-[#f59e0b] text-black tracking-wide" title={`Boosted ${dexInfo.boosts.boost_count}x on DexScreener`}>
                   🔥 {dexInfo.boosts.boost_count}
                 </span>
               )}
@@ -307,24 +162,14 @@ function TokenHeader({
 
       {/* Price */}
       {summary?.price_usd != null && (
-        <div style={{ textAlign: "right", flexShrink: 0 }}>
-          <div
-            style={{
-              fontFamily: "JetBrains Mono, monospace",
-              fontSize: "22px",
-              fontWeight: 700,
-              color: "var(--text-primary)",
-            }}
-          >
+        <div className="text-right shrink-0">
+          <div className="font-mono text-[22px] font-bold text-[var(--text-primary)]">
             ${formatPrice(summary.price_usd)}
           </div>
           {summary.price_change_24h_pct != null && (
             <div
-              style={{
-                fontSize: "13px",
-                fontWeight: 600,
-                color: summary.price_change_24h_pct >= 0 ? "#22c55e" : "var(--accent)",
-              }}
+              className="text-[13px] font-semibold"
+              style={{ color: summary.price_change_24h_pct >= 0 ? "#22c55e" : "var(--accent)" }}
             >
               {summary.price_change_24h_pct >= 0 ? "+" : ""}
               {summary.price_change_24h_pct.toFixed(2)}% 24h
@@ -346,73 +191,25 @@ function TokenStatsGrid({
   isLoading: boolean;
 }) {
   const stats = [
-    {
-      label: "Market Cap",
-      value: summary?.market_cap_usd != null ? `$${formatCompact(summary.market_cap_usd)}` : null,
-    },
-    {
-      label: "24h Volume",
-      value: summary?.volume_24h_usd != null ? `$${formatCompact(summary.volume_24h_usd)}` : null,
-    },
-    {
-      label: "Liquidity",
-      value: summary?.liquidity_usd != null ? `$${formatCompact(summary.liquidity_usd)}` : null,
-    },
-    {
-      label: "Holders",
-      value: summary?.holder_count != null ? summary.holder_count.toLocaleString() : null,
-    },
-    {
-      label: "Security Score",
-      value: summary?.security_score != null ? `${(summary.security_score * 100).toFixed(0)}/100` : null,
-    },
-    {
-      label: "Supply",
-      value: summary?.supply != null ? formatCompact(summary.supply) : null,
-    },
+    { label: "Market Cap", value: summary?.market_cap_usd != null ? `$${formatCompact(summary.market_cap_usd)}` : null },
+    { label: "24h Volume", value: summary?.volume_24h_usd != null ? `$${formatCompact(summary.volume_24h_usd)}` : null },
+    { label: "Liquidity", value: summary?.liquidity_usd != null ? `$${formatCompact(summary.liquidity_usd)}` : null },
+    { label: "Holders", value: summary?.holder_count != null ? summary.holder_count.toLocaleString() : null },
+    { label: "Security Score", value: summary?.security_score != null ? `${(summary.security_score * 100).toFixed(0)}/100` : null },
+    { label: "Supply", value: summary?.supply != null ? formatCompact(summary.supply) : null },
   ];
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(6, 1fr)",
-        background: "var(--bg-surface)",
-        border: "1px solid var(--border)",
-        borderRadius: "8px",
-        overflow: "hidden",
-      }}
-    >
+    <div className="grid grid-cols-3 lg:grid-cols-6 card overflow-hidden">
       {stats.map((s) => (
-        <div
-          key={s.label}
-          style={{
-            padding: "14px 16px",
-            borderRight: "1px solid var(--border)",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "10px",
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              color: "var(--text-muted)",
-              marginBottom: "4px",
-            }}
-          >
+        <div key={s.label} className="px-4 py-3.5 border-r border-b lg:border-b-0 border-[var(--border)] last:border-r-0">
+          <div className="text-[10px] uppercase tracking-wide text-[var(--text-muted)] mb-1">
             {s.label}
           </div>
           {isLoading ? (
             <Skeleton height={18} width={60} />
           ) : (
-            <div
-              style={{
-                fontFamily: "JetBrains Mono, monospace",
-                fontSize: "14px",
-                fontWeight: 600,
-                color: "var(--text-primary)",
-              }}
-            >
+            <div className="font-mono text-[14px] font-semibold text-[var(--text-primary)]">
               {s.value ?? "—"}
             </div>
           )}
@@ -665,43 +462,13 @@ function TraderRow({ trader, rank }: { trader: TopTrader; rank: number }) {
 
 function Panel({ title, subtitle, children }: { title: string; subtitle?: string; children: React.ReactNode }) {
   return (
-    <div
-      style={{
-        background: "var(--bg-surface)",
-        border: "1px solid var(--border)",
-        borderRadius: "8px",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        style={{
-          padding: "12px 16px",
-          borderBottom: "1px solid var(--border)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: "12px",
-        }}
-      >
-        <span
-          style={{
-            fontSize: "11px",
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "var(--text-muted)",
-          }}
-        >
+    <div className="card overflow-hidden">
+      <div className="px-4 py-3 border-b border-[var(--border)] flex items-center justify-between gap-3">
+        <span className="text-[11px] font-semibold tracking-wide uppercase text-[var(--text-muted)]">
           {title}
         </span>
         {subtitle && (
-          <span
-            style={{
-              fontSize: "11px",
-              color: "var(--text-muted)",
-              fontWeight: 400,
-            }}
-          >
+          <span className="text-[11px] text-[var(--text-muted)] font-normal">
             {subtitle}
           </span>
         )}
@@ -713,14 +480,7 @@ function Panel({ title, subtitle, children }: { title: string; subtitle?: string
 
 function EmptyPanel({ text }: { text: string }) {
   return (
-    <div
-      style={{
-        padding: "32px 16px",
-        textAlign: "center",
-        fontSize: "12px",
-        color: "var(--text-muted)",
-      }}
-    >
+    <div className="px-4 py-8 text-center text-[12px] text-[var(--text-muted)]">
       {text}
     </div>
   );
@@ -732,11 +492,8 @@ function RowSkeleton({ count }: { count: number }) {
       {Array.from({ length: count }).map((_, i) => (
         <div
           key={i}
-          style={{
-            height: "40px",
-            borderBottom: "1px solid var(--border)",
-            opacity: 1 - i * 0.15,
-          }}
+          className="h-10 border-b border-[var(--border)]"
+          style={{ opacity: 1 - i * 0.15 }}
         />
       ))}
     </div>

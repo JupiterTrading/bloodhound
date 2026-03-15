@@ -10,7 +10,7 @@ from typing import Any
 import anthropic
 
 from app.core.config import get_settings
-from app.services import clickhouse, supabase as supabase_svc
+from app.services import analytics, supabase as supabase_svc
 
 settings = get_settings()
 
@@ -213,7 +213,7 @@ async def execute_tool(name: str, inputs: dict[str, Any]) -> dict[str, Any]:
             elif not await _cg(_cfk):
                 await _cs(_cfk, 1, 3600)
                 _asyncio.create_task(_rcfw(_addr))
-        return await clickhouse.check_transfers_between(
+        return await analytics.check_transfers_between(
             from_addr=inputs["from_address"],
             to_addr=inputs["to_address"],
             min_amount_sol=inputs.get("min_amount_sol", 0.1),
@@ -246,7 +246,7 @@ async def execute_tool(name: str, inputs: dict[str, Any]) -> dict[str, Any]:
             _asyncio.create_task(_rcfw(address))
 
         stats, known, cls = await _gather(
-            clickhouse.get_wallet_stats(address, inputs.get("days_back", 90)),
+            analytics.get_wallet_stats(address, inputs.get("days_back", 90)),
             supabase_svc.get_known_wallet(address),
             classify_wallet(address),
         )
@@ -258,13 +258,13 @@ async def execute_tool(name: str, inputs: dict[str, Any]) -> dict[str, Any]:
         }
 
     elif name == "get_relationships":
-        counterparties = await clickhouse.get_top_counterparties(
+        counterparties = await analytics.get_top_counterparties(
             inputs["address"], limit=inputs.get("limit", 10)
         )
         return {"counterparties": counterparties}
 
     elif name == "get_leaderboard":
-        from app.routers.leaderboard import _batch_portfolio, _batch_pnl_from_clickhouse
+        from app.routers.leaderboard import _batch_portfolio, _batch_pnl_from_supabase
         from app.services import supabase as _sb
 
         category = inputs.get("category", "kol")

@@ -1,0 +1,4058 @@
+[
+  {
+    "solana_address": "5ECuREzbvnxfrmo9cnvrcfKLgMJ7zd2ZP1C3XbPKbHhd",
+    "evm_address": "0x4ac3da3e752932f3ec08cf98f778a055e039f3b8",
+    "fomo_user_id": "2e955ffc-6fac-578a-93d8-3324605f6bed",
+    "label": "change",
+    "twitter_handle": "change",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/28e6f5ac73f7361f02980d1b36f723d3.jpg",
+    "bio": "Take a chance and you might lose; take not a chance and you have lost already.",
+    "wallet_type": "kol",
+    "tier": "legendary",
+    "followers": 89102,
+    "following": 42,
+    "total_trades": 327,
+    "total_swaps": 3740,
+    "total_volume_usd": 9738830.073471,
+    "pnl_24h": 100423.04530988832,
+    "top_holdings": [
+      {
+        "token_address": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+        "network_id": 8453,
+        "amount": 71378.85689761228,
+        "value_usd": 493546.4682078869,
+        "image_url": "https://token-media.defined.fi/8453_0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf_thumb_680c64c49ecf.png"
+      },
+      {
+        "token_address": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+        "network_id": 8453,
+        "amount": 3278023836.84254,
+        "value_usd": 99132.2001187774,
+        "image_url": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png"
+      },
+      {
+        "token_address": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump",
+        "network_id": 1399811149,
+        "amount": 1043402.94129,
+        "value_usd": 2927.492362759211,
+        "image_url": "https://token-media.defined.fi/1399811149_5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump_thumb_630aaea11290.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.145Z"
+  },
+  {
+    "solana_address": "7TAMgUTRR2J8iUpPVuevFRFq8oX1kmhKTx4Y4BUNF9Eb",
+    "evm_address": "0x8eaee4a0379e2e1f7faace70222255b437b7286e",
+    "fomo_user_id": "ff03cead-db17-5f20-b8aa-b2cae7e15d6a",
+    "label": "RC",
+    "twitter_handle": "ResellCalendar",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/867ed6dec9d1ee779bf7d3438f7801ac",
+    "bio": "t.me/robthinks",
+    "wallet_type": "market_maker",
+    "tier": "legendary",
+    "followers": 13851,
+    "following": 122,
+    "total_trades": 1254,
+    "total_swaps": 3873,
+    "total_volume_usd": 4893927.038491,
+    "pnl_24h": 58785.85700672034,
+    "top_holdings": [
+      {
+        "token_address": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+        "network_id": 8453,
+        "amount": 1277428217.0232577,
+        "value_usd": 38631.283953474645,
+        "image_url": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png"
+      },
+      {
+        "token_address": "0x65021a79aeef22b17cdc1b768f5e79a8618beba3",
+        "network_id": 8453,
+        "amount": 1571598184.041014,
+        "value_usd": 24013.676482331513,
+        "image_url": "https://token-media.defined.fi/8453_0x65021a79aeef22b17cdc1b768f5e79a8618beba3_thumb_4742ba90fd7f.png"
+      },
+      {
+        "token_address": "0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3",
+        "network_id": 8453,
+        "amount": 823460182.4715825,
+        "value_usd": 12317.13613230894,
+        "image_url": "https://token-media.defined.fi/8453_0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3_thumb_97e7e52cd982.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "G9kNVrM2Pk3CvVzne8JUEhWBTKbfXANJ6SstU7Wb9fnK",
+    "evm_address": "0x6ec6ccc9c6a99559ff5baead3d2b1747d1657467",
+    "fomo_user_id": "3d8284b4-725b-5974-8766-1d4978c1de3b",
+    "label": "jay",
+    "twitter_handle": "_traderjay",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/3c664655d972ff83b3c6ec8b1eef1716.jpg",
+    "bio": "wagmi",
+    "wallet_type": "smart_money",
+    "tier": "elite",
+    "followers": 627,
+    "following": 11,
+    "total_trades": 164,
+    "total_swaps": 367,
+    "total_volume_usd": 695984.125798,
+    "pnl_24h": 36885.09934973309,
+    "top_holdings": [
+      {
+        "token_address": "8G5ayEsJF4Q7FEWEGeF4jtnUWZBEKCqhySTFQf9Ppump",
+        "network_id": 1399811149,
+        "amount": 6602662.317784,
+        "value_usd": 5587.1783439837645,
+        "image_url": "https://token-media.defined.fi/1399811149_8G5ayEsJF4Q7FEWEGeF4jtnUWZBEKCqhySTFQf9Ppump_thumb_949a0b2ffa6b.png"
+      },
+      {
+        "token_address": "64Xtqbivo92rDWQ7RruN6c4VkkfD3pNoZTHjMjyNBAGS",
+        "network_id": 1399811149,
+        "amount": 28506880.82691944,
+        "value_usd": 2265.6811805414736,
+        "image_url": "https://token-media.defined.fi/1399811149_64Xtqbivo92rDWQ7RruN6c4VkkfD3pNoZTHjMjyNBAGS_thumb_5308318ebf23.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.105168273,
+        "value_usd": 9.456620542430377,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "JPVrNNoBePhir8t7eBwTAysBsTf8VEBPbBdVb3oJu5J",
+    "evm_address": "0x0cd74a75b565f77b564b118a2cbe34b49cf98851",
+    "fomo_user_id": "1ff3027e-b9ce-50d6-b04e-9f61ee13abe9",
+    "label": "rev",
+    "twitter_handle": "solrevv",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/21093771c09547ebf753f1730cdf68e6.jpg",
+    "bio": "washed",
+    "wallet_type": "smart_money",
+    "tier": "elite",
+    "followers": 440,
+    "following": 10,
+    "total_trades": 73,
+    "total_swaps": 284,
+    "total_volume_usd": 261359.451048,
+    "pnl_24h": 30170.195371757418,
+    "top_holdings": [
+      {
+        "token_address": "0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3",
+        "network_id": 8453,
+        "amount": 2492920503.5820394,
+        "value_usd": 37289.811968846385,
+        "image_url": "https://token-media.defined.fi/8453_0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3_thumb_97e7e52cd982.png"
+      },
+      {
+        "token_address": "0x640c04ca09c5c5140e62fef42c59e3afdbbd4444",
+        "network_id": 56,
+        "amount": 1545431.1752524127,
+        "value_usd": 2220.2390972086787,
+        "image_url": "https://token-media.defined.fi/56_0x640c04ca09c5c5140e62fef42c59e3afdbbd4444_thumb_b73c93973cee.png"
+      },
+      {
+        "token_address": "DVZMdNkcET3852usHEi1e6WB9ShffZsxbkbW55eEpump",
+        "network_id": 1399811149,
+        "amount": 5008800.536162,
+        "value_usd": 414.97297557741314,
+        "image_url": "https://token-media.defined.fi/1399811149_DVZMdNkcET3852usHEi1e6WB9ShffZsxbkbW55eEpump_thumb_e16ce3c15214.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "FbNUmcixxfQ4LVtNdh5hRwMAD98QBM2sLtKNrFwChGE1",
+    "evm_address": "0xb0d717901a642497fe20329f99fc76090a02880b",
+    "fomo_user_id": "c0f26d14-de23-536a-aa0b-11512d0ecd6a",
+    "label": "Eric Voorhees",
+    "twitter_handle": "erlkvoorhees",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/d50876c2600307282a78db899641a33b.jpg",
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "elite",
+    "followers": 328,
+    "following": 0,
+    "total_trades": 5,
+    "total_swaps": 6,
+    "total_volume_usd": 16145.662914,
+    "pnl_24h": 24998.168974382148,
+    "top_holdings": [
+      {
+        "token_address": "0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3",
+        "network_id": 8453,
+        "amount": 1482003876.4579616,
+        "value_usd": 22168.234330301086,
+        "image_url": "https://token-media.defined.fi/8453_0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3_thumb_97e7e52cd982.png"
+      },
+      {
+        "token_address": "0x65021a79aeef22b17cdc1b768f5e79a8618beba3",
+        "network_id": 8453,
+        "amount": 615534469.4064093,
+        "value_usd": 9405.23205113563,
+        "image_url": "https://token-media.defined.fi/8453_0x65021a79aeef22b17cdc1b768f5e79a8618beba3_thumb_4742ba90fd7f.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.10001,
+        "value_usd": 8.987879137583954,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "H3jGitWGsrMnuvsQcCJoDfS6spJGS4AKguagaa6EnfQX",
+    "evm_address": "0x0b462af5fd96891bfda3829bd6eb3060b35026b6",
+    "fomo_user_id": "9ba39cb4-23c2-5a1c-ab0a-236726226564",
+    "label": "lesabre",
+    "twitter_handle": "lesabre",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/cf376d9db72920be54d4035e8e5cb89d.jpg",
+    "bio": "shooters shoot",
+    "wallet_type": "kol",
+    "tier": "elite",
+    "followers": 27012,
+    "following": 69,
+    "total_trades": 567,
+    "total_swaps": 1846,
+    "total_volume_usd": 6919995.096584,
+    "pnl_24h": 23753.89250103767,
+    "top_holdings": [
+      {
+        "token_address": "0x50d2280441372486beecdd328c1854743ebacb07",
+        "network_id": 8453,
+        "amount": 987719749.7600133,
+        "value_usd": 58519.31493496729,
+        "image_url": "https://token-media.defined.fi/8453_0x50d2280441372486beecdd328c1854743ebacb07_thumb_d0f960f20bbd.png"
+      },
+      {
+        "token_address": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+        "network_id": 8453,
+        "amount": 7599.873016952399,
+        "value_usd": 52549.04112187803,
+        "image_url": "https://token-media.defined.fi/8453_0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf_thumb_680c64c49ecf.png"
+      },
+      {
+        "token_address": "AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump",
+        "network_id": 1399811149,
+        "amount": 7617708.05939,
+        "value_usd": 24495.215823247276,
+        "image_url": "https://token-media.defined.fi/1399811149_AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump_thumb_4d3b5920a127.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "9WunTXX7PKeEngkPM6uqc7AjEsQFudNvbLWAEemioD89",
+    "evm_address": "0x0bf96f77708bb7b832b2019817eb47bf31a7b072",
+    "fomo_user_id": "1a93bb52-aefc-5128-844d-c144f3f14762",
+    "label": "s",
+    "twitter_handle": "svntyxsvn",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/578fe00e77ce9808ddabfac486e358eb.jpg",
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "elite",
+    "followers": 2390,
+    "following": 0,
+    "total_trades": 98,
+    "total_swaps": 147,
+    "total_volume_usd": 288189.333321,
+    "pnl_24h": 23205.356427773288,
+    "top_holdings": [
+      {
+        "token_address": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+        "network_id": 8453,
+        "amount": 2912929502.504349,
+        "value_usd": 88091.2173757395,
+        "image_url": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png"
+      },
+      {
+        "token_address": "9mfKc66yLkNpfBKfAGXUZBe3AyZetoP8tVFofXbfpump",
+        "network_id": 1399811149,
+        "amount": 35899594.605233,
+        "value_usd": 1248.286696549866,
+        "image_url": "https://token-media.defined.fi/1399811149_9mfKc66yLkNpfBKfAGXUZBe3AyZetoP8tVFofXbfpump_thumb_bcca6278311b.png"
+      },
+      {
+        "token_address": "Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump",
+        "network_id": 1399811149,
+        "amount": 33142755.221358,
+        "value_usd": 1088.828904736641,
+        "image_url": "https://token-media.defined.fi/1399811149_Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump_thumb_fe3c14e95b9f.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "6487sppMrk14kHhDfoHjnRthQwSqcKaYk9e26tukGucR",
+    "evm_address": "0xd985d752e6123ab1e70458550fdda1be974a790f",
+    "fomo_user_id": "dd55fdd0-39c3-57e6-9b90-32cf70ee135e",
+    "label": "KJS16",
+    "twitter_handle": "KJS16",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/1f2281208133544cbd00368fe5d13645.jpg",
+    "bio": "soldier of misfortune. doing it for fam",
+    "wallet_type": "smart_money",
+    "tier": "elite",
+    "followers": 3820,
+    "following": 12,
+    "total_trades": 332,
+    "total_swaps": 2071,
+    "total_volume_usd": 8989066.389724,
+    "pnl_24h": 22498.61251362189,
+    "top_holdings": [
+      {
+        "token_address": "0x50d2280441372486beecdd328c1854743ebacb07",
+        "network_id": 8453,
+        "amount": 1515002805.4503522,
+        "value_usd": 89759.19163411397,
+        "image_url": "https://token-media.defined.fi/8453_0x50d2280441372486beecdd328c1854743ebacb07_thumb_d0f960f20bbd.png"
+      },
+      {
+        "token_address": "0x9b5e262cf9bb04869ab40b19af91d2dc85761722",
+        "network_id": 8453,
+        "amount": 4015424.865966074,
+        "value_usd": 42079.051884545726,
+        "image_url": "https://token-media.defined.fi/8453_0x9b5e262cf9bb04869ab40b19af91d2dc85761722_large_small_thumb_1f9ef89f-038c-421f-9ad3-298f71cb9068.png"
+      },
+      {
+        "token_address": "0x65021a79aeef22b17cdc1b768f5e79a8618beba3",
+        "network_id": 8453,
+        "amount": 2197388969.1115837,
+        "value_usd": 33575.62279335928,
+        "image_url": "https://token-media.defined.fi/8453_0x65021a79aeef22b17cdc1b768f5e79a8618beba3_thumb_4742ba90fd7f.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "HeufDSztrxjDjDhcahDDAZgAD6gtWuPK7jXGcNUgGwmk",
+    "evm_address": "0xe07ef6e4380a31545c51f505e7bd970002db319e",
+    "fomo_user_id": "4a5648a1-5c32-5619-a926-88f52f1c8b08",
+    "label": "Streetjesus",
+    "twitter_handle": "Streetjesus_eth",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/d8135c51d38a647139f24f0e9187b71e.jpg",
+    "bio": "1 SOL and a dream",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 321,
+    "following": 186,
+    "total_trades": 167,
+    "total_swaps": 519,
+    "total_volume_usd": 101721.315168,
+    "pnl_24h": 19759.029614301893,
+    "top_holdings": [
+      {
+        "token_address": "H5b4iYiZYycr7fmQ1dMj7hdfLGAEPcDH261K4hugpump",
+        "network_id": 1399811149,
+        "amount": 8960668.664023,
+        "value_usd": 4007.422592651555,
+        "image_url": "https://token-media.defined.fi/1399811149_H5b4iYiZYycr7fmQ1dMj7hdfLGAEPcDH261K4hugpump_thumb_c918f120cabe.png"
+      },
+      {
+        "token_address": "a3W4qutoEJA4232T2gwZUfgYJTetr96pU4SJMwppump",
+        "network_id": 1399811149,
+        "amount": 1011.923633,
+        "value_usd": 42.47094938118223,
+        "image_url": "https://token-media.defined.fi/1399811149_a3W4qutoEJA4232T2gwZUfgYJTetr96pU4SJMwppump_thumb_90a2dea7e409.png"
+      },
+      {
+        "token_address": "0xce501131d0229c3843add6977002c7d9908e4444",
+        "network_id": 56,
+        "amount": 1258587.0413163917,
+        "value_usd": 17.651510951127545,
+        "image_url": "https://token-media.defined.fi/56_0xce501131d0229c3843add6977002c7d9908e4444_thumb.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "ExxadAeGwmrfS3NnHxEqWX3qmVTFNXhk7DmSScUpp1t3",
+    "evm_address": "0xbf7741d22ddc76c6bd162aa77e564c544c32cfe9",
+    "fomo_user_id": "5035bc84-c8f0-5c54-a649-a99282d852ce",
+    "label": "logjam",
+    "twitter_handle": "_logjam",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/ae494b59a6f1350bf0fe12377df2204f.jpg",
+    "bio": "gambling to stack more neet",
+    "wallet_type": "kol",
+    "tier": "pro",
+    "followers": 53385,
+    "following": 143,
+    "total_trades": 315,
+    "total_swaps": 1121,
+    "total_volume_usd": 1865294.579605,
+    "pnl_24h": 17383.678689742886,
+    "top_holdings": [
+      {
+        "token_address": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+        "network_id": 1399811149,
+        "amount": 10109435.758436,
+        "value_usd": 271512.274434944,
+        "image_url": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_thumb_11979a61b580.png"
+      },
+      {
+        "token_address": "J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump",
+        "network_id": 1399811149,
+        "amount": 17953931.761424,
+        "value_usd": 32647.10547235877,
+        "image_url": "https://token-media.defined.fi/1399811149_J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump_thumb_421ff757ad23.png"
+      },
+      {
+        "token_address": "89S7oVB4hui8ceJqhHreWB7fcxdthfvoB7z2pfJtpump",
+        "network_id": 1399811149,
+        "amount": 10467427.205502,
+        "value_usd": 9811.615223259687,
+        "image_url": "https://token-media.defined.fi/1399811149_89S7oVB4hui8ceJqhHreWB7fcxdthfvoB7z2pfJtpump_thumb_49281b9bd876.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "HYmWmpbJbjzsSGu19qBKBjBaXrSrFiGzX3EFtaoPos9F",
+    "evm_address": "0xe40101597f4a03ebdca38f7a08eefd1dc941d058",
+    "fomo_user_id": "dc0de758-7d4b-5054-bb8f-379cd87ff9fc",
+    "label": "Dip Wheeler",
+    "twitter_handle": "DipWheeler",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/6ca29a13636343ba54afeb9b4fb271d4.jpg",
+    "bio": "sack tf up.",
+    "wallet_type": "kol",
+    "tier": "pro",
+    "followers": 12067,
+    "following": 29,
+    "total_trades": 99,
+    "total_swaps": 281,
+    "total_volume_usd": 685509.260433,
+    "pnl_24h": 17379.629730133154,
+    "top_holdings": [
+      {
+        "token_address": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+        "network_id": 1399811149,
+        "amount": 42975111.30735,
+        "value_usd": 129128.36126059762,
+        "image_url": "https://token-media.defined.fi/1399811149_4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump_thumb_ce4a98e405e8.png"
+      },
+      {
+        "token_address": "DaTGaE6uhCfzz6Eh8hWQwL4yw3AJbXWbfvbeccdXJWED",
+        "network_id": 1399811149,
+        "amount": 24590952.005638,
+        "value_usd": 13182.407439113045,
+        "image_url": "https://token-media.defined.fi/1399811149_DaTGaE6uhCfzz6Eh8hWQwL4yw3AJbXWbfvbeccdXJWED_thumb_3d84e2308ef2.png"
+      },
+      {
+        "token_address": "63hyGSmSM5UYp19woKuhx31WTD97R8yNMVqHmDpApump",
+        "network_id": 1399811149,
+        "amount": 34728725.51471,
+        "value_usd": 4751.060564396806,
+        "image_url": "https://token-media.defined.fi/1399811149_63hyGSmSM5UYp19woKuhx31WTD97R8yNMVqHmDpApump_thumb_5c88553c4657.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "5iCm8CjaqdKEQJ7uBUvtw1etJxgznMCY6LEuzNwmdd2c",
+    "evm_address": "0x88060b2fcf17195549de822d046f912f994b7a0f",
+    "fomo_user_id": "b3b6f6a6-da0c-50a0-9428-5ed432ae9e08",
+    "label": "usernametaken",
+    "twitter_handle": "usernametaken",
+    "avatar_url": null,
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 978,
+    "following": 24,
+    "total_trades": 527,
+    "total_swaps": 1542,
+    "total_volume_usd": 1448009.200872,
+    "pnl_24h": 17140.809934168632,
+    "top_holdings": [
+      {
+        "token_address": "0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3",
+        "network_id": 8453,
+        "amount": 337971537.145873,
+        "value_usd": 5071.353838376345,
+        "image_url": "https://token-media.defined.fi/8453_0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3_thumb_97e7e52cd982.png"
+      },
+      {
+        "token_address": "CXjctbA7ENQgZf1FnMLJJUGKp92gAJdMcyEhXeZppump",
+        "network_id": 1399811149,
+        "amount": 26088564.290601,
+        "value_usd": 3606.643842506684,
+        "image_url": "https://token-media.defined.fi/1399811149_CXjctbA7ENQgZf1FnMLJJUGKp92gAJdMcyEhXeZppump_thumb_a4ceb9b64739.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.345296407,
+        "value_usd": 31.034988259543255,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "Fsx4e6eVvAkec74gHRRjvCARA1dPHtfBYGnr5wW7zeKu",
+    "evm_address": "0x89b3353fa72a113b89936216040d25cc52ae5962",
+    "fomo_user_id": "d06d05b8-f474-5e43-9d0c-08a51f149fab",
+    "label": "sized in",
+    "twitter_handle": "sized_in",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/79671cee0adac4df14f0028ea8562290.jpg",
+    "bio": "keep swimmin",
+    "wallet_type": "market_maker",
+    "tier": "pro",
+    "followers": 6278,
+    "following": 223,
+    "total_trades": 1771,
+    "total_swaps": 7028,
+    "total_volume_usd": 9335254.441142,
+    "pnl_24h": 16002.07227492931,
+    "top_holdings": [
+      {
+        "token_address": "0xb233bdffd437e60fa451f62c6c09d3804d285ba3",
+        "network_id": 8453,
+        "amount": 346092224.96107525,
+        "value_usd": 8251.044727217528,
+        "image_url": "https://token-media.defined.fi/8453_0xb233bdffd437e60fa451f62c6c09d3804d285ba3_thumb_938203e1fb17.png"
+      },
+      {
+        "token_address": "0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3",
+        "network_id": 8453,
+        "amount": 475441994.1029156,
+        "value_usd": 7111.55668365802,
+        "image_url": "https://token-media.defined.fi/8453_0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3_thumb_97e7e52cd982.png"
+      },
+      {
+        "token_address": "0xb5b0f722d6d4a803d3df94c9ed12a191603eab07",
+        "network_id": 8453,
+        "amount": 1148496938.5956204,
+        "value_usd": 6046.269536861369,
+        "image_url": "https://token-media.defined.fi/8453_0xb5b0f722d6d4a803d3df94c9ed12a191603eab07_thumb_0f236a863024.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "31Zbq9r9jNdjQheg2JgFcC9W83Dzezs8njnrFi4NNyRE",
+    "evm_address": "0xfd877d5646e76c622125e3accabb0765e9187ff0",
+    "fomo_user_id": "5833934f-bc55-52b3-bbdd-c9ba77ca0ab3",
+    "label": "teep",
+    "twitter_handle": "teepanddestroy",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/412b5a55fa501959221bee6442885558.jpg",
+    "bio": "u aware?",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 1145,
+    "following": 68,
+    "total_trades": 370,
+    "total_swaps": 1262,
+    "total_volume_usd": 1784286.532799,
+    "pnl_24h": 14648.741637168334,
+    "top_holdings": [
+      {
+        "token_address": "0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07",
+        "network_id": 8453,
+        "amount": 405206686.8941543,
+        "value_usd": 25184.40541929431,
+        "image_url": "https://token-media.defined.fi/8453_0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07_thumb_fcdb6c599c1c.png"
+      },
+      {
+        "token_address": "6iA73gWCKkLWKbVr8rgibV57MMRxzsaqS9cWpgKBpump",
+        "network_id": 1399811149,
+        "amount": 10032884.428942997,
+        "value_usd": 21615.690864195676,
+        "image_url": "https://token-media.defined.fi/1399811149_6iA73gWCKkLWKbVr8rgibV57MMRxzsaqS9cWpgKBpump_thumb_63b436b284e0.png"
+      },
+      {
+        "token_address": "cbbtcf3aa214zXHbiAZQwf4122FBYbraNdFqgw4iMij",
+        "network_id": 1399811149,
+        "amount": 0.08447277,
+        "value_usd": 6081.572867934024,
+        "image_url": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "EVPZtVguANq53bmoK4gBaQrzTaCXMr6ERSEpQC137QjF",
+    "evm_address": "0x0b54f34d42c5414bc22e934c349d3393a14b7fde",
+    "fomo_user_id": "14854c53-e262-51dd-a577-a1a1d1ffbc32",
+    "label": "*",
+    "twitter_handle": "onchainsorcerer",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/65adb475faf00ad4f5375d55cd468729.jpg",
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 2334,
+    "following": 25,
+    "total_trades": 228,
+    "total_swaps": 552,
+    "total_volume_usd": 2487751.777348,
+    "pnl_24h": 14601.623279788955,
+    "top_holdings": [
+      {
+        "token_address": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+        "network_id": 8453,
+        "amount": 1598145309.3934839,
+        "value_usd": 48330.23446903335,
+        "image_url": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png"
+      },
+      {
+        "token_address": "8116V1BW9zaXUM6pVhWVaAduKrLcEBi3RGXedKTrBAGS",
+        "network_id": 1399811149,
+        "amount": 8116899.244885388,
+        "value_usd": 12126.259799903413,
+        "image_url": "https://token-media.defined.fi/1399811149_8116V1BW9zaXUM6pVhWVaAduKrLcEBi3RGXedKTrBAGS_thumb_009b6ba91d53.png"
+      },
+      {
+        "token_address": "0x2f301934c2f4647c7ec0b89f8983938d7bdc4444",
+        "network_id": 56,
+        "amount": 21741076.0021892,
+        "value_usd": 172.71769590073364,
+        "image_url": "https://token-media.defined.fi/56_0x2f301934c2f4647c7ec0b89f8983938d7bdc4444_thumb_58b24a96e4da.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "4rhZ9DhngHLt1HgmitVeSQcLX63sxjh16rxhPk1cNLKA",
+    "evm_address": "0x3d0feaa222be4e1e5b116ea0b9a61082365670b6",
+    "fomo_user_id": "1c1be966-c268-5110-9c0f-53e434b21d9f",
+    "label": "MevZoid",
+    "twitter_handle": "MevZoid",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/e454db70807c91ae1420b3a15958aa64.jpg",
+    "bio": "dreamer",
+    "wallet_type": "kol",
+    "tier": "pro",
+    "followers": 18871,
+    "following": 0,
+    "total_trades": 389,
+    "total_swaps": 1113,
+    "total_volume_usd": 8423838.349353,
+    "pnl_24h": 14409.455353120642,
+    "top_holdings": [
+      {
+        "token_address": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+        "network_id": 8453,
+        "amount": 2052237722.9294474,
+        "value_usd": 62085.232211347204,
+        "image_url": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png"
+      },
+      {
+        "token_address": "AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump",
+        "network_id": 1399811149,
+        "amount": 17192598.077777,
+        "value_usd": 55283.87241860474,
+        "image_url": "https://token-media.defined.fi/1399811149_AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump_thumb_4d3b5920a127.png"
+      },
+      {
+        "token_address": "0x316ffb9c875f900adcf04889e415cc86b564eba3",
+        "network_id": 8453,
+        "amount": 1789639706.063334,
+        "value_usd": 9703.716377859728,
+        "image_url": "https://token-media.defined.fi/8453_0x316ffb9c875f900adcf04889e415cc86b564eba3_thumb_e5e400c555d9.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "4SYq4htJwgs7gn4QdTpG2pDm3xNH9MCUEA6zo5EryjEP",
+    "evm_address": "0x4c0a5cc50817d34569995a3cd6e31b19917e6e2f",
+    "fomo_user_id": "a12342ba-6094-5c45-b2fe-2daa93538e12",
+    "label": "aaaa",
+    "twitter_handle": "holiday_inn_express",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/ec41d798e0945cf83f63a0ede564d4d1.jpg",
+    "bio": "",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 351,
+    "following": 83,
+    "total_trades": 558,
+    "total_swaps": 1213,
+    "total_volume_usd": 969374.300835,
+    "pnl_24h": 13618.81887392658,
+    "top_holdings": [
+      {
+        "token_address": "EPuZ1X6pPzac3ELPsT59LStmgaSr4kBJvaAbL15Fpump",
+        "network_id": 1399811149,
+        "amount": 4616273.914133,
+        "value_usd": 5017.88034168191,
+        "image_url": "https://token-media.defined.fi/1399811149_EPuZ1X6pPzac3ELPsT59LStmgaSr4kBJvaAbL15Fpump_thumb_5c44bf181cc8.png"
+      },
+      {
+        "token_address": "0x824768fbcf4133c84cbe741ba89dcf507f014444",
+        "network_id": 56,
+        "amount": 39556018.22738558,
+        "value_usd": 3114.4402251304787,
+        "image_url": "https://token-media.defined.fi/56_0x824768fbcf4133c84cbe741ba89dcf507f014444_thumb_374a6bb5ed13.png"
+      },
+      {
+        "token_address": "6JhpWAPCa4DXA67mfWznfqQFq1SpMwes65kH6Xmupump",
+        "network_id": 1399811149,
+        "amount": 27636957.828646,
+        "value_usd": 1251.6086084804251,
+        "image_url": "https://token-media.defined.fi/1399811149_6JhpWAPCa4DXA67mfWznfqQFq1SpMwes65kH6Xmupump_thumb_caf75f4dd940.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "69V3ZD77v6VHmWVjdymcpX9HsepTx9fb1HTprtkLm242",
+    "evm_address": "0xf31b607623a173fd9810eaea970f0e2f6fe61cf8",
+    "fomo_user_id": "b51ec65e-cd93-57c4-b32e-6bc389c7d363",
+    "label": "quinn",
+    "twitter_handle": "quinn",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/8a633ba8b231f0c05e4d822dd85128ea.jpg",
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 3996,
+    "following": 17,
+    "total_trades": 254,
+    "total_swaps": 464,
+    "total_volume_usd": 1019856.609596,
+    "pnl_24h": 13043.110597378238,
+    "top_holdings": [
+      {
+        "token_address": "61Wj56QgGyyB966T7YsMzEAKRLcMvJpDbPzjkrCZc4Bi",
+        "network_id": 1399811149,
+        "amount": 8863411.770582002,
+        "value_usd": 42147.849653794845,
+        "image_url": "https://token-media.defined.fi/1399811149_61Wj56QgGyyB966T7YsMzEAKRLcMvJpDbPzjkrCZc4Bi_large_thumb_small_56ce7327-fdff-48f8-8c76-929ce04409a6.png"
+      },
+      {
+        "token_address": "0x50d2280441372486beecdd328c1854743ebacb07",
+        "network_id": 8453,
+        "amount": 504605229.6168543,
+        "value_usd": 29896.286225880256,
+        "image_url": "https://token-media.defined.fi/8453_0x50d2280441372486beecdd328c1854743ebacb07_thumb_d0f960f20bbd.png"
+      },
+      {
+        "token_address": "4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump",
+        "network_id": 1399811149,
+        "amount": 8056811.891823,
+        "value_usd": 13017.848315242167,
+        "image_url": "https://token-media.defined.fi/1399811149_4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump_thumb_f920afb62f1a.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "588deeKuwhHddybmi6H9c7R9SXFidMs43GpjpgKsPnXN",
+    "evm_address": "0xf6514b0a4afa4b659f4feb6b900a9b604363ccde",
+    "fomo_user_id": "d47559fc-02c3-5165-b94f-1316fdd19560",
+    "label": "Random Guy",
+    "twitter_handle": "randomxbt",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/ea2e854f7d93ae064cf2327a0c829a3c.jpg",
+    "bio": "One must imagine a random guy happy",
+    "wallet_type": "market_maker",
+    "tier": "pro",
+    "followers": 8452,
+    "following": 35,
+    "total_trades": 1041,
+    "total_swaps": 4485,
+    "total_volume_usd": 11835523.843952,
+    "pnl_24h": 12414.74940443426,
+    "top_holdings": [
+      {
+        "token_address": "0x50d2280441372486beecdd328c1854743ebacb07",
+        "network_id": 8453,
+        "amount": 760445737.4059321,
+        "value_usd": 45054.03846488191,
+        "image_url": "https://token-media.defined.fi/8453_0x50d2280441372486beecdd328c1854743ebacb07_thumb_d0f960f20bbd.png"
+      },
+      {
+        "token_address": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+        "network_id": 8453,
+        "amount": 1006940266.0671313,
+        "value_usd": 30451.33560089383,
+        "image_url": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png"
+      },
+      {
+        "token_address": "0xf30bf00edd0c22db54c9274b90d2a4c21fc09b07",
+        "network_id": 8453,
+        "amount": 821375626.0603721,
+        "value_usd": 25521.886230201497,
+        "image_url": "https://token-media.defined.fi/8453_0xf30bf00edd0c22db54c9274b90d2a4c21fc09b07_thumb_308a80815713.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "4a2vrEAYrzaywCLid92QTsYDFHTZp1H9Y8xvpvE3xUov",
+    "evm_address": "0xa12210be593bd5928dbf26987149c9f2590a5bed",
+    "fomo_user_id": "19109a1e-4ca4-55fa-959a-2ca402cfc43b",
+    "label": "bizz",
+    "twitter_handle": "bizzxbt",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/12e3b9185e2b545e66c09e9f100c54f8.jpg",
+    "bio": "doin the thing",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 1007,
+    "following": 56,
+    "total_trades": 1780,
+    "total_swaps": 956,
+    "total_volume_usd": 868077.520835,
+    "pnl_24h": 11763.116660598818,
+    "top_holdings": [
+      {
+        "token_address": "635Woffz7WGneyH1VzDrBKsw2VavMAZ1iuX6AcqSpump",
+        "network_id": 1399811149,
+        "amount": 30207526.52953,
+        "value_usd": 2096.0815877095188,
+        "image_url": "https://token-media.defined.fi/1399811149_635Woffz7WGneyH1VzDrBKsw2VavMAZ1iuX6AcqSpump_thumb_df63c465f80a.png"
+      },
+      {
+        "token_address": "H5A9cDnxqZ9B5LChcYtTWVn2zdUwiASiSKLSdowBpump",
+        "network_id": 1399811149,
+        "amount": 24167613.69551,
+        "value_usd": 1913.5685942400942,
+        "image_url": "https://token-media.defined.fi/1399811149_H5A9cDnxqZ9B5LChcYtTWVn2zdUwiASiSKLSdowBpump_thumb_3b7e7c820ac8.png"
+      },
+      {
+        "token_address": "9PMHfE16kvJiHjhXMmSnWioapamFbq42zjvsRHFaSpLt",
+        "network_id": 1399811149,
+        "amount": 24442357.43150094,
+        "value_usd": 1710.7600469402826,
+        "image_url": "https://token-media.defined.fi/1399811149_9PMHfE16kvJiHjhXMmSnWioapamFbq42zjvsRHFaSpLt_thumb_b37fc9baf594.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "F2R5xhv1fjUK7m1VirH7e6K5CQTaFFxYrxNmDyuM2kUu",
+    "evm_address": "0xe36e463e9a63a9e6f38147c3f81935be04429131",
+    "fomo_user_id": "462a9894-35cf-53c6-a864-9538d8ceb01b",
+    "label": "Still in the Game",
+    "twitter_handle": "stigstigstig_",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/9f5b16d8145b367804157614f240c701.jpg",
+    "bio": "",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 9259,
+    "following": 56,
+    "total_trades": 269,
+    "total_swaps": 1983,
+    "total_volume_usd": 7002930.262873,
+    "pnl_24h": 11454.819583472356,
+    "top_holdings": [
+      {
+        "token_address": "0x50d2280441372486beecdd328c1854743ebacb07",
+        "network_id": 8453,
+        "amount": 992769902.564022,
+        "value_usd": 58830.2819741677,
+        "image_url": "https://token-media.defined.fi/8453_0x50d2280441372486beecdd328c1854743ebacb07_thumb_d0f960f20bbd.png"
+      },
+      {
+        "token_address": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+        "network_id": 8453,
+        "amount": 1426697795.9699714,
+        "value_usd": 43169.95986952751,
+        "image_url": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "E6czeBZEvfiscJa6NgQpTxjKvsvvwK4zaPZ2G2nf7y76",
+    "evm_address": "0x52bfd45d37f45f73f0555be6ca9a645ba6b6deb3",
+    "fomo_user_id": "14fafdc2-b375-5edd-8c08-613d82cc06b6",
+    "label": "profit | eca.eth",
+    "twitter_handle": "FlippingProfits",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/296adcce217e728917e79ff80e68cfd2.jpg",
+    "bio": "most coins i ape i will sell at a  -50% so be wary of that",
+    "wallet_type": "kol",
+    "tier": "pro",
+    "followers": 10384,
+    "following": 86,
+    "total_trades": 487,
+    "total_swaps": 895,
+    "total_volume_usd": 7593036.342381,
+    "pnl_24h": 11049.433260181402,
+    "top_holdings": [
+      {
+        "token_address": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+        "network_id": 8453,
+        "amount": 1936800753.1812441,
+        "value_usd": 58571.666775766826,
+        "image_url": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png"
+      },
+      {
+        "token_address": "0x3e17ee3b1895dd1a7cf993a89769c5e029584444",
+        "network_id": 56,
+        "amount": 3415287.3814515183,
+        "value_usd": 38245.0106504222,
+        "image_url": "https://token-media.defined.fi/56_0x3e17ee3b1895dd1a7cf993a89769c5e029584444_thumb_fc54cc94aa7f.png"
+      },
+      {
+        "token_address": "3qq54YqAKG3TcrwNHXFSpMCWoL8gmMuPceJ4FG9npump",
+        "network_id": 1399811149,
+        "amount": 18817641.853619,
+        "value_usd": 14331.215886274715,
+        "image_url": "https://token-media.defined.fi/1399811149_3qq54YqAKG3TcrwNHXFSpMCWoL8gmMuPceJ4FG9npump_thumb_3ed0cabcc8a5.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "EioSTsdo3YDfgAGHidgszdXNqLbg8rzZdbdXfcnwLBNL",
+    "evm_address": "0x9b852b9edb9dcfbc98a570c72339a0b1053ecf18",
+    "fomo_user_id": "a6f044ea-a91d-553a-97fd-99e8a5a950a3",
+    "label": "BrazilZZ🇧🇷",
+    "twitter_handle": "xbrazilzz",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/de8d2da945033a4eeb2b5a0efa15f576.jpg",
+    "bio": "no risk no rari",
+    "wallet_type": "market_maker",
+    "tier": "pro",
+    "followers": 5670,
+    "following": 142,
+    "total_trades": 1143,
+    "total_swaps": 3863,
+    "total_volume_usd": 3488655.863674,
+    "pnl_24h": 10856.620646898884,
+    "top_holdings": [
+      {
+        "token_address": "0xff8104251e7761163fac3211ef5583fb3f8583d6",
+        "network_id": 8453,
+        "amount": 5107211.769770051,
+        "value_usd": 70656.22390620221,
+        "image_url": "https://token-media.defined.fi/8453_0xff8104251e7761163fac3211ef5583fb3f8583d6_thumb_43107eacb499.png"
+      },
+      {
+        "token_address": "A6pbakh6P2ogKttup8BTEJc5hjdXehN4Ky7EP5bspump",
+        "network_id": 1399811149,
+        "amount": 3913459.669446,
+        "value_usd": 2756.168271872527,
+        "image_url": "https://token-media.defined.fi/1399811149_A6pbakh6P2ogKttup8BTEJc5hjdXehN4Ky7EP5bspump_thumb_d3cbdbef495a.png"
+      },
+      {
+        "token_address": "4xJxk2RoT5i4zJGzu68Xwvke3EDvGbL5MadP9QiEpump",
+        "network_id": 1399811149,
+        "amount": 11347849.388892,
+        "value_usd": 2296.0441806995177,
+        "image_url": "https://token-media.defined.fi/1399811149_4xJxk2RoT5i4zJGzu68Xwvke3EDvGbL5MadP9QiEpump_thumb_94caa89548d2.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "C4eqjMqBP7oYQ7rPsEZDs23xP8VnKhYwXV4HrabpHbBR",
+    "evm_address": "0xa58dae86eef033c8efaa94b4ddfc1e4ee98e168f",
+    "fomo_user_id": "c700d73d-07e9-589d-aa88-d5bb3f57d824",
+    "label": "googoogaagaa",
+    "twitter_handle": "googoogaagaa",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/6bb96bf4caecf5a0d1b9a30a787924b8.jpg",
+    "bio": "gugugaga?",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 29,
+    "following": 76,
+    "total_trades": 31,
+    "total_swaps": 103,
+    "total_volume_usd": 84109.110697,
+    "pnl_24h": 10475.821584219975,
+    "top_holdings": [
+      {
+        "token_address": "J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump",
+        "network_id": 1399811149,
+        "amount": 7656096.355078,
+        "value_usd": 14076.23363862473,
+        "image_url": "https://token-media.defined.fi/1399811149_J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump_thumb_421ff757ad23.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.737308028,
+        "value_usd": 66.34963528788285,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "Bs8s1QzhkxDdYD9exTCdMYSi776cGtqYZFLFb5A2cFtV",
+    "evm_address": "0xf0244ddb9c126ed836381c11d730257ba36929c9",
+    "fomo_user_id": "d0348993-3478-5f50-932c-572c7564c02a",
+    "label": "Dinh Hung",
+    "twitter_handle": "dinhhung493",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/950378efce1485ca6e75856181eb5da1.jpg",
+    "bio": "dont rotate too much",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 507,
+    "following": 32,
+    "total_trades": 263,
+    "total_swaps": 859,
+    "total_volume_usd": 758949.695869,
+    "pnl_24h": 10342.161604590417,
+    "top_holdings": [
+      {
+        "token_address": "0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959",
+        "network_id": 8453,
+        "amount": 649999999.5921326,
+        "value_usd": 41688.422481846,
+        "image_url": "https://token-media.defined.fi/8453_0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959_thumb_ea082f4c7d03.png"
+      },
+      {
+        "token_address": "0x4e6c9f48f73e54ee5f3ab7e2992b2d733d0d0b07",
+        "network_id": 8453,
+        "amount": 1362019914.88077,
+        "value_usd": 24170.221749805547,
+        "image_url": "https://token-media.defined.fi/8453_0x4e6c9f48f73e54ee5f3ab7e2992b2d733d0d0b07_thumb_3e94edd3a6d0.png"
+      },
+      {
+        "token_address": "0x65021a79aeef22b17cdc1b768f5e79a8618beba3",
+        "network_id": 8453,
+        "amount": 334574584.45060927,
+        "value_usd": 5112.226465895281,
+        "image_url": "https://token-media.defined.fi/8453_0x65021a79aeef22b17cdc1b768f5e79a8618beba3_thumb_4742ba90fd7f.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "3jw8TCHj4hvH47wK1X9M6TDrMwt47n7v9xPUdKM2EVME",
+    "evm_address": "0x5498f531876f73842e7847880918826953914454",
+    "fomo_user_id": "4d21b167-6c40-58f5-833a-246adcd165f7",
+    "label": "ZippySolarPuma",
+    "twitter_handle": "ZippySolarPuma",
+    "avatar_url": null,
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 651,
+    "following": 0,
+    "total_trades": 26,
+    "total_swaps": 92,
+    "total_volume_usd": 581554.519156,
+    "pnl_24h": 9952.88876493376,
+    "top_holdings": [
+      {
+        "token_address": "0xb695559b26bb2c9703ef1935c37aeae9526bab07",
+        "network_id": 8453,
+        "amount": 2156053099.4888716,
+        "value_usd": 94614.36032128673,
+        "image_url": "https://token-media.defined.fi/8453_0xb695559b26bb2c9703ef1935c37aeae9526bab07_thumb_17450f5e45c1.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.758234464,
+        "value_usd": 68.25981897268593,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      },
+      {
+        "token_address": "0x4200000000000000000000000000000000000006",
+        "network_id": 8453,
+        "amount": 0.011595676514074732,
+        "value_usd": 24.779394963318417,
+        "image_url": "https://assets.coingecko.com/coins/images/279/large/ethereum.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "4Y2MgwWzHzGVFeq52o6BP1nFXA8NQFxSW9q3peVyzTfh",
+    "evm_address": "0xdb32bd16e5b7405d43f68a0006b7d2242d278ded",
+    "fomo_user_id": "526c8b1b-d873-594d-b27c-efabe06d6ecd",
+    "label": "neetguy",
+    "twitter_handle": "neetguy",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/7ddef1f1c2249dd5d1670d3786a78b89.jpg",
+    "bio": "quit your job\nbecome a $neet",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 1587,
+    "following": 0,
+    "total_trades": 135,
+    "total_swaps": 79,
+    "total_volume_usd": 509249.117355,
+    "pnl_24h": 9826.7292172723,
+    "top_holdings": [
+      {
+        "token_address": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+        "network_id": 1399811149,
+        "amount": 4637602.736202,
+        "value_usd": 124553.54551130024,
+        "image_url": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_thumb_11979a61b580.png"
+      },
+      {
+        "token_address": "0x1bc0c42215582d5a085795f4badbac3ff36d1bcb",
+        "network_id": 8453,
+        "amount": 2955.0096274824355,
+        "value_usd": 83802.73750786719,
+        "image_url": "https://token-media.defined.fi/8453_0x1bc0c42215582d5a085795f4badbac3ff36d1bcb_thumb_04ad861a-af17-488e-b742-bc7e24073b8d.png"
+      },
+      {
+        "token_address": "0x2b5050f01d64fbb3e4ac44dc07f0732bfb5ecadf",
+        "network_id": 8453,
+        "amount": 796246755.3000888,
+        "value_usd": 4899.606155607965,
+        "image_url": "https://token-media.defined.fi/8453_0x2b5050f01d64fbb3e4ac44dc07f0732bfb5ecadf_thumb.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "Ge2bEzJ7z8CjoGuvWGzUZnTb1KAVPY4VoTKWa71FpNvH",
+    "evm_address": "0x10ed8770f5610679b2e2ec85fc54206ef715e010",
+    "fomo_user_id": "5c026f8b-4bd8-5de6-be48-952afdb54912",
+    "label": "Yogurt.hl",
+    "twitter_handle": "yogurt_eth",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/4bfa9bebde91d56e92415ed7d589dcc1.jpg",
+    "bio": "lets die",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 1284,
+    "following": 22,
+    "total_trades": 52,
+    "total_swaps": 149,
+    "total_volume_usd": 1386223.142028,
+    "pnl_24h": 9293.682585814102,
+    "top_holdings": [
+      {
+        "token_address": "0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3",
+        "network_id": 8453,
+        "amount": 2284660827.8461823,
+        "value_usd": 34173.453716089294,
+        "image_url": "https://token-media.defined.fi/8453_0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3_thumb_97e7e52cd982.png"
+      },
+      {
+        "token_address": "jk1T35eWK41MBMM8AWoYVaNbjHEEQzMDetTsfnqpump",
+        "network_id": 1399811149,
+        "amount": 5193.20767,
+        "value_usd": 4.75348804289077,
+        "image_url": "https://token-media.defined.fi/1399811149_jk1T35eWK41MBMM8AWoYVaNbjHEEQzMDetTsfnqpump_thumb_793f2ec17993.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "8TDYEzuCmh13JjSZrfT3XWE3U3YfwPrtr9xC1WnT6tWP",
+    "evm_address": "0xc7dfa235fb48d370434bfab140a32b224246ba16",
+    "fomo_user_id": "ec3ac844-a169-5c27-9227-65b318bd6cb5",
+    "label": "🐈‍⬛",
+    "twitter_handle": "graycandol",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/33749adb8bd6e9c1bf44ee38146e5fda.jpg",
+    "bio": "What you miss was never meant for you. \nWhat reaches you was never meant to miss you.",
+    "wallet_type": "kol",
+    "tier": "pro",
+    "followers": 10602,
+    "following": 15,
+    "total_trades": 226,
+    "total_swaps": 661,
+    "total_volume_usd": 2439572.388442,
+    "pnl_24h": 8652.3215156492,
+    "top_holdings": [
+      {
+        "token_address": "0x50d2280441372486beecdd328c1854743ebacb07",
+        "network_id": 8453,
+        "amount": 2108943099.3465405,
+        "value_usd": 124948.30182404688,
+        "image_url": "https://token-media.defined.fi/8453_0x50d2280441372486beecdd328c1854743ebacb07_thumb_d0f960f20bbd.png"
+      },
+      {
+        "token_address": "AWGCDT2gd8JadbYbYyZy1iKxfWokPNgrEQoU24zUpump",
+        "network_id": 1399811149,
+        "amount": 30000000,
+        "value_usd": 13938.51045105,
+        "image_url": "https://token-media.defined.fi/1399811149_AWGCDT2gd8JadbYbYyZy1iKxfWokPNgrEQoU24zUpump_thumb_cce8841d8f14.png"
+      },
+      {
+        "token_address": "0xda142587a8c3d073cecfd6b1aad5dd0460ff0b92",
+        "network_id": 8453,
+        "amount": 1805664000,
+        "value_usd": 5778.843700221493,
+        "image_url": null
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "55hpyoNn4d3SRCLE1C3Cmh9GsfXa6b9gXKcprX3LVnui",
+    "evm_address": "0x675ddd094ad244d99647ab0215105a0c25779204",
+    "fomo_user_id": "b832abfb-f710-5d7a-a8f1-0603dd8ef354",
+    "label": "rynzo",
+    "twitter_handle": "rynzoeth",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/6a3f571d709355532e6c0263b93308c3.jpg",
+    "bio": "failing and learning.\n\nx - @rynzoeth",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 4124,
+    "following": 173,
+    "total_trades": 349,
+    "total_swaps": 1385,
+    "total_volume_usd": 3225829.393293,
+    "pnl_24h": 8530.654522826353,
+    "top_holdings": [
+      {
+        "token_address": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+        "network_id": 1399811149,
+        "amount": 1251488.538102,
+        "value_usd": 33611.61864308692,
+        "image_url": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_thumb_11979a61b580.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 2.607580169000002,
+        "value_usd": 234.2836766736867,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      },
+      {
+        "token_address": "H1aoUqmp2vJu5o8w3o8LjrN6jKyWErS69PtYxGhfoXxf",
+        "network_id": 1399811149,
+        "amount": 2999954.984460718,
+        "value_usd": 145.23045165866623,
+        "image_url": "https://token-media.defined.fi/1399811149_H1aoUqmp2vJu5o8w3o8LjrN6jKyWErS69PtYxGhfoXxf_thumb.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "3FyBTtWvhzG5p1HuTDYUEFGu7eNCZAHvvRPweXWcZsiw",
+    "evm_address": "0xd66acda6255833ab877f1148368b81b7722ea440",
+    "fomo_user_id": "7f258f40-e5ba-5a90-9d00-e2c515470fad",
+    "label": "[PN] asta",
+    "twitter_handle": "astaso1",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/97682afabfb10cb6ac8f4b10bacb4783.jpg",
+    "bio": "rah",
+    "wallet_type": "kol",
+    "tier": "pro",
+    "followers": 38863,
+    "following": 23,
+    "total_trades": 273,
+    "total_swaps": 463,
+    "total_volume_usd": 2632264.435276,
+    "pnl_24h": 8467.2306105428,
+    "top_holdings": [
+      {
+        "token_address": "Cm6fNnMk7NfzStP9CZpsQA2v3jjzbcYGAxdJySmHpump",
+        "network_id": 1399811149,
+        "amount": 15660535.950141,
+        "value_usd": 190552.86856652523,
+        "image_url": "https://token-media.defined.fi/1399811149_Cm6fNnMk7NfzStP9CZpsQA2v3jjzbcYGAxdJySmHpump_thumb_7464c1a5ff1a.png"
+      },
+      {
+        "token_address": "1zJX5gRnjLgmTpq5sVwkq69mNDQkCemqoasyjaPW6jm",
+        "network_id": 1399811149,
+        "amount": 3151244.23346758,
+        "value_usd": 53389.09845379379,
+        "image_url": "https://token-media.defined.fi/1399811149_1zJX5gRnjLgmTpq5sVwkq69mNDQkCemqoasyjaPW6jm_thumb_201e8468ddf7.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 3.531659744,
+        "value_usd": 317.5631312685415,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "FCSabc74THQMjSviZ9LnpTKgoiNsSVUhFawUr3sED5Af",
+    "evm_address": "0xb5de449faeebd5519fd2b7af5612886d0301133e",
+    "fomo_user_id": "48a15b1f-187c-5457-a18b-ea566fb9c3f5",
+    "label": "Pingu Charts",
+    "twitter_handle": "pingucharts",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/caa5f791d5a6d8fc13b7b35a0cac50f2.jpg",
+    "bio": "if you like money join my tg.",
+    "wallet_type": "kol",
+    "tier": "pro",
+    "followers": 12206,
+    "following": 3,
+    "total_trades": 124,
+    "total_swaps": 839,
+    "total_volume_usd": 2060765.788183,
+    "pnl_24h": 8375.31818233283,
+    "top_holdings": [
+      {
+        "token_address": "6iA73gWCKkLWKbVr8rgibV57MMRxzsaqS9cWpgKBpump",
+        "network_id": 1399811149,
+        "amount": 21127271.508525003,
+        "value_usd": 45518.37240492548,
+        "image_url": "https://token-media.defined.fi/1399811149_6iA73gWCKkLWKbVr8rgibV57MMRxzsaqS9cWpgKBpump_thumb_63b436b284e0.png"
+      },
+      {
+        "token_address": "NV2RYH954cTJ3ckFUpvfqaQXU4ARqqDH3562nFSpump",
+        "network_id": 1399811149,
+        "amount": 6440727.413576,
+        "value_usd": 35890.01130683391,
+        "image_url": "https://token-media.defined.fi/1399811149_NV2RYH954cTJ3ckFUpvfqaQXU4ARqqDH3562nFSpump_thumb_93c0866ef7c1.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "L1ZbujFMUoWLnA6zLzsRy2gdaNw4JEZMda4epGBBBVt",
+    "evm_address": "0x723a9b04073cf5e78edc1bf982a3e257cab7b406",
+    "fomo_user_id": "27e9831d-a746-5566-9e33-a8eaf702872f",
+    "label": "wrld",
+    "twitter_handle": "wrld_sol",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/4666c8dc1da08a01219807d1f80a76d6.jpg",
+    "bio": "what if?",
+    "wallet_type": "kol",
+    "tier": "pro",
+    "followers": 33217,
+    "following": 32,
+    "total_trades": 42,
+    "total_swaps": 74,
+    "total_volume_usd": 161287.820816,
+    "pnl_24h": 8236.139676481615,
+    "top_holdings": [
+      {
+        "token_address": "Cm6fNnMk7NfzStP9CZpsQA2v3jjzbcYGAxdJySmHpump",
+        "network_id": 1399811149,
+        "amount": 14260664.274576,
+        "value_usd": 173519.63520508737,
+        "image_url": "https://token-media.defined.fi/1399811149_Cm6fNnMk7NfzStP9CZpsQA2v3jjzbcYGAxdJySmHpump_thumb_7464c1a5ff1a.png"
+      },
+      {
+        "token_address": "2nP9yKQNSGQy851iyawDvBkzkK2R2aqKArQCKc2gpump",
+        "network_id": 1399811149,
+        "amount": 10534322.678774,
+        "value_usd": 72958.10286503338,
+        "image_url": "https://token-media.defined.fi/1399811149_2nP9yKQNSGQy851iyawDvBkzkK2R2aqKArQCKc2gpump_thumb_d6048b5336f9.png"
+      },
+      {
+        "token_address": "J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump",
+        "network_id": 1399811149,
+        "amount": 12252207.700884,
+        "value_usd": 22366.96841363816,
+        "image_url": "https://token-media.defined.fi/1399811149_J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump_thumb_421ff757ad23.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "61urmYCKco3dTAcp4dhgbmY6ZXyAdUB9X3FintHFc3Sr",
+    "evm_address": "0x814a2feec3777704aafe63a0d3795e4d0e92d425",
+    "fomo_user_id": "49af72d3-8058-5060-b0cb-71c229ef1ec9",
+    "label": "hotlneblng",
+    "twitter_handle": "hotlneblng",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/596b867ae6e9ba2d247b29c34527ea9b.jpg",
+    "bio": "never stop clicking\n\never",
+    "wallet_type": "market_maker",
+    "tier": "pro",
+    "followers": 9397,
+    "following": 75,
+    "total_trades": 2510,
+    "total_swaps": 6911,
+    "total_volume_usd": 4394257.652822,
+    "pnl_24h": 7958.3686172553935,
+    "top_holdings": [
+      {
+        "token_address": "0x50d2280441372486beecdd328c1854743ebacb07",
+        "network_id": 8453,
+        "amount": 1100027702.6527164,
+        "value_usd": 65173.21090761176,
+        "image_url": "https://token-media.defined.fi/8453_0x50d2280441372486beecdd328c1854743ebacb07_thumb_d0f960f20bbd.png"
+      },
+      {
+        "token_address": "0xda142587a8c3d073cecfd6b1aad5dd0460ff0b92",
+        "network_id": 8453,
+        "amount": 3611328000,
+        "value_usd": 11557.687400442986,
+        "image_url": null
+      },
+      {
+        "token_address": "2nP9yKQNSGQy851iyawDvBkzkK2R2aqKArQCKc2gpump",
+        "network_id": 1399811149,
+        "amount": 1056464.1746699996,
+        "value_usd": 7316.808520029769,
+        "image_url": "https://token-media.defined.fi/1399811149_2nP9yKQNSGQy851iyawDvBkzkK2R2aqKArQCKc2gpump_thumb_d6048b5336f9.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "3QGeGcN3atNeBehp9TWKDPvvroNrK6uQZieSPa4qPfqQ",
+    "evm_address": "0x4947c654b6fc7458827d362e7075ae03cce68b97",
+    "fomo_user_id": "2f672788-0d2a-59f9-890d-b2c2316eb0bd",
+    "label": "Sneaky",
+    "twitter_handle": "0xsneakky",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/ec130929b8e1aed85fb44653fd7b39a3.jpg",
+    "bio": "Trash collector, Treasure seller\nForeskinFnF",
+    "wallet_type": "market_maker",
+    "tier": "pro",
+    "followers": 6941,
+    "following": 92,
+    "total_trades": 2757,
+    "total_swaps": 2696,
+    "total_volume_usd": 3978966.954658,
+    "pnl_24h": 7727.868204181543,
+    "top_holdings": [
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 279.600596349,
+        "value_usd": 25127.278045288927,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      },
+      {
+        "token_address": "0x65021a79aeef22b17cdc1b768f5e79a8618beba3",
+        "network_id": 8453,
+        "amount": 267463113.26268876,
+        "value_usd": 4086.777866039952,
+        "image_url": "https://token-media.defined.fi/8453_0x65021a79aeef22b17cdc1b768f5e79a8618beba3_thumb_4742ba90fd7f.png"
+      },
+      {
+        "token_address": "63hyGSmSM5UYp19woKuhx31WTD97R8yNMVqHmDpApump",
+        "network_id": 1399811149,
+        "amount": 26948590.445412,
+        "value_usd": 3775.241520087351,
+        "image_url": "https://token-media.defined.fi/1399811149_63hyGSmSM5UYp19woKuhx31WTD97R8yNMVqHmDpApump_thumb_5c88553c4657.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "6NGPu8gCKN9L2TSEHTiMLa45DBKkWHXZpGC1m2WaMBam",
+    "evm_address": "0x7e1865606cd3182952d009d16898551c0f4af80d",
+    "fomo_user_id": "f75f8fee-d996-590a-9c37-34db544b65c5",
+    "label": "LostEverythingAgain",
+    "twitter_handle": "LostEverythingAgain",
+    "avatar_url": null,
+    "bio": "Ran up 4 figs to 6 figs and then lost it all 10 times this cycle. 11th time is the charm\nEDIT: Lost everything again on $GAS, AI meta done made me homeless",
+    "wallet_type": "market_maker",
+    "tier": "pro",
+    "followers": 109,
+    "following": 111,
+    "total_trades": 638,
+    "total_swaps": 3077,
+    "total_volume_usd": 3814249.191724,
+    "pnl_24h": 7716.861706101447,
+    "top_holdings": [
+      {
+        "token_address": "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB",
+        "network_id": 1399811149,
+        "amount": 1213.794919,
+        "value_usd": 1214.3257354905284,
+        "image_url": "https://token-media.defined.fi/1399811149_USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB_large_small_thumb_7f4c3eaa-b174-47d7-aa6b-1e5a3577d9d9.png"
+      },
+      {
+        "token_address": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+        "network_id": 1399811149,
+        "amount": 1212.893733,
+        "value_usd": 1213.2378961208326,
+        "image_url": "https://token-media.defined.fi/1399811149_Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB_thumb_6b5fce2cd871.png"
+      },
+      {
+        "token_address": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+        "network_id": 143,
+        "amount": 5020.343541238346,
+        "value_usd": 111.0434063854257,
+        "image_url": "https://token-media.defined.fi/143_0x3bd359c1119da7da1d913d1c4d2b7c461115433a_large_small_thumb_150a1368-be39-4209-99f1-f78a7d3c1192.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "Hd2tKEFF2RRMAufr9paDQdqrryMRJpKkapHTobz7CRZQ",
+    "evm_address": "0x975d9d0b3a0f92ea67f04545de78bdb39ee9c8dc",
+    "fomo_user_id": "b3919210-c753-58a5-a5bc-73b4286ebf98",
+    "label": "Ethan Prosper",
+    "twitter_handle": "pr6spr",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/96517a180750d0f3016687c6a75a93b6.jpg",
+    "bio": "low risk alfa narrative trader",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 210,
+    "following": 38,
+    "total_trades": 16,
+    "total_swaps": 75,
+    "total_volume_usd": 51803.544603,
+    "pnl_24h": 7514.884853538255,
+    "top_holdings": [],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "3UdzAJCsou9eL7FDbGm4RLNkfMQTZJYquxwc3PYYhPNG",
+    "evm_address": "0xd3608c3b17d102f7e79b3d643c4fe54f79582131",
+    "fomo_user_id": "5e911042-e839-569e-ab0e-2ab7c4389b95",
+    "label": "casino",
+    "twitter_handle": "casino1",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/13f778d30ad174d3359d5ff2e1def4f2.jpg",
+    "bio": "",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 545,
+    "following": 38,
+    "total_trades": 92,
+    "total_swaps": 357,
+    "total_volume_usd": 828592.714024,
+    "pnl_24h": 7339.573682878374,
+    "top_holdings": [
+      {
+        "token_address": "0x4e6c9f48f73e54ee5f3ab7e2992b2d733d0d0b07",
+        "network_id": 8453,
+        "amount": 780498224.0930871,
+        "value_usd": 13850.616239565592,
+        "image_url": "https://token-media.defined.fi/8453_0x4e6c9f48f73e54ee5f3ab7e2992b2d733d0d0b07_thumb_3e94edd3a6d0.png"
+      },
+      {
+        "token_address": "J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump",
+        "network_id": 1399811149,
+        "amount": 6336230.574001,
+        "value_usd": 11521.68731592573,
+        "image_url": "https://token-media.defined.fi/1399811149_J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump_thumb_421ff757ad23.png"
+      },
+      {
+        "token_address": "ATBR4i19gcQ31Rfr7ymA2XvkCQEAkNFGBtVKTmdqpump",
+        "network_id": 1399811149,
+        "amount": 8543325.754519,
+        "value_usd": 7893.9105954438455,
+        "image_url": "https://token-media.defined.fi/1399811149_ATBR4i19gcQ31Rfr7ymA2XvkCQEAkNFGBtVKTmdqpump_thumb_575a6956b6a9.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "BSM7obo97xfVUPSPEuU6kURoPvTYUNVspQSKJm5jpPUq",
+    "evm_address": "0xf6cf3ea770bfbdce8f22a047e8fb06c9c81e8ecb",
+    "fomo_user_id": "7eb1f336-15ab-5b3e-b4ad-e826d226c9c6",
+    "label": "jg",
+    "twitter_handle": "jotagezin",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/b5534542cad8df5c154f9b58e14913cb.jpg",
+    "bio": "everything will be ok in the end\n\nif its not ok then its not the end",
+    "wallet_type": "kol",
+    "tier": "pro",
+    "followers": 37342,
+    "following": 73,
+    "total_trades": 444,
+    "total_swaps": 1031,
+    "total_volume_usd": 7572446.075658,
+    "pnl_24h": 7137.883073876628,
+    "top_holdings": [
+      {
+        "token_address": "5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2",
+        "network_id": 1399811149,
+        "amount": 10000000,
+        "value_usd": 143154.378973,
+        "image_url": "https://token-media.defined.fi/1399811149_5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2_thumb_3d240525ac8d.png"
+      },
+      {
+        "token_address": "CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
+        "network_id": 1399811149,
+        "amount": 3000000,
+        "value_usd": 111668.78475,
+        "image_url": "https://token-media.defined.fi/1399811149_CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp_thumb_1e1b256dad55.png"
+      },
+      {
+        "token_address": "jk1T35eWK41MBMM8AWoYVaNbjHEEQzMDetTsfnqpump",
+        "network_id": 1399811149,
+        "amount": 26865330.629123,
+        "value_usd": 24590.587557582374,
+        "image_url": "https://token-media.defined.fi/1399811149_jk1T35eWK41MBMM8AWoYVaNbjHEEQzMDetTsfnqpump_thumb_793f2ec17993.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "Hn3C8G91CjGHnwtaaaa3qeRCESBo6paSwCGwPBbeEYpi",
+    "evm_address": "0x2a8f3a58735e01a0f42aaa9c52fe5f73d32b60e2",
+    "fomo_user_id": "205a9a5b-253d-53e5-b8c5-312b31e45802",
+    "label": "fomouser123",
+    "twitter_handle": "fomouser123",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/1e8331e1a1045100521f776f8baf6b79.jpg",
+    "bio": "why you got so many necklace.",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 5577,
+    "following": 0,
+    "total_trades": 331,
+    "total_swaps": 1295,
+    "total_volume_usd": 891127.619399,
+    "pnl_24h": 7097.710335452262,
+    "top_holdings": [
+      {
+        "token_address": "J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump",
+        "network_id": 1399811149,
+        "amount": 12217347.88524,
+        "value_usd": 22196.080238487215,
+        "image_url": "https://token-media.defined.fi/1399811149_J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump_thumb_421ff757ad23.png"
+      },
+      {
+        "token_address": "6iA73gWCKkLWKbVr8rgibV57MMRxzsaqS9cWpgKBpump",
+        "network_id": 1399811149,
+        "amount": 6113319.938007,
+        "value_usd": 13714.216581343333,
+        "image_url": "https://token-media.defined.fi/1399811149_6iA73gWCKkLWKbVr8rgibV57MMRxzsaqS9cWpgKBpump_thumb_63b436b284e0.png"
+      },
+      {
+        "token_address": "AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump",
+        "network_id": 1399811149,
+        "amount": 1408101.766696,
+        "value_usd": 4527.839135788079,
+        "image_url": "https://token-media.defined.fi/1399811149_AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump_thumb_4d3b5920a127.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "Bw6cKwtBAMzQwu2rcgfBtVopkvMs6uftxA1RZwEqx8en",
+    "evm_address": "0x96a24355534350fe0c32d3007b9774997429e59b",
+    "fomo_user_id": "19ea4e40-2f5f-5efc-b75c-b3608daaece5",
+    "label": "Qtags (up/only)",
+    "twitter_handle": "qtags3",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/2b2228cedeffb4534e1486357c44b9b2.jpg",
+    "bio": "attention economist",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 92,
+    "following": 62,
+    "total_trades": 97,
+    "total_swaps": 452,
+    "total_volume_usd": 807550.423133,
+    "pnl_24h": 6981.476917531652,
+    "top_holdings": [
+      {
+        "token_address": "0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3",
+        "network_id": 8453,
+        "amount": 1123347933.3992329,
+        "value_usd": 16802.791093185322,
+        "image_url": "https://token-media.defined.fi/8453_0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3_thumb_97e7e52cd982.png"
+      },
+      {
+        "token_address": "0x65021a79aeef22b17cdc1b768f5e79a8618beba3",
+        "network_id": 8453,
+        "amount": 246656000.47459728,
+        "value_usd": 3768.8497339649584,
+        "image_url": "https://token-media.defined.fi/8453_0x65021a79aeef22b17cdc1b768f5e79a8618beba3_thumb_4742ba90fd7f.png"
+      },
+      {
+        "token_address": "7oXNE1dbpHUp6dn1JF8pRgCtzfCy4P2FuBneWjZHpump",
+        "network_id": 1399811149,
+        "amount": 458055.490905,
+        "value_usd": 490.3187109224489,
+        "image_url": "https://token-media.defined.fi/1399811149_7oXNE1dbpHUp6dn1JF8pRgCtzfCy4P2FuBneWjZHpump_thumb_2edc9a026e0d.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "2MvXHZZP4LehvuTYxzBHogQsJXhNrdAvZaoKK8FrkFdP",
+    "evm_address": "0xd05606fe32ceef693c1a7dee35151ee80498347e",
+    "fomo_user_id": "8829d088-1b2d-51bc-be0f-32ad8e1bc58b",
+    "label": "snotty",
+    "twitter_handle": "snotty",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/de6912bf8a28bd9c39d597f916bd9b5a.jpg",
+    "bio": "attention trader.",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 201,
+    "following": 36,
+    "total_trades": 106,
+    "total_swaps": 337,
+    "total_volume_usd": 275632.19976,
+    "pnl_24h": 6925.281596350977,
+    "top_holdings": [
+      {
+        "token_address": "0x4e6c9f48f73e54ee5f3ab7e2992b2d733d0d0b07",
+        "network_id": 8453,
+        "amount": 1596421856.6303992,
+        "value_usd": 28365.912858343163,
+        "image_url": "https://token-media.defined.fi/8453_0x4e6c9f48f73e54ee5f3ab7e2992b2d733d0d0b07_thumb_3e94edd3a6d0.png"
+      },
+      {
+        "token_address": "0x4200000000000000000000000000000000000006",
+        "network_id": 8453,
+        "amount": 0.001977387856179518,
+        "value_usd": 4.225581377636551,
+        "image_url": "https://assets.coingecko.com/coins/images/279/large/ethereum.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.023572131,
+        "value_usd": 2.1212991946226145,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "9h3kg9qML1XmXKYgVGWD7ESkbwKM3r7HLGTgALTDmVkx",
+    "evm_address": "0x4f17376f236caa50e97c35440cb80011a9d61b61",
+    "fomo_user_id": "40201a3c-edfc-51b2-878b-75585cb89327",
+    "label": "‎ ‎",
+    "twitter_handle": "horror",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/2f02ab027ea3cf0de11c4f49a31b9c6f.jpg",
+    "bio": "cmxcix",
+    "wallet_type": "market_maker",
+    "tier": "pro",
+    "followers": 1290,
+    "following": 99,
+    "total_trades": 1042,
+    "total_swaps": 2137,
+    "total_volume_usd": 2523207.357203,
+    "pnl_24h": 6924.726406931651,
+    "top_holdings": [
+      {
+        "token_address": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+        "network_id": 1399811149,
+        "amount": 969918.874521,
+        "value_usd": 26049.41422362023,
+        "image_url": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_thumb_11979a61b580.png"
+      },
+      {
+        "token_address": "0xb233bdffd437e60fa451f62c6c09d3804d285ba3",
+        "network_id": 8453,
+        "amount": 640526194.4474744,
+        "value_usd": 15270.52588348364,
+        "image_url": "https://token-media.defined.fi/8453_0xb233bdffd437e60fa451f62c6c09d3804d285ba3_thumb_938203e1fb17.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 38.550147762,
+        "value_usd": 3464.8026764969236,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "EKYGqLpsUXBmocGjh4EFXFYwNXSm6bi43gD9unqqyTr9",
+    "evm_address": "0xa55e9cb1e527479860920a618f44baaeb232a60a",
+    "fomo_user_id": "80de304f-3fec-58fd-a128-65ccd93eb294",
+    "label": "Mickey Mouse",
+    "twitter_handle": "mickeymouse",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/076c46747cf8629f6d5e864966ee448c.jpg",
+    "bio": "",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 3094,
+    "following": 0,
+    "total_trades": 505,
+    "total_swaps": 1367,
+    "total_volume_usd": 1113198.079414,
+    "pnl_24h": 6914.838593481618,
+    "top_holdings": [
+      {
+        "token_address": "6iA73gWCKkLWKbVr8rgibV57MMRxzsaqS9cWpgKBpump",
+        "network_id": 1399811149,
+        "amount": 10038009.915058,
+        "value_usd": 21626.73364298729,
+        "image_url": "https://token-media.defined.fi/1399811149_6iA73gWCKkLWKbVr8rgibV57MMRxzsaqS9cWpgKBpump_thumb_63b436b284e0.png"
+      },
+      {
+        "token_address": "4xJxk2RoT5i4zJGzu68Xwvke3EDvGbL5MadP9QiEpump",
+        "network_id": 1399811149,
+        "amount": 10434825.134366,
+        "value_usd": 2104.4496624319954,
+        "image_url": "https://token-media.defined.fi/1399811149_4xJxk2RoT5i4zJGzu68Xwvke3EDvGbL5MadP9QiEpump_thumb_94caa89548d2.png"
+      },
+      {
+        "token_address": "EABV6iHjm281Py4JxLHMqZ9ki4psTx2giCkjCe1Apump",
+        "network_id": 1399811149,
+        "amount": 20000001.676767,
+        "value_usd": 1530.0846526897617,
+        "image_url": "https://token-media.defined.fi/1399811149_EABV6iHjm281Py4JxLHMqZ9ki4psTx2giCkjCe1Apump_thumb_06e82794cf5e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "7yFfK5PCorQqbCAHrvdshYBFCe3nuuSot3SjtoycN5sW",
+    "evm_address": "0x63b193f41f176f9e22838600bda129dae54aeb90",
+    "fomo_user_id": "314b131c-60ad-5c9c-a4fb-992b31d8d707",
+    "label": "everythingempty",
+    "twitter_handle": "everythingempt0",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/9143af9c504dd7ef3115d1c75a835f92.jpg",
+    "bio": "dont follow me",
+    "wallet_type": "kol",
+    "tier": "pro",
+    "followers": 11046,
+    "following": 11,
+    "total_trades": 47,
+    "total_swaps": 16,
+    "total_volume_usd": 600108.175901,
+    "pnl_24h": 6877.3654886254,
+    "top_holdings": [
+      {
+        "token_address": "0x1c4cca7c5db003824208adda61bd749e55f463a3",
+        "network_id": 8453,
+        "amount": 11549050.268955292,
+        "value_usd": 132046.782887148,
+        "image_url": "https://token-media.defined.fi/8453_0x1c4cca7c5db003824208adda61bd749e55f463a3_thumb_b98be4f3047d.png"
+      },
+      {
+        "token_address": "0x55cd6469f597452b5a7536e2cd98fde4c1247ee4",
+        "network_id": 8453,
+        "amount": 8844623.53277878,
+        "value_usd": 62141.34057786628,
+        "image_url": "https://token-media.defined.fi/8453_0x55cd6469f597452b5a7536e2cd98fde4c1247ee4_thumb_1fabb1e780d5.png"
+      },
+      {
+        "token_address": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+        "network_id": 143,
+        "amount": 5000,
+        "value_usd": 110.5934339685,
+        "image_url": "https://token-media.defined.fi/143_0x3bd359c1119da7da1d913d1c4d2b7c461115433a_large_small_thumb_150a1368-be39-4209-99f1-f78a7d3c1192.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "At5aHW5EAybnmxFdMysJSZcagYGzwDxKebzAjvMeko8L",
+    "evm_address": "0x22559869fda23332beea964ce150c79fbb1e052b",
+    "fomo_user_id": "8b450452-6c89-5cab-947f-c4ae4cf15eda",
+    "label": "tommy 🌙",
+    "twitter_handle": "tommy",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/9eb5000e5e64cfaa3489859e2ee8629d.jpg",
+    "bio": "co-owner @DigiWorldd @VersusFNF",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 3148,
+    "following": 90,
+    "total_trades": 504,
+    "total_swaps": 1299,
+    "total_volume_usd": 5979197.538591,
+    "pnl_24h": 6718.886838163324,
+    "top_holdings": [
+      {
+        "token_address": "0xb233bdffd437e60fa451f62c6c09d3804d285ba3",
+        "network_id": 8453,
+        "amount": 1397270911.8007436,
+        "value_usd": 33311.77055654632,
+        "image_url": "https://token-media.defined.fi/8453_0xb233bdffd437e60fa451f62c6c09d3804d285ba3_thumb_938203e1fb17.png"
+      },
+      {
+        "token_address": "0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07",
+        "network_id": 8453,
+        "amount": 165558554.40123576,
+        "value_usd": 10289.795034310833,
+        "image_url": "https://token-media.defined.fi/8453_0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07_thumb_fcdb6c599c1c.png"
+      },
+      {
+        "token_address": "H5b4iYiZYycr7fmQ1dMj7hdfLGAEPcDH261K4hugpump",
+        "network_id": 1399811149,
+        "amount": 11350526.521627,
+        "value_usd": 5076.223452373147,
+        "image_url": "https://token-media.defined.fi/1399811149_H5b4iYiZYycr7fmQ1dMj7hdfLGAEPcDH261K4hugpump_thumb_c918f120cabe.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "FiWny9shGU4FYasPVHu1uMVc5Z6VRMKvJzpP6CqucYBM",
+    "evm_address": "0x21eb49537dc987691d438450225cd15fd153b831",
+    "fomo_user_id": "d5065479-08e9-5385-8362-aab6d1a032f1",
+    "label": "0xLyuu",
+    "twitter_handle": "0xlyuu",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/67aeaa23e91b818a922feb072644b156.jpg",
+    "bio": "@25er\n35°18'58\"N 128°46'24\"E",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 722,
+    "following": 5,
+    "total_trades": 30,
+    "total_swaps": 84,
+    "total_volume_usd": 341275.495396,
+    "pnl_24h": 6627.585447881309,
+    "top_holdings": [
+      {
+        "token_address": "0xb33ff54b9f7242ef1593d2c9bcd8f9df46c77935",
+        "network_id": 8453,
+        "amount": 7488246.310449394,
+        "value_usd": 56469.19142625459,
+        "image_url": "https://token-media.defined.fi/8453_0xb33ff54b9f7242ef1593d2c9bcd8f9df46c77935_thumb_e12c5e5969fa.png"
+      },
+      {
+        "token_address": "0x4200000000000000000000000000000000000006",
+        "network_id": 8453,
+        "amount": 16.517997635524154,
+        "value_usd": 35300.61974092923,
+        "image_url": "https://assets.coingecko.com/coins/images/279/large/ethereum.png"
+      },
+      {
+        "token_address": "DVZMdNkcET3852usHEi1e6WB9ShffZsxbkbW55eEpump",
+        "network_id": 1399811149,
+        "amount": 25215945.257911,
+        "value_usd": 2029.2425751745936,
+        "image_url": "https://token-media.defined.fi/1399811149_DVZMdNkcET3852usHEi1e6WB9ShffZsxbkbW55eEpump_thumb_e16ce3c15214.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "GJcMxxQf27cYv2KLA26H6VTZdPfrneZ2HmvCdvMxxZfi",
+    "evm_address": "0x6e160b74952ac0ab63167ff2fd665a08409339fb",
+    "fomo_user_id": "197fc3a2-475a-5178-9b25-85bdc43481fd",
+    "label": "fibs",
+    "twitter_handle": "fibs",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/4d411b45da0c82044a12796afb7ac047.jpg",
+    "bio": "thoughts on chillhouse?",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 1964,
+    "following": 192,
+    "total_trades": 267,
+    "total_swaps": 649,
+    "total_volume_usd": 1094482.350505897,
+    "pnl_24h": 6576.132163181924,
+    "top_holdings": [
+      {
+        "token_address": "6iA73gWCKkLWKbVr8rgibV57MMRxzsaqS9cWpgKBpump",
+        "network_id": 1399811149,
+        "amount": 15000420.688163,
+        "value_usd": 33693.55174507427,
+        "image_url": "https://token-media.defined.fi/1399811149_6iA73gWCKkLWKbVr8rgibV57MMRxzsaqS9cWpgKBpump_thumb_63b436b284e0.png"
+      },
+      {
+        "token_address": "4xJxk2RoT5i4zJGzu68Xwvke3EDvGbL5MadP9QiEpump",
+        "network_id": 1399811149,
+        "amount": 19136511.306316,
+        "value_usd": 3513.5116220390546,
+        "image_url": "https://token-media.defined.fi/1399811149_4xJxk2RoT5i4zJGzu68Xwvke3EDvGbL5MadP9QiEpump_thumb_94caa89548d2.png"
+      },
+      {
+        "token_address": "GkyPYa7NnCFbduLknCfBfP7p8564X1VZhwZYJ6CZpump",
+        "network_id": 1399811149,
+        "amount": 420000.685217,
+        "value_usd": 1269.9525073112275,
+        "image_url": "https://token-media.defined.fi/1399811149_GkyPYa7NnCFbduLknCfBfP7p8564X1VZhwZYJ6CZpump_thumb_3d75386f7bf6.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "DATMkmVrFbZt7isGoxyDSpAuF9vJycpkDKwhbf978eUw",
+    "evm_address": "0x490b0e93fe28989e70cddbcbfcc635d383baf322",
+    "fomo_user_id": "4f7e70db-a1dc-57d1-8ae4-a84470d15580",
+    "label": "game",
+    "twitter_handle": "game_for_one",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/8b5b6845aef69bb1b641a8587d44abe4.jpg",
+    "bio": "don’t borrow conviction.",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 8678,
+    "following": 0,
+    "total_trades": 362,
+    "total_swaps": 1239,
+    "total_volume_usd": 1816956.48481,
+    "pnl_24h": 6514.269961001855,
+    "top_holdings": [
+      {
+        "token_address": "0x50d2280441372486beecdd328c1854743ebacb07",
+        "network_id": 8453,
+        "amount": 305364238.12624955,
+        "value_usd": 18091.87882000755,
+        "image_url": "https://token-media.defined.fi/8453_0x50d2280441372486beecdd328c1854743ebacb07_thumb_d0f960f20bbd.png"
+      },
+      {
+        "token_address": "0xb233bdffd437e60fa451f62c6c09d3804d285ba3",
+        "network_id": 8453,
+        "amount": 694998629.7062583,
+        "value_usd": 16569.18117622024,
+        "image_url": "https://token-media.defined.fi/8453_0xb233bdffd437e60fa451f62c6c09d3804d285ba3_thumb_938203e1fb17.png"
+      },
+      {
+        "token_address": "4QCrScUe8Tn4wGXiVTr9iBmS9jS9T1N1D54gEqBnjLdU",
+        "network_id": 1399811149,
+        "amount": 125.811023,
+        "value_usd": 17.93294551430267,
+        "image_url": "https://token-media.defined.fi/1399811149_4QCrScUe8Tn4wGXiVTr9iBmS9jS9T1N1D54gEqBnjLdU_thumb_0b2da185307e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "FJhXFik8Kfno3EgYPoWgGniTth9xkJGPWTZGr4ExoG2P",
+    "evm_address": "0xbd26897dbfaeae67742e5e9766b504e00f463fbd",
+    "fomo_user_id": "83194032-73af-513d-8a04-3adb0615cea7",
+    "label": "juicy",
+    "twitter_handle": "Juicycooks",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/7129bafa2534e503ec9356b11814479a.jpg",
+    "bio": "Bullx Associate",
+    "wallet_type": "smart_money",
+    "tier": "pro",
+    "followers": 150,
+    "following": 23,
+    "total_trades": 35,
+    "total_swaps": 101,
+    "total_volume_usd": 238368.507337,
+    "pnl_24h": 6458.967463073729,
+    "top_holdings": [
+      {
+        "token_address": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+        "network_id": 1399811149,
+        "amount": 1699651.989455,
+        "value_usd": 45648.08446601158,
+        "image_url": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_thumb_11979a61b580.png"
+      },
+      {
+        "token_address": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+        "network_id": 8453,
+        "amount": 638007352.4202313,
+        "value_usd": 19294.26864640942,
+        "image_url": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png"
+      },
+      {
+        "token_address": "Gah17pkPhEaQmt4EcAuNkTgSBx5JS4Pd5EDGemb5pump",
+        "network_id": 1399811149,
+        "amount": 9094991.394571,
+        "value_usd": 117.59055710570918,
+        "image_url": "https://token-media.defined.fi/1399811149_Gah17pkPhEaQmt4EcAuNkTgSBx5JS4Pd5EDGemb5pump_thumb_a0fac1003eb6.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "24h",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "8RREEr3ttGuhjC4kfoKViwrDufJZeuHxL5MD79BPbBho",
+    "evm_address": "0x7d49dc688c3eb832c8a173b5a8b65ab257f90b8b",
+    "fomo_user_id": "346a54e7-7b6b-5fbe-b17a-a0da405abda0",
+    "label": "donotchase",
+    "twitter_handle": "dncdoteth",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/d6d2f124109fd65f7a4084ca54dd9a67.jpg",
+    "bio": "follow on X for wisdom.",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 6176,
+    "following": 0,
+    "total_trades": 31,
+    "total_swaps": 100,
+    "total_volume_usd": 71819.34173,
+    "top_holdings": [
+      {
+        "token_address": "4QCrScUe8Tn4wGXiVTr9iBmS9jS9T1N1D54gEqBnjLdU",
+        "network_id": 1399811149,
+        "amount": 260.655147,
+        "value_usd": 36.68136779875811,
+        "image_url": "https://token-media.defined.fi/1399811149_4QCrScUe8Tn4wGXiVTr9iBmS9jS9T1N1D54gEqBnjLdU_thumb_0b2da185307e.png"
+      },
+      {
+        "token_address": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+        "network_id": 1399811149,
+        "amount": 1365.206174,
+        "value_usd": 10.253328944754902,
+        "image_url": "https://token-media.defined.fi/1399811149_2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv_thumb_c2dfc93a71f7.png"
+      },
+      {
+        "token_address": "7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs",
+        "network_id": 1399811149,
+        "amount": 0.00126444,
+        "value_usd": 2.7025919792822206,
+        "image_url": "https://assets.coingecko.com/coins/images/279/large/ethereum.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "9QNeV6XrAJJFHDSps6NCVpbA9ne2PBHQaA6Ekt2fBi5y",
+    "evm_address": "0x8045ff81ef330c65efba80d86ffc830819574d75",
+    "fomo_user_id": "993c17d5-0a04-5608-83c2-41a218987e35",
+    "label": "six",
+    "twitter_handle": "Leeyde911",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/48f4f4ff94ad93db744138b90d459631.jpg",
+    "bio": "no pain no gain",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 2055,
+    "following": 0,
+    "total_trades": 115,
+    "total_swaps": 289,
+    "total_volume_usd": 193687.384017,
+    "top_holdings": [
+      {
+        "token_address": "0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959",
+        "network_id": 8453,
+        "amount": 2028479736.2028522,
+        "value_usd": 130098.64660269389,
+        "image_url": "https://token-media.defined.fi/8453_0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959_thumb_ea082f4c7d03.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "853yxZmJZVnPoWzUsQiGkk9DWgrA8v2uFN8fJvWNo1JN",
+    "evm_address": "0xab3e898271e67a4c4fc8a6d04c061436a8d30777",
+    "fomo_user_id": "9f0e41ce-633e-5b52-b079-fab7c6c93ff6",
+    "label": "downhorrendously",
+    "twitter_handle": "downhorrndously",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/9363036193364691424a11285325fed1.jpg",
+    "bio": "or up horrendously, there’s no in between",
+    "wallet_type": "market_maker",
+    "tier": "standard",
+    "followers": 8891,
+    "following": 120,
+    "total_trades": 1226,
+    "total_swaps": 3045,
+    "total_volume_usd": 717043.251595,
+    "top_holdings": [
+      {
+        "token_address": "0xeccbb861c0dda7efd964010085488b69317e4444",
+        "network_id": 56,
+        "amount": 1258616.925754584,
+        "value_usd": 24032.096842792165,
+        "image_url": "https://token-media.defined.fi/56_0xeccbb861c0dda7efd964010085488b69317e4444_thumb_c721875cf316.png"
+      },
+      {
+        "token_address": "4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump",
+        "network_id": 1399811149,
+        "amount": 13216485.842164,
+        "value_usd": 21426.422397602102,
+        "image_url": "https://token-media.defined.fi/1399811149_4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump_thumb_f920afb62f1a.png"
+      },
+      {
+        "token_address": "Bvw2FxYydatywgjttTngUuHTpqnJQ7zxcZDAkk1zpump",
+        "network_id": 1399811149,
+        "amount": 21822003.749123,
+        "value_usd": 2033.8510027359125,
+        "image_url": "https://token-media.defined.fi/1399811149_Bvw2FxYydatywgjttTngUuHTpqnJQ7zxcZDAkk1zpump_thumb_6a1ddda1ccec.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "DvgX5mbRiwKXb8BLYNqGx21i2nnXAqPasvSRopzgTQgh",
+    "evm_address": "0xd4e1038ef6774523c8073feb905bc2ef91a46ea6",
+    "fomo_user_id": "b7046ff5-5698-5596-afd1-302ef6e66adc",
+    "label": "Clav",
+    "twitter_handle": "Clavtard",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/1a0ce5ffd7ed71537c707e687e0ca39b.jpg",
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 2908,
+    "following": 21,
+    "total_trades": 87,
+    "total_swaps": 471,
+    "total_volume_usd": 72125.156664,
+    "top_holdings": [
+      {
+        "token_address": "32CdQdBUxbCsLy5AUHWmyidfwhgGUr9N573NBUrDpump",
+        "network_id": 1399811149,
+        "amount": 31841376.83232,
+        "value_usd": 102589.24583643723,
+        "image_url": "https://token-media.defined.fi/1399811149_32CdQdBUxbCsLy5AUHWmyidfwhgGUr9N573NBUrDpump_thumb_5ef2c3edec8d.png"
+      },
+      {
+        "token_address": "GkyPYa7NnCFbduLknCfBfP7p8564X1VZhwZYJ6CZpump",
+        "network_id": 1399811149,
+        "amount": 718.757266,
+        "value_usd": 2.175993149630103,
+        "image_url": "https://token-media.defined.fi/1399811149_GkyPYa7NnCFbduLknCfBfP7p8564X1VZhwZYJ6CZpump_thumb_3d75386f7bf6.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "4xAAf8Epr3APAjsLwqMtyfAS2acDSwDgYKi4gL7cwT7K",
+    "evm_address": "0xd49d1e7f050fc2bf1a6a7d514f1ddf02a5933877",
+    "fomo_user_id": "c0fc051d-9502-515e-a549-5e912a167a4e",
+    "label": "Don Alpha",
+    "twitter_handle": "AlphaCrew23",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/2b416e8d30d8b56ba6aec43190fbcaec.jpg",
+    "bio": "I’m going to show holding one main Token is the way you become the most profitable trader by publicly holding $AMETA and being number one on fomo All Time",
+    "wallet_type": "kol",
+    "tier": "standard",
+    "followers": 21257,
+    "following": 12,
+    "total_trades": 303,
+    "total_swaps": 988,
+    "total_volume_usd": 930376.835193,
+    "top_holdings": [
+      {
+        "token_address": "0x90ec58ef4cc9f37b96de1e203b65bd4e6e79580e",
+        "network_id": 8453,
+        "amount": 303112024.04658896,
+        "value_usd": 154050.50205468934,
+        "image_url": "https://token-media.defined.fi/8453_0x90ec58ef4cc9f37b96de1e203b65bd4e6e79580e_thumb_051924fc076e.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.047034759,
+        "value_usd": 4.229316080598395,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "8nwzLRBBQyW9BndxZn3YLaEVVoNp91iAxMpuWgczGZB7",
+    "evm_address": "0xa48f376c87adc1ae7821ce7a5a909a3583a5451f",
+    "fomo_user_id": "c5e4d760-3107-5f31-b4d8-6773ee019a92",
+    "label": "dns (🟡, 🟩)",
+    "twitter_handle": "DNS_ERR",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/44c635c84e006e9ae742b29971021d07.jpg",
+    "bio": "GOD LOVES YOU. WE ALL SIN, BUT JESUS DIED & ROSE ON THE THIRD DAY TO FORGIVE & SAVE US. TURN TO HIM, TRUST HIM, AND RECEIVE NEW LIFE WITH GOD. JESUS SAVES. ✝️",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 5389,
+    "following": 77,
+    "total_trades": 405,
+    "total_swaps": 1195,
+    "total_volume_usd": 760375.295888,
+    "top_holdings": [
+      {
+        "token_address": "4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump",
+        "network_id": 1399811149,
+        "amount": 13929685.865336,
+        "value_usd": 22582.654480241763,
+        "image_url": "https://token-media.defined.fi/1399811149_4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump_thumb_f920afb62f1a.png"
+      },
+      {
+        "token_address": "0xeccbb861c0dda7efd964010085488b69317e4444",
+        "network_id": 56,
+        "amount": 1063552.9036468656,
+        "value_usd": 20307.534290110187,
+        "image_url": "https://token-media.defined.fi/56_0xeccbb861c0dda7efd964010085488b69317e4444_thumb_c721875cf316.png"
+      },
+      {
+        "token_address": "DaTGaE6uhCfzz6Eh8hWQwL4yw3AJbXWbfvbeccdXJWED",
+        "network_id": 1399811149,
+        "amount": 10306390.185973,
+        "value_usd": 5536.420297834902,
+        "image_url": "https://token-media.defined.fi/1399811149_DaTGaE6uhCfzz6Eh8hWQwL4yw3AJbXWbfvbeccdXJWED_thumb_3d84e2308ef2.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "CqbQqfWknWs6eHpizQ8nhApbxA7fZTX21iyBe5LjpJEF",
+    "evm_address": "0x4a9787173610ebe5ef68d94ba43edc0c3bb92aaf",
+    "fomo_user_id": "5880e9f3-18dc-597f-9061-576bc88dfb8d",
+    "label": "(—<>—)",
+    "twitter_handle": "spiceys",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/ffb32e0f08bfe70adca99d42a63eb666.jpg",
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 294,
+    "following": 39,
+    "total_trades": 230,
+    "total_swaps": 391,
+    "total_volume_usd": 1525248.414163,
+    "top_holdings": [
+      {
+        "token_address": "0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959",
+        "network_id": 8453,
+        "amount": 893600221.983264,
+        "value_usd": 57311.97478043902,
+        "image_url": "https://token-media.defined.fi/8453_0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959_thumb_ea082f4c7d03.png"
+      },
+      {
+        "token_address": "0x316ffb9c875f900adcf04889e415cc86b564eba3",
+        "network_id": 8453,
+        "amount": 450307677.67118514,
+        "value_usd": 2441.6411706162826,
+        "image_url": "https://token-media.defined.fi/8453_0x316ffb9c875f900adcf04889e415cc86b564eba3_thumb_e5e400c555d9.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "HsowDyoy5zH4tTUTZWyiL8GGHUWNRvb3ySMqmCohtGoE",
+    "evm_address": "0x141b98804ad9401feff16b07f7cf3b6a6799893f",
+    "fomo_user_id": "f5d24280-7583-5684-a5ea-52cd1d932bf1",
+    "label": "PeacefulLovelyWildfowl",
+    "twitter_handle": "PeacefulLovelyWildfowl",
+    "avatar_url": null,
+    "bio": "DownOnly",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 548,
+    "following": 15,
+    "total_trades": 82,
+    "total_swaps": 159,
+    "total_volume_usd": 292932.426309,
+    "top_holdings": [
+      {
+        "token_address": "0x9d0e8f5b25384c7310cb8c6ae32c8fbeb645d083",
+        "network_id": 8453,
+        "amount": 346356.7296158118,
+        "value_usd": 34503.19577327971,
+        "image_url": "https://token-media.defined.fi/8453_0x9d0e8f5b25384c7310cb8c6ae32c8fbeb645d083_thumb_46e7ed502358.png"
+      },
+      {
+        "token_address": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+        "network_id": 1399811149,
+        "amount": 12912189.75581,
+        "value_usd": 26729.531175506574,
+        "image_url": "https://token-media.defined.fi/1399811149_pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn_thumb_750a355e7f63.png"
+      },
+      {
+        "token_address": "0xbaa5cc21fd487b8fcc2f632f3f4e8d37262a0842",
+        "network_id": 8453,
+        "amount": 1827.5773601568305,
+        "value_usd": 3442.3236300396957,
+        "image_url": "https://token-media.defined.fi/8453_0xbaa5cc21fd487b8fcc2f632f3f4e8d37262a0842_thumb_83d534f7a6b2.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "GrR7ETq5FMQdVDgMGpVD63GndeETzVFoJFaT9yyEVFL9",
+    "evm_address": "0x2048c968c4c3228658191b9265cec4d2caa76ff3",
+    "fomo_user_id": "fb18f49a-77d9-5a81-88d0-6a3c16e94410",
+    "label": "raychan",
+    "twitter_handle": "raychan",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/ec2b8f4a09fc62b4c998b8f2f8c5a252.jpg",
+    "bio": "believer",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 829,
+    "following": 105,
+    "total_trades": 107,
+    "total_swaps": 420,
+    "total_volume_usd": 658604.76838,
+    "top_holdings": [
+      {
+        "token_address": "C4yDhKwkikpVGCQWD9BT2SJyHAtRFFnKPDM9Nyshpump",
+        "network_id": 1399811149,
+        "amount": 22417209.195638,
+        "value_usd": 11339.832495920853,
+        "image_url": "https://token-media.defined.fi/1399811149_C4yDhKwkikpVGCQWD9BT2SJyHAtRFFnKPDM9Nyshpump_thumb_01596cae06c2.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.190316701,
+        "value_usd": 17.099330834461366,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "CZLadaJS9AQpiPqrAaX5KHLpMeeQLJooYGN1CJU2a9Fd",
+    "evm_address": "0xa1058ea8203e2180060464535fce9f9ffde33be2",
+    "fomo_user_id": "6571eca7-cf7f-5508-9379-a1192bf82a04",
+    "label": "101KittenRainbow",
+    "twitter_handle": "101KittenRainbow",
+    "avatar_url": null,
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 254,
+    "following": 2,
+    "total_trades": 13,
+    "total_swaps": 52,
+    "total_volume_usd": 161493.29465,
+    "top_holdings": [
+      {
+        "token_address": "0x9d0e8f5b25384c7310cb8c6ae32c8fbeb645d083",
+        "network_id": 8453,
+        "amount": 884050.3820220716,
+        "value_usd": 88066.8998064063,
+        "image_url": "https://token-media.defined.fi/8453_0x9d0e8f5b25384c7310cb8c6ae32c8fbeb645d083_thumb_46e7ed502358.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.11686925,
+        "value_usd": 10.50286078799662,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "51kmQvJFpUtptHT31aQ7BpSo6q8xhu3DGsj842XxwjZj",
+    "evm_address": "0x363f2268d334cc9bca19793f7355bddfb80cd9e4",
+    "fomo_user_id": "cbd819eb-7209-5b35-9b20-ba84b5e152f3",
+    "label": "Laolu",
+    "twitter_handle": "Laolu",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/95ed7f34ad793ea096f940af7bb6d045.jpg",
+    "bio": "love",
+    "wallet_type": "kol",
+    "tier": "standard",
+    "followers": 34618,
+    "following": 34,
+    "total_trades": 121,
+    "total_swaps": 63,
+    "total_volume_usd": 73128.249783,
+    "top_holdings": [
+      {
+        "token_address": "CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
+        "network_id": 1399811149,
+        "amount": 7057737.766864,
+        "value_usd": 262709.6665032939,
+        "image_url": "https://token-media.defined.fi/1399811149_CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp_thumb_1e1b256dad55.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.792451837,
+        "value_usd": 71.21643482099174,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "3vNX8FGnFrc6uhyVyzDrRFpFLxT52eZBAaYXyK1YR9Qx",
+    "evm_address": "0x81d10de94eef60e39c814cae935788dca4b70e95",
+    "fomo_user_id": "bb47dd32-9432-562a-b385-30afc05325fb",
+    "label": "Mabon",
+    "twitter_handle": "mabon_zsq",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/d828535f5fc57d4ec48077c27e6a9bce.jpg",
+    "bio": "BUY BUY BUY",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 1307,
+    "following": 33,
+    "total_trades": 161,
+    "total_swaps": 26,
+    "total_volume_usd": 178533.248718,
+    "top_holdings": [
+      {
+        "token_address": "AzVCECC5zr21ikYQne4Xtoh3SVg848duPHUHb3M7bonk",
+        "network_id": 1399811149,
+        "amount": 7106933.93329,
+        "value_usd": 51526.959178108154,
+        "image_url": "https://token-media.defined.fi/1399811149_AzVCECC5zr21ikYQne4Xtoh3SVg848duPHUHb3M7bonk_thumb.png"
+      },
+      {
+        "token_address": "CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
+        "network_id": 1399811149,
+        "amount": 1326229.53667,
+        "value_usd": 49366.14688649816,
+        "image_url": "https://token-media.defined.fi/1399811149_CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp_thumb_1e1b256dad55.png"
+      },
+      {
+        "token_address": "0xc729777d0470f30612b1564fd96e8dd26f5814e3",
+        "network_id": 8453,
+        "amount": 450131.46332832996,
+        "value_usd": 35030.57255284637,
+        "image_url": "https://token-media.defined.fi/8453_0xc729777d0470f30612b1564fd96e8dd26f5814e3_thumb_045b71441e09.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "J6BoyLeMx5QfXbLbJbw5fozH2pK1BqxwHFEEoa8HbXHB",
+    "evm_address": "0x11aabb67360646e14af11b66d3b4ddbe0cf37062",
+    "fomo_user_id": "2a21e621-b428-5dd9-a23a-097a2dd6642c",
+    "label": "trewbuilt",
+    "twitter_handle": "trewbuilt",
+    "avatar_url": null,
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 54,
+    "following": 8,
+    "total_trades": 63,
+    "total_swaps": 135,
+    "total_volume_usd": 27676.315746,
+    "top_holdings": [
+      {
+        "token_address": "8opvqaWysX1oYbXuTL8PHaoaTiXD69VFYAX4smPebonk",
+        "network_id": 1399811149,
+        "amount": 60732.862946,
+        "value_usd": 217.8909731800439,
+        "image_url": "https://token-media.defined.fi/1399811149_8opvqaWysX1oYbXuTL8PHaoaTiXD69VFYAX4smPebonk_thumb_3c3597c81008.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "D8P5Wy4Nssuqh7woNVvq7wei65Meom8fuxPnoi9d5YZV",
+    "evm_address": "0x41f9be0f1ee6fb8b89887afe887e3600dac75c1b",
+    "fomo_user_id": "3b181b84-e974-55d0-ac26-5c756aeed2ff",
+    "label": "Genetic",
+    "twitter_handle": "Genetic",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/b65fede6da9179f5ee89ceacbb6c9624.jpg",
+    "bio": "10k-1 mil Prly to zero",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 1239,
+    "following": 145,
+    "total_trades": 233,
+    "total_swaps": 380,
+    "total_volume_usd": 607749.389589,
+    "top_holdings": [
+      {
+        "token_address": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+        "network_id": 1399811149,
+        "amount": 2436802.146364,
+        "value_usd": 65445.956521870256,
+        "image_url": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_thumb_11979a61b580.png"
+      },
+      {
+        "token_address": "fRfKGCriduzDwSudCwpL7ySCEiboNuryhZDVJtr1a1C",
+        "network_id": 1399811149,
+        "amount": 1549143.937271265,
+        "value_usd": 13891.40823950502,
+        "image_url": "https://token-media.defined.fi/1399811149_fRfKGCriduzDwSudCwpL7ySCEiboNuryhZDVJtr1a1C_thumb_2a581c8c-1efa-4646-b96f-0b29e84a5382.png"
+      },
+      {
+        "token_address": "BeFtLwLtS9Rva12KrHKRMY1H5WoeM1Y2ULMnNJKopump",
+        "network_id": 1399811149,
+        "amount": 3311793.113819,
+        "value_usd": 6010.225446255677,
+        "image_url": "https://token-media.defined.fi/1399811149_BeFtLwLtS9Rva12KrHKRMY1H5WoeM1Y2ULMnNJKopump_thumb_f894148157c6.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "4R1jY68qvn2y6qrwR5otYbvGyVYfkbKfbaPCBZvzwE5e",
+    "evm_address": "0x09536ca7218fabfb12e2d46529bb0cd11eedee78",
+    "fomo_user_id": "2c10d848-efd7-5c91-86ca-569a33a0e8cf",
+    "label": "Eric",
+    "twitter_handle": "ericceth",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/8c25ff5f7412777f1aff16047081e19c.jpg",
+    "bio": "Ben",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 896,
+    "following": 101,
+    "total_trades": 203,
+    "total_swaps": 608,
+    "total_volume_usd": 2061890.36259,
+    "top_holdings": [
+      {
+        "token_address": "0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3",
+        "network_id": 8453,
+        "amount": 392292087.5873335,
+        "value_usd": 5867.818686676569,
+        "image_url": "https://token-media.defined.fi/8453_0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3_thumb_97e7e52cd982.png"
+      },
+      {
+        "token_address": "0x12cfb53c685ee7e3f8234d60f20478a1739ecba3",
+        "network_id": 8453,
+        "amount": 1049423094.1046404,
+        "value_usd": 3251.9375585695684,
+        "image_url": "https://token-media.defined.fi/8453_0x12cfb53c685ee7e3f8234d60f20478a1739ecba3_thumb_df047354d166.png"
+      },
+      {
+        "token_address": "3guyMhp6p7USQUzwTYgXrKoer98rE398grT5RcPKpump",
+        "network_id": 1399811149,
+        "amount": 18091730.50671,
+        "value_usd": 2239.0062328437616,
+        "image_url": "https://token-media.defined.fi/1399811149_3guyMhp6p7USQUzwTYgXrKoer98rE398grT5RcPKpump_thumb_715c82b0e636.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "FtYu3mCMaFEw2b8BXkP2xLq6JNqCYXuL5LusTPA1m47M",
+    "evm_address": "0x2b9bf5eaa5daffad7af2f4a74dd43f69b4f039a6",
+    "fomo_user_id": "3e9932c9-ee60-5780-8fff-17591332c537",
+    "label": "Dr. Hehe",
+    "twitter_handle": "doctorHehe",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/222d129c40dafb71af7ef8ed18cee43d.jpg",
+    "bio": "Where to start? First, I’m a doctor of chshow more",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 1287,
+    "following": 168,
+    "total_trades": 64,
+    "total_swaps": 462,
+    "total_volume_usd": 58718.136287,
+    "top_holdings": [
+      {
+        "token_address": "GkyPYa7NnCFbduLknCfBfP7p8564X1VZhwZYJ6CZpump",
+        "network_id": 1399811149,
+        "amount": 9300261.483588,
+        "value_usd": 28155.966186860347,
+        "image_url": "https://token-media.defined.fi/1399811149_GkyPYa7NnCFbduLknCfBfP7p8564X1VZhwZYJ6CZpump_thumb_3d75386f7bf6.png"
+      },
+      {
+        "token_address": "4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump",
+        "network_id": 1399811149,
+        "amount": 9896657.615082,
+        "value_usd": 15990.591488399876,
+        "image_url": "https://token-media.defined.fi/1399811149_4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump_thumb_f920afb62f1a.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "6S2Ktt28Wtq5jBG3FXWaD6doXEC6A2LYkuNsvHHXTkXu",
+    "evm_address": "0x9407059eae270e956d29d736d3f09f68a762a13b",
+    "fomo_user_id": "03ee6cab-4862-5927-82ad-20aee8d58209",
+    "label": "Masha",
+    "twitter_handle": "masha",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/69329562852827c5090e04c6923536b6.jpg",
+    "bio": "one day I’ll make it.",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 333,
+    "following": 0,
+    "total_trades": 85,
+    "total_swaps": 169,
+    "total_volume_usd": 455585.77835,
+    "top_holdings": [],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "CJDjRAjigb3UdsjxaV7AiMchhJV6qAcc3SjrSLFyytE3",
+    "evm_address": "0x67cb01f8472f4e37d98ef323721a36254c1402e1",
+    "fomo_user_id": "dcf40072-45ba-5ae3-af7f-7250dd77e215",
+    "label": "ₛₘₒₗ intern 💡",
+    "twitter_handle": "smol_intern",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/0644435cb72d8961b400767f08eadae3.jpg",
+    "bio": "Farming some volume. Only gambling here",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 1194,
+    "following": 104,
+    "total_trades": 333,
+    "total_swaps": 2704,
+    "total_volume_usd": 1481629.388612,
+    "top_holdings": [
+      {
+        "token_address": "8116V1BW9zaXUM6pVhWVaAduKrLcEBi3RGXedKTrBAGS",
+        "network_id": 1399811149,
+        "amount": 13707196.982144082,
+        "value_usd": 20477.89762065455,
+        "image_url": "https://token-media.defined.fi/1399811149_8116V1BW9zaXUM6pVhWVaAduKrLcEBi3RGXedKTrBAGS_thumb_009b6ba91d53.png"
+      },
+      {
+        "token_address": "AWGCDT2gd8JadbYbYyZy1iKxfWokPNgrEQoU24zUpump",
+        "network_id": 1399811149,
+        "amount": 16179189.430761,
+        "value_usd": 7517.126699005997,
+        "image_url": "https://token-media.defined.fi/1399811149_AWGCDT2gd8JadbYbYyZy1iKxfWokPNgrEQoU24zUpump_thumb_cce8841d8f14.png"
+      },
+      {
+        "token_address": "B1rGc4HM4Q6q4nU78ADM7fGguxqiasH53fh6ViDXpump",
+        "network_id": 1399811149,
+        "amount": 14609846.746372,
+        "value_usd": 7011.6664837232665,
+        "image_url": "https://token-media.defined.fi/1399811149_B1rGc4HM4Q6q4nU78ADM7fGguxqiasH53fh6ViDXpump_thumb_ee187ed81782.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "3nq29KyuzRT7xmk1Abg9eJ7fJaf5ossQHL1igpSCrHfm",
+    "evm_address": "0x7e226400f9dac345dd19e673280a0ffac492e79d",
+    "fomo_user_id": "193f2a7c-704e-577f-9229-23b8f2dfba0d",
+    "label": "Ciel",
+    "twitter_handle": "iamcIoud",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/77dcd8df63ab4a2fa7fe4b3ab946f83a.jpg",
+    "bio": "https://www.pixelthoughts.co/\n0.25E to 100E",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 67,
+    "following": 4,
+    "total_trades": 44,
+    "total_swaps": 60,
+    "total_volume_usd": 42215.978469,
+    "top_holdings": [
+      {
+        "token_address": "0x799e7c0811e3ad741b45eab15773888e5996db07",
+        "network_id": 8453,
+        "amount": 387996527.94430846,
+        "value_usd": 1028.6502550232542,
+        "image_url": "https://token-media.defined.fi/8453_0x799e7c0811e3ad741b45eab15773888e5996db07_thumb_9eb98ecd86d1.png"
+      },
+      {
+        "token_address": "C4FKopmouYrKWGmTnYfvPQABN3XL53LrHNdezucs89F8",
+        "network_id": 1399811149,
+        "amount": 5206599.448965,
+        "value_usd": 641.4995487793649,
+        "image_url": null
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "9oER4xGiZCRLHmZFpH793CfUzAB8zK9cVQDh1cDZ9a3w",
+    "evm_address": "0x400f9781e13d38523b164ac50bb9a4c85829a8c0",
+    "fomo_user_id": "46401e93-65d0-5d5b-bd13-f1bd46568c9f",
+    "label": "Abruzy.hl.🕯️🦇🔊",
+    "twitter_handle": "0xAbruzy",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/39997acf05e62e60c52041daf493e3a3.jpg",
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 430,
+    "following": 0,
+    "total_trades": 155,
+    "total_swaps": 203,
+    "total_volume_usd": 233584.712812,
+    "top_holdings": [
+      {
+        "token_address": "AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump",
+        "network_id": 1399811149,
+        "amount": 2515808.100614,
+        "value_usd": 8089.738004392422,
+        "image_url": "https://token-media.defined.fi/1399811149_AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump_thumb_4d3b5920a127.png"
+      },
+      {
+        "token_address": "7oXNE1dbpHUp6dn1JF8pRgCtzfCy4P2FuBneWjZHpump",
+        "network_id": 1399811149,
+        "amount": 6983193.841063,
+        "value_usd": 7475.056341987449,
+        "image_url": "https://token-media.defined.fi/1399811149_7oXNE1dbpHUp6dn1JF8pRgCtzfCy4P2FuBneWjZHpump_thumb_2edc9a026e0d.png"
+      },
+      {
+        "token_address": "4ysWSPRkmqY6Y99SN86D2MBHXrvnR2358SaGb47Fpump",
+        "network_id": 1399811149,
+        "amount": 4331595.803827,
+        "value_usd": 2533.9835670310536,
+        "image_url": "https://token-media.defined.fi/1399811149_4ysWSPRkmqY6Y99SN86D2MBHXrvnR2358SaGb47Fpump_thumb_c71825aa6fa4.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "CbfECPomSocQGCEdghcq1zkYEDSVUVP761QMnRXwvyD9",
+    "evm_address": "0x3a6a4aa63348f06e059e00d5bdb3a87d7563cc6c",
+    "fomo_user_id": "aef7a425-6374-5863-97cb-23fe4815fafd",
+    "label": "Clewguo",
+    "twitter_handle": "clewguo",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/3c1171f96c163f697ff733fc5908e0f5.jpg",
+    "bio": "all roads lead to neet.",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 2016,
+    "following": 20,
+    "total_trades": 64,
+    "total_swaps": 8,
+    "total_volume_usd": 2366.265055,
+    "top_holdings": [
+      {
+        "token_address": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+        "network_id": 1399811149,
+        "amount": 5000000,
+        "value_usd": 135428.185652,
+        "image_url": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_thumb_11979a61b580.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 135.002481263,
+        "value_usd": 12136.713999344067,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      },
+      {
+        "token_address": "4nURS6qxY9bCEhramG2VZfnphJZyzis5EE86w5qLpump",
+        "network_id": 1399811149,
+        "amount": 9949126.386715,
+        "value_usd": 3839.6493430694513,
+        "image_url": "https://token-media.defined.fi/1399811149_4nURS6qxY9bCEhramG2VZfnphJZyzis5EE86w5qLpump_thumb_5a012bdc56fb.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "1MZHGYQysPw3qaLX8GGFUZw9x9VKhKmnYBow1ZKLN9D",
+    "evm_address": "0x0be7e3a34346094224b6bf41d71d2a9b01cdc982",
+    "fomo_user_id": "684b9477-bdb9-5cd0-84b3-929ff28fdbf0",
+    "label": "Ayovex🦕",
+    "twitter_handle": "VexRex23",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/47205fdaa95a5778db4bcc2fbfe11da7.jpg",
+    "bio": "if anyone asks why I bought a coin, the thesis is simple, @change bought 👍",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 1748,
+    "following": 41,
+    "total_trades": 95,
+    "total_swaps": 784,
+    "total_volume_usd": 1645862.562317,
+    "top_holdings": [],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "5zVedvk9ffJKwaoueQWKEAAAa1nutXKhaqmFxzwmvVkW",
+    "evm_address": "0xa9f7da8979d0ed6aaf3181354a522ac53e69a682",
+    "fomo_user_id": "35a98e8f-d962-5256-9b39-89624b524e57",
+    "label": "AJC",
+    "twitter_handle": "AvgJoesCrypto",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/be589800533de1c866a58c639a35e9db.jpg",
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 2741,
+    "following": 98,
+    "total_trades": 170,
+    "total_swaps": 286,
+    "total_volume_usd": 705908.307156,
+    "top_holdings": [
+      {
+        "token_address": "Eg2ymQ2aQqjMcibnmTt8erC6Tvk9PVpJZCxvVPJz2agu",
+        "network_id": 1399811149,
+        "amount": 4272846.005163999,
+        "value_usd": 29408.192897054018,
+        "image_url": "https://token-media.defined.fi/1399811149_Eg2ymQ2aQqjMcibnmTt8erC6Tvk9PVpJZCxvVPJz2agu_thumb_d8ec2d8361b7.png"
+      },
+      {
+        "token_address": "DLGRpmkMGr7J4KD1xR5x2XjaGeQH64PLFQkyxNNSpump",
+        "network_id": 1399811149,
+        "amount": 10216614.904499,
+        "value_usd": 7665.648722931353,
+        "image_url": "https://token-media.defined.fi/1399811149_DLGRpmkMGr7J4KD1xR5x2XjaGeQH64PLFQkyxNNSpump_thumb_cbc45e89e6ef.png"
+      },
+      {
+        "token_address": "0x21cfcfc3d8f98fc728f48341d10ad8283f6eb7ab",
+        "network_id": 8453,
+        "amount": 113456.70066213119,
+        "value_usd": 2908.8261357563174,
+        "image_url": "https://token-media.defined.fi/8453_0x21cfcfc3d8f98fc728f48341d10ad8283f6eb7ab_thumb.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "AvxQArzPD6G5wXzybKAzpBZSe2t5FWRQyyj4YjDL7e1a",
+    "evm_address": "0x113572076e5a407ec42fa432f7c2293efbedf90e",
+    "fomo_user_id": "5ab3b1fe-9bdf-539f-96fa-775f57f72f4a",
+    "label": "YODA",
+    "twitter_handle": "Yodatrader",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/65e47a07a2cd3ff8cf0c0f55db0553ac.jpg",
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 204,
+    "following": 20,
+    "total_trades": 701,
+    "total_swaps": 1844,
+    "total_volume_usd": 478899.407286,
+    "top_holdings": [
+      {
+        "token_address": "0x90ec58ef4cc9f37b96de1e203b65bd4e6e79580e",
+        "network_id": 8453,
+        "amount": 104680000,
+        "value_usd": 53205.209243466,
+        "image_url": "https://token-media.defined.fi/8453_0x90ec58ef4cc9f37b96de1e203b65bd4e6e79580e_thumb_051924fc076e.png"
+      },
+      {
+        "token_address": "63hyGSmSM5UYp19woKuhx31WTD97R8yNMVqHmDpApump",
+        "network_id": 1399811149,
+        "amount": 10888657.306612,
+        "value_usd": 1489.6219069934791,
+        "image_url": "https://token-media.defined.fi/1399811149_63hyGSmSM5UYp19woKuhx31WTD97R8yNMVqHmDpApump_thumb_5c88553c4657.png"
+      },
+      {
+        "token_address": "9xDBDW3AHUeGipgm5LwAkL3pqvkCEGQA2NR1LLuFfVZ2",
+        "network_id": 1399811149,
+        "amount": 407406.942408,
+        "value_usd": 525.9627904749063,
+        "image_url": "https://token-media.defined.fi/1399811149_9xDBDW3AHUeGipgm5LwAkL3pqvkCEGQA2NR1LLuFfVZ2_thumb.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "duEu1pmuK8c7nP5jQwVdvHkpTUrtAAD13DywuVDstRs",
+    "evm_address": "0xb19158374d1fd2ab98b299df4ee5cc15b2ded492",
+    "fomo_user_id": "b8fb8d0f-0091-5735-b6a7-70d560408495",
+    "label": "BDAWGZ",
+    "twitter_handle": "BDAWGZ",
+    "avatar_url": null,
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 18,
+    "following": 10,
+    "total_trades": 53,
+    "total_swaps": 128,
+    "total_volume_usd": 12354.127392,
+    "top_holdings": [
+      {
+        "token_address": "0x561b382672ab4c297ba68e6c919e4973c4886b66",
+        "network_id": 8453,
+        "amount": 13867743447.27855,
+        "value_usd": 26519.68129880695,
+        "image_url": null
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "APgFrGsRk2huQoLXq4MSYbm5PgMrv1cgct8MbNb18bBV",
+    "evm_address": "0x6bb03c8e2a005344e9a001dc9542b54f92dd867f",
+    "fomo_user_id": "d6c311c6-3628-50e1-a1e9-dc21f268ba30",
+    "label": ",,",
+    "twitter_handle": "CHR4LLE",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/638c1c570f0a5e138ad4efb5d0051085.jpg",
+    "bio": "🧩",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 19,
+    "following": 0,
+    "total_trades": 58,
+    "total_swaps": 229,
+    "total_volume_usd": 106577.751286,
+    "top_holdings": [
+      {
+        "token_address": "0xb5b0f722d6d4a803d3df94c9ed12a191603eab07",
+        "network_id": 8453,
+        "amount": 1220658941.4668343,
+        "value_usd": 6426.166866159123,
+        "image_url": "https://token-media.defined.fi/8453_0xb5b0f722d6d4a803d3df94c9ed12a191603eab07_thumb_0f236a863024.png"
+      },
+      {
+        "token_address": "0xe6725be5ac8dff03538a9ef3e3a7a6bed256bb4f",
+        "network_id": 8453,
+        "amount": 11482499.360281866,
+        "value_usd": 4390.381980682428,
+        "image_url": "https://token-media.defined.fi/8453_0xe6725be5ac8dff03538a9ef3e3a7a6bed256bb4f_thumb_59ca92c03fee.png"
+      },
+      {
+        "token_address": "0x65021a79aeef22b17cdc1b768f5e79a8618beba3",
+        "network_id": 8453,
+        "amount": 146869271.70180976,
+        "value_usd": 2244.1303455660304,
+        "image_url": "https://token-media.defined.fi/8453_0x65021a79aeef22b17cdc1b768f5e79a8618beba3_thumb_4742ba90fd7f.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "6otsrYCbmidUAK3y9ZG638m8BUCsNJw4iq9Yr9t4mtyb",
+    "evm_address": "0xbb0897ecee9392760fd5957bf9ccb22676eff73d",
+    "fomo_user_id": "e2927381-64d6-5faa-99d5-0b5ef1448858",
+    "label": "gera",
+    "twitter_handle": "gera_eth",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/6df05fc8287e6f7c9498754a13f98836.jpg",
+    "bio": "sup jackass\nprofessional jeet",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 519,
+    "following": 85,
+    "total_trades": 145,
+    "total_swaps": 799,
+    "total_volume_usd": 1612306.709095,
+    "top_holdings": [
+      {
+        "token_address": "4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump",
+        "network_id": 1399811149,
+        "amount": 3365046.334659,
+        "value_usd": 5437.096378384063,
+        "image_url": "https://token-media.defined.fi/1399811149_4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump_thumb_f920afb62f1a.png"
+      },
+      {
+        "token_address": "EPuZ1X6pPzac3ELPsT59LStmgaSr4kBJvaAbL15Fpump",
+        "network_id": 1399811149,
+        "amount": 4179645.27939,
+        "value_usd": 4543.265905093867,
+        "image_url": "https://token-media.defined.fi/1399811149_EPuZ1X6pPzac3ELPsT59LStmgaSr4kBJvaAbL15Fpump_thumb_5c44bf181cc8.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.034810006,
+        "value_usd": 3.1275802323042927,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "DSFZsRgGS2sUTxpLKtwJCdYDN7GDHtn5tjgMqSzPDb3q",
+    "evm_address": "0x22b542fec428ed1b5d96c53772e711c76ddc3042",
+    "fomo_user_id": "88ffe1cd-0061-5ba1-a3f8-c7335574cafb",
+    "label": "Trench Daddy",
+    "twitter_handle": "PewPew",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/7e229b1a9036b2b1ffb293e9f8cb35cf.jpg",
+    "bio": "I can feel it coming in the air tonight, oh Lord\nAnd I've been waiting for this moment for all my life, oh Lord.",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 30,
+    "following": 284,
+    "total_trades": 207,
+    "total_swaps": 460,
+    "total_volume_usd": 142495.479852,
+    "top_holdings": [
+      {
+        "token_address": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+        "network_id": 8453,
+        "amount": 457718943.93628585,
+        "value_usd": 13847.12238953122,
+        "image_url": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png"
+      },
+      {
+        "token_address": "0x716f8e756f9277f8c9949926141c2666b86b5809",
+        "network_id": 8453,
+        "amount": 505389990.6270976,
+        "value_usd": 2626.548270936578,
+        "image_url": "https://token-media.defined.fi/8453_0x716f8e756f9277f8c9949926141c2666b86b5809_thumb_079b0767fe81.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "4v5uJuCNUTNh4Yv62wViPe74t7V628qEWByfdYTNtpLd",
+    "evm_address": "0x560791d4fe7499966ff4b862d91c90bd80db7804",
+    "fomo_user_id": "9ebc84a1-6260-5dc5-9e5c-bcf7423f3f4d",
+    "label": "dunworri",
+    "twitter_handle": "0xDunworri",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/f903d0717fce0c99246efffb605f7e0b.jpg",
+    "bio": "Don't watch that",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 18,
+    "following": 0,
+    "total_trades": 3,
+    "total_swaps": 5,
+    "total_volume_usd": 1795.975,
+    "top_holdings": [
+      {
+        "token_address": "0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959",
+        "network_id": 8453,
+        "amount": 329717970.6078225,
+        "value_usd": 21146.80318027827,
+        "image_url": "https://token-media.defined.fi/8453_0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959_thumb_ea082f4c7d03.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "CvP9Gs587N8iYCNzd7ZWZKQ5jxvdmi9C5g3FJyw8MFDA",
+    "evm_address": "0xf06df94e8977934fd3fcfc950ce6e3767bb5b956",
+    "fomo_user_id": "c37df01f-06b9-5447-8fb3-1d447c122202",
+    "label": "🦁Léon",
+    "twitter_handle": "BonBon_1769",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/711cbd6a84ff0eedcff63f050bc5c015.jpg",
+    "bio": "a few conviction plays, that’s all it takes",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 84,
+    "following": 0,
+    "total_trades": 11,
+    "total_swaps": 36,
+    "total_volume_usd": 12031.630615,
+    "top_holdings": [
+      {
+        "token_address": "32CdQdBUxbCsLy5AUHWmyidfwhgGUr9N573NBUrDpump",
+        "network_id": 1399811149,
+        "amount": 8991782.654520001,
+        "value_usd": 28970.487240866994,
+        "image_url": "https://token-media.defined.fi/1399811149_32CdQdBUxbCsLy5AUHWmyidfwhgGUr9N573NBUrDpump_thumb_5ef2c3edec8d.png"
+      },
+      {
+        "token_address": "DCzCshB6Uu5uA2jMaTscghQx4ojD5bXFgeJDzZVJpump",
+        "network_id": 1399811149,
+        "amount": 4952906.148832,
+        "value_usd": 597.7505115482957,
+        "image_url": "https://token-media.defined.fi/1399811149_DCzCshB6Uu5uA2jMaTscghQx4ojD5bXFgeJDzZVJpump_thumb_88ff1f85db0c.png"
+      },
+      {
+        "token_address": "2tkoGDwxfhGhHQrFFMJeVKwif75yGwgoyE9WM7UDpump",
+        "network_id": 1399811149,
+        "amount": 14602653.736364998,
+        "value_usd": 502.0279067802514,
+        "image_url": "https://token-media.defined.fi/1399811149_2tkoGDwxfhGhHQrFFMJeVKwif75yGwgoyE9WM7UDpump_thumb_b270bc83541e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "5QEXbHAYhSMPfGY5sCZ2hBqUL54qNQ8f2QN14ST95nvb",
+    "evm_address": "0x6e7a8cf88159b3f21d02d65a45ee7e40f21cf4dd",
+    "fomo_user_id": "78c56d1d-73cb-551d-93e0-5af2bb73dbd3",
+    "label": "Ἄρτεμις",
+    "twitter_handle": "artemisjpl",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/1e66ec6dd5c52feac5319e1bca7d12c0.jpg",
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 344,
+    "following": 0,
+    "total_trades": 167,
+    "total_swaps": 671,
+    "total_volume_usd": 280265.820498,
+    "top_holdings": [
+      {
+        "token_address": "89S7oVB4hui8ceJqhHreWB7fcxdthfvoB7z2pfJtpump",
+        "network_id": 1399811149,
+        "amount": 10541296.507039,
+        "value_usd": 9888.172276565778,
+        "image_url": "https://token-media.defined.fi/1399811149_89S7oVB4hui8ceJqhHreWB7fcxdthfvoB7z2pfJtpump_thumb_49281b9bd876.png"
+      },
+      {
+        "token_address": "4btUt5tQrN9MSfiHzZMdHf2ognjQZrWErjSJ9aiApump",
+        "network_id": 1399811149,
+        "amount": 9169330.691601,
+        "value_usd": 4002.3176401186333,
+        "image_url": "https://token-media.defined.fi/1399811149_4btUt5tQrN9MSfiHzZMdHf2ognjQZrWErjSJ9aiApump_thumb_944820e66943.png"
+      },
+      {
+        "token_address": "Ex3QnfFRethVJmvErdnvtNG3QRgALVYLA3QmQu6upump",
+        "network_id": 1399811149,
+        "amount": 10872312.044143,
+        "value_usd": 2457.487086659027,
+        "image_url": "https://token-media.defined.fi/1399811149_Ex3QnfFRethVJmvErdnvtNG3QRgALVYLA3QmQu6upump_thumb.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "7d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "2uUWCvjzA68pdww3CJVyKZGpP3jLUoEZUdxe5zCU91qr",
+    "evm_address": "0x01f85ff8dd473afe263965b0576536aaf0095124",
+    "fomo_user_id": "748d96ba-8baa-5ed8-aa5e-ba4d0db5f202",
+    "label": "Saif",
+    "twitter_handle": "s4if",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/93f2cf8817813eec1f5890b222fa99f4.jpg",
+    "bio": "dont follow me",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 5849,
+    "following": 11,
+    "total_trades": 96,
+    "total_swaps": 340,
+    "total_volume_usd": 793600.036436,
+    "top_holdings": [
+      {
+        "token_address": "38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump",
+        "network_id": 1399811149,
+        "amount": 1533.998247,
+        "value_usd": 3.0216516501945403,
+        "image_url": "https://token-media.defined.fi/1399811149_38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump_thumb_5980a167ef5d.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "GK8rXe5LQdG2HuTSmh3q6TLeiiYrBhyxpWY9Xrfmad4x",
+    "evm_address": "0xc3e132433aed79085ecab7b6bd0b3b3fae039ca8",
+    "fomo_user_id": "cb4aac28-ba84-50a0-9f32-83a65c5b94a8",
+    "label": "UPNEXT",
+    "twitter_handle": "UPNEXT",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/dde0c2207ddc171a9970deb07b79bbe0.jpg",
+    "bio": "500 dollars on 13th February\ncashed 100K(temporarily)",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 6829,
+    "following": 0,
+    "total_trades": 65,
+    "total_swaps": 312,
+    "total_volume_usd": 473590.889167,
+    "top_holdings": [
+      {
+        "token_address": "Hh3oTaqDCKKfdBgsQEvxp9sUwyNf8x9qmKqEMLBWpump",
+        "network_id": 1399811149,
+        "amount": 20071821.860375,
+        "value_usd": 48310.44397514464,
+        "image_url": "https://token-media.defined.fi/1399811149_Hh3oTaqDCKKfdBgsQEvxp9sUwyNf8x9qmKqEMLBWpump_thumb_4740ced279e9.png"
+      },
+      {
+        "token_address": "J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump",
+        "network_id": 1399811149,
+        "amount": 7546607.857923,
+        "value_usd": 13722.615523442462,
+        "image_url": "https://token-media.defined.fi/1399811149_J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump_thumb_421ff757ad23.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.925988226,
+        "value_usd": 83.19741372593042,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "EyDiU3AWmav8dkGLFRmjeVckmw9uZ3B43QtAkdURGAky",
+    "evm_address": "0x9964a2125bda87b77959ee645c278b4e07a7799e",
+    "fomo_user_id": "e780146f-9cba-584f-8532-fe52acbade6c",
+    "label": "calm",
+    "twitter_handle": "kalm",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/c9144c53b09d4a40bf59a734b049b7f5.jpg",
+    "bio": "almost forgot it’s all for fun",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 3716,
+    "following": 68,
+    "total_trades": 254,
+    "total_swaps": 635,
+    "total_volume_usd": 421247.440991,
+    "top_holdings": [],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "BncpJ3BZFqLLYp84QrzJykrLYQhDmx77vzWbv9asccnR",
+    "evm_address": "0x9c372cae003d4ac89ce50845ba3d14b21e125074",
+    "fomo_user_id": "3d75a48c-3099-5566-802c-307c01d656b3",
+    "label": "quaker",
+    "twitter_handle": "quakerrz",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/7525a5c981e889aaad87b42316fb76a5.jpg",
+    "bio": "EnderFNF",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 4323,
+    "following": 64,
+    "total_trades": 155,
+    "total_swaps": 710,
+    "total_volume_usd": 877796.50996,
+    "top_holdings": [
+      {
+        "token_address": "0xb233bdffd437e60fa451f62c6c09d3804d285ba3",
+        "network_id": 8453,
+        "amount": 219173965.06734684,
+        "value_usd": 5225.237836578623,
+        "image_url": "https://token-media.defined.fi/8453_0xb233bdffd437e60fa451f62c6c09d3804d285ba3_thumb_938203e1fb17.png"
+      },
+      {
+        "token_address": "5TbDn1dFEcUTJp69Fxnu5wbwNec6LmoK42Sr5mmNmeta",
+        "network_id": 1399811149,
+        "amount": 157574.790209,
+        "value_usd": 702.0283728233634,
+        "image_url": "https://token-media.defined.fi/1399811149_5TbDn1dFEcUTJp69Fxnu5wbwNec6LmoK42Sr5mmNmeta_thumb_e656d992d874.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.522849961,
+        "value_usd": 46.97658490735884,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "HUajEFbJ8macRgqQEwL4D8LcatMpSrpqaMZjkDjgJ4Pj",
+    "evm_address": "0x46af7ea1080dc02fb96c32b9444cd41e45293f7e",
+    "fomo_user_id": "47c1c6e7-406a-5b48-b344-457f8884b37e",
+    "label": "zoja",
+    "twitter_handle": "zoja",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/0ae8e1842a6bdbbc77fff8594739fc71.jpg",
+    "bio": "one last ride",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 689,
+    "following": 6,
+    "total_trades": 128,
+    "total_swaps": 379,
+    "total_volume_usd": 209825.79043,
+    "top_holdings": [
+      {
+        "token_address": "Hh3oTaqDCKKfdBgsQEvxp9sUwyNf8x9qmKqEMLBWpump",
+        "network_id": 1399811149,
+        "amount": 10156332.821943,
+        "value_usd": 24445.06289466606,
+        "image_url": "https://token-media.defined.fi/1399811149_Hh3oTaqDCKKfdBgsQEvxp9sUwyNf8x9qmKqEMLBWpump_thumb_4740ced279e9.png"
+      },
+      {
+        "token_address": "5Bphs5Q6nbq1FRQ7sk3MUYNE8JHzoSKVyeZWYM94pump",
+        "network_id": 1399811149,
+        "amount": 18484763.988755,
+        "value_usd": 1341.3683753762891,
+        "image_url": "https://token-media.defined.fi/1399811149_5Bphs5Q6nbq1FRQ7sk3MUYNE8JHzoSKVyeZWYM94pump_thumb_ca174a93368f.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "AGumjV4wVfGQ4CsHTCLiFLx4sVnvwtSXn1iH9EbrLg69",
+    "evm_address": "0x2b02ec2e0edb511ffca5ae77f8120546f3d9aa69",
+    "fomo_user_id": "b5c8c9cf-05d8-5928-bd7e-bceb208707d8",
+    "label": "Forgivable",
+    "twitter_handle": "0xForgivable",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/2c245476c27166cc57c2add971e056d2.jpg",
+    "bio": "extremely buns at this",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 3453,
+    "following": 45,
+    "total_trades": 104,
+    "total_swaps": 389,
+    "total_volume_usd": 1252002.679331,
+    "top_holdings": [
+      {
+        "token_address": "0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3",
+        "network_id": 8453,
+        "amount": 1036206917.9728905,
+        "value_usd": 15548.563571925364,
+        "image_url": "https://token-media.defined.fi/8453_0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3_thumb_97e7e52cd982.png"
+      },
+      {
+        "token_address": "9e1wtawpbkrJGq3vLbPGBvpQFLfsPFtjai4D9eo9pump",
+        "network_id": 1399811149,
+        "amount": 20919768.300285,
+        "value_usd": 3633.3746758797893,
+        "image_url": "https://token-media.defined.fi/1399811149_9e1wtawpbkrJGq3vLbPGBvpQFLfsPFtjai4D9eo9pump_thumb_877f0d313868.png"
+      },
+      {
+        "token_address": "9AyLH5Puifc7v9MkTgA36JabS4wiVTEZ3aEPeNoTpump",
+        "network_id": 1399811149,
+        "amount": 10022140.606326,
+        "value_usd": 1701.806390859337,
+        "image_url": "https://token-media.defined.fi/1399811149_9AyLH5Puifc7v9MkTgA36JabS4wiVTEZ3aEPeNoTpump_thumb_90a4b4df78d2.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "2stxJG4fhPfA6Uz6mz41vyLWVhDK86wWu1nEHkijZ6ne",
+    "evm_address": "0x1060d7aad50a3de3c5bbe43bf5b8df7bc31929da",
+    "fomo_user_id": "6b8b8234-583e-5ed7-8e02-ce43f47ed4cd",
+    "label": "JS",
+    "twitter_handle": "ShockedJS",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/cd8f01413307de033700d01e100cf12d.jpg",
+    "bio": "",
+    "wallet_type": "kol",
+    "tier": "standard",
+    "followers": 14633,
+    "following": 46,
+    "total_trades": 64,
+    "total_swaps": 494,
+    "total_volume_usd": 2100341.752792,
+    "top_holdings": [
+      {
+        "token_address": "2nP9yKQNSGQy851iyawDvBkzkK2R2aqKArQCKc2gpump",
+        "network_id": 1399811149,
+        "amount": 18173336.570782,
+        "value_usd": 125864.01607039964,
+        "image_url": "https://token-media.defined.fi/1399811149_2nP9yKQNSGQy851iyawDvBkzkK2R2aqKArQCKc2gpump_thumb_d6048b5336f9.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 1.3573361850000008,
+        "value_usd": 121.95280347832532,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "6UoZXacuTd9GXxUTFrxS1PC2K6vm96qLMAacytAKLbh6",
+    "evm_address": "0x80e2e0eca97b6564b45251263dcae90de7548450",
+    "fomo_user_id": "5a4444a0-4471-5b2d-ad3f-e937b1bad6fa",
+    "label": "GTO⚡️",
+    "twitter_handle": "0NIZUKA",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/03195f6e6fd43f45e98ac568472d005c.jpg",
+    "bio": null,
+    "wallet_type": "market_maker",
+    "tier": "standard",
+    "followers": 1209,
+    "following": 235,
+    "total_trades": 4615,
+    "total_swaps": 10912,
+    "total_volume_usd": 14635605.06321,
+    "top_holdings": [
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.441640282,
+        "value_usd": 39.693659297223626,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "9LtAjV1QwPGBb4QtpA1q2mdD2d4w2BRt1hC1kAnQWUMz",
+    "evm_address": "0x1f0ba103dc9ba4c15bc8891c90e3288a39e6cd51",
+    "fomo_user_id": "f2abae91-1d2a-5b26-a589-79865844e760",
+    "label": "NB",
+    "twitter_handle": "NBNB",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/319fd623b478c11283e826de02f86371.jpg",
+    "bio": "heeheehaha",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 1142,
+    "following": 36,
+    "total_trades": 110,
+    "total_swaps": 109,
+    "total_volume_usd": 230962.428283,
+    "top_holdings": [
+      {
+        "token_address": "DaTGaE6uhCfzz6Eh8hWQwL4yw3AJbXWbfvbeccdXJWED",
+        "network_id": 1399811149,
+        "amount": 5653320.712984,
+        "value_usd": 3017.8732635676415,
+        "image_url": "https://token-media.defined.fi/1399811149_DaTGaE6uhCfzz6Eh8hWQwL4yw3AJbXWbfvbeccdXJWED_thumb_3d84e2308ef2.png"
+      },
+      {
+        "token_address": "HER7thDssYXvHcbhFR8ejg1LcqyjXbzV4w1sevBXpump",
+        "network_id": 1399811149,
+        "amount": 4116927.3836000003,
+        "value_usd": 308.7778596405312,
+        "image_url": "https://token-media.defined.fi/1399811149_HER7thDssYXvHcbhFR8ejg1LcqyjXbzV4w1sevBXpump_thumb_e29ecb7cee61.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 1.624938375000011,
+        "value_usd": 145.99610067182107,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "5g6zbY31QC4jW67mM6VqXfwvFhkLcvFYPfNvNYnvpy7w",
+    "evm_address": "0x66108ae01ecfd4445f692e74108db6b7413bb444",
+    "fomo_user_id": "ba33afa0-09b5-538a-803e-c3cabde6b81f",
+    "label": "quotes",
+    "twitter_handle": "quotes",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/5d86b8d2a31c6389ff20ce43967d5958.jpg",
+    "bio": "",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 807,
+    "following": 51,
+    "total_trades": 131,
+    "total_swaps": 716,
+    "total_volume_usd": 1741991.745207,
+    "top_holdings": [
+      {
+        "token_address": "0xb233bdffd437e60fa451f62c6c09d3804d285ba3",
+        "network_id": 8453,
+        "amount": 99728261.86706333,
+        "value_usd": 2377.5811471215466,
+        "image_url": "https://token-media.defined.fi/8453_0xb233bdffd437e60fa451f62c6c09d3804d285ba3_thumb_938203e1fb17.png"
+      },
+      {
+        "token_address": "Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump",
+        "network_id": 1399811149,
+        "amount": 8817620.405855,
+        "value_usd": 289.80280883302555,
+        "image_url": "https://token-media.defined.fi/1399811149_Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump_thumb_fe3c14e95b9f.png"
+      },
+      {
+        "token_address": "5TbDn1dFEcUTJp69Fxnu5wbwNec6LmoK42Sr5mmNmeta",
+        "network_id": 1399811149,
+        "amount": 19866.827134,
+        "value_usd": 88.51083544230838,
+        "image_url": "https://token-media.defined.fi/1399811149_5TbDn1dFEcUTJp69Fxnu5wbwNec6LmoK42Sr5mmNmeta_thumb_e656d992d874.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "7hxTFZGLidRkxpQdFL28mGEyuFppENvVnVP9owqNKA5b",
+    "evm_address": "0x41d129ff121cf85ef8ffc59a390da9cd486a3781",
+    "fomo_user_id": "1fff1765-b82e-5093-962f-03e2958c47dc",
+    "label": "trepokt",
+    "twitter_handle": "trencher",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/b5c9e7412cadbf5251da3a7b37218a3a.jpg",
+    "bio": "buying dreams, selling attention.\n5k - 100k | 78%",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 396,
+    "following": 36,
+    "total_trades": 112,
+    "total_swaps": 456,
+    "total_volume_usd": 592895.587684,
+    "top_holdings": [
+      {
+        "token_address": "NV2RYH954cTJ3ckFUpvfqaQXU4ARqqDH3562nFSpump",
+        "network_id": 1399811149,
+        "amount": 1424958.8386900001,
+        "value_usd": 7940.374673295209,
+        "image_url": "https://token-media.defined.fi/1399811149_NV2RYH954cTJ3ckFUpvfqaQXU4ARqqDH3562nFSpump_thumb_93c0866ef7c1.png"
+      },
+      {
+        "token_address": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+        "network_id": 143,
+        "amount": 61438.17597159988,
+        "value_usd": 1358.7084563970818,
+        "image_url": "https://token-media.defined.fi/143_0x3bd359c1119da7da1d913d1c4d2b7c461115433a_large_small_thumb_150a1368-be39-4209-99f1-f78a7d3c1192.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 1.0534334670000003,
+        "value_usd": 94.64800688161266,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "62F1n9j3y8jQyPXXxwyAVdrLTPNdu6YcQpaUrvnodpiy",
+    "evm_address": "0xe0312c94d03cf681dcb9321ae92df2c4631a92a1",
+    "fomo_user_id": "9d7c7742-2e1f-5eac-a6bc-3969c489d03f",
+    "label": "Kimkk",
+    "twitter_handle": "kr_kimkk",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/3bfe7f9dfbbeb48157d22a33ec957650.jpg",
+    "bio": "ape before dyor",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 345,
+    "following": 33,
+    "total_trades": 57,
+    "total_swaps": 164,
+    "total_volume_usd": 293047.729814,
+    "top_holdings": [
+      {
+        "token_address": "8SkfuQkYNTskoQUbbjr2JbZQeqQV9egnJXgfMXf5bonk",
+        "network_id": 1399811149,
+        "amount": 13524030.869789002,
+        "value_usd": 84002.47279129343,
+        "image_url": "https://token-media.defined.fi/1399811149_8SkfuQkYNTskoQUbbjr2JbZQeqQV9egnJXgfMXf5bonk_thumb_b05ec18dd22b.png"
+      },
+      {
+        "token_address": "7oXNE1dbpHUp6dn1JF8pRgCtzfCy4P2FuBneWjZHpump",
+        "network_id": 1399811149,
+        "amount": 2165562.232225,
+        "value_usd": 2318.0939934352227,
+        "image_url": "https://token-media.defined.fi/1399811149_7oXNE1dbpHUp6dn1JF8pRgCtzfCy4P2FuBneWjZHpump_thumb_2edc9a026e0d.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.095890617,
+        "value_usd": 8.615499755807626,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "BGAvMMda4SLqds5XCoS5Pn8iHbxmpHjGCxZveUmVY5ap",
+    "evm_address": "0xd0a5503f0a88bf0f27b7ca9cef97fc70ffb6d745",
+    "fomo_user_id": "01abac8b-cb25-5df4-8e86-16b28e20a6ee",
+    "label": "Dormant Cell",
+    "twitter_handle": "dormant_cell",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/a789bba3bf5773ed7bcb6de601f669f5.jpg",
+    "bio": "Life is like business\nIt’s 20% of what happens to you\nand 80% how you respond. \n#BULLZ",
+    "wallet_type": "kol",
+    "tier": "standard",
+    "followers": 14030,
+    "following": 20,
+    "total_trades": 293,
+    "total_swaps": 719,
+    "total_volume_usd": 233220.744749,
+    "top_holdings": [
+      {
+        "token_address": "NV2RYH954cTJ3ckFUpvfqaQXU4ARqqDH3562nFSpump",
+        "network_id": 1399811149,
+        "amount": 4401432.280886,
+        "value_usd": 24526.337505650798,
+        "image_url": "https://token-media.defined.fi/1399811149_NV2RYH954cTJ3ckFUpvfqaQXU4ARqqDH3562nFSpump_thumb_93c0866ef7c1.png"
+      },
+      {
+        "token_address": "DJGAdx7X6YiVk9anFbVAqgJtLjiNEeqAksn6WCQ9BAGS",
+        "network_id": 1399811149,
+        "amount": 13636045.548968192,
+        "value_usd": 1776.9437548935816,
+        "image_url": "https://token-media.defined.fi/1399811149_DJGAdx7X6YiVk9anFbVAqgJtLjiNEeqAksn6WCQ9BAGS_thumb.png"
+      },
+      {
+        "token_address": "CGcajCM54hqgiWLKoio4gyBc7PMN1Sm7uw7MG17Ppump",
+        "network_id": 1399811149,
+        "amount": 13697078.916170001,
+        "value_usd": 838.4731328273239,
+        "image_url": "https://token-media.defined.fi/1399811149_CGcajCM54hqgiWLKoio4gyBc7PMN1Sm7uw7MG17Ppump_thumb_bf7e296452e4.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "31UpTRBTiNQPHbv6ViaXPKqqpfYRNBGgWtQAS5SQ9yP1",
+    "evm_address": "0xb83858211e17e2e4c9f9b9017230e110f66fd130",
+    "fomo_user_id": "efa3e41b-0d35-5ff2-83ed-4b467b23c6cc",
+    "label": "vinny",
+    "twitter_handle": "vinnysos",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/7ac084ffeb844c9ddabc6b8d784d05f7.jpg",
+    "bio": "him",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 392,
+    "following": 145,
+    "total_trades": 476,
+    "total_swaps": 1525,
+    "total_volume_usd": 665681.781497395,
+    "top_holdings": [
+      {
+        "token_address": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+        "network_id": 1399811149,
+        "amount": 135.099419,
+        "value_usd": 135.13772980018,
+        "image_url": "https://token-media.defined.fi/1399811149_Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB_thumb_6b5fce2cd871.png"
+      },
+      {
+        "token_address": "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB",
+        "network_id": 1399811149,
+        "amount": 99.4973,
+        "value_usd": 99.37811988173962,
+        "image_url": "https://token-media.defined.fi/1399811149_USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB_large_small_thumb_7f4c3eaa-b174-47d7-aa6b-1e5a3577d9d9.png"
+      },
+      {
+        "token_address": "7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj",
+        "network_id": 1399811149,
+        "amount": 0.491163116,
+        "value_usd": 53.83680971496599,
+        "image_url": "https://token-media.defined.fi/1399811149_7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj_thumb.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "AFvAcuRw8PAENgsPJJdp4evw92eMKo3u5MCvqZ1YPQxm",
+    "evm_address": "0x0a124c66489706e904d0380c79a041b912065341",
+    "fomo_user_id": "4ef6675b-e91b-550b-9414-11a786c1707d",
+    "label": "xxgod",
+    "twitter_handle": "xx910",
+    "avatar_url": null,
+    "bio": "They call me",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 319,
+    "following": 11,
+    "total_trades": 63,
+    "total_swaps": 111,
+    "total_volume_usd": 112217.047391,
+    "top_holdings": [
+      {
+        "token_address": "EmijUquKxwDNrmjz3Zzgt8hJ5wfQfWjb87jFRP76pump",
+        "network_id": 1399811149,
+        "amount": 6577279.642886,
+        "value_usd": 2098.02873194119,
+        "image_url": "https://token-media.defined.fi/1399811149_EmijUquKxwDNrmjz3Zzgt8hJ5wfQfWjb87jFRP76pump_thumb_09acfd299aa0.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "Ht8cHexE6LUf1SFbux1FdyFBK9Nd9RAvrfuszRMtf1dP",
+    "evm_address": "0x69f3bc88628c3ce255265795c4c29da8503cce5f",
+    "fomo_user_id": "3828c75f-2a77-5cb7-8c9a-3621afa5d3c5",
+    "label": "wway final boss",
+    "twitter_handle": "wwayfboss",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/90ca765b57849612193fab984724dcea.jpg",
+    "bio": "https://x.com/wwayfboss\n\nhttps://t.me/degenalphainside3000",
+    "wallet_type": "kol",
+    "tier": "standard",
+    "followers": 10465,
+    "following": 113,
+    "total_trades": 339,
+    "total_swaps": 830,
+    "total_volume_usd": 1493490.833839,
+    "top_holdings": [
+      {
+        "token_address": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+        "network_id": 1399811149,
+        "amount": 13098796.457345001,
+        "value_usd": 27115.82581185932,
+        "image_url": "https://token-media.defined.fi/1399811149_pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn_thumb_750a355e7f63.png"
+      },
+      {
+        "token_address": "H8xQ6poBjB9DTPMDTKWzWPrnxu4bDEhybxiouF8Ppump",
+        "network_id": 1399811149,
+        "amount": 6891286.6222749995,
+        "value_usd": 7644.24017185152,
+        "image_url": "https://token-media.defined.fi/1399811149_H8xQ6poBjB9DTPMDTKWzWPrnxu4bDEhybxiouF8Ppump_thumb_a232e957c104.png"
+      },
+      {
+        "token_address": "1zJX5gRnjLgmTpq5sVwkq69mNDQkCemqoasyjaPW6jm",
+        "network_id": 1399811149,
+        "amount": 425899.954033742,
+        "value_usd": 7215.694148959285,
+        "image_url": "https://token-media.defined.fi/1399811149_1zJX5gRnjLgmTpq5sVwkq69mNDQkCemqoasyjaPW6jm_thumb_201e8468ddf7.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "7SxNWwjZR86ziYXjYtrxH79Evbb4c46i4R53nTDUohjV",
+    "evm_address": "0xe1a971b537ea4077bccaf85212b70da907c3778f",
+    "fomo_user_id": "451f06df-0ed5-5540-a06a-e7ed431e6af2",
+    "label": "eztic",
+    "twitter_handle": "eztic",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/be98fe914d852cfb227a2b7e2802319d.jpg",
+    "bio": "follow me on X",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 1234,
+    "following": 3,
+    "total_trades": 94,
+    "total_swaps": 323,
+    "total_volume_usd": 485117.022881,
+    "top_holdings": [
+      {
+        "token_address": "0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3",
+        "network_id": 8453,
+        "amount": 833290624.0276272,
+        "value_usd": 12464.177713023972,
+        "image_url": "https://token-media.defined.fi/8453_0x26e6e2e7a9289b6485c53cd498de510d3a8c8ba3_thumb_97e7e52cd982.png"
+      },
+      {
+        "token_address": "F6gmgZzHt9xQxytPF2cBcYPZVKacBn9D9jXFtodqyWiC",
+        "network_id": 1399811149,
+        "amount": 29924437.538976997,
+        "value_usd": 1700.271437408971,
+        "image_url": "https://token-media.defined.fi/1399811149_F6gmgZzHt9xQxytPF2cBcYPZVKacBn9D9jXFtodqyWiC_thumb_c82a5981400f.png"
+      },
+      {
+        "token_address": "0x4200000000000000000000000000000000000006",
+        "network_id": 8453,
+        "amount": 0.04002428337191256,
+        "value_usd": 85.53594487096869,
+        "image_url": "https://assets.coingecko.com/coins/images/279/large/ethereum.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "6xW9WmsmAmsj2SnCi6TPre6wpNmTALhXRKCLRrQDZ6Qs",
+    "evm_address": "0xff20216a439e434d07676bdde8b45580a518d7f3",
+    "fomo_user_id": "2292e89a-3ba1-52ba-af2d-f0017af85203",
+    "label": "Fizzwick Bramblewhistle",
+    "twitter_handle": "fizzwickBW",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/242c2f20b0ba228ee930deec58351e83.jpg",
+    "bio": "love when u count me out",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 2110,
+    "following": 31,
+    "total_trades": 160,
+    "total_swaps": 392,
+    "total_volume_usd": 537885.951815,
+    "top_holdings": [],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "31wyxYstdfJ4DTUFNw5TQaNwdAH9SytZ6ZKmb27sNBtW",
+    "evm_address": "0x1d22bd0ac5c47371573f82dbfb65c05364f027fb",
+    "fomo_user_id": "c1a4891e-688d-50da-8fa7-d39eecf66d89",
+    "label": "Warren Nakamoto",
+    "twitter_handle": "WarrenNakamotoX",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/7495144a83708701029ddfe5b247f449.jpg",
+    "bio": "",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 1678,
+    "following": 17,
+    "total_trades": 72,
+    "total_swaps": 33,
+    "total_volume_usd": 347890.999779,
+    "top_holdings": [
+      {
+        "token_address": "0x940181a94a35a4569e4529a3cdfb74e38fd98631",
+        "network_id": 8453,
+        "amount": 723931.089447605,
+        "value_usd": 245372.725617399,
+        "image_url": "https://token-media.defined.fi/8453_0x940181a94a35a4569e4529a3cdfb74e38fd98631_thumb_8a016b98d21c.png"
+      },
+      {
+        "token_address": "0x0b3e328455c4059eeb9e3f84b5543f74e24e7e1b",
+        "network_id": 8453,
+        "amount": 15697.265938979002,
+        "value_usd": 11762.95978426328,
+        "image_url": "https://token-media.defined.fi/8453_0x0b3e328455c4059eeb9e3f84b5543f74e24e7e1b_thumb_8cf2a1dd-177f-498f-9e33-b010b4ed5693.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "8PG8UX91zKkqtYsBJLLbemHyfk5GXL2sxcKE1EvMhKxt",
+    "evm_address": "0xa6f7f7a294c0bb199986e0c4e81ae8bbb890c204",
+    "fomo_user_id": "4e85a2af-015a-52e3-a3f3-cea77b95ab2c",
+    "label": "MushuThickShark",
+    "twitter_handle": "MushuThickShark",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/1aa8e084907a6fd8b698e9722f000be7.jpg",
+    "bio": null,
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 107,
+    "following": 51,
+    "total_trades": 155,
+    "total_swaps": 692,
+    "total_volume_usd": 785646.087156,
+    "top_holdings": [
+      {
+        "token_address": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+        "network_id": 1399811149,
+        "amount": 878644.7668989998,
+        "value_usd": 23598.037000436503,
+        "image_url": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_thumb_11979a61b580.png"
+      },
+      {
+        "token_address": "AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump",
+        "network_id": 1399811149,
+        "amount": 4553271.887603,
+        "value_usd": 14641.330006244845,
+        "image_url": "https://token-media.defined.fi/1399811149_AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump_thumb_4d3b5920a127.png"
+      },
+      {
+        "token_address": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump",
+        "network_id": 1399811149,
+        "amount": 1578298.242967,
+        "value_usd": 4428.256687420991,
+        "image_url": "https://token-media.defined.fi/1399811149_5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump_thumb_630aaea11290.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "6xLh2ZzH5WXH4FWtVSQktB1yf8JajHvSbX7Es5mxecwZ",
+    "evm_address": "0xd59604a79d1ad06a2cdff5dde806db3f3968a3b7",
+    "fomo_user_id": "69288e31-d34d-5f62-bf8c-42a0230de6be",
+    "label": "martin",
+    "twitter_handle": "unconthechain100",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/8f94f9e3fcb5fcaabfccf7f9880c9dad.jpg",
+    "bio": "unc on da chain 💪🏼🧓",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 17,
+    "following": 13,
+    "total_trades": 98,
+    "total_swaps": 251,
+    "total_volume_usd": 215071.195445,
+    "top_holdings": [
+      {
+        "token_address": "5DxioZwEeAKpBaYC5veTHArKE55qRDSmb5RZ6VwApump",
+        "network_id": 1399811149,
+        "amount": 10716646.649206001,
+        "value_usd": 1728.234832311308,
+        "image_url": "https://token-media.defined.fi/1399811149_5DxioZwEeAKpBaYC5veTHArKE55qRDSmb5RZ6VwApump_thumb_557b5bd07b59.png"
+      },
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 0.38158679500001486,
+        "value_usd": 34.284490412049834,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      },
+      {
+        "token_address": "0x4200000000000000000000000000000000000006",
+        "network_id": 8453,
+        "amount": 0.005729962175125722,
+        "value_usd": 12.245509161776388,
+        "image_url": "https://assets.coingecko.com/coins/images/279/large/ethereum.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  },
+  {
+    "solana_address": "FN21W16FdBzZaHc3X6FnJVsRn1TWHK5ijncU46Zwa6rQ",
+    "evm_address": "0x181ec7be228ab464f1e529081060f04dd0b43b8c",
+    "fomo_user_id": "7b8b05b7-8564-54bb-a248-815f815222b6",
+    "label": "Alpha",
+    "twitter_handle": "alphaXquant",
+    "avatar_url": "https://prod-fomo-profile-pics.s3.amazonaws.com/6e64723a7f20d99c3a26e989f45e15ad.jpg",
+    "bio": "Make your money, forget the noise.",
+    "wallet_type": "smart_money",
+    "tier": "standard",
+    "followers": 521,
+    "following": 43,
+    "total_trades": 220,
+    "total_swaps": 478,
+    "total_volume_usd": 552792.227091,
+    "top_holdings": [
+      {
+        "token_address": "So11111111111111111111111111111111111111112",
+        "network_id": 1399811149,
+        "amount": 60.05840529399777,
+        "value_usd": 5396.077242308632,
+        "image_url": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png"
+      },
+      {
+        "token_address": "Hh3oTaqDCKKfdBgsQEvxp9sUwyNf8x9qmKqEMLBWpump",
+        "network_id": 1399811149,
+        "amount": 1391932.0971420002,
+        "value_usd": 3350.2119570389546,
+        "image_url": "https://token-media.defined.fi/1399811149_Hh3oTaqDCKKfdBgsQEvxp9sUwyNf8x9qmKqEMLBWpump_thumb_4740ced279e9.png"
+      },
+      {
+        "token_address": "3z2tRjNuQjoq6UDcw4zyEPD1Eb5KXMPYb4GWFzVT1DPg",
+        "network_id": 1399811149,
+        "amount": 169252.9094681,
+        "value_usd": 2789.2558936150454,
+        "image_url": "https://token-media.defined.fi/1399811149_3z2tRjNuQjoq6UDcw4zyEPD1Eb5KXMPYb4GWFzVT1DPg_thumb_be120290b237.png"
+      }
+    ],
+    "source": "fomo",
+    "source_period": "30d",
+    "fetched_at": "2026-03-13T17:22:02.146Z"
+  }
+]

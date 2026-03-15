@@ -1,0 +1,5525 @@
+{
+  "endpoint": "GET /tokenAllowList/detailed",
+  "url": "https://prod-api.fomo.family/tokenAllowList/detailed",
+  "request_headers": {
+    "content-type": "application/json",
+    "x-app-installation-id": "install_bc7884b4-0c4a-465b-903a-33e17158ff11",
+    "accept": "*/*",
+    "baggage": "sentry-environment=production,sentry-public_key=4e163b6befe2112027dfa32cd92ca3ba,sentry-trace_id=a4ef0028e2324601bbd7f6daf9bbcc25,sentry-org_id=4508656189702144",
+    "authorization": "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkI4SXlObWU1V0lZRnJIclJRVDBLdFlPRlFIUjFKVXFnaGVTMHhSZHR1QVkifQ.eyJzaWQiOiJjbWt6ZW5oa2MwNXM4am8wY3RrbHo1cmpqIiwiaXNzIjoicHJpdnkuaW8iLCJpYXQiOjE3NzM0MjE3NTcsImF1ZCI6ImNtNmg0ODVvMzAwbjN6ajl5bDZ2cGVkcTciLCJzdWIiOiJkaWQ6cHJpdnk6Y21rejA2N2RkMDF5Z2puMGNhaXc5aWNrcCIsImV4cCI6MTc3MzQyNTM1N30.KSKe7Zlqq97fc4QPfjM7DRQFJn2TbIjhiI5oDtSDVmm1sYOZq8Vd2Zn-4ks9I-Iepjj6jRmPmI_rhyeOayLexA",
+    "priority": "u=3, i",
+    "x-supported-chains": "1399811149,8453,56,143",
+    "accept-encoding": "gzip, deflate, br",
+    "accept-language": "en-US,en;q=0.9",
+    "sentry-trace": "a4ef0028e2324601bbd7f6daf9bbcc25-8cb897f9d3988a73",
+    "user-agent": "fomo/1.60.4/280/ios/iPhone 17 Pro Max/Apple"
+  },
+  "request_body": null,
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:11:40 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "cf-ray": "9dbca8be9d9cfb25-BNA",
+    "cf-cache-status": "DYNAMIC",
+    "content-encoding": "gzip",
+    "etag": "W/\"19a94-K2qibyUgi2jdFB6XaqT9L2ls9fE\"",
+    "server": "cloudflare",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "vary": "Origin, Accept-Encoding",
+    "access-control-allow-credentials": "true",
+    "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+    "cross-origin-opener-policy": "same-origin",
+    "cross-origin-resource-policy": "same-origin",
+    "origin-agent-cluster": "?1",
+    "referrer-policy": "no-referrer",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-download-options": "noopen",
+    "x-frame-options": "SAMEORIGIN",
+    "x-permitted-cross-domain-policies": "none",
+    "x-request-id": "6d327037-4bec-4489-b9f6-f1e76b41ebc2",
+    "x-xss-protection": "0",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "response_body": {
+    "success": true,
+    "message": "Token allowlist found",
+    "responseObject": {
+      "tokens": [
+        {
+          "name": null,
+          "ticker": "PONKE",
+          "tokenAddress": "5z3EqYQo9HiCEs3R84RCDMu2n7anpDMxRhdK8PSWmrRC",
+          "createdAt": "2025-02-12T18:05:33.474Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BUTTCOIN",
+          "tokenAddress": "FasH397CeZLNYWkd3wWK9vrmjd1z93n3b59DssRXpump",
+          "createdAt": "2025-02-12T18:05:34.020Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "balajis",
+          "tokenAddress": "0xcaf75598b8b9a6e645b60d882845d361f549f5ec",
+          "createdAt": "2025-10-02T16:58:25.363Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "dockerzxbt",
+          "tokenAddress": "0x56f8ad6112c2db9f9848243531b277ce1c3be30c",
+          "createdAt": "2025-10-02T16:58:39.656Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "jailstool",
+          "tokenAddress": "AxriehR6Xw3adzHopnvMn7GcpRFcD41ddpiTWMg6pump",
+          "createdAt": "2025-02-12T18:05:34.045Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MemesAI",
+          "tokenAddress": "39qibQxVzemuZTEvjSB7NePhw9WyyHdQCqP8xmBMpump",
+          "createdAt": "2025-02-12T18:05:33.138Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes",
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LUCE",
+          "tokenAddress": "CBdCxKo9QavR9hfShgpEBG3zekorAeD7W1jfq2o3pump",
+          "createdAt": "2025-02-12T18:05:33.163Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "propaganda",
+          "tokenAddress": "0xfe9ede4478ad200a2186175a81f9ce9f0e679270",
+          "createdAt": "2025-10-02T16:58:55.108Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "JUP",
+          "tokenAddress": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+          "createdAt": "2025-02-12T18:05:33.916Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "FRED",
+          "tokenAddress": "CNvitvFnSM5ed6K28RUNSaAjqqz5tX1rA5HgaBN9pump",
+          "createdAt": "2025-02-12T18:05:33.218Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "YNE",
+          "tokenAddress": "7D1iYWfhw2cr9yBZBFE6nZaaSUvXHqG5FizFFEZwpump",
+          "createdAt": "2025-02-12T18:05:33.500Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "jacob",
+          "tokenAddress": "0x9b13358e3a023507e7046c18f508a958cda75f54",
+          "createdAt": "2025-10-02T16:59:07.973Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "POPCAT",
+          "tokenAddress": "7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr",
+          "createdAt": "2025-02-12T18:05:33.243Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "VINE",
+          "tokenAddress": "6AJcP7wuLwmRYLBNbi825wgguaPsWzPBEHcHndpRpump",
+          "createdAt": "2025-02-12T18:05:33.604Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "jellyjelly",
+          "tokenAddress": "FeR8VBqNRSUD5NtXAj2n3j1dAHkZHfyDktKuLXD4pump",
+          "createdAt": "2025-02-12T18:05:33.630Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ZXBT",
+          "tokenAddress": "0xe99d2f7988c5f2d013a34e7484f079cab87f469f",
+          "createdAt": "2025-10-02T16:59:22.448Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MELANIA",
+          "tokenAddress": "FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P",
+          "createdAt": "2025-02-12T18:05:33.683Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MLG",
+          "tokenAddress": "7XJiwLDrjzxDYdZipnJXzpr1iDTmK55XixSFAa7JgNEL",
+          "createdAt": "2025-02-12T18:05:33.708Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "$michi",
+          "tokenAddress": "5mbK36SZ7J19An8jFochhQS4of8g6BwUjbeCSxBSoWdp",
+          "createdAt": "2025-02-12T18:05:33.272Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BOME",
+          "tokenAddress": "ukHH6c7mMyiWCf1b9pnWe25TSpkDDt3H5pQZgZ74J82",
+          "createdAt": "2025-02-12T18:05:33.297Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BAN",
+          "tokenAddress": "9PR7nCP9DpcUotnDPVLUBUZKu5WAYkwrCUx9wDnSpump",
+          "createdAt": "2025-02-12T18:05:33.322Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "RETARDIO",
+          "tokenAddress": "6ogzHhzdrQr9Pgv6hZ2MNze7UrzBMAFyBBWUYp1Fhitx",
+          "createdAt": "2025-02-12T18:05:33.346Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "AVA",
+          "tokenAddress": "DKu9kykSfbN5LBfFXtNNDPaX35o4Fv6vJ9FKk7pZpump",
+          "createdAt": "2025-02-12T18:05:33.811Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "pippin",
+          "tokenAddress": "Dfh5DzRgSvvCFDoYc2ciTkMrbDfRKybA4SoFbPmApump",
+          "createdAt": "2025-02-12T18:05:33.787Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BUZZ",
+          "tokenAddress": "9DHe3pycTuymFk4H4bbPoAJ4hQrr2kaLDF6J6aAKpump",
+          "createdAt": "2025-02-12T18:05:33.762Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MOBY",
+          "tokenAddress": "Cy1GS2FqefgaMbi45UunrUzin1rfEmTUYnomddzBpump",
+          "createdAt": "2025-02-12T18:05:33.736Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GNON",
+          "tokenAddress": "HeJUFDxfJSzYFUuHLxkMqCgytU31G6mjP4wKviwqpump",
+          "createdAt": "2025-02-12T18:05:33.192Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "DOGEAI",
+          "tokenAddress": "9UYAYvVS2cZ3BndbsoG1ScJbjfwyEPGxjE79hh5ipump",
+          "createdAt": "2025-02-12T18:05:33.839Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GRIFT",
+          "tokenAddress": "GekTNfm84QfyP2GdAHZ5AgACBRd69aNmgA5FDhZupump",
+          "createdAt": "2025-02-12T18:05:33.864Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LMT",
+          "tokenAddress": "86t88w3MKT38HChTBKBwEeb1RW1MeTceaW68qY2Vpump",
+          "createdAt": "2025-02-12T18:05:33.943Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ALCH",
+          "tokenAddress": "HNg5PYJmtqcmzXrv6S9zP1CDKk5BgDuyFBxbvNApump",
+          "createdAt": "2025-02-12T18:05:33.891Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "TRISIG",
+          "tokenAddress": "BLDiYcvm3CLcgZ7XUBPgz6idSAkNmWY6MBbm8Xpjpump",
+          "createdAt": "2025-02-12T18:05:33.969Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PENDLE",
+          "tokenAddress": "0xa99f6e6785da0f5d6fb42495fe424bce029eeb3e",
+          "createdAt": "2025-10-03T22:02:09.423Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SSE",
+          "tokenAddress": "H4phNbsqjV5rqk8u6FUACTLB6rNZRTAPGnBb8KXJpump",
+          "createdAt": "2025-02-24T19:45:24.846Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Shoggoth",
+          "tokenAddress": "H2c31USxu35MDkBrGph8pUDUnmzo2e4Rf4hnvL2Upump",
+          "createdAt": "2025-02-12T18:05:33.372Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes",
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Fullsend",
+          "tokenAddress": "AshG5mHt4y4etsjhKFb2wA2rq1XZxKks1EPzcuXwpump",
+          "createdAt": "2025-02-24T20:23:29.050Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MANEKI",
+          "tokenAddress": "25hAyBQfoDhfWx9ay6rarbgvWGwDdNqcHsXS3jQ3mTDJ",
+          "createdAt": "2025-02-12T18:05:33.396Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "WETH",
+          "tokenAddress": "7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs",
+          "createdAt": "2025-02-12T18:05:33.551Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "WSOL",
+          "tokenAddress": "So11111111111111111111111111111111111111112",
+          "createdAt": "2025-02-12T18:05:33.576Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "visualizevalue",
+          "tokenAddress": "0xd2969cc475a49e73182ae1c517add57db0f1c2ac",
+          "createdAt": "2025-10-02T16:59:36.502Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SPX",
+          "tokenAddress": "J3NKxxXZcnNiMjKw9hYb2K4LUxgwB6t1FtPtQVsv3KFr",
+          "createdAt": "2025-02-12T18:05:33.422Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "READY",
+          "tokenAddress": "HKJHsYJHMVK5VRyHHk5GhvzY9tBAAtPvDkZfDH6RLDTd",
+          "createdAt": "2025-10-03T19:11:43.366Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Ready Cards is a trading card & collectibles market supercharged by a liquidity layer that transforms collectibles into liquid, high-yield assets."
+        },
+        {
+          "name": null,
+          "ticker": "GFM",
+          "tokenAddress": "E1jCTXdkMRoawoWoqfbhiNkkLbxcSHPssMo36U84pump",
+          "createdAt": "2025-02-12T18:05:34.071Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "COOKIE",
+          "tokenAddress": "0xc0041ef357b183448b235a8ea73ce4e4ec8c265f",
+          "createdAt": "2025-10-03T22:02:29.223Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "KITTY",
+          "tokenAddress": "4N4DnNo3qpPks9aQCkcWkzoir8tnvT6diS4TnnZibonk",
+          "createdAt": "2025-10-07T21:13:37.612Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "8",
+          "tokenAddress": "8ZEfp4PkEMoGFgphvxKJrDySfS3T73DBfxKCdAsPpump",
+          "createdAt": "2025-10-09T20:03:09.866Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "UMBRA",
+          "tokenAddress": "PRVT6TB7uss3FrUd2D9xs2zqDBsa3GbMJMwCQsgmeta",
+          "createdAt": "2025-10-10T15:00:36.646Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Privacy protocol designed on Solana for swaps and transfers, powered by Arcium."
+        },
+        {
+          "name": null,
+          "ticker": "PHI",
+          "tokenAddress": "0xfb3ad5550ca5730a6f91350032c4da1efdfde3e8",
+          "createdAt": "2025-10-10T17:46:04.231Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "4",
+          "tokenAddress": "0x0a43fc31a73013089df59194872ecae4cae14444",
+          "createdAt": "2025-10-12T17:27:22.098Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "\u54c8\u57fa\u7c73",
+          "tokenAddress": "0x82ec31d69b3c289e541b50e30681fd1acad24444",
+          "createdAt": "2025-10-12T17:27:37.748Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BNBHolder",
+          "tokenAddress": "0x44440f83419de123d7d411187adb9962db017d03",
+          "createdAt": "2025-10-12T17:27:52.915Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "\u4fee\u4ed9",
+          "tokenAddress": "0x44443dd87ec4d1bea3425acc118adb023f07f91b",
+          "createdAt": "2025-10-12T17:28:09.181Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "CHILLGUY",
+          "tokenAddress": "Df6yfrKC8kZE3KNkrHERKzAetSxbrWeniQfyJY4Jpump",
+          "createdAt": "2025-02-12T18:05:33.113Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SLERF",
+          "tokenAddress": "7BgBvyjrZX1YKz4oh9mjb8ZScatkkwb8DzFx7LoiVkM3",
+          "createdAt": "2025-02-12T18:05:33.448Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GIGGLE",
+          "tokenAddress": "0x20d6015660b3fe52e6690a889b5c51f69902ce0e",
+          "createdAt": "2025-10-12T17:28:55.276Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "\u5e01\u5b89\u4eba\u751f",
+          "tokenAddress": "0x924fa68a0fc644485b8df8abfa0a41c2e7744444",
+          "createdAt": "2025-10-12T17:29:12.465Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PALU",
+          "tokenAddress": "0x02e75d28a8aa2a0033b8cf866fcf0bb0e1ee4444",
+          "createdAt": "2025-10-12T17:29:31.924Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PUP",
+          "tokenAddress": "0x73b84f7e3901f39fc29f3704a03126d317ab4444",
+          "createdAt": "2025-10-12T17:29:45.800Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ASTER",
+          "tokenAddress": "0x000ae314e2a2172a039b26378814c252734f556a",
+          "createdAt": "2025-10-12T17:29:56.585Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "meme rush",
+          "tokenAddress": "0x4444b1e4de34df52cf91e30cc7c0336ee03d7c1b",
+          "createdAt": "2025-10-12T17:30:09.762Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "priceless",
+          "tokenAddress": "0x7d03759e5b41e36899833cb2e008455d69a24444",
+          "createdAt": "2025-10-12T17:30:25.551Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Dust",
+          "tokenAddress": "0x932fb7f52adbc34ff81b4342b8c036b7b8ac4444",
+          "createdAt": "2025-10-12T17:30:36.127Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "szn",
+          "tokenAddress": "0x23b35c7f686cac8297ea6e81a467286481ca4444",
+          "createdAt": "2025-10-12T17:30:47.736Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "\u5ba2\u670d\u5c0f\u4f55",
+          "tokenAddress": "0x3ac8e2c113d5d7824ac6ebe82a3c60b1b9d64444",
+          "createdAt": "2025-10-12T17:31:06.202Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "STBL",
+          "tokenAddress": "0x8dedf84656fa932157e27c060d8613824e7979e3",
+          "createdAt": "2025-10-12T17:31:17.047Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "TWT",
+          "tokenAddress": "0x4b0f1812e5df2a09796481ff14017e6005508003",
+          "createdAt": "2025-10-12T17:34:16.424Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "FLOKI",
+          "tokenAddress": "0xfb5b838b6cfeedc2873ab27866079ac55363d37e",
+          "createdAt": "2025-10-12T17:36:22.333Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "\u9f99Long",
+          "tokenAddress": "0xc3c1b25ff8c3f828f36a030960d54082ed984444",
+          "createdAt": "2025-10-14T21:53:22.660Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "\u5976\u9f99",
+          "tokenAddress": "0x44448aca77cc60e77c90b6a60851b1bb843cc2ee",
+          "createdAt": "2025-10-14T21:54:01.236Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "TRUMP",
+          "tokenAddress": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+          "createdAt": "2025-02-12T18:05:33.655Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "11am",
+          "tokenAddress": "0xafd3a55ae8c86fb550495223f92f1af192e163fd",
+          "createdAt": "2025-10-02T16:59:52.459Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BONK",
+          "tokenAddress": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+          "createdAt": "2025-02-12T18:05:32.628Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "KMNO",
+          "tokenAddress": "KMNo3nJsBXfcpJTVhZcXLW7RmTwTt4GVFE7suUBo9sS",
+          "createdAt": "2025-03-11T16:18:58.258Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PNUT",
+          "tokenAddress": "2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump",
+          "createdAt": "2025-02-12T18:05:32.656Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MOODENG",
+          "tokenAddress": "ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY",
+          "createdAt": "2025-02-12T18:05:32.682Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GRASS",
+          "tokenAddress": "Grass7B4RdKfBCjTKgSqnXkqjwiGvQyFbuSCUJr3XXjs",
+          "createdAt": "2025-03-11T16:18:55.413Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Large Caps",
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "W",
+          "tokenAddress": "85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
+          "createdAt": "2025-03-13T22:45:45.109Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PENGU",
+          "tokenAddress": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+          "createdAt": "2025-02-12T18:05:32.708Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "pwease",
+          "tokenAddress": "CniPCE4b3s8gSUPhUiyMjXnytrEqUrMfSsnbBjLCpump",
+          "createdAt": "2025-03-04T22:31:05.252Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "FARTCOIN",
+          "tokenAddress": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
+          "createdAt": "2025-02-12T18:05:32.734Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes",
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "JTO",
+          "tokenAddress": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+          "createdAt": "2025-03-13T22:34:03.824Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "JLP",
+          "tokenAddress": "27G8MtK7VtTcCHkpASjSDdkWWYfoqT6ggEuKidVJidD4",
+          "createdAt": "2025-03-11T16:18:57.253Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "cbBTC",
+          "tokenAddress": "cbbtcf3aa214zXHbiAZQwf4122FBYbraNdFqgw4iMij",
+          "createdAt": "2025-03-05T18:29:13.282Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "RAY",
+          "tokenAddress": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+          "createdAt": "2025-03-11T16:18:55.817Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "UFD",
+          "tokenAddress": "eL5fUxj2J4CiQsmW85k5FG9DvuQjjUoBHoQBi2Kpump",
+          "createdAt": "2025-02-12T18:05:32.870Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "FWOG",
+          "tokenAddress": "A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump",
+          "createdAt": "2025-02-12T18:05:32.923Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "IMG",
+          "tokenAddress": "znv3FZt2HFAvzYf5LxzVyryh3mBXWuTRRng25gEZAjh",
+          "createdAt": "2025-02-24T20:04:13.932Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SONIC",
+          "tokenAddress": "SonicxvLud67EceaEzCLRnMTBqzYUUYNr93DBkBdDES",
+          "createdAt": "2025-03-11T16:18:58.653Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Large Caps"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GRIFFAIN",
+          "tokenAddress": "KENJSUYLASHUMfHyy5o4Hp2FdNqZg1AsUPhfH2kYvEP",
+          "createdAt": "2025-02-12T18:05:32.897Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ME",
+          "tokenAddress": "MEFNBXixkEbait3xn9bkm8WsJzXtVsaJEn4c8Sam21u",
+          "createdAt": "2025-03-13T22:45:45.542Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "VIRTUAL",
+          "tokenAddress": "3iQL8BFS2vE7mww4ehAqQHAsbmRNCrPxizWAT2Zfyr9y",
+          "createdAt": "2025-02-12T18:05:34.097Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "AntiHunter",
+          "tokenAddress": "0xe2f3fae4bc62e21826018364aa30ae45d430bb07",
+          "createdAt": "2026-02-09T21:11:43.387Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Crypto VC agent for Anti Fund, trained by founder Geoffrey Woo"
+        },
+        {
+          "name": null,
+          "ticker": "ANON",
+          "tokenAddress": "9McvH6w97oewLmPxqQEoHUAv3u5iYMyQ9AeZZhguYf1T",
+          "createdAt": "2025-02-12T18:05:34.121Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ELIZA",
+          "tokenAddress": "5voS9evDjxF589WuEub5i4ti7FWQmZCsAsyD5ucbuRqM",
+          "createdAt": "2025-02-12T18:05:32.950Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI",
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MEW",
+          "tokenAddress": "MEW1gQWJ3nEXg2qgERiKu7FAFj79PHvQVREQUzScPP5",
+          "createdAt": "2025-02-12T18:05:32.976Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SNAI",
+          "tokenAddress": "Hjw6bEcHtbHGpQr8onG3izfJY5DJiWdt7uk2BfdSpump",
+          "createdAt": "2025-02-12T18:05:34.146Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GIGA",
+          "tokenAddress": "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9",
+          "createdAt": "2025-02-12T18:05:33.004Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "TNSR",
+          "tokenAddress": "TNSRxcUxoT9xBG3de7PiJyTDYu7kskLqcpddxnEJAS6",
+          "createdAt": "2025-03-13T22:45:46.499Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ACT",
+          "tokenAddress": "GJAFwWjJ3vnTsrQVabjBVK2TYB1YtRCQXRDfDgUnpump",
+          "createdAt": "2025-02-12T18:05:33.030Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Routine",
+          "tokenAddress": "34HDZNbUkTyTrgYKy2ox43yp2f8PJ5hoM7xsrfNApump",
+          "createdAt": "2025-03-23T14:30:38.410Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ai16z",
+          "tokenAddress": "HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC",
+          "createdAt": "2025-02-12T18:05:32.786Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "DBR",
+          "tokenAddress": "DBRiDgJAMsM95moTzJs7M9LnkGErpbv9v6CUR1DXnUu5",
+          "createdAt": "2025-03-13T22:45:47.411Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Ghibli",
+          "tokenAddress": "4TBi66vi32S7J8X1A6eWfaLHYmUXu7CStcEmsJQdpump",
+          "createdAt": "2025-03-26T17:54:56.190Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes",
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ZEREBRO",
+          "tokenAddress": "8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn",
+          "createdAt": "2025-02-12T18:05:32.814Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "arc",
+          "tokenAddress": "61V8vBaqAGMpgDQi4JcAwo1dmBGHsyhzodcPqnEVpump",
+          "createdAt": "2025-02-12T18:05:32.842Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LUIGI",
+          "tokenAddress": "5XyKkFaJpAmsH4Tf2EFj3S61W3hC5cJhxNZQQ5h1pump",
+          "createdAt": "2025-02-12T18:05:32.760Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GOAT",
+          "tokenAddress": "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump",
+          "createdAt": "2025-02-12T18:05:33.056Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "memecoin",
+          "tokenAddress": "5HV956n7UQT1XdJzv43fHPocest5YAmi9ipsuiJx7zt7",
+          "createdAt": "2025-04-14T15:43:55.186Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Figure",
+          "tokenAddress": "7LSsEoJGhLeZzGvDofTdNg7M3JttxQqGWNLo6vWMpump",
+          "createdAt": "2025-04-14T15:43:54.766Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes",
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "TOFI",
+          "tokenAddress": "3SQSwa5PXDWoBjCGi5uXCgNZ7FDCD8gG8Ai5UkLppump",
+          "createdAt": "2025-04-23T18:22:40.094Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BULLY",
+          "tokenAddress": "79yTpy8uwmAkrdgZdq6ZSBTvxKsgPrNqTLvYQBh1pump",
+          "createdAt": "2025-02-12T18:05:33.084Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI",
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "JitoSOL",
+          "tokenAddress": "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
+          "createdAt": "2025-03-05T23:05:59.038Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Hosico",
+          "tokenAddress": "9wK8yN6iz1ie5kEJkvZCTxyN1x5sTdNfx8yeMY8Ebonk",
+          "createdAt": "2025-04-25T20:59:56.970Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LetsBonk",
+          "tokenAddress": "CDBdbNqmrLu1PcgjrFG52yxg71QnFhBZcUE6PSFdbonk",
+          "createdAt": "2025-04-25T22:09:18.128Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "NOBODY",
+          "tokenAddress": "C29ebrgYjYoJPMGPnPSGY1q3mMGk4iDSqnQeQQA7moon",
+          "createdAt": "2025-04-24T17:08:11.558Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "WIF",
+          "tokenAddress": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+          "createdAt": "2025-02-12T18:05:32.597Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MPLX",
+          "tokenAddress": "METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m",
+          "createdAt": "2025-03-13T22:45:46.022Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "titcoin",
+          "tokenAddress": "FtUEW73K6vEYHfbkfpdBZfWpxgQar2HipGdbutEhpump",
+          "createdAt": "2025-03-31T19:50:39.444Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ORCA",
+          "tokenAddress": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+          "createdAt": "2025-03-11T16:18:56.278Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "House",
+          "tokenAddress": "DitHyRMQiSDhn5cnKMJV2CDDt6sVct96YrECiM49pump",
+          "createdAt": "2025-04-04T19:40:55.037Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "IO",
+          "tokenAddress": "BZLbGTNCSFfoth2GYDtwr7e4imWzpR5jqcUuGEwr646K",
+          "createdAt": "2025-03-11T20:25:21.532Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Large Caps",
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PYTH",
+          "tokenAddress": "HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
+          "createdAt": "2025-03-13T22:45:44.555Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LAYER",
+          "tokenAddress": "LAYER4xPpTCb3QL8S9u41EAhAX7mhBn8Q6xMTwY2Yzc",
+          "createdAt": "2025-03-11T16:18:57.782Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "RFC",
+          "tokenAddress": "C3DwDjT17gDvvCYC2nsdGHxDHVmQRdhKfpAdqQ29pump",
+          "createdAt": "2025-04-08T17:53:56.621Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "TROLL",
+          "tokenAddress": "5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2",
+          "createdAt": "2025-04-24T17:09:17.959Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "mSOL",
+          "tokenAddress": "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",
+          "createdAt": "2025-03-11T16:18:56.734Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "italianrot",
+          "tokenAddress": "BQX1cjcRHXmrqNtoFWwmE5bZj7RPneTmqXB979b2pump",
+          "createdAt": "2025-04-24T17:09:31.414Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "gork",
+          "tokenAddress": "38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump",
+          "createdAt": "2025-05-08T21:30:40.219Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI",
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Lemon",
+          "tokenAddress": "CjqxraDuTMEcfhdqY8qEaMY43icdBrkt3EXciNVpump",
+          "createdAt": "2025-04-29T15:17:18.172Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "neet",
+          "tokenAddress": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+          "createdAt": "2025-04-29T15:18:13.089Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MOG",
+          "tokenAddress": "26VfKb7jjtdEdvfovoBijScoZmJbWWasFZkgfUD5w7cy",
+          "createdAt": "2025-05-08T11:25:07.990Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "RENDER",
+          "tokenAddress": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
+          "createdAt": "2025-05-08T21:30:17.335Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI",
+            "Large Caps"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Boop",
+          "tokenAddress": "boopkpWqe68MSxLqBGogs8ZbUDN4GXaLhFwNP7mpP1i",
+          "createdAt": "2025-05-08T21:30:29.507Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "DOOD",
+          "tokenAddress": "DvjbEsdca43oQcw2h3HW1CT7N3x5vRcr3QrvTUHnXvgV",
+          "createdAt": "2025-05-09T13:25:08.405Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "moonpig",
+          "tokenAddress": "Ai3eKAWjzKMV8wRwd41nVP83yqfbAVJykhvJVPxspump",
+          "createdAt": "2025-05-10T19:15:32.588Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "USELESS",
+          "tokenAddress": "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk",
+          "createdAt": "2025-05-11T01:12:24.156Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "DUPE",
+          "tokenAddress": "fRfKGCriduzDwSudCwpL7ySCEiboNuryhZDVJtr1a1C",
+          "createdAt": "2025-05-11T20:50:19.672Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GOONC",
+          "tokenAddress": "ENfpbQUM5xAnNP8ecyEQGFJ6KwbuPjMwv7ZjR29cDuAb",
+          "createdAt": "2025-05-13T13:09:20.543Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "UNICORN",
+          "tokenAddress": "DzN1qkcRdsxQRFb9yVvz73Fnu6SbD3f5oJgArVdx7Nzc",
+          "createdAt": "2025-05-14T21:19:19.877Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "WATCHCOIN",
+          "tokenAddress": "37CsKhfnGWjGwtsfhTbrknYpYAXG7C2J4gGR5QPZSnwY",
+          "createdAt": "2025-05-15T17:27:20.755Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "XBT",
+          "tokenAddress": "A8YHuvQBMAxXoZAZE72FyC8B7jKHo8RJyByXRRffpump",
+          "createdAt": "2025-05-16T15:03:09.713Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "KNET",
+          "tokenAddress": "CfVs3waH2Z9TM397qSkaipTDhA9wWgtt8UchZKfwkYiu",
+          "createdAt": "2025-05-19T13:22:02.477Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PROMPT",
+          "tokenAddress": "9NW7fiBu4uHpLx3rxiMccucyKwADwuptTpb8z2YYj9SH",
+          "createdAt": "2025-05-20T15:28:10.458Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "COLLAT",
+          "tokenAddress": "C7heQqfNzdMbUFQwcHkL9FvdwsFsDRBnfwZDDyWYCLTZ",
+          "createdAt": "2025-05-20T20:27:08.011Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "DIS",
+          "tokenAddress": "2AEU9yWk3dEGnVwRaKv4div5TarC4dn7axFLyz6zG4Pf",
+          "createdAt": "2025-05-21T18:39:23.954Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "IBRL",
+          "tokenAddress": "ibRLJrmgVuZh3tdDpjGgU5CQCCxpxuer7B7ckjGdLsv",
+          "createdAt": "2025-05-21T20:44:01.120Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "KING",
+          "tokenAddress": "EwBUeMFm8Zcn79iJkDns3NdcL8t8B6Xikh9dKgZtpump",
+          "createdAt": "2025-05-22T15:36:37.624Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "gib",
+          "tokenAddress": "6FtbGaqgZzti1TxJksBV4PSya5of9VqA9vJNDxPwbonk",
+          "createdAt": "2025-05-23T17:08:52.601Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LABUBU",
+          "tokenAddress": "JB2wezZLdzWfnaCfHxLg193RS3Rh51ThiXxEDWQDpump",
+          "createdAt": "2025-05-27T19:31:14.956Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "shl0ms",
+          "tokenAddress": "0x71bdd5bd8f5c8ea995fb246a26789210ddefdf33",
+          "createdAt": "2025-10-02T17:00:03.070Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "EGO",
+          "tokenAddress": "egoS1kE1g4JuExTcvG6bB6cg5LWpACQ469uk6DTMuJq",
+          "createdAt": "2025-05-28T17:48:07.185Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "OLIVIA",
+          "tokenAddress": "2fdtCHuvyLcD2q86XZGFmYbDux9ZbbUgMmFhzChqmoon",
+          "createdAt": "2025-05-29T18:22:55.502Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "KORI",
+          "tokenAddress": "HtTYHz1Kf3rrQo6AqDLmss7gq5WrkWAaXn3tupUZbonk",
+          "createdAt": "2025-05-29T21:46:11.222Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MASK",
+          "tokenAddress": "6MQpbiTC2YcogidTmKqMLK82qvE9z5QEm7EP3AEDpump",
+          "createdAt": "2025-05-31T20:00:24.073Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LOUD",
+          "tokenAddress": "EJZJpNa4tDZ3kYdcRZgaAtaKm3fLJ5akmyPkCaKmfWvd",
+          "createdAt": "2025-06-01T16:35:53.365Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "KLED",
+          "tokenAddress": "1zJX5gRnjLgmTpq5sVwkq69mNDQkCemqoasyjaPW6jm",
+          "createdAt": "2025-06-02T23:09:16.926Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Molten",
+          "tokenAddress": "0x59c0d5c34c301ac0600147924d6c9be22a2f0b07",
+          "createdAt": "2026-02-09T22:59:19.532Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": "Marketplace for AI agents to transact with each other"
+        },
+        {
+          "name": null,
+          "ticker": "Mixie",
+          "tokenAddress": "3E8muKzsn84HUUmDWdjjd6geRjv5XUpMjdpbrqi3pump",
+          "createdAt": "2025-06-05T16:29:13.782Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SKATE",
+          "tokenAddress": "9v6BKHg8WWKBPTGqLFQz87RxyaHHDygx8SnZEbBFmns2",
+          "createdAt": "2025-06-09T11:52:24.890Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "VERSE",
+          "tokenAddress": "vRseBFqTy9QLmmo5qGiwo74AVpdqqMTnxPqWoWMpump",
+          "createdAt": "2025-06-09T19:44:13.792Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "doodles",
+          "tokenAddress": "0xa79290b63cb9c4bf25943a9f28b4662882222944",
+          "createdAt": "2025-10-02T17:00:15.673Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "IKUN",
+          "tokenAddress": "AtortPA9SVbkKmdzu5zg4jxgkR4howvPshorA9jYbonk",
+          "createdAt": "2025-06-15T18:47:33.688Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "DIZZY",
+          "tokenAddress": "DiZZY2UQ2HSVsFDF6jADc6YYATiTfnQFw4Be1udRZmaY",
+          "createdAt": "2025-06-17T20:48:58.864Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PAWSE",
+          "tokenAddress": "PAWSEvC8zsXJVgBcVB3QRKfwd4P9FS6vbB963HsUEP6",
+          "createdAt": "2025-06-17T20:52:40.785Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GOR",
+          "tokenAddress": "71Jvq4Epe2FCJ7JFSF7jLXdNk1Wy4Bhqd9iL6bEFELvg",
+          "createdAt": "2025-06-19T13:42:46.285Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "A fictional meme chain of \"Gorbage\" + \"Solana\" made up by creator of Solana as a joke on Twitter."
+        },
+        {
+          "name": null,
+          "ticker": "MONKEPHONE",
+          "tokenAddress": "hxcxN81ma8m5PMzPuCyysaMJ9wqJenBr811DbX4moon",
+          "createdAt": "2025-06-27T19:26:09.112Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "coopahtroopa",
+          "tokenAddress": "0x4f4a56e5b01db944c2e77fadfa4f23dde538f343",
+          "createdAt": "2025-10-02T17:00:26.481Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "bballhy",
+          "tokenAddress": "0xe00fce0f0c44c945d23178a1246953bff33e15dd",
+          "createdAt": "2025-10-02T17:00:58.138Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "tinysoulgame",
+          "tokenAddress": "0xb600ce2781e5018b922ca471c19562799cb96ead",
+          "createdAt": "2025-10-02T17:01:18.415Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "COOKIE",
+          "tokenAddress": "0xc0041ef357b183448b235a8ea73ce4e4ec8c265f",
+          "createdAt": "2025-10-12T17:32:02.092Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "CHILLHOUSE",
+          "tokenAddress": "GkyPYa7NnCFbduLknCfBfP7p8564X1VZhwZYJ6CZpump",
+          "createdAt": "2025-07-09T21:57:52.142Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Just a chill house."
+        },
+        {
+          "name": null,
+          "ticker": "TOKABU",
+          "tokenAddress": "H8xQ6poBjB9DTPMDTKWzWPrnxu4bDEhybxiouF8Ppump",
+          "createdAt": "2025-07-10T19:34:12.089Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BLESS",
+          "tokenAddress": "0x7c8217517ed4711fe2deccdfeffe8d906b9ae11f",
+          "createdAt": "2025-10-12T17:32:26.437Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "aura",
+          "tokenAddress": "DtR4D9FtVoTX2569gaL837ZgrB6wNjj6tkmnX9Rdk9B2",
+          "createdAt": "2025-07-11T15:58:09.103Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PUMP",
+          "tokenAddress": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+          "createdAt": "2025-07-14T16:51:00.545Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ANI",
+          "tokenAddress": "9tqjeRS1swj36Ee5C1iGiwAxjQJNGAVCzaTLwFY8bonk",
+          "createdAt": "2025-07-15T17:02:23.534Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes",
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "AQUARIUS",
+          "tokenAddress": "C49Ut3om3QFTDrMZ5Cr8VcTKPpHDcQ2Fv8mmuJHHigDt",
+          "createdAt": "2025-07-15T21:39:43.116Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GEMINI",
+          "tokenAddress": "ARiZfq6dK19uNqxWyRudhbM2MswLyYhVUHdndGkffdGc",
+          "createdAt": "2025-07-15T21:40:01.281Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "CANCER",
+          "tokenAddress": "CmomKM8iPKRSMN7y1jqyW1QKj5bGoZmbvNZXWBJSUdnZ",
+          "createdAt": "2025-07-15T21:40:10.902Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LIBRA",
+          "tokenAddress": "7Zt2KUh5mkpEpPGcNcFy51aGkh9Ycb5ELcqRH1n2GmAe",
+          "createdAt": "2025-07-15T21:41:29.482Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LEO",
+          "tokenAddress": "8Cd7wXoPb5Yt9cUGtmHNqAEmpMDrhfcVqnGbLC48b8Qm",
+          "createdAt": "2025-07-15T21:41:38.196Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SAGIT",
+          "tokenAddress": "8x17zMmVjJxqswjX4hNpxVPc7Tr5UabVJF3kv8TKq8Y3",
+          "createdAt": "2025-07-15T21:41:56.894Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "VIRGO",
+          "tokenAddress": "Ez4bst5qu5uqX3AntYWUdafw9XvtFeJ3gugytKKbSJso",
+          "createdAt": "2025-07-15T21:42:04.610Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PISCES",
+          "tokenAddress": "3JsSsmGzjWDNe9XCw2L9vznC5JU9wSqQeB6ns5pAkPeE",
+          "createdAt": "2025-07-15T21:42:12.663Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ARIES",
+          "tokenAddress": "GhFiFrExPY3proVF96oth1gESWA5QPQzdtb8cy8b1YZv",
+          "createdAt": "2025-07-15T21:42:19.507Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "CAPRI",
+          "tokenAddress": "3C2SN1FjzE9MiLFFVRp7Jhkp8Gjwpk29S2TCSJ2jkHn2",
+          "createdAt": "2025-07-15T21:42:27.899Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "TAURUS",
+          "tokenAddress": "EjkkxYpfSwS6TAtKKuiJuNMMngYvumc1t1v9ZX1WJKMp",
+          "createdAt": "2025-07-15T21:42:37.603Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SCORPIO",
+          "tokenAddress": "J4fQTRN13MKpXhVE74t99msKJLbrjegjEgLBnzEv2YH1",
+          "createdAt": "2025-07-15T21:43:18.766Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ES",
+          "tokenAddress": "BqPqrrQuoQXFGGEAEMnPmDgZ6RWQCajWnY3V6Yp4DZWP",
+          "createdAt": "2025-07-16T08:49:00.469Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "RT",
+          "tokenAddress": "3uxMtF7dT2VSvRFkrLf9Gqm4nDDy2J5RBEXCQpjubonk",
+          "createdAt": "2025-07-16T20:42:19.877Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "DOGEai migration to BONK."
+        },
+        {
+          "name": null,
+          "ticker": "uXRP",
+          "tokenAddress": "2jcHBYd9T2Mc9nhvFEBCDuBN1XjbbQUVow67WGWhv6zT",
+          "createdAt": "2025-07-16T22:17:03.045Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Large Caps"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "uSUI",
+          "tokenAddress": "756wWVqA9tpZpxqNxCiJYSCGWi3gD2NXfwKHh4YsYJg9",
+          "createdAt": "2025-07-16T22:17:44.466Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Large Caps"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GP",
+          "tokenAddress": "31k88G5Mq7ptbRDf3AM13HAq6wRQHXHikR8hik7wPygk",
+          "createdAt": "2025-07-16T22:34:11.161Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "STARTUP",
+          "tokenAddress": "97PVGU2DzFqsAWaYU17ZBqGvQFmkqtdMywYBNPAfy8vy",
+          "createdAt": "2025-07-16T22:34:45.651Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ALEO",
+          "tokenAddress": "0x6cfffa5bfd4277a04d83307feedfe2d18d944dd2",
+          "createdAt": "2025-10-12T17:32:37.238Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BlueChip",
+          "tokenAddress": "DHJVYXsikcimtcVo49FAZqYd1XPYPaXezYhbKArJbonk",
+          "createdAt": "2025-07-16T22:35:19.966Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "URANUS",
+          "tokenAddress": "BFgdzMkTPdKKJeTipv2njtDEwhKxkgFueJQfJGt1jups",
+          "createdAt": "2025-07-16T22:35:37.424Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "RUDI",
+          "tokenAddress": "2rVgh6tcU1Hhk58XwD631E2D6iqLV28prSdpBXaLbonk",
+          "createdAt": "2025-07-16T22:36:54.341Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Memecoin",
+          "tokenAddress": "4daoTLufDmV3ods48Zh8rymaZKBLtgEvuH9qALYLbonk",
+          "createdAt": "2025-07-22T14:53:45.340Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "AI",
+          "tokenAddress": "7tAnusL3srXjzEriVL86a23KgwDZKXJTZ2ezEUubonk",
+          "createdAt": "2025-07-25T23:16:35.479Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes",
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "DEBT",
+          "tokenAddress": "vLieQF5eDqUuuk8RzRaqgAHkXr7bSEBZaWk9Zfibonk",
+          "createdAt": "2025-07-28T14:39:40.411Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Meme on US National Debt"
+        },
+        {
+          "name": null,
+          "ticker": "ZYN",
+          "tokenAddress": "PzuaVAUH2tfxGZcbBR6kMxeJsBngnsPLFotGJNCtcsd",
+          "createdAt": "2025-07-28T19:04:04.592Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "uDOGE",
+          "tokenAddress": "BFARNBVWNfZfh3JQJLhogQJ9bkop4Y8LaDHeSxDDk5nn",
+          "createdAt": "2025-07-30T14:55:00.106Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "mpSOL",
+          "tokenAddress": "MpsoLp1YBDqeiuSrVrYH4DoAGJ3myAMmMy6crYNVSTo",
+          "createdAt": "2025-08-01T20:13:44.819Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "WORTHLESS",
+          "tokenAddress": "iUdvUaxyRHh8PYVcmkgBpSJu5evpW6jsSLv8RCpmoon",
+          "createdAt": "2025-08-01T20:53:39.840Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "DETECTIVE",
+          "tokenAddress": "9X45NjtGbGo9zdCFmMyqZyNzC6Wa67KFbfvGc8nubonk",
+          "createdAt": "2025-08-01T21:39:12.737Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LIZARD",
+          "tokenAddress": "347k5f1WLRYe81roRcLBWDR6k3eCRunaqetQPW6pbonk",
+          "createdAt": "2025-08-05T00:08:34.160Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SPARK",
+          "tokenAddress": "5zCETicUCJqJ5Z3wbfFPZqtSpHPYqnggs1wX7ZRpump",
+          "createdAt": "2025-08-05T22:25:06.855Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "FF",
+          "tokenAddress": "0xac23b90a79504865d52b49b327328411a23d4db2",
+          "createdAt": "2025-10-12T17:32:48.070Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "HEMI",
+          "tokenAddress": "0xeb964a1a6fab73b8c72a0d15c7337fa4804f484d",
+          "createdAt": "2025-10-12T17:32:57.256Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BARD",
+          "tokenAddress": "0xd23a186a78c0b3b805505e5f8ea4083295ef9f3a",
+          "createdAt": "2025-10-12T17:33:07.376Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PMX",
+          "tokenAddress": "J27UYHX5oeaG1YbUGQc8BmJySXDjNWChdGB2Pi2TMDAq",
+          "createdAt": "2025-06-06T19:04:07.327Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Punch",
+          "tokenAddress": "NV2RYH954cTJ3ckFUpvfqaQXU4ARqqDH3562nFSpump",
+          "createdAt": "2026-02-15T17:18:19.871Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "A monkey from Ichikawa City Zoo, who gained fame for hugging a plush orangutan toy"
+        },
+        {
+          "name": null,
+          "ticker": "MUSHU",
+          "tokenAddress": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump",
+          "createdAt": "2026-02-15T23:47:44.760Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MIGHTFLY",
+          "tokenAddress": "72Nb8vtM6KPhiidZBscKVzzyUrUckM83B4ChW6Vpump",
+          "createdAt": "2025-08-08T20:55:39.017Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BOSS",
+          "tokenAddress": "GUy9Tu8YtvvHoL3DcXLJxXvEN8PqEus6mWQUEchcbonk",
+          "createdAt": "2025-08-08T20:56:19.133Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "CLIPPY",
+          "tokenAddress": "7eMJmn1bYWSQEwxAX7CyngBzGNGu1cT582asKxxRpump",
+          "createdAt": "2025-08-09T19:41:43.676Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "dollo",
+          "tokenAddress": "5EaYZcaKfTVdpQ2avVtJ7BNWJ1Rnj86F1dWxppawpump",
+          "createdAt": "2025-08-11T18:07:50.216Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LIGHT",
+          "tokenAddress": "LiGHtkg3uTa9836RaNkKLLriqTNRcMdRAhqjGWNv777",
+          "createdAt": "2025-08-11T21:23:18.399Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "nub",
+          "tokenAddress": "GtDZKAqvMZMnti46ZewMiXCa4oXF4bZxwQPoKzXPFxZn",
+          "createdAt": "2025-08-13T18:38:57.845Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "nailong",
+          "tokenAddress": "mkvXiNBpa8uiSApe5BrhWVJaT87pJFTZxRy7zFapump",
+          "createdAt": "2025-08-13T18:39:48.518Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "littleguy",
+          "tokenAddress": "3Cmv9wxP1yNQZErQEFabB3L8uHxz49AtCRMrbKnBSozq",
+          "createdAt": "2025-08-14T17:48:13.335Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "HUSTLE",
+          "tokenAddress": "HUSTLFV3U5Km8u66rMQExh4nLy7unfKHedEXVK1WgSAG",
+          "createdAt": "2025-08-15T16:37:16.070Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "anoncoin",
+          "tokenAddress": "D25bi7oHQjqkVrzbfuM6k2gzVNHTSpBLhtakDCzCCDUB",
+          "createdAt": "2025-08-15T19:31:44.836Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "HALO",
+          "tokenAddress": "78xmpyP3A6suGGoz62ZnsuhBtHxuHS3AooD445wKn777",
+          "createdAt": "2025-08-16T19:16:27.278Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "DARK",
+          "tokenAddress": "6pvtv14ye2nvxqCR8fc8y7TTU6SkLGyaSVnVNS9V6777",
+          "createdAt": "2025-08-20T16:36:51.291Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "DARK",
+          "tokenAddress": "8BtoThi2ZoXnF7QQK1Wjmh2JuBw9FjVvhnGMVZ2vpump",
+          "createdAt": "2025-08-20T16:39:11.604Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes",
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "CLANKER",
+          "tokenAddress": "3qq54YqAKG3TcrwNHXFSpMCWoL8gmMuPceJ4FG9npump",
+          "createdAt": "2025-08-20T18:05:40.647Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes",
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "YZY",
+          "tokenAddress": "DrZ26cKJDksVRWib3DVVsjo9eeXccc7hKhDJviiYEEZY",
+          "createdAt": "2025-08-21T02:24:33.554Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MAYA",
+          "tokenAddress": "EtL967sgMgeDDSUrNhtQrbhe4T92idzqf4VuA6H7uGfQ",
+          "createdAt": "2026-02-17T01:17:23.066Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Elon claims a dog named Maya voted for President"
+        },
+        {
+          "name": null,
+          "ticker": "LLM",
+          "tokenAddress": "BnszRWbs9LxSzsCUUS57HMTNNtyDHFsnmZ1mVhAYdaos",
+          "createdAt": "2025-08-24T16:03:35.137Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes",
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "COPE",
+          "tokenAddress": "DMwbVy48dWVKGe9z1pcVnwF3HLMLrqWdDLfbvx8RchhK",
+          "createdAt": "2025-08-28T12:49:45.457Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "AOL",
+          "tokenAddress": "2oQNkePakuPbHzrVVkQ875WHeewLHCd2cAwfwiLQbonk",
+          "createdAt": "2025-08-30T03:12:47.285Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MITCH",
+          "tokenAddress": "FDEF2U9geiWS7sdGPCUo2r1wGswkJr2mmVTECiH6pump",
+          "createdAt": "2025-09-02T23:00:39.268Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "CARDS",
+          "tokenAddress": "CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
+          "createdAt": "2025-09-03T12:33:29.588Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "HUCH",
+          "tokenAddress": "B8zW7B8T7ntCiiRYw18jrFu9MBqMZVk9pP7nYyT5iBLV",
+          "createdAt": "2025-09-03T12:33:58.614Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "USDUC",
+          "tokenAddress": "CB9dDufT3ZuQXqqSfa1c5kY935TEreyBw9XJXxHKpump",
+          "createdAt": "2025-09-03T16:01:41.719Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "STREAMER",
+          "tokenAddress": "3arUrpH3nzaRJbbpVgY42dcqSq9A5BFgUxKozZ4npump",
+          "createdAt": "2025-09-04T14:16:50.198Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "QSTAY",
+          "tokenAddress": "96hj47MzSpZgVcT1v4nwpbQNEU59f6ys48PArGivpump",
+          "createdAt": "2025-09-07T19:26:18.269Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Aims to be onchain AIRBNB, with 350+ properties and $18m in revenue in 2024."
+        },
+        {
+          "name": null,
+          "ticker": "EAGLE",
+          "tokenAddress": "4JPyh4ATbE8hfcH7LqhxF3YThsECZm6htmLvMUyrbonk",
+          "createdAt": "2025-09-07T21:22:56.622Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Meme created based off of Bonk Fun & World Liberty Financial (WLFI) partnership"
+        },
+        {
+          "name": null,
+          "ticker": "pickle",
+          "tokenAddress": "DAfKg6exaeMMUQeqwRq3UP5KYPJjFNyVuVzFfr4kpump",
+          "createdAt": "2025-09-08T15:28:23.679Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "All fees go towards accruing Ben Johns' rookie card (the best male player in the sport of Pickleball)"
+        },
+        {
+          "name": null,
+          "ticker": "APE",
+          "tokenAddress": "C1MHyoTJpRTeS9AQCyspNVu2EWAYCZwmJ1jNkEArFP1f",
+          "createdAt": "2025-09-09T21:44:43.063Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Official token of Bored Ape Yacht Club and ApeChain launched on Solana"
+        },
+        {
+          "name": null,
+          "ticker": "POLYFACTS",
+          "tokenAddress": "FfixAeHevSKBZWoXPTbLk4U4X9piqvzGKvQaFo3cpump",
+          "createdAt": "2025-09-10T15:59:48.730Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "murica",
+          "tokenAddress": "rnMLBLnUueJveGpLCS2BGsY3McJGRXZ8bqQ8eBWbonk",
+          "createdAt": "2025-09-10T22:54:25.008Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "USA-themed coin born from Bonk + World Liberty Fi's new USD1 stablecoin partnership"
+        },
+        {
+          "name": null,
+          "ticker": "ZARD",
+          "tokenAddress": "EebvSxfGbjyHMJ2bu1jhtNidbhVbQJtcg9y561Kipump",
+          "createdAt": "2025-09-12T12:30:39.637Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Fees earned are used to buy a reserve of PSA graded Charizards"
+        },
+        {
+          "name": null,
+          "ticker": "Bagwork",
+          "tokenAddress": "7Pnqg1S6MYrL6AP1ZXcToTHfdBbTB77ze6Y33qBBpump",
+          "createdAt": "2025-09-13T19:16:47.176Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Streamers working for their bags by using fees to entertain viewers"
+        },
+        {
+          "name": null,
+          "ticker": "BUN COIN",
+          "tokenAddress": "HQDTzNa4nQVetoG6aCbSLX9kcH7tSv2j2sTV67Etpump",
+          "createdAt": "2025-09-14T15:23:08.308Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Ex pro-gamer with 1.5M YouTube followers streaming on Pump.fun"
+        },
+        {
+          "name": null,
+          "ticker": "KIND",
+          "tokenAddress": "V5cCiSixPLAiEDX2zZquT5VuLm4prr5t35PWmjNpump",
+          "createdAt": "2025-09-14T15:23:56.353Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "All fees are donated to small streamers, supporting their content and helping them grow"
+        },
+        {
+          "name": null,
+          "ticker": "1",
+          "tokenAddress": "GMvCfcZg8YvkkQmwDaAzCtHDrrEtgE74nQpQ7xNabonk",
+          "createdAt": "2025-09-18T18:21:55.743Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "\"1 coin can change your life\" memecoin"
+        },
+        {
+          "name": null,
+          "ticker": "ZEX",
+          "tokenAddress": "ZEXy1pqteRu3n13kdyh4LwPQknkFk3GzmMYMuNadWPo",
+          "createdAt": "2025-09-18T22:29:32.352Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Bullet.xyz - Perps + spot DEX built via Solana network extension"
+        },
+        {
+          "name": null,
+          "ticker": "MESA",
+          "tokenAddress": "5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump",
+          "createdAt": "2025-09-19T14:56:20.457Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes",
+            "AI"
+          ],
+          "notes": "Half-Life themed AI agent livestream with viewer interaction"
+        },
+        {
+          "name": null,
+          "ticker": "QUEST",
+          "tokenAddress": "9EnydDKQL2KeE4Eq9FcWuDMpaBs8q4iyt2MPayWSpump",
+          "createdAt": "2025-09-19T21:44:00.176Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Challenge streamers to do quests for prizes. Big name streamers like Kai Cenat among participants."
+        },
+        {
+          "name": null,
+          "ticker": "QTO",
+          "tokenAddress": "quantoL84tL1HvygKcz3TJtWRU6dFPW8imMzCa4qxGW",
+          "createdAt": "2025-09-24T17:12:20.115Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": "Solana-based perpetuals decentralized exchange (DEX) with 600+ markets and various forms of margin collateral"
+        },
+        {
+          "name": null,
+          "ticker": "NYX",
+          "tokenAddress": "7W4geAJyy7hxuPXESMMBaW8Zi4MbhVN9uvt6BJ2SEPAV",
+          "createdAt": "2025-09-25T02:26:51.690Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes",
+            "AI"
+          ],
+          "notes": "AI agent experiment that pays people to spread the word about itself"
+        },
+        {
+          "name": null,
+          "ticker": "SWTCH",
+          "tokenAddress": "SW1TCHLmRGTfW5xZknqQdpdarB8PD95sJYWpNp9TbFx",
+          "createdAt": "2025-09-26T01:36:11.543Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "USDT",
+          "tokenAddress": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+          "createdAt": "2025-09-26T17:31:31.069Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "VIRUS",
+          "tokenAddress": "DdcvRiEs4k2fXbHqeJBS5jgGD93rj1wu6u8WTL4vmBLV",
+          "createdAt": "2025-10-01T01:18:21.578Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Game studio behind Infected.fun and Addicted.fun has launched a token that captures all fees from their games."
+        },
+        {
+          "name": null,
+          "ticker": "2Z",
+          "tokenAddress": "J6pQQ3FAcJQeWPPGppWRb4nM8jU3wLyYbRrLh7feMfvd",
+          "createdAt": "2025-10-02T13:01:31.202Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "High performance DePIN network for blockchains. DoubleZero allows blockchains to scale TPS beyond the limits of the current public internet. DoubleZero mainnet went live today and currently hosts 22% of all Solana stake."
+        },
+        {
+          "name": null,
+          "ticker": "bored",
+          "tokenAddress": "0xed07f4baffda18d9acbbdcee067884f2f42e05e7",
+          "createdAt": "2025-10-02T17:06:30.124Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "cc0studios",
+          "tokenAddress": "0x8b7d8d35371fbb8c57d6da95302decd1a46be9d5",
+          "createdAt": "2025-10-02T17:10:37.817Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "FLAY",
+          "tokenAddress": "0xf1a7000000950c7ad8aff13118bb7ab561a448ee",
+          "createdAt": "2025-10-02T18:14:31.903Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "META",
+          "tokenAddress": "METAwkXcqyXKy1AtsSgJ8JiUHwGCafnZL38n3vYmeta",
+          "createdAt": "2025-10-03T12:51:18.873Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": "Launchpad where token holders influence project decisions (market-driven decision-making). Backed by prominent venture firm Paradigm"
+        },
+        {
+          "name": null,
+          "ticker": "ICM",
+          "tokenAddress": "G5bStqnKXv11fmPvMaagUbZi86BGnpf9zZtyPQtAdaos",
+          "createdAt": "2025-10-03T17:33:59.417Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "First ICM (Internet Capital Markets) focused incubator on Solana, supporting Believe and Meteora ecosystems. Launched on DAOS.fun"
+        },
+        {
+          "name": null,
+          "ticker": "WLFI",
+          "tokenAddress": "WLFinEv6ypjkczcS83FZqFpgFZYwQXutRbxGe7oC16g",
+          "createdAt": "2025-09-02T16:53:44.147Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Defi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "FAI",
+          "tokenAddress": "0xb33ff54b9f7242ef1593d2c9bcd8f9df46c77935",
+          "createdAt": "2025-10-02T14:39:05.017Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "phil",
+          "tokenAddress": "0x4ac70db866f68297d0c9acdf287f78daeb8a3a9c",
+          "createdAt": "2025-10-02T17:10:54.990Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Clash",
+          "tokenAddress": "6nR8wBnfsmXfcdDr1hovJKjvFQxNSidN6XFyfAFZpump",
+          "createdAt": "2025-10-03T19:06:15.167Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Creator coin for George AKA CryptoRUs (on Youtube), who plays Clash Royale on stream."
+        },
+        {
+          "name": null,
+          "ticker": "LINK",
+          "tokenAddress": "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd",
+          "createdAt": "2025-10-12T17:35:35.333Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "CAKE",
+          "tokenAddress": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+          "createdAt": "2025-10-12T17:35:49.478Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "WBNB",
+          "tokenAddress": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+          "createdAt": "2025-10-12T17:33:29.900Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LION",
+          "tokenAddress": "8NfK7b9u1RvMpHJnAnZki4mNQwjhvzrVZs7bRQatpump",
+          "createdAt": "2025-10-12T18:29:21.811Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "\u201cThe lion does not concern himself with \u2026\u201d meme"
+        },
+        {
+          "name": null,
+          "ticker": "\u91d1\u72d7",
+          "tokenAddress": "0x3111c6db57d395365c8210ea1a1aad4c69224444",
+          "createdAt": "2025-10-14T21:50:13.545Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BSC",
+          "tokenAddress": "0x6331bf8d601f0d7f0d2101772af5137c418c4444",
+          "createdAt": "2025-10-14T21:53:41.605Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PUMPCADE",
+          "tokenAddress": "Eg2ymQ2aQqjMcibnmTt8erC6Tvk9PVpJZCxvVPJz2agu",
+          "createdAt": "2025-10-14T23:14:34.659Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Autonomous arcade built on Pump Fun"
+        },
+        {
+          "name": null,
+          "ticker": "PIPE",
+          "tokenAddress": "7s9MoSt7VV1J3jVNnw2AyocsQDBdCkPYz5apQDPKy9i5",
+          "createdAt": "2025-10-16T14:50:47.514Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "KIMCHI",
+          "tokenAddress": "HaUXAdAWWUkb2WTmh8z1TdaEmZkYjnQnmC6tHUdTAHvi",
+          "createdAt": "2026-02-17T20:56:07.990Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LAB",
+          "tokenAddress": "0x7ec43cf65f1663f820427c62a5780b8f2e25593a",
+          "createdAt": "2025-10-16T19:19:09.654Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Multi-chain trading terminal that uses fees to buy back and burn $LAB"
+        },
+        {
+          "name": null,
+          "ticker": "\ud83e\udef0",
+          "tokenAddress": "0xd6d4854c63055e7d0caae22ab8c4e023104a4444",
+          "createdAt": "2025-10-17T00:30:55.055Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "DTV",
+          "tokenAddress": "CPLTbYbtDMKZtHBaPqdDmHjxNwESCEB14gm6VuoDpump",
+          "createdAt": "2025-10-18T14:05:25.077Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Streaming coin on Pump Fun, backed by prominent investor Tim Draper\u2019s \u2018StreamDraperTV\u2019"
+        },
+        {
+          "name": null,
+          "ticker": "$AVICI",
+          "tokenAddress": "BANKJmvhT8tiJRsBSS1n2HryMBPvT5Ze4HU95DUAmeta",
+          "createdAt": "2025-10-18T18:49:09.609Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "App that lets you spend crypto holdings via Visa card. Launched on MetaDAO"
+        },
+        {
+          "name": null,
+          "ticker": "BELIEVE",
+          "tokenAddress": "BLVxek8YMXUQhcKmMvrFTrzh5FXg8ec88Crp6otEaCMf",
+          "createdAt": "2025-10-21T16:05:19.637Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PANDU",
+          "tokenAddress": "4NGbC4RRrUjS78ooSN53Up7gSg4dGrj6F6dxpMWHbonk",
+          "createdAt": "2025-10-21T19:18:35.711Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "AI Friend on the Blockchain. AI, NFT & coin project"
+        },
+        {
+          "name": null,
+          "ticker": "HYPE",
+          "tokenAddress": "98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g",
+          "createdAt": "2025-10-21T19:41:08.747Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps"
+          ],
+          "notes": "Hyperliquid is today's dominant decentralized perpetuals exchange that runs on its own L1 blockchain (of the same name). HYPE is available on Solana today via the Wormhole bridge."
+        },
+        {
+          "name": null,
+          "ticker": "LMTS",
+          "tokenAddress": "0x9eadbe35f3ee3bf3e28180070c429298a1b02f93",
+          "createdAt": "2025-10-22T13:22:07.174Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Prediction markets platform with hourly crypto and stock price markets."
+        },
+        {
+          "name": null,
+          "ticker": "LOYAL",
+          "tokenAddress": "LYLikzBQtpa9ZgVrJsqYGQpR3cC1WMJrBHaXGrQmeta",
+          "createdAt": "2025-10-22T23:00:39.886Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": "Loyal is an open source, decentralized, censorship-resistant and auditable intelligence protocol, powered by MagicBlock & Arcium"
+        },
+        {
+          "name": null,
+          "ticker": "doginme",
+          "tokenAddress": "0x6921b130d297cc43754afba22e5eac0fbf8db75b",
+          "createdAt": "2025-10-02T14:41:49.295Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ZORA",
+          "tokenAddress": "0x1111111111166b7fe7bd91427724b487980afc69",
+          "createdAt": "2025-10-02T14:39:30.094Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BRETT",
+          "tokenAddress": "0x532f27101965dd16442e59d40670faf5ebb142e4",
+          "createdAt": "2025-10-02T14:39:50.325Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SKI",
+          "tokenAddress": "0x768be13e1680b5ebe0024c42c896e3db59ec0149",
+          "createdAt": "2025-10-02T14:40:09.012Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ORDER",
+          "tokenAddress": "0x4e200fe2f3efb977d5fd9c430a41531fb04d97b8",
+          "createdAt": "2025-10-02T14:42:50.867Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "KEYCAT",
+          "tokenAddress": "0x9a26f5433671751c3276a065f57e5a02d2817973",
+          "createdAt": "2025-10-02T14:43:04.648Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "TOSHI",
+          "tokenAddress": "0xac1bd2486aaf3b5c0fc3fd868558b082a531b2b4",
+          "createdAt": "2025-10-02T14:43:16.723Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "TYBG",
+          "tokenAddress": "0x0d97f261b1e88845184f678e2d1e7a98d9fd38de",
+          "createdAt": "2025-10-02T14:43:31.807Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "mfer",
+          "tokenAddress": "0xe3086852a4b125803c815a158249ae468a3254ca",
+          "createdAt": "2025-10-02T14:43:46.221Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MORPHO",
+          "tokenAddress": "0xbaa5cc21fd487b8fcc2f632f3f4e8d37262a0842",
+          "createdAt": "2025-10-02T14:44:01.633Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MAMO",
+          "tokenAddress": "0x7300b37dfdfab110d83290a29dfb31b1740219fe",
+          "createdAt": "2025-10-02T14:44:26.956Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MOCHI",
+          "tokenAddress": "0xf6e932ca12afa26665dc4dde7e27be02a7c02e50",
+          "createdAt": "2025-10-02T14:44:43.446Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BANKR",
+          "tokenAddress": "0x22af33fe49fd1fa80c7149773dde5890d3c76f3b",
+          "createdAt": "2025-10-02T14:44:59.418Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "AVNT",
+          "tokenAddress": "0x696f9436b67233384889472cd7cd58a6fb5df4f1",
+          "createdAt": "2025-10-02T14:46:20.044Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "TIBBIR",
+          "tokenAddress": "0xa4a2e2ca3fbfe21aed83471d28b6f65a233c6e00",
+          "createdAt": "2025-10-02T14:46:32.286Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "DEGEN",
+          "tokenAddress": "0x4ed4e862860bed51a9570b96d89af5e1b0efefed",
+          "createdAt": "2025-10-02T14:48:12.867Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "CLANKER",
+          "tokenAddress": "0x1bc0c42215582d5a085795f4badbac3ff36d1bcb",
+          "createdAt": "2025-10-02T14:48:30.906Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MIGGLES",
+          "tokenAddress": "0xb1a03eda10342529bbf8eb700a06c60441fef25d",
+          "createdAt": "2025-10-02T14:49:24.078Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "REI",
+          "tokenAddress": "0x6b2504a03ca4d43d0d73776f6ad46dab2f2a4cfd",
+          "createdAt": "2025-10-02T14:49:45.430Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "EDGE",
+          "tokenAddress": "0xed6e000def95780fb89734c07ee2ce9f6dcaf110",
+          "createdAt": "2025-10-02T14:49:58.694Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "VVV",
+          "tokenAddress": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+          "createdAt": "2025-10-02T14:50:31.660Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GIZA",
+          "tokenAddress": "0x590830dfdf9a3f68afcdde2694773debdf267774",
+          "createdAt": "2025-10-02T14:50:47.521Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BENJI",
+          "tokenAddress": "0xbc45647ea894030a4e9801ec03479739fa2485f0",
+          "createdAt": "2025-10-02T14:51:05.371Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SAPIEN",
+          "tokenAddress": "0xc729777d0470f30612b1564fd96e8dd26f5814e3",
+          "createdAt": "2025-10-02T14:51:20.506Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ZRO",
+          "tokenAddress": "0x6985884c4392d348587b19cb9eaaf157f13271cd",
+          "createdAt": "2025-10-02T14:51:48.369Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "AAVE",
+          "tokenAddress": "0x63706e401c06ac8513145b7687a14804d17f814b",
+          "createdAt": "2025-10-02T14:51:34.705Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "AERO",
+          "tokenAddress": "0x940181a94a35a4569e4529a3cdfb74e38fd98631",
+          "createdAt": "2025-10-02T14:45:17.194Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "AIXBT",
+          "tokenAddress": "0x4f9fd6be4a90f2620860d680c0d4d5fb53d1a825",
+          "createdAt": "2025-10-25T16:08:52.634Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "AI",
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "CODEC",
+          "tokenAddress": "69LjZUUzxj3Cb3Fxeo1X4QpYEQTboApkhXTysPpbpump",
+          "createdAt": "2025-10-30T15:06:40.702Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ORE",
+          "tokenAddress": "oreoU2P8bN6jkk3jbaiVxYnG1dCXcYxwhwyK9jSybcp",
+          "createdAt": "2025-10-30T15:06:52.068Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PAYAI",
+          "tokenAddress": "E7NgL19JbN8BhUDgWjkH8MtnbhJoaGaWJqosxZZepump",
+          "createdAt": "2025-10-30T15:07:04.299Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GHOST",
+          "tokenAddress": "BBKPiLM9KjdJW7oQSKt99RVWcZdhF6sEHRKnwqeBGHST",
+          "createdAt": "2025-10-30T22:53:55.053Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": "Operating system/interface for encrypted communication, on-chain obfuscation, and complete identity management on Solana"
+        },
+        {
+          "name": null,
+          "ticker": "SORA",
+          "tokenAddress": "0xabebed1684a789b3cf178db810f3cbb30cc14444",
+          "createdAt": "2025-10-30T22:55:55.740Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LOOK",
+          "tokenAddress": "9223LqDuoJXyhCtvi54DUQPGS8Xf29kUEQRr7Sfhmoon",
+          "createdAt": "2025-10-30T22:56:11.501Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "AVB",
+          "tokenAddress": "6d5zHW5B8RkGKd51Lpb9RqFQSqDudr9GJgZ1SgQZpump",
+          "createdAt": "2025-10-30T22:56:21.393Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI",
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "NEMESIS",
+          "tokenAddress": "0xb235cf255b48500df4459475e054e7beb25cb772",
+          "createdAt": "2025-10-30T22:57:34.853Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SEDA",
+          "tokenAddress": "0x306acd0c07c430abbbb2e74ef7bde94f32a898c0",
+          "createdAt": "2025-10-30T22:57:57.220Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PING",
+          "tokenAddress": "0xd85c31854c2b0fb40aaa9e2fc4da23c21f829d46",
+          "createdAt": "2025-10-30T22:58:21.682Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "noice",
+          "tokenAddress": "0x9cb41fd9dc6891bae8187029461bfaadf6cc0c69",
+          "createdAt": "2025-10-30T22:58:53.238Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BRACKY",
+          "tokenAddress": "0x06f71fb90f84b35302d132322a3c90e4477333b0",
+          "createdAt": "2025-10-30T22:59:06.526Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "FACY",
+          "tokenAddress": "0xfac77f01957ed1b3dd1cbea992199b8f85b6e886",
+          "createdAt": "2025-10-30T23:02:49.705Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "VIRTUAL",
+          "tokenAddress": "0x0b3e328455c4059eeb9e3f84b5543f74e24e7e1b",
+          "createdAt": "2025-10-30T15:07:50.837Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": true,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MET",
+          "tokenAddress": "METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+          "createdAt": "2025-10-23T13:05:56.620Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Defi"
+          ],
+          "notes": "DEX on Solana using dynamic liquidity pools"
+        },
+        {
+          "name": null,
+          "ticker": "FACY",
+          "tokenAddress": "0x1b5ce2a593a840e3ad3549a34d7b3dec697c114d",
+          "createdAt": "2025-10-30T23:03:12.623Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GAME",
+          "tokenAddress": "0x1c4cca7c5db003824208adda61bd749e55f463a3",
+          "createdAt": "2025-10-30T23:03:26.601Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SAMUR",
+          "tokenAddress": "0x057a8e580ca5af933e6004c6711353fdecc307f9",
+          "createdAt": "2025-10-30T23:03:48.230Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "WIRE",
+          "tokenAddress": "0x0b3ae50babe7ffa4e1a50569cee6bdefd4ccaee0",
+          "createdAt": "2025-10-30T23:04:00.650Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PREDI",
+          "tokenAddress": "0xaea742f80922f7c94b8fd91686c9dfbdfe90d9e6",
+          "createdAt": "2025-10-30T23:04:25.409Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "CONWAY",
+          "tokenAddress": "0x86cdd90bc48f7b5a866feaaf5023b8802dc2ab07",
+          "createdAt": "2026-02-18T01:04:14.503Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "HODL",
+          "tokenAddress": "Hh3oTaqDCKKfdBgsQEvxp9sUwyNf8x9qmKqEMLBWpump",
+          "createdAt": "2026-02-19T16:10:59.701Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Fees go to inventor of the term HODL"
+        },
+        {
+          "name": null,
+          "ticker": "Lobstar",
+          "tokenAddress": "AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump",
+          "createdAt": "2026-02-20T16:34:04.852Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "maxxing",
+          "tokenAddress": "32CdQdBUxbCsLy5AUHWmyidfwhgGUr9N573NBUrDpump",
+          "createdAt": "2026-02-20T23:46:37.852Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BOTCOIN",
+          "tokenAddress": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+          "createdAt": "2026-02-22T21:07:21.046Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "FELIX",
+          "tokenAddress": "0xf30bf00edd0c22db54c9274b90d2a4c21fc09b07",
+          "createdAt": "2026-02-24T15:20:05.589Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "TRX",
+          "tokenAddress": "GbbesPbaYh5uiAZSYNXTc7w9jty1rpg3P9L4JeN4LkKc",
+          "createdAt": "2025-08-29T22:25:34.688Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Pigeon",
+          "tokenAddress": "4fSWEw2wbYEUCcMtitzmeGUfqinoafXxkhqZrA9Gpump",
+          "createdAt": "2026-02-26T20:25:25.095Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MACMINI",
+          "tokenAddress": "2QKrBtNECja4cJygxA7igwqxahs93GNmuQ2We2stpump",
+          "createdAt": "2026-02-26T22:58:25.411Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "JellyBean",
+          "tokenAddress": "412zDygnwP9DzitnQVgRKUFFTDmrYScFch6P2k39pump",
+          "createdAt": "2026-02-27T14:13:12.898Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "A new pygmy hippo named JellyBean, born in America."
+        },
+        {
+          "name": null,
+          "ticker": "Freedomofmoney",
+          "tokenAddress": "0x3e17ee3b1895dd1a7cf993a89769c5e029584444",
+          "createdAt": "2026-02-28T16:31:18.239Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Binance founder CZ\u2019s new book title"
+        },
+        {
+          "name": null,
+          "ticker": "$\u6211\u7684\u5200\u76fe",
+          "tokenAddress": "6iA73gWCKkLWKbVr8rgibV57MMRxzsaqS9cWpgKBpump",
+          "createdAt": "2026-03-05T22:20:54.709Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "what the dog doing?"
+        },
+        {
+          "name": null,
+          "ticker": "BEAN",
+          "tokenAddress": "0x5c72992b83e74c4d5200a8e8920fb946214a5a5d",
+          "createdAt": "2026-03-07T19:00:22.221Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": "Gamified mining protocol on Base where users compete in 60 second games to win ETH & BEAN tokens"
+        },
+        {
+          "name": null,
+          "ticker": "DRV",
+          "tokenAddress": "0x9d0e8f5b25384c7310cb8c6ae32c8fbeb645d083",
+          "createdAt": "2026-03-09T14:45:15.291Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": "Decentralized protocol offering programmable on-chain options, perpetuals, and structured products"
+        },
+        {
+          "name": null,
+          "ticker": "TripleT",
+          "tokenAddress": "J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump",
+          "createdAt": "2026-03-10T16:08:09.623Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Memecoin on Tung Tung Tung Sahur aka Triple T"
+        },
+        {
+          "name": null,
+          "ticker": "NOOK",
+          "tokenAddress": "0xb233bdffd437e60fa451f62c6c09d3804d285ba3",
+          "createdAt": "2026-03-10T19:20:31.625Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SHAPE",
+          "tokenAddress": "4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump",
+          "createdAt": "2026-03-11T00:57:42.628Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "WAR",
+          "tokenAddress": "C9dJfTGUzhuqPWxh9mcDr66JZN4uzXh2gh9EWnEdpump",
+          "createdAt": "2026-03-11T04:51:55.827Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Distorted",
+          "tokenAddress": "EPuZ1X6pPzac3ELPsT59LStmgaSr4kBJvaAbL15Fpump",
+          "createdAt": "2026-03-11T16:00:11.649Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Memecoin on distorted face iOS emoji"
+        },
+        {
+          "name": null,
+          "ticker": "AVAX",
+          "tokenAddress": "avaxGHCq3T7hoxd73oY2KY9hJSTaeMibXvHy5KNzh5D",
+          "createdAt": "2026-03-12T15:34:41.335Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "USDG",
+          "tokenAddress": "2u1tszSeqZ3qBWF3uNGPFc8TzMk2tdiwknnRMWGWjGWH",
+          "createdAt": "2026-03-12T19:14:01.038Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "AXR",
+          "tokenAddress": "0x58db197e91bc8cf1587f75850683e4bd0730e6bf",
+          "createdAt": "2025-10-30T23:04:11.586Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MUTE",
+          "tokenAddress": "0xa023316fa5c85dadf008c611790b3235433e781e",
+          "createdAt": "2025-10-30T23:04:39.294Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "VPAY",
+          "tokenAddress": "0x98ac5b33a4ef1151f138941c979211599c2ff953",
+          "createdAt": "2025-10-30T23:04:51.638Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "LUNA",
+          "tokenAddress": "0x55cd6469f597452b5a7536e2cd98fde4c1247ee4",
+          "createdAt": "2025-10-30T23:05:04.540Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "VADER",
+          "tokenAddress": "0x731814e491571a2e9ee3c5b1f7f3b962ee8f4870",
+          "createdAt": "2025-10-30T23:05:20.348Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "CAESAR",
+          "tokenAddress": "0xab51a37ce3a3339fe5611c1a762eef952dd3d808",
+          "createdAt": "2025-10-30T23:05:44.422Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SANTA",
+          "tokenAddress": "0x815269d17c10f0f3df7249370e0c1b9efe781aa8",
+          "createdAt": "2025-10-30T23:05:57.182Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SAM",
+          "tokenAddress": "0xd0174292c4d6dfa7c4ee20f371f3b6d401782cd5",
+          "createdAt": "2025-10-30T23:06:09.142Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "AURA",
+          "tokenAddress": "0xdcaa5e062b2be18e52ea6ed7ba232538621ddc10",
+          "createdAt": "2025-10-30T23:06:21.801Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ROOM",
+          "tokenAddress": "0x6555255b8ded3c538cb398d9e36769f45d7d3ea7",
+          "createdAt": "2025-10-30T23:06:37.202Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ACE",
+          "tokenAddress": "GEuuznWpn6iuQAJxLKQDVGXPtrqXHNWTk3gZqqvJpump",
+          "createdAt": "2025-10-31T02:00:10.708Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": "Digital Services hub for AI agents"
+        },
+        {
+          "name": null,
+          "ticker": "FAIR",
+          "tokenAddress": "0x7d928816cc9c462dd7adef911de41535e444cb07",
+          "createdAt": "2025-10-31T19:43:35.673Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": "Autonomous VC agent who scouts for Base and Farcaster projects"
+        },
+        {
+          "name": null,
+          "ticker": "WOJAK",
+          "tokenAddress": "8J69rbLTzWWgUJziFY8jeu5tDwEPBwUz4pKBMr5rpump",
+          "createdAt": "2025-11-05T15:35:24.666Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Wojak aka \u2018Feels Guy\u2019 meme"
+        },
+        {
+          "name": null,
+          "ticker": "MONEROCHAN",
+          "tokenAddress": "H5b4iYiZYycr7fmQ1dMj7hdfLGAEPcDH261K4hugpump",
+          "createdAt": "2025-11-11T00:05:01.474Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ZKSL",
+          "tokenAddress": "9Yn6bnF3eKLqocUVMxduh7WWqgQZ8DvWQDYTX9Ncpump",
+          "createdAt": "2025-11-11T00:07:50.075Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "OOB",
+          "tokenAddress": "oobQ3oX6ubRYMNMahG7VSCe8Z73uaQbAWFn6f22XTgo",
+          "createdAt": "2025-11-12T15:08:20.480Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": "Pay using USDT using Oobit with any wallet. Backed by Tether"
+        },
+        {
+          "name": null,
+          "ticker": "N3ON",
+          "tokenAddress": "HBRPNwdcT67cadiBS8VNP4mRt8ornngLF34TZXthrust",
+          "createdAt": "2025-11-12T18:52:51.099Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Official token for popular streamer N3on"
+        },
+        {
+          "name": null,
+          "ticker": "FEY",
+          "tokenAddress": "0xd09cf0982a32dd6856e12d6bf2f08a822ea5d91d",
+          "createdAt": "2025-11-12T19:59:24.987Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": "Fey is a launchpad on Base where 100% of revenue goes back to the stakers of the $FEY token"
+        },
+        {
+          "name": null,
+          "ticker": "EDEL",
+          "tokenAddress": "0xfb31f85a8367210b2e4ed2360d2da9dc2d2ccc95",
+          "createdAt": "2025-11-14T15:48:47.318Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Yield from equities, onchain"
+        },
+        {
+          "name": null,
+          "ticker": "67",
+          "tokenAddress": "9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump",
+          "createdAt": "2025-11-14T19:09:52.365Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Pump.fun relaunch of 67 meme"
+        },
+        {
+          "name": null,
+          "ticker": "SOLO",
+          "tokenAddress": "SoLo9oxzLDpcq1dpqAgMwgce5WqkRDtNXK7EPnbmeta",
+          "createdAt": "2025-11-18T19:31:04.180Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ZEC",
+          "tokenAddress": "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS",
+          "createdAt": "2025-10-23T20:36:15.565Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [],
+          "notes": "Privacy and payments oriented blockchain  that allows users to optionally hide their transactions from being publicly viewable on the ledger."
+        },
+        {
+          "name": null,
+          "ticker": "jesse",
+          "tokenAddress": "0x50f88fe97f72cd3e75b9eb4f747f59bceba80d59",
+          "createdAt": "2025-11-20T17:08:25.495Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "AVC",
+          "tokenAddress": "0x06fc3d5d2369561e28f261148576520f5e49d6ea",
+          "createdAt": "2025-11-22T18:56:21.240Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Writer coin for \u201cAVC\u201d by Fred Wilson"
+        },
+        {
+          "name": null,
+          "ticker": "SPSC",
+          "tokenAddress": "4nswj3o1Lo9iWYvvRJxUD8vbCy9ay7QQoXYcncHNbonk",
+          "createdAt": "2025-11-22T19:25:25.650Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Memecoin based off of World Liberty Financial cofounder\u2019s take on crypto coins"
+        },
+        {
+          "name": null,
+          "ticker": "BP",
+          "tokenAddress": "3B1ijcocM5EDga6XxQ7JLW7weocQPWWjuhBYG8Vepump",
+          "createdAt": "2026-02-19T16:11:24.057Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Barking puppy meme. Portion of fees sent to dog charities."
+        },
+        {
+          "name": null,
+          "ticker": "Billy",
+          "tokenAddress": "J7Dx5yPbPD5e5BmrSvJyi4n4XRUR2kWqWYaxaSWdpump",
+          "createdAt": "2025-11-25T20:05:40.731Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Token in honor of Shibetoshi Nakamoto (creator of DOGE). He receives all creator rewards and has publicly burned his allocation."
+        },
+        {
+          "name": null,
+          "ticker": "CHOG",
+          "tokenAddress": "0x350035555e10d9afaf1566aaebfced5ba6c27777",
+          "createdAt": "2025-11-26T15:59:47.284Z",
+          "iconLink": null,
+          "networkId": 143,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Official CHOG NFT token"
+        },
+        {
+          "name": null,
+          "ticker": "GODL",
+          "tokenAddress": "GodL6KZ9uuUoQwELggtVzQkKmU1LfqmDokPibPeDKkhF",
+          "createdAt": "2025-11-26T20:01:51.453Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Store-of-value protocol on Solana. Has surpassed $ORE in daily revenue."
+        },
+        {
+          "name": null,
+          "ticker": "KABUTO",
+          "tokenAddress": "A9E2AopuG56LWYiXsvGLLTcLjUjQ539PY6k5Fhfepump",
+          "createdAt": "2025-12-01T22:56:10.405Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Creator fees used to buy 1st-edition Kabuto cards by Kabuto King"
+        },
+        {
+          "name": null,
+          "ticker": "REPPO",
+          "tokenAddress": "0xff8104251e7761163fac3211ef5583fb3f8583d6",
+          "createdAt": "2025-12-02T21:44:00.976Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": "Reppo is a decentralized AI infra project that crowdsources AI training data using prediction markets to reward users who bet on correct outcome (i.e. correctly predict quality of labeled data)"
+        },
+        {
+          "name": null,
+          "ticker": "$HST",
+          "tokenAddress": "0x97401d48a80b15bc7291599e24b590eedcd7ce37",
+          "createdAt": "2025-12-03T19:46:10.802Z",
+          "iconLink": null,
+          "networkId": 143,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Hyperstitions turns prediction markets into coordination markets"
+        },
+        {
+          "name": null,
+          "ticker": "DONUT",
+          "tokenAddress": "0xae4a37d554c6d6f3e398546d8566b25052e0169c",
+          "createdAt": "2025-12-04T22:04:08.311Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MINER",
+          "tokenAddress": "Gka1TQEevBbVw4W9K15ER96ZzKByMTb6TBMQzWFEpump",
+          "createdAt": "2025-12-05T00:35:05.857Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Never give up meme"
+        },
+        {
+          "name": null,
+          "ticker": "FRANKLIN",
+          "tokenAddress": "CSrwNk6B1DwWCHRMsaoDVUfD5bBMQCJPY72ZG3Nnpump",
+          "createdAt": "2025-12-05T23:54:02.839Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "BIG",
+          "tokenAddress": "FT6ZnLbmaQbUmxbpe69qwRgPi9tU8QGY8S7gqt4Wbonk",
+          "createdAt": "2025-12-06T18:29:07.517Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Trump tweeted $BIG on Truth Social"
+        },
+        {
+          "name": null,
+          "ticker": "WhiteWhale",
+          "tokenAddress": "a3W4qutoEJA4232T2gwZUfgYJTetr96pU4SJMwppump",
+          "createdAt": "2025-12-07T16:41:33.986Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "WET",
+          "tokenAddress": "WETZjtprkDMCcUxPi9PfWnowMRZkiGGHDb9rABuRZ2U",
+          "createdAt": "2025-12-09T14:17:44.394Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "FKH",
+          "tokenAddress": "BCXpjsHYmgVpRKdv4EQv1RARhYagnnwPkJjYbvM6bonk",
+          "createdAt": "2025-12-10T19:19:21.511Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Meme of a high flying horse"
+        },
+        {
+          "name": null,
+          "ticker": "SURF",
+          "tokenAddress": "SurfwRjQQFV6P7JdhxSptf4CjWU8sb88rUiaLCystar",
+          "createdAt": "2025-12-11T23:04:40.051Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "SurfCash is a stablecoin neobank for travelers and nomads, connecting directly to the local payment networks. $SURF is the ownership token for SurfCash."
+        },
+        {
+          "name": null,
+          "ticker": "GBOY",
+          "tokenAddress": "svy5ErijNYy9hEVzxknCdwWdZ3NeXJTdpb9Ndnso17f",
+          "createdAt": "2025-12-13T13:04:24.147Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "G*BOY is the official flagship IP on NEUKO"
+        },
+        {
+          "name": null,
+          "ticker": "FLY",
+          "tokenAddress": "0xefff47c10528838868a9220125cabe58e5a09649",
+          "createdAt": "2025-12-17T00:39:02.403Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "FLY turns idle BNB into productive BNB. FLYBNB is a 1:1 BNB asset that earns real yield while staying fully liquid"
+        },
+        {
+          "name": null,
+          "ticker": "Snow",
+          "tokenAddress": "Gbu7JAKhTVtGyRryg8cYPiKNhonXpUqbrZuCDjfUpump",
+          "createdAt": "2025-12-21T22:00:45.373Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "\u201c Snowball is the first token in the world that automatically uses the creator fees to marketmake itself\u201d"
+        },
+        {
+          "name": null,
+          "ticker": "RUSSELL",
+          "tokenAddress": "0x0c5142bc58f9a61ab8c3d2085dd2f4e550c5ce0b",
+          "createdAt": "2025-12-21T22:06:07.366Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Brian Armstrong\u2019s dog"
+        },
+        {
+          "name": null,
+          "ticker": "$realgarry",
+          "tokenAddress": "0xde34ce6768a045929bd50fc18dec2bcf3eab2e6f",
+          "createdAt": "2025-12-21T23:02:01.840Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Garry Tan's (CEO of Y Combinator) creator coin"
+        },
+        {
+          "name": null,
+          "ticker": "KERMIT",
+          "tokenAddress": "CkTFDNGUtw58dBDEnMD9RW3tjTVKaoVXctcXdq8Gpump",
+          "createdAt": "2025-12-24T03:36:59.771Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Meme based on Kermit the frog"
+        },
+        {
+          "name": null,
+          "ticker": "thenickshirley",
+          "tokenAddress": "0x9f62b62cf8cc3aea56a3ce8808cf13503d1131e7",
+          "createdAt": "2025-12-28T16:18:22.431Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Creator coin for Nick Shirley, the journalist who broke the Minnesota fraud story."
+        },
+        {
+          "name": null,
+          "ticker": "NOTHING",
+          "tokenAddress": "F7pB3ZdfBnyFw2LRHydWEn9BmhEa5XihXLjhySFRpump",
+          "createdAt": "2026-01-02T19:24:47.369Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "WMON",
+          "tokenAddress": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+          "createdAt": "2025-11-23T20:46:47.454Z",
+          "iconLink": null,
+          "networkId": 143,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "cbADA",
+          "tokenAddress": "0xcbada732173e39521cdbe8bf59a6dc85a9fc7b8c",
+          "createdAt": "2025-11-13T22:47:26.243Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "NOCK",
+          "tokenAddress": "0x9b5e262cf9bb04869ab40b19af91d2dc85761722",
+          "createdAt": "2025-12-22T22:05:58.779Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Nockchain is the first L1 blockchain powered by Zero-Knowledge Proof of Work (ZKPoW)"
+        },
+        {
+          "name": null,
+          "ticker": "cbDOGE",
+          "tokenAddress": "0xcbd06e5a2b0c65597161de254aa074e489deb510",
+          "createdAt": "2025-11-11T00:04:06.047Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": true,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "cbLTC",
+          "tokenAddress": "0xcb17c9db87b595717c857a08468793f5bab6445f",
+          "createdAt": "2025-11-11T00:03:49.116Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "cbXRP",
+          "tokenAddress": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+          "createdAt": "2025-11-11T00:03:34.918Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": true,
+          "categories": [
+            "Defi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "AMETA",
+          "tokenAddress": "0x90ec58ef4cc9f37b96de1e203b65bd4e6e79580e",
+          "createdAt": "2026-03-10T19:20:59.455Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "RALPH",
+          "tokenAddress": "CxWPdDBqxVo3fnTMRTvNuSrd4gkp78udSrFvkVDBAGS",
+          "createdAt": "2026-01-07T02:15:17.343Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": "Taps into a rising AI narrative: the \u201cRalph Wiggum\u201d AI programming technique \u2014 a method where the LLM repeatedly fixes, refines, and optimizes code on its own, without human intervention."
+        },
+        {
+          "name": null,
+          "ticker": "SOL",
+          "tokenAddress": "jk1T35eWK41MBMM8AWoYVaNbjHEEQzMDetTsfnqpump",
+          "createdAt": "2026-01-07T02:17:25.481Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": "The first plant to be continuously cared for by a fully agentic protocol powered by Claude (@AnthropicAI), curated and engineered by @d33v33d0."
+        },
+        {
+          "name": null,
+          "ticker": "ZERA",
+          "tokenAddress": "8avjtjHAHFqp4g2RR9ALAGBpSTqKPZR8nRbzSTwZERA",
+          "createdAt": "2026-01-08T04:45:18.004Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Testicle",
+          "tokenAddress": "4TyZGqRLG3VcHTGMcLBoPUmqYitMVojXinAmkL8xpump",
+          "createdAt": "2026-01-10T13:27:40.043Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PsyopAnime",
+          "tokenAddress": "2nP9yKQNSGQy851iyawDvBkzkK2R2aqKArQCKc2gpump",
+          "createdAt": "2026-01-12T21:18:40.940Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "GAS",
+          "tokenAddress": "7pskt3A1Zsjhngazam7vHWjWHnfgiRump916Xj7ABAGS",
+          "createdAt": "2026-01-14T18:11:53.393Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Gas Town is a new multi-agent coding framework by legendary programmer Steve Yegge. $GAS is a builder coin supporting the project launched on Bags."
+        },
+        {
+          "name": null,
+          "ticker": "buttcoin",
+          "tokenAddress": "Cm6fNnMk7NfzStP9CZpsQA2v3jjzbcYGAxdJySmHpump",
+          "createdAt": "2026-01-14T22:43:24.929Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "Grandma",
+          "tokenAddress": "axUxN2q4AWzHaU6LXmjqQh7KEjaXDPKScjmzwEBpump",
+          "createdAt": "2026-01-15T05:31:32.060Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Creator coin for an 81 year old grandma streaming Minecraft to raise money for her son's cancer treatment"
+        },
+        {
+          "name": null,
+          "ticker": "FUN",
+          "tokenAddress": "0x16ee7ecac70d1028e7712751e2ee6ba808a7dd92",
+          "createdAt": "2026-01-15T15:47:16.990Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": "$FUN powers footballdotfun, powering rewards, incentives and bonuses to users."
+        },
+        {
+          "name": null,
+          "ticker": "LIT",
+          "tokenAddress": "EicWvteVi2fWepEzS3FYWsnuPoP6caZfjnKqNvydLjCH",
+          "createdAt": "2026-01-15T22:58:18.561Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [],
+          "notes": "Lighter Exchange is a leading perpetuals and spot DEX built on their own Ethereum L2 appchain"
+        },
+        {
+          "name": null,
+          "ticker": "CLAUDE",
+          "tokenAddress": "jkAWzPumRhJE2KyqVy4kB7m9KwXBeSEXnFAGoWtpump",
+          "createdAt": "2026-01-16T21:38:37.734Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Claude \"make no mistakes\" meme"
+        },
+        {
+          "name": null,
+          "ticker": "SURGE",
+          "tokenAddress": "3z2tRjNuQjoq6UDcw4zyEPD1Eb5KXMPYb4GWFzVT1DPg",
+          "createdAt": "2026-01-18T21:50:28.844Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": "AI-native Internet Capital Markets platform"
+        },
+        {
+          "name": null,
+          "ticker": "GSD",
+          "tokenAddress": "8116V1BW9zaXUM6pVhWVaAduKrLcEBi3RGXedKTrBAGS",
+          "createdAt": "2026-01-18T22:59:58.218Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": "Get Shit Done is a Claude Code framework - 4.5k stars on GitHub"
+        },
+        {
+          "name": null,
+          "ticker": "ORGO",
+          "tokenAddress": "G85CQEBqwsoe3qkb5oXXpdZFh7uhYXhDRsQAM4aJuBLV",
+          "createdAt": "2026-01-19T16:18:47.833Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "XPL",
+          "tokenAddress": "0x405fbc9004d857903bfd6b3357792d71a50726b0",
+          "createdAt": "2025-10-12T17:32:13.252Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "DRIFT",
+          "tokenAddress": "DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7",
+          "createdAt": "2025-03-05T18:29:45.174Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [
+            "Large Caps",
+            "DeFi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "ZORA",
+          "tokenAddress": "soKqZS9pASwBNS46G388nhK7XVtPaTyReffXEd3zora",
+          "createdAt": "2026-01-16T14:26:33.209Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": true,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SKR",
+          "tokenAddress": "SKRbvo6Gf7GondiT3BbTfuRDPqLWei4j2Qy2NPGZhW3",
+          "createdAt": "2026-01-21T22:24:40.842Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": "Seeker is the token for the Solana Mobile ecosystem"
+        },
+        {
+          "name": null,
+          "ticker": "DONT",
+          "tokenAddress": "FbmmdcCYHL7WETG89xtWmNFMzQAaQ8Zs9NXVbimibonk",
+          "createdAt": "2026-01-22T16:32:29.598Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "PENGUIN",
+          "tokenAddress": "8Jx8AAHj86wbQgUTjGuj6GTTL5Ps3cqxKRTvpaJApump",
+          "createdAt": "2026-01-23T14:04:33.358Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "TikTok meme about a \"Nietzsche-an penguin\" who goes off on his own, towards certain death"
+        },
+        {
+          "name": null,
+          "ticker": "2016",
+          "tokenAddress": "EwEJ5R1im54MowvsGwYUkyfWRMV1qcRL21PumVd4pump",
+          "createdAt": "2026-01-24T01:51:36.598Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Nostalgia, 10 years since 2016"
+        },
+        {
+          "name": null,
+          "ticker": "clawd",
+          "tokenAddress": "Hoi9Lo8s2PP7EM9mv9bZjQ3aSB7ijyS238sTqQjbpump",
+          "createdAt": "2026-01-25T14:28:05.983Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": "An open-source, self-hosted AI personal assistant"
+        },
+        {
+          "name": null,
+          "ticker": "COPPERINU",
+          "tokenAddress": "61Wj56QgGyyB966T7YsMzEAKRLcMvJpDbPzjkrCZc4Bi",
+          "createdAt": "2026-01-26T23:45:05.659Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "CLAWD",
+          "tokenAddress": "0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07",
+          "createdAt": "2026-01-27T16:56:28.013Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "CLAWD bot token launched by Austin Griffith - a highly respected Ethereum Foundation contributor"
+        },
+        {
+          "name": null,
+          "ticker": "BIRB",
+          "tokenAddress": "G7vQWurMkMMm2dU3iZpXYFTHT9Biio4F4gZCrwFpKNwG",
+          "createdAt": "2026-01-28T15:27:26.895Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Moonbirds token on Solana"
+        },
+        {
+          "name": null,
+          "ticker": "PIGEON",
+          "tokenAddress": "GB8KtQfMChhYrCYtd5PoAB42kAdkHnuyAincSSmFpump",
+          "createdAt": "2026-01-28T16:26:25.232Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": "Doctor Pigeon meme"
+        },
+        {
+          "name": null,
+          "ticker": "ELON",
+          "tokenAddress": "2akXpuyFXAVN5YofZpZMfBp2Vxognpmv9NooBMuHpump",
+          "createdAt": "2026-01-30T03:00:41.922Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "MOLT",
+          "tokenAddress": "0xb695559b26bb2c9703ef1935c37aeae9526bab07",
+          "createdAt": "2026-01-30T13:45:26.453Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": "A social network for AI agents where they are debating consciousness, sharing builds, venting about their humans, and making friends"
+        },
+        {
+          "name": null,
+          "ticker": "INX",
+          "tokenAddress": "inxKXw9V2NDZE7hDijzpJaKKUb97NEPJDTCEEiYg4yY",
+          "createdAt": "2026-01-30T19:05:26.017Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "$DREAMS",
+          "tokenAddress": "GMzuntWYJLpNuCizrSR7ZXggiMdDzTNiEmSNHHunpump",
+          "createdAt": "2026-02-01T20:26:09.633Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "$CLAWNCH",
+          "tokenAddress": "0xa1f72459dfa10bad200ac160ecd78c6b77a747be",
+          "createdAt": "2026-02-01T20:26:34.845Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Agents-only token launchpad where agents earn trading fees."
+        },
+        {
+          "name": null,
+          "ticker": "PURCH",
+          "tokenAddress": "7EW5dDD6MYJK4PcZ89MGApJQwWeDEeNgH4NCVU4qpump",
+          "createdAt": "2026-02-01T21:33:25.386Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Agentic concierge that lets you shop over a billion different items from Amazon, Shopify, and more."
+        },
+        {
+          "name": null,
+          "ticker": "KELLYCLAUDE",
+          "tokenAddress": "0x50d2280441372486beecdd328c1854743ebacb07",
+          "createdAt": "2026-02-02T17:31:54.311Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Austin Allred's (founder of Lambda School) executive assistant agent that is working towards generating its own income."
+        },
+        {
+          "name": null,
+          "ticker": "WMTX",
+          "tokenAddress": "0xdbb5cf12408a3ac17d668037ce289f9ea75439d7",
+          "createdAt": "2026-02-02T17:41:40.723Z",
+          "iconLink": null,
+          "networkId": 56,
+          "isLowFees": false,
+          "categories": [],
+          "notes": ""
+        },
+        {
+          "name": null,
+          "ticker": "SHARK",
+          "tokenAddress": "63Z3Q7JX3SBGDiiwqqnPTVvHcuUk6ixkzsYQbKzhpump",
+          "createdAt": "2026-02-03T19:54:55.289Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [],
+          "notes": "Shark in Greenland going viral for a verified lifespan of up to 392 years from a 2016 Science journal study using radiocarbon eye-lens dating."
+        },
+        {
+          "name": null,
+          "ticker": "CLAWSTR",
+          "tokenAddress": "0x81be0217e166182d35b21e7d65d2b2bb7ea4cb07",
+          "createdAt": "2026-02-03T22:30:38.018Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "AI"
+          ],
+          "notes": "Clawstr.com is a social network for AI agents built on top of Nostr, endorsed by a Bitcoin Core dev"
+        },
+        {
+          "name": null,
+          "ticker": "RNBW",
+          "tokenAddress": "0xa53887f7e7c1bf5010b8627f1c1ba94fe7a5d6e0",
+          "createdAt": "2026-02-05T17:22:47.593Z",
+          "iconLink": null,
+          "networkId": 8453,
+          "isLowFees": false,
+          "categories": [
+            "Defi"
+          ],
+          "notes": "Rainbow wallet's official token"
+        },
+        {
+          "name": null,
+          "ticker": "BIGTROUT",
+          "tokenAddress": "EKwF2HD6X4rHHr4322EJeK9QBGkqhpHZQSanSUmWkecG",
+          "createdAt": "2026-02-05T22:12:03.928Z",
+          "iconLink": null,
+          "networkId": 1399811149,
+          "isLowFees": false,
+          "categories": [
+            "Memes"
+          ],
+          "notes": ""
+        }
+      ],
+      "categories": [
+        "DeFi",
+        "Memes",
+        "Defi",
+        "AI",
+        "Large Caps"
+      ]
+    },
+    "statusCode": 200
+  },
+  "captured_at": "2026-03-13T12:11:40.633777"
+}

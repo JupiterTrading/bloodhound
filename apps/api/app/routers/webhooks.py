@@ -32,7 +32,7 @@ async def process_webhook_payload(transactions: list[dict]) -> None:
     Background task: parse transactions, enrich with USD prices, write to ClickHouse,
     then evaluate alert rules.
     """
-    from app.services import clickhouse
+    from app.services import analytics
     from app.services.supabase import get_active_alerts_for_wallet
     from app.services.jupiter import get_prices_batch
     from app.services.ingestion import enrich_with_prices
@@ -65,13 +65,13 @@ async def process_webhook_payload(transactions: list[dict]) -> None:
     except Exception as e:
         print(f"[webhook] price enrichment error (continuing with 0.0): {e}")
 
-    # Bulk write to ClickHouse
+    # Write to Supabase
     try:
-        await clickhouse.insert_transactions(tx_rows)
-        await clickhouse.insert_transfers(transfer_rows)
-        await clickhouse.insert_trades(trade_rows)
+        await analytics.insert_transactions(tx_rows)
+        await analytics.insert_transfers(transfer_rows)
+        await analytics.insert_trades(trade_rows)
     except Exception as e:
-        print(f"[webhook] ClickHouse write error: {e}")
+        print(f"[webhook] data write error: {e}")
 
     # Evaluate alert rules for all signers involved
     for signer in all_signers:

@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { UserButton, SignInButton, useUser } from "@clerk/nextjs";
 import { BloodhoundLogo } from "@/components/ui/BloodhoundLogo";
 import { searchApi } from "@/lib/api";
+import { useCommandPalette } from "@/components/ui/CommandPalette";
 
 const NAV_LINKS = [
   { href: "/explorer", label: "Explorer" },
@@ -22,68 +23,35 @@ const NAV_LINKS = [
 export function TopNav() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { open: openCommandPalette } = useCommandPalette();
 
   // Close mobile menu on route change
   useEffect(() => { setMobileOpen(false); }, [pathname]);
 
   return (
     <>
-    <header
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        height: "56px",
-        background: "var(--bg-base)",
-        borderBottom: "1px solid var(--border)",
-        display: "flex",
-        alignItems: "center",
-        paddingInline: "24px",
-        gap: "20px",
-        zIndex: 200,
-      }}
-    >
+    <header className="fixed top-0 left-0 right-0 h-14 bg-[var(--bg-base)] border-b border-[var(--border)] flex items-center px-6 gap-5 z-[200]">
       {/* Logo lockup */}
-      <Link
-        href="/"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-          textDecoration: "none",
-          flexShrink: 0,
-        }}
-      >
+      <Link href="/" className="flex items-center gap-2 shrink-0 group">
         <BloodhoundLogo size={20} />
-        <span
-          style={{
-            fontFamily: "'Neue Haas Grotesk', 'Helvetica Neue', Arial, sans-serif",
-            fontSize: "14px",
-            fontWeight: 700,
-            letterSpacing: "-0.02em",
-            color: "var(--text-primary)",
-          }}
-        >
+        <span className="text-[14px] font-bold tracking-tight text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
           BLOODHOUND
         </span>
       </Link>
 
-      {/* Universal search — hide on very small screens */}
-      <div className="nav-search" style={{ flex: 1, maxWidth: "460px" }}>
-        <SearchBar />
-      </div>
+      {/* Command palette trigger */}
+      <button
+        onClick={openCommandPalette}
+        className="nav-search flex-1 max-w-[400px] flex items-center gap-3 px-3 py-2 bg-[var(--bg-surface)] border border-[var(--border)] rounded-lg text-left hover:border-[var(--border-strong)] transition-colors cursor-pointer"
+      >
+        <span className="text-[var(--text-muted)] text-sm">Search wallets, tokens, commands...</span>
+        <kbd className="ml-auto px-2 py-0.5 text-[10px] font-mono bg-[var(--bg-elevated)] border border-[var(--border)] rounded text-[var(--text-muted)]">
+          ⌘K
+        </kbd>
+      </button>
 
       {/* Nav links — hidden on mobile */}
-      <nav className="nav-links"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "16px",
-          marginLeft: "auto",
-          flexShrink: 0,
-        }}
-      >
+      <nav className="nav-links flex items-center gap-4 ml-auto shrink-0">
         {NAV_LINKS.map((link) => {
           const isActive =
             link.href === "/"
@@ -93,18 +61,11 @@ export function TopNav() {
             <Link
               key={link.href}
               href={link.href}
-              style={{
-                fontSize: "13px",
-                fontWeight: isActive ? 600 : 400,
-                color: isActive ? "var(--accent)" : "var(--text-secondary)",
-                textDecoration: "none",
-                borderBottom: isActive
-                  ? "2px solid var(--accent)"
-                  : "2px solid transparent",
-                paddingBottom: "2px",
-                transition: "color 80ms",
-                whiteSpace: "nowrap",
-              }}
+              className={`text-[13px] whitespace-nowrap pb-0.5 border-b-2 transition-colors ${
+                isActive 
+                  ? "font-semibold text-[var(--accent)] border-[var(--accent)]" 
+                  : "font-normal text-[var(--text-secondary)] border-transparent hover:text-[var(--text-primary)]"
+              }`}
             >
               {link.label}
             </Link>
@@ -113,33 +74,14 @@ export function TopNav() {
       </nav>
 
       {/* Right: network status + auth */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "12px",
-          flexShrink: 0,
-          marginLeft: "auto",
-        }}
-      >
+      <div className="flex items-center gap-3 shrink-0 ml-auto">
         <div className="nav-network"><NetworkPill /></div>
         <AuthButton />
         {/* Hamburger — mobile only */}
         <button
-          className="nav-hamburger"
+          className="nav-hamburger hidden bg-transparent border border-[var(--border)] rounded-md px-2 py-1.5 cursor-pointer text-[var(--text-secondary)] text-lg leading-none hover:border-[var(--border-strong)] transition-colors"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle menu"
-          style={{
-            display: "none",
-            background: "none",
-            border: "1px solid var(--border)",
-            borderRadius: "6px",
-            padding: "5px 8px",
-            cursor: "pointer",
-            color: "var(--text-secondary)",
-            fontSize: "18px",
-            lineHeight: 1,
-          }}
         >
           {mobileOpen ? "✕" : "☰"}
         </button>
@@ -148,39 +90,18 @@ export function TopNav() {
 
     {/* Mobile menu drawer */}
     {mobileOpen && (
-      <div
-        className="nav-mobile-drawer"
-        style={{
-          position: "fixed",
-          top: "56px",
-          left: 0,
-          right: 0,
-          background: "var(--bg-elevated)",
-          borderBottom: "1px solid var(--border)",
-          zIndex: 199,
-          padding: "16px 24px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "4px",
-          animation: "fadeSlideIn 100ms ease-out",
-        }}
-      >
+      <div className="nav-mobile-drawer fixed top-14 left-0 right-0 bg-[var(--bg-elevated)] border-b border-[var(--border)] z-[199] p-4 flex flex-col gap-1 animate-fade-in">
         {NAV_LINKS.map((link) => {
           const isActive = pathname.startsWith(link.href);
           return (
             <Link
               key={link.href}
               href={link.href}
-              style={{
-                display: "block",
-                padding: "10px 12px",
-                borderRadius: "6px",
-                fontSize: "14px",
-                fontWeight: isActive ? 600 : 400,
-                color: isActive ? "var(--accent)" : "var(--text-secondary)",
-                background: isActive ? "var(--bg-surface)" : "transparent",
-                textDecoration: "none",
-              }}
+              className={`block px-3 py-2.5 rounded-md text-[14px] transition-colors ${
+                isActive 
+                  ? "font-semibold text-[var(--accent)] bg-[var(--bg-surface)]" 
+                  : "font-normal text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]"
+              }`}
             >
               {link.label}
             </Link>
@@ -222,7 +143,6 @@ function SearchBar() {
     secondary: s.sublabel,
   }));
 
-  // Close on outside click
   useEffect(() => {
     function handler(e: MouseEvent) {
       if (!containerRef.current?.contains(e.target as Node)) {
@@ -236,7 +156,6 @@ function SearchBar() {
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter" && query.trim()) {
       const q = query.trim();
-      // Solana address: base58, 32–44 chars
       if (/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(q)) {
         router.push(`/wallet/${q}`);
       } else {
@@ -251,7 +170,7 @@ function SearchBar() {
   }
 
   return (
-    <div ref={containerRef} style={{ position: "relative", width: "100%" }}>
+    <div ref={containerRef} className="relative w-full">
       <input
         type="text"
         value={query}
@@ -266,19 +185,7 @@ function SearchBar() {
         onBlur={() => setFocused(false)}
         onKeyDown={handleKeyDown}
         placeholder="Search wallet, token, tx, program, @handle..."
-        style={{
-          width: "100%",
-          background: "var(--bg-surface)",
-          border: `1px solid ${focused ? "var(--accent)" : "var(--border)"}`,
-          borderRadius: "6px",
-          padding: "7px 12px",
-          fontSize: "13px",
-          color: "var(--text-primary)",
-          fontFamily: "inherit",
-          outline: "none",
-          transition: "border-color 80ms",
-          boxShadow: focused ? "0 0 0 2px var(--accent-glow)" : "none",
-        }}
+        className={`input text-[13px] py-2 ${focused ? 'border-[var(--accent)] shadow-[0_0_0_3px_var(--accent-glow)]' : ''}`}
       />
 
       {open && results.length > 0 && (
@@ -335,84 +242,26 @@ function SearchDropdown({
   }
 
   return (
-    <div
-      style={{
-        position: "absolute",
-        top: "calc(100% + 6px)",
-        left: 0,
-        right: 0,
-        background: "var(--bg-elevated)",
-        border: "1px solid var(--border)",
-        borderRadius: "8px",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
-        zIndex: 300,
-        overflow: "hidden",
-        animation: "fadeSlideIn 100ms ease-out",
-      }}
-    >
+    <div className="absolute top-[calc(100%+6px)] left-0 right-0 bg-[var(--bg-elevated)] border border-[var(--border)] rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.4)] z-[300] overflow-hidden animate-fade-in">
       {SECTION_ORDER.filter((t) => grouped[t].length > 0).map((type) => (
         <div key={type}>
-          <div
-            style={{
-              padding: "8px 14px 4px",
-              fontSize: "10px",
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--text-muted)",
-            }}
-          >
+          <div className="px-3.5 pt-2 pb-1 text-[10px] font-semibold tracking-widest uppercase text-[var(--text-muted)]">
             {SECTION_LABELS[type]}
           </div>
           {grouped[type].map((r) => (
             <button
               key={r.id}
               onClick={() => navigate(r)}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "100%",
-                padding: "8px 14px",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                textAlign: "left",
-                gap: "12px",
-                transition: "background 60ms",
-              }}
-              onMouseEnter={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.background =
-                  "var(--bg-surface)")
-              }
-              onMouseLeave={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.background =
-                  "none")
-              }
+              className="flex items-center justify-between w-full px-3.5 py-2 bg-transparent border-none cursor-pointer text-left gap-3 hover:bg-[var(--bg-hover)] transition-colors"
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <div className="flex items-center gap-2.5">
                 <TypeIcon type={type} />
-                <span
-                  style={{
-                    fontSize: "13px",
-                    color: "var(--text-primary)",
-                    fontFamily:
-                      type === "transaction"
-                        ? "JetBrains Mono, monospace"
-                        : undefined,
-                  }}
-                >
+                <span className={`text-[13px] text-[var(--text-primary)] ${type === "transaction" ? "font-mono" : ""}`}>
                   {r.label}
                 </span>
               </div>
               {r.secondary && (
-                <span
-                  style={{
-                    fontSize: "11px",
-                    color: "var(--text-muted)",
-                    whiteSpace: "nowrap",
-                  }}
-                >
+                <span className="text-[11px] text-[var(--text-muted)] whitespace-nowrap">
                   {r.secondary}
                 </span>
               )}
@@ -432,15 +281,7 @@ function TypeIcon({ type }: { type: SearchResult["type"] }) {
     program: "⬡",
   };
   return (
-    <span
-      style={{
-        fontSize: "12px",
-        color: "var(--text-muted)",
-        width: "16px",
-        textAlign: "center",
-        flexShrink: 0,
-      }}
-    >
+    <span className="text-[12px] text-[var(--text-muted)] w-4 text-center shrink-0">
       {icons[type]}
     </span>
   );
@@ -450,30 +291,8 @@ function TypeIcon({ type }: { type: SearchResult["type"] }) {
 
 function NetworkPill() {
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "5px",
-        fontSize: "11px",
-        fontFamily: "JetBrains Mono, monospace",
-        color: "var(--text-muted)",
-        padding: "3px 8px",
-        border: "1px solid var(--border)",
-        borderRadius: "20px",
-        background: "var(--bg-surface)",
-      }}
-    >
-      <span
-        style={{
-          width: "6px",
-          height: "6px",
-          borderRadius: "50%",
-          background: "#22c55e",
-          animation: "pulse 2s ease-in-out infinite",
-          display: "inline-block",
-        }}
-      />
+    <div className="flex items-center gap-1.5 text-[11px] font-mono text-[var(--text-muted)] px-2.5 py-1 border border-[var(--border)] rounded-full bg-[var(--bg-surface)]">
+      <span className="status-dot status-dot-live" />
       Mainnet
     </div>
   );
@@ -486,17 +305,10 @@ function AuthButton() {
 
   if (isSignedIn) {
     return (
-      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+      <div className="flex items-center gap-2.5">
         <Link
           href="/billing"
-          style={{
-            fontSize: "12px",
-            color: "var(--text-muted)",
-            textDecoration: "none",
-            padding: "4px 8px",
-            borderRadius: "4px",
-            border: "1px solid var(--border)",
-          }}
+          className="text-[12px] text-[var(--text-muted)] px-2 py-1 rounded border border-[var(--border)] hover:border-[var(--border-strong)] hover:text-[var(--text-secondary)] transition-colors"
         >
           Billing
         </Link>
@@ -513,32 +325,7 @@ function AuthButton() {
 
   return (
     <SignInButton mode="modal">
-      <button
-        style={{
-          fontSize: "13px",
-          fontWeight: 500,
-          padding: "5px 14px",
-          borderRadius: "6px",
-          border: "1px solid var(--border)",
-          background: "transparent",
-          color: "var(--text-secondary)",
-          cursor: "pointer",
-          fontFamily: "inherit",
-          transition: "border-color 80ms, color 80ms",
-        }}
-        onMouseEnter={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.borderColor =
-            "var(--text-muted)";
-          (e.currentTarget as HTMLButtonElement).style.color =
-            "var(--text-primary)";
-        }}
-        onMouseLeave={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.borderColor =
-            "var(--border)";
-          (e.currentTarget as HTMLButtonElement).style.color =
-            "var(--text-secondary)";
-        }}
-      >
+      <button className="btn btn-secondary btn-sm">
         Sign In
       </button>
     </SignInButton>

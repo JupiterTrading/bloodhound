@@ -22,15 +22,9 @@ function SearchContent() {
   const results = data?.results ?? [];
 
   return (
-    <div
-      style={{
-        maxWidth: "800px",
-        margin: "0 auto",
-        padding: "32px 24px",
-      }}
-    >
+    <div className="max-w-[800px] mx-auto px-6 py-8">
       {/* Search header */}
-      <div style={{ marginBottom: "32px" }}>
+      <div className="mb-8">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -46,30 +40,12 @@ function SearchContent() {
             defaultValue={q}
             placeholder="Search wallet, token, tx, @handle..."
             autoFocus
-            style={{
-              width: "100%",
-              background: "var(--bg-surface)",
-              border: "1px solid var(--border)",
-              borderRadius: "8px",
-              padding: "12px 16px",
-              fontSize: "15px",
-              color: "var(--text-primary)",
-              fontFamily: "inherit",
-              outline: "none",
-            }}
-            onFocus={(e) => (e.target.style.borderColor = "var(--accent)")}
-            onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
+            className="input w-full px-4 py-3 text-[15px]"
           />
         </form>
 
         {q && (
-          <p
-            style={{
-              marginTop: "12px",
-              fontSize: "13px",
-              color: "var(--text-muted)",
-            }}
-          >
+          <p className="mt-3 text-[13px] text-[var(--text-muted)]">
             {isLoading
               ? "Searching..."
               : isError
@@ -85,38 +61,18 @@ function SearchContent() {
       ) : isLoading ? (
         <SearchSkeleton />
       ) : isError ? (
-        <div
-          style={{
-            background: "var(--bg-surface)",
-            border: "1px solid var(--border)",
-            borderRadius: "10px",
-            padding: "16px 18px",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "14px",
-              fontWeight: 600,
-              color: "var(--text-primary)",
-              marginBottom: "6px",
-            }}
-          >
-            Couldn’t reach the search service
+        <div className="card p-4">
+          <div className="text-[14px] font-semibold text-[var(--text-primary)] mb-1.5">
+            Couldn't reach the search service
           </div>
-          <div
-            style={{
-              fontSize: "13px",
-              color: "var(--text-muted)",
-              lineHeight: 1.4,
-            }}
-          >
+          <div className="text-[13px] text-[var(--text-muted)] leading-snug">
             {error instanceof Error ? error.message : "Unknown error"}
           </div>
         </div>
       ) : results.length === 0 ? (
         <NoResults q={q} />
       ) : (
-        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+        <div className="flex flex-col gap-2">
           {results.map((result) => (
             <ResultCard key={result.id} result={result} />
           ))}
@@ -155,74 +111,24 @@ function ResultCard({ result }: { result: SearchResult }) {
   const icon = TYPE_ICONS[result.type] ?? "·";
 
   return (
-    <Link
-      href={getResultHref(result)}
-      style={{ textDecoration: "none", display: "block" }}
-    >
-      <div
-        style={{
-          background: "var(--bg-surface)",
-          border: "1px solid var(--border)",
-          borderRadius: "8px",
-          padding: "16px 20px",
-          display: "flex",
-          alignItems: "center",
-          gap: "16px",
-          transition: "border-color 80ms",
-          cursor: "pointer",
-        }}
-        onMouseEnter={(e) =>
-          ((e.currentTarget as HTMLDivElement).style.borderColor = "var(--accent)")
-        }
-        onMouseLeave={(e) =>
-          ((e.currentTarget as HTMLDivElement).style.borderColor = "var(--border)")
-        }
-      >
-        <span
-          style={{
-            fontSize: "18px",
-            color: "var(--text-muted)",
-            width: "24px",
-            textAlign: "center",
-            flexShrink: 0,
-          }}
-        >
+    <Link href={getResultHref(result)} className="no-underline block">
+      <div className="card px-5 py-4 flex items-center gap-4 cursor-pointer hover:border-[var(--accent)] transition-colors">
+        <span className="text-lg text-[var(--text-muted)] w-6 text-center shrink-0">
           {icon}
         </span>
 
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div
-            style={{
-              fontSize: "15px",
-              fontWeight: 500,
-              color: "var(--text-primary)",
-              marginBottom: "2px",
-            }}
-          >
+        <div className="flex-1 min-w-0">
+          <div className="text-[15px] font-medium text-[var(--text-primary)] mb-0.5">
             {result.label}
           </div>
           {result.sublabel && (
-            <div
-              style={{
-                fontSize: "12px",
-                color: "var(--text-muted)",
-                textTransform: "capitalize",
-              }}
-            >
+            <div className="text-[12px] text-[var(--text-muted)] capitalize">
               {result.sublabel.replace(/_/g, " ")}
             </div>
           )}
         </div>
 
-        <span
-          style={{
-            fontSize: "11px",
-            color: "var(--text-muted)",
-            textTransform: "uppercase",
-            letterSpacing: "0.06em",
-            flexShrink: 0,
-          }}
-        >
+        <span className="text-[11px] text-[var(--text-muted)] uppercase tracking-wide shrink-0">
           {result.type}
         </span>
       </div>
@@ -239,35 +145,15 @@ function SearchTips() {
   ];
 
   return (
-    <div
-      style={{
-        background: "var(--bg-surface)",
-        border: "1px solid var(--border)",
-        borderRadius: "8px",
-        padding: "24px",
-      }}
-    >
-      <p
-        style={{
-          fontSize: "13px",
-          color: "var(--text-muted)",
-          marginBottom: "16px",
-        }}
-      >
+    <div className="card p-6">
+      <p className="text-[13px] text-[var(--text-muted)] mb-4">
         What you can search for:
       </p>
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+      <div className="flex flex-col gap-2.5">
         {tips.map((tip) => (
-          <div
-            key={tip.text}
-            style={{ display: "flex", alignItems: "center", gap: "12px" }}
-          >
-            <span style={{ color: "var(--accent)", fontSize: "14px", width: "20px" }}>
-              {tip.icon}
-            </span>
-            <span style={{ fontSize: "13px", color: "var(--text-secondary)" }}>
-              {tip.text}
-            </span>
+          <div key={tip.text} className="flex items-center gap-3">
+            <span className="text-[var(--accent)] text-[14px] w-5">{tip.icon}</span>
+            <span className="text-[13px] text-[var(--text-secondary)]">{tip.text}</span>
           </div>
         ))}
       </div>
@@ -277,17 +163,12 @@ function SearchTips() {
 
 function SearchSkeleton() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+    <div className="flex flex-col gap-2">
       {Array.from({ length: 4 }).map((_, i) => (
         <div
           key={i}
-          style={{
-            background: "var(--bg-surface)",
-            border: "1px solid var(--border)",
-            borderRadius: "8px",
-            height: "72px",
-            opacity: 1 - i * 0.2,
-          }}
+          className="card h-[72px]"
+          style={{ opacity: 1 - i * 0.2 }}
         />
       ))}
     </div>
@@ -296,24 +177,13 @@ function SearchSkeleton() {
 
 function NoResults({ q }: { q: string }) {
   return (
-    <div
-      style={{
-        background: "var(--bg-surface)",
-        border: "1px solid var(--border)",
-        borderRadius: "8px",
-        padding: "32px",
-        textAlign: "center",
-      }}
-    >
-      <p style={{ fontSize: "14px", color: "var(--text-secondary)", marginBottom: "8px" }}>
+    <div className="card p-8 text-center">
+      <p className="text-[14px] text-[var(--text-secondary)] mb-2">
         No results for &quot;{q}&quot;
       </p>
-      <p style={{ fontSize: "12px", color: "var(--text-muted)" }}>
+      <p className="text-[12px] text-[var(--text-muted)]">
         If this is a wallet address, try navigating directly to{" "}
-        <Link
-          href={`/wallet/${q}`}
-          style={{ color: "var(--accent)", textDecoration: "none" }}
-        >
+        <Link href={`/wallet/${q}`} className="text-[var(--accent)] no-underline hover:underline">
           /wallet/{q.slice(0, 8)}...
         </Link>
       </p>

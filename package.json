@@ -8,13 +8,17 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "turbo": "latest",
     "prettier": "^3.0.0",
+    "turbo": "latest",
     "typescript": "^5.3.0"
   },
   "engines": {
     "node": ">=20.0.0",
     "pnpm": ">=8.0.0"
   },
-  "packageManager": "pnpm@9.0.0"
+  "packageManager": "pnpm@9.0.0",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "dotenv": "^17.3.1"
+  }
 }

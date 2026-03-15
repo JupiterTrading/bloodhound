@@ -172,36 +172,25 @@ async def activity_feed(
     if not addresses:
         return {"feed": [], "count": 0}
 
-    from app.services import clickhouse
-    client = clickhouse.get_client()
+    # Fetch recent transactions from Helius for tracked wallets
+    from app.services import analytics
+    feed = []
+    for addr in addresses[:10]:  # Cap to avoid too many API calls
+        try:
+            transfers = await analytics.get_wallet_transfers(addr, limit=5)
+            feed.extend(transfers)
+        except Exception:
+            pass
 
-    # Build parameterized IN clause
-    placeholders = ", ".join([f"{{addr_{i}:String}}" for i in range(len(addresses))])
-    params = {f"addr_{i}": a for i, a in enumerate(addresses)}
-    params["limit"] = limit
-    params["offset"] = offset
-
-    result = await asyncio.to_thread(
-        client.query,
-        f"""
-        SELECT
-            t.tx_signature, t.block_time, t.from_address, t.to_address,
-            t.token_mint, t.amount, t.amount_usd, t.chain
-        FROM transfers t
-        WHERE t.from_address IN ({placeholders}) OR t.to_address IN ({placeholders})
-        ORDER BY t.block_time DESC
-        LIMIT {{limit:UInt32}}
-        OFFSET {{offset:UInt32}}
-        """,
-        parameters=params,
-    )
-    feed = [dict(zip(result.column_names, row)) for row in result.result_rows]
+    # Sort by block_time descending
+    feed.sort(key=lambda x: x.get("block_time") or 0, reverse=True)
+    feed = feed[offset:offset + limit]
 
     # Tag each item with the wallet label
     label_map = {w["address"]: w["label"] for w in wallets}
     for item in feed:
-        item["from_label"] = label_map.get(item["from_address"])
-        item["to_label"] = label_map.get(item["to_address"])
+        item["from_label"] = label_map.get(item.get("from_address"))
+        item["to_label"] = label_map.get(item.get("to_address"))
 
     return {"feed": feed, "count": len(feed), "total_wallets": len(addresses)}
 
@@ -227,7 +216,7 @@ async def get_portfolio(user_id: str = Depends(get_current_user_id)):
     if not own_wallets:
         return {"wallets": [], "holdings": [], "total_usd": 0.0, "kol_overlap": {}}
 
-    from app.services import birdeye, clickhouse
+    from app.services import birdeye, analytics
 
     # Fetch Birdeye portfolio for each own wallet in parallel
     portfolio_results = await asyncio.gather(
@@ -253,7 +242,7 @@ async def get_portfolio(user_id: str = Depends(get_current_user_id)):
 
     # KOL overlap: how many known KOLs have traded each mint in the last 30 days
     kol_addresses = await supabase_svc.get_kol_addresses()
-    kol_overlap = await clickhouse.get_kol_overlap_batch(mints[:50], kol_addresses)
+    kol_overlap = await analytics.get_kol_overlap_batch(mints[:50], kol_addresses)
 
     # Enrich each holding with KOL overlap data
     for h in combined:
@@ -282,7 +271,7 @@ async def generate_portfolio_report(user_id: str = Depends(get_current_user_id))
     if not own_wallets:
         return {"report": "No own wallets found. Mark wallets as 'own' in your Tracked dashboard to generate a portfolio report.", "confidence": "UNKNOWN"}
 
-    from app.services import birdeye, clickhouse
+    from app.services import birdeye, analytics
     from app.core.config import get_settings
     import anthropic
 
@@ -292,7 +281,7 @@ async def generate_portfolio_report(user_id: str = Depends(get_current_user_id))
     # Fetch portfolio + recent signals in parallel
     portfolio_raw, signals = await asyncio.gather(
         asyncio.gather(*[_safe(birdeye.get_wallet_portfolio(a), default={}) for a in addresses]),
-        clickhouse.get_recent_signals_for_wallets(addresses, limit=20),
+        analytics.get_recent_signals_for_wallets(addresses, limit=20),
     )
 
     # Merge holdings

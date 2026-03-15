@@ -29,13 +29,8 @@ export function PnLBadge({ value, mode = "usd", size = 13 }: PnLBadgeProps) {
 
   return (
     <span
-      style={{
-        fontFamily: "JetBrains Mono, ui-monospace, monospace",
-        fontSize: size,
-        fontWeight: 500,
-        color,
-        whiteSpace: "nowrap",
-      }}
+      className="font-mono font-medium whitespace-nowrap"
+      style={{ fontSize: size, color }}
     >
       {formatted}
     </span>

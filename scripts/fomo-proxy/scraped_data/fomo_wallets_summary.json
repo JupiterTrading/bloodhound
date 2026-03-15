@@ -1,0 +1,979 @@
+[
+  {
+    "solana": "5ECuREzbvnxfrmo9cnvrcfKLgMJ7zd2ZP1C3XbPKbHhd",
+    "evm": "0x4ac3da3e752932f3ec08cf98f778a055e039f3b8",
+    "name": "change",
+    "handle": "change",
+    "type": "kol",
+    "tier": "legendary",
+    "pnl_24h": 100423.04530988832,
+    "followers": 89102
+  },
+  {
+    "solana": "7TAMgUTRR2J8iUpPVuevFRFq8oX1kmhKTx4Y4BUNF9Eb",
+    "evm": "0x8eaee4a0379e2e1f7faace70222255b437b7286e",
+    "name": "RC",
+    "handle": "ResellCalendar",
+    "type": "market_maker",
+    "tier": "legendary",
+    "pnl_24h": 58785.85700672034,
+    "followers": 13851
+  },
+  {
+    "solana": "G9kNVrM2Pk3CvVzne8JUEhWBTKbfXANJ6SstU7Wb9fnK",
+    "evm": "0x6ec6ccc9c6a99559ff5baead3d2b1747d1657467",
+    "name": "jay",
+    "handle": "_traderjay",
+    "type": "smart_money",
+    "tier": "elite",
+    "pnl_24h": 36885.09934973309,
+    "followers": 627
+  },
+  {
+    "solana": "JPVrNNoBePhir8t7eBwTAysBsTf8VEBPbBdVb3oJu5J",
+    "evm": "0x0cd74a75b565f77b564b118a2cbe34b49cf98851",
+    "name": "rev",
+    "handle": "solrevv",
+    "type": "smart_money",
+    "tier": "elite",
+    "pnl_24h": 30170.195371757418,
+    "followers": 440
+  },
+  {
+    "solana": "FbNUmcixxfQ4LVtNdh5hRwMAD98QBM2sLtKNrFwChGE1",
+    "evm": "0xb0d717901a642497fe20329f99fc76090a02880b",
+    "name": "Eric Voorhees",
+    "handle": "erlkvoorhees",
+    "type": "smart_money",
+    "tier": "elite",
+    "pnl_24h": 24998.168974382148,
+    "followers": 328
+  },
+  {
+    "solana": "H3jGitWGsrMnuvsQcCJoDfS6spJGS4AKguagaa6EnfQX",
+    "evm": "0x0b462af5fd96891bfda3829bd6eb3060b35026b6",
+    "name": "lesabre",
+    "handle": "lesabre",
+    "type": "kol",
+    "tier": "elite",
+    "pnl_24h": 23753.89250103767,
+    "followers": 27012
+  },
+  {
+    "solana": "9WunTXX7PKeEngkPM6uqc7AjEsQFudNvbLWAEemioD89",
+    "evm": "0x0bf96f77708bb7b832b2019817eb47bf31a7b072",
+    "name": "s",
+    "handle": "svntyxsvn",
+    "type": "smart_money",
+    "tier": "elite",
+    "pnl_24h": 23205.356427773288,
+    "followers": 2390
+  },
+  {
+    "solana": "6487sppMrk14kHhDfoHjnRthQwSqcKaYk9e26tukGucR",
+    "evm": "0xd985d752e6123ab1e70458550fdda1be974a790f",
+    "name": "KJS16",
+    "handle": "KJS16",
+    "type": "smart_money",
+    "tier": "elite",
+    "pnl_24h": 22498.61251362189,
+    "followers": 3820
+  },
+  {
+    "solana": "HeufDSztrxjDjDhcahDDAZgAD6gtWuPK7jXGcNUgGwmk",
+    "evm": "0xe07ef6e4380a31545c51f505e7bd970002db319e",
+    "name": "Streetjesus",
+    "handle": "Streetjesus_eth",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 19759.029614301893,
+    "followers": 321
+  },
+  {
+    "solana": "ExxadAeGwmrfS3NnHxEqWX3qmVTFNXhk7DmSScUpp1t3",
+    "evm": "0xbf7741d22ddc76c6bd162aa77e564c544c32cfe9",
+    "name": "logjam",
+    "handle": "_logjam",
+    "type": "kol",
+    "tier": "pro",
+    "pnl_24h": 17383.678689742886,
+    "followers": 53385
+  },
+  {
+    "solana": "HYmWmpbJbjzsSGu19qBKBjBaXrSrFiGzX3EFtaoPos9F",
+    "evm": "0xe40101597f4a03ebdca38f7a08eefd1dc941d058",
+    "name": "Dip Wheeler",
+    "handle": "DipWheeler",
+    "type": "kol",
+    "tier": "pro",
+    "pnl_24h": 17379.629730133154,
+    "followers": 12067
+  },
+  {
+    "solana": "5iCm8CjaqdKEQJ7uBUvtw1etJxgznMCY6LEuzNwmdd2c",
+    "evm": "0x88060b2fcf17195549de822d046f912f994b7a0f",
+    "name": "usernametaken",
+    "handle": "usernametaken",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 17140.809934168632,
+    "followers": 978
+  },
+  {
+    "solana": "Fsx4e6eVvAkec74gHRRjvCARA1dPHtfBYGnr5wW7zeKu",
+    "evm": "0x89b3353fa72a113b89936216040d25cc52ae5962",
+    "name": "sized in",
+    "handle": "sized_in",
+    "type": "market_maker",
+    "tier": "pro",
+    "pnl_24h": 16002.07227492931,
+    "followers": 6278
+  },
+  {
+    "solana": "31Zbq9r9jNdjQheg2JgFcC9W83Dzezs8njnrFi4NNyRE",
+    "evm": "0xfd877d5646e76c622125e3accabb0765e9187ff0",
+    "name": "teep",
+    "handle": "teepanddestroy",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 14648.741637168334,
+    "followers": 1145
+  },
+  {
+    "solana": "EVPZtVguANq53bmoK4gBaQrzTaCXMr6ERSEpQC137QjF",
+    "evm": "0x0b54f34d42c5414bc22e934c349d3393a14b7fde",
+    "name": "*",
+    "handle": "onchainsorcerer",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 14601.623279788955,
+    "followers": 2334
+  },
+  {
+    "solana": "4rhZ9DhngHLt1HgmitVeSQcLX63sxjh16rxhPk1cNLKA",
+    "evm": "0x3d0feaa222be4e1e5b116ea0b9a61082365670b6",
+    "name": "MevZoid",
+    "handle": "MevZoid",
+    "type": "kol",
+    "tier": "pro",
+    "pnl_24h": 14409.455353120642,
+    "followers": 18871
+  },
+  {
+    "solana": "4SYq4htJwgs7gn4QdTpG2pDm3xNH9MCUEA6zo5EryjEP",
+    "evm": "0x4c0a5cc50817d34569995a3cd6e31b19917e6e2f",
+    "name": "aaaa",
+    "handle": "holiday_inn_express",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 13618.81887392658,
+    "followers": 351
+  },
+  {
+    "solana": "69V3ZD77v6VHmWVjdymcpX9HsepTx9fb1HTprtkLm242",
+    "evm": "0xf31b607623a173fd9810eaea970f0e2f6fe61cf8",
+    "name": "quinn",
+    "handle": "quinn",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 13043.110597378238,
+    "followers": 3996
+  },
+  {
+    "solana": "588deeKuwhHddybmi6H9c7R9SXFidMs43GpjpgKsPnXN",
+    "evm": "0xf6514b0a4afa4b659f4feb6b900a9b604363ccde",
+    "name": "Random Guy",
+    "handle": "randomxbt",
+    "type": "market_maker",
+    "tier": "pro",
+    "pnl_24h": 12414.74940443426,
+    "followers": 8452
+  },
+  {
+    "solana": "4a2vrEAYrzaywCLid92QTsYDFHTZp1H9Y8xvpvE3xUov",
+    "evm": "0xa12210be593bd5928dbf26987149c9f2590a5bed",
+    "name": "bizz",
+    "handle": "bizzxbt",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 11763.116660598818,
+    "followers": 1007
+  },
+  {
+    "solana": "F2R5xhv1fjUK7m1VirH7e6K5CQTaFFxYrxNmDyuM2kUu",
+    "evm": "0xe36e463e9a63a9e6f38147c3f81935be04429131",
+    "name": "Still in the Game",
+    "handle": "stigstigstig_",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 11454.819583472356,
+    "followers": 9259
+  },
+  {
+    "solana": "E6czeBZEvfiscJa6NgQpTxjKvsvvwK4zaPZ2G2nf7y76",
+    "evm": "0x52bfd45d37f45f73f0555be6ca9a645ba6b6deb3",
+    "name": "profit | eca.eth",
+    "handle": "FlippingProfits",
+    "type": "kol",
+    "tier": "pro",
+    "pnl_24h": 11049.433260181402,
+    "followers": 10384
+  },
+  {
+    "solana": "EioSTsdo3YDfgAGHidgszdXNqLbg8rzZdbdXfcnwLBNL",
+    "evm": "0x9b852b9edb9dcfbc98a570c72339a0b1053ecf18",
+    "name": "BrazilZZ🇧🇷",
+    "handle": "xbrazilzz",
+    "type": "market_maker",
+    "tier": "pro",
+    "pnl_24h": 10856.620646898884,
+    "followers": 5670
+  },
+  {
+    "solana": "C4eqjMqBP7oYQ7rPsEZDs23xP8VnKhYwXV4HrabpHbBR",
+    "evm": "0xa58dae86eef033c8efaa94b4ddfc1e4ee98e168f",
+    "name": "googoogaagaa",
+    "handle": "googoogaagaa",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 10475.821584219975,
+    "followers": 29
+  },
+  {
+    "solana": "Bs8s1QzhkxDdYD9exTCdMYSi776cGtqYZFLFb5A2cFtV",
+    "evm": "0xf0244ddb9c126ed836381c11d730257ba36929c9",
+    "name": "Dinh Hung",
+    "handle": "dinhhung493",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 10342.161604590417,
+    "followers": 507
+  },
+  {
+    "solana": "3jw8TCHj4hvH47wK1X9M6TDrMwt47n7v9xPUdKM2EVME",
+    "evm": "0x5498f531876f73842e7847880918826953914454",
+    "name": "ZippySolarPuma",
+    "handle": "ZippySolarPuma",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 9952.88876493376,
+    "followers": 651
+  },
+  {
+    "solana": "4Y2MgwWzHzGVFeq52o6BP1nFXA8NQFxSW9q3peVyzTfh",
+    "evm": "0xdb32bd16e5b7405d43f68a0006b7d2242d278ded",
+    "name": "neetguy",
+    "handle": "neetguy",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 9826.7292172723,
+    "followers": 1587
+  },
+  {
+    "solana": "Ge2bEzJ7z8CjoGuvWGzUZnTb1KAVPY4VoTKWa71FpNvH",
+    "evm": "0x10ed8770f5610679b2e2ec85fc54206ef715e010",
+    "name": "Yogurt.hl",
+    "handle": "yogurt_eth",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 9293.682585814102,
+    "followers": 1284
+  },
+  {
+    "solana": "8TDYEzuCmh13JjSZrfT3XWE3U3YfwPrtr9xC1WnT6tWP",
+    "evm": "0xc7dfa235fb48d370434bfab140a32b224246ba16",
+    "name": "🐈‍⬛",
+    "handle": "graycandol",
+    "type": "kol",
+    "tier": "pro",
+    "pnl_24h": 8652.3215156492,
+    "followers": 10602
+  },
+  {
+    "solana": "55hpyoNn4d3SRCLE1C3Cmh9GsfXa6b9gXKcprX3LVnui",
+    "evm": "0x675ddd094ad244d99647ab0215105a0c25779204",
+    "name": "rynzo",
+    "handle": "rynzoeth",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 8530.654522826353,
+    "followers": 4124
+  },
+  {
+    "solana": "3FyBTtWvhzG5p1HuTDYUEFGu7eNCZAHvvRPweXWcZsiw",
+    "evm": "0xd66acda6255833ab877f1148368b81b7722ea440",
+    "name": "[PN] asta",
+    "handle": "astaso1",
+    "type": "kol",
+    "tier": "pro",
+    "pnl_24h": 8467.2306105428,
+    "followers": 38863
+  },
+  {
+    "solana": "FCSabc74THQMjSviZ9LnpTKgoiNsSVUhFawUr3sED5Af",
+    "evm": "0xb5de449faeebd5519fd2b7af5612886d0301133e",
+    "name": "Pingu Charts",
+    "handle": "pingucharts",
+    "type": "kol",
+    "tier": "pro",
+    "pnl_24h": 8375.31818233283,
+    "followers": 12206
+  },
+  {
+    "solana": "L1ZbujFMUoWLnA6zLzsRy2gdaNw4JEZMda4epGBBBVt",
+    "evm": "0x723a9b04073cf5e78edc1bf982a3e257cab7b406",
+    "name": "wrld",
+    "handle": "wrld_sol",
+    "type": "kol",
+    "tier": "pro",
+    "pnl_24h": 8236.139676481615,
+    "followers": 33217
+  },
+  {
+    "solana": "61urmYCKco3dTAcp4dhgbmY6ZXyAdUB9X3FintHFc3Sr",
+    "evm": "0x814a2feec3777704aafe63a0d3795e4d0e92d425",
+    "name": "hotlneblng",
+    "handle": "hotlneblng",
+    "type": "market_maker",
+    "tier": "pro",
+    "pnl_24h": 7958.3686172553935,
+    "followers": 9397
+  },
+  {
+    "solana": "3QGeGcN3atNeBehp9TWKDPvvroNrK6uQZieSPa4qPfqQ",
+    "evm": "0x4947c654b6fc7458827d362e7075ae03cce68b97",
+    "name": "Sneaky",
+    "handle": "0xsneakky",
+    "type": "market_maker",
+    "tier": "pro",
+    "pnl_24h": 7727.868204181543,
+    "followers": 6941
+  },
+  {
+    "solana": "6NGPu8gCKN9L2TSEHTiMLa45DBKkWHXZpGC1m2WaMBam",
+    "evm": "0x7e1865606cd3182952d009d16898551c0f4af80d",
+    "name": "LostEverythingAgain",
+    "handle": "LostEverythingAgain",
+    "type": "market_maker",
+    "tier": "pro",
+    "pnl_24h": 7716.861706101447,
+    "followers": 109
+  },
+  {
+    "solana": "Hd2tKEFF2RRMAufr9paDQdqrryMRJpKkapHTobz7CRZQ",
+    "evm": "0x975d9d0b3a0f92ea67f04545de78bdb39ee9c8dc",
+    "name": "Ethan Prosper",
+    "handle": "pr6spr",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 7514.884853538255,
+    "followers": 210
+  },
+  {
+    "solana": "3UdzAJCsou9eL7FDbGm4RLNkfMQTZJYquxwc3PYYhPNG",
+    "evm": "0xd3608c3b17d102f7e79b3d643c4fe54f79582131",
+    "name": "casino",
+    "handle": "casino1",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 7339.573682878374,
+    "followers": 545
+  },
+  {
+    "solana": "BSM7obo97xfVUPSPEuU6kURoPvTYUNVspQSKJm5jpPUq",
+    "evm": "0xf6cf3ea770bfbdce8f22a047e8fb06c9c81e8ecb",
+    "name": "jg",
+    "handle": "jotagezin",
+    "type": "kol",
+    "tier": "pro",
+    "pnl_24h": 7137.883073876628,
+    "followers": 37342
+  },
+  {
+    "solana": "Hn3C8G91CjGHnwtaaaa3qeRCESBo6paSwCGwPBbeEYpi",
+    "evm": "0x2a8f3a58735e01a0f42aaa9c52fe5f73d32b60e2",
+    "name": "fomouser123",
+    "handle": "fomouser123",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 7097.710335452262,
+    "followers": 5577
+  },
+  {
+    "solana": "Bw6cKwtBAMzQwu2rcgfBtVopkvMs6uftxA1RZwEqx8en",
+    "evm": "0x96a24355534350fe0c32d3007b9774997429e59b",
+    "name": "Qtags (up/only)",
+    "handle": "qtags3",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 6981.476917531652,
+    "followers": 92
+  },
+  {
+    "solana": "2MvXHZZP4LehvuTYxzBHogQsJXhNrdAvZaoKK8FrkFdP",
+    "evm": "0xd05606fe32ceef693c1a7dee35151ee80498347e",
+    "name": "snotty",
+    "handle": "snotty",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 6925.281596350977,
+    "followers": 201
+  },
+  {
+    "solana": "9h3kg9qML1XmXKYgVGWD7ESkbwKM3r7HLGTgALTDmVkx",
+    "evm": "0x4f17376f236caa50e97c35440cb80011a9d61b61",
+    "name": "‎ ‎",
+    "handle": "horror",
+    "type": "market_maker",
+    "tier": "pro",
+    "pnl_24h": 6924.726406931651,
+    "followers": 1290
+  },
+  {
+    "solana": "EKYGqLpsUXBmocGjh4EFXFYwNXSm6bi43gD9unqqyTr9",
+    "evm": "0xa55e9cb1e527479860920a618f44baaeb232a60a",
+    "name": "Mickey Mouse",
+    "handle": "mickeymouse",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 6914.838593481618,
+    "followers": 3094
+  },
+  {
+    "solana": "7yFfK5PCorQqbCAHrvdshYBFCe3nuuSot3SjtoycN5sW",
+    "evm": "0x63b193f41f176f9e22838600bda129dae54aeb90",
+    "name": "everythingempty",
+    "handle": "everythingempt0",
+    "type": "kol",
+    "tier": "pro",
+    "pnl_24h": 6877.3654886254,
+    "followers": 11046
+  },
+  {
+    "solana": "At5aHW5EAybnmxFdMysJSZcagYGzwDxKebzAjvMeko8L",
+    "evm": "0x22559869fda23332beea964ce150c79fbb1e052b",
+    "name": "tommy 🌙",
+    "handle": "tommy",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 6718.886838163324,
+    "followers": 3148
+  },
+  {
+    "solana": "FiWny9shGU4FYasPVHu1uMVc5Z6VRMKvJzpP6CqucYBM",
+    "evm": "0x21eb49537dc987691d438450225cd15fd153b831",
+    "name": "0xLyuu",
+    "handle": "0xlyuu",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 6627.585447881309,
+    "followers": 722
+  },
+  {
+    "solana": "GJcMxxQf27cYv2KLA26H6VTZdPfrneZ2HmvCdvMxxZfi",
+    "evm": "0x6e160b74952ac0ab63167ff2fd665a08409339fb",
+    "name": "fibs",
+    "handle": "fibs",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 6576.132163181924,
+    "followers": 1964
+  },
+  {
+    "solana": "DATMkmVrFbZt7isGoxyDSpAuF9vJycpkDKwhbf978eUw",
+    "evm": "0x490b0e93fe28989e70cddbcbfcc635d383baf322",
+    "name": "game",
+    "handle": "game_for_one",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 6514.269961001855,
+    "followers": 8678
+  },
+  {
+    "solana": "FJhXFik8Kfno3EgYPoWgGniTth9xkJGPWTZGr4ExoG2P",
+    "evm": "0xbd26897dbfaeae67742e5e9766b504e00f463fbd",
+    "name": "juicy",
+    "handle": "Juicycooks",
+    "type": "smart_money",
+    "tier": "pro",
+    "pnl_24h": 6458.967463073729,
+    "followers": 150
+  },
+  {
+    "solana": "8RREEr3ttGuhjC4kfoKViwrDufJZeuHxL5MD79BPbBho",
+    "evm": "0x7d49dc688c3eb832c8a173b5a8b65ab257f90b8b",
+    "name": "donotchase",
+    "handle": "dncdoteth",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 6176
+  },
+  {
+    "solana": "9QNeV6XrAJJFHDSps6NCVpbA9ne2PBHQaA6Ekt2fBi5y",
+    "evm": "0x8045ff81ef330c65efba80d86ffc830819574d75",
+    "name": "six",
+    "handle": "Leeyde911",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 2055
+  },
+  {
+    "solana": "853yxZmJZVnPoWzUsQiGkk9DWgrA8v2uFN8fJvWNo1JN",
+    "evm": "0xab3e898271e67a4c4fc8a6d04c061436a8d30777",
+    "name": "downhorrendously",
+    "handle": "downhorrndously",
+    "type": "market_maker",
+    "tier": "standard",
+    "followers": 8891
+  },
+  {
+    "solana": "DvgX5mbRiwKXb8BLYNqGx21i2nnXAqPasvSRopzgTQgh",
+    "evm": "0xd4e1038ef6774523c8073feb905bc2ef91a46ea6",
+    "name": "Clav",
+    "handle": "Clavtard",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 2908
+  },
+  {
+    "solana": "4xAAf8Epr3APAjsLwqMtyfAS2acDSwDgYKi4gL7cwT7K",
+    "evm": "0xd49d1e7f050fc2bf1a6a7d514f1ddf02a5933877",
+    "name": "Don Alpha",
+    "handle": "AlphaCrew23",
+    "type": "kol",
+    "tier": "standard",
+    "followers": 21257
+  },
+  {
+    "solana": "8nwzLRBBQyW9BndxZn3YLaEVVoNp91iAxMpuWgczGZB7",
+    "evm": "0xa48f376c87adc1ae7821ce7a5a909a3583a5451f",
+    "name": "dns (🟡, 🟩)",
+    "handle": "DNS_ERR",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 5389
+  },
+  {
+    "solana": "CqbQqfWknWs6eHpizQ8nhApbxA7fZTX21iyBe5LjpJEF",
+    "evm": "0x4a9787173610ebe5ef68d94ba43edc0c3bb92aaf",
+    "name": "(—<>—)",
+    "handle": "spiceys",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 294
+  },
+  {
+    "solana": "HsowDyoy5zH4tTUTZWyiL8GGHUWNRvb3ySMqmCohtGoE",
+    "evm": "0x141b98804ad9401feff16b07f7cf3b6a6799893f",
+    "name": "PeacefulLovelyWildfowl",
+    "handle": "PeacefulLovelyWildfowl",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 548
+  },
+  {
+    "solana": "GrR7ETq5FMQdVDgMGpVD63GndeETzVFoJFaT9yyEVFL9",
+    "evm": "0x2048c968c4c3228658191b9265cec4d2caa76ff3",
+    "name": "raychan",
+    "handle": "raychan",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 829
+  },
+  {
+    "solana": "CZLadaJS9AQpiPqrAaX5KHLpMeeQLJooYGN1CJU2a9Fd",
+    "evm": "0xa1058ea8203e2180060464535fce9f9ffde33be2",
+    "name": "101KittenRainbow",
+    "handle": "101KittenRainbow",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 254
+  },
+  {
+    "solana": "51kmQvJFpUtptHT31aQ7BpSo6q8xhu3DGsj842XxwjZj",
+    "evm": "0x363f2268d334cc9bca19793f7355bddfb80cd9e4",
+    "name": "Laolu",
+    "handle": "Laolu",
+    "type": "kol",
+    "tier": "standard",
+    "followers": 34618
+  },
+  {
+    "solana": "3vNX8FGnFrc6uhyVyzDrRFpFLxT52eZBAaYXyK1YR9Qx",
+    "evm": "0x81d10de94eef60e39c814cae935788dca4b70e95",
+    "name": "Mabon",
+    "handle": "mabon_zsq",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 1307
+  },
+  {
+    "solana": "J6BoyLeMx5QfXbLbJbw5fozH2pK1BqxwHFEEoa8HbXHB",
+    "evm": "0x11aabb67360646e14af11b66d3b4ddbe0cf37062",
+    "name": "trewbuilt",
+    "handle": "trewbuilt",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 54
+  },
+  {
+    "solana": "D8P5Wy4Nssuqh7woNVvq7wei65Meom8fuxPnoi9d5YZV",
+    "evm": "0x41f9be0f1ee6fb8b89887afe887e3600dac75c1b",
+    "name": "Genetic",
+    "handle": "Genetic",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 1239
+  },
+  {
+    "solana": "4R1jY68qvn2y6qrwR5otYbvGyVYfkbKfbaPCBZvzwE5e",
+    "evm": "0x09536ca7218fabfb12e2d46529bb0cd11eedee78",
+    "name": "Eric",
+    "handle": "ericceth",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 896
+  },
+  {
+    "solana": "FtYu3mCMaFEw2b8BXkP2xLq6JNqCYXuL5LusTPA1m47M",
+    "evm": "0x2b9bf5eaa5daffad7af2f4a74dd43f69b4f039a6",
+    "name": "Dr. Hehe",
+    "handle": "doctorHehe",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 1287
+  },
+  {
+    "solana": "6S2Ktt28Wtq5jBG3FXWaD6doXEC6A2LYkuNsvHHXTkXu",
+    "evm": "0x9407059eae270e956d29d736d3f09f68a762a13b",
+    "name": "Masha",
+    "handle": "masha",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 333
+  },
+  {
+    "solana": "CJDjRAjigb3UdsjxaV7AiMchhJV6qAcc3SjrSLFyytE3",
+    "evm": "0x67cb01f8472f4e37d98ef323721a36254c1402e1",
+    "name": "ₛₘₒₗ intern 💡",
+    "handle": "smol_intern",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 1194
+  },
+  {
+    "solana": "3nq29KyuzRT7xmk1Abg9eJ7fJaf5ossQHL1igpSCrHfm",
+    "evm": "0x7e226400f9dac345dd19e673280a0ffac492e79d",
+    "name": "Ciel",
+    "handle": "iamcIoud",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 67
+  },
+  {
+    "solana": "9oER4xGiZCRLHmZFpH793CfUzAB8zK9cVQDh1cDZ9a3w",
+    "evm": "0x400f9781e13d38523b164ac50bb9a4c85829a8c0",
+    "name": "Abruzy.hl.🕯️🦇🔊",
+    "handle": "0xAbruzy",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 430
+  },
+  {
+    "solana": "CbfECPomSocQGCEdghcq1zkYEDSVUVP761QMnRXwvyD9",
+    "evm": "0x3a6a4aa63348f06e059e00d5bdb3a87d7563cc6c",
+    "name": "Clewguo",
+    "handle": "clewguo",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 2016
+  },
+  {
+    "solana": "1MZHGYQysPw3qaLX8GGFUZw9x9VKhKmnYBow1ZKLN9D",
+    "evm": "0x0be7e3a34346094224b6bf41d71d2a9b01cdc982",
+    "name": "Ayovex🦕",
+    "handle": "VexRex23",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 1748
+  },
+  {
+    "solana": "5zVedvk9ffJKwaoueQWKEAAAa1nutXKhaqmFxzwmvVkW",
+    "evm": "0xa9f7da8979d0ed6aaf3181354a522ac53e69a682",
+    "name": "AJC",
+    "handle": "AvgJoesCrypto",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 2741
+  },
+  {
+    "solana": "AvxQArzPD6G5wXzybKAzpBZSe2t5FWRQyyj4YjDL7e1a",
+    "evm": "0x113572076e5a407ec42fa432f7c2293efbedf90e",
+    "name": "YODA",
+    "handle": "Yodatrader",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 204
+  },
+  {
+    "solana": "duEu1pmuK8c7nP5jQwVdvHkpTUrtAAD13DywuVDstRs",
+    "evm": "0xb19158374d1fd2ab98b299df4ee5cc15b2ded492",
+    "name": "BDAWGZ",
+    "handle": "BDAWGZ",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 18
+  },
+  {
+    "solana": "APgFrGsRk2huQoLXq4MSYbm5PgMrv1cgct8MbNb18bBV",
+    "evm": "0x6bb03c8e2a005344e9a001dc9542b54f92dd867f",
+    "name": ",,",
+    "handle": "CHR4LLE",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 19
+  },
+  {
+    "solana": "6otsrYCbmidUAK3y9ZG638m8BUCsNJw4iq9Yr9t4mtyb",
+    "evm": "0xbb0897ecee9392760fd5957bf9ccb22676eff73d",
+    "name": "gera",
+    "handle": "gera_eth",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 519
+  },
+  {
+    "solana": "DSFZsRgGS2sUTxpLKtwJCdYDN7GDHtn5tjgMqSzPDb3q",
+    "evm": "0x22b542fec428ed1b5d96c53772e711c76ddc3042",
+    "name": "Trench Daddy",
+    "handle": "PewPew",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 30
+  },
+  {
+    "solana": "4v5uJuCNUTNh4Yv62wViPe74t7V628qEWByfdYTNtpLd",
+    "evm": "0x560791d4fe7499966ff4b862d91c90bd80db7804",
+    "name": "dunworri",
+    "handle": "0xDunworri",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 18
+  },
+  {
+    "solana": "CvP9Gs587N8iYCNzd7ZWZKQ5jxvdmi9C5g3FJyw8MFDA",
+    "evm": "0xf06df94e8977934fd3fcfc950ce6e3767bb5b956",
+    "name": "🦁Léon",
+    "handle": "BonBon_1769",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 84
+  },
+  {
+    "solana": "5QEXbHAYhSMPfGY5sCZ2hBqUL54qNQ8f2QN14ST95nvb",
+    "evm": "0x6e7a8cf88159b3f21d02d65a45ee7e40f21cf4dd",
+    "name": "Ἄρτεμις",
+    "handle": "artemisjpl",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 344
+  },
+  {
+    "solana": "2uUWCvjzA68pdww3CJVyKZGpP3jLUoEZUdxe5zCU91qr",
+    "evm": "0x01f85ff8dd473afe263965b0576536aaf0095124",
+    "name": "Saif",
+    "handle": "s4if",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 5849
+  },
+  {
+    "solana": "GK8rXe5LQdG2HuTSmh3q6TLeiiYrBhyxpWY9Xrfmad4x",
+    "evm": "0xc3e132433aed79085ecab7b6bd0b3b3fae039ca8",
+    "name": "UPNEXT",
+    "handle": "UPNEXT",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 6829
+  },
+  {
+    "solana": "EyDiU3AWmav8dkGLFRmjeVckmw9uZ3B43QtAkdURGAky",
+    "evm": "0x9964a2125bda87b77959ee645c278b4e07a7799e",
+    "name": "calm",
+    "handle": "kalm",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 3716
+  },
+  {
+    "solana": "BncpJ3BZFqLLYp84QrzJykrLYQhDmx77vzWbv9asccnR",
+    "evm": "0x9c372cae003d4ac89ce50845ba3d14b21e125074",
+    "name": "quaker",
+    "handle": "quakerrz",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 4323
+  },
+  {
+    "solana": "HUajEFbJ8macRgqQEwL4D8LcatMpSrpqaMZjkDjgJ4Pj",
+    "evm": "0x46af7ea1080dc02fb96c32b9444cd41e45293f7e",
+    "name": "zoja",
+    "handle": "zoja",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 689
+  },
+  {
+    "solana": "AGumjV4wVfGQ4CsHTCLiFLx4sVnvwtSXn1iH9EbrLg69",
+    "evm": "0x2b02ec2e0edb511ffca5ae77f8120546f3d9aa69",
+    "name": "Forgivable",
+    "handle": "0xForgivable",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 3453
+  },
+  {
+    "solana": "2stxJG4fhPfA6Uz6mz41vyLWVhDK86wWu1nEHkijZ6ne",
+    "evm": "0x1060d7aad50a3de3c5bbe43bf5b8df7bc31929da",
+    "name": "JS",
+    "handle": "ShockedJS",
+    "type": "kol",
+    "tier": "standard",
+    "followers": 14633
+  },
+  {
+    "solana": "6UoZXacuTd9GXxUTFrxS1PC2K6vm96qLMAacytAKLbh6",
+    "evm": "0x80e2e0eca97b6564b45251263dcae90de7548450",
+    "name": "GTO⚡️",
+    "handle": "0NIZUKA",
+    "type": "market_maker",
+    "tier": "standard",
+    "followers": 1209
+  },
+  {
+    "solana": "9LtAjV1QwPGBb4QtpA1q2mdD2d4w2BRt1hC1kAnQWUMz",
+    "evm": "0x1f0ba103dc9ba4c15bc8891c90e3288a39e6cd51",
+    "name": "NB",
+    "handle": "NBNB",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 1142
+  },
+  {
+    "solana": "5g6zbY31QC4jW67mM6VqXfwvFhkLcvFYPfNvNYnvpy7w",
+    "evm": "0x66108ae01ecfd4445f692e74108db6b7413bb444",
+    "name": "quotes",
+    "handle": "quotes",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 807
+  },
+  {
+    "solana": "7hxTFZGLidRkxpQdFL28mGEyuFppENvVnVP9owqNKA5b",
+    "evm": "0x41d129ff121cf85ef8ffc59a390da9cd486a3781",
+    "name": "trepokt",
+    "handle": "trencher",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 396
+  },
+  {
+    "solana": "62F1n9j3y8jQyPXXxwyAVdrLTPNdu6YcQpaUrvnodpiy",
+    "evm": "0xe0312c94d03cf681dcb9321ae92df2c4631a92a1",
+    "name": "Kimkk",
+    "handle": "kr_kimkk",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 345
+  },
+  {
+    "solana": "BGAvMMda4SLqds5XCoS5Pn8iHbxmpHjGCxZveUmVY5ap",
+    "evm": "0xd0a5503f0a88bf0f27b7ca9cef97fc70ffb6d745",
+    "name": "Dormant Cell",
+    "handle": "dormant_cell",
+    "type": "kol",
+    "tier": "standard",
+    "followers": 14030
+  },
+  {
+    "solana": "31UpTRBTiNQPHbv6ViaXPKqqpfYRNBGgWtQAS5SQ9yP1",
+    "evm": "0xb83858211e17e2e4c9f9b9017230e110f66fd130",
+    "name": "vinny",
+    "handle": "vinnysos",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 392
+  },
+  {
+    "solana": "AFvAcuRw8PAENgsPJJdp4evw92eMKo3u5MCvqZ1YPQxm",
+    "evm": "0x0a124c66489706e904d0380c79a041b912065341",
+    "name": "xxgod",
+    "handle": "xx910",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 319
+  },
+  {
+    "solana": "Ht8cHexE6LUf1SFbux1FdyFBK9Nd9RAvrfuszRMtf1dP",
+    "evm": "0x69f3bc88628c3ce255265795c4c29da8503cce5f",
+    "name": "wway final boss",
+    "handle": "wwayfboss",
+    "type": "kol",
+    "tier": "standard",
+    "followers": 10465
+  },
+  {
+    "solana": "7SxNWwjZR86ziYXjYtrxH79Evbb4c46i4R53nTDUohjV",
+    "evm": "0xe1a971b537ea4077bccaf85212b70da907c3778f",
+    "name": "eztic",
+    "handle": "eztic",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 1234
+  },
+  {
+    "solana": "6xW9WmsmAmsj2SnCi6TPre6wpNmTALhXRKCLRrQDZ6Qs",
+    "evm": "0xff20216a439e434d07676bdde8b45580a518d7f3",
+    "name": "Fizzwick Bramblewhistle",
+    "handle": "fizzwickBW",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 2110
+  },
+  {
+    "solana": "31wyxYstdfJ4DTUFNw5TQaNwdAH9SytZ6ZKmb27sNBtW",
+    "evm": "0x1d22bd0ac5c47371573f82dbfb65c05364f027fb",
+    "name": "Warren Nakamoto",
+    "handle": "WarrenNakamotoX",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 1678
+  },
+  {
+    "solana": "8PG8UX91zKkqtYsBJLLbemHyfk5GXL2sxcKE1EvMhKxt",
+    "evm": "0xa6f7f7a294c0bb199986e0c4e81ae8bbb890c204",
+    "name": "MushuThickShark",
+    "handle": "MushuThickShark",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 107
+  },
+  {
+    "solana": "6xLh2ZzH5WXH4FWtVSQktB1yf8JajHvSbX7Es5mxecwZ",
+    "evm": "0xd59604a79d1ad06a2cdff5dde806db3f3968a3b7",
+    "name": "martin",
+    "handle": "unconthechain100",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 17
+  },
+  {
+    "solana": "FN21W16FdBzZaHc3X6FnJVsRn1TWHK5ijncU46Zwa6rQ",
+    "evm": "0x181ec7be228ab464f1e529081060f04dd0b43b8c",
+    "name": "Alpha",
+    "handle": "alphaXquant",
+    "type": "smart_money",
+    "tier": "standard",
+    "followers": 521
+  }
+]

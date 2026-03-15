@@ -9,6 +9,7 @@ import { Skeleton } from "@/components/ui/Skeleton";
 type SourceFilter = "all" | "pump_fun" | "raydium" | "meteora" | "moonshot" | "bags" | "letsbonk" | "believe" | "boop" | "launchlab";
 type SortField = "time" | "mcap" | "liquidity" | "volume" | "change";
 type SortDir = "asc" | "desc";
+type ViewMode = "cards" | "table";
 
 const SOURCE_LABELS: Record<string, string> = {
   pump_fun: "Pump.fun",
@@ -78,6 +79,7 @@ export default function NewPairsPage() {
   const [sortField, setSortField] = useState<SortField>("time");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [showEnriched, setShowEnriched] = useState(true);
+  const [viewMode, setViewMode] = useState<ViewMode>("cards");
 
   const { data, isLoading, dataUpdatedAt, refetch } = useQuery({
     queryKey: ["new-pairs", source, showEnriched],
@@ -150,6 +152,39 @@ export default function NewPairsPage() {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          {/* View mode toggle */}
+          <div style={{ display: "flex", gap: "2px", background: "var(--bg-surface)", border: "1px solid var(--border)", borderRadius: "6px", padding: "2px" }}>
+            <button
+              onClick={() => setViewMode("cards")}
+              style={{
+                padding: "4px 10px",
+                borderRadius: "4px",
+                border: "none",
+                cursor: "pointer",
+                fontSize: "11px",
+                background: viewMode === "cards" ? "var(--accent)" : "transparent",
+                color: viewMode === "cards" ? "white" : "var(--text-muted)",
+                fontFamily: "inherit",
+              }}
+            >
+              ▦ Cards
+            </button>
+            <button
+              onClick={() => setViewMode("table")}
+              style={{
+                padding: "4px 10px",
+                borderRadius: "4px",
+                border: "none",
+                cursor: "pointer",
+                fontSize: "11px",
+                background: viewMode === "table" ? "var(--accent)" : "transparent",
+                color: viewMode === "table" ? "white" : "var(--text-muted)",
+                fontFamily: "inherit",
+              }}
+            >
+              ≡ Table
+            </button>
+          </div>
           <label style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "11px", color: "var(--text-muted)", cursor: "pointer" }}>
             <input
               type="checkbox"
@@ -257,11 +292,47 @@ export default function NewPairsPage() {
           </div>
         )}
 
-        {/* Pair rows */}
-        {!isLoading && pairs.map((pair, i) => (
+        {/* Pair rows - Table view */}
+        {!isLoading && viewMode === "table" && pairs.map((pair, i) => (
           <PairRow key={`${pair.token_mint}-${i}`} pair={pair} index={i} />
         ))}
       </div>
+
+      {/* Card Grid View */}
+      {viewMode === "cards" && !isLoading && pairs.length > 0 && (
+        <div style={{ 
+          display: "grid", 
+          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
+          gap: "12px",
+          marginTop: "16px"
+        }}>
+          {pairs.map((pair, i) => (
+            <PairCard key={`${pair.token_mint}-${i}`} pair={pair} />
+          ))}
+        </div>
+      )}
+
+      {/* Card loading skeleton */}
+      {viewMode === "cards" && isLoading && (
+        <div style={{ 
+          display: "grid", 
+          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
+          gap: "12px",
+          marginTop: "16px"
+        }}>
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div key={i} style={{ background: "var(--bg-surface)", border: "1px solid var(--border)", borderRadius: "12px", padding: "16px" }}>
+              <Skeleton height={24} width="60%" borderRadius={4} />
+              <div style={{ height: "8px" }} />
+              <Skeleton height={16} width="40%" borderRadius={4} />
+              <div style={{ height: "16px" }} />
+              <Skeleton height={40} borderRadius={4} />
+              <div style={{ height: "12px" }} />
+              <Skeleton height={32} borderRadius={4} />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -300,6 +371,228 @@ function SortHeader({
       {label}
       {isActive && <span style={{ fontSize: "8px" }}>{dir === "desc" ? "▼" : "▲"}</span>}
     </button>
+  );
+}
+
+function PairCard({ pair }: { pair: NewPair }) {
+  const meta = pair.metadata ?? {};
+  const market = pair.market;
+  const symbol = meta.symbol || "???";
+  const name = meta.name || "Unknown Token";
+  const sourceColor = SOURCE_COLORS[pair.source] || SOURCE_COLORS.dex;
+  const priceChange = market?.price_change_5m ?? 0;
+  const isPositive = priceChange >= 0;
+  const txnsBuys = market?.txns_5m_buys ?? 0;
+  const txnsSells = market?.txns_5m_sells ?? 0;
+
+  const copyAddress = useCallback(() => {
+    navigator.clipboard.writeText(pair.token_mint);
+  }, [pair.token_mint]);
+
+  return (
+    <div
+      style={{
+        background: "var(--bg-surface)",
+        border: "1px solid var(--border)",
+        borderRadius: "12px",
+        padding: "16px",
+        transition: "all 150ms",
+        position: "relative",
+        overflow: "hidden",
+      }}
+      className="card-interactive"
+    >
+      {/* Source indicator bar */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        height: "3px",
+        background: sourceColor,
+      }} />
+
+      {/* Header: Symbol + Age */}
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "12px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          {meta.icon ? (
+            <img 
+              src={meta.icon} 
+              alt="" 
+              style={{ width: "36px", height: "36px", borderRadius: "50%", border: "2px solid var(--border)" }}
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+            />
+          ) : (
+            <div style={{
+              width: "36px",
+              height: "36px",
+              borderRadius: "50%",
+              background: "var(--bg-elevated)",
+              border: "2px solid var(--border)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "14px",
+              fontWeight: 700,
+              color: "var(--text-muted)",
+            }}>
+              {symbol.charAt(0)}
+            </div>
+          )}
+          <div>
+            <div style={{ fontSize: "15px", fontWeight: 700, color: "var(--text-primary)" }}>
+              {symbol}
+            </div>
+            <div style={{ fontSize: "11px", color: "var(--text-muted)", maxWidth: "120px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              {name}
+            </div>
+          </div>
+        </div>
+        <div style={{ textAlign: "right" }}>
+          <div style={{ 
+            fontSize: "10px", 
+            fontWeight: 600, 
+            color: sourceColor, 
+            textTransform: "uppercase",
+            marginBottom: "2px"
+          }}>
+            {SOURCE_LABELS[pair.source] || pair.source}
+          </div>
+          <div style={{ fontSize: "11px", fontFamily: "JetBrains Mono, monospace", color: "var(--text-muted)" }}>
+            {pair.detected_at ? timeAgo(pair.detected_at) : "—"}
+          </div>
+        </div>
+      </div>
+
+      {/* Price + Change */}
+      <div style={{ 
+        display: "flex", 
+        alignItems: "baseline", 
+        justifyContent: "space-between",
+        padding: "10px 12px",
+        background: "var(--bg-elevated)",
+        borderRadius: "8px",
+        marginBottom: "12px"
+      }}>
+        <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "16px", fontWeight: 700, color: "var(--text-primary)" }}>
+          {market?.price_usd ? formatPrice(market.price_usd) : "—"}
+        </div>
+        <div style={{ 
+          fontFamily: "JetBrains Mono, monospace", 
+          fontSize: "13px", 
+          fontWeight: 600, 
+          color: isPositive ? "var(--success)" : "var(--error)",
+          padding: "2px 8px",
+          background: isPositive ? "var(--success-subtle)" : "var(--error-subtle)",
+          borderRadius: "4px"
+        }}>
+          {formatPct(priceChange)}
+        </div>
+      </div>
+
+      {/* Stats grid */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "8px", marginBottom: "12px" }}>
+        <div style={{ textAlign: "center" }}>
+          <div style={{ fontSize: "10px", color: "var(--text-muted)", textTransform: "uppercase", marginBottom: "2px" }}>MCap</div>
+          <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "12px", fontWeight: 600, color: "var(--text-primary)" }}>
+            {market?.market_cap ? formatCompact(market.market_cap) : "—"}
+          </div>
+        </div>
+        <div style={{ textAlign: "center", borderLeft: "1px solid var(--border)", borderRight: "1px solid var(--border)" }}>
+          <div style={{ fontSize: "10px", color: "var(--text-muted)", textTransform: "uppercase", marginBottom: "2px" }}>Liq</div>
+          <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "12px", fontWeight: 600, color: "var(--text-primary)" }}>
+            {market?.liquidity_usd ? formatCompact(market.liquidity_usd) : "—"}
+          </div>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <div style={{ fontSize: "10px", color: "var(--text-muted)", textTransform: "uppercase", marginBottom: "2px" }}>Vol 5m</div>
+          <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "12px", fontWeight: 600, color: "var(--text-primary)" }}>
+            {market?.volume_5m ? formatCompact(market.volume_5m) : "—"}
+          </div>
+        </div>
+      </div>
+
+      {/* Txns bar */}
+      {(txnsBuys > 0 || txnsSells > 0) && (
+        <div style={{ marginBottom: "12px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "4px" }}>
+            <span style={{ fontSize: "10px", color: "var(--success)", fontFamily: "JetBrains Mono, monospace" }}>
+              {txnsBuys} buys
+            </span>
+            <span style={{ fontSize: "10px", color: "var(--error)", fontFamily: "JetBrains Mono, monospace" }}>
+              {txnsSells} sells
+            </span>
+          </div>
+          <div style={{ height: "4px", background: "var(--bg-elevated)", borderRadius: "2px", overflow: "hidden", display: "flex" }}>
+            <div style={{ 
+              width: `${txnsBuys / (txnsBuys + txnsSells) * 100}%`, 
+              background: "var(--success)",
+              transition: "width 300ms"
+            }} />
+            <div style={{ 
+              width: `${txnsSells / (txnsBuys + txnsSells) * 100}%`, 
+              background: "var(--error)",
+              transition: "width 300ms"
+            }} />
+          </div>
+        </div>
+      )}
+
+      {/* Contract + Actions */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
+        <button
+          onClick={copyAddress}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "4px",
+            fontSize: "10px",
+            fontFamily: "JetBrains Mono, monospace",
+            color: "var(--text-muted)",
+            background: "var(--bg-elevated)",
+            border: "1px solid var(--border)",
+            borderRadius: "4px",
+            padding: "4px 8px",
+            cursor: "pointer",
+          }}
+          title="Copy address"
+        >
+          {shortMint(pair.token_mint)} 📋
+        </button>
+        <div style={{ display: "flex", gap: "6px" }}>
+          <Link
+            href={`/token/${pair.token_mint}`}
+            style={{
+              fontSize: "11px",
+              fontWeight: 600,
+              color: "white",
+              textDecoration: "none",
+              padding: "6px 12px",
+              background: "var(--accent)",
+              borderRadius: "6px",
+            }}
+          >
+            View
+          </Link>
+          <a
+            href={`https://dexscreener.com/solana/${pair.token_mint}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontSize: "11px",
+              fontWeight: 500,
+              color: "var(--text-muted)",
+              textDecoration: "none",
+              padding: "6px 10px",
+              border: "1px solid var(--border)",
+              borderRadius: "6px",
+            }}
+          >
+            DS ↗
+          </a>
+        </div>
+      </div>
+    </div>
   );
 }
 

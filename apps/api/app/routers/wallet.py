@@ -14,7 +14,7 @@ GET /v1/wallet/{address}/tracker-count
 
 import re
 from fastapi import APIRouter, Query, HTTPException
-from app.services import clickhouse, helius
+from app.services import analytics, helius
 from app.services import supabase as supabase_svc
 from app.services import birdeye, classification as classification_svc
 from app.services import solscan as solscan_svc
@@ -52,16 +52,8 @@ async def wallet_summary(address: str):
     cluster_gate_key = f"bh:cluster:{address}"
 
     if not await cache_get(backfill_gate_key):
-        # First view — fetch full history + cluster (clustering runs after backfill inside task)
         await cache_set(backfill_gate_key, 1, 86400)
-        await cache_set(cluster_gate_key, 1, 3600)  # suppress duplicate cluster run
-        from app.services.wallet_poller import backfill_wallet_and_sides
-        asyncio.create_task(backfill_wallet_and_sides(address))
-    elif not await cache_get(cluster_gate_key):
-        # Already backfilled — ClickHouse has data now, re-run clustering (cheap)
         await cache_set(cluster_gate_key, 1, 3600)
-        from app.services.clustering import run_clustering_for_wallet
-        asyncio.create_task(run_clustering_for_wallet(address))
 
     cache_key = wallet_key(address, "summary")
     if cached := await cache_get(cache_key):
@@ -76,7 +68,7 @@ async def wallet_summary(address: str):
         classification_result,
         tracker_count,
     ) = await asyncio.gather(
-        _safe(clickhouse.get_wallet_stats(address), default={}),
+        _safe(analytics.get_wallet_stats(address), default={}),
         _safe(helius.get_sol_balance(address), default=None),
         _safe(birdeye.get_wallet_portfolio(address), default={}),
         _safe(supabase_svc.get_known_wallet(address), default=None),
@@ -124,10 +116,9 @@ async def wallet_transfers(
     _validate_address(address)
     offset = (page - 1) * limit
     
-    # Try ClickHouse first
     transfers = []
     try:
-        transfers = await clickhouse.get_wallet_transfers(
+        transfers = await analytics.get_wallet_transfers(
             address=address,
             limit=limit,
             offset=offset,
@@ -139,14 +130,6 @@ async def wallet_transfers(
         )
     except Exception:
         pass
-    
-    # Fallback to Helius enriched transactions if ClickHouse empty
-    if not transfers and page == 1:
-        try:
-            helius_txs = await helius.get_wallet_transactions(address, limit=limit)
-            transfers = _parse_helius_transfers(address, helius_txs)
-        except Exception:
-            pass
     
     # Enrich counterparty addresses
     import asyncio
@@ -276,17 +259,9 @@ async def wallet_relationships(
 
     counterparties = []
     try:
-        counterparties = await clickhouse.get_top_counterparties(address, limit=limit)
+        counterparties = await analytics.get_top_counterparties(address, limit=limit)
     except Exception:
         pass
-    
-    # Fallback to Helius if ClickHouse empty
-    if not counterparties:
-        try:
-            helius_txs = await helius.get_wallet_transactions(address, limit=100)
-            counterparties = _extract_counterparties(address, helius_txs, limit=limit)
-        except Exception:
-            pass
 
     import asyncio
     if counterparties:
@@ -452,7 +427,7 @@ async def wallet_graph(
         next_frontier: list[str] = []
         import asyncio
         batch = await asyncio.gather(
-            *[clickhouse.get_top_counterparties(addr, limit=10) for addr in frontier]
+            *[analytics.get_top_counterparties(addr, limit=10) for addr in frontier]
         )
         for source_addr, counterparties in zip(frontier, batch):
             for cp in counterparties:

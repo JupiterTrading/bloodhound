@@ -1,0 +1,1534 @@
+{
+  "endpoint": "GET /trades",
+  "url": "https://prod-api.fomo.family/trades?userId=2e955ffc-6fac-578a-93d8-3324605f6bed&orderBy=realizedPnlUsd",
+  "request_headers": {
+    "content-type": "application/json",
+    "x-app-installation-id": "install_bc7884b4-0c4a-465b-903a-33e17158ff11",
+    "accept": "*/*",
+    "baggage": "sentry-environment=production,sentry-public_key=4e163b6befe2112027dfa32cd92ca3ba,sentry-trace_id=e750d77c91574c0a8339e9d8943348c5,sentry-org_id=4508656189702144,sentry-transaction=user,sentry-sampled=false,sentry-sample_rand=0.8856860553036695,sentry-sample_rate=0.0001",
+    "authorization": "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkI4SXlObWU1V0lZRnJIclJRVDBLdFlPRlFIUjFKVXFnaGVTMHhSZHR1QVkifQ.eyJzaWQiOiJjbWt6ZW5oa2MwNXM4am8wY3RrbHo1cmpqIiwiaXNzIjoicHJpdnkuaW8iLCJpYXQiOjE3NzM0MjE3NTcsImF1ZCI6ImNtNmg0ODVvMzAwbjN6ajl5bDZ2cGVkcTciLCJzdWIiOiJkaWQ6cHJpdnk6Y21rejA2N2RkMDF5Z2puMGNhaXc5aWNrcCIsImV4cCI6MTc3MzQyNTM1N30.KSKe7Zlqq97fc4QPfjM7DRQFJn2TbIjhiI5oDtSDVmm1sYOZq8Vd2Zn-4ks9I-Iepjj6jRmPmI_rhyeOayLexA",
+    "priority": "u=3, i",
+    "x-supported-chains": "1399811149,8453,56,143",
+    "accept-encoding": "gzip, deflate, br",
+    "if-none-match": "W/\"a139-0eRE+BctTP3owJTt5hUfyuxH90I\"",
+    "accept-language": "en-US,en;q=0.9",
+    "sentry-trace": "e750d77c91574c0a8339e9d8943348c5-bd1fe79a6e6b2054-0",
+    "user-agent": "fomo/1.60.4/280/ios/iPhone 17 Pro Max/Apple"
+  },
+  "request_body": null,
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:09:49 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "cf-ray": "9dbca60818bffb24-BNA",
+    "cf-cache-status": "DYNAMIC",
+    "content-encoding": "gzip",
+    "etag": "W/\"a12c-2koIFfPphsEG0/2+A3ZxtgUfYME\"",
+    "server": "cloudflare",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "vary": "Origin, Accept-Encoding",
+    "access-control-allow-credentials": "true",
+    "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+    "cross-origin-opener-policy": "same-origin",
+    "cross-origin-resource-policy": "same-origin",
+    "origin-agent-cluster": "?1",
+    "referrer-policy": "no-referrer",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-download-options": "noopen",
+    "x-frame-options": "SAMEORIGIN",
+    "x-permitted-cross-domain-policies": "none",
+    "x-request-id": "3ee6bc07-1483-423f-9c32-01813fbbeff7",
+    "x-xss-protection": "0",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "response_body": {
+    "success": true,
+    "message": "Trades with details found",
+    "responseObject": {
+      "activeTrades": [
+        {
+          "trade": {
+            "id": "b9485a59-47b9-4995-a417-d6efd03e1840",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+            "networkId": 8453,
+            "createdAt": "2026-02-13T06:20:31.000Z",
+            "updatedAt": "2026-03-13T16:51:41.603Z",
+            "closedAt": null,
+            "humanTokenAmount": 71378.85689761225,
+            "avgEntryPrice": 2.79455670384563,
+            "avgExitPrice": 5.214212603216126,
+            "sumSwapOpen": 235543.71198773183,
+            "sumSwapClosed": 126442.63330044204,
+            "sumTransferIn": 71929.6696691386,
+            "sumTransferOut": 109651.89145881611,
+            "avgTransferInPrice": 2.1414392553790247,
+            "avgTransferOutPrice": 6.430000663866053,
+            "realizedPnlUsd": 740653.5948063708,
+            "commentId": "ac4db30b-6a5a-4056-83e7-e2da4b54d1b5",
+            "tokenMetadata": {
+              "symbol": "VVV",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf_large_b6278fccf81c.png",
+              "liquidity": 2691959,
+              "currentPrice": 6.92657998007,
+              "thumbhash": "uDiGFQQs93h3iHyQyAiIg4A4CFeHh4BzVw=="
+            },
+            "unrealizedPnlUsd": 305844.9957543279,
+            "totalCostBasis": 812273.2776399396
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": {
+            "id": "ac4db30b-6a5a-4056-83e7-e2da4b54d1b5",
+            "userId": "2e955ffc-6fac-578a-93d8-3324605f6bed",
+            "tradeId": "b9485a59-47b9-4995-a417-d6efd03e1840",
+            "comment": "So weeks later ppl find out Venice is on the docs? These late buyers who purely bought for this reason will need to be flushed out now. chop chop chop",
+            "visibility": "public",
+            "createdAt": "2026-03-02T23:16:56.349Z",
+            "parentId": null,
+            "numLikes": 75,
+            "reactions": {
+              "counts": {
+                "likeCount": 75
+              },
+              "reactions": {
+                "like": false
+              }
+            },
+            "olderThesis": 10,
+            "newerThesis": 0
+          }
+        },
+        {
+          "trade": {
+            "id": "6b023091-428d-4811-bf27-0e5ccbb4e868",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+            "networkId": 8453,
+            "createdAt": "2026-03-06T02:28:33.076Z",
+            "updatedAt": "2026-03-13T02:34:16.060Z",
+            "closedAt": null,
+            "humanTokenAmount": 3278023836.84254,
+            "avgEntryPrice": 7.9576330491623e-06,
+            "avgExitPrice": null,
+            "sumSwapOpen": 3278023836.84254,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 0,
+            "commentId": "7ab58ae5-fd82-4cfd-9d7c-39fd5570e488",
+            "tokenMetadata": {
+              "symbol": "BOTCOIN",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_large_074b6e753a58.png",
+              "liquidity": 485093,
+              "currentPrice": 3.0161069033e-05,
+              "thumbhash": "IgiGBQA1Z7lspIkISgAAAAAAB3iHiICLdw=="
+            },
+            "unrealizedPnlUsd": 72783.39241482737,
+            "totalCostBasis": 26085.310820000002
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": {
+            "id": "7ab58ae5-fd82-4cfd-9d7c-39fd5570e488",
+            "userId": "2e955ffc-6fac-578a-93d8-3324605f6bed",
+            "tradeId": "6b023091-428d-4811-bf27-0e5ccbb4e868",
+            "comment": "hit the Botcoin mines buddy",
+            "visibility": "public",
+            "createdAt": "2026-03-13T02:34:16.060Z",
+            "parentId": null,
+            "numLikes": 17,
+            "reactions": {
+              "counts": {
+                "likeCount": 17
+              },
+              "reactions": {
+                "like": false
+              }
+            },
+            "olderThesis": 6,
+            "newerThesis": 0
+          }
+        },
+        {
+          "trade": {
+            "id": "4c3dba9a-09a3-4c3c-a13e-4e08b13987c6",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x4200000000000000000000000000000000000006",
+            "networkId": 8453,
+            "createdAt": "2026-01-30T22:57:22.111Z",
+            "updatedAt": "2026-03-04T07:26:37.908Z",
+            "closedAt": null,
+            "humanTokenAmount": 6.69622187635308e-05,
+            "avgEntryPrice": null,
+            "avgExitPrice": 2295.280584402805,
+            "sumSwapOpen": 0,
+            "sumSwapClosed": 9.487002458423003,
+            "sumTransferIn": 18.974123651101323,
+            "sumTransferOut": 9.487054230459572,
+            "avgTransferInPrice": 2298.209966422161,
+            "avgTransferOutPrice": 2296.098528385202,
+            "realizedPnlUsd": -47.82238158017678,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "ETH",
+              "networkId": 8453,
+              "imageLargeUrl": "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+              "liquidity": 45788182,
+              "currentPrice": 2137.03822048,
+              "thumbhash": "qMQFHwIIx2h4h3hzi3aId5h5iIA3CHgD"
+            },
+            "unrealizedPnlUsd": -0.0107924177102792,
+            "totalCostBasis": 43606.5200790875
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "f707920b-7af6-42c1-86c0-88c3fbeebdda",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x2314c3c39249048d609d4fffe8f2374a6c922fa6",
+            "networkId": 8453,
+            "createdAt": "2026-03-02T00:32:42.032Z",
+            "updatedAt": "2026-03-02T00:32:42.032Z",
+            "closedAt": null,
+            "humanTokenAmount": 2228.5224550215466,
+            "avgEntryPrice": null,
+            "avgExitPrice": null,
+            "sumSwapOpen": 0,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 2228.5224550215466,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": 9.58060916631e-05,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 0,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "Tether Gold $XAUT",
+              "networkId": 8453,
+              "imageLargeUrl": null,
+              "liquidity": 20405,
+              "currentPrice": 0.00011484962796,
+              "thumbhash": null
+            },
+            "unrealizedPnlUsd": 0.04243894826065951,
+            "totalCostBasis": 0.21350602659907095
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "070c3cda-b4e6-4266-bee0-1189779271ed",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "So11111111111111111111111111111111111111112",
+            "networkId": 1399811149,
+            "createdAt": "2026-03-12T11:50:07.000Z",
+            "updatedAt": "2026-03-13T11:17:53.000Z",
+            "closedAt": null,
+            "humanTokenAmount": 0.0054344250000000005,
+            "avgEntryPrice": null,
+            "avgExitPrice": null,
+            "sumSwapOpen": 0,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0.011492149,
+            "sumTransferOut": 0.0060577240000000004,
+            "avgTransferInPrice": 86.9933683942,
+            "avgTransferOutPrice": 89.68943809116692,
+            "realizedPnlUsd": 0.016332046108989213,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "SOL",
+              "networkId": 1399811149,
+              "imageLargeUrl": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_large_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png",
+              "liquidity": 11252247,
+              "currentPrice": 89.8229576332,
+              "thumbhash": null
+            },
+            "unrealizedPnlUsd": 0.01537719050015258,
+            "totalCostBasis": 0.9997407515980372
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "75135846-2937-4f07-a9ab-758b8aa905d0",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump",
+            "networkId": 1399811149,
+            "createdAt": "2026-02-16T07:25:31.097Z",
+            "updatedAt": "2026-03-10T14:10:05.000Z",
+            "closedAt": null,
+            "humanTokenAmount": 1043402.9412900001,
+            "avgEntryPrice": 0.004965600817670146,
+            "avgExitPrice": null,
+            "sumSwapOpen": 865111.993641,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 178290.947649,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": 0.0036196830907070845,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 0,
+            "commentId": "250e998b-097d-41bf-86fd-beb9eebeb135",
+            "tokenMetadata": {
+              "symbol": "MUSHU",
+              "networkId": 1399811149,
+              "imageLargeUrl": "https://token-media.defined.fi/1399811149_5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump_large_2dbeb8a81202.png",
+              "liquidity": 85947,
+              "currentPrice": 0.00279667145636,
+              "thumbhash": "pRgODwLLqJefmIdcZrdnmHh4WAAWBWEA"
+            },
+            "unrealizedPnlUsd": -2023.1023280434158,
+            "totalCostBasis": 4941.157551431227
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": {
+            "id": "250e998b-097d-41bf-86fd-beb9eebeb135",
+            "userId": "2e955ffc-6fac-578a-93d8-3324605f6bed",
+            "tradeId": "75135846-2937-4f07-a9ab-758b8aa905d0",
+            "comment": "pls don\u2019t send me shitters. I will just sell them and buy Mushu.",
+            "visibility": "public",
+            "createdAt": "2026-03-06T03:17:02.053Z",
+            "parentId": null,
+            "numLikes": 65,
+            "reactions": {
+              "counts": {
+                "likeCount": 62
+              },
+              "reactions": {
+                "like": false
+              }
+            },
+            "olderThesis": 1,
+            "newerThesis": 0
+          }
+        },
+        {
+          "trade": {
+            "id": "7fb29b93-43bc-4aa9-b805-c899b60ad8ca",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump",
+            "networkId": 1399811149,
+            "createdAt": "2026-03-07T04:10:35.454Z",
+            "updatedAt": "2026-03-07T04:23:04.759Z",
+            "closedAt": null,
+            "humanTokenAmount": 12029199.20789,
+            "avgEntryPrice": 0.0002492258662599592,
+            "avgExitPrice": null,
+            "sumSwapOpen": 12029199.20789,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 0,
+            "commentId": "312e392d-8735-4da7-b46f-563ce1070e13",
+            "tokenMetadata": {
+              "symbol": "POLSIA",
+              "networkId": 1399811149,
+              "imageLargeUrl": "https://token-media.defined.fi/1399811149_Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump_large_3b157ca719e3.png",
+              "liquidity": 8490,
+              "currentPrice": 3.28526972928e-05,
+              "thumbhash": "PAgCBwDIt1eEiHtwheh3d3eIBwAAAAAA"
+            },
+            "unrealizedPnlUsd": -2602.795952748401,
+            "totalCostBasis": 2997.9875930000007
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": {
+            "id": "312e392d-8735-4da7-b46f-563ce1070e13",
+            "userId": "2e955ffc-6fac-578a-93d8-3324605f6bed",
+            "tradeId": "7fb29b93-43bc-4aa9-b805-c899b60ad8ca",
+            "comment": "https://polsia.com/live",
+            "visibility": "public",
+            "createdAt": "2026-03-07T04:17:51.907Z",
+            "parentId": null,
+            "numLikes": 6,
+            "reactions": {
+              "counts": {
+                "likeCount": 6
+              },
+              "reactions": {
+                "like": false
+              }
+            },
+            "olderThesis": 0,
+            "newerThesis": 0
+          }
+        },
+        {
+          "trade": {
+            "id": "e76756f0-5d54-4b43-900e-85efd496d13b",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "USDSwr9ApdHk5bvJKMjzff41FfuX8bSxdKcR81vTwcA",
+            "networkId": 1399811149,
+            "createdAt": "2026-03-04T07:51:02.000Z",
+            "updatedAt": "2026-03-04T07:51:02.000Z",
+            "closedAt": null,
+            "humanTokenAmount": 0.965829,
+            "avgEntryPrice": null,
+            "avgExitPrice": null,
+            "sumSwapOpen": 0,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0.965829,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": 0.999938697622,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 0,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "USDS",
+              "networkId": 1399811149,
+              "imageLargeUrl": null,
+              "liquidity": 24595697,
+              "currentPrice": 1.00000592887,
+              "thumbhash": null
+            },
+            "unrealizedPnlUsd": 6.493388902460199e-05,
+            "totalCostBasis": 0.9657697923855587
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "629839b4-2e28-4bbe-a940-f54d251cd032",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+            "networkId": 1399811149,
+            "createdAt": "2026-03-03T05:07:53.000Z",
+            "updatedAt": "2026-03-03T05:07:53.000Z",
+            "closedAt": null,
+            "humanTokenAmount": 322.673788,
+            "avgEntryPrice": null,
+            "avgExitPrice": null,
+            "sumSwapOpen": 0,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 322.673788,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": 0.00199047530803,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 0,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "PUMP",
+              "networkId": 1399811149,
+              "imageLargeUrl": "https://token-media.defined.fi/1399811149_pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn_large_158fdba6066a.png",
+              "liquidity": 7260402,
+              "currentPrice": 0.002066553451,
+              "thumbhash": "j+eJBQIsFrppp4FfqglmQL/5B1iHiHB0Vw=="
+            },
+            "unrealizedPnlUsd": 0.02454842257613541,
+            "totalCostBasis": 0.642274207562507
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "ce518e36-e0fe-4745-a587-28c8b8e1fd22",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+            "networkId": 1399811149,
+            "createdAt": "2026-03-03T05:07:38.000Z",
+            "updatedAt": "2026-03-03T05:07:38.000Z",
+            "closedAt": null,
+            "humanTokenAmount": 6.232177,
+            "avgEntryPrice": null,
+            "avgExitPrice": null,
+            "sumSwapOpen": 0,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 6.232177,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": 0.198969417717,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 0,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "$WIF",
+              "networkId": 1399811149,
+              "imageLargeUrl": "https://token-media.defined.fi/1399811149_EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm_large_7a2bc769-95a0-4e95-abb3-088e12ab9078.png",
+              "liquidity": 2381408,
+              "currentPrice": 0.17327406444,
+              "thumbhash": "4SgKDwLYeIZ/dYiJhleYaIh6RwBIFWUA"
+            },
+            "unrealizedPnlUsd": -0.1601379896997941,
+            "totalCostBasis": 1.2400126287992799
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "d16ad137-0a17-4ce1-9f0c-08dc9f627e56",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+            "networkId": 1399811149,
+            "createdAt": "2026-02-23T23:01:38.000Z",
+            "updatedAt": "2026-02-23T23:03:13.000Z",
+            "closedAt": null,
+            "humanTokenAmount": 0.653992,
+            "avgEntryPrice": null,
+            "avgExitPrice": null,
+            "sumSwapOpen": 0,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0.753642,
+            "sumTransferOut": 0.09965,
+            "avgTransferInPrice": 0.9998377908509011,
+            "avgTransferOutPrice": 0.999834025648,
+            "realizedPnlUsd": -3.7520246909753e-07,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "USDT",
+              "networkId": 1399811149,
+              "imageLargeUrl": "https://token-media.defined.fi/1399811149_Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB_large_7ae8aca6f752.png",
+              "liquidity": 3870235,
+              "currentPrice": 1.00020598819,
+              "thumbhash": "pmeFBQQsB9h5h4NOaAeJc5A3CFh4h4CDVw=="
+            },
+            "unrealizedPnlUsd": 0.00024079811419202383,
+            "totalCostBasis": 0.7535197523724548
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "6e48e046-9c63-4c91-b14f-991b057549ea",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB",
+            "networkId": 1399811149,
+            "createdAt": "2026-02-23T23:01:03.000Z",
+            "updatedAt": "2026-02-23T23:01:03.000Z",
+            "closedAt": null,
+            "humanTokenAmount": 10.017598,
+            "avgEntryPrice": null,
+            "avgExitPrice": null,
+            "sumSwapOpen": 0,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 10.017598,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": 0.998405038007,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 0,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "USD1",
+              "networkId": 1399811149,
+              "imageLargeUrl": "https://token-media.defined.fi/1399811149_USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB_large_small_thumb_7f4c3eaa-b174-47d7-aa6b-1e5a3577d9d9.png",
+              "liquidity": 7434482,
+              "currentPrice": 0.999551106169,
+              "thumbhash": "3nyGDQAsjPV5dWlJmPmaak8sB1eIiIB0WA=="
+            },
+            "unrealizedPnlUsd": 0.011480850127515123,
+            "totalCostBasis": 10.001620311928846
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "66e47689-5b68-479c-8537-8761a7abae69",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY",
+            "networkId": 1399811149,
+            "createdAt": "2026-02-15T01:44:23.000Z",
+            "updatedAt": "2026-02-15T02:47:40.000Z",
+            "closedAt": null,
+            "humanTokenAmount": 0.0010300000000000433,
+            "avgEntryPrice": null,
+            "avgExitPrice": 0.06286853973449717,
+            "sumSwapOpen": 0,
+            "sumSwapClosed": 54.99,
+            "sumTransferIn": 54.990515,
+            "sumTransferOut": -0.000515,
+            "avgTransferInPrice": 0.0636463929825,
+            "avgTransferOutPrice": 0.0629106665023,
+            "realizedPnlUsd": -0.04277377120853817,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "MOODENG",
+              "networkId": 1399811149,
+              "imageLargeUrl": "https://token-media.defined.fi/1399811149_ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY_large_2839e7615db3.png",
+              "liquidity": 1383243,
+              "currentPrice": 0.0550911606792,
+              "thumbhash": "2ygKFwQGW5axV4hnl0uYN8iHZwiIFpAG"
+            },
+            "unrealizedPnlUsd": -8.811889272399361e-06,
+            "totalCostBasis": 3.499947928000061
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        }
+      ],
+      "closedTrades": [
+        {
+          "trade": {
+            "id": "29cc72ac-9a03-4ac0-881b-e30c838de39a",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0xb695559b26bb2c9703ef1935c37aeae9526bab07",
+            "networkId": 8453,
+            "createdAt": "2026-01-30T06:36:01.000Z",
+            "updatedAt": "2026-01-31T09:40:34.685Z",
+            "closedAt": "2026-01-31T09:40:34.685Z",
+            "humanTokenAmount": 1.953449100256e-07,
+            "avgEntryPrice": 0.0002594615743710181,
+            "avgExitPrice": 0.0006618829838319736,
+            "sumSwapOpen": 1552665620.0348694,
+            "sumSwapClosed": 1552665620.0348685,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 624825.8872360002,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "MOLT",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0xb695559b26bb2c9703ef1935c37aeae9526bab07_large_2adf050f7ac2.png",
+              "liquidity": 2038294,
+              "currentPrice": 4.33154729052e-05,
+              "thumbhash": "jkgKHwoIl4h3iHdziod4WJd3eJAnB3kC"
+            },
+            "totalCostBasis": 402857.0662460002
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "08ae73d5-3397-46b2-a825-0e8c9c2fce75",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump",
+            "networkId": 1399811149,
+            "createdAt": "2026-02-07T08:00:12.718Z",
+            "updatedAt": "2026-02-16T07:26:38.924Z",
+            "closedAt": "2026-02-16T07:23:12.000Z",
+            "humanTokenAmount": 1.86264514923e-09,
+            "avgEntryPrice": 0.0031935995762163,
+            "avgExitPrice": 0.0036045762774117593,
+            "sumSwapOpen": 16613331.322476003,
+            "sumSwapClosed": 27267.680425,
+            "sumTransferIn": 0,
+            "sumTransferOut": 16586063.642051,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": 0.009956637692176397,
+            "realizedPnlUsd": 112183.38698628116,
+            "commentId": "932dc86f-d6cd-441f-bccd-03d5e6950874",
+            "tokenMetadata": {
+              "symbol": "MUSHU",
+              "networkId": 1399811149,
+              "imageLargeUrl": "https://token-media.defined.fi/1399811149_5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump_large_2dbeb8a81202.png",
+              "liquidity": 85947,
+              "currentPrice": 0.00279667145636,
+              "thumbhash": "pRgODwLLqJefmIdcZrdnmHh4WAAWBWEA"
+            },
+            "totalCostBasis": 53056.32787100035
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": {
+            "id": "932dc86f-d6cd-441f-bccd-03d5e6950874",
+            "userId": "2e955ffc-6fac-578a-93d8-3324605f6bed",
+            "tradeId": "08ae73d5-3397-46b2-a825-0e8c9c2fce75",
+            "comment": "burned the previous of my Mushu holdings. 5M tokens valued at approximately $90k at time of burn. total burn up to 83% or 83M tokens.",
+            "visibility": "public",
+            "createdAt": "2026-02-16T07:26:38.924Z",
+            "parentId": null,
+            "numLikes": 36,
+            "reactions": {
+              "counts": {
+                "likeCount": 36
+              },
+              "reactions": {
+                "like": false
+              }
+            },
+            "olderThesis": 6,
+            "newerThesis": 0
+          }
+        },
+        {
+          "trade": {
+            "id": "2d75fd1a-d99c-471f-9908-4bd561647554",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump",
+            "networkId": 1399811149,
+            "createdAt": "2026-01-31T05:58:30.877Z",
+            "updatedAt": "2026-02-07T07:58:59.000Z",
+            "closedAt": "2026-02-07T07:58:59.000Z",
+            "humanTokenAmount": -1.117587089539e-08,
+            "avgEntryPrice": 0.0005483534012682537,
+            "avgExitPrice": null,
+            "sumSwapOpen": 63644728.002565995,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 14500740.616905,
+            "sumTransferOut": 78145468.619471,
+            "avgTransferInPrice": 0.000422176959573,
+            "avgTransferOutPrice": 0.0013737876088026212,
+            "realizedPnlUsd": 66333.59481530174,
+            "commentId": "fa830e81-50be-46b8-93b9-2471824c2363",
+            "tokenMetadata": {
+              "symbol": "MUSHU",
+              "networkId": 1399811149,
+              "imageLargeUrl": "https://token-media.defined.fi/1399811149_5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump_large_2dbeb8a81202.png",
+              "liquidity": 85947,
+              "currentPrice": 0.00279667145636,
+              "thumbhash": "pRgODwLLqJefmIdcZrdnmHh4WAAWBWEA"
+            },
+            "totalCostBasis": 41021.68165820159
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": {
+            "id": "fa830e81-50be-46b8-93b9-2471824c2363",
+            "userId": "2e955ffc-6fac-578a-93d8-3324605f6bed",
+            "tradeId": "2d75fd1a-d99c-471f-9908-4bd561647554",
+            "comment": "all tokens I buy will be burned, have burned 810M tokens (81%) already. read his manifesto on pumpfun and you\u2019ll understand. Mushu is more than money. lower = more tokens per dollar. pls jeet",
+            "visibility": "public",
+            "createdAt": "2026-02-07T07:46:13.967Z",
+            "parentId": null,
+            "numLikes": 10,
+            "reactions": {
+              "counts": {
+                "likeCount": 10
+              },
+              "reactions": {
+                "like": false
+              }
+            },
+            "olderThesis": 0,
+            "newerThesis": 0
+          }
+        },
+        {
+          "trade": {
+            "id": "9935c4ae-e6ca-4728-9811-c64328a28083",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0xa1f72459dfa10bad200ac160ecd78c6b77a747be",
+            "networkId": 8453,
+            "createdAt": "2026-01-31T03:23:30.086Z",
+            "updatedAt": "2026-01-31T04:46:12.257Z",
+            "closedAt": "2026-01-31T04:46:12.257Z",
+            "humanTokenAmount": 6.4820051193237e-07,
+            "avgEntryPrice": 5.83686730926632e-06,
+            "avgExitPrice": 3.246790593174759e-05,
+            "sumSwapOpen": 1657272593.4069433,
+            "sumSwapClosed": 1657272593.406944,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 44134.89044300002,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "CLAWNCH",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0xa1f72459dfa10bad200ac160ecd78c6b77a747be_large_6bdeee3b0f57.png",
+              "liquidity": 1306266,
+              "currentPrice": 6.00572901656e-05,
+              "thumbhash": "SRgGFwYHyHiHiHeBfXR4p1d4eIAXB4cB"
+            },
+            "totalCostBasis": 9673.280223000002
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "5c3a9923-3fbc-4c61-aec8-b11b2672df91",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07",
+            "networkId": 8453,
+            "createdAt": "2026-01-31T07:10:47.000Z",
+            "updatedAt": "2026-02-04T21:42:44.219Z",
+            "closedAt": "2026-02-04T21:42:44.219Z",
+            "humanTokenAmount": 1.4156103134155e-07,
+            "avgEntryPrice": 0.00011045027118251658,
+            "avgExitPrice": 0.00011921713408174813,
+            "sumSwapOpen": 3256349857.137627,
+            "sumSwapClosed": 3438766031.180444,
+            "sumTransferIn": 182416174.04281712,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": 7.68416567954e-05,
+            "avgTransferOutPrice": 7.70790245736e-05,
+            "realizedPnlUsd": 36277.945189271726,
+            "commentId": "76665928-86ad-498d-822b-1de8ababc173",
+            "tokenMetadata": {
+              "symbol": "CLAWD",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07_large_67cce8239dd8.png",
+              "liquidity": 1276919,
+              "currentPrice": 6.16552760905e-05,
+              "thumbhash": "7FgOHwrnmoh/eHWYhZeHZ3eJZ1A5B5QD"
+            },
+            "totalCostBasis": 373681.8858257281
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": {
+            "id": "76665928-86ad-498d-822b-1de8ababc173",
+            "userId": "2e955ffc-6fac-578a-93d8-3324605f6bed",
+            "tradeId": "5c3a9923-3fbc-4c61-aec8-b11b2672df91",
+            "comment": "onchain deflationary money game.",
+            "visibility": "public",
+            "createdAt": "2026-02-02T21:03:35.104Z",
+            "parentId": null,
+            "numLikes": 0,
+            "reactions": {
+              "counts": {
+                "likeCount": 0
+              },
+              "reactions": {
+                "like": false
+              }
+            },
+            "olderThesis": 0,
+            "newerThesis": 0
+          }
+        },
+        {
+          "trade": {
+            "id": "a4d56635-326c-4f6e-9442-283f1e53af9f",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x9d0e8f5b25384c7310cb8c6ae32c8fbeb645d083",
+            "networkId": 8453,
+            "createdAt": "2026-03-07T00:13:11.936Z",
+            "updatedAt": "2026-03-11T04:14:54.266Z",
+            "closedAt": "2026-03-11T04:14:54.266Z",
+            "humanTokenAmount": 3.7834979594e-10,
+            "avgEntryPrice": 0.05458469035793672,
+            "avgExitPrice": 0.06678221174021085,
+            "sumSwapOpen": 925376.352669106,
+            "sumSwapClosed": 1339865.6327089395,
+            "sumTransferIn": 1119326.6186950053,
+            "sumTransferOut": 704837.3386551713,
+            "avgTransferInPrice": 0.0487255980303,
+            "avgTransferOutPrice": 0.053936668623,
+            "realizedPnlUsd": 22444.527793013476,
+            "commentId": "b7a8b496-75fc-4ce4-9789-ad97ccd129cf",
+            "tokenMetadata": {
+              "symbol": "DRV",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0x9d0e8f5b25384c7310cb8c6ae32c8fbeb645d083_large_0dc6e47922d7.png",
+              "liquidity": 420871,
+              "currentPrice": 0.099632146285,
+              "thumbhash": "yTgKJwgYdoh3h3hwi4mIlod3iGEHGHgA"
+            },
+            "totalCostBasis": 105051.24056214771
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": {
+            "id": "b7a8b496-75fc-4ce4-9789-ad97ccd129cf",
+            "userId": "2e955ffc-6fac-578a-93d8-3324605f6bed",
+            "tradeId": "a4d56635-326c-4f6e-9442-283f1e53af9f",
+            "comment": "ranging for years. good product, good team. Will take a bit to play out. just needs more attention\n \nhttps://x.com/koolkrypto223/status/2018728907168756132?s=20",
+            "visibility": "public",
+            "createdAt": "2026-03-07T00:33:43.626Z",
+            "parentId": null,
+            "numLikes": 23,
+            "reactions": {
+              "counts": {
+                "likeCount": 22
+              },
+              "reactions": {
+                "like": false
+              }
+            },
+            "olderThesis": 1,
+            "newerThesis": 0
+          }
+        },
+        {
+          "trade": {
+            "id": "af8e4b80-f31a-473a-bf70-7a33446525f2",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07",
+            "networkId": 8453,
+            "createdAt": "2026-01-27T08:34:18.000Z",
+            "updatedAt": "2026-01-27T20:56:45.341Z",
+            "closedAt": "2026-01-27T20:56:45.341Z",
+            "humanTokenAmount": 3.539025783539e-08,
+            "avgEntryPrice": 6.612585408470612e-05,
+            "avgExitPrice": 0.0001728784125776954,
+            "sumSwapOpen": 150546260.27586442,
+            "sumSwapClosed": 150546260.27586442,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 16071.198456000006,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "CLAWD",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07_large_67cce8239dd8.png",
+              "liquidity": 1276919,
+              "currentPrice": 6.16552760905e-05,
+              "thumbhash": "7FgOHwrnmoh/eHWYhZeHZ3eJZ1A5B5QD"
+            },
+            "totalCostBasis": 9955.00004
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "b976f83e-de41-403d-875c-37ec8d30cd4e",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+            "networkId": 8453,
+            "createdAt": "2026-02-22T04:32:53.000Z",
+            "updatedAt": "2026-02-22T23:12:41.710Z",
+            "closedAt": "2026-02-22T23:12:41.710Z",
+            "humanTokenAmount": 1.4901161193848e-07,
+            "avgEntryPrice": 1.487806963541004e-05,
+            "avgExitPrice": 3.574186232454498e-05,
+            "sumSwapOpen": 741488796.2846911,
+            "sumSwapClosed": 741488796.284691,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 15470.268527000006,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "BOTCOIN",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_large_074b6e753a58.png",
+              "liquidity": 485093,
+              "currentPrice": 3.0161069033e-05,
+              "thumbhash": "IgiGBQA1Z7lspIkISgAAAAAAB3iHiICLdw=="
+            },
+            "totalCostBasis": 11031.921945000004
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "be326872-2257-41b0-893f-2dc062b86563",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+            "networkId": 1399811149,
+            "createdAt": "2026-02-22T22:58:25.523Z",
+            "updatedAt": "2026-02-25T12:25:03.323Z",
+            "closedAt": "2026-02-25T12:25:03.323Z",
+            "humanTokenAmount": 5.820766091e-11,
+            "avgEntryPrice": 0.02259746036611812,
+            "avgExitPrice": 0.023505267977500337,
+            "sumSwapOpen": 7301070.248290999,
+            "sumSwapClosed": 200042.166739,
+            "sumTransferIn": 42.166739,
+            "sumTransferOut": 7101070.248291,
+            "avgTransferInPrice": 0.0237153740452,
+            "avgTransferOutPrice": 0.023738874427555234,
+            "realizedPnlUsd": 8286.814095440814,
+            "commentId": "1de0a40c-02f6-4b33-9e74-4234e2f42db1",
+            "tokenMetadata": {
+              "symbol": "neet",
+              "networkId": 1399811149,
+              "imageLargeUrl": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_large_a1bba760d64a.png",
+              "liquidity": 672771,
+              "currentPrice": 0.0271181628202,
+              "thumbhash": "FggOBwAJiIV1eIlilYeIaYh5JmcEV4cA"
+            },
+            "totalCostBasis": 164986.6455659877
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": {
+            "id": "1de0a40c-02f6-4b33-9e74-4234e2f42db1",
+            "userId": "2e955ffc-6fac-578a-93d8-3324605f6bed",
+            "tradeId": "be326872-2257-41b0-893f-2dc062b86563",
+            "comment": "infinite TAM. Dont buy if you have a j*b",
+            "visibility": "public",
+            "createdAt": "2026-02-23T01:33:23.732Z",
+            "parentId": null,
+            "numLikes": 36,
+            "reactions": {
+              "counts": {
+                "likeCount": 36
+              },
+              "reactions": {
+                "like": false
+              }
+            },
+            "olderThesis": 1,
+            "newerThesis": 0
+          }
+        },
+        {
+          "trade": {
+            "id": "419b8497-d5a3-48e0-845f-e93cff89f38d",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0xb102c4c8b673ecc29377ecf411685b29ecd42b07",
+            "networkId": 8453,
+            "createdAt": "2026-02-08T06:42:10.000Z",
+            "updatedAt": "2026-02-10T00:59:07.673Z",
+            "closedAt": "2026-02-10T00:59:07.673Z",
+            "humanTokenAmount": 4.0605664253235e-07,
+            "avgEntryPrice": 1.112644873053938e-05,
+            "avgExitPrice": 1.740415019355902e-05,
+            "sumSwapOpen": 1313058606.0132582,
+            "sumSwapClosed": 1313058606.013259,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 8242.98993199997,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "TELLR",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0xb102c4c8b673ecc29377ecf411685b29ecd42b07_large_484696098ff9.png",
+              "liquidity": 202539,
+              "currentPrice": 4.00468749232e-07,
+              "thumbhash": "XsMBPwbqqTdseXifYqVnSaaUh5EHF3kA"
+            },
+            "totalCostBasis": 14609.679260000024
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "1b580e48-f962-441e-91ee-82f961b12af8",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07",
+            "networkId": 8453,
+            "createdAt": "2026-01-27T22:52:03.000Z",
+            "updatedAt": "2026-01-28T07:12:34.771Z",
+            "closedAt": "2026-01-28T07:12:34.771Z",
+            "humanTokenAmount": 1.86264514923e-09,
+            "avgEntryPrice": 0.00019992778894414043,
+            "avgExitPrice": 0.0003013344963568398,
+            "sumSwapOpen": 78882035.77545848,
+            "sumSwapClosed": 78882035.77545848,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 7999.1675220000025,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "CLAWD",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07_large_67cce8239dd8.png",
+              "liquidity": 1276919,
+              "currentPrice": 6.16552760905e-05,
+              "thumbhash": "7FgOHwrnmoh/eHWYhZeHZ3eJZ1A5B5QD"
+            },
+            "totalCostBasis": 15770.711
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "b8d0d194-dc05-4193-97b5-e0d00dd828c0",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x50d2280441372486beecdd328c1854743ebacb07",
+            "networkId": 8453,
+            "createdAt": "2026-02-10T06:03:29.000Z",
+            "updatedAt": "2026-02-11T00:57:22.822Z",
+            "closedAt": "2026-02-11T00:57:22.822Z",
+            "humanTokenAmount": 5.215406417847e-08,
+            "avgEntryPrice": 9.87391193290469e-05,
+            "avgExitPrice": 0.00011372762763033988,
+            "sumSwapOpen": 508380303.21821123,
+            "sumSwapClosed": 508380303.2182112,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 7619.862394999995,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "KellyClaude",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0x50d2280441372486beecdd328c1854743ebacb07_large_48e67349c19e.png",
+              "liquidity": 1126588,
+              "currentPrice": 5.91457901333e-05,
+              "thumbhash": "5oSBBQASi2GMdVgHd22vFgiHCJaId3B9hw=="
+            },
+            "totalCostBasis": 50197.023424000006
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "b20778aa-2fcb-4845-88bf-58f970196a58",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0xd523f92f5f313288cf69ac9ca456b8a7d7a6dba3",
+            "networkId": 8453,
+            "createdAt": "2026-03-04T23:28:15.294Z",
+            "updatedAt": "2026-03-04T23:58:49.371Z",
+            "closedAt": "2026-03-04T23:58:49.371Z",
+            "humanTokenAmount": -2.3841857910156e-07,
+            "avgEntryPrice": 2.85173327722162e-06,
+            "avgExitPrice": 7.08237634976633e-06,
+            "sumSwapOpen": 1752442993.150103,
+            "sumSwapClosed": 1752442993.1501033,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 7413.960808999993,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "GITC",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0xd523f92f5f313288cf69ac9ca456b8a7d7a6dba3_large_37d551e94e8b.png",
+              "liquidity": 66989,
+              "currentPrice": 9.37034679636e-07,
+              "thumbhash": "xvcFDwAoZ5h3h4hwjIiYiHiIjEMHh48L"
+            },
+            "totalCostBasis": 4997.500000000008
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "1b313747-dfef-4a79-b99d-c2a0c1574371",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump",
+            "networkId": 1399811149,
+            "createdAt": "2026-02-20T16:38:29.436Z",
+            "updatedAt": "2026-02-20T23:22:16.226Z",
+            "closedAt": "2026-02-20T23:22:16.226Z",
+            "humanTokenAmount": -5.5297277868e-10,
+            "avgEntryPrice": 0.004345897987764443,
+            "avgExitPrice": 0.005712606671362582,
+            "sumSwapOpen": 5011914.945156,
+            "sumSwapClosed": 5011914.945156001,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 6849.827676999998,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "Lobstar",
+              "networkId": 1399811149,
+              "imageLargeUrl": "https://token-media.defined.fi/1399811149_AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump_large_dfa441a5a18f.png",
+              "liquidity": 287884,
+              "currentPrice": 0.00323201169339,
+              "thumbhash": "hxgGFwQzs2pvhoiBqkWYiHh3F+IFA20C"
+            },
+            "totalCostBasis": 21781.271074999997
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "69877a8b-a534-4ff7-94f3-3f10c3316cdf",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x587cd533f418825521f3a1daa7ccd1e7339a1b07",
+            "networkId": 8453,
+            "createdAt": "2026-01-30T19:37:16.192Z",
+            "updatedAt": "2026-01-30T20:34:56.275Z",
+            "closedAt": "2026-01-30T20:34:56.275Z",
+            "humanTokenAmount": 4.470348358154e-08,
+            "avgEntryPrice": 1.058098394594283e-05,
+            "avgExitPrice": 1.901174215893909e-05,
+            "sumSwapOpen": 601007811.0399545,
+            "sumSwapClosed": 601007811.0399545,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 5066.951538999999,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "STARKBOT",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0x587cd533f418825521f3a1daa7ccd1e7339a1b07_large_44a119eac8e6.png",
+              "liquidity": 323555,
+              "currentPrice": 2.76577445823e-06,
+              "thumbhash": "xfcJBwAHqIh5hniDe2eIVpiHaW/Y94YM"
+            },
+            "totalCostBasis": 6359.254000000001
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "684785f5-6346-4e0c-ac03-2110d963011d",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x87acfa3fd7a6e0d48677d070644d76905c2bdc00",
+            "networkId": 56,
+            "createdAt": "2026-01-23T10:08:00.000Z",
+            "updatedAt": "2026-01-23T11:08:42.092Z",
+            "closedAt": "2026-01-23T11:08:42.092Z",
+            "humanTokenAmount": -2.4920154829e-10,
+            "avgEntryPrice": 0.02057700192513007,
+            "avgExitPrice": 0.02270259284373515,
+            "sumSwapOpen": 1817134.041734977,
+            "sumSwapClosed": 1817134.0417349774,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 3862.483617000008,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "SPACE",
+              "networkId": 56,
+              "imageLargeUrl": null,
+              "liquidity": 787137,
+              "currentPrice": 0.00740328204966,
+              "thumbhash": null
+            },
+            "totalCostBasis": 37391.17067500001
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "6748e65d-3d67-40ff-97b9-5aaa2814509a",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x1bc0c42215582d5a085795f4badbac3ff36d1bcb",
+            "networkId": 8453,
+            "createdAt": "2026-01-31T21:48:31.830Z",
+            "updatedAt": "2026-01-31T23:56:29.717Z",
+            "closedAt": "2026-01-31T23:56:29.717Z",
+            "humanTokenAmount": 2.842171e-14,
+            "avgEntryPrice": 45.95340488611837,
+            "avgExitPrice": 51.64374525728427,
+            "sumSwapOpen": 660.6640699473195,
+            "sumSwapClosed": 660.6640699473194,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 3759.403429000005,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "CLANKER",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0x1bc0c42215582d5a085795f4badbac3ff36d1bcb_large_04ad861a-af17-488e-b742-bc7e24073b8d.png",
+              "liquidity": 615177,
+              "currentPrice": 27.0730596858,
+              "thumbhash": "vAcGDwDro1eKdohfs0enmYiIta74FHUA"
+            },
+            "totalCostBasis": 30359.7635
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "8909360d-f122-49e0-b33d-2d74c68c7364",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x22af33fe49fd1fa80c7149773dde5890d3c76f3b",
+            "networkId": 8453,
+            "createdAt": "2026-01-31T07:53:44.029Z",
+            "updatedAt": "2026-01-31T10:13:56.844Z",
+            "closedAt": "2026-01-31T10:13:56.844Z",
+            "humanTokenAmount": -1.024454832077e-08,
+            "avgEntryPrice": 0.0007178128410621295,
+            "avgExitPrice": 0.0006872179654487392,
+            "sumSwapOpen": 81315430.95778628,
+            "sumSwapClosed": 166028190.1135932,
+            "sumTransferIn": 84712759.15580687,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": 0.000613589597325,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 3749.426720298716,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "BNKR",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0x22af33fe49fd1fa80c7149773dde5890d3c76f3b_large_1c871337b64d.png",
+              "liquidity": 99606,
+              "currentPrice": 0.00048509165289,
+              "thumbhash": "JEYCVwS0jvZ9h3WaOFlq5Vg4jGIHDHkA"
+            },
+            "totalCostBasis": 110348.12829670125
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "64f236e8-85b3-4043-9153-e728569bc4d6",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07",
+            "networkId": 8453,
+            "createdAt": "2026-02-21T06:14:00.000Z",
+            "updatedAt": "2026-02-24T00:03:14.953Z",
+            "closedAt": "2026-02-24T00:03:14.953Z",
+            "humanTokenAmount": 1.7881393432617e-07,
+            "avgEntryPrice": 5.05453308137289e-05,
+            "avgExitPrice": 5.464562188194072e-05,
+            "sumSwapOpen": 758875446.7026156,
+            "sumSwapClosed": 758875446.7026157,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 3111.6102159999914,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "CLAWD",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07_large_67cce8239dd8.png",
+              "liquidity": 1276919,
+              "currentPrice": 6.16552760905e-05,
+              "thumbhash": "7FgOHwrnmoh/eHWYhZeHZ3eJZ1A5B5QD"
+            },
+            "totalCostBasis": 38357.6105
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "dd2b3625-a21f-4e87-8347-342501a60e85",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x4e6c9f48f73e54ee5f3ab7e2992b2d733d0d0b07",
+            "networkId": 8453,
+            "createdAt": "2026-02-26T09:24:57.000Z",
+            "updatedAt": "2026-02-26T10:11:01.000Z",
+            "closedAt": "2026-02-26T10:11:01.000Z",
+            "humanTokenAmount": -939025439.5520887,
+            "avgEntryPrice": 1.322166007747737e-05,
+            "avgExitPrice": null,
+            "sumSwapOpen": 1129396755.9668992,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0,
+            "sumTransferOut": 2068422195.518988,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": 1.46929368957e-05,
+            "realizedPnlUsd": 3043.221626564245,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "JUNO",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0x4e6c9f48f73e54ee5f3ab7e2992b2d733d0d0b07_large_729b56bef507.png",
+              "liquidity": 383342,
+              "currentPrice": 1.71024038081e-05,
+              "thumbhash": "8wcKBwD4d6d+h3SGdstYZ6eIl/9WB5QG"
+            },
+            "totalCostBasis": 14932.500000000002
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "b920c23b-85f8-418e-bee5-1b0f474ed161",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x0a495bde281e6b115a505e427050bd0fa9321b07",
+            "networkId": 8453,
+            "createdAt": "2026-01-31T07:58:17.000Z",
+            "updatedAt": "2026-01-31T12:18:43.156Z",
+            "closedAt": "2026-01-31T12:18:43.156Z",
+            "humanTokenAmount": 4.7683715820313e-07,
+            "avgEntryPrice": 1.63098173367225e-06,
+            "avgExitPrice": 1.39654762007074e-06,
+            "sumSwapOpen": 509047393.2719345,
+            "sumSwapClosed": 5317338663.055273,
+            "sumTransferIn": 4808291269.783339,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": 7.79897352451e-07,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 2845.69602388271,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "x402claw",
+              "networkId": 8453,
+              "imageLargeUrl": null,
+              "liquidity": 41575,
+              "currentPrice": 3.97410461109e-07,
+              "thumbhash": null
+            },
+            "totalCostBasis": 4580.220631117282
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "15ec9709-0d12-4b85-b68d-a87de65e94ef",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "6e9q1ndCFG3bkSqhyZhDzp1QYUJuHXz7GYCz54Uqpump",
+            "networkId": 1399811149,
+            "createdAt": "2026-03-06T02:59:10.000Z",
+            "updatedAt": "2026-03-06T03:15:12.650Z",
+            "closedAt": "2026-03-06T03:15:12.650Z",
+            "humanTokenAmount": 0,
+            "avgEntryPrice": null,
+            "avgExitPrice": 2.937603309129909e-05,
+            "sumSwapOpen": 0,
+            "sumSwapClosed": 100364577.573725,
+            "sumTransferIn": 100364577.573725,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": 5.87262678615e-06,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 2358.9094453599137,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "Change ",
+              "networkId": 1399811149,
+              "imageLargeUrl": "https://token-media.defined.fi/1399811149_6e9q1ndCFG3bkSqhyZhDzp1QYUJuHXz7GYCz54Uqpump:1399811149_large_48d04e3dad1b.png",
+              "liquidity": 1699,
+              "currentPrice": 1.77010680486e-06,
+              "thumbhash": "3+QJHwAFN4x2h4iQhHiIKJaIi4oHyXkA"
+            },
+            "totalCostBasis": 589.403706640087
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "684ac8f8-e20d-4f0e-b965-643a723dfcfc",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07",
+            "networkId": 8453,
+            "createdAt": "2026-01-30T19:15:33.094Z",
+            "updatedAt": "2026-01-30T22:57:24.799Z",
+            "closedAt": "2026-01-30T22:57:24.799Z",
+            "humanTokenAmount": -5.960464477539e-08,
+            "avgEntryPrice": 8.233759994439699e-05,
+            "avgExitPrice": null,
+            "sumSwapOpen": 272688383.1343432,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0,
+            "sumTransferOut": 272688383.13434327,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": 9.06043537435e-05,
+            "realizedPnlUsd": 2254.2477272470915,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "CLAWD",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07_large_67cce8239dd8.png",
+              "liquidity": 1276919,
+              "currentPrice": 6.16552760905e-05,
+              "thumbhash": "7FgOHwrnmoh/eHWYhZeHZ3eJZ1A5B5QD"
+            },
+            "totalCostBasis": 22452.507
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "9d3cc9e6-9dc2-49bc-a45c-86bc5201ce8c",
+            "userAddress": "EJvPNq2PBTNoD56VA4GNDUD8QJsRzoe2twH3cnMLcybB",
+            "tokenAddress": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+            "networkId": 1399811149,
+            "createdAt": "2026-02-14T22:27:38.365Z",
+            "updatedAt": "2026-02-16T01:10:33.282Z",
+            "closedAt": "2026-02-16T01:10:33.282Z",
+            "humanTokenAmount": -2.3283064365e-10,
+            "avgEntryPrice": 0.011322994206899119,
+            "avgExitPrice": 0.012278132329795202,
+            "sumSwapOpen": 2338118.198265,
+            "sumSwapClosed": 2338118.198265,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 2233.2258270000043,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "neet",
+              "networkId": 1399811149,
+              "imageLargeUrl": "https://token-media.defined.fi/1399811149_Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump_large_a1bba760d64a.png",
+              "liquidity": 672771,
+              "currentPrice": 0.0271181628202,
+              "thumbhash": "FggOBwAJiIV1eIlilYeIaYh5JmcEV4cA"
+            },
+            "totalCostBasis": 26474.498814
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        },
+        {
+          "trade": {
+            "id": "78e0c0df-4a25-4ddb-9900-4c9b17a10458",
+            "userAddress": "0x5293732c285d30bbc1a85a8144fc7679b6e195cb",
+            "tokenAddress": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+            "networkId": 8453,
+            "createdAt": "2026-02-05T21:04:24.141Z",
+            "updatedAt": "2026-02-06T09:06:00.195Z",
+            "closedAt": "2026-02-06T09:06:00.195Z",
+            "humanTokenAmount": 0,
+            "avgEntryPrice": 1.680838750565786,
+            "avgExitPrice": 1.7306769371884887,
+            "sumSwapOpen": 36588.28277209748,
+            "sumSwapClosed": 36588.282772097475,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 1823.493665000011,
+            "commentId": null,
+            "tokenMetadata": {
+              "symbol": "VVV",
+              "networkId": 8453,
+              "imageLargeUrl": "https://token-media.defined.fi/8453_0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf_large_b6278fccf81c.png",
+              "liquidity": 2691959,
+              "currentPrice": 6.92657998007,
+              "thumbhash": "uDiGFQQs93h3iHyQyAiIg4A4CFeHh4BzVw=="
+            },
+            "totalCostBasis": 61499.003500000006
+          },
+          "swaps": [],
+          "transfers": [],
+          "comment": null
+        }
+      ],
+      "hasNextPage": true
+    },
+    "statusCode": 200
+  },
+  "captured_at": "2026-03-13T12:09:49.632955"
+}

@@ -226,18 +226,7 @@ function DisputeButton({
       onClick={handleDispute}
       disabled={state !== "idle"}
       title="Flag this relationship as incorrect"
-      style={{
-        fontSize: "10px",
-        color: state === "done" ? "var(--text-muted)" : "var(--text-muted)",
-        background: "none",
-        border: "none",
-        cursor: state === "idle" ? "pointer" : "default",
-        padding: "2px 4px",
-        fontFamily: "inherit",
-        opacity: state === "loading" ? 0.5 : 1,
-        textDecoration: state === "idle" ? "underline" : "none",
-        textDecorationStyle: "dotted",
-      }}
+      className={`text-[10px] text-[var(--text-muted)] bg-transparent border-none p-0.5 ${state === "idle" ? 'cursor-pointer underline decoration-dotted' : 'cursor-default'} ${state === "loading" ? 'opacity-50' : ''}`}
     >
       {state === "done" ? "Disputed ✓" : "Dispute"}
     </button>
@@ -254,25 +243,9 @@ function PanelShell({
   children: React.ReactNode;
 }) {
   return (
-    <section
-      style={{
-        background: "var(--bg-surface)",
-        border: "1px solid var(--border)",
-        borderRadius: "8px",
-        padding: "16px 20px",
-      }}
-    >
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
-        <h2
-          style={{
-            fontSize: "11px",
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "var(--text-muted)",
-            margin: 0,
-          }}
-        >
+    <section className="card px-5 py-4">
+      <div className="flex items-center justify-between mb-3">
+        <h2 className="text-[11px] font-semibold tracking-wide uppercase text-[var(--text-muted)]">
           {title}
         </h2>
         {headerRight}
@@ -288,15 +261,8 @@ function ConfidenceBar({ value }: { value: number }) {
     pct >= 80 ? "var(--accent)" : pct >= 60 ? "#b36a00" : "var(--text-muted)";
   return (
     <span
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "4px",
-        fontSize: "11px",
-        fontFamily: "JetBrains Mono, monospace",
-        color,
-        fontWeight: 600,
-      }}
+      className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold"
+      style={{ color }}
     >
       {pct}%
     </span>
@@ -305,9 +271,9 @@ function ConfidenceBar({ value }: { value: number }) {
 
 function SkeletonList({ count }: { count: number }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+    <div className="flex flex-col gap-3">
       {Array.from({ length: count }).map((_, i) => (
-        <div key={i} style={{ display: "flex", justifyContent: "space-between" }}>
+        <div key={i} className="flex justify-between">
           <Skeleton width={120} height={12} />
           <Skeleton width={50} height={12} />
         </div>
@@ -318,7 +284,7 @@ function SkeletonList({ count }: { count: number }) {
 
 function EmptyState({ text }: { text: string }) {
   return (
-    <p style={{ fontSize: "13px", color: "var(--text-muted)", margin: 0 }}>
+    <p className="text-[13px] text-[var(--text-muted)]">
       {text}
     </p>
   );

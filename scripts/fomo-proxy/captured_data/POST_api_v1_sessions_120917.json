@@ -1,0 +1,109 @@
+{
+  "endpoint": "POST /api/v1/sessions",
+  "url": "https://auth.privy.io/api/v1/sessions",
+  "request_headers": {
+    "content-type": "application/json",
+    "privy-client-id": "client-WY5gFSayQjxnQhG4rP6SnwPAyPZWZpNRhJ6xkhmfgbmVh",
+    "privy-client": "expo:0.60.0",
+    "accept": "application/json",
+    "authorization": "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkI4SXlObWU1V0lZRnJIclJRVDBLdFlPRlFIUjFKVXFnaGVTMHhSZHR1QVkifQ.eyJhaWQiOiJjbTZoNDg1bzMwMG4zemo5eWw2dnBlZHE3IiwiYXR0IjoicGF0Iiwic2lkIjoiY21remVuaGtjMDVzOGpvMGN0a2x6NXJqaiIsImlzcyI6InByaXZ5LmlvIiwiaWF0IjoxNzczNDE1MjU0LCJhdWQiOiJodHRwczovL2F1dGgucHJpdnkuaW8iLCJzdWIiOiJkaWQ6cHJpdnk6Y21rejA2N2RkMDF5Z2puMGNhaXc5aWNrcCIsImV4cCI6MTc3MzQxODg1NH0.-NTIM3vuz1JWIJVFfwnCGp2xkZKXLjuP6C1I2QEeM_XzYiURDXwnB_oD6Z12iMWUyxADxg3NTwLD0zG-NxyZPg",
+    "privy-ca-id": "97865a2b-9ccc-48eb-a521-95674cf2b876",
+    "priority": "u=3, i",
+    "accept-language": "en-US,en;q=0.9",
+    "accept-encoding": "gzip, deflate, br",
+    "privy-app-id": "cm6h485o300n3zj9yl6vpedq7",
+    "content-length": "106",
+    "user-agent": "fomo/280 CFNetwork/3860.300.31 Darwin/25.2.0",
+    "cookie": "__cf_bm=z5IwE2xEsxG4x9kJMkQ0X25_w5AUd6MndZuQCg7ceQc-1773421757-1.0.1.1-nB6kRSDOwr9pV785x8Q5YQUsP32Wn7l2hI3X.SmhboYBcEgT6OmWqtkCSJbkyl0X1f9.MQLBbsFdGLrgMqmYKf_3.k9NvpsnH.lc1PwUUb0, _cfuvid=MGhl_ACIaMpgzOLNe9QScCgSMCmbmdVs6mE115n.W1o-1773421757429-0.0.1.1-604800000, cf_clearance=0sVpEm1ABNf8_jVQkZn8xC7H8OY5PY1lXH51eFh3uew-1768663666-1.2.1.1-ee8_suuIAMZ2lW3G4pHwLcgZuAJHAyAJbUCPagTVqg00t4k2Leph52fPboDOE.r.xSlNOzP_pBbMVewwSUQg1fmgMT_LNBwoRCMBEvsSvAjDc3UivoJyAIjmGN5NV98GjnQp9lnsPGfSe_KS4b.wbfvLXX.gJzVbbMBbg5oLMu39sWUPINyFJZ131kSFqkPNmFC0UDmOyPwOwgHoKn9DLotqVChxIvodX5hI0WZBBpQ",
+    "x-native-app-identifier": "family.fomo.app"
+  },
+  "request_body": "{\"refresh_token\":\"KmoXnUHbCWSA4aYllQAke7o7h1eOqCvN7dHguMl6t8EIOVPlG-0FoMCI5NX6dYBUL3pjsFW7UTHCJErltyIgQQ\"}",
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:09:17 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "cf-ray": "9dbca5405cfcfb18-BNA",
+    "cache-control": "public, max-age=0, must-revalidate",
+    "content-encoding": "br",
+    "etag": "W/\"wqp5z2e55w1yj\"",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "strict-transport-security": "max-age=63072000",
+    "x-content-type-options": "nosniff",
+    "x-matched-path": "/api/v1/sessions",
+    "x-vercel-cache": "MISS",
+    "x-vercel-id": "iad1::iad1::c9jjx-1773421757618-594e6b1bb764",
+    "cf-cache-status": "DYNAMIC",
+    "vary": "accept-encoding",
+    "server": "cloudflare"
+  },
+  "response_body": {
+    "user": {
+      "id": "did:privy:cmkz067dd01ygjn0caiw9ickp",
+      "created_at": 1769663862,
+      "linked_accounts": [
+        {
+          "type": "google_oauth",
+          "subject": "106265554032666680627",
+          "email": "ookohsonreb@gmail.com",
+          "name": "Ocean Okohson-Reb",
+          "verified_at": 1769663862,
+          "first_verified_at": 1769663862,
+          "latest_verified_at": 1769688183
+        },
+        {
+          "id": null,
+          "type": "wallet",
+          "address": "0x22DA4bA1205A52F06E13d2D41FC354ED506C5aA3",
+          "wallet_index": 0,
+          "chain_id": "eip155:1",
+          "chain_type": "ethereum",
+          "delegated": false,
+          "wallet_client": "privy",
+          "wallet_client_type": "privy",
+          "connector_type": "embedded",
+          "imported": false,
+          "recovery_method": "privy",
+          "verified_at": 1769663863,
+          "first_verified_at": 1769663863,
+          "latest_verified_at": 1769663863
+        },
+        {
+          "id": null,
+          "type": "wallet",
+          "address": "7Geof2ov27kRGxZyjnexpvymvUQYNZfmNbdmWobsTmdX",
+          "wallet_index": 0,
+          "chain_id": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+          "chain_type": "solana",
+          "delegated": false,
+          "wallet_client": "privy",
+          "wallet_client_type": "privy",
+          "connector_type": "embedded",
+          "imported": false,
+          "recovery_method": "privy",
+          "verified_at": 1769663865,
+          "first_verified_at": 1769663863,
+          "latest_verified_at": 1769663863,
+          "public_key": "7Geof2ov27kRGxZyjnexpvymvUQYNZfmNbdmWobsTmdX"
+        },
+        {
+          "type": "twitter_oauth",
+          "subject": "1422293048260763649",
+          "name": "miri",
+          "username": "NowMiri",
+          "profile_picture_url": "https://pbs.twimg.com/profile_images/2014961505272315904/3myqZ1Oc_normal.jpg",
+          "verified_at": 1769663882,
+          "first_verified_at": 1769663882,
+          "latest_verified_at": 1769663882
+        }
+      ],
+      "mfa_methods": [],
+      "has_accepted_terms": false,
+      "is_guest": false
+    },
+    "token": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkI4SXlObWU1V0lZRnJIclJRVDBLdFlPRlFIUjFKVXFnaGVTMHhSZHR1QVkifQ.eyJzaWQiOiJjbWt6ZW5oa2MwNXM4am8wY3RrbHo1cmpqIiwiaXNzIjoicHJpdnkuaW8iLCJpYXQiOjE3NzM0MjE3NTcsImF1ZCI6ImNtNmg0ODVvMzAwbjN6ajl5bDZ2cGVkcTciLCJzdWIiOiJkaWQ6cHJpdnk6Y21rejA2N2RkMDF5Z2puMGNhaXc5aWNrcCIsImV4cCI6MTc3MzQyNTM1N30.KSKe7Zlqq97fc4QPfjM7DRQFJn2TbIjhiI5oDtSDVmm1sYOZq8Vd2Zn-4ks9I-Iepjj6jRmPmI_rhyeOayLexA",
+    "privy_access_token": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkI4SXlObWU1V0lZRnJIclJRVDBLdFlPRlFIUjFKVXFnaGVTMHhSZHR1QVkifQ.eyJhaWQiOiJjbTZoNDg1bzMwMG4zemo5eWw2dnBlZHE3IiwiYXR0IjoicGF0Iiwic2lkIjoiY21remVuaGtjMDVzOGpvMGN0a2x6NXJqaiIsImlzcyI6InByaXZ5LmlvIiwiaWF0IjoxNzczNDIxNzU3LCJhdWQiOiJodHRwczovL2F1dGgucHJpdnkuaW8iLCJzdWIiOiJkaWQ6cHJpdnk6Y21rejA2N2RkMDF5Z2puMGNhaXc5aWNrcCIsImV4cCI6MTc3MzQyNTM1N30.sb2C-VZMNJX-vMWSsgsv70Y0CdiiYrAHF018PVuosjeevM-P2wLCmj5eo8aAMmR9cA6ONUTTmRbIar_yoh4-hQ",
+    "refresh_token": "1bMSaluSStKwzsHFcQBYuZed9Cils2byyZQ6szNqF5uhEo4zi-fchPkuEseiF4rygyhUzIuwxZV_k0wxThewzQ",
+    "session_update_action": "set"
+  },
+  "captured_at": "2026-03-13T12:09:17.850623"
+}

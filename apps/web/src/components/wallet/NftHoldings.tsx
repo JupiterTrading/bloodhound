@@ -47,59 +47,20 @@ export function NftHoldings({ address }: Props) {
   if (!isLoading && allNfts.length === 0) return null;
 
   return (
-    <section
-      style={{
-        background: "var(--bg-surface)",
-        border: "1px solid var(--border)",
-        borderRadius: "8px",
-        overflow: "hidden",
-        marginBottom: "16px",
-      }}
-    >
+    <section className="card overflow-hidden mb-4">
       {/* Header */}
-      <div
-        style={{
-          padding: "16px 20px",
-          borderBottom: "1px solid var(--border)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: "8px",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "11px",
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "var(--text-muted)",
-            margin: 0,
-          }}
-        >
+      <div className="px-5 py-4 border-b border-[var(--border)] flex items-center justify-between flex-wrap gap-2">
+        <h2 className="text-[11px] font-semibold tracking-wide uppercase text-[var(--text-muted)]">
           NFT Holdings
           {nfts.length > 0 && (
-            <span style={{ marginLeft: "8px", fontWeight: 400 }}>
-              ({nfts.length})
-            </span>
+            <span className="ml-2 font-normal">({nfts.length})</span>
           )}
         </h2>
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+        <div className="flex items-center gap-3">
           {compressedNfts.length > 0 && (
             <button
               onClick={() => setShowCompressed(!showCompressed)}
-              style={{
-                background: showCompressed ? "var(--accent)" : "transparent",
-                border: "1px solid var(--border)",
-                borderRadius: "4px",
-                padding: "4px 10px",
-                fontSize: "11px",
-                fontWeight: 500,
-                color: showCompressed ? "white" : "var(--text-muted)",
-                cursor: "pointer",
-                transition: "all 0.15s ease",
-              }}
+              className={`border border-[var(--border)] rounded px-2.5 py-1 text-[11px] font-medium cursor-pointer transition-all ${showCompressed ? 'bg-[var(--accent)] text-white' : 'bg-transparent text-[var(--text-muted)]'}`}
             >
               {showCompressed ? "Hide cNFTs" : `Show cNFTs (${compressedNfts.length})`}
             </button>
@@ -107,15 +68,7 @@ export function NftHoldings({ address }: Props) {
           {nfts.length > PREVIEW_COUNT && (
             <button
               onClick={() => setShowAll((v) => !v)}
-              style={{
-                fontSize: "11px",
-                color: "var(--accent)",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                padding: 0,
-                fontFamily: "inherit",
-              }}
+              className="text-[11px] text-[var(--accent)] bg-transparent border-none cursor-pointer p-0 hover:underline"
             >
               {showAll ? "Show less" : `Show all ${nfts.length}`}
             </button>
@@ -125,37 +78,16 @@ export function NftHoldings({ address }: Props) {
 
       {/* Grid */}
       {isLoading ? (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))",
-            gap: "1px",
-            background: "var(--border)",
-          }}
-        >
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-px bg-[var(--border)]">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div
-              key={i}
-              style={{ background: "var(--bg-surface)", padding: "12px" }}
-            >
-              <Skeleton
-                height={96}
-                borderRadius={6}
-                style={{ marginBottom: 8 }}
-              />
+            <div key={i} className="bg-[var(--bg-surface)] p-3">
+              <Skeleton height={96} borderRadius={6} style={{ marginBottom: 8 }} />
               <Skeleton height={11} width="70%" />
             </div>
           ))}
         </div>
       ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))",
-            gap: "1px",
-            background: "var(--border)",
-          }}
-        >
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-px bg-[var(--border)]">
           {visible.map((nft) => (
             <NftCard key={nft.mint} nft={nft} />
           ))}
@@ -176,128 +108,48 @@ function NftCard({ nft }: { nft: NftHolding }) {
       href={MAGIC_EDEN_NFT(nft.mint)}
       target="_blank"
       rel="noopener noreferrer"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        background: "var(--bg-surface)",
-        padding: "12px",
-        textDecoration: "none",
-        transition: "background 80ms",
-        position: "relative",
-      }}
-      onMouseEnter={(e) =>
-        ((e.currentTarget as HTMLAnchorElement).style.background =
-          "var(--bg-elevated)")
-      }
-      onMouseLeave={(e) =>
-        ((e.currentTarget as HTMLAnchorElement).style.background =
-          "var(--bg-surface)")
-      }
+      className="flex flex-col bg-[var(--bg-surface)] p-3 no-underline hover:bg-[var(--bg-elevated)] transition-colors relative"
     >
       {/* cNFT badge */}
       {nft.is_compressed && (
-        <div
-          style={{
-            position: "absolute",
-            top: "8px",
-            right: "8px",
-            background: "rgba(0, 0, 0, 0.7)",
-            color: "#888",
-            fontSize: "8px",
-            fontWeight: 600,
-            padding: "2px 5px",
-            borderRadius: "3px",
-            textTransform: "uppercase",
-            letterSpacing: "0.05em",
-            zIndex: 1,
-          }}
-        >
+        <div className="absolute top-2 right-2 bg-black/70 text-[#888] text-[8px] font-semibold px-1.5 py-0.5 rounded uppercase tracking-wide z-10">
           cNFT
         </div>
       )}
 
       {/* Image */}
-      <div
-        style={{
-          width: "100%",
-          aspectRatio: "1",
-          borderRadius: "6px",
-          overflow: "hidden",
-          background: "var(--bg-elevated)",
-          marginBottom: "8px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexShrink: 0,
-        }}
-      >
+      <div className="w-full aspect-square rounded-md overflow-hidden bg-[var(--bg-elevated)] mb-2 flex items-center justify-center shrink-0">
         {nft.image && !imgError ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={nft.image}
             alt={nft.name}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            className="w-full h-full object-cover"
             onError={() => setImgError(true)}
           />
         ) : (
-          <span style={{ fontSize: "24px", opacity: 0.3 }}>◈</span>
+          <span className="text-2xl opacity-30">◈</span>
         )}
       </div>
 
       {/* Name */}
       <div
-        style={{
-          fontSize: "11px",
-          fontWeight: 600,
-          color: "var(--text-primary)",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
-          marginBottom: "3px",
-        }}
+        className="text-[11px] font-semibold text-[var(--text-primary)] overflow-hidden text-ellipsis whitespace-nowrap mb-1"
         title={nft.name}
       >
         {nft.name}
       </div>
 
       {/* Price info */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-        {/* Listing price (if listed) */}
+      <div className="flex flex-col gap-0.5">
         {nft.is_listed && nft.listing_price_sol != null && (
-          <div
-            style={{
-              fontSize: "10px",
-              color: "#22c55e",
-              fontFamily: "JetBrains Mono, monospace",
-              display: "flex",
-              alignItems: "center",
-              gap: "4px",
-            }}
-            title="Listed price"
-          >
-            <span style={{ 
-              background: "#22c55e", 
-              color: "#000", 
-              padding: "1px 4px", 
-              borderRadius: "2px",
-              fontSize: "8px",
-              fontWeight: 600,
-            }}>
-              LISTED
-            </span>
+          <div className="text-[10px] text-[#22c55e] font-mono flex items-center gap-1" title="Listed price">
+            <span className="bg-[#22c55e] text-black px-1 py-px rounded text-[8px] font-semibold">LISTED</span>
             ◎ {nft.listing_price_sol.toFixed(2)}
           </div>
         )}
-        {/* Floor price */}
         {nft.floor_price_sol != null && nft.floor_price_sol > 0 && (
-          <div
-            style={{
-              fontSize: "10px",
-              color: "var(--text-muted)",
-              fontFamily: "JetBrains Mono, monospace",
-            }}
-            title="Collection floor price"
-          >
+          <div className="text-[10px] text-[var(--text-muted)] font-mono" title="Collection floor price">
             Floor: ◎ {nft.floor_price_sol.toFixed(2)}
           </div>
         )}
@@ -315,12 +167,7 @@ function NftCard({ nft }: { nft: NftHolding }) {
               "noopener,noreferrer"
             );
           }}
-          style={{
-            fontSize: "10px",
-            color: "var(--text-muted)",
-            fontFamily: "JetBrains Mono, monospace",
-            cursor: "pointer",
-          }}
+          className="text-[10px] text-[var(--text-muted)] font-mono cursor-pointer hover:text-[var(--text-secondary)]"
           title={nft.collection_address ?? undefined}
         >
           {short}

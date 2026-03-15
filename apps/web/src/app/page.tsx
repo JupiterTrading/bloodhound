@@ -41,34 +41,8 @@ function MacroTicker() {
   });
 
   return (
-    <div
-      style={{
-        borderBottom: "1px solid var(--border)",
-        background: "var(--bg-elevated)",
-        padding: "0 40px",
-        display: "flex",
-        alignItems: "center",
-        gap: "0",
-        overflowX: "auto",
-        scrollbarWidth: "none",
-      }}
-    >
-      {/* Label */}
-      <span
-        style={{
-          fontSize: "9px",
-          fontWeight: 700,
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          color: "var(--text-muted)",
-          paddingRight: "20px",
-          borderRight: "1px solid var(--border)",
-          marginRight: "20px",
-          whiteSpace: "nowrap",
-          flexShrink: 0,
-          lineHeight: "40px",
-        }}
-      >
+    <div className="border-b border-[var(--border)] bg-[var(--bg-elevated)] px-6 lg:px-10 flex items-center overflow-x-auto scrollbar-none">
+      <span className="text-[9px] font-bold tracking-widest uppercase text-[var(--text-muted)] pr-5 border-r border-[var(--border)] mr-5 whitespace-nowrap shrink-0 leading-10">
         Markets
       </span>
 
@@ -77,66 +51,26 @@ function MacroTicker() {
         const change = coin?.usd_24h_change ?? 0;
         const isUp = change >= 0;
         return (
-          <div
-            key={id}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-              padding: "0 20px",
-              borderRight: "1px solid var(--border)",
-              height: "40px",
-              flexShrink: 0,
-            }}
-          >
-            <span
-              style={{
-                fontSize: "11px",
-                fontWeight: 700,
-                color: "var(--text-secondary)",
-                letterSpacing: "0.04em",
-              }}
-            >
+          <div key={id} className="flex items-center gap-1.5 px-5 border-r border-[var(--border)] h-10 shrink-0">
+            <span className="text-[11px] font-bold text-[var(--text-secondary)] tracking-wide">
               {symbol}
             </span>
-            <span
-              style={{
-                fontFamily: "JetBrains Mono, monospace",
-                fontSize: "12px",
-                color: "var(--text-primary)",
-                fontWeight: 500,
-              }}
-            >
+            <span className="font-mono text-[12px] text-[var(--text-primary)] font-medium">
               {coin ? `$${formatMacroPrice(coin.usd)}` : "—"}
             </span>
             {coin && (
-              <span
-                style={{
-                  fontFamily: "JetBrains Mono, monospace",
-                  fontSize: "10px",
-                  fontWeight: 600,
-                  color: isUp ? "#22c55e" : "var(--accent)",
-                }}
+              <span 
+                className="font-mono text-[10px] font-semibold"
+                style={{ color: isUp ? "var(--success)" : "var(--accent)" }}
               >
-                {isUp ? "+" : ""}
-                {change.toFixed(2)}%
+                {isUp ? "+" : ""}{change.toFixed(2)}%
               </span>
             )}
           </div>
         );
       })}
 
-      {/* Solana-specific note */}
-      <span
-        style={{
-          fontSize: "10px",
-          color: "var(--text-muted)",
-          padding: "0 20px",
-          whiteSpace: "nowrap",
-          flexShrink: 0,
-          fontFamily: "JetBrains Mono, monospace",
-        }}
-      >
+      <span className="font-mono text-[10px] text-[var(--text-muted)] px-5 whitespace-nowrap shrink-0">
         Solana Mainnet · Live
       </span>
     </div>
@@ -145,32 +79,13 @@ function MacroTicker() {
 
 export default function LandingPage() {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "var(--bg-base)",
-        color: "var(--text-primary)",
-      }}
-    >
-      {/* Minimal landing nav (not the app nav) */}
+    <div className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)]">
       <LandingNav />
-
-      {/* Hero */}
       <LandingHero />
-
-      {/* Macro price ticker */}
       <MacroTicker />
-
-      {/* Stats strip */}
       <StatsStrip />
-
-      {/* Feature sections */}
       <FeaturesSection />
-
-      {/* CTA section */}
       <CtaSection />
-
-      {/* Footer */}
       <LandingFooter />
     </div>
   );
@@ -180,55 +95,23 @@ export default function LandingPage() {
 
 function LandingNav() {
   return (
-    <header
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        height: "56px",
-        background: "rgba(13, 10, 10, 0.85)",
-        backdropFilter: "blur(12px)",
-        borderBottom: "1px solid var(--border)",
-        display: "flex",
-        alignItems: "center",
-        paddingInline: "40px",
-        gap: "24px",
-        zIndex: 200,
-      }}
-    >
-      {/* Logo */}
-      <Link
-        href="/"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-          textDecoration: "none",
-        }}
-      >
-        <BloodhoundLogo size={20} />
-        <span
+    <header className="fixed top-0 left-0 right-0 h-14 bg-[rgba(8,7,11,0.8)] backdrop-blur-xl border-b border-[var(--border)] flex items-center px-6 lg:px-10 gap-6 z-[200]">
+      <Link href="/" className="flex items-center gap-2.5 group">
+        <div className="relative">
+          <BloodhoundLogo size={22} />
+          <div className="absolute inset-0 blur-md opacity-50 group-hover:opacity-80 transition-opacity" style={{ background: "var(--accent)" }} />
+        </div>
+        <span 
+          className="text-[15px] font-extrabold tracking-tight bg-clip-text text-transparent transition-all"
           style={{
-            fontSize: "14px",
-            fontWeight: 700,
-            letterSpacing: "-0.02em",
-            color: "var(--text-primary)",
+            backgroundImage: "linear-gradient(135deg, var(--text-primary), var(--text-secondary))",
           }}
         >
           BLOODHOUND
         </span>
       </Link>
 
-      {/* Right */}
-      <nav
-        style={{
-          marginLeft: "auto",
-          display: "flex",
-          alignItems: "center",
-          gap: "20px",
-        }}
-      >
+      <nav className="ml-auto flex items-center gap-6">
         {[
           { label: "Docs", href: "/docs" },
           { label: "API", href: "/api-docs" },
@@ -239,48 +122,18 @@ function LandingNav() {
             href={href}
             target={href.startsWith("http") ? "_blank" : undefined}
             rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-            style={{
-              fontSize: "13px",
-              color: "var(--text-secondary)",
-              textDecoration: "none",
-              transition: "color 80ms",
-            }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLAnchorElement).style.color =
-                "var(--text-primary)")
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLAnchorElement).style.color =
-                "var(--text-secondary)")
-            }
+            className="text-[13px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors relative group"
           >
             {label}
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--accent)] group-hover:w-full transition-all duration-300" />
           </a>
         ))}
 
-        <Link
-          href="/explorer"
-          style={{
-            fontSize: "13px",
-            fontWeight: 600,
-            padding: "6px 16px",
-            borderRadius: "6px",
-            background: "var(--accent)",
-            color: "#fff",
-            textDecoration: "none",
-            transition: "background 80ms",
-            whiteSpace: "nowrap",
-          }}
-          onMouseEnter={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.background =
-              "var(--accent-hover)")
-          }
-          onMouseLeave={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.background =
-              "var(--accent)")
-          }
-        >
-          Launch App →
+        <Link href="/explorer" className="btn btn-gradient text-[13px] py-2 px-5">
+          Launch App
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
         </Link>
       </nav>
     </header>
@@ -309,62 +162,21 @@ function StatsStrip() {
   });
 
   const stats = [
-    {
-      value: data?.tx_count ? formatCount(data.tx_count) : "—",
-      label: "Transactions Indexed",
-    },
-    {
-      value: data?.wallet_count ? formatCount(data.wallet_count) : "—",
-      label: "Wallets Tracked",
-    },
+    { value: data?.tx_count ? formatCount(data.tx_count) : "—", label: "Transactions Indexed" },
+    { value: data?.wallet_count ? formatCount(data.wallet_count) : "—", label: "Wallets Tracked" },
     { value: "Real-time", label: "Solana Mainnet" },
-    {
-      value: data?.latency_p50_ms ? `<${data.latency_p50_ms}ms` : "<100ms",
-      label: "Autocomplete Latency",
-    },
+    { value: data?.latency_p50_ms ? `<${data.latency_p50_ms}ms` : "<100ms", label: "Autocomplete Latency" },
   ];
 
   return (
-    <div
-      style={{
-        borderTop: "1px solid var(--border)",
-        borderBottom: "1px solid var(--border)",
-        padding: "24px 0",
-        background: "var(--bg-surface)",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          paddingInline: "40px",
-          display: "flex",
-          justifyContent: "space-around",
-          flexWrap: "wrap",
-          gap: "24px",
-        }}
-      >
+    <div className="border-y border-[var(--border)] py-6 bg-[var(--bg-surface)]">
+      <div className="container flex justify-around flex-wrap gap-6">
         {stats.map((s) => (
-          <div key={s.label} style={{ textAlign: "center" }}>
-            <div
-              style={{
-                fontFamily: "JetBrains Mono, monospace",
-                fontSize: "22px",
-                fontWeight: 700,
-                color: "var(--text-primary)",
-                marginBottom: "4px",
-              }}
-            >
+          <div key={s.label} className="text-center">
+            <div className="font-mono text-xl lg:text-2xl font-bold text-[var(--text-primary)] mb-1">
               {s.value}
             </div>
-            <div
-              style={{
-                fontSize: "12px",
-                color: "var(--text-muted)",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-              }}
-            >
+            <div className="text-[12px] text-[var(--text-muted)] tracking-wide uppercase">
               {s.label}
             </div>
           </div>
@@ -405,13 +217,7 @@ const FEATURES = [
 
 function FeaturesSection() {
   return (
-    <div
-      style={{
-        maxWidth: "1200px",
-        margin: "0 auto",
-        paddingInline: "40px",
-      }}
-    >
+    <div className="container">
       {FEATURES.map((f) => (
         <FeatureRow key={f.eyebrow} {...f} />
       ))}
@@ -429,64 +235,23 @@ function FeatureRow({
 }: (typeof FEATURES)[0]) {
   return (
     <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "80px",
-        alignItems: "center",
-        padding: "96px 0",
-        borderBottom: "1px solid var(--border)",
-        direction: reverse ? "rtl" : "ltr",
-      }}
+      className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center py-16 lg:py-24 border-b border-[var(--border)] ${reverse ? 'direction-rtl' : ''}`}
     >
-      <div style={{ direction: "ltr" }}>
-        <div
-          style={{
-            fontSize: "11px",
-            fontWeight: 600,
-            letterSpacing: "0.14em",
-            textTransform: "uppercase",
-            color: "var(--accent)",
-            marginBottom: "16px",
-          }}
-        >
+      <div className="direction-ltr">
+        <div className="text-[11px] font-semibold tracking-widest uppercase text-[var(--accent)] mb-4">
           {eyebrow}
         </div>
-        <h2
-          style={{
-            fontSize: "32px",
-            fontWeight: 700,
-            letterSpacing: "-0.03em",
-            lineHeight: 1.15,
-            color: "var(--text-primary)",
-            marginBottom: "20px",
-          }}
-        >
+        <h2 className="text-2xl lg:text-[32px] font-bold tracking-tight leading-tight text-[var(--text-primary)] mb-5">
           {headline}
         </h2>
-        <p
-          style={{
-            fontSize: "15px",
-            lineHeight: 1.7,
-            color: "var(--text-secondary)",
-            marginBottom: "24px",
-          }}
-        >
+        <p className="text-[15px] leading-relaxed text-[var(--text-secondary)] mb-6">
           {body}
         </p>
-        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+        <div className="flex gap-2 flex-wrap">
           {tags.map((tag) => (
             <span
               key={tag}
-              style={{
-                fontSize: "11px",
-                fontWeight: 500,
-                padding: "4px 10px",
-                borderRadius: "4px",
-                border: "1px solid var(--border)",
-                color: "var(--text-muted)",
-                letterSpacing: "0.04em",
-              }}
+              className="badge badge-neutral"
             >
               {tag}
             </span>
@@ -793,104 +558,50 @@ function StatMini({ label, value }: { label: string; value: string }) {
 
 function CtaSection() {
   return (
-    <div
-      style={{
-        borderTop: "1px solid var(--border)",
-        padding: "96px 40px",
-        textAlign: "center",
-        background: "var(--bg-surface)",
-      }}
-    >
-      <div
-        style={{
-          fontSize: "11px",
-          fontWeight: 600,
-          letterSpacing: "0.14em",
-          textTransform: "uppercase",
-          color: "var(--accent)",
-          marginBottom: "16px",
-        }}
-      >
-        Ready to hunt?
+    <div className="relative py-32 px-6 lg:px-10 text-center overflow-hidden">
+      {/* Background gradient orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div 
+          className="absolute w-[500px] h-[500px] rounded-full opacity-20 blur-[100px]"
+          style={{
+            background: "linear-gradient(135deg, var(--gradient-1), var(--gradient-2))",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
       </div>
-      <h2
-        style={{
-          fontSize: "40px",
-          fontWeight: 700,
-          letterSpacing: "-0.03em",
-          color: "var(--text-primary)",
-          marginBottom: "16px",
-        }}
-      >
-        On-Chain Intelligence for Solana.
-      </h2>
-      <p
-        style={{
-          fontSize: "16px",
-          color: "var(--text-secondary)",
-          marginBottom: "40px",
-          maxWidth: "480px",
-          margin: "0 auto 40px",
-        }}
-      >
-        Track wallets. Map relationships. Follow the money.
-      </p>
-      <div style={{ display: "flex", gap: "12px", justifyContent: "center" }}>
-        <Link
-          href="/explorer"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            padding: "12px 28px",
-            borderRadius: "8px",
-            background: "var(--accent)",
-            color: "#fff",
-            fontSize: "15px",
-            fontWeight: 600,
-            textDecoration: "none",
-            transition: "background 80ms",
-          }}
-          onMouseEnter={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.background =
-              "var(--accent-hover)")
-          }
-          onMouseLeave={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.background =
-              "var(--accent)")
-          }
-        >
-          Launch App
-        </Link>
-        <a
-          href="/docs"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            padding: "12px 28px",
-            borderRadius: "8px",
-            background: "transparent",
-            color: "var(--text-secondary)",
-            fontSize: "15px",
-            fontWeight: 500,
-            textDecoration: "none",
-            border: "1px solid var(--border)",
-            transition: "border-color 80ms, color 80ms",
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.borderColor =
-              "var(--text-muted)";
-            (e.currentTarget as HTMLAnchorElement).style.color =
-              "var(--text-primary)";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.borderColor =
-              "var(--border)";
-            (e.currentTarget as HTMLAnchorElement).style.color =
-              "var(--text-secondary)";
-          }}
-        >
-          Read Docs
-        </a>
+
+      <div className="relative z-10">
+        <div className="badge badge-gradient mb-6 mx-auto">
+          Ready to hunt?
+        </div>
+        <h2 className="text-4xl lg:text-[48px] font-extrabold tracking-tight mb-5">
+          <span className="text-[var(--text-primary)]">Start </span>
+          <span 
+            className="bg-clip-text text-transparent"
+            style={{
+              backgroundImage: "linear-gradient(135deg, var(--gradient-1), var(--gradient-2), var(--gradient-3))",
+            }}
+          >
+            Tracking
+          </span>
+          <span className="text-[var(--text-primary)]"> Now.</span>
+        </h2>
+        <p className="text-[17px] text-[var(--text-secondary)] mb-12 max-w-[500px] mx-auto leading-relaxed">
+          Join traders using Bloodhound to gain the intelligence edge on Solana.
+        </p>
+        <div className="flex gap-4 justify-center flex-wrap">
+          <Link href="/explorer" className="btn btn-gradient btn-lg group">
+            Launch App
+            <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </Link>
+          <Link href="/docs" className="btn btn-secondary btn-lg">
+            Read Docs
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -900,73 +611,40 @@ function CtaSection() {
 
 function LandingFooter() {
   return (
-    <footer
-      style={{
-        borderTop: "1px solid var(--border)",
-        padding: "32px 40px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        flexWrap: "wrap",
-        gap: "16px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-        }}
-      >
-        <BloodhoundLogo size={16} />
-        <span
-          style={{
-            fontSize: "12px",
-            fontWeight: 700,
-            letterSpacing: "-0.02em",
-            color: "var(--text-primary)",
-          }}
-        >
-          BLOODHOUND
-        </span>
-        <span style={{ fontSize: "12px", color: "var(--text-muted)", marginLeft: "8px" }}>
-          © 2026
-        </span>
-      </div>
-
-      <nav style={{ display: "flex", gap: "20px" }}>
-        {[
-          { label: "Explorer", href: "/explorer" },
-          { label: "Pricing", href: "/pricing" },
-          { label: "Docs", href: "/docs" },
-          { label: "API", href: "/api-docs" },
-          { label: "GitHub", href: "https://github.com/JupiterTrading/bloodhound" },
-          { label: "Twitter/X", href: "https://x.com/bloodhoundxyz" },
-        ].map(({ label, href }) => (
-          <a
-            key={label}
-            href={href}
-            target={href.startsWith("http") ? "_blank" : undefined}
-            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-            style={{
-              fontSize: "12px",
-              color: "var(--text-muted)",
-              textDecoration: "none",
-              transition: "color 80ms",
-            }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLAnchorElement).style.color =
-                "var(--text-secondary)")
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLAnchorElement).style.color =
-                "var(--text-muted)")
-            }
+    <footer className="border-t border-[var(--border)] py-10 px-6 lg:px-10">
+      <div className="container flex items-center justify-between flex-wrap gap-6">
+        <div className="flex items-center gap-3">
+          <BloodhoundLogo size={18} />
+          <span 
+            className="text-[13px] font-bold tracking-tight bg-clip-text text-transparent"
+            style={{ backgroundImage: "linear-gradient(135deg, var(--text-primary), var(--text-muted))" }}
           >
-            {label}
-          </a>
-        ))}
-      </nav>
+            BLOODHOUND
+          </span>
+          <span className="text-[11px] text-[var(--text-faint)] ml-1">© 2026</span>
+        </div>
+
+        <nav className="flex gap-6">
+          {[
+            { label: "Explorer", href: "/explorer" },
+            { label: "Pricing", href: "/pricing" },
+            { label: "Docs", href: "/docs" },
+            { label: "API", href: "/api-docs" },
+            { label: "GitHub", href: "https://github.com/JupiterTrading/bloodhound" },
+            { label: "Twitter/X", href: "https://x.com/bloodhoundxyz" },
+          ].map(({ label, href }) => (
+            <a
+              key={label}
+              href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+              className="text-[12px] text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+      </div>
     </footer>
   );
 }

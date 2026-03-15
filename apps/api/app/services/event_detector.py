@@ -336,54 +336,44 @@ async def _backfill_early_buyers(
     occurred_at: str,
 ) -> None:
     """
-    Query ClickHouse for wallets that bought this token in the first 30 minutes
+    Query Supabase wallet_trades for wallets that bought this token early
     and add them as early_buyer entries in event_wallets.
     Capped at 20 wallets to avoid noise.
     """
     try:
-        from app.services import clickhouse
-        import asyncio as _asyncio
+        from app.services.supabase import get_client
+        db = get_client()
 
         event_time = datetime.fromisoformat(occurred_at.replace("Z", "+00:00"))
         window_end = event_time + timedelta(minutes=30)
 
-        client = clickhouse.get_client()
-        result = await _asyncio.to_thread(
-            client.query,
-            """
-            SELECT
-                trader,
-                min(block_time)    AS first_buy,
-                sum(amount_usd)    AS total_usd,
-                count()            AS trade_count
-            FROM token_trades
-            WHERE token_out_mint = {mint:String}
-              AND block_time BETWEEN {t_from:DateTime} AND {t_to:DateTime}
-            GROUP BY trader
-            ORDER BY first_buy ASC
-            LIMIT 20
-            """,
-            parameters={
-                "mint": token_mint,
-                "t_from": event_time.strftime("%Y-%m-%d %H:%M:%S"),
-                "t_to": window_end.strftime("%Y-%m-%d %H:%M:%S"),
-            },
-        )
+        result = db.table("wallet_trades").select(
+            "wallet_address, block_time, amount_usd"
+        ).eq("token_address", token_mint).eq(
+            "trade_type", "buy"
+        ).gte("block_time", event_time.isoformat()).lte(
+            "block_time", window_end.isoformat()
+        ).order("block_time").limit(20).execute()
 
-        if not result.result_rows:
+        if not result.data:
             return
 
-        from app.services.supabase import get_client as _sb
-        db = _sb()
+        # Aggregate by wallet
+        from collections import defaultdict
+        wallet_agg: dict[str, dict] = defaultdict(lambda: {"total_usd": 0.0, "count": 0})
+        for r in result.data:
+            addr = r.get("wallet_address", "")
+            wallet_agg[addr]["total_usd"] += float(r.get("amount_usd", 0) or 0)
+            wallet_agg[addr]["count"] += 1
+
         rows = []
-        for row in result.result_rows:
-            trader, first_buy, total_usd, trade_count = row
+        for trader, agg in wallet_agg.items():
             rows.append({
                 "event_id": event_id,
                 "address": trader,
                 "role": "early_buyer",
-                "description": f"Bought within first 30min — ${float(total_usd or 0):,.0f} across {trade_count} trades",
-                "amount_usd": float(total_usd or 0),
+                "description": f"Bought within first 30min — ${agg['total_usd']:,.0f} across {agg['count']} trades",
+                "amount_usd": agg["total_usd"],
             })
 
         if rows:

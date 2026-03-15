@@ -105,6 +105,57 @@ GET https://api.dexscreener.com/token-profiles/latest/v1
 
 ---
 
+## KOL Data Collection Scripts
+
+### Available Scripts (`scripts/` directory)
+
+| Script | Description | Data |
+|--------|-------------|------|
+| `scrape-kol-lists.mjs` | Aggregates verified KOL lists | Name + Twitter + Wallet |
+| `kol-master-scraper.mjs` | Axiom + Pump.fun + trending | Name + Wallet |
+| `scrape-pumpfun-profiles.mjs` | Pump.fun profile scraping | Name + Wallet |
+| `scrape-axiom-kols.mjs` | Axiom WebSocket/DOM extraction | Name + Wallet |
+| `scrape-trending-kols.mjs` | Trending token trader analysis | Wallet + Activity |
+| `seed-known-wallets.mjs` | Master seeder (combines all) | All sources → Supabase |
+
+### Usage
+
+```bash
+cd scripts
+
+# Step 1: Run individual scrapers (optional - generates local JSON files)
+npm run scrape:all       # Runs kol-master-scraper.mjs
+node scrape-kol-lists.mjs  # Aggregates verified KOL lists
+
+# Step 2: Run master seeder (reads scraper output + KOLscan + Dune)
+DUNE_API_KEY=xxx npm run seed
+
+# Or without Dune:
+npm run seed
+```
+
+### KOL Data Sources Priority
+
+1. **Verified manual list** (`scrape-kol-lists.mjs`) — Highest confidence, manually verified
+2. **Dune Analytics** — Curated queries with Twitter handles (needs API key)
+3. **KOLscan leaderboard** — Top traders by PnL
+4. **Pump.fun profiles** — Wallet names
+5. **Trending token analysis** — Active traders on hot tokens
+
+### Getting More Twitter Handles
+
+**Best method:** Get a Dune API key and run:
+```bash
+DUNE_API_KEY=your_key_here node scrape-kol-lists.mjs
+```
+
+Dune queries with Twitter data:
+- `4838225` — Curated KOL wallets with Twitter
+- `3614914` — Crypto Twitter wallets
+- `2965421` — Solana influencer wallets
+
+---
+
 ## API Keys Needed
 | Service | Status | How to Get |
 |---------|--------|------------|

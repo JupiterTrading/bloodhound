@@ -1,905 +1,316 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import {
-  walletApi,
-  leaderboardApi,
   trendingApi,
-  type LeaderboardEntry,
+  newPairsApi,
+  kolApi,
   type TrendingToken,
+  type NewPair,
+  type KolRanking,
 } from "@/lib/api";
-import { EventTimeline } from "@/components/events/EventTimeline";
-import { ClassificationBadge } from "@/components/ui/ClassificationBadge";
-import { ConfidenceBadge, type Confidence } from "@/components/ui/ConfidenceBadge";
-import { AddressTag } from "@/components/ui/AddressTag";
 
-interface KnownWalletEntry {
-  address: string;
-  label: string;
-  category: string;
-  note?: string;
-}
+export default function LiveFeedPage() {
+  const [activePanel, setActivePanel] = useState<"launches" | "trending" | "kols">("launches");
+  const feedRef = useRef<HTMLDivElement>(null);
 
-async function fetchNotableWallets(): Promise<KnownWalletEntry[]> {
-  const res = await fetch("/api/v1/known?limit=6");
-  if (!res.ok) return [];
-  const data = (await res.json()) as { wallets?: KnownWalletEntry[] };
-  return data.wallets ?? [];
-}
-
-export default function IntelligencePage() {
-  const router = useRouter();
-  const [query, setQuery] = useState("");
-  const [searched, setSearched] = useState<string | null>(null);
-
-  function handleSearch(e: React.FormEvent) {
-    e.preventDefault();
-    const q = query.trim();
-    if (!q) return;
-    if (/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(q)) {
-      setSearched(q);
-    } else {
-      router.push(`/search?q=${encodeURIComponent(q)}`);
-    }
-  }
-
-  return (
-    <div style={{ maxWidth: "960px", margin: "0 auto", padding: "32px 24px" }}>
-      {/* Header */}
-      <div style={{ marginBottom: "32px" }}>
-        <h1
-          style={{
-            fontSize: "20px",
-            fontWeight: 700,
-            letterSpacing: "-0.02em",
-            color: "var(--text-primary)",
-            marginBottom: "6px",
-          }}
-        >
-          Intelligence
-        </h1>
-        <p style={{ fontSize: "13px", color: "var(--text-muted)" }}>
-          Deep wallet profiling — classification, behavioral analysis, relationship mapping.
-        </p>
-      </div>
-
-      {/* Search bar */}
-      <form onSubmit={handleSearch} style={{ marginBottom: "32px" }}>
-        <div
-          style={{
-            display: "flex",
-            gap: "0",
-            background: "var(--bg-surface)",
-            border: "1px solid var(--border)",
-            borderRadius: "8px",
-            overflow: "hidden",
-            transition: "border-color 80ms, box-shadow 80ms",
-          }}
-          onFocusCapture={(e) => {
-            (e.currentTarget as HTMLDivElement).style.borderColor = "var(--accent)";
-            (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 0 2px var(--accent-glow)";
-          }}
-          onBlurCapture={(e) => {
-            (e.currentTarget as HTMLDivElement).style.borderColor = "var(--border)";
-            (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-          }}
-        >
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Paste wallet address or search @handle..."
-            autoFocus
-            style={{
-              flex: 1,
-              background: "none",
-              border: "none",
-              padding: "12px 16px",
-              fontSize: "14px",
-              fontFamily: query.length > 30 ? "JetBrains Mono, monospace" : "inherit",
-              color: "var(--text-primary)",
-              outline: "none",
-            }}
-          />
-          <button
-            type="submit"
-            style={{
-              padding: "12px 20px",
-              background: "var(--accent)",
-              border: "none",
-              color: "#fff",
-              fontSize: "13px",
-              fontWeight: 600,
-              cursor: "pointer",
-              fontFamily: "inherit",
-              flexShrink: 0,
-              transition: "background 80ms",
-            }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.background = "var(--accent-hover)")
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.background = "var(--accent)")
-            }
-          >
-            Analyze
-          </button>
-        </div>
-      </form>
-
-      {/* Inline intelligence result */}
-      {searched && (
-        <div style={{ marginBottom: "40px" }}>
-          <IntelligencePreview address={searched} />
-        </div>
-      )}
-
-      {/* Leaderboard + featured content */}
-      {!searched && (
-        <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
-          <LeaderboardPanel />
-          <TrendingPanel />
-          <EventTimeline />
-          <div className="grid-responsive-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
-            <NotableAddresses />
-            <ClassificationGuide />
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ── Leaderboard panel ──────────────────────────────────────────────────────────
-
-function LeaderboardPanel() {
-  const [category, setCategory] = useState<"kol" | "profitable_trader">("kol");
-  const [timeframe, setTimeframe] = useState<"1d" | "7d" | "30d">("1d");
-
-  const { data, isLoading } = useQuery({
-    queryKey: ["leaderboard", category, timeframe],
-    queryFn: () => leaderboardApi.get({ category, timeframe, limit: 10 }),
-    staleTime: 15 * 60 * 1000,
-    retry: false,
+  const { data: pairsData, isLoading: pairsLoading } = useQuery({
+    queryKey: ["live-pairs"],
+    queryFn: () => newPairsApi.list({ limit: 30, enrich: true }),
+    refetchInterval: 8000,
+    staleTime: 5000,
   });
 
-  const entries = data?.entries ?? [];
-  const pnlAvailable = data?.metric === "realized_pnl_usd";
+  const { data: trendingData, isLoading: trendingLoading } = useQuery({
+    queryKey: ["live-trending"],
+    queryFn: () => trendingApi.tokens(12),
+    refetchInterval: 30000,
+    staleTime: 15000,
+  });
+
+  const { data: kolData, isLoading: kolLoading } = useQuery({
+    queryKey: ["live-kols"],
+    queryFn: () => kolApi.rankings({ period: "daily", limit: 10, sort_by: "pnl" }),
+    refetchInterval: 60000,
+    staleTime: 30000,
+  });
+
+  const pairs = pairsData?.pairs ?? [];
+  const trending = trendingData?.tokens ?? [];
+  const kols = kolData?.rankings ?? [];
 
   return (
-    <div>
-      {/* Panel header with tabs */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          marginBottom: "12px",
-          flexWrap: "wrap",
-          gap: "8px",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <span
-            style={{
-              fontSize: "10px",
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--text-muted)",
-            }}
-          >
-            Leaderboard
-          </span>
-          <div style={{ display: "flex", gap: "4px" }}>
-            {(["kol", "profitable_trader"] as const).map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setCategory(cat)}
-                style={{
-                  padding: "3px 10px",
-                  borderRadius: "4px",
-                  border: "1px solid",
-                  borderColor: category === cat ? "var(--accent)" : "var(--border)",
-                  background: category === cat ? "var(--accent)" : "transparent",
-                  color: category === cat ? "#fff" : "var(--text-muted)",
-                  fontSize: "11px",
-                  fontWeight: 500,
-                  cursor: "pointer",
-                  fontFamily: "inherit",
-                  transition: "all 80ms",
-                }}
-              >
-                {cat === "kol" ? "KOLs" : "Traders"}
-              </button>
-            ))}
-          </div>
+    <div className="page-container py-6">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h1 className="text-xl font-bold text-[var(--text-primary)] flex items-center gap-3">
+            <span className="status-dot status-dot-live" />
+            Live Feed
+          </h1>
+          <p className="text-[var(--text-muted)] text-xs mt-1 font-mono uppercase tracking-wider">
+            Real-time market intelligence
+          </p>
         </div>
-
-        <div style={{ display: "flex", gap: "4px" }}>
-          {(["1d", "7d", "30d"] as const).map((tf) => (
-            <button
-              key={tf}
-              onClick={() => setTimeframe(tf)}
-              style={{
-                padding: "3px 10px",
-                borderRadius: "4px",
-                border: "1px solid",
-                borderColor: timeframe === tf ? "var(--text-muted)" : "var(--border)",
-                background: "transparent",
-                color: timeframe === tf ? "var(--text-primary)" : "var(--text-muted)",
-                fontSize: "11px",
-                fontWeight: timeframe === tf ? 600 : 400,
-                cursor: "pointer",
-                fontFamily: "inherit",
-                transition: "all 80ms",
-              }}
-            >
-              {tf === "1d" ? "Today" : tf === "7d" ? "7D" : "30D"}
-            </button>
-          ))}
+        <div className="flex items-center gap-2 text-[10px] font-mono text-[var(--text-faint)]">
+          <span className="status-dot status-dot-live" />
+          {pairs.length} signals
         </div>
       </div>
 
-      <div
-        style={{
-          background: "var(--bg-surface)",
-          border: "1px solid var(--border)",
-          borderRadius: "8px",
-          overflow: "hidden",
-        }}
-      >
-        {/* Column headers */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "32px 1fr 120px 100px",
-            padding: "8px 16px",
-            borderBottom: "1px solid var(--border)",
-            fontSize: "10px",
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "var(--text-muted)",
-          }}
-        >
-          <span>#</span>
-          <span>Wallet</span>
-          <span style={{ textAlign: "right" }}>
-            {pnlAvailable ? "Realized PnL" : "Portfolio"}
-          </span>
-          <span style={{ textAlign: "right" }}>Trades</span>
-        </div>
-
-        {isLoading ? (
-          <LeaderboardSkeleton />
-        ) : entries.length === 0 ? (
-          <div style={{ padding: "32px", textAlign: "center", fontSize: "13px", color: "var(--text-muted)" }}>
-            No data available — backend may be offline.
-          </div>
-        ) : (
-          entries.map((entry) => (
-            <LeaderboardRow key={entry.address} entry={entry} pnlAvailable={pnlAvailable} />
-          ))
-        )}
-
-        {data?.metric_note && (
-          <div
-            style={{
-              padding: "8px 16px",
-              borderTop: "1px solid var(--border)",
-              fontSize: "10px",
-              color: "var(--text-muted)",
-              fontStyle: "italic",
-            }}
+      <div className="flex items-center gap-1 p-1 bg-[var(--bg-surface)] border border-[var(--border)] rounded-lg w-fit mb-6">
+        {([
+          { id: "launches" as const, label: "New Launches", count: pairs.length },
+          { id: "trending" as const, label: "Trending", count: trending.length },
+          { id: "kols" as const, label: "Top KOLs", count: kols.length },
+        ]).map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActivePanel(tab.id)}
+            className={`px-4 py-2 text-xs font-medium rounded-md transition-all cursor-pointer ${
+              activePanel === tab.id
+                ? "bg-[var(--accent)] text-white"
+                : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)]"
+            }`}
           >
-            {data.metric_note}
-          </div>
-        )}
+            {tab.label}
+            <span className="ml-2 text-[10px] opacity-70">{tab.count}</span>
+          </button>
+        ))}
+      </div>
+
+      <div ref={feedRef} className="card overflow-hidden">
+        {activePanel === "launches" && <LaunchFeed pairs={pairs} isLoading={pairsLoading} />}
+        {activePanel === "trending" && <TrendingFeed tokens={trending} isLoading={trendingLoading} />}
+        {activePanel === "kols" && <KolFeed kols={kols} isLoading={kolLoading} />}
       </div>
     </div>
   );
 }
 
-function LeaderboardRow({
-  entry,
-  pnlAvailable,
-}: {
-  entry: LeaderboardEntry;
-  pnlAvailable: boolean;
-}) {
-  const perfValue = pnlAvailable
-    ? entry.realized_pnl_usd
-    : entry.portfolio_usd;
-
-  const perfFormatted =
-    perfValue == null
-      ? "—"
-      : pnlAvailable
-      ? `${perfValue >= 0 ? "+" : ""}$${Math.abs(perfValue).toLocaleString(undefined, { maximumFractionDigits: 0 })}`
-      : `$${perfValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
-
-  const perfColor =
-    perfValue == null
-      ? "var(--text-muted)"
-      : pnlAvailable && perfValue < 0
-      ? "#ef4444"
-      : pnlAvailable && perfValue > 0
-      ? "#22c55e"
-      : "var(--text-primary)";
-
-  return (
-    <Link href={`/wallet/${entry.address}`} style={{ textDecoration: "none", display: "block" }}>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "32px 1fr 120px 100px",
-          padding: "10px 16px",
-          borderBottom: "1px solid var(--border)",
-          alignItems: "center",
-          transition: "background 60ms",
-        }}
-        onMouseEnter={(e) =>
-          ((e.currentTarget as HTMLDivElement).style.background = "var(--bg-elevated)")
-        }
-        onMouseLeave={(e) =>
-          ((e.currentTarget as HTMLDivElement).style.background = "transparent")
-        }
-      >
-        <span
-          style={{
-            fontSize: "11px",
-            color: "var(--text-muted)",
-            fontFamily: "JetBrains Mono, monospace",
-          }}
-        >
-          {entry.rank}
-        </span>
-
-        <div style={{ minWidth: 0 }}>
-          <div
-            style={{
-              fontSize: "13px",
-              fontWeight: 600,
-              color: "var(--text-primary)",
-              marginBottom: "2px",
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-          >
-            {entry.label ?? <AddressTag address={entry.address} chars={6} size={13} />}
-          </div>
-          {entry.twitter_handle && (
-            <span style={{ fontSize: "10px", color: "var(--text-muted)" }}>
-              @{entry.twitter_handle}
-            </span>
-          )}
-        </div>
-
-        <div style={{ textAlign: "right" }}>
-          <span
-            style={{
-              fontSize: "13px",
-              fontWeight: 600,
-              fontFamily: "JetBrains Mono, monospace",
-              color: perfColor,
-            }}
-          >
-            {perfFormatted}
-          </span>
-        </div>
-
-        <div style={{ textAlign: "right" }}>
-          <span
-            style={{
-              fontSize: "12px",
-              color: "var(--text-muted)",
-              fontFamily: "JetBrains Mono, monospace",
-            }}
-          >
-            {entry.trade_count != null ? entry.trade_count.toLocaleString() : "—"}
-          </span>
-        </div>
-      </div>
-    </Link>
-  );
+function timeAgo(dateStr: string): string {
+  const diff = Date.now() - new Date(dateStr).getTime();
+  const secs = Math.floor(diff / 1000);
+  if (secs < 10) return "just now";
+  if (secs < 60) return `${secs}s ago`;
+  const mins = Math.floor(secs / 60);
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `${hours}h ago`;
+  return `${Math.floor(hours / 24)}d ago`;
 }
 
-function LeaderboardSkeleton() {
+function formatUsd(n: number): string {
+  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
+  if (n >= 1_000) return `$${(n / 1_000).toFixed(1)}K`;
+  if (n < 0.01) return `$${n.toFixed(6)}`;
+  return `$${n.toFixed(2)}`;
+}
+
+function LaunchFeed({ pairs, isLoading }: { pairs: NewPair[]; isLoading: boolean }) {
+  const [highlightIdx, setHighlightIdx] = useState(-1);
+  const prevCountRef = useRef(pairs.length);
+
+  useEffect(() => {
+    if (pairs.length > prevCountRef.current) {
+      setHighlightIdx(0);
+      const t = setTimeout(() => setHighlightIdx(-1), 1500);
+      prevCountRef.current = pairs.length;
+      return () => clearTimeout(t);
+    }
+    prevCountRef.current = pairs.length;
+  }, [pairs.length]);
+
   return (
     <>
-      {Array.from({ length: 8 }).map((_, i) => (
-        <div
-          key={i}
-          style={{
-            height: "50px",
-            borderBottom: "1px solid var(--border)",
-            background: "var(--bg-surface)",
-            opacity: 1 - i * 0.1,
-          }}
-        />
-      ))}
+      <div className="grid grid-cols-[1fr_90px_90px_80px] gap-4 px-4 py-3 bg-[var(--bg-elevated)] border-b border-[var(--border)] text-[10px] font-mono uppercase tracking-wider text-[var(--text-faint)]">
+        <div>Token</div>
+        <div className="text-right">Source</div>
+        <div className="text-right">Price</div>
+        <div className="text-right">Time</div>
+      </div>
+      <div className="divide-y divide-[var(--border-subtle)] max-h-[600px] overflow-y-auto">
+        {isLoading ? (
+          Array.from({ length: 10 }).map((_, i) => (
+            <div key={i} className="h-[52px] animate-pulse bg-[var(--bg-surface)]" style={{ opacity: 1 - i * 0.08 }} />
+          ))
+        ) : pairs.length === 0 ? (
+          <div className="px-4 py-12 text-center text-[var(--text-muted)] text-sm">
+            Waiting for new launches...
+          </div>
+        ) : (
+          pairs.map((pair, i) => {
+            const isNew = i === highlightIdx;
+            const symbol = pair.metadata?.symbol || "???";
+            const name = pair.metadata?.name || "";
+            const price = pair.market?.price_usd;
+            const source = pair.source === "pump_fun" ? "Pump.fun" : pair.source === "dex" ? "DEX" : pair.source;
+            return (
+              <Link
+                key={pair.token_mint + i}
+                href={`/token/${pair.token_mint}`}
+                className={`grid grid-cols-[1fr_90px_90px_80px] gap-4 px-4 py-3 items-center transition-all hover:bg-[var(--bg-hover)] group ${
+                  isNew ? "animate-data-flash-green" : ""
+                }`}
+              >
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-8 h-8 rounded-full bg-[var(--bg-elevated)] border border-[var(--border)] flex items-center justify-center text-[11px] font-bold text-[var(--text-secondary)] shrink-0">
+                    {symbol.charAt(0)}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-semibold text-[var(--text-primary)] truncate group-hover:text-[var(--accent)] transition-colors">
+                      ${symbol}
+                    </div>
+                    <div className="text-[10px] text-[var(--text-muted)] truncate">{name}</div>
+                  </div>
+                  {isNew && (
+                    <span className="px-1.5 py-0.5 text-[8px] font-bold uppercase bg-[var(--success-subtle)] text-[var(--success)] rounded animate-pulse-glow">
+                      NEW
+                    </span>
+                  )}
+                </div>
+                <div className="text-right text-[11px] font-mono text-[var(--text-muted)]">{source}</div>
+                <div className="text-right text-[12px] font-mono font-medium text-[var(--text-primary)]">
+                  {price ? formatUsd(price) : "\u2014"}
+                </div>
+                <div className="text-right text-[10px] font-mono text-[var(--text-faint)]">
+                  {timeAgo(pair.detected_at)}
+                </div>
+              </Link>
+            );
+          })
+        )}
+      </div>
     </>
   );
 }
 
-// ── Trending tokens panel ──────────────────────────────────────────────────────
-
-function TrendingPanel() {
-  const [view, setView] = useState<"trending" | "gainers" | "losers">("trending");
-
-  const { data: trendingData, isLoading: trendingLoading } = useQuery({
-    queryKey: ["trending-tokens"],
-    queryFn: () => trendingApi.tokens(8),
-    staleTime: 5 * 60 * 1000,
-    retry: false,
-    enabled: view === "trending",
-  });
-
-  const { data: gainersData, isLoading: gainersLoading } = useQuery({
-    queryKey: ["token-gainers", view],
-    queryFn: () =>
-      trendingApi.gainers("24h", 8, view === "losers" ? "losers" : "gainers"),
-    staleTime: 5 * 60 * 1000,
-    retry: false,
-    enabled: view === "gainers" || view === "losers",
-  });
-
-  const isLoading = view === "trending" ? trendingLoading : gainersLoading;
-  const tokens: TrendingToken[] =
-    view === "trending"
-      ? (trendingData?.tokens ?? [])
-      : (gainersData?.tokens ?? []);
-
+function TrendingFeed({ tokens, isLoading }: { tokens: TrendingToken[]; isLoading: boolean }) {
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "16px",
-          marginBottom: "12px",
-        }}
-      >
-        <span
-          style={{
-            fontSize: "10px",
-            fontWeight: 600,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "var(--text-muted)",
-          }}
-        >
-          Market
-        </span>
-        <div style={{ display: "flex", gap: "4px" }}>
-          {(["trending", "gainers", "losers"] as const).map((v) => (
-            <button
-              key={v}
-              onClick={() => setView(v)}
-              style={{
-                padding: "3px 10px",
-                borderRadius: "4px",
-                border: "1px solid",
-                borderColor: view === v ? "var(--accent)" : "var(--border)",
-                background: view === v ? "var(--accent)" : "transparent",
-                color: view === v ? "#fff" : "var(--text-muted)",
-                fontSize: "11px",
-                fontWeight: 500,
-                cursor: "pointer",
-                fontFamily: "inherit",
-                textTransform: "capitalize",
-                transition: "all 80ms",
-              }}
-            >
-              {v}
-            </button>
-          ))}
-        </div>
+    <>
+      <div className="grid grid-cols-[1fr_90px_90px_100px] gap-4 px-4 py-3 bg-[var(--bg-elevated)] border-b border-[var(--border)] text-[10px] font-mono uppercase tracking-wider text-[var(--text-faint)]">
+        <div>Token</div>
+        <div className="text-right">Price</div>
+        <div className="text-right">24h</div>
+        <div className="text-right">Volume</div>
       </div>
-
-      <div
-        style={{
-          background: "var(--bg-surface)",
-          border: "1px solid var(--border)",
-          borderRadius: "8px",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 90px 90px 100px",
-            padding: "8px 16px",
-            borderBottom: "1px solid var(--border)",
-            fontSize: "10px",
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "var(--text-muted)",
-          }}
-        >
-          <span>Token</span>
-          <span style={{ textAlign: "right" }}>Price</span>
-          <span style={{ textAlign: "right" }}>24h %</span>
-          <span style={{ textAlign: "right" }}>Volume 24h</span>
-        </div>
-
+      <div className="divide-y divide-[var(--border-subtle)]">
         {isLoading ? (
-          Array.from({ length: 6 }).map((_, i) => (
-            <div
-              key={i}
-              style={{
-                height: "46px",
-                borderBottom: "1px solid var(--border)",
-                opacity: 1 - i * 0.12,
-              }}
-            />
+          Array.from({ length: 8 }).map((_, i) => (
+            <div key={i} className="h-[52px] animate-pulse bg-[var(--bg-surface)]" style={{ opacity: 1 - i * 0.1 }} />
           ))
         ) : tokens.length === 0 ? (
-          <div style={{ padding: "24px", textAlign: "center", fontSize: "13px", color: "var(--text-muted)" }}>
-            No data — backend may be offline.
-          </div>
+          <div className="px-4 py-12 text-center text-[var(--text-muted)] text-sm">No trending data</div>
         ) : (
-          tokens.map((token) => (
-            <Link
-              key={token.mint}
-              href={`/token/${token.mint}`}
-              style={{ textDecoration: "none", display: "block" }}
-            >
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 90px 90px 100px",
-                  padding: "10px 16px",
-                  borderBottom: "1px solid var(--border)",
-                  alignItems: "center",
-                  transition: "background 60ms",
-                }}
-                onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLDivElement).style.background = "var(--bg-elevated)")
-                }
-                onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLDivElement).style.background = "transparent")
-                }
+          tokens.map((token) => {
+            const isPositive = token.price_change_pct >= 0;
+            return (
+              <Link
+                key={token.mint}
+                href={`/token/${token.mint}`}
+                className="grid grid-cols-[1fr_90px_90px_100px] gap-4 px-4 py-3 items-center hover:bg-[var(--bg-hover)] transition-colors group"
               >
-                <div>
-                  <span
-                    style={{
-                      fontSize: "13px",
-                      fontWeight: 600,
-                      color: "var(--text-primary)",
-                      marginRight: "6px",
-                    }}
-                  >
-                    {token.symbol || "—"}
-                  </span>
-                  <span style={{ fontSize: "11px", color: "var(--text-muted)" }}>
-                    {token.name}
-                  </span>
-                </div>
-
-                <div style={{ textAlign: "right" }}>
-                  <span
-                    style={{
-                      fontSize: "12px",
-                      fontFamily: "JetBrains Mono, monospace",
-                      color: "var(--text-primary)",
-                    }}
-                  >
-                    ${token.price_usd < 0.01
-                      ? token.price_usd.toExponential(2)
-                      : token.price_usd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 })}
-                  </span>
-                </div>
-
-                <div style={{ textAlign: "right" }}>
-                  <span
-                    style={{
-                      fontSize: "12px",
-                      fontFamily: "JetBrains Mono, monospace",
-                      fontWeight: 600,
-                      color: token.price_change_pct >= 0 ? "#22c55e" : "#ef4444",
-                    }}
-                  >
-                    {token.price_change_pct >= 0 ? "+" : ""}
-                    {token.price_change_pct.toFixed(1)}%
-                  </span>
-                </div>
-
-                <div style={{ textAlign: "right" }}>
-                  <span
-                    style={{
-                      fontSize: "12px",
-                      fontFamily: "JetBrains Mono, monospace",
-                      color: "var(--text-muted)",
-                    }}
-                  >
-                    ${(token.volume_24h_usd / 1_000_000).toFixed(1)}M
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ── Intelligence preview card ──────────────────────────────────────────────────
-
-function IntelligencePreview({ address }: { address: string }) {
-  const summaryQ = useQuery({
-    queryKey: ["wallet", "summary", address],
-    queryFn: () => walletApi.summary(address),
-    staleTime: 60_000,
-  });
-
-  const intelQ = useQuery({
-    queryKey: ["wallet", "intelligence", address],
-    queryFn: () => walletApi.intelligence(address),
-    staleTime: 300_000,
-    retry: false,
-  });
-
-  const summary = summaryQ.data;
-  const intel = intelQ.data;
-
-  return (
-    <div
-      style={{
-        background: "var(--bg-surface)",
-        border: "1px solid var(--accent)",
-        borderRadius: "8px",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        style={{
-          padding: "16px 20px",
-          borderBottom: "1px solid var(--border)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: "12px",
-        }}
-      >
-        <div>
-          <div
-            style={{
-              fontSize: "14px",
-              fontWeight: 600,
-              color: "var(--text-primary)",
-              marginBottom: "4px",
-            }}
-          >
-            {summaryQ.isLoading ? (
-              <span style={{ color: "var(--text-muted)" }}>Loading...</span>
-            ) : (
-              summary?.known_wallet?.label ?? (
-                <AddressTag address={address} chars={8} size={14} />
-              )
-            )}
-          </div>
-          {!summaryQ.isLoading && summary && (
-            <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-              {summary.classification.map((c) => (
-                <ClassificationBadge key={c} label={c} />
-              ))}
-            </div>
-          )}
-        </div>
-
-        <Link
-          href={`/wallet/${address}`}
-          style={{
-            padding: "6px 14px",
-            background: "transparent",
-            border: "1px solid var(--border)",
-            borderRadius: "6px",
-            fontSize: "12px",
-            color: "var(--text-secondary)",
-            textDecoration: "none",
-            whiteSpace: "nowrap",
-            transition: "border-color 80ms, color 80ms",
-            flexShrink: 0,
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--accent)";
-            (e.currentTarget as HTMLAnchorElement).style.color = "var(--accent)";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)";
-            (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-secondary)";
-          }}
-        >
-          Full Profile →
-        </Link>
-      </div>
-
-      {summary && !summaryQ.isLoading && (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            borderBottom: "1px solid var(--border)",
-          }}
-        >
-          {[
-            { label: "SOL Balance", value: summary.sol_balance != null ? `${summary.sol_balance.toFixed(2)} SOL` : "—" },
-            { label: "Portfolio", value: summary.portfolio_usd != null ? `$${summary.portfolio_usd.toLocaleString()}` : "—" },
-            { label: "Total Txs", value: summary.total_txs.toLocaleString() },
-            { label: "Active Days", value: `${summary.active_days}d` },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              style={{ padding: "12px 16px", borderRight: "1px solid var(--border)" }}
-            >
-              <div style={{ fontSize: "10px", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>
-                {stat.label}
-              </div>
-              <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "14px", fontWeight: 600, color: "var(--text-primary)" }}>
-                {stat.value}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      <div style={{ padding: "16px 20px" }}>
-        {intelQ.isLoading ? (
-          <p style={{ fontSize: "13px", color: "var(--text-muted)" }}>
-            Generating intelligence summary...
-          </p>
-        ) : intel?.summary ? (
-          <div>
-            <p style={{ fontSize: "13px", lineHeight: 1.65, color: "var(--text-secondary)", marginBottom: "12px" }}>
-              {intel.summary}
-            </p>
-            <ConfidenceBadge confidence={intel.confidence as Confidence} />
-          </div>
-        ) : (
-          <p style={{ fontSize: "13px", color: "var(--text-muted)" }}>
-            No intelligence summary available.{" "}
-            <Link href={`/wallet/${address}`} style={{ color: "var(--accent)", textDecoration: "none" }}>
-              View full profile →
-            </Link>
-          </p>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ── Notable addresses ──────────────────────────────────────────────────────────
-
-function NotableAddresses() {
-  const { data, isLoading } = useQuery({
-    queryKey: ["known-wallets-notable"],
-    queryFn: fetchNotableWallets,
-    staleTime: 300_000,
-    retry: false,
-  });
-
-  const wallets = data ?? [];
-
-  return (
-    <div>
-      <div
-        style={{
-          fontSize: "10px",
-          fontWeight: 600,
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--text-muted)",
-          marginBottom: "12px",
-        }}
-      >
-        Notable Addresses
-      </div>
-      <div
-        style={{
-          background: "var(--bg-surface)",
-          border: "1px solid var(--border)",
-          borderRadius: "8px",
-          overflow: "hidden",
-        }}
-      >
-        {isLoading ? (
-          Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} style={{ height: "52px", borderBottom: "1px solid var(--border)", opacity: 1 - i * 0.2 }} />
-          ))
-        ) : wallets.length === 0 ? (
-          <div style={{ padding: "24px", textAlign: "center", fontSize: "13px", color: "var(--text-muted)" }}>
-            No notable addresses.
-          </div>
-        ) : (
-          wallets.map((w) => (
-            <Link key={w.address} href={`/wallet/${w.address}`} style={{ textDecoration: "none", display: "block" }}>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  padding: "12px 16px",
-                  borderBottom: "1px solid var(--border)",
-                  transition: "background 60ms",
-                }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.background = "var(--bg-elevated)")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.background = "transparent")}
-              >
-                <span style={{ fontSize: "13px", color: "var(--text-muted)", flexShrink: 0 }}>◎</span>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)", marginBottom: "2px" }}>
-                    {w.label}
+                <div className="flex items-center gap-3 min-w-0">
+                  {token.logo_uri ? (
+                    <img src={token.logo_uri} alt={token.symbol} className="w-8 h-8 rounded-full border border-[var(--border)]" />
+                  ) : (
+                    <div className="w-8 h-8 rounded-full bg-[var(--bg-elevated)] border border-[var(--border)] flex items-center justify-center text-[11px] font-bold text-[var(--text-secondary)]">
+                      {(token.symbol || "?").charAt(0)}
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    <div className="text-sm font-semibold text-[var(--text-primary)] truncate group-hover:text-[var(--accent)] transition-colors">
+                      {token.symbol || "\u2014"}
+                    </div>
+                    <div className="text-[10px] text-[var(--text-muted)] truncate">{token.name}</div>
                   </div>
-                  <AddressTag address={w.address} chars={6} size={11} />
                 </div>
-                <span style={{ fontSize: "11px", color: "var(--text-muted)" }}>{w.category}</span>
-              </div>
-            </Link>
-          ))
+                <div className="text-right text-[12px] font-mono font-medium text-[var(--text-primary)]">
+                  {formatUsd(token.price_usd)}
+                </div>
+                <div className={`text-right text-[12px] font-mono font-semibold ${isPositive ? "text-[var(--success)]" : "text-[var(--error)]"}`}>
+                  {isPositive ? "+" : ""}{token.price_change_pct.toFixed(1)}%
+                </div>
+                <div className="text-right text-[12px] font-mono text-[var(--text-muted)]">
+                  {formatUsd(token.volume_24h_usd)}
+                </div>
+              </Link>
+            );
+          })
         )}
       </div>
-    </div>
+    </>
   );
 }
 
-// ── Classification guide ───────────────────────────────────────────────────────
-
-function ClassificationGuide() {
-  const classes = [
-    { label: "WHALE", desc: "Holds or moves >$500K in a single wallet" },
-    { label: "SMART MONEY", desc: "Consistent early entry on winning trades" },
-    { label: "SNIPER", desc: "Buys within seconds of launch, automated" },
-    { label: "DEPLOYER", desc: "Has deployed token or program accounts" },
-    { label: "BOT", desc: "High-frequency automated trading patterns" },
-    { label: "BUNDLER", desc: "Uses Jito bundles to co-snipe with others" },
-  ];
-
+function KolFeed({ kols, isLoading }: { kols: KolRanking[]; isLoading: boolean }) {
   return (
-    <div>
-      <div
-        style={{
-          fontSize: "10px",
-          fontWeight: 600,
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--text-muted)",
-          marginBottom: "12px",
-        }}
-      >
-        Classification Labels
+    <>
+      <div className="grid grid-cols-[40px_1fr_100px_80px_80px] gap-4 px-4 py-3 bg-[var(--bg-elevated)] border-b border-[var(--border)] text-[10px] font-mono uppercase tracking-wider text-[var(--text-faint)]">
+        <div>#</div>
+        <div>Trader</div>
+        <div className="text-right">PnL</div>
+        <div className="text-right">Win Rate</div>
+        <div className="text-right">ROI</div>
       </div>
-      <div
-        style={{
-          background: "var(--bg-surface)",
-          border: "1px solid var(--border)",
-          borderRadius: "8px",
-          overflow: "hidden",
-        }}
-      >
-        {classes.map((c) => (
-          <div
-            key={c.label}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              padding: "10px 16px",
-              borderBottom: "1px solid var(--border)",
-            }}
-          >
-            <ClassificationBadge label={c.label} />
-            <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>{c.desc}</span>
-          </div>
-        ))}
+      <div className="divide-y divide-[var(--border-subtle)]">
+        {isLoading ? (
+          Array.from({ length: 8 }).map((_, i) => (
+            <div key={i} className="h-[56px] animate-pulse bg-[var(--bg-surface)]" style={{ opacity: 1 - i * 0.1 }} />
+          ))
+        ) : kols.length === 0 ? (
+          <div className="px-4 py-12 text-center text-[var(--text-muted)] text-sm">No KOL data</div>
+        ) : (
+          kols.map((kol, i) => {
+            const rank = i + 1;
+            const isProfitable = kol.pnl_usd >= 0;
+            const rankColors = ["text-[#FFD700]", "text-[#C0C0C0]", "text-[#CD7F32]"];
+            const rankClass = rank <= 3 ? rankColors[rank - 1] : "text-[var(--text-muted)]";
+            return (
+              <Link
+                key={kol.profile.id}
+                href={`/kols/${kol.profile.twitter_handle || kol.profile.id}`}
+                className="grid grid-cols-[40px_1fr_100px_80px_80px] gap-4 px-4 py-3 items-center hover:bg-[var(--bg-hover)] transition-colors group"
+              >
+                <div className={`text-sm font-bold ${rankClass}`}>
+                  {rank <= 3 ? ["1st", "2nd", "3rd"][rank - 1] : `#${rank}`}
+                </div>
+                <div className="flex items-center gap-3 min-w-0">
+                  {kol.profile.twitter_pfp_url ? (
+                    <img
+                      src={kol.profile.twitter_pfp_url}
+                      alt={kol.profile.display_name}
+                      className="w-9 h-9 rounded-full border-2 border-[var(--border)] group-hover:border-[var(--accent)] transition-colors object-cover"
+                    />
+                  ) : (
+                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent-muted)] border-2 border-[var(--border)] flex items-center justify-center text-white text-sm font-bold">
+                      {kol.profile.display_name?.charAt(0)?.toUpperCase() || "?"}
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    <div className="text-sm font-semibold text-[var(--text-primary)] truncate group-hover:text-[var(--accent)] transition-colors">
+                      {kol.profile.display_name}
+                    </div>
+                    {kol.profile.twitter_handle && (
+                      <div className="text-[10px] text-[var(--text-muted)] truncate font-mono">@{kol.profile.twitter_handle}</div>
+                    )}
+                  </div>
+                </div>
+                <div className={`text-right text-sm font-mono font-bold ${isProfitable ? "text-[var(--success)]" : "text-[var(--error)]"}`}>
+                  {isProfitable ? "+" : ""}{formatUsd(kol.pnl_usd)}
+                </div>
+                <div className="text-right text-sm font-mono text-[var(--text-primary)]">
+                  {kol.win_rate > 0 ? `${kol.win_rate.toFixed(1)}%` : "\u2014"}
+                </div>
+                <div className={`text-right text-sm font-mono ${(kol.roi ?? 0) >= 0 ? "text-[var(--success)]" : "text-[var(--error)]"}`}>
+                  {kol.roi ? `${kol.roi.toFixed(1)}%` : "\u2014"}
+                </div>
+              </Link>
+            );
+          })
+        )}
       </div>
-    </div>
+    </>
   );
 }

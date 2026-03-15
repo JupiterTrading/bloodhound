@@ -1,0 +1,13 @@
+{
+  "total_wallets": 54770,
+  "high_quality_wallets": 284,
+  "seeded_wallets": 248,
+  "errors": 0,
+  "by_source": {
+    "axiom": 157,
+    "gmgn": 190,
+    "kolscan": 157,
+    "stalkchain": 38
+  },
+  "seeded_at": "2026-03-14T05:26:15.469Z"
+}

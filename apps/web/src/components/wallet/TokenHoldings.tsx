@@ -49,53 +49,17 @@ export function TokenHoldings({ address }: Props) {
   const dustCount = allHoldings.length - visibleHoldings.length;
 
   return (
-    <section
-      style={{
-        background: "var(--bg-surface)",
-        border: "1px solid var(--border)",
-        borderRadius: "8px",
-        overflow: "hidden",
-        marginBottom: "16px",
-      }}
-    >
-      <div
-        style={{
-          padding: "16px 20px",
-          borderBottom: "1px solid var(--border)",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexWrap: "wrap",
-          gap: "8px",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <h2
-            style={{
-              fontSize: "11px",
-              fontWeight: 600,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              color: "var(--text-muted)",
-              margin: 0,
-            }}
-          >
+    <section className="card overflow-hidden mb-4">
+      <div className="px-5 py-4 border-b border-[var(--border)] flex justify-between items-center flex-wrap gap-2">
+        <div className="flex items-center gap-4">
+          <h2 className="text-[11px] font-semibold tracking-wide uppercase text-[var(--text-muted)]">
             Token Holdings
             {visibleHoldings.length > 0 && (
-              <span style={{ marginLeft: "8px", fontWeight: 400 }}>
-                ({visibleHoldings.length})
-              </span>
+              <span className="ml-2 font-normal">({visibleHoldings.length})</span>
             )}
           </h2>
           {totalPortfolioUsd > 0 && (
-            <span
-              style={{
-                fontFamily: "JetBrains Mono, monospace",
-                fontSize: "14px",
-                fontWeight: 600,
-                color: "var(--text-primary)",
-              }}
-            >
+            <span className="font-mono text-[14px] font-semibold text-[var(--text-primary)]">
               ${totalPortfolioUsd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </span>
           )}
@@ -103,17 +67,7 @@ export function TokenHoldings({ address }: Props) {
         {dustCount > 0 && (
           <button
             onClick={() => setShowDust(!showDust)}
-            style={{
-              background: showDust ? "var(--accent)" : "transparent",
-              border: "1px solid var(--border)",
-              borderRadius: "4px",
-              padding: "4px 10px",
-              fontSize: "11px",
-              fontWeight: 500,
-              color: showDust ? "white" : "var(--text-muted)",
-              cursor: "pointer",
-              transition: "all 0.15s ease",
-            }}
+            className={`border border-[var(--border)] rounded px-2.5 py-1 text-[11px] font-medium cursor-pointer transition-all ${showDust ? 'bg-[var(--accent)] text-white' : 'bg-transparent text-[var(--text-muted)]'}`}
           >
             {showDust ? "Hide Dust" : `Show Dust (${dustCount})`}
           </button>
@@ -121,16 +75,9 @@ export function TokenHoldings({ address }: Props) {
       </div>
 
       {isLoading ? (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
-            gap: "1px",
-            background: "var(--border)",
-          }}
-        >
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-px bg-[var(--border)]">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} style={{ background: "var(--bg-surface)", padding: "16px" }}>
+            <div key={i} className="bg-[var(--bg-surface)] p-4">
               <Skeleton height={32} width={32} borderRadius={8} style={{ marginBottom: 8 }} />
               <Skeleton height={12} width="60%" style={{ marginBottom: 6 }} />
               <Skeleton height={14} width="80%" />
@@ -138,25 +85,11 @@ export function TokenHoldings({ address }: Props) {
           ))}
         </div>
       ) : allHoldings.length === 0 ? (
-        <p
-          style={{
-            padding: "24px 20px",
-            color: "var(--text-muted)",
-            fontSize: "13px",
-            margin: 0,
-          }}
-        >
+        <p className="px-5 py-6 text-[var(--text-muted)] text-[13px]">
           No token holdings found.
         </p>
       ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
-            gap: "1px",
-            background: "var(--border)",
-          }}
-        >
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-px bg-[var(--border)]">
           {visibleHoldings.map((h) => (
             <TokenCard key={h.mint} holding={h} />
           ))}
@@ -170,60 +103,21 @@ function TokenCard({ holding }: { holding: TokenHolding }) {
   return (
     <Link
       href={`/token/${holding.mint}`}
-      style={{
-        background: "var(--bg-surface)",
-        padding: "16px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "4px",
-        textDecoration: "none",
-        transition: "background 0.15s ease",
-      }}
-      onMouseEnter={(e) => (e.currentTarget.style.background = "var(--bg-elevated)")}
-      onMouseLeave={(e) => (e.currentTarget.style.background = "var(--bg-surface)")}
+      className="bg-[var(--bg-surface)] p-4 flex flex-col gap-1 no-underline hover:bg-[var(--bg-elevated)] transition-colors"
     >
-      {/* Logo + symbol */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-          marginBottom: "4px",
-        }}
-      >
+      <div className="flex items-center gap-2 mb-1">
         <TokenLogo uri={holding.logo_uri} symbol={holding.symbol} />
-        <span
-          style={{
-            fontSize: "13px",
-            fontWeight: 600,
-            color: "var(--text-primary)",
-          }}
-        >
+        <span className="text-[13px] font-semibold text-[var(--text-primary)]">
           {holding.symbol}
         </span>
       </div>
 
-      {/* Amount */}
-      <div
-        style={{
-          fontFamily: "JetBrains Mono, monospace",
-          fontSize: "13px",
-          color: "var(--text-primary)",
-          fontWeight: 500,
-        }}
-      >
+      <div className="font-mono text-[13px] text-[var(--text-primary)] font-medium">
         {formatAmount(holding.amount)}
       </div>
 
-      {/* USD value */}
       {holding.usd_value != null && (
-        <div
-          style={{
-            fontFamily: "JetBrains Mono, monospace",
-            fontSize: "11px",
-            color: "var(--text-muted)",
-          }}
-        >
+        <div className="font-mono text-[11px] text-[var(--text-muted)]">
           ${holding.usd_value.toLocaleString(undefined, { maximumFractionDigits: 2 })}
         </div>
       )}
@@ -240,7 +134,7 @@ function TokenLogo({ uri, symbol }: { uri: string | null; symbol: string }) {
         alt={symbol}
         width={28}
         height={28}
-        style={{ borderRadius: "50%", objectFit: "cover" }}
+        className="rounded-full object-cover"
         onError={(e) => {
           (e.currentTarget as HTMLImageElement).style.display = "none";
         }}
@@ -249,22 +143,7 @@ function TokenLogo({ uri, symbol }: { uri: string | null; symbol: string }) {
   }
 
   return (
-    <div
-      style={{
-        width: 28,
-        height: 28,
-        borderRadius: "50%",
-        background: "var(--bg-elevated)",
-        border: "1px solid var(--border)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontSize: "10px",
-        fontWeight: 700,
-        color: "var(--text-muted)",
-        flexShrink: 0,
-      }}
-    >
+    <div className="w-7 h-7 rounded-full bg-[var(--bg-elevated)] border border-[var(--border)] flex items-center justify-center text-[10px] font-bold text-[var(--text-muted)] shrink-0">
       {symbol.slice(0, 2).toUpperCase()}
     </div>
   );

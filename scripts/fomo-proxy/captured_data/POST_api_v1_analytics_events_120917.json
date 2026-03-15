@@ -1,0 +1,40 @@
+{
+  "endpoint": "POST /api/v1/analytics_events",
+  "url": "https://auth.privy.io/api/v1/analytics_events",
+  "request_headers": {
+    "content-type": "application/json",
+    "privy-client-id": "client-WY5gFSayQjxnQhG4rP6SnwPAyPZWZpNRhJ6xkhmfgbmVh",
+    "privy-client": "expo:0.60.0",
+    "accept": "application/json",
+    "authorization": "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkI4SXlObWU1V0lZRnJIclJRVDBLdFlPRlFIUjFKVXFnaGVTMHhSZHR1QVkifQ.eyJhaWQiOiJjbTZoNDg1bzMwMG4zemo5eWw2dnBlZHE3IiwiYXR0IjoicGF0Iiwic2lkIjoiY21remVuaGtjMDVzOGpvMGN0a2x6NXJqaiIsImlzcyI6InByaXZ5LmlvIiwiaWF0IjoxNzczNDE1MjU0LCJhdWQiOiJodHRwczovL2F1dGgucHJpdnkuaW8iLCJzdWIiOiJkaWQ6cHJpdnk6Y21rejA2N2RkMDF5Z2puMGNhaXc5aWNrcCIsImV4cCI6MTc3MzQxODg1NH0.-NTIM3vuz1JWIJVFfwnCGp2xkZKXLjuP6C1I2QEeM_XzYiURDXwnB_oD6Z12iMWUyxADxg3NTwLD0zG-NxyZPg",
+    "privy-ca-id": "97865a2b-9ccc-48eb-a521-95674cf2b876",
+    "priority": "u=3, i",
+    "accept-language": "en-US,en;q=0.9",
+    "accept-encoding": "gzip, deflate, br",
+    "privy-app-id": "cm6h485o300n3zj9yl6vpedq7",
+    "content-length": "95",
+    "user-agent": "fomo/280 CFNetwork/3860.300.31 Darwin/25.2.0",
+    "cookie": "__cf_bm=z5IwE2xEsxG4x9kJMkQ0X25_w5AUd6MndZuQCg7ceQc-1773421757-1.0.1.1-nB6kRSDOwr9pV785x8Q5YQUsP32Wn7l2hI3X.SmhboYBcEgT6OmWqtkCSJbkyl0X1f9.MQLBbsFdGLrgMqmYKf_3.k9NvpsnH.lc1PwUUb0, _cfuvid=MGhl_ACIaMpgzOLNe9QScCgSMCmbmdVs6mE115n.W1o-1773421757429-0.0.1.1-604800000, cf_clearance=0sVpEm1ABNf8_jVQkZn8xC7H8OY5PY1lXH51eFh3uew-1768663666-1.2.1.1-ee8_suuIAMZ2lW3G4pHwLcgZuAJHAyAJbUCPagTVqg00t4k2Leph52fPboDOE.r.xSlNOzP_pBbMVewwSUQg1fmgMT_LNBwoRCMBEvsSvAjDc3UivoJyAIjmGN5NV98GjnQp9lnsPGfSe_KS4b.wbfvLXX.gJzVbbMBbg5oLMu39sWUPINyFJZ131kSFqkPNmFC0UDmOyPwOwgHoKn9DLotqVChxIvodX5hI0WZBBpQ",
+    "x-native-app-identifier": "family.fomo.app"
+  },
+  "request_body": "{\"event_name\":\"sdk_initialize\",\"client_id\":\"97865a2b-9ccc-48eb-a521-95674cf2b876\",\"payload\":{}}",
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:09:17 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "4",
+    "cf-ray": "9dbca5403c71fb18-BNA",
+    "cache-control": "public, max-age=0, must-revalidate",
+    "etag": "\"wm6yxsynvh4\"",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "strict-transport-security": "max-age=63072000",
+    "x-content-type-options": "nosniff",
+    "x-matched-path": "/api/v1/analytics_events",
+    "x-vercel-cache": "MISS",
+    "x-vercel-id": "iad1::iad1::f4x2j-1773421757520-ff22e79b76b1",
+    "cf-cache-status": "DYNAMIC",
+    "server": "cloudflare"
+  },
+  "response_body": null,
+  "captured_at": "2026-03-13T12:09:17.567079"
+}

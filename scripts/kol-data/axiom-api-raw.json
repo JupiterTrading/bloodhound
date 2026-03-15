@@ -1,0 +1,21 @@
+[
+  {
+    "url": "https://axiom.trade/cdn-cgi/speculation",
+    "data": {
+      "prefetch": [
+        {
+          "eagerness": "conservative",
+          "source": "document",
+          "where": {
+            "and": [
+              {
+                "href_matches": "/*",
+                "relative_to": "document"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

@@ -86,7 +86,7 @@ async def run_new_pair_monitor() -> None:
     Long-running new pair polling loop.
     Started from main.py lifespan alongside the wallet poller and pumpfun monitor.
     """
-    from app.services import clickhouse
+    from app.services import analytics
     from app.services.supabase import get_known_wallet
 
     print(f"[pairs] new pair monitor started — polling every {POLL_INTERVAL}s")
@@ -164,12 +164,12 @@ async def run_new_pair_monitor() -> None:
                 except Exception as e:
                     print(f"[pairs] redis store error: {e}")
                 
-                # Also try ClickHouse (may fail if not configured)
+                # Also store in Supabase
                 try:
-                    await clickhouse.insert_signals(signals)
+                    await analytics.insert_signals(signals)
                     print(f"[pairs] {len(signals)} new token signals written")
                 except Exception as e:
-                    print(f"[pairs] clickhouse insert error: {e}")
+                    print(f"[pairs] signal insert error: {e}")
 
         except asyncio.CancelledError:
             print("[pairs] shutting down")

@@ -1,0 +1,622 @@
+{
+  "endpoint": "POST /proxy/trendingTokens/friends",
+  "url": "https://prod-api.fomo.family/proxy/trendingTokens/friends",
+  "request_headers": {
+    "content-type": "application/json",
+    "x-app-installation-id": "install_bc7884b4-0c4a-465b-903a-33e17158ff11",
+    "accept": "*/*",
+    "baggage": "sentry-environment=production,sentry-public_key=4e163b6befe2112027dfa32cd92ca3ba,sentry-trace_id=81bf22b8e6a944cdb27b57c0e72a4fca,sentry-org_id=4508656189702144,sentry-transaction=__root,sentry-sampled=false,sentry-sample_rand=0.5438219467411642,sentry-sample_rate=0.0001",
+    "authorization": "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkI4SXlObWU1V0lZRnJIclJRVDBLdFlPRlFIUjFKVXFnaGVTMHhSZHR1QVkifQ.eyJzaWQiOiJjbWt6ZW5oa2MwNXM4am8wY3RrbHo1cmpqIiwiaXNzIjoicHJpdnkuaW8iLCJpYXQiOjE3NzM0MjE3NTcsImF1ZCI6ImNtNmg0ODVvMzAwbjN6ajl5bDZ2cGVkcTciLCJzdWIiOiJkaWQ6cHJpdnk6Y21rejA2N2RkMDF5Z2puMGNhaXc5aWNrcCIsImV4cCI6MTc3MzQyNTM1N30.KSKe7Zlqq97fc4QPfjM7DRQFJn2TbIjhiI5oDtSDVmm1sYOZq8Vd2Zn-4ks9I-Iepjj6jRmPmI_rhyeOayLexA",
+    "priority": "u=3, i",
+    "x-supported-chains": "1399811149,8453,56,143",
+    "accept-encoding": "gzip, deflate, br",
+    "if-none-match": "W/\"4b6d-eFTFVjPrT76q6l18gr0RfVm1Co0\"",
+    "accept-language": "en-US,en;q=0.9",
+    "sentry-trace": "81bf22b8e6a944cdb27b57c0e72a4fca-98da38d35086ab2c-0",
+    "content-length": "0",
+    "user-agent": "fomo/1.60.4/280/ios/iPhone 17 Pro Max/Apple"
+  },
+  "request_body": null,
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:09:18 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "cf-ray": "9dbca544ddecfb24-BNA",
+    "cf-cache-status": "DYNAMIC",
+    "content-encoding": "gzip",
+    "etag": "W/\"3ade-bW5MixXNrzWnICYSIi4aV23+HIw\"",
+    "server": "cloudflare",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "vary": "Origin, Accept-Encoding",
+    "access-control-allow-credentials": "true",
+    "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+    "cross-origin-opener-policy": "same-origin",
+    "cross-origin-resource-policy": "same-origin",
+    "origin-agent-cluster": "?1",
+    "referrer-policy": "no-referrer",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-download-options": "noopen",
+    "x-frame-options": "SAMEORIGIN",
+    "x-permitted-cross-domain-policies": "none",
+    "x-request-id": "a7d6aa9b-b985-4190-9276-47152b46ce72",
+    "x-xss-protection": "0",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "response_body": {
+    "success": true,
+    "message": "Trending tokens with friend holders retrieved successfully",
+    "responseObject": {
+      "tokenHoldersMap": {
+        "4HhWcsfjaWYKJtjaxd4EyGSAL4Ky8C3DvqAWPHnrpump:1399811149": {
+          "topHolders": [
+            {
+              "user": {
+                "id": "9de17223-413e-5911-b8e2-d6679db18998",
+                "address": "14nrTnZndos95jbXtELv8JacrtzTkqk7W6GuCimqerTw",
+                "evmAddress": "0x640854daac84f126c6b002a087082bbf9b80037a",
+                "createdAt": "2026-01-13T05:41:04.639Z",
+                "displayName": "pow\ud83e\uddf2",
+                "userHandle": "traderpow",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/0362367c7be9db4e46ca450e41d5d6b9.jpg",
+                "description": "Many times I lose, few times I win but I make them count.\nDreamers will win again one day.",
+                "following": 42,
+                "followers": 9185,
+                "activated": true,
+                "isReferred": true,
+                "isRestricted": false,
+                "swapCount": 465,
+                "numTrades": 171,
+                "totalVolume": 1885298.196027,
+                "private": false,
+                "thumbhash": "VvUJPwCyjyZ9h2WiKJmZxkh7hHBHCHsB"
+              },
+              "tradeId": "9684072d-6be6-4168-9c1f-a9eb4f75f852",
+              "humanAmount": 9636359.902416,
+              "price": 0.00151952156629,
+              "value": 14642.656692253311,
+              "pnl": -5103.657887746689,
+              "unrealizedPnl": -5103.657887746689,
+              "realizedPnl": 0,
+              "costBasis": 19746.314580000002,
+              "averageEntryPrice": 0.0020491466466553685,
+              "comment": {
+                "id": "46def728-8843-4e9c-892d-53c832655399",
+                "userId": "9de17223-413e-5911-b8e2-d6679db18998",
+                "tradeId": "9684072d-6be6-4168-9c1f-a9eb4f75f852",
+                "comment": "pristine theatrics \n\n\ud83d\udd35\ud83d\udd3b\ud83d\udd38\u25ab\ufe0f",
+                "visibility": "public",
+                "createdAt": "2026-03-11T15:24:22.597Z",
+                "parentId": null,
+                "numLikes": 6,
+                "reactions": {
+                  "counts": {
+                    "likeCount": 6
+                  },
+                  "reactions": {
+                    "like": false
+                  }
+                },
+                "olderThesis": 1,
+                "newerThesis": 0
+              },
+              "showComment": true,
+              "averageHoldTimeSeconds": 116782
+            },
+            {
+              "user": {
+                "id": "060c4e4e-9867-5da4-9567-2422c23b8451",
+                "address": "3YECsvhnPBRJtWcPZgTQkczufpXdcAuHgZEDmH8vyRyS",
+                "evmAddress": "0x8bd37ef6930d561a70edde42751083ddee3e8f47",
+                "createdAt": "2025-10-25T03:07:46.258Z",
+                "displayName": "Collectible",
+                "userHandle": "collectible",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/22f4a233d986bfe9085e0b46757c8c42.jpg",
+                "description": "I will make 10 million dollars very soon.",
+                "following": 57,
+                "followers": 32939,
+                "activated": true,
+                "isReferred": true,
+                "isRestricted": false,
+                "swapCount": 2373,
+                "numTrades": 637,
+                "totalVolume": 3211812.448292,
+                "private": false,
+                "thumbhash": "WBgOHwSDdnVPh4iaiZaXZ4iWZ/aHZX8I"
+              },
+              "tradeId": "d225ae8e-9b9b-4777-8ffe-6fb5d68aa05b",
+              "humanAmount": 2561429.57811,
+              "price": 0.00151952156629,
+              "value": 3892.147484471241,
+              "pnl": 96.96655174093411,
+              "unrealizedPnl": -323.4087435504693,
+              "realizedPnl": 420.3752952914034,
+              "costBasis": 8473.451713459155,
+              "averageEntryPrice": 0.0016457825989236211,
+              "comment": {
+                "id": "7f963255-97e4-4d0f-88a3-2ca4a319d6df",
+                "userId": "060c4e4e-9867-5da4-9567-2422c23b8451",
+                "tradeId": "d225ae8e-9b9b-4777-8ffe-6fb5d68aa05b",
+                "comment": "it is financially irresponsible to be out of shape",
+                "visibility": "public",
+                "createdAt": "2026-03-10T01:45:59.551Z",
+                "parentId": null,
+                "numLikes": 6,
+                "reactions": {
+                  "counts": {
+                    "likeCount": 6
+                  },
+                  "reactions": {
+                    "like": false
+                  }
+                },
+                "olderThesis": 0,
+                "newerThesis": 0
+              },
+              "showComment": true,
+              "averageHoldTimeSeconds": 113882
+            }
+          ],
+          "totalHolders": 2
+        },
+        "6iA73gWCKkLWKbVr8rgibV57MMRxzsaqS9cWpgKBpump:1399811149": {
+          "topHolders": [
+            {
+              "user": {
+                "id": "5035bc84-c8f0-5c54-a649-a99282d852ce",
+                "address": "ExxadAeGwmrfS3NnHxEqWX3qmVTFNXhk7DmSScUpp1t3",
+                "evmAddress": "0xbf7741d22ddc76c6bd162aa77e564c544c32cfe9",
+                "createdAt": "2025-11-08T18:37:23.341Z",
+                "displayName": "logjam",
+                "userHandle": "_logjam",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/ae494b59a6f1350bf0fe12377df2204f.jpg",
+                "description": "gambling to stack more neet",
+                "following": 143,
+                "followers": 53382,
+                "activated": false,
+                "isReferred": false,
+                "isRestricted": false,
+                "swapCount": 1121,
+                "numTrades": 315,
+                "totalVolume": 1865294.579605,
+                "private": false,
+                "thumbhash": "FRgODwCnVWp/eHetqLeHiXmIh2EIAE0B"
+              },
+              "tradeId": "252222f0-7500-4a76-a158-ca7f641c0124",
+              "humanAmount": 2564140.025953,
+              "price": 0.00227675102689,
+              "value": 5837.908437178244,
+              "pnl": -9136.242768821756,
+              "unrealizedPnl": -1569.9054613475578,
+              "realizedPnl": -7566.337307474198,
+              "costBasis": 22198.399999999998,
+              "averageEntryPrice": 0.0028890052117074142,
+              "comment": {
+                "id": "fe5d8569-8191-446a-918f-6b30b87a04ea",
+                "userId": "5035bc84-c8f0-5c54-a649-a99282d852ce",
+                "tradeId": "252222f0-7500-4a76-a158-ca7f641c0124",
+                "comment": "wtdd",
+                "visibility": "public",
+                "createdAt": "2026-03-12T12:49:44.547Z",
+                "parentId": null,
+                "numLikes": 7,
+                "reactions": {
+                  "counts": {
+                    "likeCount": 7
+                  },
+                  "reactions": {
+                    "like": false
+                  }
+                },
+                "olderThesis": 5,
+                "newerThesis": 0
+              },
+              "showComment": true,
+              "averageHoldTimeSeconds": 75403
+            }
+          ],
+          "totalHolders": 1
+        },
+        "DaTGaE6uhCfzz6Eh8hWQwL4yw3AJbXWbfvbeccdXJWED:1399811149": {
+          "topHolders": [
+            {
+              "user": {
+                "id": "dc0de758-7d4b-5054-bb8f-379cd87ff9fc",
+                "address": "HYmWmpbJbjzsSGu19qBKBjBaXrSrFiGzX3EFtaoPos9F",
+                "evmAddress": "0xe40101597f4a03ebdca38f7a08eefd1dc941d058",
+                "createdAt": "2025-11-24T23:56:10.944Z",
+                "displayName": "Dip Wheeler",
+                "userHandle": "DipWheeler",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/6ca29a13636343ba54afeb9b4fb271d4.jpg",
+                "description": "sack tf up.",
+                "following": 29,
+                "followers": 12065,
+                "activated": false,
+                "isReferred": false,
+                "isRestricted": false,
+                "swapCount": 281,
+                "numTrades": 99,
+                "totalVolume": 685509.260433,
+                "private": false,
+                "thumbhash": "3QcSDwLZendfeHZ4h3hoh2h4yGAbCacC"
+              },
+              "tradeId": "690ee621-7f84-4875-b55c-4fd4e1c7b169",
+              "humanAmount": 24590952.005637996,
+              "price": 0.000645217453253,
+              "value": 15866.511426144501,
+              "pnl": 7733.718776144501,
+              "unrealizedPnl": 7389.899198244363,
+              "realizedPnl": 343.8195779001377,
+              "costBasis": 9418.458031,
+              "averageEntryPrice": 0.000344704516765219,
+              "comment": null,
+              "showComment": true,
+              "averageHoldTimeSeconds": 541426
+            },
+            {
+              "user": {
+                "id": "14fafdc2-b375-5edd-8c08-613d82cc06b6",
+                "address": "E6czeBZEvfiscJa6NgQpTxjKvsvvwK4zaPZ2G2nf7y76",
+                "evmAddress": "0x52bfd45d37f45f73f0555be6ca9a645ba6b6deb3",
+                "createdAt": "2025-10-23T00:43:29.922Z",
+                "displayName": "profit | eca.eth",
+                "userHandle": "FlippingProfits",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/296adcce217e728917e79ff80e68cfd2.jpg",
+                "description": "most coins i ape i will sell at a  -50% so be wary of that",
+                "following": 86,
+                "followers": 10384,
+                "activated": false,
+                "isReferred": false,
+                "isRestricted": false,
+                "swapCount": 895,
+                "numTrades": 487,
+                "totalVolume": 7593036.342381,
+                "private": false,
+                "thumbhash": "I9cRJwSYZ3hwd3h7hniXZ4l5h0B3GXAH"
+              },
+              "tradeId": "22a725c9-d225-4fbb-b668-4ad1bd873806",
+              "humanAmount": 11262713.428803,
+              "price": 0.000645217453253,
+              "value": 7266.899275250636,
+              "pnl": 2291.8992752506356,
+              "unrealizedPnl": 2291.8992752506356,
+              "realizedPnl": 0,
+              "costBasis": 4975,
+              "averageEntryPrice": 0.0004417230387196971,
+              "comment": null,
+              "showComment": true,
+              "averageHoldTimeSeconds": 756813
+            }
+          ],
+          "totalHolders": 2
+        },
+        "J8PSdNP3QewKq2Z1JJJFDMaqF7KcaiJhR7gbr5KZpump:1399811149": {
+          "topHolders": [
+            {
+              "user": {
+                "id": "5035bc84-c8f0-5c54-a649-a99282d852ce",
+                "address": "ExxadAeGwmrfS3NnHxEqWX3qmVTFNXhk7DmSScUpp1t3",
+                "evmAddress": "0xbf7741d22ddc76c6bd162aa77e564c544c32cfe9",
+                "createdAt": "2025-11-08T18:37:23.341Z",
+                "displayName": "logjam",
+                "userHandle": "_logjam",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/ae494b59a6f1350bf0fe12377df2204f.jpg",
+                "description": "gambling to stack more neet",
+                "following": 143,
+                "followers": 53382,
+                "activated": false,
+                "isReferred": false,
+                "isRestricted": false,
+                "swapCount": 1121,
+                "numTrades": 315,
+                "totalVolume": 1865294.579605,
+                "private": false,
+                "thumbhash": "FRgODwCnVWp/eHetqLeHiXmIh2EIAE0B"
+              },
+              "tradeId": "c9013316-3d50-4c64-9711-b0d63a3e7def",
+              "humanAmount": 17953931.761424,
+              "price": 0.00174018259058,
+              "value": 31243.119483691364,
+              "pnl": 2189.1194836913623,
+              "unrealizedPnl": 2189.1194836913623,
+              "realizedPnl": 0,
+              "costBasis": 29054,
+              "averageEntryPrice": 0.0016182527808435653,
+              "comment": {
+                "id": "e09aec9a-47ff-4e7d-bf65-fdf12c2f6b0c",
+                "userId": "5035bc84-c8f0-5c54-a649-a99282d852ce",
+                "tradeId": "c9013316-3d50-4c64-9711-b0d63a3e7def",
+                "comment": "imagine thinking triple t tops at 3m\n\nhttps://x.com/_logjam/status/2028632420254187823?s=46",
+                "visibility": "public",
+                "createdAt": "2026-03-12T12:16:02.416Z",
+                "parentId": null,
+                "numLikes": 10,
+                "reactions": {
+                  "counts": {
+                    "likeCount": 10
+                  },
+                  "reactions": {
+                    "like": false
+                  }
+                },
+                "olderThesis": 6,
+                "newerThesis": 0
+              },
+              "showComment": true,
+              "averageHoldTimeSeconds": 75403
+            }
+          ],
+          "totalHolders": 1
+        },
+        "89S7oVB4hui8ceJqhHreWB7fcxdthfvoB7z2pfJtpump:1399811149": {
+          "topHolders": [
+            {
+              "user": {
+                "id": "5035bc84-c8f0-5c54-a649-a99282d852ce",
+                "address": "ExxadAeGwmrfS3NnHxEqWX3qmVTFNXhk7DmSScUpp1t3",
+                "evmAddress": "0xbf7741d22ddc76c6bd162aa77e564c544c32cfe9",
+                "createdAt": "2025-11-08T18:37:23.341Z",
+                "displayName": "logjam",
+                "userHandle": "_logjam",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/ae494b59a6f1350bf0fe12377df2204f.jpg",
+                "description": "gambling to stack more neet",
+                "following": 143,
+                "followers": 53382,
+                "activated": false,
+                "isReferred": false,
+                "isRestricted": false,
+                "swapCount": 1121,
+                "numTrades": 315,
+                "totalVolume": 1865294.579605,
+                "private": false,
+                "thumbhash": "FRgODwCnVWp/eHetqLeHiXmIh2EIAE0B"
+              },
+              "tradeId": "e5cac990-46ad-41ff-8e45-fe545a432951",
+              "humanAmount": 10467427.205502,
+              "price": 0.00104592467023,
+              "value": 10948.140348071209,
+              "pnl": 5112.82598707121,
+              "unrealizedPnl": 4065.249364525626,
+              "realizedPnl": 1047.5766225455839,
+              "costBasis": 8158.999999999999,
+              "averageEntryPrice": 0.0006575532696255795,
+              "comment": {
+                "id": "b6f6f2dc-fd05-4c59-8b84-fbe640600944",
+                "userId": "5035bc84-c8f0-5c54-a649-a99282d852ce",
+                "tradeId": "e5cac990-46ad-41ff-8e45-fe545a432951",
+                "comment": "unvampable tek is good tek",
+                "visibility": "public",
+                "createdAt": "2026-03-12T17:31:40.660Z",
+                "parentId": null,
+                "numLikes": 8,
+                "reactions": {
+                  "counts": {
+                    "likeCount": 8
+                  },
+                  "reactions": {
+                    "like": false
+                  }
+                },
+                "olderThesis": 0,
+                "newerThesis": 0
+              },
+              "showComment": true,
+              "averageHoldTimeSeconds": 75403
+            }
+          ],
+          "totalHolders": 1
+        },
+        "C9dJfTGUzhuqPWxh9mcDr66JZN4uzXh2gh9EWnEdpump:1399811149": {
+          "topHolders": [
+            {
+              "user": {
+                "id": "f027edb5-59f9-5991-801b-f9fd91fa8ba8",
+                "address": "DR6V3mCnnVYkJb5FdWt8YW2rChQf85hVvo5rTNLQ53Sz",
+                "evmAddress": "0xd46b330a5fe5b6d97ccc1931a2573ddfdd8502b6",
+                "createdAt": "2025-10-24T20:51:44.859Z",
+                "displayName": "Zinc",
+                "userHandle": "zinceth",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/6eab41c69454e99f62781b4093ff85b7.jpg",
+                "description": "yo how\u2019d my fomo followers flip my x followers\nfollow me on x for the real alpha twin @zinceth",
+                "following": 65,
+                "followers": 68111,
+                "activated": true,
+                "isReferred": true,
+                "isRestricted": false,
+                "swapCount": 3117,
+                "numTrades": 1011,
+                "totalVolume": 16903103.797243,
+                "private": false,
+                "thumbhash": "CQgCBwBpdjaId3lgileotml6d3AnB3QD"
+              },
+              "tradeId": "95852695-bf6e-4317-aca0-25fc80c8d38e",
+              "humanAmount": 452780.409219,
+              "price": 0.027650202439,
+              "value": 12519.469975318612,
+              "pnl": -34.97240868138829,
+              "unrealizedPnl": -1172.761815115038,
+              "realizedPnl": 1137.7894064336497,
+              "costBasis": 26134.285247,
+              "averageEntryPrice": 0.030240336179852285,
+              "comment": null,
+              "showComment": true,
+              "averageHoldTimeSeconds": 95322
+            }
+          ],
+          "totalHolders": 1
+        },
+        "NV2RYH954cTJ3ckFUpvfqaQXU4ARqqDH3562nFSpump:1399811149": {
+          "topHolders": [
+            {
+              "user": {
+                "id": "f027edb5-59f9-5991-801b-f9fd91fa8ba8",
+                "address": "DR6V3mCnnVYkJb5FdWt8YW2rChQf85hVvo5rTNLQ53Sz",
+                "evmAddress": "0xd46b330a5fe5b6d97ccc1931a2573ddfdd8502b6",
+                "createdAt": "2025-10-24T20:51:44.859Z",
+                "displayName": "Zinc",
+                "userHandle": "zinceth",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/6eab41c69454e99f62781b4093ff85b7.jpg",
+                "description": "yo how\u2019d my fomo followers flip my x followers\nfollow me on x for the real alpha twin @zinceth",
+                "following": 65,
+                "followers": 68111,
+                "activated": true,
+                "isReferred": true,
+                "isRestricted": false,
+                "swapCount": 3117,
+                "numTrades": 1011,
+                "totalVolume": 16903103.797243,
+                "private": false,
+                "thumbhash": "CQgCBwBpdjaId3lgileotml6d3AnB3QD"
+              },
+              "tradeId": "bceede02-2128-4fba-9d26-7e884d081b5e",
+              "humanAmount": 39831.79616499902,
+              "price": 0.00571911198861,
+              "value": 227.80250297511571,
+              "pnl": -92689.28801835391,
+              "unrealizedPnl": -1061.9878980123085,
+              "realizedPnl": -91627.3001203416,
+              "costBasis": 302196.94581732916,
+              "averageEntryPrice": 0.032380924918489824,
+              "comment": {
+                "id": "b19ab9f9-c568-48b0-9b72-f1132dcc4690",
+                "userId": "f027edb5-59f9-5991-801b-f9fd91fa8ba8",
+                "tradeId": "bceede02-2128-4fba-9d26-7e884d081b5e",
+                "comment": "there\u2019s never been a coin for an animal that gave me emotional attachment\nthis mfer is so cute nothing compares, dragging around his stuffed orangutan and gettin bullied \ud83d\ude14\ud83d\ude14",
+                "visibility": "public",
+                "createdAt": "2026-02-22T09:28:52.557Z",
+                "parentId": null,
+                "numLikes": 38,
+                "reactions": {
+                  "counts": {
+                    "likeCount": 38
+                  },
+                  "reactions": {
+                    "like": false
+                  }
+                },
+                "olderThesis": 3,
+                "newerThesis": 0
+              },
+              "showComment": true,
+              "averageHoldTimeSeconds": 95322
+            }
+          ],
+          "totalHolders": 1
+        },
+        "32CdQdBUxbCsLy5AUHWmyidfwhgGUr9N573NBUrDpump:1399811149": {
+          "topHolders": [
+            {
+              "user": {
+                "id": "f027edb5-59f9-5991-801b-f9fd91fa8ba8",
+                "address": "DR6V3mCnnVYkJb5FdWt8YW2rChQf85hVvo5rTNLQ53Sz",
+                "evmAddress": "0xd46b330a5fe5b6d97ccc1931a2573ddfdd8502b6",
+                "createdAt": "2025-10-24T20:51:44.859Z",
+                "displayName": "Zinc",
+                "userHandle": "zinceth",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/6eab41c69454e99f62781b4093ff85b7.jpg",
+                "description": "yo how\u2019d my fomo followers flip my x followers\nfollow me on x for the real alpha twin @zinceth",
+                "following": 65,
+                "followers": 68111,
+                "activated": true,
+                "isReferred": true,
+                "isRestricted": false,
+                "swapCount": 3117,
+                "numTrades": 1011,
+                "totalVolume": 16903103.797243,
+                "private": false,
+                "thumbhash": "CQgCBwBpdjaId3lgileotml6d3AnB3QD"
+              },
+              "tradeId": "ed0c4992-5ff8-4b4e-b9e2-c0963536e48d",
+              "humanAmount": 10834064.950106999,
+              "price": 0.00324021468497,
+              "value": 35104.696349255464,
+              "pnl": 5661.5520842554715,
+              "unrealizedPnl": 5661.5520842554715,
+              "realizedPnl": 0,
+              "costBasis": 29443.144264999995,
+              "averageEntryPrice": 0.002717645168327075,
+              "comment": {
+                "id": "26341620-91cc-4e6e-91a1-a32de8164b97",
+                "userId": "f027edb5-59f9-5991-801b-f9fd91fa8ba8",
+                "tradeId": "ed0c4992-5ff8-4b4e-b9e2-c0963536e48d",
+                "comment": "clav 30 day subathon soon maxxing coded.",
+                "visibility": "public",
+                "createdAt": "2026-03-12T19:40:31.276Z",
+                "parentId": null,
+                "numLikes": 3,
+                "reactions": {
+                  "counts": {
+                    "likeCount": 3
+                  },
+                  "reactions": {
+                    "like": false
+                  }
+                },
+                "olderThesis": 0,
+                "newerThesis": 0
+              },
+              "showComment": true,
+              "averageHoldTimeSeconds": 95322
+            },
+            {
+              "user": {
+                "id": "e5b3a269-010a-511c-913a-1036fd1840b5",
+                "address": "6F7GEcDQQRBygxJy9KumtPTC58CRMq5ThT2iFibeRrPs",
+                "evmAddress": "0xc4db4c15b7a4005bb0bfc9d78d5688c6bf3a695b",
+                "createdAt": "2025-04-22T00:23:40.131Z",
+                "displayName": "rasmr",
+                "userHandle": "rasmr_eth",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/7ddbe466d1e2c8e5243f6835a44231e6.jpg",
+                "description": "5k to 100k challenge",
+                "following": 117,
+                "followers": 1654,
+                "activated": true,
+                "isReferred": true,
+                "isRestricted": false,
+                "swapCount": 374,
+                "numTrades": 149,
+                "totalVolume": 893455.213379,
+                "private": false,
+                "thumbhash": "XfgNHwYLdHl/m2RsWYVlWGeIuXcJCasF"
+              },
+              "tradeId": "f4fe4440-f750-4fc7-bc32-e48f844202fa",
+              "humanAmount": 3886575.458338,
+              "price": 0.00324021468497,
+              "value": 12593.338874350795,
+              "pnl": 1543.1844243507971,
+              "unrealizedPnl": 1543.1844243507971,
+              "realizedPnl": 0,
+              "costBasis": 11050.154449999998,
+              "averageEntryPrice": 0.002843159632033834,
+              "comment": {
+                "id": "0374ef61-1c73-4a88-96a0-cf05f3724f88",
+                "userId": "e5b3a269-010a-511c-913a-1036fd1840b5",
+                "tradeId": "f4fe4440-f750-4fc7-bc32-e48f844202fa",
+                "comment": "clav streamathon friday.",
+                "visibility": "public",
+                "createdAt": "2026-03-12T01:29:02.995Z",
+                "parentId": null,
+                "numLikes": 4,
+                "reactions": {
+                  "counts": {
+                    "likeCount": 4
+                  },
+                  "reactions": {
+                    "like": false
+                  }
+                },
+                "olderThesis": 1,
+                "newerThesis": 0
+              },
+              "showComment": true,
+              "averageHoldTimeSeconds": 116594
+            }
+          ],
+          "totalHolders": 2
+        }
+      }
+    },
+    "statusCode": 200
+  },
+  "captured_at": "2026-03-13T12:09:18.384919"
+}

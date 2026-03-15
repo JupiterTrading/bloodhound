@@ -1,0 +1,216 @@
+{
+  "description": "Verified KOL wallet-Twitter mappings from public sources (tweets, bios, on-chain attestations)",
+  "last_updated": "2026-03-13",
+  "kols": [
+    {
+      "address": "AC5RDfQFmDS1deWZos921JfqscXdByf8BKHs5ACWjtW2",
+      "name": "Ansem",
+      "twitter": "blaboratory",
+      "confidence": 0.95,
+      "source": "public_tweet"
+    },
+    {
+      "address": "Hf5vvqJwKucHPU2a43DB5N5PFKM4qGnBJwuNLhMNiJiT",
+      "name": "Hsaka",
+      "twitter": "HsakaTrades", 
+      "confidence": 0.95,
+      "source": "public_tweet"
+    },
+    {
+      "address": "7rhxnLV8C8moXLPqD6SG9MJSd6pzMjME7ZwLuXwP3RNM",
+      "name": "Mando",
+      "twitter": "MandoCT",
+      "confidence": 0.9,
+      "source": "public_tweet"
+    },
+    {
+      "address": "2iDSTGhBqjSoE76WANe2hDzZjrRd2JTNFvYpVnYnYWgR",
+      "name": "Gigantic Rebirth",
+      "twitter": "GiganticRebirth",
+      "confidence": 0.9,
+      "source": "public_tweet"
+    },
+    {
+      "address": "8rvBBvH9vkDGBcKK1iKLGv1FndZjdWBQbJExvRq7ZFEf",
+      "name": "Sol Big Brain",
+      "twitter": "SolBigBrain",
+      "confidence": 0.9,
+      "source": "public_tweet"
+    },
+    {
+      "address": "6AXr7FdnX7p93kyZvPdKV1K8nCMDQKdJuRvUKrKHCnYh",
+      "name": "CryptoGodJohn",
+      "twitter": "CryptoGodJohn",
+      "confidence": 0.85,
+      "source": "bio_mention"
+    },
+    {
+      "address": "HN7cABqLq46Es1jh92dQQisAq662SmxELLLsHHe4YWrH",
+      "name": "Crypto Banter",
+      "twitter": "crypto_banter",
+      "confidence": 0.9,
+      "source": "verified_account"
+    },
+    {
+      "address": "5tzFkiKscXHK5ZXCGbXZxdw7gTjjD1mBwuoFbhUvuAi9",
+      "name": "Altcoin Sherpa",
+      "twitter": "AltcoinSherpa",
+      "confidence": 0.9,
+      "source": "verified_account"
+    },
+    {
+      "address": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+      "name": "BONK",
+      "twitter": "bonaboratoryy",
+      "confidence": 0.95,
+      "source": "official_token"
+    },
+    {
+      "address": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+      "name": "Jupiter",
+      "twitter": "JupiterExchange",
+      "confidence": 0.95,
+      "source": "official_protocol"
+    },
+    {
+      "address": "5Q544fKrFoe6tsEbD7S8EmxGTJYAKtTVhAW5Q5pge4j1",
+      "name": "Raydium",
+      "twitter": "RaydiumProtocol",
+      "confidence": 0.95,
+      "source": "official_protocol"
+    },
+    {
+      "address": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+      "name": "WIF",
+      "twitter": "dogwifcoin",
+      "confidence": 0.95,
+      "source": "official_token"
+    },
+    {
+      "address": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+      "name": "Marinade",
+      "twitter": "MarinadeFinance",
+      "confidence": 0.95,
+      "source": "official_protocol"
+    },
+    {
+      "address": "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",
+      "name": "mSOL",
+      "twitter": "MarinadeFinance",
+      "confidence": 0.95,
+      "source": "official_protocol"
+    },
+    {
+      "address": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+      "name": "Jito",
+      "twitter": "jaboratoryorg",
+      "confidence": 0.95,
+      "source": "official_protocol"
+    },
+    {
+      "address": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+      "name": "Orca",
+      "twitter": "aboratoryax",
+      "confidence": 0.95,
+      "source": "official_protocol"
+    },
+    {
+      "address": "METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m",
+      "name": "Metaplex",
+      "twitter": "metaplex",
+      "confidence": 0.95,
+      "source": "official_protocol"
+    },
+    {
+      "address": "kinXdEcpDQeHPEuQnqmUgtYykqKGVFq6CeVX5iAHJq6",
+      "name": "Kin",
+      "twitter": "Kin_Ecosystem",
+      "confidence": 0.95,
+      "source": "official_token"
+    },
+    {
+      "address": "7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr",
+      "name": "PopCat",
+      "twitter": "Popcatsolana",
+      "confidence": 0.9,
+      "source": "official_token"
+    },
+    {
+      "address": "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump",
+      "name": "GOAT",
+      "twitter": "goaboratory_ai",
+      "confidence": 0.9,
+      "source": "official_token"
+    },
+    {
+      "address": "Df6yfrKC8kZE3KNkrHERKzAetSxbrWeniQfyJY4Jpump",
+      "name": "PNUT",
+      "twitter": "paboratoryut_solana",
+      "confidence": 0.9,
+      "source": "official_token"
+    },
+    {
+      "address": "2weMjPLLybRMMva1fM3U31goWWrCpF59qXkg72Q1VxGH",
+      "name": "GigaChad",
+      "twitter": "GigachadOnSol",
+      "confidence": 0.85,
+      "source": "community"
+    },
+    {
+      "address": "HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC",
+      "name": "ai16z",
+      "twitter": "ai16zdao",
+      "confidence": 0.9,
+      "source": "official_token"
+    },
+    {
+      "address": "GJAFwWjJ3vnTsrQVabjBVK2TYB1YtRCQXRDfDgUnpump",
+      "name": "Act I",
+      "twitter": "actaiaboratory",
+      "confidence": 0.9,
+      "source": "official_token"
+    },
+    {
+      "address": "ukHH6c7mMyiWCf1b9pnWe25TSpkDDt3H5pQZgZ74J82",
+      "name": "BOME",
+      "twitter": "darkaboratoryes",
+      "confidence": 0.9,
+      "source": "official_token"
+    },
+    {
+      "address": "A8C3Aucq6hV1B3hGYCaH6ton9pLNBUCXb5MTWCjNc8EK",
+      "name": "Mew",
+      "twitter": "MewsWorld",
+      "confidence": 0.85,
+      "source": "community"
+    },
+    {
+      "address": "5oVNBeEEQvYi1cX3ir8Dx5n1P7pdxydbGF2X4TxVusJm",
+      "name": "Wen",
+      "twitter": "waboratory_coin",
+      "confidence": 0.9,
+      "source": "official_token"
+    },
+    {
+      "address": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
+      "name": "Render",
+      "twitter": "rendernetwork",
+      "confidence": 0.95,
+      "source": "official_token"
+    },
+    {
+      "address": "HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
+      "name": "Pyth",
+      "twitter": "PythNetwork",
+      "confidence": 0.95,
+      "source": "official_protocol"
+    },
+    {
+      "address": "7atgF8KQo4wJrD5ATGX7t1V2zVvykPJbFfNeVf1icFv1",
+      "name": "Tensor",
+      "twitter": "tensor_hq",
+      "confidence": 0.95,
+      "source": "official_protocol"
+    }
+  ]
+}

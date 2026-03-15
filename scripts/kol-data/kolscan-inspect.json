@@ -1,0 +1,38 @@
+{
+  "title": "kolscan",
+  "accountLinks": 50,
+  "buttons": [],
+  "tabs": [],
+  "scrollableContainers": [
+    {
+      "className": "mainContent",
+      "height": 3826,
+      "children": 3
+    },
+    {
+      "className": "infinite-scroll-component leaderboard_infiniteScro",
+      "height": 3590,
+      "children": 50
+    }
+  ],
+  "sampleLinks": [
+    {
+      "href": "/account/ApRnQN2HkbCn7W2WWiT2FEKvuKJp9LugRyAE1a9Hdz1?timeframe=1",
+      "text": "S",
+      "parentClass": "leaderboard_leaderboardUser__8OZpJ leaderboard_fir",
+      "parentHTML": "<span style=\"width:30px;display:flex;align-items:center\"><div style=\"position:relative;min-width:25px;width:25px;min-height:25px;height:25px;overflow:hidden;display:inline-block;border-radius:0px;cursor:pointer\"><img alt=\"trophy\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" style=\"position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;object-fit:cover;color:transparent\" src=\"https://kolscan.io/images/Trophy.webp\"></div></span><a style=\"display:flex;align-items:center;gap:10px"
+    },
+    {
+      "href": "/account/CyaE1VxvBrahnPWkqm5VsdCvyS2QmNht2UFrKJHga54o?timeframe=1",
+      "text": "Cented",
+      "parentClass": "leaderboard_leaderboardUser__8OZpJ leaderboard_sec",
+      "parentHTML": "<span style=\"width:30px;display:flex;align-items:center\"><h1 style=\"font-size:20px\">2</h1></span><a style=\"display:flex;align-items:center;gap:10px\" href=\"/account/CyaE1VxvBrahnPWkqm5VsdCvyS2QmNht2UFrKJHga54o?timeframe=1\"><div style=\"position:relative;min-width:30px;width:30px;min-height:30px;height:30px;overflow:hidden;display:inline-block;border-radius:1000px;cursor:pointer\"><img alt=\"pfp\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" style=\"position:absolute;height:100%;width:100%;left:0;t"
+    },
+    {
+      "href": "/account/G6fUXjMKPJzCY1rveAE6Qm7wy5U3vZgKDJmN1VPAdiZC?timeframe=1",
+      "text": "clukz",
+      "parentClass": "leaderboard_leaderboardUser__8OZpJ leaderboard_thi",
+      "parentHTML": "<span style=\"width:30px;display:flex;align-items:center\"><h1 style=\"font-size:20px\">3</h1></span><a style=\"display:flex;align-items:center;gap:10px\" href=\"/account/G6fUXjMKPJzCY1rveAE6Qm7wy5U3vZgKDJmN1VPAdiZC?timeframe=1\"><div style=\"position:relative;min-width:30px;width:30px;min-height:30px;height:30px;overflow:hidden;display:inline-block;border-radius:1000px;cursor:pointer\"><img alt=\"pfp\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" style=\"position:absolute;height:100%;width:100%;left:0;t"
+    }
+  ]
+}

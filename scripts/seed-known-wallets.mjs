@@ -279,6 +279,30 @@ async function upsertToSupabase(rows) {
 }
 
 // ---------------------------------------------------------------------------
+// 5. Load local KOL scraper data
+// ---------------------------------------------------------------------------
+async function loadLocalKolData() {
+  console.log('\n[3/4] Loading local KOL scraper data...');
+  const wallets = [];
+  const { readFile } = await import('fs/promises');
+  const files = ['kol-data/aggregated-kols.json', 'kol-data/master-kols.json'];
+  for (const file of files) {
+    try {
+      const data = await readFile(file, 'utf-8');
+      const kols = JSON.parse(data);
+      for (const kol of kols) {
+        if (kol.address && kol.address.length >= 32) {
+          wallets.push({ address: kol.address, label: kol.name || kol.label, twitter_handle: kol.twitter_handle, _source: file.split('/').pop().replace('.json', '') });
+        }
+      }
+      console.log(`  ${file}: ${kols.length} wallets`);
+    } catch { /* skip */ }
+  }
+  console.log(`  Total from local: ${wallets.length}`);
+  return wallets;
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 async function main() {
@@ -290,8 +314,10 @@ async function main() {
   // Step 2: Dune (optional — includes Twitter handles)
   const duneWallets = await fetchDuneKols();
 
+  // Step 3: Load local KOL scraper data
+  const localKols = await loadLocalKolData();
+
   // Merge all sources — deduplicate by address
-  // Priority order: KOLscan > Dune (KOLscan label wins if overlap)
   const byAddress = new Map();
 
   for (const w of leaderboard) {
@@ -303,12 +329,17 @@ async function main() {
       byAddress.set(w.address, { ...w, source: w._source || 'dune_query' });
     } else {
       const existing = byAddress.get(w.address);
-      // Merge: prefer existing label and twitter, pick up Dune twitter if missing
-      byAddress.set(w.address, {
-        ...existing,
-        twitter_handle: existing.twitter_handle || w.twitter_handle,
-        source: `${existing.source},${w._source || 'dune_query'}`,
-      });
+      byAddress.set(w.address, { ...existing, twitter_handle: existing.twitter_handle || w.twitter_handle, source: `${existing.source},${w._source || 'dune_query'}` });
+    }
+  }
+
+  // Local scraped data has highest priority for Twitter (verified)
+  for (const w of localKols) {
+    if (!byAddress.has(w.address)) {
+      byAddress.set(w.address, { ...w, source: w._source || 'local', _category: 'kol' });
+    } else {
+      const existing = byAddress.get(w.address);
+      byAddress.set(w.address, { ...existing, label: existing.label || w.label, twitter_handle: w.twitter_handle || existing.twitter_handle, source: `${existing.source},${w._source || 'local'}` });
     }
   }
 

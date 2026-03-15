@@ -39,20 +39,7 @@ export function ClassificationBadge({ label }: ClassificationBadgeProps) {
 
   return (
     <span
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        fontSize: "11px",
-        fontWeight: 600,
-        letterSpacing: "0.08em",
-        padding: "3px 8px",
-        borderRadius: "4px",
-        border: `1px solid ${isDangerous ? "var(--accent)" : "var(--border)"}`,
-        color: isDangerous ? "var(--accent)" : "var(--text-secondary)",
-        textTransform: "uppercase",
-        whiteSpace: "nowrap",
-        lineHeight: 1.4,
-      }}
+      className={`badge uppercase ${isDangerous ? 'badge-accent' : 'badge-neutral'}`}
     >
       {display}
     </span>

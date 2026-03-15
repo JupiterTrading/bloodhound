@@ -33,25 +33,8 @@ export function WalletEventsPanel({ address }: Props) {
   if (!data || events.length === 0) return null;
 
   return (
-    <div
-      style={{
-        background: "var(--bg-surface)",
-        border: "1px solid var(--border)",
-        borderRadius: "8px",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        style={{
-          padding: "10px 16px",
-          borderBottom: "1px solid var(--border)",
-          fontSize: "10px",
-          fontWeight: 600,
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--text-muted)",
-        }}
-      >
+    <div className="card overflow-hidden">
+      <div className="px-4 py-2.5 border-b border-[var(--border)] text-[10px] font-semibold tracking-widest uppercase text-[var(--text-muted)]">
         Event Involvement — {events.length}
       </div>
 
@@ -61,70 +44,26 @@ export function WalletEventsPanel({ address }: Props) {
           <Link
             key={ev.slug}
             href={`/event/${ev.slug}`}
-            style={{ textDecoration: "none", display: "block" }}
+            className="no-underline block"
           >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: "10px",
-                padding: "10px 16px",
-                borderBottom: "1px solid var(--border)",
-                transition: "background 60ms",
-              }}
-              onMouseEnter={(e) =>
-                ((e.currentTarget as HTMLDivElement).style.background = "var(--bg-elevated)")
-              }
-              onMouseLeave={(e) =>
-                ((e.currentTarget as HTMLDivElement).style.background = "transparent")
-              }
-            >
+            <div className="flex items-start gap-2.5 px-4 py-2.5 border-b border-[var(--border)] hover:bg-[var(--bg-elevated)] transition-colors">
               <div
-                style={{
-                  width: "3px",
-                  height: "32px",
-                  borderRadius: "2px",
-                  background: color,
-                  flexShrink: 0,
-                  marginTop: "2px",
-                }}
+                className="w-[3px] h-8 rounded-sm shrink-0 mt-0.5"
+                style={{ background: color }}
               />
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    color: "var(--text-primary)",
-                    marginBottom: "2px",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                  }}
-                >
+              <div className="flex-1 min-w-0">
+                <div className="text-[12px] font-semibold text-[var(--text-primary)] mb-0.5 overflow-hidden text-ellipsis whitespace-nowrap">
                   {ev.title}
                 </div>
-                <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+                <div className="flex gap-2 items-center">
                   <span
-                    style={{
-                      fontSize: "10px",
-                      fontWeight: 600,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.05em",
-                      color,
-                    }}
+                    className="text-[10px] font-semibold uppercase tracking-wide"
+                    style={{ color }}
                   >
                     {ev.role?.replace("_", " ")}
                   </span>
                   {ev.description && (
-                    <span
-                      style={{
-                        fontSize: "10px",
-                        color: "var(--text-muted)",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
+                    <span className="text-[10px] text-[var(--text-muted)] overflow-hidden text-ellipsis whitespace-nowrap">
                       {ev.description}
                     </span>
                   )}

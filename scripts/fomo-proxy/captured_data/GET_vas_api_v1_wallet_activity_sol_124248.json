@@ -1,0 +1,41 @@
+{
+  "endpoint": "GET /vas/api/v1/wallet_activity/sol",
+  "url": "https://gmgn.gracematrix.net/vas/api/v1/wallet_activity/sol?device_id=724039AA-A424-4805-8706-9F47ABC12322&client_id=memetracker_ios_2030304&from_app=memetracker&app_ver=2030304&pkg=io.gracematrix.gmgn&app_lang=en&sys_lang=en-US&brand=Apple&model=iPhone&os=ios&os_api=26.2.1&tz_name=America%2FChicago&tz_offset=300&wallet=3npU8oT7nRTSbsRmJSpMFwn3jjdDaYWW4HjDzj5DsSTM&limit=10&type=buy&type=sell",
+  "request_headers": {
+    "cookie": "__cf_bm=XVxn952ZdGLKFzfyxUai7oK4mwR0Rjaz0vy3GFtsoBY-1773423760.3898044-1.0.1.1-ezHHXUqS7p479eRTeLxdn6hosQKuC7HKBlN6Kn2au.FdC5Jzkd3KF9p00G67a6.4Z_rvxRUoObQ1t7_ZukeQCKLymbuAJnk6ZyLdNbu1bxwyYrDRgPqqyhUbJfhSd_OO",
+    "accept": "application/json, text/plain, */*",
+    "accept-encoding": "gzip, deflate, br",
+    "sentry-trace": "713cc02b08e94c6bbfac12e152daf254-a0afd1cb33b9129e-0",
+    "baggage": "sentry-environment=production,sentry-public_key=d4979c342f6dba6bf527fa2eddfcfe31,sentry-trace_id=713cc02b08e94c6bbfac12e152daf254,sentry-sample_rate=0.01,sentry-transaction=NativeGMGNReportPage,sentry-sampled=false",
+    "accept-language": "en-US,en;q=0.9",
+    "priority": "u=3, i",
+    "user-agent": "GMGN/2030304 CFNetwork/3860.300.31 Darwin/25.2.0"
+  },
+  "request_body": null,
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:42:48 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "x-trace-id": "631201f6b0de618f",
+    "x-envoy-upstream-service-time": "38",
+    "server": "cloudflare",
+    "cf-cache-status": "DYNAMIC",
+    "x-xss-protection": "1; mode=block",
+    "expect-ct": "max-age=86400, enforce",
+    "referrer-policy": "same-origin",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "SAMEORIGIN",
+    "content-encoding": "gzip",
+    "cf-ray": "9dbcd658d88ffb1c-BNA"
+  },
+  "response_body": {
+    "code": 0,
+    "reason": "",
+    "message": "success",
+    "data": {
+      "activities": [],
+      "next": ""
+    }
+  },
+  "captured_at": "2026-03-13T12:42:48.585973"
+}

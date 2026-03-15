@@ -68,57 +68,19 @@ export function TransactionHistory({ address }: Props) {
   }
 
   return (
-    <section
-      style={{
-        background: "var(--bg-surface)",
-        border: "1px solid var(--border)",
-        borderRadius: "8px",
-        overflow: "hidden",
-      }}
-    >
+    <section className="card overflow-hidden">
       {/* Header */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "16px 20px",
-          borderBottom: "1px solid var(--border)",
-          gap: "12px",
-          flexWrap: "wrap",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "11px",
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "var(--text-muted)",
-            margin: 0,
-            flexShrink: 0,
-          }}
-        >
+      <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--border)] gap-3 flex-wrap">
+        <h2 className="text-[11px] font-semibold tracking-wide uppercase text-[var(--text-muted)] shrink-0">
           Transaction History
         </h2>
 
         {/* Filters */}
-        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
-          {/* Type filter */}
+        <div className="flex items-center gap-2 flex-wrap">
           <select
             value={typeFilter}
             onChange={(e) => { setTypeFilter(e.target.value); setPage(1); }}
-            style={{
-              background: "var(--bg-base)",
-              border: `1px solid ${typeFilter ? "var(--accent)" : "var(--border)"}`,
-              borderRadius: "5px",
-              padding: "4px 8px",
-              fontSize: "12px",
-              color: typeFilter ? "var(--text-primary)" : "var(--text-muted)",
-              fontFamily: "inherit",
-              cursor: "pointer",
-              outline: "none",
-            }}
+            className={`input py-1 px-2 text-[12px] ${typeFilter ? 'border-[var(--accent)] text-[var(--text-primary)]' : ''}`}
           >
             <option value="">All types</option>
             {TX_TYPES.filter(Boolean).map((t) => (
@@ -126,121 +88,52 @@ export function TransactionHistory({ address }: Props) {
             ))}
           </select>
 
-          {/* Direction filter */}
           <select
             value={dirFilter}
             onChange={(e) => { setDirFilter(e.target.value as typeof dirFilter); setPage(1); }}
-            style={{
-              background: "var(--bg-base)",
-              border: `1px solid ${dirFilter ? "var(--accent)" : "var(--border)"}`,
-              borderRadius: "5px",
-              padding: "4px 8px",
-              fontSize: "12px",
-              color: dirFilter ? "var(--text-primary)" : "var(--text-muted)",
-              fontFamily: "inherit",
-              cursor: "pointer",
-              outline: "none",
-            }}
+            className={`input py-1 px-2 text-[12px] ${dirFilter ? 'border-[var(--accent)] text-[var(--text-primary)]' : ''}`}
           >
             <option value="">All directions</option>
             <option value="in">Incoming</option>
             <option value="out">Outgoing</option>
           </select>
 
-          {/* Date range */}
           <input
             type="date"
             value={dateFrom}
             onChange={(e) => { setDateFrom(e.target.value); setPage(1); }}
             title="From date"
-            style={{
-              background: "var(--bg-base)",
-              border: `1px solid ${dateFrom ? "var(--accent)" : "var(--border)"}`,
-              borderRadius: "5px",
-              padding: "4px 8px",
-              fontSize: "12px",
-              color: dateFrom ? "var(--text-primary)" : "var(--text-muted)",
-              fontFamily: "inherit",
-              cursor: "pointer",
-              outline: "none",
-              colorScheme: "dark",
-            }}
+            className={`input py-1 px-2 text-[12px] [color-scheme:dark] ${dateFrom ? 'border-[var(--accent)] text-[var(--text-primary)]' : ''}`}
           />
-          <span style={{ fontSize: "11px", color: "var(--text-muted)" }}>→</span>
+          <span className="text-[11px] text-[var(--text-muted)]">→</span>
           <input
             type="date"
             value={dateTo}
             onChange={(e) => { setDateTo(e.target.value); setPage(1); }}
             title="To date"
-            style={{
-              background: "var(--bg-base)",
-              border: `1px solid ${dateTo ? "var(--accent)" : "var(--border)"}`,
-              borderRadius: "5px",
-              padding: "4px 8px",
-              fontSize: "12px",
-              color: dateTo ? "var(--text-primary)" : "var(--text-muted)",
-              fontFamily: "inherit",
-              cursor: "pointer",
-              outline: "none",
-              colorScheme: "dark",
-            }}
+            className={`input py-1 px-2 text-[12px] [color-scheme:dark] ${dateTo ? 'border-[var(--accent)] text-[var(--text-primary)]' : ''}`}
           />
 
-          {/* Clear filters */}
           {hasFilters && (
             <button
               onClick={clearFilters}
-              style={{
-                background: "none",
-                border: "1px solid var(--border)",
-                borderRadius: "5px",
-                padding: "4px 8px",
-                fontSize: "12px",
-                color: "var(--text-muted)",
-                cursor: "pointer",
-                fontFamily: "inherit",
-                transition: "border-color 80ms, color 80ms",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--text-muted)";
-                (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)";
-                (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)";
-              }}
+              className="bg-transparent border border-[var(--border)] rounded py-1 px-2 text-[12px] text-[var(--text-muted)] cursor-pointer hover:border-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
             >
               Clear ×
             </button>
           )}
 
           {isFetching && (
-            <span style={{ fontSize: 11, color: "var(--text-muted)" }}>
-              Loading...
-            </span>
+            <span className="text-[11px] text-[var(--text-muted)]">Loading...</span>
           )}
         </div>
       </div>
 
       {/* Table */}
-      <div style={{ overflowX: "auto" }}>
-        <table
-          style={{
-            width: "100%",
-            borderCollapse: "collapse",
-            fontSize: "13px",
-          }}
-        >
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse text-[13px]">
           <thead>
-            <tr
-              style={{
-                borderBottom: "1px solid var(--border)",
-                color: "var(--text-muted)",
-                fontSize: "11px",
-                letterSpacing: "0.04em",
-                textTransform: "uppercase",
-              }}
-            >
+            <tr className="border-b border-[var(--border)] text-[var(--text-muted)] text-[11px] tracking-wide uppercase">
               <Th>Time</Th>
               <Th>Source</Th>
               <Th>Type</Th>
@@ -262,12 +155,7 @@ export function TransactionHistory({ address }: Props) {
                 <tr>
                   <td
                     colSpan={9}
-                    style={{
-                      padding: "40px 20px",
-                      textAlign: "center",
-                      color: "var(--text-muted)",
-                      fontSize: "13px",
-                    }}
+                    className="px-5 py-10 text-center text-[var(--text-muted)] text-[13px]"
                   >
                     {hasFilters
                       ? "No transactions match the current filters."
@@ -284,19 +172,9 @@ export function TransactionHistory({ address }: Props) {
 
       {/* Pagination */}
       {(page > 1 || hasMore) && (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "12px 20px",
-            borderTop: "1px solid var(--border)",
-            fontSize: "12px",
-            color: "var(--text-muted)",
-          }}
-        >
+        <div className="flex items-center justify-between px-5 py-3 border-t border-[var(--border)] text-[12px] text-[var(--text-muted)]">
           <span>Page {page}</span>
-          <div style={{ display: "flex", gap: "8px" }}>
+          <div className="flex gap-2">
             <PaginationBtn
               label="← Prev"
               disabled={page === 1}
@@ -323,12 +201,8 @@ function Th({
 }) {
   return (
     <th
-      style={{
-        padding: "10px 12px 10px 16px",
-        textAlign: align,
-        fontWeight: 600,
-        whiteSpace: "nowrap",
-      }}
+      className="px-3 py-2.5 pl-4 font-semibold whitespace-nowrap"
+      style={{ textAlign: align }}
     >
       {children}
     </th>
@@ -497,9 +371,9 @@ function TxRow({
 
 function SkeletonRow() {
   return (
-    <tr style={{ borderBottom: "1px solid var(--border)" }}>
+    <tr className="border-b border-[var(--border)]">
       {[120, 28, 60, 50, 80, 28, 100, 60, 20].map((w, i) => (
-        <td key={i} style={{ padding: "12px 16px" }}>
+        <td key={i} className="px-4 py-3">
           <Skeleton width={w} height={12} />
         </td>
       ))}
@@ -520,17 +394,7 @@ function PaginationBtn({
     <button
       onClick={onClick}
       disabled={disabled}
-      style={{
-        background: "var(--bg-elevated)",
-        border: "1px solid var(--border)",
-        borderRadius: "4px",
-        padding: "4px 10px",
-        fontSize: "12px",
-        color: disabled ? "var(--text-muted)" : "var(--text-primary)",
-        cursor: disabled ? "not-allowed" : "pointer",
-        fontFamily: "inherit",
-        opacity: disabled ? 0.5 : 1,
-      }}
+      className={`bg-[var(--bg-elevated)] border border-[var(--border)] rounded px-2.5 py-1 text-[12px] ${disabled ? 'text-[var(--text-muted)] cursor-not-allowed opacity-50' : 'text-[var(--text-primary)] cursor-pointer'}`}
     >
       {label}
     </button>

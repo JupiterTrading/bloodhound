@@ -824,6 +824,135 @@ export const newPairsApi = {
   },
 };
 
+// --- KOL Profiles ---
+
+export interface KolProfile {
+  id: string;
+  display_name: string;
+  twitter_handle: string | null;
+  twitter_pfp_url: string | null;
+  telegram_handle: string | null;
+  description: string | null;
+  source: string;
+  verified: boolean;
+  total_pnl_usd: number;
+  win_rate: number;
+  trade_count: number;
+  wallet_count?: number;
+  kol_wallets?: KolWallet[];
+  created_at: string;
+}
+
+export interface KolWallet {
+  id: string;
+  address: string;
+  label: string | null;
+  is_primary: boolean;
+  discovered_via: string;
+  confidence: number;
+}
+
+export interface KolRankingProfile {
+  id: string;
+  display_name: string;
+  twitter_handle: string | null;
+  twitter_pfp_url: string | null;
+  verified: boolean;
+  tier?: string;
+  source?: string;
+  followers_count?: number;
+}
+
+export interface KolRanking {
+  rank: number;
+  profile: KolRankingProfile;
+  pnl_usd: number;
+  pnl_sol: number;
+  volume_usd: number;
+  volume_sol: number;
+  trade_count: number;
+  winning_trades: number;
+  losing_trades: number;
+  positions: number;
+  positions_win: number;
+  positions_loss: number;
+  win_rate: number;
+  roi?: number;
+  avg_hold_time_mins?: number;
+  sol_balance?: number;
+}
+
+export const kolApi = {
+  profiles: (params: { limit?: number; offset?: number; search?: string } = {}) => {
+    const qs = new URLSearchParams(
+      Object.entries(params)
+        .filter(([, v]) => v !== undefined)
+        .map(([k, v]) => [k, String(v)])
+    ).toString();
+    return apiFetch<{ profiles: KolProfile[]; count: number }>(
+      `/v1/kol/profiles${qs ? `?${qs}` : ""}`
+    );
+  },
+
+  profile: (handle: string) =>
+    apiFetch<KolProfile>(`/v1/kol/profiles/${handle}`),
+
+  trades: (handle: string, limit = 50) =>
+    apiFetch<{ trades: KolTrade[]; count: number }>(
+      `/v1/kol/profiles/${handle}/trades?limit=${limit}`
+    ),
+
+  rankings: (params: { wallet_type?: string; period?: string; sort_by?: string; sort_dir?: string; limit?: number; offset?: number } = {}) => {
+    const qs = new URLSearchParams(
+      Object.entries(params)
+        .filter(([, v]) => v !== undefined)
+        .map(([k, v]) => [k, String(v)])
+    ).toString();
+    return apiFetch<{ rankings: KolRanking[]; period: string; sort_by: string; sort_dir: string; wallet_type: string; count: number }>(
+      `/v1/kol/rankings${qs ? `?${qs}` : ""}`
+    );
+  },
+
+  byWallet: (address: string) =>
+    apiFetch<{ kol_profile: KolProfile | null }>(`/v1/kol/wallet/${address}`),
+
+  submit: (body: {
+    wallet_address: string;
+    twitter_handle?: string;
+    display_name?: string;
+    evidence_text?: string;
+  }) =>
+    apiFetch<{ success: boolean; submission_id: string }>("/v1/kol/submit", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+
+  social: (handle: string) =>
+    apiFetch<{
+      profile: {
+        id: string;
+        username: string;
+        name: string;
+        description: string | null;
+        profile_image_url: string | null;
+        followers_count: number;
+        following_count: number;
+        tweet_count: number;
+        verified: boolean;
+      } | null;
+      recent_tweets: {
+        id: string;
+        text: string;
+        created_at: string;
+        like_count: number;
+        retweet_count: number;
+        token_mentions: string[];
+      }[];
+      top_token_mentions: [string, number][];
+      total_engagement: number;
+    }>(`/v1/kol/profiles/${handle}/social`),
+};
+
 export const alertsApi = {
   list: () => apiFetch<{ alerts: unknown[] }>("/v1/me/alerts"),
 

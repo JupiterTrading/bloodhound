@@ -1,0 +1,299 @@
+{
+  "endpoint": "POST /proxy/cryptoTokens/friends",
+  "url": "https://prod-api.fomo.family/proxy/cryptoTokens/friends",
+  "request_headers": {
+    "content-type": "application/json",
+    "x-app-installation-id": "install_bc7884b4-0c4a-465b-903a-33e17158ff11",
+    "accept": "*/*",
+    "baggage": "sentry-environment=production,sentry-public_key=4e163b6befe2112027dfa32cd92ca3ba,sentry-trace_id=81bf22b8e6a944cdb27b57c0e72a4fca,sentry-org_id=4508656189702144,sentry-transaction=__root,sentry-sampled=false,sentry-sample_rand=0.5438219467411642,sentry-sample_rate=0.0001",
+    "authorization": "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkI4SXlObWU1V0lZRnJIclJRVDBLdFlPRlFIUjFKVXFnaGVTMHhSZHR1QVkifQ.eyJzaWQiOiJjbWt6ZW5oa2MwNXM4am8wY3RrbHo1cmpqIiwiaXNzIjoicHJpdnkuaW8iLCJpYXQiOjE3NzM0MjE3NTcsImF1ZCI6ImNtNmg0ODVvMzAwbjN6ajl5bDZ2cGVkcTciLCJzdWIiOiJkaWQ6cHJpdnk6Y21rejA2N2RkMDF5Z2puMGNhaXc5aWNrcCIsImV4cCI6MTc3MzQyNTM1N30.KSKe7Zlqq97fc4QPfjM7DRQFJn2TbIjhiI5oDtSDVmm1sYOZq8Vd2Zn-4ks9I-Iepjj6jRmPmI_rhyeOayLexA",
+    "priority": "u=3, i",
+    "x-supported-chains": "1399811149,8453,56,143",
+    "accept-encoding": "gzip, deflate, br",
+    "if-none-match": "W/\"1a16-7Ms4039nfhq+jiWxh/cE5Q4Fjhc\"",
+    "accept-language": "en-US,en;q=0.9",
+    "sentry-trace": "81bf22b8e6a944cdb27b57c0e72a4fca-abeebc4a8841dc0a-0",
+    "content-length": "0",
+    "user-agent": "fomo/1.60.4/280/ios/iPhone 17 Pro Max/Apple"
+  },
+  "request_body": null,
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:09:18 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "cf-ray": "9dbca544ee2efb24-BNA",
+    "cf-cache-status": "DYNAMIC",
+    "content-encoding": "gzip",
+    "etag": "W/\"1a1f-pziifDcAKt6k2q76F4Y9htLQUfE\"",
+    "server": "cloudflare",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "vary": "Origin, Accept-Encoding",
+    "access-control-allow-credentials": "true",
+    "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+    "cross-origin-opener-policy": "same-origin",
+    "cross-origin-resource-policy": "same-origin",
+    "origin-agent-cluster": "?1",
+    "referrer-policy": "no-referrer",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-download-options": "noopen",
+    "x-frame-options": "SAMEORIGIN",
+    "x-permitted-cross-domain-policies": "none",
+    "x-request-id": "bb4cf06e-1976-42b8-b455-6ae2af4732e2",
+    "x-xss-protection": "0",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "response_body": {
+    "success": true,
+    "message": "Crypto tokens with friend holders retrieved successfully",
+    "responseObject": {
+      "tokenHoldersMap": {
+        "cbbtcf3aa214zXHbiAZQwf4122FBYbraNdFqgw4iMij:1399811149": {
+          "topHolders": [
+            {
+              "user": {
+                "id": "aefe2ddd-c580-5245-a2f5-e4ed62f7ef10",
+                "address": "A5SEXYJY4jTEi6sjMLfZs5KAP8SVFvLDPDV67GgSSZSk",
+                "evmAddress": "0x542b6b4cbab54a6ae6aadccd32a24e8c8b75370c",
+                "createdAt": "2025-09-03T23:25:33.441Z",
+                "displayName": "frank",
+                "userHandle": "frankdegods",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/fbaf6cb81ffe8dae8875145f1577acea.jpg",
+                "description": "calling top on this account for now, moving to alts",
+                "following": 207,
+                "followers": 81850,
+                "activated": false,
+                "isReferred": true,
+                "isRestricted": false,
+                "swapCount": 4195,
+                "numTrades": 1629,
+                "totalVolume": 30376837.412405,
+                "private": false,
+                "thumbhash": "3vcFFwKNSKx7PVk/2UmKmXWXefaJBc8G"
+              },
+              "tradeId": "c90276c8-6c07-45ad-862a-50b6c78e2035",
+              "humanAmount": 0.00095454,
+              "price": 72012.8396342,
+              "value": 68.73913594442928,
+              "pnl": 6.6712839444292715,
+              "unrealizedPnl": 6.6712839444292715,
+              "realizedPnl": 0,
+              "costBasis": 62.067852,
+              "averageEntryPrice": 65023.83556477466,
+              "comment": {
+                "id": "138753f3-2b7d-41b2-b392-ac2a9a3c6d8e",
+                "userId": "aefe2ddd-c580-5245-a2f5-e4ed62f7ef10",
+                "tradeId": "c90276c8-6c07-45ad-862a-50b6c78e2035",
+                "comment": "bottom",
+                "visibility": "public",
+                "createdAt": "2026-02-11T08:15:10.983Z",
+                "parentId": null,
+                "numLikes": 6,
+                "reactions": {
+                  "counts": {
+                    "likeCount": 6
+                  },
+                  "reactions": {
+                    "like": false
+                  }
+                },
+                "olderThesis": 0,
+                "newerThesis": 0
+              },
+              "showComment": true,
+              "averageHoldTimeSeconds": 53093
+            }
+          ],
+          "totalHolders": 1
+        },
+        "So11111111111111111111111111111111111111112:1399811149": {
+          "topHolders": [
+            {
+              "user": {
+                "id": "242e2d73-fa06-514c-9b75-e5a900a4114a",
+                "address": "FHxeN5fq755QgTXULgCMCfWS3Qq7j64PmBGifnUt7of5",
+                "evmAddress": "0x5ccef3dfe7b265ae6967898e6d0ec21cf08729ca",
+                "createdAt": "2025-05-18T02:49:10.611Z",
+                "displayName": "bangerz",
+                "userHandle": "bangerz",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/9076541ca8c4dcc3d88cdcba91f79411.jpg",
+                "description": null,
+                "following": 2,
+                "followers": 26,
+                "activated": false,
+                "isReferred": false,
+                "isRestricted": false,
+                "swapCount": 25,
+                "numTrades": 12,
+                "totalVolume": 1227.163647,
+                "private": false,
+                "thumbhash": "lSgOHwYGSGhziJh1aniJaJeGZyBYBJcH"
+              },
+              "tradeId": "cb2a5b63-d968-4e01-8d0a-12ee415155eb",
+              "humanAmount": 2.058782827000006,
+              "price": 89.8251061192,
+              "value": 184.93038591166214,
+              "pnl": -166.55522011487938,
+              "unrealizedPnl": -77.12754208633291,
+              "realizedPnl": -89.42767802854645,
+              "costBasis": 776.4698190265415,
+              "averageEntryPrice": 127.28779576030253,
+              "comment": null,
+              "showComment": true,
+              "averageHoldTimeSeconds": 5216400
+            },
+            {
+              "user": {
+                "id": "14fafdc2-b375-5edd-8c08-613d82cc06b6",
+                "address": "E6czeBZEvfiscJa6NgQpTxjKvsvvwK4zaPZ2G2nf7y76",
+                "evmAddress": "0x52bfd45d37f45f73f0555be6ca9a645ba6b6deb3",
+                "createdAt": "2025-10-23T00:43:29.922Z",
+                "displayName": "profit | eca.eth",
+                "userHandle": "FlippingProfits",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/296adcce217e728917e79ff80e68cfd2.jpg",
+                "description": "most coins i ape i will sell at a  -50% so be wary of that",
+                "following": 86,
+                "followers": 10384,
+                "activated": false,
+                "isReferred": false,
+                "isRestricted": false,
+                "swapCount": 895,
+                "numTrades": 487,
+                "totalVolume": 7593036.342381,
+                "private": false,
+                "thumbhash": "I9cRJwSYZ3hwd3h7hniXZ4l5h0B3GXAH"
+              },
+              "tradeId": "8061ff3c-c006-4fa1-9cf3-becc9ec0b1b8",
+              "humanAmount": 0.9984700929999881,
+              "price": 89.8251061192,
+              "value": 89.68768206057143,
+              "pnl": -37.21427721242071,
+              "unrealizedPnl": -37.213827711135586,
+              "realizedPnl": -0.000449501285122846,
+              "costBasis": 127.10363301049092,
+              "averageEntryPrice": 127.09595476257147,
+              "comment": null,
+              "showComment": true,
+              "averageHoldTimeSeconds": 756813
+            }
+          ],
+          "totalHolders": 14
+        },
+        "98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g:1399811149": {
+          "topHolders": [
+            {
+              "user": {
+                "id": "e5b3a269-010a-511c-913a-1036fd1840b5",
+                "address": "6F7GEcDQQRBygxJy9KumtPTC58CRMq5ThT2iFibeRrPs",
+                "evmAddress": "0xc4db4c15b7a4005bb0bfc9d78d5688c6bf3a695b",
+                "createdAt": "2025-04-22T00:23:40.131Z",
+                "displayName": "rasmr",
+                "userHandle": "rasmr_eth",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/7ddbe466d1e2c8e5243f6835a44231e6.jpg",
+                "description": "5k to 100k challenge",
+                "following": 117,
+                "followers": 1654,
+                "activated": true,
+                "isReferred": true,
+                "isRestricted": false,
+                "swapCount": 374,
+                "numTrades": 149,
+                "totalVolume": 893455.213379,
+                "private": false,
+                "thumbhash": "XfgNHwYLdHl/m2RsWYVlWGeIuXcJCasF"
+              },
+              "tradeId": "827abc22-7891-4a1a-a63f-cf83ce41c484",
+              "humanAmount": 0.996530765,
+              "price": 36.3332862917,
+              "value": 36.207237583231816,
+              "pnl": 0.007237583231826106,
+              "unrealizedPnl": 0.007237583231826106,
+              "realizedPnl": 0,
+              "costBasis": 36.19999999999999,
+              "averageEntryPrice": 36.32602351217926,
+              "comment": null,
+              "showComment": true,
+              "averageHoldTimeSeconds": 116594
+            }
+          ],
+          "totalHolders": 1
+        },
+        "0x3bd359c1119da7da1d913d1c4d2b7c461115433a:143": {
+          "topHolders": [
+            {
+              "user": {
+                "id": "aefe2ddd-c580-5245-a2f5-e4ed62f7ef10",
+                "address": "A5SEXYJY4jTEi6sjMLfZs5KAP8SVFvLDPDV67GgSSZSk",
+                "evmAddress": "0x542b6b4cbab54a6ae6aadccd32a24e8c8b75370c",
+                "createdAt": "2025-09-03T23:25:33.441Z",
+                "displayName": "frank",
+                "userHandle": "frankdegods",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/fbaf6cb81ffe8dae8875145f1577acea.jpg",
+                "description": "calling top on this account for now, moving to alts",
+                "following": 207,
+                "followers": 81850,
+                "activated": false,
+                "isReferred": true,
+                "isRestricted": false,
+                "swapCount": 4195,
+                "numTrades": 1629,
+                "totalVolume": 30376837.412405,
+                "private": false,
+                "thumbhash": "3vcFFwKNSKx7PVk/2UmKmXWXefaJBc8G"
+              },
+              "tradeId": "247c479e-3495-4de0-95e4-10905800c04c",
+              "humanAmount": 27204,
+              "price": 0.0221541772046,
+              "value": 602.6822366739384,
+              "pnl": 130.76165322085086,
+              "unrealizedPnl": 130.76165322085086,
+              "realizedPnl": 0,
+              "costBasis": 471.92058345308754,
+              "averageEntryPrice": 0.0173474703519,
+              "comment": null,
+              "showComment": true,
+              "averageHoldTimeSeconds": 53093
+            },
+            {
+              "user": {
+                "id": "e5b3a269-010a-511c-913a-1036fd1840b5",
+                "address": "6F7GEcDQQRBygxJy9KumtPTC58CRMq5ThT2iFibeRrPs",
+                "evmAddress": "0xc4db4c15b7a4005bb0bfc9d78d5688c6bf3a695b",
+                "createdAt": "2025-04-22T00:23:40.131Z",
+                "displayName": "rasmr",
+                "userHandle": "rasmr_eth",
+                "profilePictureLink": "https://prod-fomo-profile-pics.s3.amazonaws.com/7ddbe466d1e2c8e5243f6835a44231e6.jpg",
+                "description": "5k to 100k challenge",
+                "following": 117,
+                "followers": 1654,
+                "activated": true,
+                "isReferred": true,
+                "isRestricted": false,
+                "swapCount": 374,
+                "numTrades": 149,
+                "totalVolume": 893455.213379,
+                "private": false,
+                "thumbhash": "XfgNHwYLdHl/m2RsWYVlWGeIuXcJCasF"
+              },
+              "tradeId": "4bd17d3a-a213-4d81-ab33-6bc1182a4be5",
+              "humanAmount": 4990.000000000001,
+              "price": 0.0221541772046,
+              "value": 110.54934425095402,
+              "pnl": -58.98703346659101,
+              "unrealizedPnl": -58.98703346659101,
+              "realizedPnl": 0,
+              "costBasis": 169.53637771754504,
+              "averageEntryPrice": 0.0339752259955,
+              "comment": null,
+              "showComment": true,
+              "averageHoldTimeSeconds": 116594
+            }
+          ],
+          "totalHolders": 10
+        }
+      }
+    },
+    "statusCode": 200
+  },
+  "captured_at": "2026-03-13T12:09:18.402511"
+}

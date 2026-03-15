@@ -121,7 +121,7 @@ async def _check_new_wallet_funded(transfers: list[dict]) -> list[dict]:
         if not to_addr:
             continue
         try:
-            from app.services.clickhouse import get_wallet_stats
+            from app.services.analytics import get_wallet_stats
             stats = await get_wallet_stats(to_addr, days=3650)
             if int(stats.get("total_txs", 0)) <= 1:
                 signals.append(_make_signal(

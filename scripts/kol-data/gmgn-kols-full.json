@@ -1,0 +1,31 @@
+{
+  "source": "gmgn_copytrade_kol",
+  "extracted_at": "2026-03-13",
+  "kols": [
+    {"rank": 1, "name": "eq", "wallet": "7w7f4P284zJhv3zotjCUmaNsZSsrHQKtpXGBJFq8gdzq", "twitter": "404flipped", "pnl_pct": 167.9, "pnl_usd": 9412.1, "win_rate": 100},
+    {"rank": 2, "name": "decu", "wallet": "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9", "twitter": "notdecu", "pnl_pct": 14, "pnl_usd": 4811.4, "win_rate": 57.5},
+    {"rank": 3, "name": "Hesi", "wallet": "FpD6n8gfoZNxyAN6QqNH4TFQdV9vZEgcv5W4H2YL8k4X", "twitter": "hesiitations", "pnl_pct": 33, "pnl_usd": 4607.8, "win_rate": 30.9},
+    {"rank": 4, "name": "Sheep", "wallet": "78N177fzNJpp8pG49xDv1efYcTMSzo9tPTKEA9mAVkh2", "twitter": "imsheepsol", "pnl_pct": 71.3, "pnl_usd": 4228.1, "win_rate": 95},
+    {"rank": 5, "name": "Esee", "wallet": "4uCT4g7YHH4xxfmfNfKUDenwGrRNGoZ9Ay1XFxfUGhQG", "twitter": "Esee06257", "pnl_pct": 13.3, "pnl_usd": 4022.8, "win_rate": 40.5},
+    {"rank": 6, "name": "jijo", "wallet": "4BdKaxN8G6ka4GYtQQWk4G4dZRUTX2vQH9GcXdBREFUk", "twitter": "jijo_exe", "pnl_pct": 33.7, "pnl_usd": 3812.2, "win_rate": 69},
+    {"rank": 7, "name": "z", "wallet": "FSAmbD6jm6SZZQadSJeC1paX3oTtAiY9hTx1UYzVoXqj", "twitter": "zilxbt", "pnl_pct": 112.3, "pnl_usd": 3706.7, "win_rate": 50},
+    {"rank": 8, "name": "Cowboy", "wallet": "6EDaVsS6enYgJ81tmhEkiKFcb4HuzPUVFZeom6PHUqN3", "twitter": "feibo03", "pnl_pct": 17.4, "pnl_usd": 3032.4, "win_rate": 66.7},
+    {"rank": 9, "name": "radiance", "wallet": "FAicXNV5FVqtfbpn4Zccs71XcfGeyxBSGbqLDyDJZjke", "twitter": "radiancebrr", "pnl_pct": 50.2, "pnl_usd": 2971.7, "win_rate": 45.7},
+    {"rank": 10, "name": "tobx", "wallet": "HmBmSYwYEgEZuBUYuDs9xofyqBAkw4ywugB1d7R7sTGh", "twitter": "TobxG", "pnl_pct": 17.2, "pnl_usd": 2870.5, "win_rate": 32.7},
+    {"rank": 11, "name": "Doc", "wallet": "DYAn4XpAkN5mhiXkRB7dGq4Jadnx6XYgu8L5b3WGhbrt", "twitter": "KayTheDoc", "pnl_pct": 22.7, "pnl_usd": 1780.3, "win_rate": 52.6},
+    {"rank": 12, "name": "Game", "wallet": "ENkZtLj1onzQRGnEeRkQfFzBeeY2dCeiQMXDzh8XbQbj", "twitter": "game_for_one", "pnl_pct": 123.4, "pnl_usd": 1607, "win_rate": 100},
+    {"rank": 13, "name": "Ethan Prosper", "wallet": "sAdNbe1cKNMDqDsa4npB3TfL62T14uAo2MsUQfLvzLT", "twitter": "pr6spr", "pnl_pct": 6.8, "pnl_usd": 1387.6, "win_rate": 30.3},
+    {"rank": 14, "name": "Zrool", "wallet": "99i9uVA7Q56bY22ajKKUfTZTgTeP5yCtVGsrG9J4pDYQ", "twitter": "TheRealZrool", "pnl_pct": 15.3, "pnl_usd": 1369.2, "win_rate": 60},
+    {"rank": 15, "name": "jester", "wallet": "4s2WzRLa35FB58bZY1i4CN3WoywJeuYrGYHnTKFsT23z", "twitter": "thejester", "pnl_pct": 24.8, "pnl_usd": 1347, "win_rate": 41.7},
+    {"rank": 16, "name": "Ashtoshii", "wallet": "8MoW9mtbEz6z3gPuAdYb1yWhjCAxQSYqpcTb1CQgN5qb", "twitter": "ashtoshii", "pnl_pct": 142.2, "pnl_usd": 1317.4, "win_rate": 75},
+    {"rank": 17, "name": "nyhrox", "wallet": "6S8GezkxYUfZy9JPtYnanbcZTMB87Wjt1qx3c6ELajKC", "twitter": "nyhrox", "pnl_pct": 8.8, "pnl_usd": 1198.7, "win_rate": 53.8},
+    {"rank": 18, "name": "Kagami", "wallet": "DP7G43VPwR5Ab5rcjrCnvJ8UgvRXRHTWscMjRD1eSdGC", "twitter": "yenhong123", "pnl_pct": 102.2, "pnl_usd": 1165.1, "win_rate": 50},
+    {"rank": 19, "name": "letterbomb", "wallet": "BtMBMPkoNbnLF9Xn552guQq528KKXcsNBNNBre3oaQtr", "twitter": "06296wt", "pnl_pct": 7.3, "pnl_usd": 812.1, "win_rate": 52.6},
+    {"rank": 20, "name": "Whale", "wallet": "G5KeBuoDtmBrRQt9fMy29FCUSXDWMwHe7W4skfwDtURv", "twitter": "chinapumprocket", "pnl_pct": 20.4, "pnl_usd": 732.1, "win_rate": 47.4},
+    {"rank": 21, "name": "Yenni", "wallet": "5B52w1ZW9tuwUduueP5J7HXz5AcGfruGoX6YoAudvyxG", "twitter": "Yennii56", "pnl_pct": 8.6, "pnl_usd": 658.4, "win_rate": 46.2},
+    {"rank": 22, "name": "Ramset", "wallet": "71PCu3E4JP5RDBoY6wJteqzxkKNXLyE1byg5BTAL9UtQ", "twitter": "Ramsetx", "pnl_pct": 9.6, "pnl_usd": 574, "win_rate": 55},
+    {"rank": 23, "name": "Putrick", "wallet": "AVjEtg2ECYKXYeqdRQXvaaAZBjfTjYuSMTR4WLhKoeQN", "twitter": "Putrickk", "pnl_pct": 5, "pnl_usd": 531.1, "win_rate": 36.4},
+    {"rank": 24, "name": "sarah milan", "wallet": "AAMnoNo3TpezKcT7ah9puLFZ4D59muEhQHJJqpX16ccg", "twitter": "saracrypto_eth", "pnl_pct": 5.8, "pnl_usd": 503, "win_rate": 75},
+    {"rank": 25, "name": "Grimace", "wallet": "EA4MXkyF8C2NzY8fw2acJPuarmoU271KRCCAYpLzMBJr", "twitter": "naughtygrimace", "pnl_pct": 7.4, "pnl_usd": 463.9, "win_rate": 36.6}
+  ]
+}

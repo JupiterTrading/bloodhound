@@ -1,0 +1,63 @@
+{
+  "endpoint": "GET /api/v1/wallet_common_stat/sol/3npU8oT7nRTSbsRmJSpMFwn3jjdDaYWW4HjDzj5DsSTM",
+  "url": "https://gmgn.gracematrix.net/api/v1/wallet_common_stat/sol/3npU8oT7nRTSbsRmJSpMFwn3jjdDaYWW4HjDzj5DsSTM?device_id=724039AA-A424-4805-8706-9F47ABC12322&client_id=memetracker_ios_2030304&from_app=memetracker&app_ver=2030304&pkg=io.gracematrix.gmgn&app_lang=en&sys_lang=en-US&brand=Apple&model=iPhone&os=ios&os_api=26.2.1&tz_name=America%2FChicago&tz_offset=300",
+  "request_headers": {
+    "cookie": "__cf_bm=.TGehVqa1U9B4kesGEqkf5Js1OD99qjhHFPW2tb1DxE-1773423753.2550118-1.0.1.1-zlYRvzlhNsqLnVxpRTGMUtbWBDjtoktm15l1Jk2pnd07s0V0DGd19l4v.OLmPrz1xI64KmI3YixNshF.Z6LZ3itw80AgUFL5.WNJn5aLKqValQl.fVJojzdN4mJOtQ8z",
+    "accept": "application/json, text/plain, */*",
+    "authorization": "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnbWduLmFpL2FjY2VzcyIsImRhdGEiOnsidXNlcl9pZCI6ImJhNGY1ZTNiLTcxM2ItNDExMi1hMDcwLWExZTY5Y2FiYTdiOCIsImNsaWVudF9pZCI6Im1lbWV0cmFja2VyX2lvc18yMDMwMzA0IiwiZGV2aWNlX2lkIjoiNzI0MDM5QUEtQTQyNC00ODA1LTg3MDYtOUY0N0FCQzEyMzIyIiwiZmF0aGVyX2lkIjoiNzY0MTEwNjMtNGFjNy00ZjM2LTllMjEtYzAwYTEwMTQ4ZTNhIiwiZmluZ2VycHJpbnQiOiJ2MTA0ODA5MjhlZTM2ZjcxMTEyMTFiMmYyMzkxOGZjZjI4IiwiYXBwIjoibWVtZXRyYWNrZXIiLCJwbGF0Zm9ybSI6ImlvcyJ9LCJleHAiOjE3NzM0MjY1MTUsImlhdCI6MTc3MzQyMjkxNSwiaXNzIjoiZ21nbi5haS9zaWduZXIiLCJqdGkiOiJkM2Y2MGYxZC04MjE1LTRlMDItYjFkZS03NDcxNGNlYjJjYjUiLCJuYmYiOjE3NzM0MjI5MTUsInN1YiI6ImdtZ24uYWkvYWNjZXNzIiwidXNlcl9pZCI6ImJhNGY1ZTNiLTcxM2ItNDExMi1hMDcwLWExZTY5Y2FiYTdiOCIsInZlciI6IjEuMCJ9.mOJVnArObYrY22BjW58XuBH4a1jhR_CaVONyh_poeOsYDAuZi6P--9z53hGCd8aq0-RtuHsywN7Ney0X5qLaVA",
+    "accept-encoding": "gzip, deflate, br",
+    "sentry-trace": "1c500fa248ad4a1bbda9b394eff26c31-82a2e0a0d42bc23a-0",
+    "baggage": "sentry-environment=production,sentry-public_key=d4979c342f6dba6bf527fa2eddfcfe31,sentry-trace_id=1c500fa248ad4a1bbda9b394eff26c31,sentry-sample_rate=0.01,sentry-transaction=Wallet,sentry-sampled=false",
+    "user-agent": "GMGN/2030304 CFNetwork/3860.300.31 Darwin/25.2.0",
+    "priority": "u=3, i",
+    "accept-language": "en-US,en;q=0.9"
+  },
+  "request_body": null,
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:42:37 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "x-envoy-upstream-service-time": "7",
+    "server": "cloudflare",
+    "cf-cache-status": "DYNAMIC",
+    "x-xss-protection": "1; mode=block",
+    "expect-ct": "max-age=86400, enforce",
+    "referrer-policy": "same-origin",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "SAMEORIGIN",
+    "content-encoding": "gzip",
+    "cf-ray": "9dbcd612ece2fb1c-BNA"
+  },
+  "response_body": {
+    "code": 0,
+    "reason": "",
+    "message": "success",
+    "data": {
+      "avatar": "",
+      "name": "",
+      "ens": "",
+      "tag": "",
+      "tags": [],
+      "tag_rank": {},
+      "nick_name": "",
+      "created_at": 0,
+      "twitter_name": "",
+      "twitter_username": "",
+      "is_blue_verified": false,
+      "twitter_bind": false,
+      "twitter_fans_num": 0,
+      "twitter_description": "",
+      "followers_count": 0,
+      "follow_count": 0,
+      "remark_count": 0,
+      "created_token_count": 0,
+      "fund_from": "",
+      "fund_from_ts": 0,
+      "fund_tx_hash": "",
+      "wallet_address": "",
+      "fund_from_address": "",
+      "fund_amount": ""
+    }
+  },
+  "captured_at": "2026-03-13T12:42:37.359137"
+}

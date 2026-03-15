@@ -1,0 +1,45 @@
+{
+  "endpoint": "POST /api/v1/follow_token/following_group_tokens/sol",
+  "url": "https://gmgn.gracematrix.net/api/v1/follow_token/following_group_tokens/sol?device_id=724039AA-A424-4805-8706-9F47ABC12322&client_id=memetracker_ios_2030304&from_app=memetracker&app_ver=2030304&pkg=io.gracematrix.gmgn&app_lang=en&sys_lang=en-US&brand=Apple&model=iPhone&os=ios&os_api=26.2.1&tz_name=America%2FChicago&tz_offset=300",
+  "request_headers": {
+    "content-type": "application/json",
+    "accept": "application/json, text/plain, */*",
+    "baggage": "sentry-environment=production,sentry-public_key=d4979c342f6dba6bf527fa2eddfcfe31,sentry-trace_id=628487da7d48480f9bbff810af513da4,sentry-sample_rate=0.01,sentry-transaction=Trenches,sentry-sampled=false",
+    "authorization": "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnbWduLmFpL2FjY2VzcyIsImRhdGEiOnsidXNlcl9pZCI6ImJhNGY1ZTNiLTcxM2ItNDExMi1hMDcwLWExZTY5Y2FiYTdiOCIsImNsaWVudF9pZCI6Im1lbWV0cmFja2VyX2lvc18yMDMwMzA0IiwiZGV2aWNlX2lkIjoiNzI0MDM5QUEtQTQyNC00ODA1LTg3MDYtOUY0N0FCQzEyMzIyIiwiZmF0aGVyX2lkIjoiNzY0MTEwNjMtNGFjNy00ZjM2LTllMjEtYzAwYTEwMTQ4ZTNhIiwiZmluZ2VycHJpbnQiOiJ2MTA0ODA5MjhlZTM2ZjcxMTEyMTFiMmYyMzkxOGZjZjI4IiwiYXBwIjoibWVtZXRyYWNrZXIiLCJwbGF0Zm9ybSI6ImlvcyJ9LCJleHAiOjE3NzM0MjY1MTUsImlhdCI6MTc3MzQyMjkxNSwiaXNzIjoiZ21nbi5haS9zaWduZXIiLCJqdGkiOiJkM2Y2MGYxZC04MjE1LTRlMDItYjFkZS03NDcxNGNlYjJjYjUiLCJuYmYiOjE3NzM0MjI5MTUsInN1YiI6ImdtZ24uYWkvYWNjZXNzIiwidXNlcl9pZCI6ImJhNGY1ZTNiLTcxM2ItNDExMi1hMDcwLWExZTY5Y2FiYTdiOCIsInZlciI6IjEuMCJ9.mOJVnArObYrY22BjW58XuBH4a1jhR_CaVONyh_poeOsYDAuZi6P--9z53hGCd8aq0-RtuHsywN7Ney0X5qLaVA",
+    "priority": "u=3, i",
+    "accept-encoding": "gzip, deflate, br",
+    "accept-language": "en-US,en;q=0.9",
+    "sentry-trace": "628487da7d48480f9bbff810af513da4-8366329725b3412c-0",
+    "content-length": "82",
+    "user-agent": "GMGN/2030304 CFNetwork/3860.300.31 Darwin/25.2.0",
+    "cookie": "__cf_bm=.TGehVqa1U9B4kesGEqkf5Js1OD99qjhHFPW2tb1DxE-1773423753.2550118-1.0.1.1-zlYRvzlhNsqLnVxpRTGMUtbWBDjtoktm15l1Jk2pnd07s0V0DGd19l4v.OLmPrz1xI64KmI3YixNshF.Z6LZ3itw80AgUFL5.WNJn5aLKqValQl.fVJojzdN4mJOtQ8z"
+  },
+  "request_body": "{\"orderby\":\"created_at\",\"direction\":\"desc\",\"group_id\":\"all_group\",\"interval\":\"1h\"}",
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:42:39 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "x-envoy-upstream-service-time": "12",
+    "server": "cloudflare",
+    "cf-cache-status": "DYNAMIC",
+    "x-xss-protection": "1; mode=block",
+    "expect-ct": "max-age=86400, enforce",
+    "referrer-policy": "same-origin",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "SAMEORIGIN",
+    "content-encoding": "gzip",
+    "cf-ray": "9dbcd61e1a5dfb1c-BNA"
+  },
+  "response_body": {
+    "code": 0,
+    "reason": "",
+    "message": "success",
+    "data": {
+      "is_recommend": false,
+      "cursor": "",
+      "all_following": 0,
+      "followings": []
+    }
+  },
+  "captured_at": "2026-03-13T12:42:39.139844"
+}

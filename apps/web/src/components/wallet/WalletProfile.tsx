@@ -39,136 +39,65 @@ export function WalletProfile({ address }: Props) {
   const displayName = data.known_wallet?.label ?? data.entity_label?.label ?? short;
 
   return (
-    <div
-      className="page-container"
-      style={{
-        padding: "24px 32px",
-        maxWidth: "1400px",
-        margin: "0 auto",
-      }}
-    >
-      {/* ── Header card ─────────────────────────────────────── */}
-      <div
-        style={{
-          background: "var(--bg-surface)",
-          border: "1px solid var(--border)",
-          borderRadius: "8px",
-          padding: "24px",
-          marginBottom: "24px",
-        }}
-      >
-        {/* Classification badges */}
-        <div
-          style={{
-            display: "flex",
-            gap: "6px",
-            marginBottom: "14px",
-            flexWrap: "wrap",
-            alignItems: "center",
-          }}
-        >
-          {data.classification.map((label) => (
-            <ClassificationBadge key={label} label={label} />
-          ))}
-          {!data.known_wallet && data.entity_label && (
-            <span
-              style={{
-                fontSize: "11px",
-                fontWeight: 600,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                padding: "2px 8px",
-                borderRadius: "4px",
-                background: "rgba(255,255,255,0.06)",
-                color: "var(--text-muted)",
-                border: "1px solid var(--border)",
-              }}
-            >
-              {data.entity_label.category}
-            </span>
-          )}
-          {trackerData?.tracker_count != null && (
-            <span
-              style={{
-                marginLeft: "auto",
-                fontSize: "12px",
-                color: "var(--text-muted)",
-              }}
-            >
-              Tracked by{" "}
-              <span style={{ color: "var(--text-secondary)", fontWeight: 500 }}>
-                {trackerData.tracker_count.toLocaleString()}
-              </span>{" "}
-              users
-            </span>
-          )}
-        </div>
+    <div className="container py-6">
+      {/* ── Header card ───────────────────────────────────────── */}
+      <div className="card p-6 mb-6">
+          {/* Classification badges */}
+          <div className="flex gap-2 mb-4 flex-wrap items-center">
+            {data.classification.map((label) => (
+              <ClassificationBadge key={label} label={label} />
+            ))}
+            {!data.known_wallet && data.entity_label && (
+              <span className="badge badge-neutral uppercase">
+                {data.entity_label.category}
+              </span>
+            )}
+            {trackerData?.tracker_count != null && (
+              <span className="ml-auto text-[12px] text-[var(--text-muted)]">
+                {trackerData.tracker_count.toLocaleString()} tracking
+              </span>
+            )}
+          </div>
 
-        {/* Name + social handles */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: "12px",
-            marginBottom: "8px",
-          }}
-        >
-          <div>
-            <h1
-              style={{
-                fontSize: "22px",
-                fontWeight: 700,
-                letterSpacing: "-0.02em",
-                color: "var(--text-primary)",
-                marginBottom: "6px",
-              }}
-            >
-              {displayName}
-            </h1>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "12px",
-                flexWrap: "wrap",
-              }}
-            >
-              <AddressTag address={address} chars={44} size={13} />
-              {data.known_wallet?.twitter_handle && (
-                <SocialHandle
-                  platform="twitter"
-                  handle={data.known_wallet.twitter_handle}
-                />
-              )}
-              {data.known_wallet?.telegram_handle && (
-                <SocialHandle
-                  platform="telegram"
-                  handle={data.known_wallet.telegram_handle}
-                />
-              )}
+          {/* Name + social handles */}
+          <div className="flex items-start justify-between flex-wrap gap-4 mb-3">
+            <div>
+              <h1 className="text-xl lg:text-2xl font-bold tracking-tight mb-2 text-[var(--text-primary)]">
+                {displayName}
+              </h1>
+              <div className="flex items-center gap-3 flex-wrap">
+                <AddressTag address={address} chars={44} size={13} />
+                {data.known_wallet?.twitter_handle && (
+                  <SocialHandle
+                    platform="twitter"
+                    handle={data.known_wallet.twitter_handle}
+                  />
+                )}
+                {data.known_wallet?.telegram_handle && (
+                  <SocialHandle
+                    platform="telegram"
+                    handle={data.known_wallet.telegram_handle}
+                  />
+                )}
+              </div>
+            </div>
+
+            {/* Action buttons */}
+            <div className="flex gap-2 flex-wrap">
+              <Link href={`/graph/${address}`} className="btn btn-secondary btn-sm group">
+                <svg className="w-4 h-4 transition-transform group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+                Open Graph
+              </Link>
+              <Link href={`/ai?q=${encodeURIComponent(`Summarize wallet ${address}`)}`} className="btn btn-primary btn-sm">
+                Bloodhound AI
+              </Link>
             </div>
           </div>
 
-          {/* Action buttons */}
-          <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-            <ActionButton href={`/graph/${address}`} label="Open Graph" />
-            <ActionButton href={`/ai?q=${encodeURIComponent(`Summarize wallet ${address}`)}`} label="Bloodhound AI" primary />
-          </div>
-        </div>
-
         {/* Stats strip */}
-        <div
-          style={{
-            display: "flex",
-            gap: "32px",
-            flexWrap: "wrap",
-            paddingTop: "16px",
-            borderTop: "1px solid var(--border)",
-            marginTop: "16px",
-          }}
-        >
+        <div className="flex gap-8 flex-wrap pt-4 border-t border-[var(--border)] mt-4">
           <Stat
             label="SOL Balance"
             value={
@@ -209,15 +138,7 @@ export function WalletProfile({ address }: Props) {
       </div>
 
       {/* ── Two-column layout ───────────────────────────────── */}
-      <div
-        className="grid-responsive-2"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 300px",
-          gap: "24px",
-          alignItems: "start",
-        }}
-      >
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start">
         {/* Left: intelligence + token holdings + tx history */}
         <div>
           <IntelligenceSummary address={address} />
@@ -227,7 +148,7 @@ export function WalletProfile({ address }: Props) {
         </div>
 
         {/* Right: KOL Twitter + event involvement + counterparties + side wallets */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        <div className="flex flex-col gap-4">
           {data.known_wallet?.twitter_handle && (
             <KolTwitterCard address={address} />
           )}
@@ -253,25 +174,10 @@ function Stat({
 }) {
   return (
     <div>
-      <div
-        style={{
-          fontSize: "11px",
-          color: "var(--text-muted)",
-          letterSpacing: "0.08em",
-          textTransform: "uppercase",
-          marginBottom: "4px",
-        }}
-      >
+      <div className="text-[11px] text-[var(--text-muted)] tracking-wide uppercase mb-1">
         {label}
       </div>
-      <div
-        style={{
-          fontSize: mono ? "15px" : "14px",
-          fontWeight: 500,
-          color: "var(--text-primary)",
-          fontFamily: mono ? "JetBrains Mono, monospace" : undefined,
-        }}
-      >
+      <div className={`text-[14px] lg:text-[15px] font-medium text-[var(--text-primary)] ${mono ? 'font-mono' : ''}`}>
         {value}
       </div>
     </div>
@@ -296,23 +202,7 @@ function SocialHandle({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "4px",
-        fontSize: "12px",
-        color: "var(--text-muted)",
-        textDecoration: "none",
-        transition: "color 0.1s",
-      }}
-      onMouseEnter={(e) =>
-        ((e.currentTarget as HTMLAnchorElement).style.color =
-          "var(--text-primary)")
-      }
-      onMouseLeave={(e) =>
-        ((e.currentTarget as HTMLAnchorElement).style.color =
-          "var(--text-muted)")
-      }
+      className="inline-flex items-center gap-1 text-[12px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
     >
       {platform === "twitter" ? "𝕏" : "✈"}
       {prefix}
@@ -321,77 +211,17 @@ function SocialHandle({
   );
 }
 
-function ActionButton({
-  href,
-  label,
-  primary,
-}: {
-  href: string;
-  label: string;
-  primary?: boolean;
-}) {
-  return (
-    <Link
-      href={href}
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        padding: "7px 14px",
-        borderRadius: "6px",
-        fontSize: "13px",
-        fontWeight: 500,
-        textDecoration: "none",
-        background: primary ? "var(--accent)" : "transparent",
-        border: `1px solid ${primary ? "var(--accent)" : "var(--border)"}`,
-        color: primary ? "#fff" : "var(--text-secondary)",
-        transition: "background 80ms, border-color 80ms, color 80ms",
-        cursor: "pointer",
-        whiteSpace: "nowrap",
-      }}
-      onMouseEnter={(e) => {
-        const el = e.currentTarget as HTMLAnchorElement;
-        if (primary) {
-          el.style.background = "var(--accent-hover)";
-        } else {
-          el.style.borderColor = "var(--text-muted)";
-          el.style.color = "var(--text-primary)";
-        }
-      }}
-      onMouseLeave={(e) => {
-        const el = e.currentTarget as HTMLAnchorElement;
-        if (primary) {
-          el.style.background = "var(--accent)";
-        } else {
-          el.style.borderColor = "var(--border)";
-          el.style.color = "var(--text-secondary)";
-        }
-      }}
-    >
-      {label}
-    </Link>
-  );
-}
-
 function WalletProfileSkeleton() {
   return (
-    <div style={{ padding: "24px 32px", maxWidth: "1400px", margin: "0 auto" }}>
-      {/* Header */}
-      <div
-        style={{
-          background: "var(--bg-surface)",
-          border: "1px solid var(--border)",
-          borderRadius: "8px",
-          padding: "24px",
-          marginBottom: "24px",
-        }}
-      >
-        <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
+    <div className="container py-6">
+      <div className="card p-6 mb-6">
+        <div className="flex gap-2 mb-4">
           <Skeleton width={80} height={22} borderRadius={4} />
           <Skeleton width={100} height={22} borderRadius={4} />
         </div>
         <Skeleton height={28} width={200} style={{ marginBottom: 12 }} />
         <Skeleton height={14} width={280} style={{ marginBottom: 20 }} />
-        <div style={{ display: "flex", gap: "32px" }}>
+        <div className="flex gap-8">
           {[80, 100, 70, 90, 100, 80].map((w, i) => (
             <div key={i}>
               <Skeleton height={10} width={50} style={{ marginBottom: 6 }} />
@@ -406,33 +236,12 @@ function WalletProfileSkeleton() {
 
 function WalletProfileError({ address }: { address: string }) {
   return (
-    <div
-      className="page-container"
-      style={{
-        padding: "24px 32px",
-        maxWidth: "1400px",
-        margin: "0 auto",
-      }}
-    >
-      <div
-        style={{
-          background: "var(--bg-surface)",
-          border: "1px solid var(--border)",
-          borderRadius: "8px",
-          padding: "40px",
-          textAlign: "center",
-        }}
-      >
-        <p
-          style={{
-            fontSize: "14px",
-            color: "var(--text-secondary)",
-            marginBottom: "8px",
-          }}
-        >
+    <div className="container py-6">
+      <div className="card p-10 text-center">
+        <p className="text-[14px] text-[var(--text-secondary)] mb-2">
           Could not load wallet data.
         </p>
-        <p style={{ fontSize: "12px", color: "var(--text-muted)" }}>
+        <p className="text-[12px] text-[var(--text-muted)]">
           <AddressTag address={address} />
         </p>
       </div>

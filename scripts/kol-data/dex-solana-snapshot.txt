@@ -1,0 +1,1393 @@
+- document:
+  - navigation:
+    - link "DEXSCREENER" [ref=e1]:
+      - /url: /
+      - heading "DEXSCREENER" [ref=e2] [level=1]:
+        - img
+        - text: DEXSCREENER
+    - button "Collapse menu" [ref=e3]
+    - button "Search /" [ref=e4]:
+      - img
+      - text: Search /
+    - button "Get the App!" [ref=e5]:
+      - text: Get the App!
+      - img
+      - img
+    - list:
+      - listitem:
+        - link "Watchlist" [ref=e6]:
+          - /url: /watchlist
+          - img
+          - text: Watchlist
+      - listitem:
+        - button "Alerts" [ref=e7]:
+          - img
+          - paragraph: Alerts
+      - listitem:
+        - link "Multicharts" [ref=e8]:
+          - /url: /multicharts
+          - img
+          - text: Multicharts
+      - listitem:
+        - link "New Pairs" [ref=e9]:
+          - /url: /new-pairs
+          - img
+          - text: New Pairs
+      - listitem:
+        - link "Gainers & Losers" [ref=e10]:
+          - /url: /gainers
+          - img
+          - text: Gainers & Losers
+      - listitem:
+        - link "API" [ref=e11]:
+          - /url: https://docs.dexscreener.com/api/reference
+          - img
+          - text: API
+      - listitem:
+        - link "Advertise" [ref=e12]:
+          - /url: https://marketplace.dexscreener.com/product/ad
+          - img
+          - text: Advertise
+    - separator
+    - list:
+      - listitem:
+        - link "Solana Solana" [ref=e13]:
+          - /url: /solana
+          - img "Solana"
+          - text: Solana
+      - listitem:
+        - link "Base Base" [ref=e14]:
+          - /url: /base
+          - img "Base"
+          - text: Base
+      - listitem:
+        - link "BSC BSC" [ref=e15]:
+          - /url: /bsc
+          - img "BSC"
+          - text: BSC
+      - listitem:
+        - link "Ethereum Ethereum" [ref=e16]:
+          - /url: /ethereum
+          - img "Ethereum"
+          - text: Ethereum
+      - listitem:
+        - link "Polygon Polygon" [ref=e17]:
+          - /url: /polygon
+          - img "Polygon"
+          - text: Polygon
+      - listitem:
+        - link "PulseChain PulseChain" [ref=e18]:
+          - /url: /pulsechain
+          - img "PulseChain"
+          - text: PulseChain
+      - listitem:
+        - link "TON TON" [ref=e19]:
+          - /url: /ton
+          - img "TON"
+          - text: TON
+      - listitem:
+        - link "Hyperliquid Hyperliquid" [ref=e20]:
+          - /url: /hyperliquid
+          - img "Hyperliquid"
+          - text: Hyperliquid
+      - listitem:
+        - link "Avalanche Avalanche" [ref=e21]:
+          - /url: /avalanche
+          - img "Avalanche"
+          - text: Avalanche
+      - listitem:
+        - link "Arbitrum Arbitrum" [ref=e22]:
+          - /url: /arbitrum
+          - img "Arbitrum"
+          - text: Arbitrum
+      - listitem:
+        - link "Cronos Cronos" [ref=e23]:
+          - /url: /cronos
+          - img "Cronos"
+          - text: Cronos
+      - listitem:
+        - link "Sui Sui" [ref=e24]:
+          - /url: /sui
+          - img "Sui"
+          - text: Sui
+      - listitem:
+        - link "XRPL XRPL" [ref=e25]:
+          - /url: /xrpl
+          - img "XRPL"
+          - text: XRPL
+      - listitem:
+        - link "World Chain World Chain" [ref=e26]:
+          - /url: /worldchain
+          - img "World Chain"
+          - text: World Chain
+      - listitem:
+        - link "Abstract Abstract" [ref=e27]:
+          - /url: /abstract
+          - img "Abstract"
+          - text: Abstract
+      - listitem:
+        - link "Osmosis Osmosis" [ref=e28]:
+          - /url: /osmosis
+          - img "Osmosis"
+          - text: Osmosis
+      - listitem:
+        - link "HyperEVM HyperEVM" [ref=e29]:
+          - /url: /hyperevm
+          - img "HyperEVM"
+          - text: HyperEVM
+      - listitem:
+        - link "Monad Monad" [ref=e30]:
+          - /url: /monad
+          - img "Monad"
+          - text: Monad
+      - listitem:
+        - link "Hedera Hedera" [ref=e31]:
+          - /url: /hedera
+          - img "Hedera"
+          - text: Hedera
+      - listitem:
+        - link "Sonic Sonic" [ref=e32]:
+          - /url: /sonic
+          - img "Sonic"
+          - text: Sonic
+      - listitem:
+        - link "NEAR NEAR" [ref=e33]:
+          - /url: /near
+          - img "NEAR"
+          - text: NEAR
+      - listitem:
+        - link "Tron Tron" [ref=e34]:
+          - /url: /tron
+          - img "Tron"
+          - text: Tron
+      - listitem:
+        - link "Ink Ink" [ref=e35]:
+          - /url: /ink
+          - img "Ink"
+          - text: Ink
+      - listitem:
+        - link "Linea Linea" [ref=e36]:
+          - /url: /linea
+          - img "Linea"
+          - text: Linea
+      - listitem:
+        - link "MegaETH MegaETH" [ref=e37]:
+          - /url: /megaeth
+          - img "MegaETH"
+          - text: MegaETH
+      - listitem:
+        - link "Berachain Berachain" [ref=e38]:
+          - /url: /berachain
+          - img "Berachain"
+          - text: Berachain
+      - listitem:
+        - link "MultiversX MultiversX" [ref=e39]:
+          - /url: /multiversx
+          - img "MultiversX"
+          - text: MultiversX
+      - listitem:
+        - link "Optimism Optimism" [ref=e40]:
+          - /url: /optimism
+          - img "Optimism"
+          - text: Optimism
+      - listitem:
+        - link "Plasma Plasma" [ref=e41]:
+          - /url: /plasma
+          - img "Plasma"
+          - text: Plasma
+      - listitem:
+        - link "Aptos Aptos" [ref=e42]:
+          - /url: /aptos
+          - img "Aptos"
+          - text: Aptos
+      - listitem:
+        - link "Algorand Algorand" [ref=e43]:
+          - /url: /algorand
+          - img "Algorand"
+          - text: Algorand
+      - listitem:
+        - link "Soneium Soneium" [ref=e44]:
+          - /url: /soneium
+          - img "Soneium"
+          - text: Soneium
+      - listitem:
+        - link "Cardano Cardano" [ref=e45]:
+          - /url: /cardano
+          - img "Cardano"
+          - text: Cardano
+      - listitem:
+        - link "Mantle Mantle" [ref=e46]:
+          - /url: /mantle
+          - img "Mantle"
+          - text: Mantle
+      - listitem:
+        - link "Sei V2 Sei V2" [ref=e47]:
+          - /url: /seiv2
+          - img "Sei V2"
+          - text: Sei V2
+      - listitem:
+        - link "Fantom Fantom" [ref=e48]:
+          - /url: /fantom
+          - img "Fantom"
+          - text: Fantom
+      - listitem:
+        - link "Flare Flare" [ref=e49]:
+          - /url: /flare
+          - img "Flare"
+          - text: Flare
+      - listitem:
+        - link "zkSync zkSync" [ref=e50]:
+          - /url: /zksync
+          - img "zkSync"
+          - text: zkSync
+      - listitem:
+        - link "Starknet Starknet" [ref=e51]:
+          - /url: /starknet
+          - img "Starknet"
+          - text: Starknet
+      - listitem:
+        - link "Metis Metis" [ref=e52]:
+          - /url: /metis
+          - img "Metis"
+          - text: Metis
+      - listitem:
+        - link "Blast Blast" [ref=e53]:
+          - /url: /blast
+          - img "Blast"
+          - text: Blast
+      - listitem:
+        - link "ApeChain ApeChain" [ref=e54]:
+          - /url: /apechain
+          - img "ApeChain"
+          - text: ApeChain
+      - listitem:
+        - link "Dogechain Dogechain" [ref=e55]:
+          - /url: /dogechain
+          - img "Dogechain"
+          - text: Dogechain
+      - listitem:
+        - link "Unichain Unichain" [ref=e56]:
+          - /url: /unichain
+          - img "Unichain"
+          - text: Unichain
+      - listitem:
+        - link "Polkadot Polkadot" [ref=e57]:
+          - /url: /polkadot
+          - img "Polkadot"
+          - text: Polkadot
+      - listitem:
+        - link "Flow EVM Flow EVM" [ref=e58]:
+          - /url: /flowevm
+          - img "Flow EVM"
+          - text: Flow EVM
+      - listitem:
+        - link "Celo Celo" [ref=e59]:
+          - /url: /celo
+          - img "Celo"
+          - text: Celo
+      - listitem:
+        - link "Avalanche DFK Avalanche DFK" [ref=e60]:
+          - /url: /avalanchedfk
+          - img "Avalanche DFK"
+          - text: Avalanche DFK
+      - listitem:
+        - link "EthereumPoW EthereumPoW" [ref=e61]:
+          - /url: /ethereumpow
+          - img "EthereumPoW"
+          - text: EthereumPoW
+      - listitem:
+        - link "Fogo Fogo" [ref=e62]:
+          - /url: /fogo
+          - img "Fogo"
+          - text: Fogo
+      - listitem:
+        - link "Katana Katana" [ref=e63]:
+          - /url: /katana
+          - img "Katana"
+          - text: Katana
+      - listitem:
+        - link "Scroll Scroll" [ref=e64]:
+          - /url: /scroll
+          - img "Scroll"
+          - text: Scroll
+      - listitem:
+        - link "opBNB opBNB" [ref=e65]:
+          - /url: /opbnb
+          - img "opBNB"
+          - text: opBNB
+      - listitem:
+        - link "Injective Injective" [ref=e66]:
+          - /url: /injective
+          - img "Injective"
+          - text: Injective
+      - listitem:
+        - link "Story Story" [ref=e67]:
+          - /url: /story
+          - img "Story"
+          - text: Story
+      - listitem:
+        - link "Harmony Harmony" [ref=e68]:
+          - /url: /harmony
+          - img "Harmony"
+          - text: Harmony
+      - listitem:
+        - link "Moonbeam Moonbeam" [ref=e69]:
+          - /url: /moonbeam
+          - img "Moonbeam"
+          - text: Moonbeam
+      - listitem:
+        - link "Conflux Conflux" [ref=e70]:
+          - /url: /conflux
+          - img "Conflux"
+          - text: Conflux
+      - listitem:
+        - link "Kava Kava" [ref=e71]:
+          - /url: /kava
+          - img "Kava"
+          - text: Kava
+      - listitem:
+        - link "Beam Beam" [ref=e72]:
+          - /url: /beam
+          - img "Beam"
+          - text: Beam
+      - listitem:
+        - link "Ethereum Classic Ethereum Classic" [ref=e73]:
+          - /url: /ethereumclassic
+          - img "Ethereum Classic"
+          - text: Ethereum Classic
+      - listitem:
+        - link "Merlin Chain Merlin Chain" [ref=e74]:
+          - /url: /merlinchain
+          - img "Merlin Chain"
+          - text: Merlin Chain
+      - listitem:
+        - link "Vana Vana" [ref=e75]:
+          - /url: /vana
+          - img "Vana"
+          - text: Vana
+      - listitem:
+        - link "Stacks Stacks" [ref=e76]:
+          - /url: /stacks
+          - img "Stacks"
+          - text: Stacks
+      - listitem:
+        - link "Astar Astar" [ref=e77]:
+          - /url: /astar
+          - img "Astar"
+          - text: Astar
+      - listitem:
+        - link "Manta Manta" [ref=e78]:
+          - /url: /manta
+          - img "Manta"
+          - text: Manta
+      - listitem:
+        - link "Arbitrum Nova Arbitrum Nova" [ref=e79]:
+          - /url: /arbitrumnova
+          - img "Arbitrum Nova"
+          - text: Arbitrum Nova
+      - listitem:
+        - link "Aurora Aurora" [ref=e80]:
+          - /url: /aurora
+          - img "Aurora"
+          - text: Aurora
+      - listitem:
+        - link "IoTeX IoTeX" [ref=e81]:
+          - /url: /iotex
+          - img "IoTeX"
+          - text: IoTeX
+      - listitem:
+        - link "Taiko Taiko" [ref=e82]:
+          - /url: /taiko
+          - img "Taiko"
+          - text: Taiko
+      - listitem:
+        - link "Energi Energi" [ref=e83]:
+          - /url: /energi
+          - img "Energi"
+          - text: Energi
+      - listitem:
+        - link "Telos Telos" [ref=e84]:
+          - /url: /telos
+          - img "Telos"
+          - text: Telos
+      - listitem:
+        - link "Zora Zora" [ref=e85]:
+          - /url: /zora
+          - img "Zora"
+          - text: Zora
+      - listitem:
+        - link "Elastos Elastos" [ref=e86]:
+          - /url: /elastos
+          - img "Elastos"
+          - text: Elastos
+      - listitem:
+        - link "Venom Venom" [ref=e87]:
+          - /url: /venom
+          - img "Venom"
+          - text: Venom
+      - listitem:
+        - link "KCC KCC" [ref=e88]:
+          - /url: /kcc
+          - img "KCC"
+          - text: KCC
+      - listitem:
+        - link "Mode Mode" [ref=e89]:
+          - /url: /mode
+          - img "Mode"
+          - text: Mode
+      - listitem:
+        - link "Movement Movement" [ref=e90]:
+          - /url: /movement
+          - img "Movement"
+          - text: Movement
+      - listitem:
+        - link "Fuse Fuse" [ref=e91]:
+          - /url: /fuse
+          - img "Fuse"
+          - text: Fuse
+      - listitem:
+        - link "Moonriver Moonriver" [ref=e92]:
+          - /url: /moonriver
+          - img "Moonriver"
+          - text: Moonriver
+      - listitem:
+        - link "Zircuit Zircuit" [ref=e93]:
+          - /url: /zircuit
+          - img "Zircuit"
+          - text: Zircuit
+      - listitem:
+        - link "Boba Boba" [ref=e94]:
+          - /url: /boba
+          - img "Boba"
+          - text: Boba
+      - listitem:
+        - link "Neon EVM Neon EVM" [ref=e95]:
+          - /url: /neonevm
+          - img "Neon EVM"
+          - text: Neon EVM
+      - listitem:
+        - link "Oasis Sapphire Oasis Sapphire" [ref=e96]:
+          - /url: /oasissapphire
+          - img "Oasis Sapphire"
+          - text: Oasis Sapphire
+      - listitem:
+        - link "Step Network Step Network" [ref=e97]:
+          - /url: /stepnetwork
+          - img "Step Network"
+          - text: Step Network
+      - listitem:
+        - link "ZKFair ZKFair" [ref=e98]:
+          - /url: /zkfair
+          - img "ZKFair"
+          - text: ZKFair
+      - listitem:
+        - link "ICP ICP" [ref=e99]:
+          - /url: /icp
+          - img "ICP"
+          - text: ICP
+      - listitem:
+        - link "Meter Meter" [ref=e100]:
+          - /url: /meter
+          - img "Meter"
+          - text: Meter
+      - listitem:
+        - link "Oasis Emerald Oasis Emerald" [ref=e101]:
+          - /url: /oasisemerald
+          - img "Oasis Emerald"
+          - text: Oasis Emerald
+    - link "Watchlist" [ref=e102] [nth=1]:
+      - /url: /watchlist
+      - img
+      - text: Watchlist
+    - button "Minimize watchlist" [ref=e103]
+    - button "Expand watchlist" [ref=e104]
+    - button "Main Watchlist" [ref=e105]
+    - text: Nothing in this list yet...
+    - button "anon Sign-in" [ref=e106]:
+      - img
+      - text: anon
+      - img
+      - text: Sign-in
+    - link "Twitter" [ref=e107]:
+      - /url: https://twitter.com/dexscreener
+    - link "Telegram" [ref=e108]:
+      - /url: https://telegram.me/dexscreenerchat
+    - link "Telegram" [ref=e109] [nth=1]:
+      - /url: https://discord.gg/XNgMb5tQN7
+    - button "Lights on" [ref=e110]
+  - main:
+    - list:
+      - listitem:
+        - link "All DEXes" [ref=e111]:
+          - /url: /solana
+      - listitem:
+        - link "PumpSwap PumpSwap" [ref=e112]:
+          - /url: /solana/pumpswap
+          - img "PumpSwap"
+          - text: PumpSwap
+      - listitem:
+        - link "Raydium Raydium" [ref=e113]:
+          - /url: /solana/raydium
+          - img "Raydium"
+          - text: Raydium
+      - listitem:
+        - link "Meteora Meteora" [ref=e114]:
+          - /url: /solana/meteora
+          - img "Meteora"
+          - text: Meteora
+      - listitem:
+        - link "Orca Orca" [ref=e115]:
+          - /url: /solana/orca
+          - img "Orca"
+          - text: Orca
+      - listitem:
+        - link "Pump.fun Pump.fun" [ref=e116]:
+          - /url: /solana/pumpfun
+          - img "Pump.fun"
+          - text: Pump.fun
+      - listitem:
+        - link "Meteora DBC Meteora DBC" [ref=e117]:
+          - /url: /solana/meteoradbc
+          - img "Meteora DBC"
+          - text: Meteora DBC
+      - listitem:
+        - link "FluxBeam FluxBeam" [ref=e118]:
+          - /url: /solana/fluxbeam
+          - img "FluxBeam"
+          - text: FluxBeam
+      - listitem:
+        - link "Bags Bags" [ref=e119]:
+          - /url: /solana/bags
+          - img "Bags"
+          - text: Bags
+      - listitem:
+        - link "LaunchLab LaunchLab" [ref=e120]:
+          - /url: /solana/launchlab
+          - img "LaunchLab"
+          - text: LaunchLab
+      - listitem:
+        - link "Moonit Moonit" [ref=e121]:
+          - /url: /solana/moonit
+          - img "Moonit"
+          - text: Moonit
+      - listitem:
+        - link "Heaven Heaven" [ref=e122]:
+          - /url: /solana/heaven
+          - img "Heaven"
+          - text: Heaven
+      - listitem:
+        - link "Zora Zora" [ref=e123] [nth=1]:
+          - /url: /solana/zora
+          - img "Zora"
+          - text: Zora
+      - listitem:
+        - link "Dexlab Dexlab" [ref=e124]:
+          - /url: /solana/dexlab
+          - img "Dexlab"
+          - text: Dexlab
+      - button "More" [ref=e125]
+    - link "Metas" [ref=e126]:
+      - /url: /metas/solana
+      - img
+      - text: Metas
+    - link "🏆 Meme Hall of Fame $1.74B" [ref=e127]:
+      - /url: /metas/solana/meme-hall-of-fame
+      - text: 🏆 Meme Hall of Fame $1.74B
+      - img
+    - link "😈 Degen $228.2M" [ref=e128]:
+      - /url: /metas/solana/degen
+      - text: 😈 Degen $228.2M
+      - img
+    - link "🐾 Internet Animals $110.9M" [ref=e129]:
+      - /url: /metas/solana/internet-animals
+      - text: 🐾 Internet Animals $110.9M
+      - img
+    - link "🎬 TikTok $9.7M" [ref=e130]:
+      - /url: /metas/solana/tiktok
+      - text: 🎬 TikTok $9.7M
+      - img
+    - link "🤙 Slang $5.5M" [ref=e131]:
+      - /url: /metas/solana/slang
+      - text: 🤙 Slang $5.5M
+      - img
+    - link "🐻‍❄️ Character $911.2M" [ref=e132]:
+      - /url: /metas/solana/character
+      - text: 🐻‍❄️ Character $911.2M
+      - img
+    - link "🧠 Brainrot $4.0M" [ref=e133]:
+      - /url: /metas/solana/brainrot
+      - text: 🧠 Brainrot $4.0M
+      - img
+    - link "🐶 Dog $727.8M" [ref=e134]:
+      - /url: /metas/solana/dog
+      - text: 🐶 Dog $727.8M
+      - img
+    - link "🤖 AI $301.7M" [ref=e135]:
+      - /url: /metas/solana/ai
+      - text: 🤖 AI $301.7M
+      - img
+    - link "🌟 Celebrity $1.02B" [ref=e136]:
+      - /url: /metas/solana/celebrity
+      - text: 🌟 Celebrity $1.02B
+      - img
+    - link "🍊 Trump $978.2M" [ref=e137]:
+      - /url: /metas/solana/trump
+      - text: 🍊 Trump $978.2M
+      - img
+    - link "👨‍🚀 Elon Musk $3.5M" [ref=e138]:
+      - /url: /metas/solana/elon-musk
+      - text: 👨‍🚀 Elon Musk $3.5M
+      - img
+    - link "🐈 Cat $123.8M" [ref=e139]:
+      - /url: /metas/solana/cat
+      - text: 🐈 Cat $123.8M
+      - img
+    - link "🇨🇳 Chinese $1.8M" [ref=e140]:
+      - /url: /metas/solana/chinese
+      - text: 🇨🇳 Chinese $1.8M
+      - img
+    - link "📈 Stonks $5.3M" [ref=e141]:
+      - /url: /metas/solana/stonks
+      - text: 📈 Stonks $5.3M
+      - img
+    - link "🖼️ NFT $535.1M" [ref=e142]:
+      - /url: /metas/solana/nft
+      - text: 🖼️ NFT $535.1M
+      - img
+    - link "💸 x402 $10.3M" [ref=e143]:
+      - /url: /metas/solana/x402
+      - text: 💸 x402 $10.3M
+      - img
+    - 'link "thumbnail MetaWin FREE TO ENTER: Win 1 Bitcoin (BTC)!Claim Now"':
+      - /url: https://metawin.com/t/dexscreener-1?c=50494
+      - img "thumbnail"
+      - text: "MetaWin FREE TO ENTER: Win 1 Bitcoin (BTC)!Claim Now"
+    - link "Ad" [ref=e144]:
+      - /url: https://docs.dexscreener.com/contact-us/advertise
+      - img
+      - paragraph: Ad
+    - button "Hide" [ref=e145]
+    - text: "24H Volume: $12.30B 24H Txns: 29,843,594 Latest Block: 406,102,650 3s ago"
+    - button "Last 24 hours" [ref=e146]
+    - img
+    - text: Trending
+    - link [ref=e147]:
+      - /url: https://docs.dexscreener.com/trending
+      - img
+    - button "5M" [ref=e148]
+    - button "1H" [ref=e149]
+    - button "6H" [ref=e150]
+    - button "24H" [ref=e151]
+    - button "Top" [ref=e152]
+    - button "Gainers" [ref=e153]
+    - button "New Pairs" [ref=e154]
+    - group:
+      - img
+      - text: Profile
+      - img
+    - group:
+      - img
+      - text: Boosted
+      - img
+    - group:
+      - img
+      - text: Ads
+      - img
+    - group:
+      - img
+      - text: Launchpad
+      - img
+    - group:
+      - 'button "Rank by: Trending 6H"':
+        - img
+        - text: "Rank by:"
+        - img
+        - text: Trending 6H
+      - button "Filters" [ref=e155]
+      - button "Customize" [ref=e156]
+    - button "Token" [ref=e157]
+    - button "Price" [ref=e158]
+    - button "Toggle USD/native price" [ref=e159]:
+      - img
+    - button "Age" [ref=e160]
+    - button "Txns" [ref=e161]
+    - button "Volume" [ref=e162]
+    - button "Makers" [ref=e163]
+    - button "5M" [ref=e164] [nth=1]
+    - button "1H" [ref=e165] [nth=1]
+    - button "6H" [ref=e166] [nth=1]
+    - button "24H" [ref=e167] [nth=1]
+    - button "Liquidity" [ref=e168]
+    - button "MCAP" [ref=e169]
+    - link "#1 PumpSwap EXPRESSION / SOL DISTORTED EXPRESSION 500 $0.0002770 4h 40,667 $2.2M 11,362 8.12% 41.59% 605% 605% $47K $277K" [ref=e170]:
+      - /url: /solana/j8vbtssu3gpu6tqa6iq9rk3hcrqjzfmbbqng4av7jfnr
+      - text: "#1"
+      - img "PumpSwap"
+      - img
+      - text: EXPRESSION / SOL DISTORTED EXPRESSION
+      - img
+      - text: 500 $0.0002770 4h 40,667 $2.2M 11,362 8.12% 41.59% 605% 605% $47K $277K
+    - link "#2 PumpSwap ROFL / SOL Rofl Face 530 $0.0001166 4h 19,870 $882K 4,391 6.66% -63.69% 200% 200% $28K $116K" [ref=e171]:
+      - /url: /solana/frdjf4mqenkwbg3wdtdcpw7b5sljdl3ml6zv3bbs42xr
+      - text: "#2"
+      - img "PumpSwap"
+      - img
+      - text: ROFL / SOL Rofl Face
+      - img
+      - text: 530 $0.0001166 4h 19,870 $882K 4,391 6.66% -63.69% 200% 200% $28K $116K
+    - link "#3 PumpSwap DOOMSDAY / SOL DOOMSDAY 550 $0.0001274 3h 36,715 $1.1M 7,906 12.45% -64.61% 247% 247% $30K $127K" [ref=e172]:
+      - /url: /solana/4jlwure6f1fqmn8infxis6zcon7xp3gcsvng1mgedspi
+      - text: "#3"
+      - img "PumpSwap"
+      - img
+      - text: DOOMSDAY / SOL DOOMSDAY
+      - img
+      - text: 550 $0.0001274 3h 36,715 $1.1M 7,906 12.45% -64.61% 247% 247% $30K $127K
+    - link "#4 PumpSwap shitcoin / SOL shitcoin 600 $0.0004722 11h 19,521 $1.1M 3,184 1.15% 14.57% 73.05% 1,229% $57K $467K" [ref=e173]:
+      - /url: /solana/5rima4uqeexlmeb21nrw32kjmpyiszpkpsvbxygwtc3g
+      - text: "#4"
+      - img "PumpSwap"
+      - img
+      - text: shitcoin / SOL shitcoin
+      - img
+      - text: 600 $0.0004722 11h 19,521 $1.1M 3,184 1.15% 14.57% 73.05% 1,229% $57K $467K
+    - link "#5 PumpSwap HeavyPulp / SOL HeavyPulp 10 $0.002439 1mo 32,549 $4.9M 4,690 3.41% 1.02% 368% 12,325% $179K $2.4M" [ref=e174]:
+      - /url: /solana/3lhywhm61rvwpxhjwnkv7zb7tmknaoa6schxx4nczfqy
+      - text: "#5"
+      - img "PumpSwap"
+      - img
+      - text: HeavyPulp / SOL HeavyPulp
+      - img
+      - text: 10 $0.002439 1mo 32,549 $4.9M 4,690 3.41% 1.02% 368% 12,325% $179K $2.4M
+    - link "#6 PumpSwap RIGGED / SOL RIGGED 210 $0.0001335 7h 10,641 $207K 7,736 -3.77% 5.48% 33.88% 248% $29K $133K" [ref=e175]:
+      - /url: /solana/qrvxnfhfcsjtk91dcfkz1pc7wkkursaxkna3nft3kth
+      - text: "#6"
+      - img "PumpSwap"
+      - img
+      - text: RIGGED / SOL RIGGED
+      - img
+      - text: 210 $0.0001335 7h 10,641 $207K 7,736 -3.77% 5.48% 33.88% 248% $29K $133K
+    - link "#7 PumpSwap Peace / SOL World Peace 500 $0.0003878 13d 7,180 $538K 2,930 -0.90% -11.13% 1.65% 22.21% $78K $382K" [ref=e176]:
+      - /url: /solana/elx7qwm43xvqkjrz8dkupdfju8zmy6xbmjpjyxcx3j9u
+      - text: "#7"
+      - img "PumpSwap"
+      - img
+      - text: Peace / SOL World Peace
+      - img
+      - text: 500 $0.0003878 13d 7,180 $538K 2,930 -0.90% -11.13% 1.65% 22.21% $78K $382K
+    - link "#8 PumpSwap Life / SOL Life If... $0.001259 3d 37,637 $3.3M 5,696 1.89% -10.04% -47.84% 6.10% $115K $1.2M" [ref=e177]:
+      - /url: /solana/hvujow1px34paefc9uwuv7lrh7ta4usoprkztccdwa21
+      - text: "#8"
+      - img "PumpSwap"
+      - img
+      - text: Life / SOL Life If... $0.001259 3d 37,637 $3.3M 5,696 1.89% -10.04% -47.84% 6.10% $115K $1.2M
+    - link "#9 PumpSwap 01001000 / SOL Binary Code $0.0006612 13h 24,187 $1.8M 4,718 -3.28% 53.38% 83.53% 1,770% $69K $661K" [ref=e178]:
+      - /url: /solana/3pwfhq7rlew6qrmasocmivnl9vmavymj8z3fgcnmzksj
+      - text: "#9"
+      - img "PumpSwap"
+      - img
+      - text: 01001000 / SOL Binary Code $0.0006612 13h 24,187 $1.8M 4,718 -3.28% 53.38% 83.53% 1,770% $69K $661K
+    - link "#10 Meteora DLMM Peace / SOL World Peace 500 $0.0003603 12d 246 $13K 169 - - - 13.63% $25K $355K" [ref=e179]:
+      - /url: /solana/abq8cgnzuhpubpguvrd1gemcdskyspyxqkdtdlpq43rz
+      - text: "#10"
+      - img "Meteora"
+      - img
+      - text: DLMM Peace / SOL World Peace
+      - img
+      - text: 500 $0.0003603 12d 246 $13K 169 - - - 13.63% $25K $355K
+    - link "#11 PumpSwap Distorted / SOL Distorted Face $0.001802 3d 30,139 $2.9M 4,880 -6.20% -6.49% 2.97% -56.69% $150K $1.8M" [ref=e180]:
+      - /url: /solana/ccmh7tvvrrcaexbn6uu3aydzr5p16whjnzclvamhkec4
+      - text: "#11"
+      - img "PumpSwap"
+      - img
+      - text: Distorted / SOL Distorted Face $0.001802 3d 30,139 $2.9M 4,880 -6.20% -6.49% 2.97% -56.69% $150K $1.8M
+    - link "#12 Raydium LOS / SOL Lord Of Sol 30 $0.045476 1y 20,589 $979K 18,405 0.11% 24.13% 46.83% 351% $399K $547K" [ref=e181]:
+      - /url: /solana/eeanqszv6lyempqfrf6xs3j2u4gxruv2uf7wuduwgkeu
+      - text: "#12"
+      - img "Raydium"
+      - img
+      - text: LOS / SOL Lord Of Sol
+      - img
+      - text: 30 $0.045476 1y 20,589 $979K 18,405 0.11% 24.13% 46.83% 351% $399K $547K
+    - link "#13 PumpSwap Momo / SOL Baby Pygmy $0.0001601 12h 19,478 $1.0M 3,237 3.64% -10.55% -17.54% 339% $34K $156K" [ref=e182]:
+      - /url: /solana/gf9gpevn9jk5ghxmgndk6bmxelnqm34kttagjxqm774x
+      - text: "#13"
+      - img "PumpSwap"
+      - img
+      - text: Momo / SOL Baby Pygmy $0.0001601 12h 19,478 $1.0M 3,237 3.64% -10.55% -17.54% 339% $34K $156K
+    - link "#14 PumpSwap LUFFY / SOL Luffy 10 $0.0003574 23h 53,907 $2.5M 6,852 -4.09% 32.27% 46.63% 914% $53K $357K" [ref=e183]:
+      - /url: /solana/ge4njbowaywqjbpwtjnt5qy94vip3b8v1tuqfut1kf2j
+      - text: "#14"
+      - img "PumpSwap"
+      - img
+      - text: LUFFY / SOL Luffy
+      - img
+      - text: 10 $0.0003574 23h 53,907 $2.5M 6,852 -4.09% 32.27% 46.63% 914% $53K $357K
+    - link "#15 PumpSwap JEW / SOL Jewish Engineered Wealth Coin 100 $0.0005090 2d 87,111 $1.1M 27,983 1.30% -4.06% -3.21% -16.21% $67K $509K" [ref=e184]:
+      - /url: /solana/g6drkuepqo44h7we4dar4m5b48n17f1pmaxseju7putz
+      - text: "#15"
+      - img "PumpSwap"
+      - img
+      - text: JEW / SOL Jewish Engineered Wealth Coin
+      - img
+      - text: 100 $0.0005090 2d 87,111 $1.1M 27,983 1.30% -4.06% -3.21% -16.21% $67K $509K
+    - link "#16 PumpSwap HAMSTER / SOL Hamster $0.0001608 5h 10,898 $486K 1,377 -2.56% 8.55% 344% 344% $33K $160K" [ref=e185]:
+      - /url: /solana/gc4eln27sbitxvmnrs7kw1eb438wzyoexpqtjpelcgju
+      - text: "#16"
+      - img "PumpSwap"
+      - img
+      - text: HAMSTER / SOL Hamster $0.0001608 5h 10,898 $486K 1,377 -2.56% 8.55% 344% 344% $33K $160K
+    - link "#17 PumpSwap SOS / SOL Strategic Oil Supply 100 $0.004670 2d 15,945 $2.2M 795 6.52% 22.79% 73.09% 480% $185K $4.6M" [ref=e186]:
+      - /url: /solana/bm7qw7jbgtylozw3cankf6q6ejdp1q3pyuhqhtnwoq2d
+      - text: "#17"
+      - img "PumpSwap"
+      - img
+      - text: SOS / SOL Strategic Oil Supply
+      - img
+      - text: 100 $0.004670 2d 15,945 $2.2M 795 6.52% 22.79% 73.09% 480% $185K $4.6M
+    - link "#18 PumpSwap abcdefg / SOL FIRSTviralonboardOGcreatorAI $0.001109 6d 15,319 $1.2M 2,057 -1.76% 2.46% 22.26% 133% $115K $1.1M" [ref=e187]:
+      - /url: /solana/dnsb9erjmchyfuaqlstdtlembzvktaoemeuxndqgda8r
+      - text: "#18"
+      - img "PumpSwap"
+      - img
+      - text: abcdefg / SOL FIRSTviralonboardOGcreatorAI $0.001109 6d 15,319 $1.2M 2,057 -1.76% 2.46% 22.26% 133% $115K $1.1M
+    - link "#19 PumpSwap WhiteHouse / SOL The White House 10 $0.0008878 7d 30,273 $2.2M 3,587 -0.81% 2.99% -31.59% 80.75% $116K $887K" [ref=e188]:
+      - /url: /solana/ephw3pf79sd7dbssrmx9wc1btisjfkng7vndwg7mjx4i
+      - text: "#19"
+      - img "PumpSwap"
+      - img
+      - text: WhiteHouse / SOL The White House
+      - img
+      - text: 10 $0.0008878 7d 30,273 $2.2M 3,587 -0.81% 2.99% -31.59% 80.75% $116K $887K
+    - link "#20 PumpSwap TripleT / SOL Tung Tung Tung Sahur $0.002182 17d 7,862 $925K 1,684 0.17% 1.78% 28.46% 40.41% $165K $2.1M" [ref=e189]:
+      - /url: /solana/3kfcgj5r3zshw8htdbzjsrrksrymkvsmfhc4vo4iddxd
+      - text: "#20"
+      - img "PumpSwap"
+      - img
+      - text: TripleT / SOL Tung Tung Tung Sahur $0.002182 17d 7,862 $925K 1,684 0.17% 1.78% 28.46% 40.41% $165K $2.1M
+    - link "#21 PumpSwap mogging / SOL mogging 100 $0.0002057 1d 16,502 $1.0M 3,534 -0.79% -9.22% -31.47% -49.26% $41K $205K" [ref=e190]:
+      - /url: /solana/5gjuboxlt8te68gvoaxttsx6pwfw1uzlsvhcp35esyxz
+      - text: "#21"
+      - img "PumpSwap"
+      - img
+      - text: mogging / SOL mogging
+      - img
+      - text: 100 $0.0002057 1d 16,502 $1.0M 3,534 -0.79% -9.22% -31.47% -49.26% $41K $205K
+    - link "#22 PumpSwap CAT / SOL catcoin 100 $0.0001048 17h 9,295 $663K 2,407 1.60% -3.41% -6.45% 172% $26K $104K" [ref=e191]:
+      - /url: /solana/cctnuj42qax9cxug2hwxab1tivrwmkwkgreoldc9y3qv
+      - text: "#22"
+      - img "PumpSwap"
+      - img
+      - text: CAT / SOL catcoin
+      - img
+      - text: 100 $0.0001048 17h 9,295 $663K 2,407 1.60% -3.41% -6.45% 172% $26K $104K
+    - link "#23 PumpSwap OILINU / SOL oil inu 100 $0.0001203 1mo 5,162 $316K 1,002 0.20% -5.62% -13.27% 24.43% $32K $120K" [ref=e192]:
+      - /url: /solana/9bvmg9w8yfv3bkawecbnwwktcnyi8bgkqgktdtsrrpvx
+      - text: "#23"
+      - img "PumpSwap"
+      - img
+      - text: OILINU / SOL oil inu
+      - img
+      - text: 100 $0.0001203 1mo 5,162 $316K 1,002 0.20% -5.62% -13.27% 24.43% $32K $120K
+    - link "#24 Meteora DLMM TRUMP / USDC OFFICIAL TRUMP $3.70 1y 7,586 $24.1M 597 0.27% 3.33% 24.53% 29.91% $86.8M $862.2M" [ref=e193]:
+      - /url: /solana/9d9mb8kooffad3sctgztkxqypkshx6ezhbkio89ixyy2
+      - text: "#24"
+      - img "Meteora"
+      - img
+      - text: DLMM TRUMP / USDC OFFICIAL TRUMP $3.70 1y 7,586 $24.1M 597 0.27% 3.33% 24.53% 29.91% $86.8M $862.2M
+    - link "#25 PumpSwap WIZARD / SOL Smoking Wizard 60 $0.0001885 1d 11,915 $818K 1,938 3.75% 15.20% 36.65% 153% $37K $188K" [ref=e194]:
+      - /url: /solana/dw4kah8lhdmgfw1cgyvnwswsdqkt37jey7pw4ofkbgtu
+      - text: "#25"
+      - img "PumpSwap"
+      - img
+      - text: WIZARD / SOL Smoking Wizard
+      - img
+      - text: 60 $0.0001885 1d 11,915 $818K 1,938 3.75% 15.20% 36.65% 153% $37K $188K
+    - link "#26 Meteora DYN LOOK / SOL LOOK $0.003671 6mo 1,206 $47K 95 1.47% 0.51% -3.37% 0.25% $268K $3.3M" [ref=e195]:
+      - /url: /solana/hsemlnpwz3fk9innmpucxs6nsqoi7y3n941exyz9anbq
+      - text: "#26"
+      - img "Meteora"
+      - img
+      - text: DYN LOOK / SOL LOOK
+      - img
+      - text: $0.003671 6mo 1,206 $47K 95 1.47% 0.51% -3.37% 0.25% $268K $3.3M
+    - link "#27 Meteora DYN NOBODY / SOL Nobody Sausage $0.005038 10mo 246 $35K 97 -0.15% 1.22% 2.93% 4.37% $670K $4.7M" [ref=e196]:
+      - /url: /solana/7rqd8fhc1rimv3v9edcrz6rnfsjn1puxm9umjaurjrnj
+      - text: "#27"
+      - img "Meteora"
+      - img
+      - text: DYN NOBODY / SOL Nobody Sausage
+      - img
+      - text: $0.005038 10mo 246 $35K 97 -0.15% 1.22% 2.93% 4.37% $670K $4.7M
+    - link "#28 Raydium MEMDEX / SOL MEMDEX100 $0.003098 1y 60 $10K 32 - -0.01% 0.37% -1.29% $353K $3.0M" [ref=e197]:
+      - /url: /solana/7cjge6pwonqfxjayuvude7tcs2gmpnnp1jct29jt3jvj
+      - text: "#28"
+      - img "Raydium"
+      - img
+      - text: MEMDEX / SOL MEMDEX100
+      - img
+      - text: $0.003098 1y 60 $10K 32 - -0.01% 0.37% -1.29% $353K $3.0M
+    - link "#29 Meteora DYN JProof / SOL JProof $0.005033 11mo 21 $245 11 - -0.19% -0.63% 3.71% $173K $4.8M" [ref=e198]:
+      - /url: /solana/7spcjkqr8ihgjz2jiy8x2rntvdtftaml1pzc7grm132y
+      - text: "#29"
+      - img "Meteora"
+      - img
+      - text: DYN JProof / SOL JProof
+      - img
+      - text: $0.005033 11mo 21 $245 11 - -0.19% -0.63% 3.71% $173K $4.8M
+    - link "#30 PumpSwap SCUBA / SOL It Stank $0.0007999 8d 14,257 $1.4M 2,488 1.94% -8.62% -11.97% 48.13% $90K $799K" [ref=e199]:
+      - /url: /solana/5q4sukk49xw2johpntzzzeyfr4kyb5nhcrcjh89rwefv
+      - text: "#30"
+      - img "PumpSwap"
+      - img
+      - text: SCUBA / SOL It Stank $0.0007999 8d 14,257 $1.4M 2,488 1.94% -8.62% -11.97% 48.13% $90K $799K
+    - link "#31 PumpSwap APOPHENOTH / SOL AI Psychosis $0.0002129 20d 9,742 $831K 1,354 -6.52% 28.00% 1,285% 1,184% $41K $212K" [ref=e200]:
+      - /url: /solana/cpteibw3ripakn2pm62ds9btjr9rdgjlbybvdtgtuduo
+      - text: "#31"
+      - img "PumpSwap"
+      - img
+      - text: APOPHENOTH / SOL AI Psychosis $0.0002129 20d 9,742 $831K 1,354 -6.52% 28.00% 1,285% 1,184% $41K $212K
+    - link "#32 PumpSwap LOLA / SOL Lola the Otter $0.0001883 7d 7,991 $212K 3,459 -1.36% 4.10% -15.06% -32.46% $39K $188K" [ref=e201]:
+      - /url: /solana/di86dbvyd5w26oktp6vo3nmupw5cv2fqu3r8gcuz3jjf
+      - text: "#32"
+      - img "PumpSwap"
+      - img
+      - text: LOLA / SOL Lola the Otter $0.0001883 7d 7,991 $212K 3,459 -1.36% 4.10% -15.06% -32.46% $39K $188K
+    - link "#33 PumpSwap Twin / SOL Twin $0.0003026 13h 5,918 $458K 1,171 -9.75% -9.19% 550% 756% $44K $302K" [ref=e202]:
+      - /url: /solana/3gvkfxxe178kqpbcy9x4w6tegj3ey9cbuewc1gmweee4
+      - text: "#33"
+      - img "PumpSwap"
+      - img
+      - text: Twin / SOL Twin $0.0003026 13h 5,918 $458K 1,171 -9.75% -9.19% 550% 756% $44K $302K
+    - link "#34 PumpSwap maxxing / SOL maxxing $0.002962 3mo 11,395 $942K 1,349 0.75% 4.36% -13.98% 17.98% $230K $2.9M" [ref=e203]:
+      - /url: /solana/dmntidvc8dmxrxuzfyz4stqkbs4r8acwxhnseyi6u3lx
+      - text: "#34"
+      - img "PumpSwap"
+      - img
+      - text: maxxing / SOL maxxing $0.002962 3mo 11,395 $942K 1,349 0.75% 4.36% -13.98% 17.98% $230K $2.9M
+    - link "#35 Meteora DYN2 USOR / SOL U.S Oil 500 $0.007304 2mo 2,329 $607K 457 0.44% 3.12% 8.23% 17.96% $260K $7.3M" [ref=e204]:
+      - /url: /solana/ecuy1h7p9hoa4bmqzppdhox64qus8msfucntqtnwjsrb
+      - text: "#35"
+      - img "Meteora"
+      - img
+      - text: DYN2 USOR / SOL U.S Oil
+      - img
+      - text: 500 $0.007304 2mo 2,329 $607K 457 0.44% 3.12% 8.23% 17.96% $260K $7.3M
+    - link "#36 PumpSwap Punch / SOL パンチ $0.005638 1mo 5,452 $797K 1,815 - 1.89% -5.03% 1.77% $437K $5.6M" [ref=e205]:
+      - /url: /solana/a6khmifzn9am7vkbtvp4fzny9bco2jp63r9dphaw1vrq
+      - text: "#36"
+      - img "PumpSwap"
+      - img
+      - text: Punch / SOL パンチ $0.005638 1mo 5,452 $797K 1,815 - 1.89% -5.03% 1.77% $437K $5.6M
+    - link "#37 Meteora DLMM TRUMP / USDC OFFICIAL TRUMP $3.71 1y 16,566 $28.1M 519 0.51% 3.34% 24.98% 30.07% $13.2M $863.7M" [ref=e206]:
+      - /url: /solana/3c5ye97hadpdxzehyq9cis8axr9anyrusczkze1ndbw9
+      - text: "#37"
+      - img "Meteora"
+      - img
+      - text: DLMM TRUMP / USDC OFFICIAL TRUMP $3.71 1y 16,566 $28.1M 519 0.51% 3.34% 24.98% 30.07% $13.2M $863.7M
+    - link "#38 PumpSwap Jellybean / SOL Jellybean $0.0005019 1mo 7,825 $687K 1,481 -0.99% 4.21% -13.62% -0.58% $98K $501K" [ref=e207]:
+      - /url: /solana/2jbxebefzmnzgmp8frhsujjqqzudlhjzwbjvh7vbw7df
+      - text: "#38"
+      - img "PumpSwap"
+      - img
+      - text: Jellybean / SOL Jellybean $0.0005019 1mo 7,825 $687K 1,481 -0.99% 4.21% -13.62% -0.58% $98K $501K
+    - link "#39 PumpSwap WAR / SOL WAR $0.02977 2d 10,183 $1.3M 2,052 -0.39% 5.96% 0.58% -19.04% $444K $29.7M" [ref=e208]:
+      - /url: /solana/7xykr7rz9pwzlbxpyq385agecdzpabfhzhn3jsudymrp
+      - text: "#39"
+      - img "PumpSwap"
+      - img
+      - text: WAR / SOL WAR $0.02977 2d 10,183 $1.3M 2,052 -0.39% 5.96% 0.58% -19.04% $444K $29.7M
+    - link "#40 PumpSwap Pigeon / SOL level941 $0.002204 1mo 3,149 $373K 850 0.16% 5.10% 13.00% 43.05% $211K $2.2M" [ref=e209]:
+      - /url: /solana/fxrvcgmqfgj3wrmuxgh8qhvlau3q4t7jqekboqhvecr7
+      - text: "#40"
+      - img "PumpSwap"
+      - img
+      - text: Pigeon / SOL level941 $0.002204 1mo 3,149 $373K 850 0.16% 5.10% 13.00% 43.05% $211K $2.2M
+    - link "#41 PumpSwap MONSTERS / SOL HELLO KITTY 20 $0.048923 10h 9,907 $513K 1,615 -0.56% -18.81% -16.81% 151% $24K $89K" [ref=e210]:
+      - /url: /solana/gig7drj1ddm2ur96c4hmetbnqe2pqbdvitkqxhrejrqx
+      - text: "#41"
+      - img "PumpSwap"
+      - img
+      - text: MONSTERS / SOL HELLO KITTY
+      - img
+      - text: 20 $0.048923 10h 9,907 $513K 1,615 -0.56% -18.81% -16.81% 151% $24K $89K
+    - link "#42 PumpSwap Snorp / SOL Homunculus Loxodontus $0.0001662 11h 10,151 $803K 1,560 -2.88% -0.54% -15.67% 369% $33K $166K" [ref=e211]:
+      - /url: /solana/7cp5vm91qwgmldtphj8h99fzp9ucpp3zxmqmxy321zfe
+      - text: "#42"
+      - img "PumpSwap"
+      - img
+      - text: Snorp / SOL Homunculus Loxodontus $0.0001662 11h 10,151 $803K 1,560 -2.88% -0.54% -15.67% 369% $33K $166K
+    - link "#43 PumpSwap 我的刀盾 / SOL what the dog doing? $0.001821 15d 6,075 $738K 1,409 0.26% 9.56% -20.26% 27.26% $159K $1.8M" [ref=e212]:
+      - /url: /solana/9rpsv1vwy6itwjihsbjrbpw2z36aeicnaiktyqtnxxcr
+      - text: "#43"
+      - img "PumpSwap"
+      - img
+      - text: 我的刀盾 / SOL what the dog doing? $0.001821 15d 6,075 $738K 1,409 0.26% 9.56% -20.26% 27.26% $159K $1.8M
+    - link "#44 PumpSwap MONA / SOL MONA 50 $0.0003652 3d 660 $46K 361 0.07% 4.93% 11.69% 15.93% $49K $365K" [ref=e213]:
+      - /url: /solana/2bdgvamays5q3tx5zzglkexpnhbnnvjxeqsiutiy5rvd
+      - text: "#44"
+      - img "PumpSwap"
+      - img
+      - text: MONA / SOL MONA
+      - img
+      - text: 50 $0.0003652 3d 660 $46K 361 0.07% 4.93% 11.69% 15.93% $49K $365K
+    - link "#45 Raydium Mustard / SOL MUSTAAAAAARD 10 $0.0002217 1y 14,333 $751K 4,043 -0.29% 0.37% -28.39% -58.79% $99K $221K" [ref=e214]:
+      - /url: /solana/5jbknnv534djg9tecumplevedino2c1wryb9pqgkyqle
+      - text: "#45"
+      - img "Raydium"
+      - img
+      - text: Mustard / SOL MUSTAAAAAARD
+      - img
+      - text: 10 $0.0002217 1y 14,333 $751K 4,043 -0.29% 0.37% -28.39% -58.79% $99K $221K
+    - link "#46 Raydium ZAILGO / SOL Z̶A̴I̴L̶G̶O̸ $0.0001793 1y 16,188 $447K 10,987 -0.35% -4.85% 55.70% 266% $91K $175K" [ref=e215]:
+      - /url: /solana/dkneizaa75ghrhm53obt5ahp45a7hbekdveb99czvekn
+      - text: "#46"
+      - img "Raydium"
+      - img
+      - text: ZAILGO / SOL Z̶A̴I̴L̶G̶O̸ $0.0001793 1y 16,188 $447K 10,987 -0.35% -4.85% 55.70% 266% $91K $175K
+    - link "#47 Orca wp USOR / SOL U.S Oil 500 $0.007618 1mo 8,320 $299K 2,040 0.29% 4.46% 14.89% 21.60% $23K $7.6M" [ref=e216]:
+      - /url: /solana/fmqmpgzekrotxdxrynbpnwgmhckbkhuyqn6een24cy1j
+      - text: "#47"
+      - img "Orca"
+      - img
+      - text: wp USOR / SOL U.S Oil
+      - img
+      - text: 500 $0.007618 1mo 8,320 $299K 2,040 0.29% 4.46% 14.89% 21.60% $23K $7.6M
+    - link "#48 Raydium pippin / SOL Pippin $0.3603 1y 26,924 $6.1M 860 0.17% -0.39% 1.82% 1.20% $13.0M $360.3M" [ref=e217]:
+      - /url: /solana/8wwcnqdzjcy5pt7akhupafknv2txca9sq6ybkgzlbvdt
+      - text: "#48"
+      - img "Raydium"
+      - img
+      - text: pippin / SOL Pippin $0.3603 1y 26,924 $6.1M 860 0.17% -0.39% 1.82% 1.20% $13.0M $360.3M
+    - link "#49 PumpSwap Buttcoin / SOL Buttcoin $0.01252 2mo 6,140 $707K 1,425 0.43% 1.93% -3.73% 7.04% $584K $12.5M" [ref=e218]:
+      - /url: /solana/ffcygssgwhfora9rxxka48p8yfoz8tsw85jpo3cqhdys
+      - text: "#49"
+      - img "PumpSwap"
+      - img
+      - text: Buttcoin / SOL Buttcoin $0.01252 2mo 6,140 $707K 1,425 0.43% 1.93% -3.73% 7.04% $584K $12.5M
+    - link "#50 PumpSwap 90S / SOL 90s Throwback $0.0001307 1d 14,807 $1.0M 2,548 8.03% 21.01% -35.09% 16.26% $30K $130K" [ref=e219]:
+      - /url: /solana/3tcgfcasf5gfshiwme5zhyphkdek8z42qds2yvqpvo9l
+      - text: "#50"
+      - img "PumpSwap"
+      - img
+      - text: 90S / SOL 90s Throwback $0.0001307 1d 14,807 $1.0M 2,548 8.03% 21.01% -35.09% 16.26% $30K $130K
+    - link "#51 Meteora DLMM Bonk / SOL Bonk $0.056260 1y 16,672 $1.0M 3,319 0.06% 0.53% 0.65% 6.59% $372K $550.8M" [ref=e220]:
+      - /url: /solana/6ofwm7kplfxnwmb3z5xwboxnspp3jjyirapqpsivcnsp
+      - text: "#51"
+      - img "Meteora"
+      - img
+      - text: DLMM Bonk / SOL Bonk $0.056260 1y 16,672 $1.0M 3,319 0.06% 0.53% 0.65% 6.59% $372K $550.8M
+    - link "#52 Raydium ? CLMM Distorted / SOL Distorted Face $0.001281 2d 14,665 $2.2M 7,311 -0.44% 41.34% 43.91% -19.06% $102K $1.2M" [ref=e221]:
+      - /url: /solana/gkyukjforq96wodz1wuq6udv2nxkm3ukga2aw9w95gep
+      - text: "#52"
+      - img "Raydium"
+      - text: "? CLMM Distorted / SOL Distorted Face $0.001281 2d 14,665 $2.2M 7,311 -0.44% 41.34% 43.91% -19.06% $102K $1.2M"
+    - link "#53 Raydium CPMM WAR / USD1 WAR $0.003742 1mo 5,454 $687K 1,729 0.43% 4.38% 14.30% -14.94% $303K $3.7M" [ref=e222]:
+      - /url: /solana/qnaglpknyzntf5ijhdki9prgodgra5bnadacgecdsjw
+      - text: "#53"
+      - img "Raydium"
+      - img
+      - text: CPMM WAR / USD1 WAR $0.003742 1mo 5,454 $687K 1,729 0.43% 4.38% 14.30% -14.94% $303K $3.7M
+    - link "#54 PumpSwap butthole / SOL the beginning $0.0004303 1d 16,928 $1.0M 2,582 -1.20% 7.38% 11.49% 17.58% $68K $430K" [ref=e223]:
+      - /url: /solana/87tks3fhgd3142fxqgbwckhijhthdvymadcmbytrn21w
+      - text: "#54"
+      - img "PumpSwap"
+      - img
+      - text: butthole / SOL the beginning $0.0004303 1d 16,928 $1.0M 2,582 -1.20% 7.38% 11.49% 17.58% $68K $430K
+    - link "#55 PumpSwap Kenny / SOL Kenny Slow Bird $0.0001130 1d 9,628 $723K 1,175 -0.07% -20.56% -10.35% 4,764% $27K $113K" [ref=e224]:
+      - /url: /solana/3daoqtb5uymclgasmzyxupumqtrxx76bcktawlh2qsmr
+      - text: "#55"
+      - img "PumpSwap"
+      - img
+      - text: Kenny / SOL Kenny Slow Bird $0.0001130 1d 9,628 $723K 1,175 -0.07% -20.56% -10.35% 4,764% $27K $113K
+    - link "#56 PumpSwap Lobstar / SOL Lobstar $0.003486 21d 3,381 $521K 948 -1.39% 2.39% 4.23% -10.41% $316K $3.4M" [ref=e225]:
+      - /url: /solana/aadjrfmwohvxzhf1ukbhvnc5tqrbpkgdsaxtmytedm2x
+      - text: "#56"
+      - img "PumpSwap"
+      - img
+      - text: Lobstar / SOL Lobstar $0.003486 21d 3,381 $521K 948 -1.39% 2.39% 4.23% -10.41% $316K $3.4M
+    - link "#57 Meteora DYN SPLAT / SOL Ask Splat $0.001279 10mo 8 $25 5 - - -1.84% 1.89% $287K $839K" [ref=e226]:
+      - /url: /solana/4zentv87pnewgkvcgr6ggaumxzv3xmcpgha927nkantu
+      - text: "#57"
+      - img "Meteora"
+      - img
+      - text: DYN SPLAT / SOL Ask Splat
+      - img
+      - text: $0.001279 10mo 8 $25 5 - - -1.84% 1.89% $287K $839K
+    - link "#58 PumpSwap SOLINU / SOL Solana INU 10 $0.0004167 3d 4,626 $339K 1,083 -0.21% 11.31% -0.09% 19.60% $56K $416K" [ref=e227]:
+      - /url: /solana/5lk8kj9yjx15m7oyzfmcwavakajhkhdkhlcwjsf145ih
+      - text: "#58"
+      - img "PumpSwap"
+      - img
+      - text: SOLINU / SOL Solana INU
+      - img
+      - text: 10 $0.0004167 3d 4,626 $339K 1,083 -0.21% 11.31% -0.09% 19.60% $56K $416K
+    - link "#59 PumpSwap GIVE / SOL UniGive $0.0002938 12h 9,780 $668K 2,063 0.45% -11.25% 11.45% 782% $44K $293K" [ref=e228]:
+      - /url: /solana/9uwcgxdy7zvkq5zywf5h11t3opvd5cy2xufthjq2new3
+      - text: "#59"
+      - img "PumpSwap"
+      - img
+      - text: GIVE / SOL UniGive $0.0002938 12h 9,780 $668K 2,063 0.45% -11.25% 11.45% 782% $44K $293K
+    - link "#60 PumpSwap neet / SOL NotInEmploymentEducationTraining $0.02707 10mo 1,902 $475K 405 0.65% -0.33% -1.43% 17.22% $1.3M $27.0M" [ref=e229]:
+      - /url: /solana/5wnu5qhdprgrl37ffcd6tmmqzugqgxwafgz477rshthy
+      - text: "#60"
+      - img "PumpSwap"
+      - img
+      - text: neet / SOL NotInEmploymentEducationTraining $0.02707 10mo 1,902 $475K 405 0.65% -0.33% -1.43% 17.22% $1.3M $27.0M
+    - link "#61 PumpSwap AUTISM / SOL Autism Coin $0.0002982 17d 4,029 $215K 856 0.12% 8.06% 15.11% 41.18% $67K $298K" [ref=e230]:
+      - /url: /solana/8qycaoqecj12n1ce5wn8yqodaidm3kh4ql9o78ibee8w
+      - text: "#61"
+      - img "PumpSwap"
+      - img
+      - text: AUTISM / SOL Autism Coin $0.0002982 17d 4,029 $215K 856 0.12% 8.06% 15.11% 41.18% $67K $298K
+    - link "#62 Orca wp KMNO / USDC Kamino $0.02050 1y 19,602 $709K 2,422 -0.15% 1.91% 2.30% 5.30% $1.2M $84.7M" [ref=e231]:
+      - /url: /solana/3ndjn1njvukgrjbc1hhvper6kwtzkhdydrpycjyx3cxk
+      - text: "#62"
+      - img "Orca"
+      - img
+      - text: wp KMNO / USDC Kamino $0.02050 1y 19,602 $709K 2,422 -0.15% 1.91% 2.30% 5.30% $1.2M $84.7M
+    - link "#63 PumpSwap PsyopAnime / SOL PsyopAnime $0.006989 2mo 2,752 $340K 1,056 0.13% -2.35% -6.09% -2.39% $427K $6.9M" [ref=e232]:
+      - /url: /solana/fpyosqzp5ijfrxqqbvnm67rfam7vsbvnam7puf8yvt1c
+      - text: "#63"
+      - img "PumpSwap"
+      - img
+      - text: PsyopAnime / SOL PsyopAnime $0.006989 2mo 2,752 $340K 1,056 0.13% -2.35% -6.09% -2.39% $427K $6.9M
+    - link "#64 PumpSwap SHAPE / SOL The Shape Store $0.001875 10d 3,576 $467K 1,074 - -0.87% -4.21% -6.14% $138K $1.8M" [ref=e233]:
+      - /url: /solana/g6b6qdzmg9sy27pcidm4yew3hwcega2bye9qfujrk6fw
+      - text: "#64"
+      - img "PumpSwap"
+      - img
+      - text: SHAPE / SOL The Shape Store $0.001875 10d 3,576 $467K 1,074 - -0.87% -4.21% -6.14% $138K $1.8M
+    - link "#65 Raydium TOPG / SOL TOP G $0.0002905 1y 7,687 $284K 1,716 0.64% -3.35% -3.53% 109% $107K $119K" [ref=e234]:
+      - /url: /solana/8qs2ye9viad5qemvq7mwbqvcxnjwecmkodzg6cvtanxp
+      - text: "#65"
+      - img "Raydium"
+      - img
+      - text: TOPG / SOL TOP G $0.0002905 1y 7,687 $284K 1,716 0.64% -3.35% -3.53% 109% $107K $119K
+    - link "#66 PumpSwap BigTrout / SOL The Big Trout $0.0004130 1mo 1,975 $135K 492 0.06% -1.28% -23.52% 53.38% $94K $390K" [ref=e235]:
+      - /url: /solana/84q5fsb6dhvsyhqdfkbxdvdfmsiwelezwgmutd1fubac
+      - text: "#66"
+      - img "PumpSwap"
+      - img
+      - text: BigTrout / SOL The Big Trout $0.0004130 1mo 1,975 $135K 492 0.06% -1.28% -23.52% 53.38% $94K $390K
+    - link "#67 Raydium CLMM RAY / SOL Raydium $0.6141 1y 19,055 $2.8M 1,941 0.12% 0.44% -0.23% 2.32% $1.3M $165.0M" [ref=e236]:
+      - /url: /solana/2axxcn6on9bbt5owwmth53c7qhuxvhleu718kqt8rvy2
+      - text: "#67"
+      - img "Raydium"
+      - img
+      - text: CLMM RAY / SOL Raydium $0.6141 1y 19,055 $2.8M 1,941 0.12% 0.44% -0.23% 2.32% $1.3M $165.0M
+    - link "#68 Orca wp $WIF / SOL dogwifhat $0.1697 1y 10,434 $168K 1,743 0.14% 0.49% -0.26% 3.12% $134K $169.5M" [ref=e237]:
+      - /url: /solana/d6ndkrknqpmrzccng1gqxtf7mmohb7qr6gu5tkg59qz1
+      - text: "#68"
+      - img "Orca"
+      - img
+      - text: wp $WIF / SOL dogwifhat $0.1697 1y 10,434 $168K 1,743 0.14% 0.49% -0.26% 3.12% $134K $169.5M
+    - link "#69 PumpSwap AgenC / SOL AgenC $0.001617 16d 6,267 $972K 1,412 1.47% 0.23% -11.06% 38.67% $135K $1.6M" [ref=e238]:
+      - /url: /solana/bumh6yebpbvah4by4otgjuvzq9cvh6dqpgrzvxfdmwc1
+      - text: "#69"
+      - img "PumpSwap"
+      - img
+      - text: AgenC / SOL AgenC $0.001617 16d 6,267 $972K 1,412 1.47% 0.23% -11.06% 38.67% $135K $1.6M
+    - link "#70 Orca wp Bonk / SOL Bonk $0.056254 3y 14,989 $185K 3,169 -0.05% 0.44% 0.48% 6.41% $166K $550.3M" [ref=e239]:
+      - /url: /solana/5zpyutju9ee6jfymdgok7f6s5kczqtc9fomp3uekuya9
+      - text: "#70"
+      - img "Orca"
+      - img
+      - text: wp Bonk / SOL Bonk $0.056254 3y 14,989 $185K 3,169 -0.05% 0.44% 0.48% 6.41% $166K $550.3M
+    - link "#71 Meteora DLMM mogging / SOL mogging 100 $0.0003481 1d 1,315 $85K 653 - - - -14.66% $19K $348K" [ref=e240]:
+      - /url: /solana/djgnx3292p8bsjn9vsfrxpamal4yhotgt8iyytvgkugm
+      - text: "#71"
+      - img "Meteora"
+      - img
+      - text: DLMM mogging / SOL mogging
+      - img
+      - text: 100 $0.0003481 1d 1,315 $85K 653 - - - -14.66% $19K $348K
+    - link "#72 PumpSwap Machi / SOL Machi Big Brother $0.001096 10d 4,170 $410K 829 2.17% 19.24% 22.20% 31.42% $117K $1.0M" [ref=e241]:
+      - /url: /solana/7cmefcyxzk6yfbcmb4j234a3eky2w13gfedb3djvnwzx
+      - text: "#72"
+      - img "PumpSwap"
+      - img
+      - text: Machi / SOL Machi Big Brother $0.001096 10d 4,170 $410K 829 2.17% 19.24% 22.20% 31.42% $117K $1.0M
+    - link "#73 PumpSwap GROKIUS / SOL Grokius Maximus $0.0006549 21d 1,373 $109K 577 -0.03% -1.79% 0.13% 5.44% $99K $654K" [ref=e242]:
+      - /url: /solana/huse3ouq2rl2egjy1hurxyiiqw4uuv4qddvpyedq8rdh
+      - text: "#73"
+      - img "PumpSwap"
+      - img
+      - text: GROKIUS / SOL Grokius Maximus $0.0006549 21d 1,373 $109K 577 -0.03% -1.79% 0.13% 5.44% $99K $654K
+    - link "#74 PumpSwap RYS / SOL RefundYourSOL $0.0004319 8mo 4,360 $15K 1,422 0.06% 2.07% -0.14% 7.98% $104K $418K" [ref=e243]:
+      - /url: /solana/bux9tn5doe5hcqpcmqmkykidxc8zgbk5whhkujdaabiq
+      - text: "#74"
+      - img "PumpSwap"
+      - img
+      - text: RYS / SOL RefundYourSOL $0.0004319 8mo 4,360 $15K 1,422 0.06% 2.07% -0.14% 7.98% $104K $418K
+    - link "#75 Raydium CPMM SURGE / SOL SURGE $0.01796 4mo 3,744 $196K 3,634 0.16% 1.04% 1.26% 1.20% $431K $8.8M" [ref=e244]:
+      - /url: /solana/bscfgkzf9ydfpl11hzqncqpskprdeyfcvcjsa5qupeh5
+      - text: "#75"
+      - img "Raydium"
+      - img
+      - text: CPMM SURGE / SOL SURGE $0.01796 4mo 3,744 $196K 3,634 0.16% 1.04% 1.26% 1.20% $431K $8.8M
+    - link "#76 PumpSwap PENGUIN / SOL Nietzschean Penguin $0.004928 1mo 782 $110K 225 - -0.38% -1.22% -5.33% $395K $4.9M" [ref=e245]:
+      - /url: /solana/draf8qxqy86h7yehdo9gytxaf6gottt8ozjknwxv6dcs
+      - text: "#76"
+      - img "PumpSwap"
+      - img
+      - text: PENGUIN / SOL Nietzschean Penguin $0.004928 1mo 782 $110K 225 - -0.38% -1.22% -5.33% $395K $4.9M
+    - link "#77 PumpSwap Goyim / SOL Goyim $0.0005950 1mo 2,883 $184K 1,001 1.27% 12.33% 7.47% 39.30% $121K $595K" [ref=e246]:
+      - /url: /solana/ascsdmpkbxdnriprkgapilu4kukc6p8vgnbtnhgw3hnf
+      - text: "#77"
+      - img "PumpSwap"
+      - img
+      - text: Goyim / SOL Goyim $0.0005950 1mo 2,883 $184K 1,001 1.27% 12.33% 7.47% 39.30% $121K $595K
+    - link "#78 PumpSwap Whatif / SOL What If? $0.0003938 20h 7,262 $667K 1,295 -0.41% 6.26% 5.83% 857% $51K $393K" [ref=e247]:
+      - /url: /solana/4kfya1vvh7jidgzsoonzchz9ajmry9lfh9tty3agawez
+      - text: "#78"
+      - img "PumpSwap"
+      - img
+      - text: Whatif / SOL What If? $0.0003938 20h 7,262 $667K 1,295 -0.41% 6.26% 5.83% 857% $51K $393K
+    - link "#79 PumpSwap WOJAK / SOL Wojak $0.003594 4mo 981 $148K 485 - 0.93% -3.00% 1.75% $326K $3.5M" [ref=e248]:
+      - /url: /solana/fdry5i5kuadz1ik8gps26qjj9rw9mpufxmeggc2hnsp7
+      - text: "#79"
+      - img "PumpSwap"
+      - img
+      - text: WOJAK / SOL Wojak $0.003594 4mo 981 $148K 485 - 0.93% -3.00% 1.75% $326K $3.5M
+    - link "#80 PumpSwap HODL / SOL HODL $0.002485 1mo 1,355 $135K 369 -0.07% -1.51% -2.62% 8.08% $198K $2.4M" [ref=e249]:
+      - /url: /solana/dtdthux79bmnmnesv3au7pzbkakb3muui8gwudz6suw
+      - text: "#80"
+      - img "PumpSwap"
+      - img
+      - text: HODL / SOL HODL $0.002485 1mo 1,355 $135K 369 -0.07% -1.51% -2.62% 8.08% $198K $2.4M
+    - link "#81 Raydium $michi / SOL michi $0.001148 1y 997 $102K 326 -0.24% -1.40% 4.19% 11.94% $463K $638K" [ref=e250]:
+      - /url: /solana/gh8ers4yzkr3ukdvgvu8cqjfgzu4cu62mteg9bcj7ug6
+      - text: "#81"
+      - img "Raydium"
+      - img
+      - text: $michi / SOL michi $0.001148 1y 997 $102K 326 -0.24% -1.40% 4.19% 11.94% $463K $638K
+    - link "#82 PumpSwap PIGEON / SOL Pigeon Doctor $0.0005041 1mo 2,210 $156K 515 0.70% 15.00% 9.08% 41.06% $112K $504K" [ref=e251]:
+      - /url: /solana/cimyjc9gzzwmx3fanacm45gswafrlctb6nqwjdnzkjgx
+      - text: "#82"
+      - img "PumpSwap"
+      - img
+      - text: PIGEON / SOL Pigeon Doctor $0.0005041 1mo 2,210 $156K 515 0.70% 15.00% 9.08% 41.06% $112K $504K
+    - link "#83 PumpSwap MICHI / SOL michi $0.002766 2d 769 $83K 263 - 8.97% 1.96% -15.88% $133K $2.7M" [ref=e252]:
+      - /url: /solana/22fsz9qp7ds1pvrjkuhr16ymghzp92xpu3bj7uuzu2bg
+      - text: "#83"
+      - img "PumpSwap"
+      - img
+      - text: MICHI / SOL michi $0.002766 2d 769 $83K 263 - 8.97% 1.96% -15.88% $133K $2.7M
+    - link "#84 Raydium Fartcoin / SOL Fartcoin $0.1627 1y 2,360 $473K 216 0.23% 0.21% 1.20% 5.76% $6.8M $162.7M" [ref=e253]:
+      - /url: /solana/bzc9nzfmqkxr6fz1dbph7bdf9broyef6pnzesp7v5iiw
+      - text: "#84"
+      - img "Raydium"
+      - img
+      - text: Fartcoin / SOL Fartcoin $0.1627 1y 2,360 $473K 216 0.23% 0.21% 1.20% 5.76% $6.8M $162.7M
+    - link "#85 Raydium CLMM 2Z / USDC DoubleZero $0.08322 5mo 13,695 $1.2M 305 0.27% 0.02% 1.63% 7.72% $1.0M $288.9M" [ref=e254]:
+      - /url: /solana/g4ltmhvnarsamjdyavukjpomwae5avhwwdwphcjhjcqc
+      - text: "#85"
+      - img "Raydium"
+      - img
+      - text: CLMM 2Z / USDC DoubleZero $0.08322 5mo 13,695 $1.2M 305 0.27% 0.02% 1.63% 7.72% $1.0M $288.9M
+    - link "#86 PumpSwap testicle / SOL testicle $0.002968 2mo 4,810 $384K 367 -0.74% -1.13% 1.13% 4.25% $327K $2.9M" [ref=e255]:
+      - /url: /solana/e616wshksjxnytocexylhnwxyyrafqs1rtqz1gz9zduk
+      - text: "#86"
+      - img "PumpSwap"
+      - img
+      - text: testicle / SOL testicle $0.002968 2mo 4,810 $384K 367 -0.74% -1.13% 1.13% 4.25% $327K $2.9M
+    - link "#87 PumpSwap COPPERINU / SOL copper inu $0.004897 1mo 1,186 $145K 390 0.44% -3.36% -1.52% 6.27% $336K $4.8M" [ref=e256]:
+      - /url: /solana/3iut1oaausqkehajkumzjbptihy2yn7awfij2crsuzvc
+      - text: "#87"
+      - img "PumpSwap"
+      - img
+      - text: COPPERINU / SOL copper inu $0.004897 1mo 1,186 $145K 390 0.44% -3.36% -1.52% 6.27% $336K $4.8M
+    - link "#88 PumpSwap $MAD / SOL Mad Coin 50 $0.0002406 1mo 2,245 $72K 1,889 - -1.49% -3.64% 34.85% $39K $130K" [ref=e257]:
+      - /url: /solana/gt3dwhhkrd2mnqmmchpzdetpg4ttaa23exn1m2vwinfs
+      - text: "#88"
+      - img "PumpSwap"
+      - img
+      - text: $MAD / SOL Mad Coin
+      - img
+      - text: 50 $0.0002406 1mo 2,245 $72K 1,889 - -1.49% -3.64% 34.85% $39K $130K
+    - link "#89 PumpSwap Pepper / SOL Chipotle Pepper Bot 50 $0.046254 5h 56,905 $1.3M 3,928 5.65% -45.04% 73.14% 73.14% $21K $62K" [ref=e258]:
+      - /url: /solana/ek8px8zbwbtd1n58ehwpj5atrpycvc7auhekctcmwucg
+      - text: "#89"
+      - img "PumpSwap"
+      - img
+      - text: Pepper / SOL Chipotle Pepper Bot
+      - img
+      - text: 50 $0.046254 5h 56,905 $1.3M 3,928 5.65% -45.04% 73.14% 73.14% $21K $62K
+    - link "#90 Raydium CLMM MONA / SOL MONA 50 $0.0003657 2d 856 $43K 367 0.13% 5.08% 11.34% 16.18% $28K $365K" [ref=e259]:
+      - /url: /solana/fbys8htxfwwyrbaeriqlby1nstoscuo3rzyjsqywfa6t
+      - text: "#90"
+      - img "Raydium"
+      - img
+      - text: CLMM MONA / SOL MONA
+      - img
+      - text: 50 $0.0003657 2d 856 $43K 367 0.13% 5.08% 11.34% 16.18% $28K $365K
+    - link "#91 Orca wp BiPO / SOL Bipolar $0.053003 12h 2,241 $32K 439 -0.01% -0.83% 10.22% 40.10% $71K $300K" [ref=e260]:
+      - /url: /solana/bkbnhvx3bs3szendkqkmqlbj8m3yzikh9ppwmeszvom7
+      - text: "#91"
+      - img "Orca"
+      - img
+      - text: wp BiPO / SOL Bipolar $0.053003 12h 2,241 $32K 439 -0.01% -0.83% 10.22% 40.10% $71K $300K
+    - link "#92 PumpSwap TROLL / SOL TROLL $0.01411 10mo 448 $131K 190 - 1.90% -1.09% 2.17% $1.3M $14.1M" [ref=e261]:
+      - /url: /solana/4w2cysotx6czaugmmwg13hdpy4qemg2czekyeqyk9ama
+      - text: "#92"
+      - img "PumpSwap"
+      - img
+      - text: TROLL / SOL TROLL $0.01411 10mo 448 $131K 190 - 1.90% -1.09% 2.17% $1.3M $14.1M
+    - link "#93 PumpSwap WhiteWhale / SOL The White Whale $0.04070 5mo 1,380 $122K 279 - -0.02% -0.66% 0.41% $922K $38.6M" [ref=e262]:
+      - /url: /solana/4qxsqmh6iedbdvtmp8r5mk2psagknk57pfgevo2vhczq
+      - text: "#93"
+      - img "PumpSwap"
+      - img
+      - text: WhiteWhale / SOL The White Whale $0.04070 5mo 1,380 $122K 279 - -0.02% -0.66% 0.41% $922K $38.6M
+    - link "#94 PumpSwap MACROHARD / SOL Digital Optimus $0.0001096 1d 17,110 $946K 2,345 -1.83% -7.01% 7.40% -61.05% $34K $109K" [ref=e263]:
+      - /url: /solana/dx8dczfksgmdonc9mwamd3gbs4betl8cyzk58cgd96we
+      - text: "#94"
+      - img "PumpSwap"
+      - img
+      - text: MACROHARD / SOL Digital Optimus $0.0001096 1d 17,110 $946K 2,345 -1.83% -7.01% 7.40% -61.05% $34K $109K
+    - link "#95 Orca wp JUP / SOL Jupiter $0.1650 2y 7,672 $545K 1,297 0.18% -0.10% -0.36% 0.95% $295K $577.4M" [ref=e264]:
+      - /url: /solana/c1mglojnlwbkadvu9bhdtgzz1ozx4dz5zgdgcgvvw8wz
+      - text: "#95"
+      - img "Orca"
+      - img
+      - text: wp JUP / SOL Jupiter $0.1650 2y 7,672 $545K 1,297 0.18% -0.10% -0.36% 0.95% $295K $577.4M
+    - link "#96 Raydium CPMM memecoin / SOL just memecoin $0.004827 8mo 827 $124K 328 -2.28% -4.11% -10.36% -12.73% $437K $4.8M" [ref=e265]:
+      - /url: /solana/2kv6hkaaij9vc7xhl8pfzxelcfekjw9o8zx3xl155gm3
+      - text: "#96"
+      - img "Raydium"
+      - img
+      - text: CPMM memecoin / SOL just memecoin $0.004827 8mo 827 $124K 328 -2.28% -4.11% -10.36% -12.73% $437K $4.8M
+    - link "#97 PumpSwap brainrot / SOL brainrot $0.0001793 1d 7,081 $464K 1,633 1.44% -5.37% 54.83% -53.35% $46K $160K" [ref=e266]:
+      - /url: /solana/gz4aubnwshuknadevovx9cuvxszpiyflnmrsudqkhfwr
+      - text: "#97"
+      - img "PumpSwap"
+      - img
+      - text: brainrot / SOL brainrot $0.0001793 1d 7,081 $464K 1,633 1.44% -5.37% 54.83% -53.35% $46K $160K
+    - link "#98 PumpSwap BP / SOL Barking Puppy $0.004500 1mo 2,177 $134K 831 - -1.11% -3.88% -11.69% $327K $4.3M" [ref=e267]:
+      - /url: /solana/gywaqp8lb3vqg7q2c58zguevyff8hyogg8besa1fncpz
+      - text: "#98"
+      - img "PumpSwap"
+      - img
+      - text: BP / SOL Barking Puppy $0.004500 1mo 2,177 $134K 831 - -1.11% -3.88% -11.69% $327K $4.3M
+    - link "#99 Meteora DYN2 SYFR / SOL SYFR AI $0.005394 1mo 1,751 $340K 393 - 1.14% 7.29% -0.06% $264K $5.3M" [ref=e268]:
+      - /url: /solana/bde3nz6nnqnsntc4dkz9ftyvxsp72ybsyndutnsfm46c
+      - text: "#99"
+      - img "Meteora"
+      - img
+      - text: DYN2 SYFR / SOL SYFR AI $0.005394 1mo 1,751 $340K 393 - 1.14% 7.29% -0.06% $264K $5.3M
+    - link "#100 Raydium CPMM USELESS / SOL USELESS COIN $0.03995 10mo 1,854 $196K 312 - 1.25% 0.36% 7.42% $1.5M $39.9M" [ref=e269]:
+      - /url: /solana/q2sphpduwfmg7m7wwrqklrn619caucfrsmhvjffodsp
+      - text: "#100"
+      - img "Raydium"
+      - img
+      - text: CPMM USELESS / SOL USELESS COIN $0.03995 10mo 1,854 $196K 312 - 1.25% 0.36% 7.42% $1.5M $39.9M
+    - text: Showing pairs 1-100 of 41,068
+    - link "Pairs 101-200" [ref=e270]:
+      - /url: /solana/page-2
+  - region "Notifications" [ref=e271]
+  - region "Notifications" [ref=e272] [nth=1]
+  - region "Notifications" [ref=e273] [nth=2]
+  - region "Notifications" [ref=e274] [nth=3]
+  - region "Notifications" [ref=e275] [nth=4]
+  - region "Notifications" [ref=e276] [nth=5]

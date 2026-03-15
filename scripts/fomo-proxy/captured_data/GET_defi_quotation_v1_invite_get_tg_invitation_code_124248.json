@@ -1,0 +1,43 @@
+{
+  "endpoint": "GET /defi/quotation/v1/invite/get_tg_invitation_code",
+  "url": "https://gmgn.gracematrix.net/defi/quotation/v1/invite/get_tg_invitation_code?device_id=724039AA-A424-4805-8706-9F47ABC12322&client_id=memetracker_ios_2030304&from_app=memetracker&app_ver=2030304&pkg=io.gracematrix.gmgn&app_lang=en&sys_lang=en-US&brand=Apple&model=iPhone&os=ios&os_api=26.2.1&tz_name=America%2FChicago&tz_offset=300",
+  "request_headers": {
+    "cookie": "__cf_bm=XVxn952ZdGLKFzfyxUai7oK4mwR0Rjaz0vy3GFtsoBY-1773423760.3898044-1.0.1.1-ezHHXUqS7p479eRTeLxdn6hosQKuC7HKBlN6Kn2au.FdC5Jzkd3KF9p00G67a6.4Z_rvxRUoObQ1t7_ZukeQCKLymbuAJnk6ZyLdNbu1bxwyYrDRgPqqyhUbJfhSd_OO",
+    "accept": "application/json, text/plain, */*",
+    "authorization": "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJnbWduLmFpL2FjY2VzcyIsImRhdGEiOnsidXNlcl9pZCI6ImJhNGY1ZTNiLTcxM2ItNDExMi1hMDcwLWExZTY5Y2FiYTdiOCIsImNsaWVudF9pZCI6Im1lbWV0cmFja2VyX2lvc18yMDMwMzA0IiwiZGV2aWNlX2lkIjoiNzI0MDM5QUEtQTQyNC00ODA1LTg3MDYtOUY0N0FCQzEyMzIyIiwiZmF0aGVyX2lkIjoiNzY0MTEwNjMtNGFjNy00ZjM2LTllMjEtYzAwYTEwMTQ4ZTNhIiwiZmluZ2VycHJpbnQiOiJ2MTA0ODA5MjhlZTM2ZjcxMTEyMTFiMmYyMzkxOGZjZjI4IiwiYXBwIjoibWVtZXRyYWNrZXIiLCJwbGF0Zm9ybSI6ImlvcyJ9LCJleHAiOjE3NzM0MjY1MTUsImlhdCI6MTc3MzQyMjkxNSwiaXNzIjoiZ21nbi5haS9zaWduZXIiLCJqdGkiOiJkM2Y2MGYxZC04MjE1LTRlMDItYjFkZS03NDcxNGNlYjJjYjUiLCJuYmYiOjE3NzM0MjI5MTUsInN1YiI6ImdtZ24uYWkvYWNjZXNzIiwidXNlcl9pZCI6ImJhNGY1ZTNiLTcxM2ItNDExMi1hMDcwLWExZTY5Y2FiYTdiOCIsInZlciI6IjEuMCJ9.mOJVnArObYrY22BjW58XuBH4a1jhR_CaVONyh_poeOsYDAuZi6P--9z53hGCd8aq0-RtuHsywN7Ney0X5qLaVA",
+    "accept-encoding": "gzip, deflate, br",
+    "sentry-trace": "713cc02b08e94c6bbfac12e152daf254-ac5c32c28bac23f5-0",
+    "baggage": "sentry-environment=production,sentry-public_key=d4979c342f6dba6bf527fa2eddfcfe31,sentry-trace_id=713cc02b08e94c6bbfac12e152daf254,sentry-sample_rate=0.01,sentry-transaction=NativeGMGNReportPage,sentry-sampled=false",
+    "user-agent": "GMGN/2030304 CFNetwork/3860.300.31 Darwin/25.2.0",
+    "priority": "u=3, i",
+    "accept-language": "en-US,en;q=0.9"
+  },
+  "request_body": null,
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:42:48 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "x-xss-protection": "1; mode=block",
+    "x-envoy-upstream-service-time": "4",
+    "server": "cloudflare",
+    "cf-cache-status": "DYNAMIC",
+    "expect-ct": "max-age=86400, enforce",
+    "referrer-policy": "same-origin",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "SAMEORIGIN",
+    "content-encoding": "gzip",
+    "cf-ray": "9dbcd658d896fb1c-BNA"
+  },
+  "response_body": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "invite_codes": [
+        {
+          "code": "oFg7nrZG"
+        }
+      ]
+    }
+  },
+  "captured_at": "2026-03-13T12:42:48.554956"
+}

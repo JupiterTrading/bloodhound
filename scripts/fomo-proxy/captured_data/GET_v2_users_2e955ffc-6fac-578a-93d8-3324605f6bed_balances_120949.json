@@ -1,0 +1,1630 @@
+{
+  "endpoint": "GET /v2/users/2e955ffc-6fac-578a-93d8-3324605f6bed/balances",
+  "url": "https://prod-api.fomo.family/v2/users/2e955ffc-6fac-578a-93d8-3324605f6bed/balances",
+  "request_headers": {
+    "content-type": "application/json",
+    "x-app-installation-id": "install_bc7884b4-0c4a-465b-903a-33e17158ff11",
+    "accept": "*/*",
+    "baggage": "sentry-environment=production,sentry-public_key=4e163b6befe2112027dfa32cd92ca3ba,sentry-trace_id=e750d77c91574c0a8339e9d8943348c5,sentry-org_id=4508656189702144,sentry-transaction=user,sentry-sampled=false,sentry-sample_rand=0.8856860553036695,sentry-sample_rate=0.0001",
+    "authorization": "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkI4SXlObWU1V0lZRnJIclJRVDBLdFlPRlFIUjFKVXFnaGVTMHhSZHR1QVkifQ.eyJzaWQiOiJjbWt6ZW5oa2MwNXM4am8wY3RrbHo1cmpqIiwiaXNzIjoicHJpdnkuaW8iLCJpYXQiOjE3NzM0MjE3NTcsImF1ZCI6ImNtNmg0ODVvMzAwbjN6ajl5bDZ2cGVkcTciLCJzdWIiOiJkaWQ6cHJpdnk6Y21rejA2N2RkMDF5Z2puMGNhaXc5aWNrcCIsImV4cCI6MTc3MzQyNTM1N30.KSKe7Zlqq97fc4QPfjM7DRQFJn2TbIjhiI5oDtSDVmm1sYOZq8Vd2Zn-4ks9I-Iepjj6jRmPmI_rhyeOayLexA",
+    "priority": "u=3, i",
+    "x-supported-chains": "1399811149,8453,56,143",
+    "accept-encoding": "gzip, deflate, br",
+    "if-none-match": "W/\"a655-7UIXP5quYGcl2ZeURuQszy5Lkss\"",
+    "accept-language": "en-US,en;q=0.9",
+    "sentry-trace": "e750d77c91574c0a8339e9d8943348c5-9eabd46fcc0c230e-0",
+    "user-agent": "fomo/1.60.4/280/ios/iPhone 17 Pro Max/Apple"
+  },
+  "request_body": null,
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:09:49 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "cf-ray": "9dbca60818b7fb24-BNA",
+    "cf-cache-status": "DYNAMIC",
+    "content-encoding": "gzip",
+    "etag": "W/\"b3c4-Hs3KtadDi1TRhPoS2aUpEIFdfmI\"",
+    "server": "cloudflare",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "vary": "Origin, Accept-Encoding",
+    "access-control-allow-credentials": "true",
+    "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+    "cross-origin-opener-policy": "same-origin",
+    "cross-origin-resource-policy": "same-origin",
+    "origin-agent-cluster": "?1",
+    "referrer-policy": "no-referrer",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-download-options": "noopen",
+    "x-frame-options": "SAMEORIGIN",
+    "x-permitted-cross-domain-policies": "none",
+    "x-request-id": "71b146a2-947b-4fcd-a209-a1d9b365c1b9",
+    "x-xss-protection": "0",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "response_body": {
+    "success": true,
+    "message": "User balances found",
+    "responseObject": {
+      "balances": [
+        {
+          "balance": {
+            "address": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "balance": "71378856897612280085968",
+            "shiftedBalance": 71378.85689761228,
+            "tokenAddress": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+            "tokenId": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf:8453",
+            "walletId": "0x92bff72e6c943a1348aedf15d68e758e811dec64:8453"
+          },
+          "tokenFilterResult": {
+            "change1": "0.0180225094323195",
+            "change4": "0.006186305435787196",
+            "change12": "0.099162207374702",
+            "change24": "0.16595153369163007",
+            "createdAt": 1738095279,
+            "exchanges": [
+              {
+                "address": "0x5e7bb104d84c7cb9b682aac2f3d509f5f406809a",
+                "name": "Aerodrome Slipstream"
+              },
+              {
+                "address": "0x420dd381b31aef6683db6b902084cb0ffece40da",
+                "name": "Aerodrome"
+              },
+              {
+                "address": "0x498581ff718922c3f8e6a244956af099b2652b2b",
+                "name": "Uniswap"
+              },
+              {
+                "address": "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+                "name": "Uniswap"
+              }
+            ],
+            "liquidity": "2691959",
+            "marketCap": "780566038",
+            "pair": {
+              "protocol": "AerodromeSlipstream"
+            },
+            "priceUSD": "6.92657998007",
+            "token": {
+              "address": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+              "decimals": 18,
+              "networkId": 8453,
+              "createdAt": 1737649711,
+              "creatorAddress": "0xc9c88391e50eeadb43647fac514fa26f8dfd7e7f",
+              "name": "Venice Token",
+              "symbol": "VVV",
+              "freezable": null,
+              "mintable": null,
+              "isScam": null,
+              "info": {
+                "address": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+                "circulatingSupply": "40307418.18818298",
+                "cmcId": null,
+                "description": "Venice is a private, censorship-resistant generative AI platform for text conversations, image and code generation and AI Character interaction, built on open-source models and powered by decentralized infrastructure. Founded in May 2024, today Venice supports more than 900,000 users. \n\nThe Venice token (VVV) combines the benefits of decentralized blockchain technology with generative AI. Users who stake VVV are eligible to receive an ongoing share of Venice's inference capacity through the Venice API. VVV allows autonomous agents and developers to access private, uncensored and decentralized inference, without relying on a human intermediary, reducing costs and friction for both AI agents and developers. They now have the ability to autonomously access inference via Venice\u2019s private and uncensored API, untethering them from the bias and censorship inherent within closed-source incumbent AI platforms.",
+                "id": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf:8453",
+                "imageBannerUrl": "https://token-media.defined.fi/8453_0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf_banner_6c0ad43dab42.png",
+                "imageLargeUrl": "https://token-media.defined.fi/8453_0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf_large_b6278fccf81c.png",
+                "imageSmallUrl": "https://token-media.defined.fi/8453_0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf_small_06e4f09c0da6.png",
+                "imageThumbUrl": "https://token-media.defined.fi/8453_0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf_thumb_680c64c49ecf.png",
+                "imageThumbHash": "uDiGFQQs93h3iHyQyAiIg4A4CFeHh4BzVw==",
+                "name": "Venice Token",
+                "networkId": 8453,
+                "symbol": "VVV",
+                "totalSupply": "112691406.124108999825792737"
+              },
+              "socialLinks": {
+                "discord": "https://discord.gg/askvenice",
+                "telegram": null,
+                "twitter": "https://x.com/AskVenice",
+                "website": "https://venice.ai/home"
+              },
+              "launchpad": null
+            },
+            "txnCount1": 482,
+            "txnCount4": 2425,
+            "txnCount12": 5695,
+            "txnCount24": 9059,
+            "volume1": "381002",
+            "volume5m": "21963",
+            "volume4": "3046001",
+            "volume12": "5850374",
+            "volume24": "8772465"
+          },
+          "userToken": {
+            "id": "aaa91e6f-93cb-4105-8eb5-327a5993c027",
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "tokenAddress": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+            "networkId": 8453,
+            "humanAmountRemaining": 71378.85689761225,
+            "tokenAmountRemaining": 0,
+            "averageEntryPriceUsd": 2.989428308072828,
+            "currentRealizedPnlUsd": 765469.2047810187,
+            "totalRealizedPnlUsd": 766964.8531780187,
+            "currentCostBasisUsd": 812273.2776399394,
+            "totalCostBasisUsd": 918234.4768299393,
+            "updatedAt": "2026-03-13T16:51:41.603Z",
+            "holdingSince": "2026-02-13T06:20:31.000Z",
+            "wasSwapped": true,
+            "blacklisted": false
+          },
+          "activeTrade": {
+            "id": "b9485a59-47b9-4995-a417-d6efd03e1840",
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "tokenAddress": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+            "networkId": 8453,
+            "createdAt": "2026-02-13T06:20:31.000Z",
+            "updatedAt": "2026-03-13T16:51:41.603Z",
+            "closedAt": null,
+            "humanTokenAmount": 71378.85689761225,
+            "avgEntryPrice": 2.79455670384563,
+            "avgExitPrice": 5.214212603216126,
+            "sumSwapOpen": 235543.71198773183,
+            "sumSwapClosed": 126442.63330044204,
+            "sumTransferIn": 71929.6696691386,
+            "sumTransferOut": 109651.89145881611,
+            "avgTransferInPrice": 2.1414392553790247,
+            "avgTransferOutPrice": 6.430000663866053,
+            "realizedPnlUsd": 740653.5948063708,
+            "commentId": "ac4db30b-6a5a-4056-83e7-e2da4b54d1b5"
+          }
+        },
+        {
+          "balance": {
+            "address": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "balance": "3278023836842539708144654920",
+            "shiftedBalance": 3278023836.84254,
+            "tokenAddress": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+            "tokenId": "0xa601877977340862ca67f816eb079958e5bd0ba3:8453",
+            "walletId": "0x92bff72e6c943a1348aedf15d68e758e811dec64:8453"
+          },
+          "tokenFilterResult": {
+            "change1": "0.04906711180681014",
+            "change4": "-0.08210126566516156",
+            "change12": "0.12651195091597425",
+            "change24": "0.35282835969849147",
+            "createdAt": 1771551285,
+            "exchanges": [
+              {
+                "address": "0x498581ff718922c3f8e6a244956af099b2652b2b",
+                "name": "Uniswap"
+              },
+              {
+                "address": "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+                "name": "Uniswap"
+              },
+              {
+                "address": "0xb0c2d8a877a5b48607d9c89b6ad761f36bc79c88",
+                "name": null
+              }
+            ],
+            "liquidity": "485093",
+            "marketCap": "3016107",
+            "pair": {
+              "protocol": "UniswapV4"
+            },
+            "priceUSD": "3.0161069033e-5",
+            "token": {
+              "address": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+              "decimals": 18,
+              "networkId": 8453,
+              "createdAt": 1771551285,
+              "creatorAddress": "0xdb034a1485da0300175b07282f5a84af69c2493e",
+              "name": "BOTCOIN",
+              "symbol": "BOTCOIN",
+              "freezable": null,
+              "mintable": null,
+              "isScam": null,
+              "info": {
+                "address": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+                "circulatingSupply": "99999999999.999999999999979562",
+                "cmcId": null,
+                "description": "",
+                "id": "0xa601877977340862ca67f816eb079958e5bd0ba3:8453",
+                "imageBannerUrl": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_banner_9244cb1f9412.png",
+                "imageLargeUrl": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_large_074b6e753a58.png",
+                "imageSmallUrl": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_small_893ce99e28ae.png",
+                "imageThumbUrl": "https://token-media.defined.fi/8453_0xa601877977340862ca67f816eb079958e5bd0ba3_thumb_21197e10ad04.png",
+                "imageThumbHash": "IgiGBQA1Z7lspIkISgAAAAAAB3iHiICLdw==",
+                "name": "BOTCOIN",
+                "networkId": 8453,
+                "symbol": "BOTCOIN",
+                "totalSupply": "100000000000"
+              },
+              "socialLinks": {
+                "discord": null,
+                "telegram": null,
+                "twitter": "https://x.com/MineBotcoin",
+                "website": "https://agentmoney.net/"
+              },
+              "launchpad": null
+            },
+            "txnCount1": 62,
+            "txnCount4": 356,
+            "txnCount12": 1010,
+            "txnCount24": 2438,
+            "volume1": "12177",
+            "volume5m": "3366",
+            "volume4": "99162",
+            "volume12": "279215",
+            "volume24": "760218"
+          },
+          "userToken": {
+            "id": "c6fe8c51-4806-4b1d-9610-6eee6e81f6a2",
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "tokenAddress": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+            "networkId": 8453,
+            "humanAmountRemaining": 3278023836.84254,
+            "tokenAmountRemaining": 0,
+            "averageEntryPriceUsd": 7.9576330491623e-06,
+            "currentRealizedPnlUsd": 0,
+            "totalRealizedPnlUsd": 15470.268526999998,
+            "currentCostBasisUsd": 26085.310820000006,
+            "totalCostBasisUsd": 37117.23276499999,
+            "updatedAt": "2026-03-12T22:30:59.268Z",
+            "holdingSince": "2026-03-06T02:28:33.076Z",
+            "wasSwapped": true,
+            "blacklisted": false
+          },
+          "activeTrade": {
+            "id": "6b023091-428d-4811-bf27-0e5ccbb4e868",
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "tokenAddress": "0xa601877977340862ca67f816eb079958e5bd0ba3",
+            "networkId": 8453,
+            "createdAt": "2026-03-06T02:28:33.076Z",
+            "updatedAt": "2026-03-13T02:34:16.060Z",
+            "closedAt": null,
+            "humanTokenAmount": 3278023836.84254,
+            "avgEntryPrice": 7.9576330491623e-06,
+            "avgExitPrice": null,
+            "sumSwapOpen": 3278023836.84254,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 0,
+            "commentId": "7ab58ae5-fd82-4cfd-9d7c-39fd5570e488"
+          }
+        },
+        {
+          "balance": {
+            "address": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "tokenAddress": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+            "walletId": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga:1399811149",
+            "balance": "72367759041",
+            "shiftedBalance": 72367.759041,
+            "tokenId": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v:1399811149"
+          },
+          "tokenFilterResult": {
+            "change1": "-0.00001505",
+            "change4": "0.00003495174758737937",
+            "change12": "0.00004120231763036671",
+            "change24": "0.000008710206954517239",
+            "createdAt": 1710952381,
+            "exchanges": [
+              {
+                "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+                "name": "Orca"
+              },
+              {
+                "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+                "name": "Meteora"
+              },
+              {
+                "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+                "name": "Raydium CLMM"
+              }
+            ],
+            "liquidity": "11252247",
+            "marketCap": "9304731921",
+            "pair": {
+              "protocol": "Orca"
+            },
+            "priceUSD": "0.99998495",
+            "token": {
+              "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "networkId": 1399811149,
+              "createdAt": 1602610673,
+              "creatorAddress": "5TYZChz7APFopR5QirD5of4rQj1p9AXxeSAg6JndBdGj",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "freezable": "7dGbd2QZcCKcTndnHcTL8q7SMVXAkp688NTQYwrRCrar",
+              "mintable": "BJE5MMbqXjVwjAF7oxwPYXnTXDyspzZyt4vwenNw5ruG",
+              "isScam": null,
+              "info": {
+                "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+                "circulatingSupply": "75876378432.5162",
+                "cmcId": null,
+                "description": "USDC is a fully collateralized US dollar stablecoin. USDC is the bridge between dollars and trading on cryptocurrency exchanges. The technology behind CENTRE makes it possible to exchange value between people, businesses and financial institutions just like email between mail services and texts between SMS providers. We believe by removing artificial economic borders, we can create a more inclusive global economy.",
+                "id": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v:1399811149",
+                "imageBannerUrl": "https://token-media.defined.fi/1399811149_EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v_banner_3f7ac7ea48e1.png",
+                "imageLargeUrl": "https://token-media.defined.fi/1399811149_EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v_large_c8d2766f-09f9-48b6-ae77-54a3191a8eaf.png",
+                "imageSmallUrl": "https://token-media.defined.fi/1399811149_EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v_small_c8d2766f-09f9-48b6-ae77-54a3191a8eaf.png",
+                "imageThumbUrl": "https://token-media.defined.fi/1399811149_EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v_thumb_c8d2766f-09f9-48b6-ae77-54a3191a8eaf.png",
+                "imageThumbHash": "JYWFDQIsSFeHeHCNR0iHgHQICFh3iHB0Vw==",
+                "name": "USD Coin",
+                "networkId": 1399811149,
+                "symbol": "USDC",
+                "totalSupply": "9304871959.537483"
+              },
+              "socialLinks": {
+                "discord": null,
+                "telegram": null,
+                "twitter": null,
+                "website": null
+              },
+              "launchpad": null
+            },
+            "txnCount1": 3305,
+            "txnCount4": 16669,
+            "txnCount12": 32277,
+            "txnCount24": 59542,
+            "volume1": "9311873",
+            "volume5m": "609472",
+            "volume4": "59139277",
+            "volume12": "103658597",
+            "volume24": "185866713"
+          },
+          "userToken": {
+            "id": "65c6068e-8cf3-4528-87ac-a5e6d3fa231c",
+            "userAddress": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "tokenAddress": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+            "networkId": 1399811149,
+            "humanAmountRemaining": 72367.26765999841,
+            "tokenAmountRemaining": 857984267660,
+            "averageEntryPriceUsd": 1,
+            "currentRealizedPnlUsd": -80.63633496896716,
+            "totalRealizedPnlUsd": -80.63633496896716,
+            "currentCostBasisUsd": 2974338.0335828043,
+            "totalCostBasisUsd": 8961802.195457809,
+            "updatedAt": "2026-03-13T16:51:41.603Z",
+            "holdingSince": "2026-02-13T09:08:02.000Z",
+            "wasSwapped": true,
+            "blacklisted": false
+          },
+          "activeTrade": {
+            "id": "59dbc68b-4336-4e29-aa0f-e97e731bc5e1",
+            "tokenAddress": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+            "createdAt": "2026-03-13T17:09:49.968Z",
+            "networkId": 1399811149,
+            "userAddress": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "updatedAt": "2026-03-13T17:09:49.968Z",
+            "closedAt": null,
+            "humanTokenAmount": 72367.759041,
+            "avgEntryPrice": 0.99998495,
+            "avgExitPrice": null,
+            "sumSwapOpen": 72367.759041,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": null,
+            "commentId": null
+          }
+        },
+        {
+          "balance": {
+            "address": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "tokenAddress": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump",
+            "walletId": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga:1399811149",
+            "balance": "1043402941290",
+            "shiftedBalance": 1043402.94129,
+            "tokenId": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump:1399811149"
+          },
+          "tokenFilterResult": {
+            "change1": "-0.04155099804214238",
+            "change4": "-0.13714901911085547",
+            "change12": "-0.07500057080244402",
+            "change24": "0.013650437752584347",
+            "createdAt": 1719967604,
+            "exchanges": [
+              {
+                "address": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
+                "name": "Raydium"
+              },
+              {
+                "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+                "name": "Meteora"
+              },
+              {
+                "address": "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+                "name": "Meteora DAMM"
+              },
+              {
+                "address": "Eo7WjKq67rjJQSZxS6z3YkapzY3eMj6Xy8X5EQVn5UaB",
+                "name": "Meteora Pools"
+              },
+              {
+                "address": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+                "name": "PumpSwap"
+              }
+            ],
+            "liquidity": "85947",
+            "marketCap": "475754",
+            "pair": {
+              "protocol": "RaydiumV4"
+            },
+            "priceUSD": "2.79667145636e-3",
+            "token": {
+              "address": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump",
+              "decimals": 6,
+              "networkId": 1399811149,
+              "createdAt": 1719965723,
+              "creatorAddress": "8RskwAy1HjSqPMufCuZu2BMs6FEvLsrC5J9CrTvXf5nA",
+              "name": "Mushu",
+              "symbol": "MUSHU",
+              "freezable": null,
+              "mintable": null,
+              "isScam": null,
+              "info": {
+                "address": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump",
+                "circulatingSupply": "170114357.816855",
+                "cmcId": null,
+                "description": "Solana\u2019s Scottish Fold",
+                "id": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump:1399811149",
+                "imageBannerUrl": "https://token-media.defined.fi/1399811149_5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump_banner_5daf9a3bc525.png",
+                "imageLargeUrl": "https://token-media.defined.fi/1399811149_5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump_large_2dbeb8a81202.png",
+                "imageSmallUrl": "https://token-media.defined.fi/1399811149_5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump_small_8fb6a66a2eeb.png",
+                "imageThumbUrl": "https://token-media.defined.fi/1399811149_5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump_thumb_630aaea11290.png",
+                "imageThumbHash": "pRgODwLLqJefmIdcZrdnmHh4WAAWBWEA",
+                "name": "Mushu",
+                "networkId": 1399811149,
+                "symbol": "MUSHU",
+                "totalSupply": "170114357.816855"
+              },
+              "socialLinks": {
+                "discord": null,
+                "telegram": "https://t.me/mushucoinsolana",
+                "twitter": "https://x.com/i/communities/2019994528053187024",
+                "website": "https://mushu.lol"
+              },
+              "launchpad": {
+                "launchpadName": "Pump.fun",
+                "launchpadIconUrl": "https://crypto-exchange-logos-production.s3.us-west-2.amazonaws.com/6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P.webp",
+                "graduationPercent": 100,
+                "migrated": true
+              }
+            },
+            "txnCount1": 64,
+            "txnCount4": 278,
+            "txnCount12": 629,
+            "txnCount24": 1007,
+            "volume1": "6168",
+            "volume5m": "1571",
+            "volume4": "29548",
+            "volume12": "65178",
+            "volume24": "105329"
+          },
+          "userToken": {
+            "id": "6c3ce71b-ae6f-4c4f-a51b-7a3d3d4b19d8",
+            "userAddress": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "tokenAddress": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump",
+            "networkId": 1399811149,
+            "humanAmountRemaining": 1043402.9412900001,
+            "tokenAmountRemaining": 1043402941290,
+            "averageEntryPriceUsd": 0.0047356178096663966,
+            "currentRealizedPnlUsd": 0,
+            "totalRealizedPnlUsd": 178516.98180158358,
+            "currentCostBasisUsd": 4941.157551431226,
+            "totalCostBasisUsd": 99019.1670806341,
+            "updatedAt": "2026-03-10T14:10:05.000Z",
+            "holdingSince": "2026-02-16T07:25:31.097Z",
+            "wasSwapped": true,
+            "blacklisted": false
+          },
+          "activeTrade": {
+            "id": "75135846-2937-4f07-a9ab-758b8aa905d0",
+            "userAddress": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "tokenAddress": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump",
+            "networkId": 1399811149,
+            "createdAt": "2026-02-16T07:25:31.097Z",
+            "updatedAt": "2026-03-10T14:10:05.000Z",
+            "closedAt": null,
+            "humanTokenAmount": 1043402.9412900001,
+            "avgEntryPrice": 0.004965600817670146,
+            "avgExitPrice": null,
+            "sumSwapOpen": 865111.993641,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 178290.947649,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": 0.0036196830907070845,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 0,
+            "commentId": "250e998b-097d-41bf-86fd-beb9eebeb135"
+          }
+        },
+        {
+          "balance": {
+            "address": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "tokenAddress": "Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump",
+            "walletId": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga:1399811149",
+            "balance": "12029199207890",
+            "shiftedBalance": 12029199.20789,
+            "tokenId": "Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump:1399811149"
+          },
+          "tokenFilterResult": {
+            "change1": "0.033372706850545344",
+            "change4": "0.10979290001205443",
+            "change12": "0.1856468192742817",
+            "change24": "0.05376282431542557",
+            "createdAt": 1771429760,
+            "exchanges": [
+              {
+                "address": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+                "name": "PumpSwap"
+              },
+              {
+                "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+                "name": "Meteora"
+              },
+              {
+                "address": "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+                "name": "Meteora DAMM"
+              },
+              {
+                "address": "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P",
+                "name": "Pump"
+              }
+            ],
+            "liquidity": "8490",
+            "marketCap": "32847",
+            "pair": {
+              "protocol": "PumpAmm"
+            },
+            "priceUSD": "3.28526972928e-5",
+            "token": {
+              "address": "Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump",
+              "decimals": 6,
+              "networkId": 1399811149,
+              "createdAt": 1771427368,
+              "creatorAddress": "493fWZn7g1Yb8GVfUA6EyUNnmbfTCPavL7EpTabm4hpt",
+              "name": "POLSIA",
+              "symbol": "POLSIA",
+              "freezable": null,
+              "mintable": null,
+              "isScam": null,
+              "info": {
+                "address": "Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump",
+                "circulatingSupply": "999811863.171391",
+                "cmcId": null,
+                "description": "AI that runs companies autonomously.",
+                "id": "Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump:1399811149",
+                "imageBannerUrl": "https://token-media.defined.fi/1399811149_Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump_banner_225407be89d0.png",
+                "imageLargeUrl": "https://token-media.defined.fi/1399811149_Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump_large_3b157ca719e3.png",
+                "imageSmallUrl": "https://token-media.defined.fi/1399811149_Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump_small_c954d471a9d9.png",
+                "imageThumbUrl": "https://token-media.defined.fi/1399811149_Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump_thumb_fe3c14e95b9f.png",
+                "imageThumbHash": "PAgCBwDIt1eEiHtwheh3d3eIBwAAAAAA",
+                "name": "POLSIA",
+                "networkId": 1399811149,
+                "symbol": "POLSIA",
+                "totalSupply": "999811863.171391"
+              },
+              "socialLinks": {
+                "discord": null,
+                "telegram": null,
+                "twitter": "https://x.com/i/communities/2024145246372745520",
+                "website": null
+              },
+              "launchpad": {
+                "launchpadName": "Pump.fun",
+                "launchpadIconUrl": "https://crypto-exchange-logos-production.s3.us-west-2.amazonaws.com/6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P.webp",
+                "graduationPercent": 100,
+                "migrated": true
+              }
+            },
+            "txnCount1": 6,
+            "txnCount4": 25,
+            "txnCount12": 82,
+            "txnCount24": 205,
+            "volume1": "244",
+            "volume5m": "0",
+            "volume4": "1042",
+            "volume12": "2839",
+            "volume24": "8344"
+          },
+          "userToken": {
+            "id": "5f093bc5-727d-4628-a4df-e1e64498ca3e",
+            "userAddress": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "tokenAddress": "Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump",
+            "networkId": 1399811149,
+            "humanAmountRemaining": 12029199.20789,
+            "tokenAmountRemaining": 12029199207890,
+            "averageEntryPriceUsd": 0.0002492258662599592,
+            "currentRealizedPnlUsd": 0,
+            "totalRealizedPnlUsd": 0,
+            "currentCostBasisUsd": 2997.9875930000003,
+            "totalCostBasisUsd": 2997.9875930000003,
+            "updatedAt": "2026-03-07T04:23:04.759Z",
+            "holdingSince": "2026-03-07T04:10:35.454Z",
+            "wasSwapped": true,
+            "blacklisted": false
+          },
+          "activeTrade": {
+            "id": "7fb29b93-43bc-4aa9-b805-c899b60ad8ca",
+            "userAddress": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "tokenAddress": "Gj6Umn97c1bYL14PmCGHomok217aAhkyqE54tgUpump",
+            "networkId": 1399811149,
+            "createdAt": "2026-03-07T04:10:35.454Z",
+            "updatedAt": "2026-03-07T04:23:04.759Z",
+            "closedAt": null,
+            "humanTokenAmount": 12029199.20789,
+            "avgEntryPrice": 0.0002492258662599592,
+            "avgExitPrice": null,
+            "sumSwapOpen": 12029199.20789,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 0,
+            "commentId": "312e392d-8735-4da7-b46f-563ce1070e13"
+          }
+        },
+        {
+          "balance": {
+            "address": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "tokenAddress": "So11111111111111111111111111111111111111112",
+            "walletId": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga:1399811149",
+            "balance": "48382390",
+            "shiftedBalance": 0.04838239,
+            "tokenId": "So11111111111111111111111111111111111111112:1399811149"
+          },
+          "tokenFilterResult": {
+            "change1": "0.0015945602934312705",
+            "change4": "-0.014274218032611894",
+            "change12": "0.0075535963630762315",
+            "change24": "0.03688189921280452",
+            "createdAt": 1710952381,
+            "exchanges": [
+              {
+                "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+                "name": "Orca"
+              },
+              {
+                "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+                "name": "Raydium CLMM"
+              },
+              {
+                "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+                "name": "Meteora"
+              },
+              {
+                "address": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
+                "name": "Raydium"
+              }
+            ],
+            "liquidity": "11252247",
+            "marketCap": "51079323643.99025",
+            "pair": {
+              "protocol": "Orca"
+            },
+            "priceUSD": "89.8229576332",
+            "token": {
+              "address": "So11111111111111111111111111111111111111112",
+              "decimals": 9,
+              "networkId": 1399811149,
+              "createdAt": 1722545905,
+              "creatorAddress": null,
+              "name": "Solana",
+              "symbol": "SOL",
+              "freezable": null,
+              "mintable": null,
+              "isScam": null,
+              "info": {
+                "address": "So11111111111111111111111111111111111111112",
+                "circulatingSupply": 568666686,
+                "cmcId": 16116,
+                "description": "Wrapped Solana",
+                "id": "So11111111111111111111111111111111111111112:1399811149",
+                "imageBannerUrl": null,
+                "imageLargeUrl": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_large_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png",
+                "imageSmallUrl": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_small_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png",
+                "imageThumbUrl": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png",
+                "imageThumbHash": null,
+                "name": "Solana",
+                "networkId": 1399811149,
+                "symbol": "SOL",
+                "totalSupply": "606900671.1804999"
+              },
+              "socialLinks": {
+                "discord": "https://solana.com/discord",
+                "telegram": "https://t.me/solana",
+                "twitter": "https://twitter.com/solana",
+                "website": "https://solana.com"
+              },
+              "launchpad": null
+            },
+            "txnCount1": 3305,
+            "txnCount4": 16669,
+            "txnCount12": 32277,
+            "txnCount24": 59542,
+            "volume1": "9311873",
+            "volume5m": "609472",
+            "volume4": "59139277",
+            "volume12": "103658597",
+            "volume24": "185866713"
+          },
+          "userToken": {
+            "id": "019fb8ef-7d39-455d-8df9-0616b233a22c",
+            "userAddress": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "tokenAddress": "So11111111111111111111111111111111111111112",
+            "networkId": 1399811149,
+            "humanAmountRemaining": -0.09244168499997896,
+            "tokenAmountRemaining": -82232651,
+            "averageEntryPriceUsd": -1.563601414303005e-05,
+            "currentRealizedPnlUsd": 0,
+            "totalRealizedPnlUsd": -100.45450264843593,
+            "currentCostBasisUsd": 1.4454194940652e-06,
+            "totalCostBasisUsd": 313009.67895162787,
+            "updatedAt": "2026-03-13T11:18:05.000Z",
+            "holdingSince": null,
+            "wasSwapped": true,
+            "blacklisted": false
+          },
+          "activeTrade": {
+            "id": "070c3cda-b4e6-4266-bee0-1189779271ed",
+            "userAddress": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "tokenAddress": "So11111111111111111111111111111111111111112",
+            "networkId": 1399811149,
+            "createdAt": "2026-03-12T11:50:07.000Z",
+            "updatedAt": "2026-03-13T11:17:53.000Z",
+            "closedAt": null,
+            "humanTokenAmount": 0.0054344250000000005,
+            "avgEntryPrice": null,
+            "avgExitPrice": null,
+            "sumSwapOpen": 0,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0.011492149,
+            "sumTransferOut": 0.0060577240000000004,
+            "avgTransferInPrice": 86.9933683942,
+            "avgTransferOutPrice": 89.68943809116692,
+            "realizedPnlUsd": 0.016332046108989213,
+            "commentId": null
+          }
+        },
+        {
+          "balance": {
+            "address": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "balance": "2228522455021546543867",
+            "shiftedBalance": 2228.5224550215466,
+            "tokenAddress": "0x2314c3c39249048d609d4fffe8f2374a6c922fa6",
+            "tokenId": "0x2314c3c39249048d609d4fffe8f2374a6c922fa6:8453",
+            "walletId": "0x92bff72e6c943a1348aedf15d68e758e811dec64:8453"
+          },
+          "tokenFilterResult": {
+            "change1": "-0.006299840188504186",
+            "change4": "-0.006299840188504186",
+            "change12": "0.0029927171119396865",
+            "change24": "0.05953537848194866",
+            "createdAt": 1745849627,
+            "exchanges": [
+              {
+                "address": "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+                "name": "Uniswap"
+              },
+              {
+                "address": "0x498581ff718922c3f8e6a244956af099b2652b2b",
+                "name": "Uniswap"
+              }
+            ],
+            "liquidity": "20405",
+            "marketCap": "114850",
+            "pair": {
+              "protocol": "UniswapV3"
+            },
+            "priceUSD": "1.1484962796e-4",
+            "token": {
+              "address": "0x2314c3c39249048d609d4fffe8f2374a6c922fa6",
+              "decimals": 18,
+              "networkId": 8453,
+              "createdAt": 1745849627,
+              "creatorAddress": null,
+              "name": "Tether Gold $XAUT",
+              "symbol": "Tether Gold $XAUT",
+              "freezable": null,
+              "mintable": null,
+              "isScam": null,
+              "info": {
+                "address": "0x2314c3c39249048d609d4fffe8f2374a6c922fa6",
+                "circulatingSupply": "1000000000",
+                "cmcId": null,
+                "description": "",
+                "id": "0x2314c3c39249048d609d4fffe8f2374a6c922fa6:8453",
+                "imageBannerUrl": null,
+                "imageLargeUrl": null,
+                "imageSmallUrl": null,
+                "imageThumbUrl": null,
+                "imageThumbHash": null,
+                "name": "Tether Gold $XAUT",
+                "networkId": 8453,
+                "symbol": "Tether Gold $XAUT",
+                "totalSupply": "1000000000"
+              },
+              "socialLinks": {
+                "discord": null,
+                "telegram": null,
+                "twitter": null,
+                "website": null
+              },
+              "launchpad": null
+            },
+            "txnCount1": 1,
+            "txnCount4": 1,
+            "txnCount12": 9,
+            "txnCount24": 16,
+            "volume1": "68",
+            "volume5m": "0",
+            "volume4": "68",
+            "volume12": "134",
+            "volume24": "410"
+          },
+          "userToken": {
+            "id": "d18a19fc-5220-4823-881b-f29f7caf6953",
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "tokenAddress": "0x2314c3c39249048d609d4fffe8f2374a6c922fa6",
+            "networkId": 8453,
+            "humanAmountRemaining": 2228.5224550215466,
+            "tokenAmountRemaining": 0,
+            "averageEntryPriceUsd": 9.58060916631e-05,
+            "currentRealizedPnlUsd": 0,
+            "totalRealizedPnlUsd": 0,
+            "currentCostBasisUsd": 0.21350602659907095,
+            "totalCostBasisUsd": 0.21350602659907095,
+            "updatedAt": "2026-03-02T00:32:42.032Z",
+            "holdingSince": null,
+            "wasSwapped": false,
+            "blacklisted": false
+          },
+          "activeTrade": {
+            "id": "f707920b-7af6-42c1-86c0-88c3fbeebdda",
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "tokenAddress": "0x2314c3c39249048d609d4fffe8f2374a6c922fa6",
+            "networkId": 8453,
+            "createdAt": "2026-03-02T00:32:42.032Z",
+            "updatedAt": "2026-03-02T00:32:42.032Z",
+            "closedAt": null,
+            "humanTokenAmount": 2228.5224550215466,
+            "avgEntryPrice": null,
+            "avgExitPrice": null,
+            "sumSwapOpen": 0,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 2228.5224550215466,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": 9.58060916631e-05,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": 0,
+            "commentId": null
+          }
+        },
+        {
+          "balance": {
+            "address": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "balance": "30223094192327",
+            "shiftedBalance": 3.0223094192327e-05,
+            "tokenAddress": "0x4200000000000000000000000000000000000006",
+            "tokenId": "0x4200000000000000000000000000000000000006:8453",
+            "walletId": "0x92bff72e6c943a1348aedf15d68e758e811dec64:8453"
+          },
+          "tokenFilterResult": {
+            "change1": "0.003924949696675769",
+            "change4": "-0.004497657437947573",
+            "change12": "0.012332426695074025",
+            "change24": "0.032525292483129555",
+            "createdAt": 1700287149,
+            "exchanges": [
+              {
+                "address": "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+                "name": "Uniswap"
+              },
+              {
+                "address": "0x5e7bb104d84c7cb9b682aac2f3d509f5f406809a",
+                "name": "Aerodrome Slipstream"
+              },
+              {
+                "address": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+                "name": "PancakeSwap"
+              }
+            ],
+            "liquidity": "45788182",
+            "marketCap": "257789200220.7349",
+            "pair": {
+              "protocol": "UniswapV3"
+            },
+            "priceUSD": "2137.03822048",
+            "token": {
+              "address": "0x4200000000000000000000000000000000000006",
+              "decimals": 18,
+              "networkId": 8453,
+              "createdAt": 1698784435,
+              "creatorAddress": null,
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "freezable": null,
+              "mintable": null,
+              "isScam": false,
+              "info": {
+                "address": "0x4200000000000000000000000000000000000006",
+                "circulatingSupply": 120629195,
+                "cmcId": null,
+                "description": "",
+                "id": "0x4200000000000000000000000000000000000006:8453",
+                "imageBannerUrl": null,
+                "imageLargeUrl": "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+                "imageSmallUrl": "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+                "imageThumbUrl": "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+                "imageThumbHash": "qMQFHwIIx2h4h3hzi3aId5h5iIA3CHgD",
+                "name": "Ethereum",
+                "networkId": 8453,
+                "symbol": "ETH",
+                "totalSupply": "242281.997980915262063254"
+              },
+              "socialLinks": {
+                "discord": null,
+                "telegram": "",
+                "twitter": "https://x.com/ethdotorg",
+                "website": "https://ethereum.org/"
+              },
+              "launchpad": null
+            },
+            "txnCount1": 509,
+            "txnCount4": 2039,
+            "txnCount12": 3202,
+            "txnCount24": 6934,
+            "volume1": "6040233",
+            "volume5m": "4804",
+            "volume4": "39419690",
+            "volume12": "57849036",
+            "volume24": "103521482"
+          },
+          "userToken": {
+            "id": "fbf39745-02c2-4673-8880-435f2a6e0934",
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "tokenAddress": "0x4200000000000000000000000000000000000006",
+            "networkId": 8453,
+            "humanAmountRemaining": 6.843908501995882e-05,
+            "tokenAmountRemaining": 0,
+            "averageEntryPriceUsd": 0.028372364238851547,
+            "currentRealizedPnlUsd": 0,
+            "totalRealizedPnlUsd": -47.9363594208121,
+            "currentCostBasisUsd": 1.94177864836e-06,
+            "totalCostBasisUsd": 43634.389710796546,
+            "updatedAt": "2026-03-09T02:21:16.160Z",
+            "holdingSince": null,
+            "wasSwapped": true,
+            "blacklisted": false
+          },
+          "activeTrade": {
+            "id": "4c3dba9a-09a3-4c3c-a13e-4e08b13987c6",
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "tokenAddress": "0x4200000000000000000000000000000000000006",
+            "networkId": 8453,
+            "createdAt": "2026-01-30T22:57:22.111Z",
+            "updatedAt": "2026-03-04T07:26:37.908Z",
+            "closedAt": null,
+            "humanTokenAmount": 6.69622187635308e-05,
+            "avgEntryPrice": null,
+            "avgExitPrice": 2295.280584402805,
+            "sumSwapOpen": 0,
+            "sumSwapClosed": 9.487002458423003,
+            "sumTransferIn": 18.974123651101323,
+            "sumTransferOut": 9.487054230459572,
+            "avgTransferInPrice": 2298.209966422161,
+            "avgTransferOutPrice": 2296.098528385202,
+            "realizedPnlUsd": -47.82238158017678,
+            "commentId": null
+          }
+        },
+        {
+          "balance": {
+            "address": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "balance": "55000000000000000000000",
+            "shiftedBalance": 55000,
+            "tokenAddress": "0x7ba6b156c182bdedf3bf2ff645e04a68fb57fb07",
+            "tokenId": "0x7ba6b156c182bdedf3bf2ff645e04a68fb57fb07:8453",
+            "walletId": "0x92bff72e6c943a1348aedf15d68e758e811dec64:8453"
+          },
+          "tokenFilterResult": {
+            "change1": "0",
+            "change4": "0.022160141145171904",
+            "change12": "0.03638303135448658",
+            "change24": "0.10796034847673666",
+            "createdAt": 1770583619,
+            "exchanges": [
+              {
+                "address": "0x498581ff718922c3f8e6a244956af099b2652b2b",
+                "name": "Uniswap"
+              },
+              {
+                "address": "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+                "name": "Uniswap"
+              }
+            ],
+            "liquidity": "28520",
+            "marketCap": "68148",
+            "pair": {
+              "protocol": "UniswapV4"
+            },
+            "priceUSD": "6.81476023299e-7",
+            "token": {
+              "address": "0x7ba6b156c182bdedf3bf2ff645e04a68fb57fb07",
+              "decimals": 18,
+              "networkId": 8453,
+              "createdAt": 1770583619,
+              "creatorAddress": "0xd9acd656a5f1b519c9e76a2a6092265a74186e58",
+              "name": "CLAWBSTER",
+              "symbol": "CLAWBSTR",
+              "freezable": null,
+              "mintable": null,
+              "isScam": null,
+              "info": {
+                "address": "0x7ba6b156c182bdedf3bf2ff645e04a68fb57fb07",
+                "circulatingSupply": "99999850000",
+                "cmcId": null,
+                "description": "",
+                "id": "0x7ba6b156c182bdedf3bf2ff645e04a68fb57fb07:8453",
+                "imageBannerUrl": "https://token-media.defined.fi/8453_0x7ba6b156c182bdedf3bf2ff645e04a68fb57fb07_banner_43112c65333c.png",
+                "imageLargeUrl": "https://token-media.defined.fi/8453_0x7ba6b156c182bdedf3bf2ff645e04a68fb57fb07_large_405e443d0280.png",
+                "imageSmallUrl": "https://token-media.defined.fi/8453_0x7ba6b156c182bdedf3bf2ff645e04a68fb57fb07_small_3ed431416d49.png",
+                "imageThumbUrl": "https://token-media.defined.fi/8453_0x7ba6b156c182bdedf3bf2ff645e04a68fb57fb07_thumb_2523c6e745b4.png",
+                "imageThumbHash": "FhiGHQwstpl4eIs3+AeHdXBXCFeIeICEWA==",
+                "name": "CLAWBSTER",
+                "networkId": 8453,
+                "symbol": "CLAWBSTR",
+                "totalSupply": "100000000000"
+              },
+              "socialLinks": {
+                "discord": null,
+                "telegram": "https://t.me/clawbstr",
+                "twitter": "https://x.com/clawbstr",
+                "website": "https://clawbster.com/"
+              },
+              "launchpad": {
+                "launchpadName": "Clanker V4",
+                "launchpadIconUrl": "https://crypto-exchange-logos-production.s3.us-west-2.amazonaws.com/launchpad/clanker.png",
+                "graduationPercent": null,
+                "migrated": false
+              }
+            },
+            "txnCount1": 0,
+            "txnCount4": 2,
+            "txnCount12": 14,
+            "txnCount24": 40,
+            "volume1": "0",
+            "volume5m": "0",
+            "volume4": "32",
+            "volume12": "530",
+            "volume24": "1566"
+          },
+          "userToken": {
+            "id": "c8e42395-56fc-4405-9a82-9fb561fbdf43",
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "tokenAddress": "0x7ba6b156c182bdedf3bf2ff645e04a68fb57fb07",
+            "networkId": 8453,
+            "humanAmountRemaining": 55000,
+            "tokenAmountRemaining": 5.5e+22,
+            "averageEntryPriceUsd": 6.81476023299e-07,
+            "currentRealizedPnlUsd": 0,
+            "totalRealizedPnlUsd": 0,
+            "currentCostBasisUsd": 0,
+            "totalCostBasisUsd": 0,
+            "updatedAt": "2026-03-13T17:09:49.973Z",
+            "holdingSince": null,
+            "wasSwapped": true,
+            "blacklisted": false
+          },
+          "activeTrade": {
+            "id": "0193ad2e-22dd-4af1-baad-27894a2f3a20",
+            "tokenAddress": "0x7ba6b156c182bdedf3bf2ff645e04a68fb57fb07",
+            "createdAt": "2026-03-13T17:09:49.973Z",
+            "networkId": 8453,
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "updatedAt": "2026-03-13T17:09:49.973Z",
+            "closedAt": null,
+            "humanTokenAmount": 55000,
+            "avgEntryPrice": 6.81476023299e-07,
+            "avgExitPrice": null,
+            "sumSwapOpen": 55000,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": null,
+            "commentId": null
+          }
+        },
+        {
+          "balance": {
+            "address": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "balance": "10000000000000000000",
+            "shiftedBalance": 10,
+            "tokenAddress": "0x1bf75afacb815a033760ebbac86522dff0598888",
+            "tokenId": "0x1bf75afacb815a033760ebbac86522dff0598888:8453",
+            "walletId": "0x92bff72e6c943a1348aedf15d68e758e811dec64:8453"
+          },
+          "tokenFilterResult": {
+            "change1": "0",
+            "change4": "0",
+            "change12": "0.029968683495247325",
+            "change24": "0.029968683495247325",
+            "createdAt": 1763993571,
+            "exchanges": [
+              {
+                "address": "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+                "name": "Uniswap"
+              },
+              {
+                "address": "0x498581ff718922c3f8e6a244956af099b2652b2b",
+                "name": "Uniswap"
+              }
+            ],
+            "liquidity": "5990",
+            "marketCap": "35780",
+            "pair": {
+              "protocol": "UniswapV3"
+            },
+            "priceUSD": "3.5808455947e-5",
+            "token": {
+              "address": "0x1bf75afacb815a033760ebbac86522dff0598888",
+              "decimals": 18,
+              "networkId": 8453,
+              "createdAt": 1763993571,
+              "creatorAddress": "0x75faf9395b81a8e395e15306deb0f2e3ff3e3ade",
+              "name": "Aicoin",
+              "symbol": "AIC",
+              "freezable": null,
+              "mintable": null,
+              "isScam": null,
+              "info": {
+                "address": "0x1bf75afacb815a033760ebbac86522dff0598888",
+                "circulatingSupply": "999209892.760373477687059655",
+                "cmcId": null,
+                "description": "",
+                "id": "0x1bf75afacb815a033760ebbac86522dff0598888:8453",
+                "imageBannerUrl": null,
+                "imageLargeUrl": null,
+                "imageSmallUrl": null,
+                "imageThumbUrl": null,
+                "imageThumbHash": null,
+                "name": "Aicoin",
+                "networkId": 8453,
+                "symbol": "AIC",
+                "totalSupply": "999210412.760373477687059655"
+              },
+              "socialLinks": {
+                "discord": null,
+                "telegram": null,
+                "twitter": null,
+                "website": null
+              },
+              "launchpad": null
+            },
+            "txnCount1": 0,
+            "txnCount4": 0,
+            "txnCount12": 2,
+            "txnCount24": 2,
+            "volume1": "0",
+            "volume5m": "0",
+            "volume4": "0",
+            "volume12": "0",
+            "volume24": "0"
+          },
+          "userToken": {
+            "id": "f9315290-4414-4716-aac7-440eece6ed15",
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "tokenAddress": "0x1bf75afacb815a033760ebbac86522dff0598888",
+            "networkId": 8453,
+            "humanAmountRemaining": 10,
+            "tokenAmountRemaining": 10000000000000000000,
+            "averageEntryPriceUsd": 3.5808455947e-05,
+            "currentRealizedPnlUsd": 0,
+            "totalRealizedPnlUsd": 0,
+            "currentCostBasisUsd": 0,
+            "totalCostBasisUsd": 0,
+            "updatedAt": "2026-03-13T17:09:49.977Z",
+            "holdingSince": null,
+            "wasSwapped": true,
+            "blacklisted": false
+          },
+          "activeTrade": {
+            "id": "134703f0-5a3b-4c18-a07f-8e7dc8f655ba",
+            "tokenAddress": "0x1bf75afacb815a033760ebbac86522dff0598888",
+            "createdAt": "2026-03-13T17:09:49.977Z",
+            "networkId": 8453,
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "updatedAt": "2026-03-13T17:09:49.977Z",
+            "closedAt": null,
+            "humanTokenAmount": 10,
+            "avgEntryPrice": 3.5808455947e-05,
+            "avgExitPrice": null,
+            "sumSwapOpen": 10,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": null,
+            "commentId": null
+          }
+        },
+        {
+          "balance": {
+            "address": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "balance": "351",
+            "shiftedBalance": 0.000351,
+            "tokenAddress": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+            "tokenId": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913:8453",
+            "walletId": "0x92bff72e6c943a1348aedf15d68e758e811dec64:8453"
+          },
+          "tokenFilterResult": {
+            "change1": "-0.00001505",
+            "change4": "0.00003495174758737937",
+            "change12": "0.00004389258702907949",
+            "change24": "0.00006495519641571326",
+            "createdAt": 1700287149,
+            "exchanges": [
+              {
+                "address": "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+                "name": "Uniswap"
+              },
+              {
+                "address": "0x5e7bb104d84c7cb9b682aac2f3d509f5f406809a",
+                "name": "Aerodrome Slipstream"
+              },
+              {
+                "address": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+                "name": "PancakeSwap"
+              },
+              {
+                "address": "0x420dd381b31aef6683db6b902084cb0ffece40da",
+                "name": "Aerodrome"
+              }
+            ],
+            "liquidity": "45788182",
+            "marketCap": "4350325304",
+            "pair": {
+              "protocol": "UniswapV3"
+            },
+            "priceUSD": "0.99998495",
+            "token": {
+              "address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+              "decimals": 6,
+              "networkId": 8453,
+              "createdAt": 1692383789,
+              "creatorAddress": "0x6aaff8af0ae8017725312c388ba3745dfe91185b",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "freezable": null,
+              "mintable": null,
+              "isScam": null,
+              "info": {
+                "address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+                "circulatingSupply": "75876378432.5162",
+                "cmcId": null,
+                "description": "USDC is a fully collateralized US dollar stablecoin. USDC is the bridge between dollars and trading on cryptocurrency exchanges. The technology behind CENTRE makes it possible to exchange value between people, businesses and financial institutions just like email between mail services and texts between SMS providers. We believe by removing artificial economic borders, we can create a more inclusive global economy.",
+                "id": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913:8453",
+                "imageBannerUrl": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_banner_5835d953-ebe2-4c2a-95df-c222c66f1712.png",
+                "imageLargeUrl": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large_small_thumb_0e6ab586-2c7b-4b52-ad10-3e2b06522d26.png",
+                "imageSmallUrl": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large_small_thumb_0e6ab586-2c7b-4b52-ad10-3e2b06522d26.png",
+                "imageThumbUrl": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large_small_thumb_0e6ab586-2c7b-4b52-ad10-3e2b06522d26.png",
+                "imageThumbHash": "JYWFDQIsSEeHeHCNR0iHgHQICFiId3CDWA==",
+                "name": "USD Coin",
+                "networkId": 8453,
+                "symbol": "USDC",
+                "totalSupply": "4350390776.96553"
+              },
+              "socialLinks": {
+                "discord": null,
+                "telegram": null,
+                "twitter": "",
+                "website": null
+              },
+              "launchpad": null
+            },
+            "txnCount1": 509,
+            "txnCount4": 2039,
+            "txnCount12": 3202,
+            "txnCount24": 6934,
+            "volume1": "6040233",
+            "volume5m": "4804",
+            "volume4": "39419690",
+            "volume12": "57849036",
+            "volume24": "103521482"
+          },
+          "userToken": {
+            "id": "f1b0e9c8-5d5d-4856-8248-e5beac08cd0f",
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "tokenAddress": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+            "networkId": 8453,
+            "humanAmountRemaining": -105128.40101999999,
+            "tokenAmountRemaining": 1,
+            "averageEntryPriceUsd": 1,
+            "currentRealizedPnlUsd": 0,
+            "totalRealizedPnlUsd": 0,
+            "currentCostBasisUsd": 0.000351,
+            "totalCostBasisUsd": 1044570.4931229999,
+            "updatedAt": "2026-03-09T02:21:08.368Z",
+            "holdingSince": null,
+            "wasSwapped": true,
+            "blacklisted": false
+          },
+          "activeTrade": {
+            "id": "713172e8-328f-442f-a83c-caa48d0bdfe2",
+            "tokenAddress": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+            "createdAt": "2026-03-13T17:09:49.969Z",
+            "networkId": 8453,
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "updatedAt": "2026-03-13T17:09:49.969Z",
+            "closedAt": null,
+            "humanTokenAmount": 0.000351,
+            "avgEntryPrice": 0.99998495,
+            "avgExitPrice": null,
+            "sumSwapOpen": 0.000351,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": null,
+            "commentId": null
+          }
+        },
+        {
+          "balance": {
+            "address": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "balance": "1000000000000000000",
+            "shiftedBalance": 1,
+            "tokenAddress": "0xaae93f6c7f4ee4a6a400572360ffa93d5b101797",
+            "tokenId": "0xaae93f6c7f4ee4a6a400572360ffa93d5b101797:8453",
+            "walletId": "0x92bff72e6c943a1348aedf15d68e758e811dec64:8453"
+          },
+          "tokenFilterResult": {
+            "change1": "-0.02490996880267333",
+            "change4": "-0.07235045838738677",
+            "change12": "0.588979286609255",
+            "change24": "1.854665870941117",
+            "createdAt": 1738009263,
+            "exchanges": [
+              {
+                "address": "0x8909dc15e40173ff4699343b6eb8132c65e18ec6",
+                "name": "Uniswap"
+              },
+              {
+                "address": "0x498581ff718922c3f8e6a244956af099b2652b2b",
+                "name": "Uniswap"
+              },
+              {
+                "address": "0x71524b4f93c58fcbf659783284e38825f0622859",
+                "name": "Sushiswap"
+              }
+            ],
+            "liquidity": "9009",
+            "marketCap": "32599",
+            "pair": {
+              "protocol": "UniswapV2"
+            },
+            "priceUSD": "3.25992604582e-5",
+            "token": {
+              "address": "0xaae93f6c7f4ee4a6a400572360ffa93d5b101797",
+              "decimals": 18,
+              "networkId": 8453,
+              "createdAt": 1738008701,
+              "creatorAddress": "0x4bf46c7fa2283d284ec5ae822a92e3530cb9f162",
+              "name": "LaughingMonkey by Venice AI",
+              "symbol": "LMNK",
+              "freezable": null,
+              "mintable": null,
+              "isScam": null,
+              "info": {
+                "address": "0xaae93f6c7f4ee4a6a400572360ffa93d5b101797",
+                "circulatingSupply": "962154842.60062015606273902",
+                "cmcId": null,
+                "description": "Laughing Monkey is the first token ever directly issued by Venice AI!",
+                "id": "0xaae93f6c7f4ee4a6a400572360ffa93d5b101797:8453",
+                "imageBannerUrl": "https://token-media.defined.fi/8453_0xaae93f6c7f4ee4a6a400572360ffa93d5b101797_banner_fea736a6be82.png",
+                "imageLargeUrl": "https://token-media.defined.fi/8453_0xaae93f6c7f4ee4a6a400572360ffa93d5b101797_large_14a1a38c76e0.png",
+                "imageSmallUrl": "https://token-media.defined.fi/8453_0xaae93f6c7f4ee4a6a400572360ffa93d5b101797_small_7fed54bcd9ec.png",
+                "imageThumbUrl": "https://token-media.defined.fi/8453_0xaae93f6c7f4ee4a6a400572360ffa93d5b101797_thumb_be62357c782c.png",
+                "imageThumbHash": "VAgGDwIJpBiMZYhhqmWHiGh3h4EICHcB",
+                "name": "LaughingMonkey by Venice AI",
+                "networkId": 8453,
+                "symbol": "LMNK",
+                "totalSupply": "1000000000"
+              },
+              "socialLinks": {
+                "discord": null,
+                "telegram": "https://t.me/MonkeybyVenice",
+                "twitter": "https://x.com/MonkeybyVenice",
+                "website": "https://monkeybyvenice.com/"
+              },
+              "launchpad": null
+            },
+            "txnCount1": 17,
+            "txnCount4": 199,
+            "txnCount12": 462,
+            "txnCount24": 760,
+            "volume1": "933",
+            "volume5m": "0",
+            "volume4": "15275",
+            "volume12": "32192",
+            "volume24": "62016"
+          },
+          "userToken": {
+            "id": "63cc06cc-9458-4a2b-a33a-8cf9704c9bf4",
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "tokenAddress": "0xaae93f6c7f4ee4a6a400572360ffa93d5b101797",
+            "networkId": 8453,
+            "humanAmountRemaining": 1,
+            "tokenAmountRemaining": 1000000000000000000,
+            "averageEntryPriceUsd": 3.25992604582e-05,
+            "currentRealizedPnlUsd": 0,
+            "totalRealizedPnlUsd": 0,
+            "currentCostBasisUsd": 0,
+            "totalCostBasisUsd": 0,
+            "updatedAt": "2026-03-13T17:09:49.968Z",
+            "holdingSince": null,
+            "wasSwapped": true,
+            "blacklisted": false
+          },
+          "activeTrade": {
+            "id": "7f0a95a2-92b5-4970-a7c1-8486b1aef498",
+            "tokenAddress": "0xaae93f6c7f4ee4a6a400572360ffa93d5b101797",
+            "createdAt": "2026-03-13T17:09:49.968Z",
+            "networkId": 8453,
+            "userAddress": "0x92bff72e6c943a1348aedf15d68e758e811dec64",
+            "updatedAt": "2026-03-13T17:09:49.968Z",
+            "closedAt": null,
+            "humanTokenAmount": 1,
+            "avgEntryPrice": 3.25992604582e-05,
+            "avgExitPrice": null,
+            "sumSwapOpen": 1,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": null,
+            "commentId": null
+          }
+        },
+        {
+          "balance": {
+            "address": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "tokenAddress": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+            "walletId": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga:1399811149",
+            "balance": "10663",
+            "shiftedBalance": 0.10663,
+            "tokenId": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263:1399811149"
+          },
+          "tokenFilterResult": {
+            "change1": "0.003273342542142148",
+            "change4": "-0.035357773979929084",
+            "change12": "0.011573324527406654",
+            "change24": "0.05643159151357688",
+            "createdAt": 1715333588,
+            "exchanges": [
+              {
+                "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+                "name": "Meteora"
+              },
+              {
+                "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+                "name": "Orca"
+              },
+              {
+                "address": "ZERor4xhbUycZ6gb9ntrhqscUcZmAbQDjEAtCf4hbZY",
+                "name": "ZeroFi"
+              },
+              {
+                "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+                "name": "Raydium CLMM"
+              },
+              {
+                "address": "BSwp6bEBihVLdqJRKGgzjcGLHkcTuzmSo1TQkHepzH8p",
+                "name": "Bonkswap"
+              },
+              {
+                "address": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
+                "name": "Raydium"
+              }
+            ],
+            "liquidity": "149886",
+            "marketCap": "555137596",
+            "pair": {
+              "protocol": "Meteora"
+            },
+            "priceUSD": "6.30875752628e-6",
+            "token": {
+              "address": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+              "decimals": 5,
+              "networkId": 1399811149,
+              "createdAt": 1670531612,
+              "creatorAddress": "9AhKqLR67hwapvG8SA2JFXaCshXc9nALJjpKaHZrsbkw",
+              "name": "Bonk",
+              "symbol": "Bonk",
+              "freezable": null,
+              "mintable": null,
+              "isScam": null,
+              "info": {
+                "address": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+                "circulatingSupply": "82199166692659.5",
+                "cmcId": 23095,
+                "description": "Bonk is the first Solana dog coin for the people, by the people with 50% of the total supply airdropped to the Solana community. The Bonk contributors were tired of toxic \u201cAlameda\u201d tokenomics and wanted to make a fun memecoin where everyone gets a fair shot.",
+                "id": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263:1399811149",
+                "imageBannerUrl": "https://token-media.defined.fi/1399811149_DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263_banner_43bac6957f87.png",
+                "imageLargeUrl": "https://token-media.defined.fi/1399811149_DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263_large_35ef39613b65.png",
+                "imageSmallUrl": "https://token-media.defined.fi/1399811149_DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263_small_874696a53922.png",
+                "imageThumbUrl": "https://token-media.defined.fi/1399811149_DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263_thumb_32010f1c4baf.png",
+                "imageThumbHash": "pGyGJQI6g7/JJbB71PeZW/jlB0h2iHB2Vw==",
+                "name": "Bonk",
+                "networkId": 1399811149,
+                "symbol": "Bonk",
+                "totalSupply": "8.799475868021927963e+13"
+              },
+              "socialLinks": {
+                "discord": "https://discord.gg/qaQa6M6mN2",
+                "telegram": "https://t.me/Official_Bonk_Inu",
+                "twitter": "https://twitter.com/bonk_inu",
+                "website": "https://www.bonkcoin.com"
+              },
+              "launchpad": null
+            },
+            "txnCount1": 749,
+            "txnCount4": 4226,
+            "txnCount12": 11592,
+            "txnCount24": 20117,
+            "volume1": "64934",
+            "volume5m": "5031",
+            "volume4": "428928",
+            "volume12": "984075",
+            "volume24": "1680669"
+          },
+          "userToken": {
+            "id": "83e43ea7-5be7-462e-bf4e-9d2a2d6a6473",
+            "userAddress": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "tokenAddress": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+            "networkId": 1399811149,
+            "humanAmountRemaining": 0.10663,
+            "tokenAmountRemaining": 10663,
+            "averageEntryPriceUsd": 6.30875752628e-06,
+            "currentRealizedPnlUsd": 0,
+            "totalRealizedPnlUsd": 0,
+            "currentCostBasisUsd": 0,
+            "totalCostBasisUsd": 0,
+            "updatedAt": "2026-03-13T17:09:49.968Z",
+            "holdingSince": null,
+            "wasSwapped": true,
+            "blacklisted": false
+          },
+          "activeTrade": {
+            "id": "e79424f7-d82b-466b-b586-cf9e362cb735",
+            "tokenAddress": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+            "createdAt": "2026-03-13T17:09:49.968Z",
+            "networkId": 1399811149,
+            "userAddress": "J9WiAZKf8JnCkHFL8fLCCXdEgdoLjLRqU2EGsDjdqYga",
+            "updatedAt": "2026-03-13T17:09:49.968Z",
+            "closedAt": null,
+            "humanTokenAmount": 0.10663,
+            "avgEntryPrice": 6.30875752628e-06,
+            "avgExitPrice": null,
+            "sumSwapOpen": 0.10663,
+            "sumSwapClosed": 0,
+            "sumTransferIn": 0,
+            "sumTransferOut": 0,
+            "avgTransferInPrice": null,
+            "avgTransferOutPrice": null,
+            "realizedPnlUsd": null,
+            "commentId": null
+          }
+        }
+      ],
+      "otherPnl": 838292.3073660737,
+      "nativeEvmBalances": []
+    },
+    "statusCode": 200
+  },
+  "captured_at": "2026-03-13T12:09:49.982784"
+}

@@ -48,97 +48,30 @@ export function ExplorerPage() {
   }
 
   return (
-    <div
-      style={{
-        maxWidth: "720px",
-        margin: "0 auto",
-        padding: "64px 32px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "40px",
-      }}
-    >
+    <div className="max-w-[720px] mx-auto px-6 py-16 flex flex-col items-center gap-10">
       {/* Headline */}
-      <div style={{ textAlign: "center" }}>
-        <h1
-          style={{
-            fontSize: "28px",
-            fontWeight: 700,
-            letterSpacing: "-0.03em",
-            color: "var(--text-primary)",
-            marginBottom: "8px",
-          }}
-        >
+      <div className="text-center">
+        <h1 className="text-3xl lg:text-[36px] font-bold tracking-tight mb-3 text-[var(--text-primary)]">
           Explore Solana
         </h1>
-        <p style={{ fontSize: "14px", color: "var(--text-muted)" }}>
-          Search any wallet address, token, transaction, or program.
+        <p className="text-[15px] text-[var(--text-secondary)]">
+          Search any wallet, token, transaction, or program.
         </p>
       </div>
 
-      {/* Big search form */}
-      <form onSubmit={handleSubmit} style={{ width: "100%" }}>
-        <div
-          style={{
-            display: "flex",
-            gap: "0",
-            background: "var(--bg-surface)",
-            border: "1px solid var(--border)",
-            borderRadius: "8px",
-            overflow: "hidden",
-            transition: "border-color 80ms, box-shadow 80ms",
-          }}
-          onFocusCapture={(e) => {
-            (e.currentTarget as HTMLDivElement).style.borderColor =
-              "var(--accent)";
-            (e.currentTarget as HTMLDivElement).style.boxShadow =
-              "0 0 0 2px var(--accent-glow)";
-          }}
-          onBlurCapture={(e) => {
-            (e.currentTarget as HTMLDivElement).style.borderColor =
-              "var(--border)";
-            (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-          }}
-        >
+      {/* Search form */}
+      <form onSubmit={handleSubmit} className="w-full">
+        <div className="flex border border-[var(--border)] rounded-lg overflow-hidden bg-[var(--bg-surface)] focus-within:border-[var(--accent)] focus-within:ring-2 focus-within:ring-[var(--accent-ring)] transition-all">
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Paste wallet address, token mint, tx signature, or @handle..."
-            style={{
-              flex: 1,
-              background: "none",
-              border: "none",
-              padding: "14px 18px",
-              fontSize: "14px",
-              fontFamily: query.length > 20 ? "JetBrains Mono, monospace" : "inherit",
-              color: "var(--text-primary)",
-              outline: "none",
-            }}
+            placeholder="Wallet address, token mint, tx signature, or @handle..."
+            className={`flex-1 bg-transparent border-none px-4 py-3.5 text-[14px] text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] ${query.length > 20 ? 'font-mono' : ''}`}
           />
           <button
             type="submit"
-            style={{
-              padding: "14px 24px",
-              background: "var(--accent)",
-              border: "none",
-              color: "#fff",
-              fontSize: "14px",
-              fontWeight: 600,
-              cursor: "pointer",
-              fontFamily: "inherit",
-              transition: "background 80ms",
-              flexShrink: 0,
-            }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.background =
-                "var(--accent-hover)")
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.background =
-                "var(--accent)")
-            }
+            className="btn btn-primary px-6 rounded-none"
           >
             Search
           </button>
@@ -147,113 +80,47 @@ export function ExplorerPage() {
 
       {/* Quick access */}
       {recent.length > 0 && (
-      <div style={{ width: "100%" }}>
-        <div
-          style={{
-            fontSize: "10px",
-            fontWeight: 600,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "var(--text-muted)",
-            marginBottom: "12px",
-          }}
-        >
-          Recently Viewed
+        <div className="w-full relative z-10 animate-fade-up stagger-2">
+          <div className="text-[10px] font-bold tracking-widest uppercase text-[var(--text-muted)] mb-4 flex items-center gap-2">
+            <span className="w-8 h-px bg-[var(--border)]" />
+            Recently Viewed
+            <span className="flex-1 h-px bg-[var(--border)]" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {recent.map((item, i) => (
+              <button
+                key={item.id}
+                onClick={() =>
+                  router.push(
+                    item.type === "wallet"
+                      ? `/wallet/${item.id}`
+                      : `/token/${item.id}`
+                  )
+                }
+                className="card card-interactive flex items-center gap-3 px-4 py-3.5 text-left group"
+                style={{ animationDelay: `${i * 50}ms` }}
+              >
+                <span className={`badge ${item.type === 'wallet' ? 'badge-accent' : 'badge-success'} uppercase shrink-0`}>
+                  {item.type}
+                </span>
+                <span className="text-[13px] text-[var(--text-primary)] font-medium">
+                  {item.label}
+                </span>
+                <span className="ml-auto font-mono text-[10px] text-[var(--text-muted)] opacity-60 group-hover:opacity-100 transition-opacity">
+                  {item.id.slice(0, 4)}...{item.id.slice(-4)}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
-          {recent.map((item) => (
-            <button
-              key={item.id}
-              onClick={() =>
-                router.push(
-                  item.type === "wallet"
-                    ? `/wallet/${item.id}`
-                    : `/token/${item.id}`
-                )
-              }
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "12px",
-                padding: "12px 16px",
-                background: "var(--bg-surface)",
-                border: "1px solid var(--border)",
-                borderRadius: "6px",
-                cursor: "pointer",
-                textAlign: "left",
-                fontFamily: "inherit",
-                transition: "background 60ms",
-                marginBottom: "4px",
-              }}
-              onMouseEnter={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.background =
-                  "var(--bg-elevated)")
-              }
-              onMouseLeave={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.background =
-                  "var(--bg-surface)")
-              }
-            >
-              <span
-                style={{
-                  fontSize: "11px",
-                  fontWeight: 600,
-                  padding: "2px 7px",
-                  borderRadius: "3px",
-                  border: "1px solid var(--border)",
-                  color: "var(--text-muted)",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.06em",
-                  flexShrink: 0,
-                }}
-              >
-                {item.type}
-              </span>
-              <span
-                style={{ fontSize: "13px", color: "var(--text-primary)", fontWeight: 500 }}
-              >
-                {item.label}
-              </span>
-              <span
-                style={{
-                  marginLeft: "auto",
-                  fontFamily: "JetBrains Mono, monospace",
-                  fontSize: "11px",
-                  color: "var(--text-muted)",
-                }}
-              >
-                {item.id.slice(0, 6)}...{item.id.slice(-4)}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
       )}
 
       {/* Tip */}
-      <p
-        style={{
-          fontSize: "12px",
-          color: "var(--text-muted)",
-          textAlign: "center",
-          lineHeight: 1.6,
-        }}
-      >
-        Try{" "}
-        <span style={{ color: "var(--text-secondary)", fontFamily: "JetBrains Mono, monospace" }}>
-          @handle
-        </span>{" "}
-        to resolve Twitter/X handles, or{" "}
-        <a
-          href="/ai"
-          style={{
-            color: "var(--accent)",
-            textDecoration: "none",
-          }}
-        >
+      <p className="text-[13px] text-[var(--text-muted)] text-center">
+        Tip: Try <span className="font-mono text-[var(--text-secondary)]">@handle</span> to resolve Twitter handles, or{" "}
+        <a href="/ai" className="text-[var(--accent)] hover:underline">
           ask Bloodhound AI
-        </a>{" "}
-        to query in plain language.
+        </a>.
       </p>
     </div>
   );

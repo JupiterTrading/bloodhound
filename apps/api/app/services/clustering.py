@@ -19,7 +19,7 @@ pairs above EXPLAIN_THRESHOLD.
 import asyncio
 from typing import Any
 
-from app.services import clickhouse
+from app.services import analytics
 from app.services import supabase as supabase_svc
 from app.services.redis_cache import cache_get, cache_set
 
@@ -111,27 +111,12 @@ async def run_clustering_for_wallet(address: str) -> int:
 
 async def _find_candidate_addresses(address: str) -> list[str]:
     """
-    Find wallets that traded the same tokens as `address` within 30-min windows.
+    Find candidate wallets via Helius counterparties.
     These are the candidates to score for identity clustering.
     """
-    client = clickhouse.get_client()
     try:
-        result = await asyncio.to_thread(
-            client.query,
-            """
-            SELECT DISTINCT tt2.trader
-            FROM token_trades tt1
-            INNER JOIN token_trades tt2
-              ON tt1.token_out_mint = tt2.token_out_mint
-             AND tt1.trader != tt2.trader
-             AND abs(toUnixTimestamp(tt2.block_time) - toUnixTimestamp(tt1.block_time)) < 1800
-            WHERE tt1.trader = {address:String}
-              AND tt1.block_time >= now() - INTERVAL 30 DAY
-            LIMIT 50
-            """,
-            parameters={"address": address},
-        )
-        return [row[0] for row in result.result_rows]
+        counterparties = await analytics.get_top_counterparties(address, limit=20)
+        return [cp["counterparty"] for cp in counterparties if cp.get("counterparty")]
     except Exception:
         return []
 
@@ -174,111 +159,82 @@ async def _score_pair(
 
 async def _signal_common_funder(wallet_a: str, wallet_b: str) -> bool:
     """Both wallets received early transfers from the same source address."""
-    client = clickhouse.get_client()
-    result = await asyncio.to_thread(
-        client.query,
-        """
-        WITH
-          funders_a AS (
-            SELECT from_address
-            FROM transfers
-            WHERE to_address = {a:String}
-            ORDER BY block_time ASC
-            LIMIT 3
-          ),
-          funders_b AS (
-            SELECT from_address
-            FROM transfers
-            WHERE to_address = {b:String}
-            ORDER BY block_time ASC
-            LIMIT 3
-          )
-        SELECT count()
-        FROM funders_a
-        INNER JOIN funders_b ON funders_a.from_address = funders_b.from_address
-        """,
-        parameters={"a": wallet_a, "b": wallet_b},
-    )
-    return bool(result.result_rows and int(result.result_rows[0][0] or 0) > 0)
+    try:
+        funder_a = await _get_primary_funder(wallet_a)
+        funder_b = await _get_primary_funder(wallet_b)
+        return bool(funder_a and funder_b and funder_a == funder_b)
+    except Exception:
+        return False
 
 
 async def _signal_fund_flow(wallet_a: str, wallet_b: str) -> bool:
     """One wallet directly sent SOL or tokens to the other."""
-    client = clickhouse.get_client()
-    result = await asyncio.to_thread(
-        client.query,
-        """
-        SELECT count()
-        FROM transfers
-        WHERE (from_address = {a:String} AND to_address = {b:String})
-           OR (from_address = {b:String} AND to_address = {a:String})
-        """,
-        parameters={"a": wallet_a, "b": wallet_b},
-    )
-    return bool(result.result_rows and int(result.result_rows[0][0] or 0) > 0)
+    try:
+        result = await analytics.check_transfers_between(wallet_a, wallet_b, min_amount_sol=0.01)
+        if result.get("found"):
+            return True
+        result2 = await analytics.check_transfers_between(wallet_b, wallet_a, min_amount_sol=0.01)
+        return result2.get("found", False)
+    except Exception:
+        return False
 
 
 async def _signal_token_overlap(wallet_a: str, wallet_b: str) -> bool:
-    """Both wallets traded ≥3 of the same tokens within 30-min windows over the past 30 days."""
-    client = clickhouse.get_client()
-    result = await asyncio.to_thread(
-        client.query,
-        """
-        SELECT count(DISTINCT tt1.token_out_mint)
-        FROM token_trades tt1
-        INNER JOIN token_trades tt2
-          ON tt1.token_out_mint = tt2.token_out_mint
-         AND abs(toUnixTimestamp(tt2.block_time) - toUnixTimestamp(tt1.block_time)) < 1800
-        WHERE tt1.trader = {a:String}
-          AND tt2.trader = {b:String}
-          AND tt1.block_time >= now() - INTERVAL 30 DAY
-        """,
-        parameters={"a": wallet_a, "b": wallet_b},
-    )
-    return bool(result.result_rows and int(result.result_rows[0][0] or 0) >= 3)
+    """Both wallets traded ≥3 of the same tokens. Check Supabase wallet_trades."""
+    try:
+        sb = supabase_svc.get_supabase()
+        trades_a = sb.table("wallet_trades").select("token_address").eq(
+            "wallet_address", wallet_a
+        ).limit(100).execute()
+        trades_b = sb.table("wallet_trades").select("token_address").eq(
+            "wallet_address", wallet_b
+        ).limit(100).execute()
+        tokens_a = set(r["token_address"] for r in (trades_a.data or []) if r.get("token_address"))
+        tokens_b = set(r["token_address"] for r in (trades_b.data or []) if r.get("token_address"))
+        overlap = tokens_a & tokens_b
+        return len(overlap) >= 3
+    except Exception:
+        return False
 
 
 async def _signal_timing_sync(wallet_a: str, wallet_b: str) -> bool:
-    """≥5 transactions from both wallets occur within 60-second windows of each other."""
-    client = clickhouse.get_client()
-    result = await asyncio.to_thread(
-        client.query,
-        """
-        SELECT count()
-        FROM transactions t1
-        INNER JOIN transactions t2
-          ON abs(toUnixTimestamp(t2.block_time) - toUnixTimestamp(t1.block_time)) < 60
-        WHERE has(t1.signers, {a:String})
-          AND has(t2.signers, {b:String})
-          AND t1.block_time >= now() - INTERVAL 30 DAY
-        """,
-        parameters={"a": wallet_a, "b": wallet_b},
-    )
-    return bool(result.result_rows and int(result.result_rows[0][0] or 0) >= 5)
+    """≥5 transactions from both wallets occur within 60-second windows.
+    Approximated via Helius recent transactions."""
+    try:
+        from app.services.helius import get_wallet_transactions
+        txs_a = await get_wallet_transactions(wallet_a, limit=50)
+        txs_b = await get_wallet_transactions(wallet_b, limit=50)
+        times_a = [tx.get("timestamp", 0) for tx in txs_a if tx.get("timestamp")]
+        times_b = [tx.get("timestamp", 0) for tx in txs_b if tx.get("timestamp")]
+        sync_count = 0
+        for ta in times_a:
+            for tb in times_b:
+                if abs(ta - tb) < 60:
+                    sync_count += 1
+                    break
+        return sync_count >= 5
+    except Exception:
+        return False
 
 
 async def _signal_dex_preference(wallet_a: str, wallet_b: str) -> bool:
-    """Both wallets have the same top DEX platform by trade volume (past 30 days)."""
-    client = clickhouse.get_client()
+    """Both wallets have the same top DEX platform. Uses Helius tx sources."""
+    try:
+        from app.services.helius import get_wallet_transactions
 
-    async def top_dex(addr: str) -> str | None:
-        r = await asyncio.to_thread(
-            client.query,
-            """
-            SELECT source_platform
-            FROM token_trades
-            WHERE trader = {addr:String}
-              AND block_time >= now() - INTERVAL 30 DAY
-            GROUP BY source_platform
-            ORDER BY count() DESC
-            LIMIT 1
-            """,
-            parameters={"addr": addr},
-        )
-        return r.result_rows[0][0] if r.result_rows else None
+        async def top_source(addr: str) -> str | None:
+            txs = await get_wallet_transactions(addr, limit=50)
+            from collections import Counter
+            sources = Counter(tx.get("source", "").lower() for tx in txs if tx.get("source"))
+            if sources:
+                top = sources.most_common(1)[0]
+                return top[0] if top[0] not in ("", "unknown") else None
+            return None
 
-    dex_a, dex_b = await asyncio.gather(top_dex(wallet_a), top_dex(wallet_b))
-    return bool(dex_a and dex_b and dex_a == dex_b and dex_a not in ("", "unknown"))
+        dex_a, dex_b = await asyncio.gather(top_source(wallet_a), top_source(wallet_b))
+        return bool(dex_a and dex_b and dex_a == dex_b)
+    except Exception:
+        return False
 
 
 # ---------------------------------------------------------------------------
@@ -342,25 +298,18 @@ FUNDING_TRACE_MAX_SIBLINGS = 30  # max sibling wallets to surface per source
 async def _get_primary_funder(address: str) -> str | None:
     """
     Returns the wallet that sent the first SOL transfer to `address`.
-    This is the most reliable "funding source" signal — the same person
-    funds all their wallets from the same source.
+    Uses Helius transaction history.
     """
-    client = clickhouse.get_client()
     try:
-        result = await asyncio.to_thread(
-            client.query,
-            """
-            SELECT from_address
-            FROM transfers
-            WHERE to_address = {address:String}
-              AND token_mint = 'SOL'
-            ORDER BY block_time ASC
-            LIMIT 1
-            """,
-            parameters={"address": address},
-        )
-        if result.result_rows:
-            return result.result_rows[0][0]
+        from app.services.helius import get_wallet_transactions
+        txs = await get_wallet_transactions(address, limit=100)
+        # Find earliest inbound SOL transfer
+        for tx in reversed(txs):  # oldest first
+            for nt in tx.get("nativeTransfers", []):
+                if nt.get("toUserAccount") == address and nt.get("fromUserAccount"):
+                    amount = (nt.get("amount", 0) or 0) / 1_000_000_000
+                    if amount >= 0.01:
+                        return nt["fromUserAccount"]
     except Exception:
         pass
     return None
@@ -368,24 +317,24 @@ async def _get_primary_funder(address: str) -> str | None:
 
 async def _get_wallets_funded_by(funder: str, exclude: str) -> list[str]:
     """
-    Returns all wallet addresses that received SOL from `funder`,
-    excluding the seed wallet.
+    Returns wallet addresses that received SOL from `funder`,
+    excluding the seed wallet. Uses Helius transactions.
     """
-    client = clickhouse.get_client()
     try:
-        result = await asyncio.to_thread(
-            client.query,
-            """
-            SELECT DISTINCT to_address
-            FROM transfers
-            WHERE from_address = {funder:String}
-              AND token_mint = 'SOL'
-              AND to_address != {exclude:String}
-            LIMIT {limit:UInt32}
-            """,
-            parameters={"funder": funder, "exclude": exclude, "limit": FUNDING_TRACE_MAX_SIBLINGS},
-        )
-        return [row[0] for row in result.result_rows if row[0]]
+        from app.services.helius import get_wallet_transactions
+        txs = await get_wallet_transactions(funder, limit=100)
+        recipients: set[str] = set()
+        for tx in txs:
+            for nt in tx.get("nativeTransfers", []):
+                to_addr = nt.get("toUserAccount", "")
+                if (nt.get("fromUserAccount") == funder and
+                    to_addr and to_addr != exclude and to_addr != funder):
+                    amount = (nt.get("amount", 0) or 0) / 1_000_000_000
+                    if amount >= 0.01:
+                        recipients.add(to_addr)
+                        if len(recipients) >= FUNDING_TRACE_MAX_SIBLINGS:
+                            break
+        return list(recipients)
     except Exception:
         return []
 

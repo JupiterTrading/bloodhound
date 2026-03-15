@@ -1,0 +1,2929 @@
+{
+  "endpoint": "POST /proxy/cryptoTokens",
+  "url": "https://prod-api.fomo.family/proxy/cryptoTokens",
+  "request_headers": {
+    "content-type": "application/json",
+    "x-app-installation-id": "install_bc7884b4-0c4a-465b-903a-33e17158ff11",
+    "accept": "*/*",
+    "baggage": "sentry-environment=production,sentry-public_key=4e163b6befe2112027dfa32cd92ca3ba,sentry-trace_id=81bf22b8e6a944cdb27b57c0e72a4fca,sentry-org_id=4508656189702144,sentry-transaction=__root,sentry-sampled=false,sentry-sample_rand=0.5438219467411642,sentry-sample_rate=0.0001",
+    "authorization": "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkI4SXlObWU1V0lZRnJIclJRVDBLdFlPRlFIUjFKVXFnaGVTMHhSZHR1QVkifQ.eyJzaWQiOiJjbWt6ZW5oa2MwNXM4am8wY3RrbHo1cmpqIiwiaXNzIjoicHJpdnkuaW8iLCJpYXQiOjE3NzM0MjE3NTcsImF1ZCI6ImNtNmg0ODVvMzAwbjN6ajl5bDZ2cGVkcTciLCJzdWIiOiJkaWQ6cHJpdnk6Y21rejA2N2RkMDF5Z2puMGNhaXc5aWNrcCIsImV4cCI6MTc3MzQyNTM1N30.KSKe7Zlqq97fc4QPfjM7DRQFJn2TbIjhiI5oDtSDVmm1sYOZq8Vd2Zn-4ks9I-Iepjj6jRmPmI_rhyeOayLexA",
+    "priority": "u=3, i",
+    "x-supported-chains": "1399811149,8453,56,143",
+    "accept-encoding": "gzip, deflate, br",
+    "if-none-match": "W/\"16599-A2E1Irk9eXNzYuykLFRUlGgCT7U\"",
+    "accept-language": "en-US,en;q=0.9",
+    "sentry-trace": "81bf22b8e6a944cdb27b57c0e72a4fca-b3335e63230aeba1-0",
+    "content-length": "0",
+    "user-agent": "fomo/1.60.4/280/ios/iPhone 17 Pro Max/Apple"
+  },
+  "request_body": null,
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:09:18 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "cf-ray": "9dbca544ee2bfb24-BNA",
+    "cf-cache-status": "DYNAMIC",
+    "content-encoding": "gzip",
+    "etag": "W/\"165e3-p0rqvJdBv2kXt4XrYaVwQrzoJ6c\"",
+    "server": "cloudflare",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "vary": "Origin, Accept-Encoding",
+    "access-control-allow-credentials": "true",
+    "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+    "cross-origin-opener-policy": "same-origin",
+    "cross-origin-resource-policy": "same-origin",
+    "origin-agent-cluster": "?1",
+    "referrer-policy": "no-referrer",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-download-options": "noopen",
+    "x-frame-options": "SAMEORIGIN",
+    "x-permitted-cross-domain-policies": "none",
+    "x-request-id": "483360ca-fa46-4f16-879e-8ab89367be09",
+    "x-xss-protection": "0",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "response_body": {
+    "success": true,
+    "message": "Successfully fetched 37 crypto tokens from Codex (from 37 total)",
+    "responseObject": [
+      {
+        "change1": "0.004880248976422778",
+        "change4": "-0.009915775539198859",
+        "change12": "0.008516590649411522",
+        "change24": "0.022991173270055214",
+        "createdAt": 1731013119,
+        "exchanges": [
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          },
+          {
+            "address": "SoLFiHG9TfgtdUXUjWAxi3LtvYuFyDLVhBWxdMZxyCe",
+            "name": "SolFi"
+          }
+        ],
+        "liquidity": "2750795",
+        "marketCap": "1428701612436.2964",
+        "pair": {
+          "protocol": "Orca"
+        },
+        "priceUSD": "72012.8396342",
+        "token": {
+          "address": "cbbtcf3aa214zXHbiAZQwf4122FBYbraNdFqgw4iMij",
+          "decimals": 8,
+          "networkId": 1399811149,
+          "createdAt": 1728406445,
+          "creatorAddress": "t227cdhHdt67b2FzPUEE3R1GKZ6uG9BU2Ubax3H4DR4",
+          "name": "Bitcoin",
+          "symbol": "BTC",
+          "freezable": "DSFAkPhfrSR95J9oq9Sh8rUetbj5vgFmwiSuHw6rAVnz",
+          "mintable": "CTQE6PMesbH4szKR9Nk5moj9WWUr9MVGP734wYX9wy3p",
+          "isScam": null,
+          "info": {
+            "address": "cbbtcf3aa214zXHbiAZQwf4122FBYbraNdFqgw4iMij",
+            "circulatingSupply": 19839540,
+            "cmcId": null,
+            "description": "Coinbase Wrapped BTC (\"cbBTC\") is a token that is backed 1:1 by native Bitcoin (BTC) held by Coinbase, meaning that for all cbBTC in circulation, there is an equivalent amount of BTC held in a secure custody solution (including cold storage) provided by Coinbase. Wrapped assets, like cbBTC, are transferable tokens that are redeemable for the underlying asset. Coinbase customers can unwrap cbBTC and redeem a corresponding amount of the underlying BTC simply by depositing the cbBTC into their Coinbase accounts. cbBTC is built to be seamlessly compatible with DeFi applications, giving customers the option to tap into DeFi and unlock financial utility. cbBTC removes a key point of friction by allowing customers to use Bitcoin they already hold in new ways onchain. cbBTC is built to be seamlessly compatible with DeFi applications, so users can now tap into novel DeFi use cases like providing their Bitcoin as liquidity to DeFi protocols, using it as collateral to borrow other crypto assets, or spending it as a payment method. Wrapped assets like cbBTC are a mature concept in the crypto world, helping to bring more liquid assets onchain and facilitate an expansive financial ecosystem.\r\n",
+            "id": "cbbtcf3aa214zXHbiAZQwf4122FBYbraNdFqgw4iMij:1399811149",
+            "imageBannerUrl": "https://token-media.defined.fi/1399811149_cbbtcf3aa214zXHbiAZQwf4122FBYbraNdFqgw4iMij_banner_790d7d2b-b392-4ca2-b79c-e06896ecdf46.png",
+            "imageLargeUrl": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png",
+            "imageSmallUrl": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png",
+            "imageThumbUrl": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png",
+            "imageThumbHash": "s8WFDQAsmAeId3d0R/mZlp9ZCFeHh4BzVw==",
+            "name": "Bitcoin",
+            "networkId": 1399811149,
+            "symbol": "BTC",
+            "totalSupply": "5266.83981773"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": "",
+            "twitter": "",
+            "website": ""
+          },
+          "launchpad": null
+        },
+        "txnCount1": 1538,
+        "txnCount4": 9011,
+        "txnCount12": 15449,
+        "txnCount24": 27149,
+        "volume1": "1020512",
+        "volume5m": "99784",
+        "volume4": "6077020",
+        "volume12": "9987815",
+        "volume24": "17737241"
+      },
+      {
+        "change1": "0.00249706664557497",
+        "change4": "-0.005690812411779229",
+        "change12": "0.012262395340675896",
+        "change24": "0.03269217856738667",
+        "createdAt": 1710952381,
+        "exchanges": [
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "SoLFiHG9TfgtdUXUjWAxi3LtvYuFyDLVhBWxdMZxyCe",
+            "name": "SolFi"
+          },
+          {
+            "address": "HpNfyc2Saw7RKkQd8nEL4khUcuPhQ7WwY1B2qjx8jxFq",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "goonuddtQRrWqqn5nFyczVKaie28f3kDkHWkHtURSLE",
+            "name": "GoonFi V2"
+          },
+          {
+            "address": "ZERor4xhbUycZ6gb9ntrhqscUcZmAbQDjEAtCf4hbZY",
+            "name": "ZeroFi"
+          },
+          {
+            "address": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
+            "name": "Raydium"
+          }
+        ],
+        "liquidity": "6836950",
+        "marketCap": "257620602548.89603",
+        "pair": {
+          "protocol": "Orca"
+        },
+        "priceUSD": "2135.64056818",
+        "token": {
+          "address": "7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs",
+          "decimals": 8,
+          "networkId": 1399811149,
+          "createdAt": 1631701083,
+          "creatorAddress": "BL2xtrnRJoqFM8mex69BQctMAHVBdejj6gmrWie16V5d",
+          "name": "Ethereum",
+          "symbol": "ETH",
+          "freezable": null,
+          "mintable": "BCD75RNBHrJJpW4dXVagL5mPjzRLnVZq4YirJdjEYMV7",
+          "isScam": null,
+          "info": {
+            "address": "7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs",
+            "circulatingSupply": 120629195,
+            "cmcId": null,
+            "description": "Ethereum is a decentralized blockchain network and software development platform, powered by the cryptocurrency ether (ETH).",
+            "id": "7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs:1399811149",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+            "imageSmallUrl": "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+            "imageThumbUrl": "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+            "imageThumbHash": "qMQFHwIIx2h4h3hzi3aId5h5iIA3CHgD",
+            "name": "Ethereum",
+            "networkId": 1399811149,
+            "symbol": "ETH",
+            "totalSupply": "62479.58872517"
+          },
+          "socialLinks": {
+            "discord": "",
+            "telegram": null,
+            "twitter": "https://x.com/ethdotorg",
+            "website": "https://ethereum.org/"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 802,
+        "txnCount4": 6244,
+        "txnCount12": 11660,
+        "txnCount24": 20332,
+        "volume1": "1400763",
+        "volume5m": "75989",
+        "volume4": "16412015",
+        "volume12": "28102210",
+        "volume24": "48206299"
+      },
+      {
+        "change1": "0.0025249617331909867",
+        "change4": "-0.012784392893315991",
+        "change12": "0.0031905800137482024",
+        "change24": "0.01748436408977817",
+        "createdAt": 1680703943,
+        "exchanges": [
+          {
+            "address": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0xca143ce32fe78f1f7019d7d551a6402fc5350c73",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0xdb1d10011ad0ff90774d0c6bb92e5c5c8b4461f7",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0xa0ffb9c1ce1fe56963b0321b32e7a0302114058b",
+            "name": "PancakeSwap Infinity"
+          }
+        ],
+        "liquidity": "15747807",
+        "marketCap": "90362710457.25705",
+        "pair": {
+          "protocol": "UniswapV3"
+        },
+        "priceUSD": "662.6826606",
+        "token": {
+          "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+          "decimals": 18,
+          "networkId": 56,
+          "createdAt": 1698790374,
+          "creatorAddress": null,
+          "name": "BNB",
+          "symbol": "BNB",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "circulatingSupply": 136358948,
+            "cmcId": 7192,
+            "description": "Wrapped BNB a wrapped version of the BNB native tokens on the BEP-20 standard on the Binance Smart Chain and other EVM-compatible chains. Not to be confused with BNB Native Token on the BSC Chain.",
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c:56",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/56_0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c_large_16fb4dbf-a947-4b18-acdf-ebf7041944f9.png",
+            "imageSmallUrl": "https://token-media.defined.fi/56_0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c_small_16fb4dbf-a947-4b18-acdf-ebf7041944f9.png",
+            "imageThumbUrl": "https://token-media.defined.fi/56_0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c_thumb_16fb4dbf-a947-4b18-acdf-ebf7041944f9.png",
+            "imageThumbHash": null,
+            "name": "BNB",
+            "networkId": 56,
+            "symbol": "BNB",
+            "totalSupply": "1674889.49914052545273662"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": "https://www.binance.org/"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 14334,
+        "txnCount4": 61677,
+        "txnCount12": 160983,
+        "txnCount24": 258063,
+        "volume1": "5920682",
+        "volume5m": "331541",
+        "volume4": "29652077",
+        "volume12": "68183700",
+        "volume24": "132557273"
+      },
+      {
+        "change1": "0.00334196495737971",
+        "change4": "-0.017173487595655068",
+        "change12": "0.0022192933513246926",
+        "change24": "0.02013740951350865",
+        "createdAt": 1748448247,
+        "exchanges": [
+          {
+            "address": "0x5e7bb104d84c7cb9b682aac2f3d509f5f406809a",
+            "name": "Aerodrome Slipstream"
+          },
+          {
+            "address": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0x36077d39cdc65e1e3fb65810430e5b2c4d5fa29e",
+            "name": null
+          },
+          {
+            "address": "0x498581ff718922c3f8e6a244956af099b2652b2b",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+            "name": "Uniswap"
+          }
+        ],
+        "liquidity": "171339",
+        "marketCap": "86133473569.1808",
+        "pair": {
+          "protocol": "AerodromeSlipstream"
+        },
+        "priceUSD": "1.41159410716",
+        "token": {
+          "address": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+          "decimals": 6,
+          "networkId": 8453,
+          "createdAt": 1748448247,
+          "creatorAddress": null,
+          "name": "Ripple",
+          "symbol": "XRP",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+            "circulatingSupply": 61018583977,
+            "cmcId": null,
+            "description": "cbXRP - 0xcb585250f852c6c6bf90434ab21a00f02833a4af\n\nThe Base team was hoping to add a logo to DEX screener.",
+            "id": "0xcb585250f852c6c6bf90434ab21a00f02833a4af:8453",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png",
+            "imageSmallUrl": "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png",
+            "imageThumbUrl": "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png",
+            "imageThumbHash": "NdaFDQIsGAeIeHF2FwiIgIAICFd3h4BzVw==",
+            "name": "Ripple",
+            "networkId": 8453,
+            "symbol": "XRP",
+            "totalSupply": "41723016.795133"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 14,
+        "txnCount4": 106,
+        "txnCount12": 322,
+        "txnCount24": 430,
+        "volume1": "2712",
+        "volume5m": "385",
+        "volume4": "77682",
+        "volume12": "161756",
+        "volume24": "211795"
+      },
+      {
+        "change1": "0.002570208116685867",
+        "change4": "-0.014303353059147235",
+        "change12": "0.0066142857751256",
+        "change24": "0.03693158673342825",
+        "createdAt": 1710952381,
+        "exchanges": [
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          },
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
+            "name": "Raydium"
+          }
+        ],
+        "liquidity": "11254676",
+        "marketCap": "51080545416.403786",
+        "pair": {
+          "protocol": "Orca"
+        },
+        "priceUSD": "89.8251061192",
+        "token": {
+          "address": "So11111111111111111111111111111111111111112",
+          "decimals": 9,
+          "networkId": 1399811149,
+          "createdAt": 1722545905,
+          "creatorAddress": null,
+          "name": "Solana",
+          "symbol": "SOL",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "So11111111111111111111111111111111111111112",
+            "circulatingSupply": 568666686,
+            "cmcId": 16116,
+            "description": "Wrapped Solana",
+            "id": "So11111111111111111111111111111111111111112:1399811149",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_large_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_small_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_So11111111111111111111111111111111111111112_thumb_4c51dc5c-cf3a-4cbb-96d6-a5de7c04069e.png",
+            "imageThumbHash": null,
+            "name": "Solana",
+            "networkId": 1399811149,
+            "symbol": "SOL",
+            "totalSupply": "606900671.1804999"
+          },
+          "socialLinks": {
+            "discord": "https://solana.com/discord",
+            "telegram": "https://t.me/solana",
+            "twitter": "https://twitter.com/solana",
+            "website": "https://solana.com"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 3314,
+        "txnCount4": 16654,
+        "txnCount12": 32281,
+        "txnCount24": 59525,
+        "volume1": "9342606",
+        "volume5m": "553520",
+        "volume4": "59084082",
+        "volume12": "103697379",
+        "volume24": "185814216"
+      },
+      {
+        "change1": "-0.00007010590544445953",
+        "change4": "-0.0001389511485937437",
+        "change12": "-0.0012572568447770378",
+        "change24": "-0.0006359399874635075",
+        "createdAt": 1742480907,
+        "exchanges": [
+          {
+            "address": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+            "name": "PumpSwap"
+          },
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          },
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+            "name": "Meteora DAMM"
+          }
+        ],
+        "liquidity": "1249895",
+        "marketCap": "27432973009.86858",
+        "pair": {
+          "protocol": "PumpAmm"
+        },
+        "priceUSD": "0.289567656154",
+        "token": {
+          "address": "GbbesPbaYh5uiAZSYNXTc7w9jty1rpg3P9L4JeN4LkKc",
+          "decimals": 6,
+          "networkId": 1399811149,
+          "createdAt": 1742382085,
+          "creatorAddress": "5JDDmzKeuZUYg7R3DRUHGBm2aeTF9bmxRkZMKyvVvrgR",
+          "name": "TRON",
+          "symbol": "TRX",
+          "freezable": null,
+          "mintable": "2qzoaECQaWkGariCaJdTuwZP7WaNUNdykqGVx6K8SZLV",
+          "isScam": null,
+          "info": {
+            "address": "GbbesPbaYh5uiAZSYNXTc7w9jty1rpg3P9L4JeN4LkKc",
+            "circulatingSupply": 94737697484,
+            "cmcId": null,
+            "description": "",
+            "id": "GbbesPbaYh5uiAZSYNXTc7w9jty1rpg3P9L4JeN4LkKc:1399811149",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_GbbesPbaYh5uiAZSYNXTc7w9jty1rpg3P9L4JeN4LkKc_large_e3b838e8-d079-4dad-8f54-4860e940bd32.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_GbbesPbaYh5uiAZSYNXTc7w9jty1rpg3P9L4JeN4LkKc_small_e3b838e8-d079-4dad-8f54-4860e940bd32.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_GbbesPbaYh5uiAZSYNXTc7w9jty1rpg3P9L4JeN4LkKc_thumb_e3b838e8-d079-4dad-8f54-4860e940bd32.png",
+            "imageThumbHash": "XAqHDQQsBqmIaJFOh/l3nn/nCFh4d3CEWA==",
+            "name": "TRON",
+            "networkId": 1399811149,
+            "symbol": "TRX",
+            "totalSupply": "49999040.460605"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 6,
+        "txnCount4": 41,
+        "txnCount12": 83,
+        "txnCount24": 160,
+        "volume1": "38",
+        "volume5m": "12",
+        "volume4": "126",
+        "volume12": "1027",
+        "volume24": "2601"
+      },
+      {
+        "change1": "-0.0030851959418143767",
+        "change4": "-0.02712645563541551",
+        "change12": "0.017533700265941875",
+        "change24": "0.03284107669932051",
+        "createdAt": 1748448541,
+        "exchanges": [
+          {
+            "address": "0x5e7bb104d84c7cb9b682aac2f3d509f5f406809a",
+            "name": "Aerodrome Slipstream"
+          },
+          {
+            "address": "0x36077d39cdc65e1e3fb65810430e5b2c4d5fa29e",
+            "name": null
+          },
+          {
+            "address": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0x8909dc15e40173ff4699343b6eb8132c65e18ec6",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0x420dd381b31aef6683db6b902084cb0ffece40da",
+            "name": "Aerodrome"
+          }
+        ],
+        "liquidity": "109054",
+        "marketCap": "14681732482.560062",
+        "pair": {
+          "protocol": "AerodromeSlipstream"
+        },
+        "priceUSD": "0.0977194053292",
+        "token": {
+          "address": "0xcbd06e5a2b0c65597161de254aa074e489deb510",
+          "decimals": 8,
+          "networkId": 8453,
+          "createdAt": 1748448435,
+          "creatorAddress": null,
+          "name": "Dogecoin",
+          "symbol": "DOGE",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "0xcbd06e5a2b0c65597161de254aa074e489deb510",
+            "circulatingSupply": 150243776383,
+            "cmcId": null,
+            "description": "cbDOGE - 0xcbd06e5a2b0c65597161de254aa074e489deb510\n\nThe Base team was hoping to get an icon added to it, thank you!",
+            "id": "0xcbd06e5a2b0c65597161de254aa074e489deb510:8453",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png",
+            "imageSmallUrl": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png",
+            "imageThumbUrl": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png",
+            "imageThumbHash": "88WFBQAseAh3iHaEKHp3kHcHCFeHh4BzVw==",
+            "name": "Dogecoin",
+            "networkId": 8453,
+            "symbol": "DOGE",
+            "totalSupply": "56545019.11511329"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 47,
+        "txnCount4": 216,
+        "txnCount12": 429,
+        "txnCount24": 530,
+        "volume1": "6716",
+        "volume5m": "325",
+        "volume4": "59606",
+        "volume12": "110972",
+        "volume24": "124850"
+      },
+      {
+        "change1": "0.001300657053352827",
+        "change4": "-0.025981740325527216",
+        "change12": "0.0024536146564498092",
+        "change24": "0.03398613868032571",
+        "createdAt": 1750178197,
+        "exchanges": [
+          {
+            "address": "0x5e7bb104d84c7cb9b682aac2f3d509f5f406809a",
+            "name": "Aerodrome Slipstream"
+          },
+          {
+            "address": "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0x36077d39cdc65e1e3fb65810430e5b2c4d5fa29e",
+            "name": null
+          },
+          {
+            "address": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0x420dd381b31aef6683db6b902084cb0ffece40da",
+            "name": "Aerodrome"
+          }
+        ],
+        "liquidity": "262955",
+        "marketCap": "9757850435.26028",
+        "pair": {
+          "protocol": "AerodromeSlipstream"
+        },
+        "priceUSD": "0.27202571393",
+        "token": {
+          "address": "0xcbada732173e39521cdbe8bf59a6dc85a9fc7b8c",
+          "decimals": 6,
+          "networkId": 8453,
+          "createdAt": 1750178197,
+          "creatorAddress": null,
+          "name": "Cardano",
+          "symbol": "ADA",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "0xcbada732173e39521cdbe8bf59a6dc85a9fc7b8c",
+            "circulatingSupply": 35871059005,
+            "cmcId": null,
+            "description": "cb ADA",
+            "id": "0xcbada732173e39521cdbe8bf59a6dc85a9fc7b8c:8453",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://assets.coingecko.com/coins/images/975/standard/cardano.png",
+            "imageSmallUrl": "https://assets.coingecko.com/coins/images/975/standard/cardano.png",
+            "imageThumbUrl": "https://assets.coingecko.com/coins/images/975/standard/cardano.png",
+            "imageThumbHash": "NdaFDQAsRwiHeISHBweHcHAICFd3h4BzVw==",
+            "name": "Cardano",
+            "networkId": 8453,
+            "symbol": "ADA",
+            "totalSupply": "19613275.877713"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 24,
+        "txnCount4": 150,
+        "txnCount12": 281,
+        "txnCount24": 442,
+        "volume1": "2617",
+        "volume5m": "102",
+        "volume4": "94974",
+        "volume12": "145345",
+        "volume24": "182975"
+      },
+      {
+        "change1": "0.0001237513864762247",
+        "change4": "-0.03198954975786871",
+        "change12": "-0.042963532588555266",
+        "change24": "-0.037009978395665326",
+        "createdAt": 1760127426,
+        "exchanges": [
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "goonuddtQRrWqqn5nFyczVKaie28f3kDkHWkHtURSLE",
+            "name": "GoonFi V2"
+          },
+          {
+            "address": "ZERor4xhbUycZ6gb9ntrhqscUcZmAbQDjEAtCf4hbZY",
+            "name": "ZeroFi"
+          },
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "REALQqNEomY6cQGZJUGwywTBD2UmDT32rZcNnfxQ5N2",
+            "name": "Byreal: CLMM"
+          },
+          {
+            "address": "9H6tua7jkLhdm3w8BvgpTn5LZNU7g4ZynDmCiNN3q6Rp",
+            "name": "HumidiFi"
+          }
+        ],
+        "liquidity": "1055952",
+        "marketCap": "9398339667.06303",
+        "pair": {
+          "protocol": "Meteora"
+        },
+        "priceUSD": "36.3332862917",
+        "token": {
+          "address": "98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g",
+          "decimals": 9,
+          "networkId": 1399811149,
+          "createdAt": 1759949905,
+          "creatorAddress": "hypbpm7hYYEma1DeZasZY373yDf8KQ5PYTAkC33dQAn",
+          "name": "Hyperliquid",
+          "symbol": "HYPE",
+          "freezable": null,
+          "mintable": "3X46pk5u5gLfppNRyPF5PcKyuHYrA2pHnyJK5HRLPzfi",
+          "isScam": null,
+          "info": {
+            "address": "98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g",
+            "circulatingSupply": 258670234,
+            "cmcId": null,
+            "description": "",
+            "id": "98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g:1399811149",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://assets.coingecko.com/coins/images/50882/large/hyperliquid.jpg",
+            "imageSmallUrl": "https://assets.coingecko.com/coins/images/50882/large/hyperliquid.jpg",
+            "imageThumbUrl": "https://assets.coingecko.com/coins/images/50882/large/hyperliquid.jpg",
+            "imageThumbHash": "NDeBBQBGivR4h1x4F3OIwHj4pVl3h4CHiA==",
+            "name": "Hyperliquid",
+            "networkId": 1399811149,
+            "symbol": "HYPE",
+            "totalSupply": "891821.862477249"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 160,
+        "txnCount4": 910,
+        "txnCount12": 2646,
+        "txnCount24": 5280,
+        "volume1": "233415",
+        "volume5m": "5167",
+        "volume4": "671625",
+        "volume12": "1508708",
+        "volume24": "2935164"
+      },
+      {
+        "change1": "0.0015144558342049376",
+        "change4": "-0.005396506011475763",
+        "change12": "0.012697245568304247",
+        "change24": "0.023734798696705393",
+        "createdAt": 1680354384,
+        "exchanges": [
+          {
+            "address": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0xca143ce32fe78f1f7019d7d551a6402fc5350c73",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0xa0ffb9c1ce1fe56963b0321b32e7a0302114058b",
+            "name": "PancakeSwap Infinity"
+          },
+          {
+            "address": "0x10d8612d9d8269e322ab551c18a307cb4d6bc07b",
+            "name": null
+          }
+        ],
+        "liquidity": "1346958",
+        "marketCap": "5319271069",
+        "pair": {
+          "protocol": "UniswapV3"
+        },
+        "priceUSD": "1.42497906344",
+        "token": {
+          "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+          "decimals": 18,
+          "networkId": 56,
+          "createdAt": 1698772949,
+          "creatorAddress": null,
+          "name": "PancakeSwap Token",
+          "symbol": "Cake",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+            "circulatingSupply": "338847082.4185357",
+            "cmcId": 7186,
+            "description": "PancakeSwap is an automated market maker (\u201cAMM\u201d) that allows two tokens to be exchanged on the Binance Smart Chain. It is fast, cheap, and allows anyone to participate.",
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82:56",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/56_0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82_large.png",
+            "imageSmallUrl": "https://token-media.defined.fi/56_0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82_small.png",
+            "imageThumbUrl": "https://token-media.defined.fi/56_0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82_thumb.png",
+            "imageThumbHash": "n3qGBQIrR2hwi4iJRwdzcLUICCiDh4K2Zw==",
+            "name": "PancakeSwap Token",
+            "networkId": 56,
+            "symbol": "Cake",
+            "totalSupply": "3732876647.751051201610995531"
+          },
+          "socialLinks": {
+            "discord": "https://discord.com/invite/pancakeswap",
+            "telegram": "https://telegram.me/PancakeSwap",
+            "twitter": "https://twitter.com/pancakeswap",
+            "website": "https://pancakeswap.finance/affiliates-program"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 128,
+        "txnCount4": 646,
+        "txnCount12": 894,
+        "txnCount24": 1626,
+        "volume1": "100578",
+        "volume5m": "874",
+        "volume4": "627653",
+        "volume12": "852160",
+        "volume24": "1358149"
+      },
+      {
+        "change1": "-0.000053572486650380585",
+        "change4": "-0.02180685027999922",
+        "change12": "-0.00008870100148191602",
+        "change24": "0.03032061957035883",
+        "createdAt": 1773326107,
+        "exchanges": [
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "BiSoNHVpsVZW2F7rx2eQ59yQwKxzU5NvBcmKshCSUypi",
+            "name": "BisonFi"
+          },
+          {
+            "address": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
+            "name": "Raydium CPMM"
+          },
+          {
+            "address": "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+            "name": "Meteora DAMM"
+          }
+        ],
+        "liquidity": "208662",
+        "marketCap": "4273407101.181753",
+        "pair": {
+          "protocol": "Meteora"
+        },
+        "priceUSD": "9.89737057331",
+        "token": {
+          "address": "avaxGHCq3T7hoxd73oY2KY9hJSTaeMibXvHy5KNzh5D",
+          "decimals": 9,
+          "networkId": 1399811149,
+          "createdAt": 1772747322,
+          "creatorAddress": "36ViYEqbVNgjPMwK4arriHiuBLTfYJ111SnzSej6sEof",
+          "name": "Avalanche",
+          "symbol": "AVAX",
+          "freezable": null,
+          "mintable": "92eNbkQm4pba1d56ofeAZ2JCR45p6e1AJEu4uZHQWHr8",
+          "isScam": null,
+          "info": {
+            "address": "avaxGHCq3T7hoxd73oY2KY9hJSTaeMibXvHy5KNzh5D",
+            "circulatingSupply": 431771961,
+            "cmcId": null,
+            "description": "",
+            "id": "avaxGHCq3T7hoxd73oY2KY9hJSTaeMibXvHy5KNzh5D:1399811149",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_avaxGHCq3T7hoxd73oY2KY9hJSTaeMibXvHy5KNzh5D_large_407b42c05194.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_avaxGHCq3T7hoxd73oY2KY9hJSTaeMibXvHy5KNzh5D_small_79ea06f54117.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_avaxGHCq3T7hoxd73oY2KY9hJSTaeMibXvHy5KNzh5D_thumb_f8f3628c8b09.png",
+            "imageThumbHash": "IxqHDQYsGLaHd3Gfp/d4f4/3CFh4eHCEWA==",
+            "name": "Avalanche",
+            "networkId": 1399811149,
+            "symbol": "AVAX",
+            "totalSupply": "20500.1099"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 27,
+        "txnCount4": 170,
+        "txnCount12": 333,
+        "txnCount24": 573,
+        "volume1": "5653",
+        "volume5m": "0",
+        "volume4": "38757",
+        "volume12": "76994",
+        "volume24": "139429"
+      },
+      {
+        "change1": "0.010488496000243996",
+        "change4": "-0.012211410814015786",
+        "change12": "0.009762904529533345",
+        "change24": "0.025794796227656153",
+        "createdAt": 1750194841,
+        "exchanges": [
+          {
+            "address": "0x5e7bb104d84c7cb9b682aac2f3d509f5f406809a",
+            "name": "Aerodrome Slipstream"
+          },
+          {
+            "address": "0x6e606cf94a4ddc01aeed2fce16d1b4f5b33e0a31",
+            "name": null
+          },
+          {
+            "address": "0x36077d39cdc65e1e3fb65810430e5b2c4d5fa29e",
+            "name": null
+          },
+          {
+            "address": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0x8909dc15e40173ff4699343b6eb8132c65e18ec6",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0x420dd381b31aef6683db6b902084cb0ffece40da",
+            "name": "Aerodrome"
+          }
+        ],
+        "liquidity": "159387",
+        "marketCap": "4260093028.0818925",
+        "pair": {
+          "protocol": "AerodromeSlipstream"
+        },
+        "priceUSD": "55.6728482402",
+        "token": {
+          "address": "0xcb17c9db87b595717c857a08468793f5bab6445f",
+          "decimals": 8,
+          "networkId": 8453,
+          "createdAt": 1750178433,
+          "creatorAddress": null,
+          "name": "Litecoin",
+          "symbol": "LTC",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "0xcb17c9db87b595717c857a08468793f5bab6445f",
+            "circulatingSupply": 76520120,
+            "cmcId": null,
+            "description": "Coinbase Wrapped LTC (\"cbLTC\") is a token that is backed 1:1 by native Litecoin (LTC) held by Coinbase, meaning that for all cbLTC in circulation, there is an equivalent amount of LTC held in a secure custody solution (including cold storage) provided by Coinbase. Wrapped assets, like cbLTC, are transferable tokens that are redeemable for the underlying asset. Coinbase customers can unwrap cbLTC and redeem a corresponding amount of the underlying LTC simply by depositing the cbLTC into their Coinbase accounts. cbLTC is built to be seamlessly compatible with DeFi applications, giving customers the option to tap into DeFi and unlock financial utility. \r\ncbLTC removes a key point of friction by allowing customers to use Litecoin they already hold in new ways onchain. cbLTC is built to be seamlessly compatible with DeFi applications, so users can now tap into novel DeFi use cases like providing their LTC as liquidity to DeFi protocols, using it as collateral to borrow other crypto assets, or spending it as a payment method. Wrapped assets like cbLTC are a mature concept in the crypto world, helping to bring more liquid assets onchain and facilitate an expansive financial ecosystem.\r\n",
+            "id": "0xcb17c9db87b595717c857a08468793f5bab6445f:8453",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://assets.coingecko.com/coins/images/2/standard/litecoin.png",
+            "imageSmallUrl": "https://assets.coingecko.com/coins/images/2/standard/litecoin.png",
+            "imageThumbUrl": "https://assets.coingecko.com/coins/images/2/standard/litecoin.png",
+            "imageThumbHash": "s8WJFQIslwmJd4Vmh8aLYLwICFd3h4BzVw==",
+            "name": "Litecoin",
+            "networkId": 8453,
+            "symbol": "LTC",
+            "totalSupply": "56104.3936262"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 31,
+        "txnCount4": 129,
+        "txnCount12": 222,
+        "txnCount24": 387,
+        "volume1": "7833",
+        "volume5m": "0",
+        "volume4": "35018",
+        "volume12": "52964",
+        "volume24": "83833"
+      },
+      {
+        "change1": "0.020176443897442595",
+        "change4": "-0.08145851417452055",
+        "change12": "0.2686140062837708",
+        "change24": "0.40901878831942856",
+        "createdAt": 1737191462,
+        "exchanges": [
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "TessVdML9pBGgG9yGks7o4HewRaXVAMuoVj4x83GLQH",
+            "name": "Tessera V"
+          },
+          {
+            "address": "9H6tua7jkLhdm3w8BvgpTn5LZNU7g4ZynDmCiNN3q6Rp",
+            "name": "HumidiFi"
+          },
+          {
+            "address": "goonuddtQRrWqqn5nFyczVKaie28f3kDkHWkHtURSLE",
+            "name": "GoonFi V2"
+          },
+          {
+            "address": "ZERor4xhbUycZ6gb9ntrhqscUcZmAbQDjEAtCf4hbZY",
+            "name": "ZeroFi"
+          },
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          }
+        ],
+        "liquidity": "5969310",
+        "marketCap": "3905176845",
+        "pair": {
+          "protocol": "Meteora"
+        },
+        "priceUSD": "3.90518010505",
+        "token": {
+          "address": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+          "decimals": 6,
+          "networkId": 1399811149,
+          "createdAt": 1737122509,
+          "creatorAddress": "9k8jWWqfmTTXrc8gmZqYVxSFJhygURvyVRztivJXFTYP",
+          "name": "OFFICIAL TRUMP",
+          "symbol": "TRUMP",
+          "freezable": null,
+          "mintable": null,
+          "isScam": false,
+          "info": {
+            "address": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+            "circulatingSupply": "200000000",
+            "cmcId": 35336,
+            "description": "OFFICIAL TRUMP (TRUMP) is a cryptocurrency and operates on the Solana platform. OFFICIAL TRUMP has a current supply of 999,999,418.729171 with 199,999,394.565171 in circulation. The last known price of OFFICIAL TRUMP is 11.07813576 USD and is down -12.88 over the last 24 hours. It is currently trading on 571 active market(s) with $982,920,060.87 traded over the last 24 hours. More information can be found at https://gettrumpmemes.com/.",
+            "id": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN:1399811149",
+            "imageBannerUrl": "https://token-media.defined.fi/1399811149_6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN_banner_e6bc1d384777.png",
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN_large_34a6fcd4-9c73-4464-976e-328c59ddfc2d.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN_small_34a6fcd4-9c73-4464-976e-328c59ddfc2d.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN_thumb_34a6fcd4-9c73-4464-976e-328c59ddfc2d.png",
+            "imageThumbHash": "lwgOFwIHO3abh3mWeHh2mWdliJMHOHgA",
+            "name": "OFFICIAL TRUMP",
+            "networkId": 1399811149,
+            "symbol": "TRUMP",
+            "totalSupply": "999999165.15177"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": "https://x.com/GetTrumpMemes",
+            "website": "https://x.com/realDonaldTrump/status/1880446012168249386"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 2232,
+        "txnCount4": 12102,
+        "txnCount12": 39075,
+        "txnCount24": 50220,
+        "volume1": "3250036",
+        "volume5m": "117073",
+        "volume4": "23057560",
+        "volume12": "80938820",
+        "volume24": "101024249"
+      },
+      {
+        "change1": "0.0014955220682341896",
+        "change4": "-0.03523747987095465",
+        "change12": "0.005357904807456313",
+        "change24": "0.017311101054637946",
+        "createdAt": 1761266842,
+        "exchanges": [
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "goonuddtQRrWqqn5nFyczVKaie28f3kDkHWkHtURSLE",
+            "name": "GoonFi V2"
+          },
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "ZERor4xhbUycZ6gb9ntrhqscUcZmAbQDjEAtCf4hbZY",
+            "name": "ZeroFi"
+          },
+          {
+            "address": "SV2EYYJyRz2YhfXwXnhNAevDEui5Q6yrfyo13WtupPF",
+            "name": "SolFi V2"
+          },
+          {
+            "address": "9H6tua7jkLhdm3w8BvgpTn5LZNU7g4ZynDmCiNN3q6Rp",
+            "name": "HumidiFi"
+          },
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          }
+        ],
+        "liquidity": "71289",
+        "marketCap": "3479803126.3596983",
+        "pair": {
+          "protocol": "Orca"
+        },
+        "priceUSD": "213.66523765",
+        "token": {
+          "address": "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS",
+          "decimals": 8,
+          "networkId": 1399811149,
+          "createdAt": 1760128265,
+          "creatorAddress": "DuSs7rCr7oTLHjM29QQ8NwDViaahTU58qqxaJVyAkgbn",
+          "name": "Zcash",
+          "symbol": "ZEC",
+          "freezable": null,
+          "mintable": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
+          "isScam": null,
+          "info": {
+            "address": "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS",
+            "circulatingSupply": 16286239,
+            "cmcId": null,
+            "description": "",
+            "id": "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS:1399811149",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS_large_small_thumb_6575c9ff-aedf-47df-b70e-fccf2d6c1538.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS_large_small_thumb_6575c9ff-aedf-47df-b70e-fccf2d6c1538.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS_large_small_thumb_6575c9ff-aedf-47df-b70e-fccf2d6c1538.png",
+            "imageThumbHash": "4AcSDwAYCHeHeIdwdXyHSKeHg3EIGIcA",
+            "name": "Zcash",
+            "networkId": 1399811149,
+            "symbol": "ZEC",
+            "totalSupply": "63039.85240278"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 153,
+        "txnCount4": 973,
+        "txnCount12": 2213,
+        "txnCount24": 3382,
+        "volume1": "31231",
+        "volume5m": "2098",
+        "volume4": "200286",
+        "volume12": "429164",
+        "volume24": "620231"
+      },
+      {
+        "change1": "0.0033704101117355135",
+        "change4": "-0.00794658761458881",
+        "change12": "0.005675327101489233",
+        "change24": "0.023469643776748542",
+        "createdAt": 1710952381,
+        "exchanges": [
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "TessVdML9pBGgG9yGks7o4HewRaXVAMuoVj4x83GLQH",
+            "name": "Tessera V"
+          },
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          }
+        ],
+        "liquidity": "1702363",
+        "marketCap": "1162343389",
+        "pair": {
+          "protocol": "Orca"
+        },
+        "priceUSD": "3.86167505931",
+        "token": {
+          "address": "27G8MtK7VtTcCHkpASjSDdkWWYfoqT6ggEuKidVJidD4",
+          "decimals": 6,
+          "networkId": 1399811149,
+          "createdAt": 1689677832,
+          "creatorAddress": "mQBipzeneXqnAkWNL8raGvrj2c8dJv87LXs2Hn7BeXk",
+          "name": "Jupiter Perps LP",
+          "symbol": "JLP",
+          "freezable": "AVzP2GeRmqGphJsMxWoqjpUifPpCret7LqWhD8NWQK49",
+          "mintable": "AVzP2GeRmqGphJsMxWoqjpUifPpCret7LqWhD8NWQK49",
+          "isScam": null,
+          "info": {
+            "address": "27G8MtK7VtTcCHkpASjSDdkWWYfoqT6ggEuKidVJidD4",
+            "circulatingSupply": "411904340.203255",
+            "cmcId": 28853,
+            "description": "",
+            "id": "27G8MtK7VtTcCHkpASjSDdkWWYfoqT6ggEuKidVJidD4:1399811149",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_27G8MtK7VtTcCHkpASjSDdkWWYfoqT6ggEuKidVJidD4_large.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_27G8MtK7VtTcCHkpASjSDdkWWYfoqT6ggEuKidVJidD4_small.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_27G8MtK7VtTcCHkpASjSDdkWWYfoqT6ggEuKidVJidD4_thumb.png",
+            "imageThumbHash": "TdcJDwQHeId3iHdxiol4Z5iHOPZn9osO",
+            "name": "Jupiter Perps LP",
+            "networkId": 1399811149,
+            "symbol": "JLP",
+            "totalSupply": "300994612.646839"
+          },
+          "socialLinks": {
+            "discord": "https://discord.com/invite/jup",
+            "telegram": null,
+            "twitter": "https://twitter.com/JupiterExchange",
+            "website": "https://jup.ag/"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 828,
+        "txnCount4": 4947,
+        "txnCount12": 9407,
+        "txnCount24": 17911,
+        "volume1": "227155",
+        "volume5m": "43984",
+        "volume4": "2014482",
+        "volume12": "3450098",
+        "volume24": "6395381"
+      },
+      {
+        "change1": "-0.0003123311296462284",
+        "change4": "-0.006679631793331983",
+        "change12": "0.02012950708521577",
+        "change24": "0.04002690164124489",
+        "createdAt": 1712788827,
+        "exchanges": [
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          },
+          {
+            "address": "ZERor4xhbUycZ6gb9ntrhqscUcZmAbQDjEAtCf4hbZY",
+            "name": "ZeroFi"
+          }
+        ],
+        "liquidity": "519785",
+        "marketCap": "1154331542",
+        "pair": {
+          "protocol": "Meteora"
+        },
+        "priceUSD": "0.168172271542",
+        "token": {
+          "address": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+          "decimals": 6,
+          "networkId": 1399811149,
+          "createdAt": 1724039723,
+          "creatorAddress": null,
+          "name": "Jupiter",
+          "symbol": "JUP",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+            "circulatingSupply": "3218688888.86",
+            "cmcId": 29210,
+            "description": "JUP is the official governance token for Jupiter.",
+            "id": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN:1399811149",
+            "imageBannerUrl": "https://token-media.defined.fi/1399811149_JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN_banner_df655c76cc0e.png",
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN_large_c4f8b947-41e8-45f1-86d4-4db35179dcd9.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN_small_c4f8b947-41e8-45f1-86d4-4db35179dcd9.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN_thumb_c4f8b947-41e8-45f1-86d4-4db35179dcd9.png",
+            "imageThumbHash": "kbeFFQQsB2h3mHGNaHOPRu/ZCFh4iHBzVw==",
+            "name": "Jupiter",
+            "networkId": 1399811149,
+            "symbol": "JUP",
+            "totalSupply": "6863982576.883027"
+          },
+          "socialLinks": {
+            "discord": "https://discord.gg/jup",
+            "telegram": null,
+            "twitter": "https://twitter.com/JupiterExchange",
+            "website": "https://jup.ag/"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 13,
+        "txnCount4": 424,
+        "txnCount12": 1107,
+        "txnCount24": 1868,
+        "volume1": "1",
+        "volume5m": "0",
+        "volume4": "452719",
+        "volume12": "761395",
+        "volume24": "1434582"
+      },
+      {
+        "change1": "0.002816683878012712",
+        "change4": "-0.016788653567480293",
+        "change12": "0.005290209875900288",
+        "change24": "0.03192236286947799",
+        "createdAt": 1710952389,
+        "exchanges": [
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          },
+          {
+            "address": "Eo7WjKq67rjJQSZxS6z3YkapzY3eMj6Xy8X5EQVn5UaB",
+            "name": "Meteora Pools"
+          },
+          {
+            "address": "ALPHAQmeA7bjrVuccPsYPiCvsi428SNwte66Srvs4pHA",
+            "name": "AlphaQ"
+          }
+        ],
+        "liquidity": "7334537",
+        "marketCap": "1135865978",
+        "pair": {
+          "protocol": "Orca"
+        },
+        "priceUSD": "113.521846013",
+        "token": {
+          "address": "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
+          "decimals": 9,
+          "networkId": 1399811149,
+          "createdAt": 1667089058,
+          "creatorAddress": "EDGARWktv3nDxRYjufjdbZmryqGXceaFPoPpbUzdpqED",
+          "name": "Jito Staked SOL",
+          "symbol": "JitoSOL",
+          "freezable": null,
+          "mintable": "6iQKfEyhr3bZMotVkW6beNZz5CPAkiwvgV2CTje9pVSS",
+          "isScam": null,
+          "info": {
+            "address": "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
+            "circulatingSupply": "11454985.48880283",
+            "cmcId": 22533,
+            "description": "The first liquid staking derivative on Solana to include MEV rewards. Tracks the price of SOL while accruing staking and MEV rewards. Yield is accrued in the price so it will steadily appreciate vs. SOL.",
+            "id": "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn:1399811149",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn_large_thumb_small_59e0e8ea-05a4-4df3-b951-ea8daee2b968.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn_large_thumb_small_59e0e8ea-05a4-4df3-b951-ea8daee2b968.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn_large_thumb_small_59e0e8ea-05a4-4df3-b951-ea8daee2b968.png",
+            "imageThumbHash": "L5gJDwK5x6d7hod8f4Z3uGeHyvZn1noP",
+            "name": "Jito Staked SOL",
+            "networkId": 1399811149,
+            "symbol": "JitoSOL",
+            "totalSupply": "10005703.906591039"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": "https://twitter.com/jito_sol",
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 34,
+        "txnCount4": 176,
+        "txnCount12": 612,
+        "txnCount24": 1355,
+        "volume1": "679",
+        "volume5m": "0",
+        "volume4": "245864",
+        "volume12": "457096",
+        "volume24": "1457406"
+      },
+      {
+        "change1": "-0.000004514282705001482",
+        "change4": "0.00005138894902959819",
+        "change12": "-0.000045801040655949084",
+        "change24": "-0.00013102426912744636",
+        "createdAt": 1741129332,
+        "exchanges": [
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          },
+          {
+            "address": "ALPHAQmeA7bjrVuccPsYPiCvsi428SNwte66Srvs4pHA",
+            "name": "AlphaQ"
+          },
+          {
+            "address": "swapNyd8XiQwJ6ianp9snpu4brUqFxadzvHebnAXjJZ",
+            "name": "Stabble Stable Swap"
+          },
+          {
+            "address": "MNFSTqtC93rEfYHB6hF82sKdZpUDFWkViLByLd1k1Ms",
+            "name": "Manifest"
+          }
+        ],
+        "liquidity": "10620895",
+        "marketCap": "921296702",
+        "pair": {
+          "protocol": "Orca"
+        },
+        "priceUSD": "0.9999581145",
+        "token": {
+          "address": "2u1tszSeqZ3qBWF3uNGPFc8TzMk2tdiwknnRMWGWjGWH",
+          "decimals": 6,
+          "networkId": 1399811149,
+          "createdAt": 1739779392,
+          "creatorAddress": "Ad5YH3AoPHXeHxxWt5uFTZHw9HFGKV9wDfQCV19wN4dH",
+          "name": "Global Dollar",
+          "symbol": "USDG",
+          "freezable": "2apBGMsS6ti9RyF5TwQTDswXBWskiJP2LD4cUEDqYJjk",
+          "mintable": "3YJL8sesK3ooPpJddypvFUhCvnvaQ1oF8This4J3bhxR",
+          "isScam": null,
+          "info": {
+            "address": "2u1tszSeqZ3qBWF3uNGPFc8TzMk2tdiwknnRMWGWjGWH",
+            "circulatingSupply": "1106315285.7475",
+            "cmcId": null,
+            "description": "Global Dollar (USDG) is a single currency stablecoin pegged to the US dollar that is regulated under the Monetary Authority of Singapore (MAS). USDG is issued by Paxos Digital Singapore (PDS) and will always be fully redeemable from Paxos on a one- to-one basis for US dollars. \r\n\r\nUSDG combines the stability and reach of US dollars with the added security and efficiency of blockchain technology. USDG is always available and accessible, offering high transfer speeds and programmability. USDG is always available for 1:1 redemption for US dollars, 24/7.\r\n\r\nPaxos Digital Singapore Pte. Ltd. (PDS), the issuer of USDG, has secured full approval from the Monetary Authority of Singapore (MAS) as a Major Payments Institution (MPI) to offer digital payment token services. This approval aligns USDG with MAS' forthcoming stablecoin framework, positioning it at the forefront of regulatory compliance. MAS, a globally recognized prudential regulator, is known for its robust oversight of stablecoins and commitment to stringent consumer protection standards.\r\n\r\nUSDG's issuance will adhere to strict regulatory standards, including requirements for value stability, capital adequacy, redemption and par and comprehensive disclosure. Specific regulatory obligations include substantial capital reserve requirements, frequent regulatory examinations, monthly independent attestations of reserve assets, monitoring of operating procedures and annual audits of reserve assets. It also provides protection from bankruptcy by holding stablecoin reserve assets in segregated accounts held on trust by PDS for the benefit of USDG holders.  \r\n\r\nUSDG represents the pinnacle of regulated stablecoins, offering unparalleled stability, security and compliance in the rapidly evolving world of digital finance.",
+            "id": "2u1tszSeqZ3qBWF3uNGPFc8TzMk2tdiwknnRMWGWjGWH:1399811149",
+            "imageBannerUrl": null,
+            "imageLargeUrl": null,
+            "imageSmallUrl": null,
+            "imageThumbUrl": null,
+            "imageThumbHash": null,
+            "name": "Global Dollar",
+            "networkId": 1399811149,
+            "symbol": "USDG",
+            "totalSupply": "921335293.007748"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": "https://globaldollar.com/"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 11,
+        "txnCount4": 89,
+        "txnCount12": 433,
+        "txnCount24": 2629,
+        "volume1": "76251",
+        "volume5m": "0",
+        "volume4": "799116",
+        "volume12": "1386131",
+        "volume24": "21010515"
+      },
+      {
+        "change1": "0.003957518092982318",
+        "change4": "-0.02578490254989473",
+        "change12": "-0.017751626806876836",
+        "change24": "0.002274152588377304",
+        "createdAt": 1708115387,
+        "exchanges": [
+          {
+            "address": "0x420dd381b31aef6683db6b902084cb0ffece40da",
+            "name": "Aerodrome"
+          },
+          {
+            "address": "0x5e7bb104d84c7cb9b682aac2f3d509f5f406809a",
+            "name": "Aerodrome Slipstream"
+          },
+          {
+            "address": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0x498581ff718922c3f8e6a244956af099b2652b2b",
+            "name": "Uniswap"
+          }
+        ],
+        "liquidity": "11231202",
+        "marketCap": "629198537",
+        "pair": {
+          "protocol": "VelodromeV2"
+        },
+        "priceUSD": "0.338743859231",
+        "token": {
+          "address": "0x940181a94a35a4569e4529a3cdfb74e38fd98631",
+          "decimals": 18,
+          "networkId": 8453,
+          "createdAt": 1693190447,
+          "creatorAddress": "0xe83f922c34a1962e9ae9f52b59e18239764f2818",
+          "name": "Aerodrome",
+          "symbol": "AERO",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "0x940181a94a35a4569e4529a3cdfb74e38fd98631",
+            "circulatingSupply": "906078210.6040672",
+            "cmcId": null,
+            "description": "Aerodrome Finance is a next-generation AMM designed to serve as Base's central liquidity hub, combining a powerful liquidity incentive engine, vote-lock governance model, and friendly user experience. Aerodrome inherits the latest features from Velodrome V2.",
+            "id": "0x940181a94a35a4569e4529a3cdfb74e38fd98631:8453",
+            "imageBannerUrl": "https://token-media.defined.fi/8453_0x940181a94a35a4569e4529a3cdfb74e38fd98631_banner_cb58f988eb7f.png",
+            "imageLargeUrl": "https://token-media.defined.fi/8453_0x940181a94a35a4569e4529a3cdfb74e38fd98631_large_d438541c844e.png",
+            "imageSmallUrl": "https://token-media.defined.fi/8453_0x940181a94a35a4569e4529a3cdfb74e38fd98631_small_3c598e712441.png",
+            "imageThumbUrl": "https://token-media.defined.fi/8453_0x940181a94a35a4569e4529a3cdfb74e38fd98631_thumb_8a016b98d21c.png",
+            "imageThumbHash": "NggGDwL3SHeGeIeOcqpneYeGhT/oCHUA",
+            "name": "Aerodrome",
+            "networkId": 8453,
+            "symbol": "AERO",
+            "totalSupply": "1857446325.276151742530681825"
+          },
+          "socialLinks": {
+            "discord": "https://discord.gg/aerodrome",
+            "telegram": null,
+            "twitter": "https://x.com/aerodromefi",
+            "website": "https://aerodrome.finance/docs"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 163,
+        "txnCount4": 1000,
+        "txnCount12": 1864,
+        "txnCount24": 3551,
+        "volume1": "79375",
+        "volume5m": "28",
+        "volume4": "612775",
+        "volume12": "860885",
+        "volume24": "1607967"
+      },
+      {
+        "change1": "-0.0005783596796056154",
+        "change4": "-0.01120111221081308",
+        "change12": "-0.011312364408614299",
+        "change24": "0.0022535668375483374",
+        "createdAt": 1727376841,
+        "exchanges": [
+          {
+            "address": "0x5e7bb104d84c7cb9b682aac2f3d509f5f406809a",
+            "name": "Aerodrome Slipstream"
+          },
+          {
+            "address": "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0x0a7e848aca42d879ef06507fca0e7b33a0a63c1e",
+            "name": "Maverick Protocol"
+          },
+          {
+            "address": "0xc35dadb65012ec5796536bd9864ed8773abc74c4",
+            "name": "Sushiswap"
+          },
+          {
+            "address": "0x498581ff718922c3f8e6a244956af099b2652b2b",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0xe6da85feb3b4e0d6aed95c41a125fba859bb9d24",
+            "name": null
+          }
+        ],
+        "liquidity": "332666",
+        "marketCap": "609648812.6441443",
+        "pair": {
+          "protocol": "AerodromeSlipstream"
+        },
+        "priceUSD": "2.02313461894",
+        "token": {
+          "address": "0x6985884c4392d348587b19cb9eaaf157f13271cd",
+          "decimals": 18,
+          "networkId": 8453,
+          "createdAt": 1718220409,
+          "creatorAddress": "0xb505939a59a353934ec6f0b060480e177394e155",
+          "name": "LayerZero",
+          "symbol": "ZRO",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "0x6985884c4392d348587b19cb9eaaf157f13271cd",
+            "circulatingSupply": 301338728,
+            "cmcId": null,
+            "description": "LayerZero (ZRO) is a cryptocurrency launched in 2024and operates on the Ethereum platform. LayerZero has a current supply of 1,000,000,000 with 110,000,000 in circulation. The last known price of LayerZero is 2.43249243 USD and is down -8.14 over the last 24 hours. It is currently trading on 315 active market(s) with $52,675,281.53 traded over the last 24 hours. More information can be found at https://layerzero.foundation/.",
+            "id": "0x6985884c4392d348587b19cb9eaaf157f13271cd:8453",
+            "imageBannerUrl": "https://token-media.defined.fi/8453_0x6985884c4392d348587b19cb9eaaf157f13271cd_banner_a6359623-5f44-4c67-9cbc-bce80214fd30.png",
+            "imageLargeUrl": "https://token-media.defined.fi/8453_0x6985884c4392d348587b19cb9eaaf157f13271cd_large_small_thumb_8f29f650-4e17-4575-bf6f-5d6ba33c9e26.png",
+            "imageSmallUrl": "https://token-media.defined.fi/8453_0x6985884c4392d348587b19cb9eaaf157f13271cd_large_small_thumb_8f29f650-4e17-4575-bf6f-5d6ba33c9e26.png",
+            "imageThumbUrl": "https://token-media.defined.fi/8453_0x6985884c4392d348587b19cb9eaaf157f13271cd_large_small_thumb_8f29f650-4e17-4575-bf6f-5d6ba33c9e26.png",
+            "imageThumbHash": "EggaBwAHiLh3iHiFiHmIV5h4BgAAAAAA",
+            "name": "LayerZero",
+            "networkId": 8453,
+            "symbol": "ZRO",
+            "totalSupply": "6472568.737563"
+          },
+          "socialLinks": {
+            "discord": "https://discord.gg/ktbvm8Nkcr",
+            "telegram": "https://t.me/joinchat/VcqxYkStIDsyN2Rh",
+            "twitter": "https://x.com/layerzero_core",
+            "website": "https://layerzero.network/"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 200,
+        "txnCount4": 1026,
+        "txnCount12": 1652,
+        "txnCount24": 4246,
+        "volume1": "62554",
+        "volume5m": "3079",
+        "volume4": "310352",
+        "volume12": "468644",
+        "volume24": "1550503"
+      },
+      {
+        "change1": "0.004396993084458",
+        "change4": "-0.014461430231522108",
+        "change12": "0.010024655612752372",
+        "change24": "0.028701890977927347",
+        "createdAt": 1723063194,
+        "exchanges": [
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          },
+          {
+            "address": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
+            "name": "Raydium"
+          }
+        ],
+        "liquidity": "224360",
+        "marketCap": "343920820",
+        "pair": {
+          "protocol": "RaydiumClmm"
+        },
+        "priceUSD": "0.619679616584",
+        "token": {
+          "address": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+          "decimals": 6,
+          "networkId": 1399811149,
+          "createdAt": 1612763227,
+          "creatorAddress": "Es2gApD6MZBhUPN143xwYfrLt4H3Vr53re7Z6hs7kWGp",
+          "name": "Raydium",
+          "symbol": "RAY",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+            "circulatingSupply": "268254628.065973",
+            "cmcId": 8526,
+            "description": "An on-chain order book AMM powering the evolution of DeFi",
+            "id": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R:1399811149",
+            "imageBannerUrl": "https://token-media.defined.fi/1399811149_4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R_banner_49f818b948bf.png",
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R_large_3e7c4a4e8082.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R_small_22254054e1fc.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R_thumb_30867d2547f9.png",
+            "imageThumbHash": "jOYFFwIIaEd4h3hweXmIV4d3pm/nsHwJ",
+            "name": "Raydium",
+            "networkId": 1399811149,
+            "symbol": "RAY",
+            "totalSupply": "554997794.309699"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": "https://x.com/raydiumprotocol",
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 843,
+        "txnCount4": 4504,
+        "txnCount12": 9812,
+        "txnCount24": 18640,
+        "volume1": "176042",
+        "volume5m": "6328",
+        "volume4": "793323",
+        "volume12": "1584870",
+        "volume24": "2942110"
+      },
+      {
+        "change1": "0.0037729951508704623",
+        "change4": "-0.004139901925624391",
+        "change12": "0.004124846774548713",
+        "change24": "0.04145235531654845",
+        "createdAt": 1710952526,
+        "exchanges": [
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          },
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "Eo7WjKq67rjJQSZxS6z3YkapzY3eMj6Xy8X5EQVn5UaB",
+            "name": "Meteora Pools"
+          }
+        ],
+        "liquidity": "289271",
+        "marketCap": "285823574",
+        "pair": {
+          "protocol": "Orca"
+        },
+        "priceUSD": "0.289728228196",
+        "token": {
+          "address": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+          "decimals": 9,
+          "networkId": 1399811149,
+          "createdAt": 1701117684,
+          "creatorAddress": "Pay5KQqvaPxEey8xdibLiB3WfGfdKo3SfPreuSXeGWm",
+          "name": "JITO",
+          "symbol": "JTO",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+            "circulatingSupply": "400225997.8",
+            "cmcId": 28541,
+            "description": "JTO is the governance token of the Jito Network. Jito Network is a major contributor to the Solana ecosystem through its JitoSOL liquid staking pool, and its collection of MEV products. Users can exchange their SOL for JitoSOL. In return, holders maintain SOL\u2019s liquidity and DeFi opportunities while earning yield from staking. JitoSOL uniquely provides its holders with additional rewards from transaction revenue associated with MEV extraction on Solana. Maximum extractable value (MEV) describes profit opportunities attributable to the specific order of transaction execution. For example, a large swap on Orca can lower the pool\u2019s price below that of Raydium or Serum. Traders will race to profit from that price difference and this arbitrage is considered MEV. The Jito Foundation was created to minimize the negative impacts of MEV, equitably distribute the profits and increase transparency. Jito published an open source validator client designed to create a competitive market for MEV extraction. The client enables auctions within each block for the opportunity to capture that block\u2019s MEV. Traders submit bids, and the highest bidders within each block can harvest available MEV.",
+            "id": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL:1399811149",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL_small_large_thumb_4d4609ea-c2c3-450d-a855-b12fb1e65008.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL_small_large_thumb_4d4609ea-c2c3-450d-a855-b12fb1e65008.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL_small_large_thumb_4d4609ea-c2c3-450d-a855-b12fb1e65008.png",
+            "imageThumbHash": "IggSBwD3t5h3iHiPiHWHt1iICQAAAAAA",
+            "name": "JITO",
+            "networkId": 1399811149,
+            "symbol": "JTO",
+            "totalSupply": "986523045.873380616"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 18,
+        "txnCount4": 131,
+        "txnCount12": 329,
+        "txnCount24": 725,
+        "volume1": "1368",
+        "volume5m": "1",
+        "volume4": "19337",
+        "volume12": "33025",
+        "volume24": "99978"
+      },
+      {
+        "change1": "0.0039385160758150205",
+        "change4": "-0.0020636853293444267",
+        "change12": "-0.0392440135191402",
+        "change24": "0.036518438772434214",
+        "createdAt": 1768495345,
+        "exchanges": [
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "REALQqNEomY6cQGZJUGwywTBD2UmDT32rZcNnfxQ5N2",
+            "name": "Byreal: CLMM"
+          },
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+            "name": "Meteora DAMM"
+          }
+        ],
+        "liquidity": "76551",
+        "marketCap": "285714625.2875",
+        "pair": {
+          "protocol": "Meteora"
+        },
+        "priceUSD": "1.14285850115",
+        "token": {
+          "address": "EicWvteVi2fWepEzS3FYWsnuPoP6caZfjnKqNvydLjCH",
+          "decimals": 8,
+          "networkId": 1399811149,
+          "createdAt": 1766503665,
+          "creatorAddress": null,
+          "name": "Lighter",
+          "symbol": "LIT",
+          "freezable": null,
+          "mintable": "8Ea2yErngbGWTABRVbiuuAXDFtQXmR7JqZxS7zm3TEL4",
+          "isScam": null,
+          "info": {
+            "address": "EicWvteVi2fWepEzS3FYWsnuPoP6caZfjnKqNvydLjCH",
+            "circulatingSupply": 250000000,
+            "cmcId": null,
+            "description": "Trade digital assets with low costs and low latency on Ethereum L2 with custom ZK circuits for verifiable matching and liquidations. The ticker is LIT.",
+            "id": "EicWvteVi2fWepEzS3FYWsnuPoP6caZfjnKqNvydLjCH:1399811149",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_EicWvteVi2fWepEzS3FYWsnuPoP6caZfjnKqNvydLjCH_large_small_thumb_1a8942f8-4d63-47bd-8099-f97d539f6551.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_EicWvteVi2fWepEzS3FYWsnuPoP6caZfjnKqNvydLjCH_large_small_thumb_1a8942f8-4d63-47bd-8099-f97d539f6551.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_EicWvteVi2fWepEzS3FYWsnuPoP6caZfjnKqNvydLjCH_large_small_thumb_1a8942f8-4d63-47bd-8099-f97d539f6551.png",
+            "imageThumbHash": "CggOBwAJpYqGeIdym5ZneYeHCQAAAAAA",
+            "name": "Lighter",
+            "networkId": 1399811149,
+            "symbol": "LIT",
+            "totalSupply": "242871.60745443"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": "https://x.com/Lighter_xyz",
+            "website": "https://t.co/ounRXvXClu"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 10,
+        "txnCount4": 114,
+        "txnCount12": 317,
+        "txnCount24": 649,
+        "volume1": "3500",
+        "volume5m": "400",
+        "volume4": "19494",
+        "volume12": "55274",
+        "volume24": "97566"
+      },
+      {
+        "change1": "0.0013616881128557198",
+        "change4": "-0.014907634786708132",
+        "change12": "0.0076237896281962335",
+        "change24": "0.03638390116630975",
+        "createdAt": 1723063160,
+        "exchanges": [
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          },
+          {
+            "address": "Eo7WjKq67rjJQSZxS6z3YkapzY3eMj6Xy8X5EQVn5UaB",
+            "name": "Meteora Pools"
+          },
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
+            "name": "Raydium"
+          },
+          {
+            "address": "ALPHAQmeA7bjrVuccPsYPiCvsi428SNwte66Srvs4pHA",
+            "name": "AlphaQ"
+          },
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          }
+        ],
+        "liquidity": "514036",
+        "marketCap": "253228773",
+        "pair": {
+          "protocol": "RaydiumClmm"
+        },
+        "priceUSD": "122.389784636",
+        "token": {
+          "address": "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",
+          "decimals": 9,
+          "networkId": 1399811149,
+          "createdAt": 1627205471,
+          "creatorAddress": "7Q42pBSxR8bbWJkhSQZLDqpcR9xCv9z3zBSGPc7PdXkt",
+          "name": "Marinade staked SOL (mSOL)",
+          "symbol": "mSOL",
+          "freezable": null,
+          "mintable": "3JLPCS1qM2zRw3Dp6V4hZnYHd4toMNPkNesXdX9tg6KM",
+          "isScam": null,
+          "info": {
+            "address": "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",
+            "circulatingSupply": "2747253",
+            "cmcId": null,
+            "description": "Marinade.finance is the first Liquid staking protocol built on Solana, and is supported by the Solana Foundation. The users stake their SOL tokens with Marinade-, which is using automatic staking strategies to delegate the SOL to validators, -and the user receive \"staked SOL\" tokens called mSOL that they can use in the world of DeFi or to swap any time back to original SOL tokens to unstake.",
+            "id": "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So:1399811149",
+            "imageBannerUrl": "https://token-media.defined.fi/1399811149_mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So_banner.png",
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So_large.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So_small.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So_thumb.png",
+            "imageThumbHash": "Zy2CBQAm99mJWIyExvOJnHAnSAhqh4OSGQ==",
+            "name": "Marinade staked SOL (mSOL)",
+            "networkId": 1399811149,
+            "symbol": "mSOL",
+            "totalSupply": "2069035.203711879"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": "https://t.me/gstdtoken",
+            "twitter": "https://x.com/gstdtoken",
+            "website": "https://gstdtoken.com"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 129,
+        "txnCount4": 455,
+        "txnCount12": 800,
+        "txnCount24": 1509,
+        "volume1": "19091",
+        "volume5m": "2577",
+        "volume4": "121763",
+        "volume12": "395670",
+        "volume24": "556629"
+      },
+      {
+        "change1": "-0.0006489752094695631",
+        "change4": "-0.019236676913734308",
+        "change12": "0.013153766202627409",
+        "change24": "0.03487931991576976",
+        "createdAt": 1763993052,
+        "exchanges": [
+          {
+            "address": "0x188d586ddcf52439676ca21a244753fa19f9ea8e",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0x204faca1764b154221e35c0d20abb3c525710498",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0x6b5f564339dbad6b780249827f2198a841feb7f3",
+            "name": "Capricorn"
+          },
+          {
+            "address": "0xb43120c4745967fa9b93e79c149e66b0f2d6fe0c",
+            "name": "LFJ"
+          }
+        ],
+        "liquidity": "2792797",
+        "marketCap": "239929739.125818",
+        "pair": {
+          "protocol": "UniswapV4"
+        },
+        "priceUSD": "0.0221541772046",
+        "token": {
+          "address": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+          "decimals": 18,
+          "networkId": 143,
+          "createdAt": 1759384523,
+          "creatorAddress": null,
+          "name": "Monad",
+          "symbol": "MON",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+            "circulatingSupply": 10830000000,
+            "cmcId": null,
+            "description": "",
+            "id": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a:143",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/143_0x3bd359c1119da7da1d913d1c4d2b7c461115433a_large_small_thumb_150a1368-be39-4209-99f1-f78a7d3c1192.png",
+            "imageSmallUrl": "https://token-media.defined.fi/143_0x3bd359c1119da7da1d913d1c4d2b7c461115433a_large_small_thumb_150a1368-be39-4209-99f1-f78a7d3c1192.png",
+            "imageThumbUrl": "https://token-media.defined.fi/143_0x3bd359c1119da7da1d913d1c4d2b7c461115433a_large_small_thumb_150a1368-be39-4209-99f1-f78a7d3c1192.png",
+            "imageThumbHash": "JTOCBQAnt/eGmZh75vWUyUtgaEh4eIaASA==",
+            "name": "Monad",
+            "networkId": 143,
+            "symbol": "MON",
+            "totalSupply": "411563386.368608694898973006"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 874,
+        "txnCount4": 4601,
+        "txnCount12": 9834,
+        "txnCount24": 17227,
+        "volume1": "605200",
+        "volume5m": "41467",
+        "volume4": "3145542",
+        "volume12": "6981802",
+        "volume24": "11282570"
+      },
+      {
+        "change1": "0.014045774242154656",
+        "change4": "0.024185905941826274",
+        "change12": "0.07454203172322245",
+        "change24": "0.10063937053869225",
+        "createdAt": 1761219133,
+        "exchanges": [
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG",
+            "name": "Meteora DAMM"
+          },
+          {
+            "address": "9H6tua7jkLhdm3w8BvgpTn5LZNU7g4ZynDmCiNN3q6Rp",
+            "name": "HumidiFi"
+          }
+        ],
+        "liquidity": "292710",
+        "marketCap": "175413850",
+        "pair": {
+          "protocol": "Meteora"
+        },
+        "priceUSD": "0.175811955539",
+        "token": {
+          "address": "METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+          "decimals": 6,
+          "networkId": 1399811149,
+          "createdAt": 1757522294,
+          "creatorAddress": "6tjvxv1hm73gqrhTQDjKu3KmViUKnzpKD1z55HTVqUvq",
+          "name": "Meteora",
+          "symbol": "MET",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
+            "circulatingSupply": "477737617.163186",
+            "cmcId": 38353,
+            "description": "Meteora is a decentralized exchange (DEX) built on Solana, focused on delivering a secure, sustainable, and composable liquidity infrastructure for the Solana ecosystem and the broader DeFi space. It stands out with innovative features such as DLMM Pools, Dynamic AMM Pools, and Dynamic Vaults - all designed to enhance liquidity efficiency and maximize yield generation for users.",
+            "id": "METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL:1399811149",
+            "imageBannerUrl": "https://token-media.defined.fi/1399811149_METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL_banner_cad539a92aa0.png",
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL_large_e8be7c28871f.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL_small_a4b421626080.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL_thumb_9e985800436a.png",
+            "imageThumbHash": "CSgGFwgHmKd5lniBfGeYhoeHOeAnBnoB",
+            "name": "Meteora",
+            "networkId": 1399811149,
+            "symbol": "MET",
+            "totalSupply": "997735617.008702"
+          },
+          "socialLinks": {
+            "discord": "https://discord.com/invite/meteora",
+            "telegram": null,
+            "twitter": "https://x.com/MeteoraAG",
+            "website": "https://www.meteora.ag/"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 102,
+        "txnCount4": 574,
+        "txnCount12": 1494,
+        "txnCount24": 1959,
+        "volume1": "109546",
+        "volume5m": "20555",
+        "volume4": "488590",
+        "volume12": "1182982",
+        "volume24": "1393486"
+      },
+      {
+        "change1": "0.010002191844837081",
+        "change4": "-0.05797238176333225",
+        "change12": "0.11559836079606775",
+        "change24": "0.13805920480126693",
+        "createdAt": 1737320909,
+        "exchanges": [
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
+            "name": "Raydium CPMM"
+          },
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          },
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          }
+        ],
+        "liquidity": "2433869",
+        "marketCap": "126219193",
+        "pair": {
+          "protocol": "Meteora"
+        },
+        "priceUSD": "0.126219660898",
+        "token": {
+          "address": "FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P",
+          "decimals": 6,
+          "networkId": 1399811149,
+          "createdAt": 1737316356,
+          "creatorAddress": "GtdNPbbWHJjUWzUoGggCfAxiNJwbe1a7FwHn2mcaHC3D",
+          "name": "Melania Meme",
+          "symbol": "MELANIA",
+          "freezable": "GtdNPbbWHJjUWzUoGggCfAxiNJwbe1a7FwHn2mcaHC3D",
+          "mintable": "GtdNPbbWHJjUWzUoGggCfAxiNJwbe1a7FwHn2mcaHC3D",
+          "isScam": false,
+          "info": {
+            "address": "FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P",
+            "circulatingSupply": "834996837.183397",
+            "cmcId": 35347,
+            "description": "Melania memes are digital collectibles intended to function as an expression of support for and engagement with the values embodied by the symbol MELANIA",
+            "id": "FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P:1399811149",
+            "imageBannerUrl": "https://token-media.defined.fi/1399811149_FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P_1737627453_banner.png",
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P_large_6a70d5d9df4c.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P_small_09b3ebdfaa2b.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P_thumb_d2978e5e990e.png",
+            "imageThumbHash": "HAgSBwAIp3eWiId6eYeHiYh4CAAAAAAA",
+            "name": "Melania Meme",
+            "networkId": 1399811149,
+            "symbol": "MELANIA",
+            "totalSupply": "999996294.049616"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": "https://x.com/MELANIATRUMP/status/1881087523847593995",
+            "website": "https://melaniameme.com/"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 6,
+        "txnCount4": 140,
+        "txnCount12": 1260,
+        "txnCount24": 1449,
+        "volume1": "149",
+        "volume5m": "87",
+        "volume4": "78005",
+        "volume12": "589506",
+        "volume24": "671885"
+      },
+      {
+        "change1": "0.004172040744951177",
+        "change4": "-0.027993367185291964",
+        "change12": "0.017868705633071892",
+        "change24": "0.04568289628644217",
+        "createdAt": 1756731192,
+        "exchanges": [
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          },
+          {
+            "address": "REALQqNEomY6cQGZJUGwywTBD2UmDT32rZcNnfxQ5N2",
+            "name": "Byreal: CLMM"
+          },
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "HpNfyc2Saw7RKkQd8nEL4khUcuPhQ7WwY1B2qjx8jxFq",
+            "name": "PancakeSwap"
+          }
+        ],
+        "liquidity": "19068",
+        "marketCap": "99268566",
+        "pair": {
+          "protocol": "Meteora"
+        },
+        "priceUSD": "0.105604684393",
+        "token": {
+          "address": "WLFinEv6ypjkczcS83FZqFpgFZYwQXutRbxGe7oC16g",
+          "decimals": 6,
+          "networkId": 1399811149,
+          "createdAt": 1755984199,
+          "creatorAddress": "GKyu9dGWECwB1NhqK4VSVZLsgwYNRYMHo7rhxeTGvMNk",
+          "name": "World Liberty Financial",
+          "symbol": "WLFI",
+          "freezable": "GKyu9dGWECwB1NhqK4VSVZLsgwYNRYMHo7rhxeTGvMNk",
+          "mintable": "GKyu9dGWECwB1NhqK4VSVZLsgwYNRYMHo7rhxeTGvMNk",
+          "isScam": null,
+          "info": {
+            "address": "WLFinEv6ypjkczcS83FZqFpgFZYwQXutRbxGe7oC16g",
+            "circulatingSupply": "27248789228.35878",
+            "cmcId": null,
+            "description": "Where DeFi meets TradFi\n\nBridging legacy finance and the open economy with purpose-built, on-chain products. ",
+            "id": "WLFinEv6ypjkczcS83FZqFpgFZYwQXutRbxGe7oC16g:1399811149",
+            "imageBannerUrl": "https://token-media.defined.fi/1399811149_WLFinEv6ypjkczcS83FZqFpgFZYwQXutRbxGe7oC16g_banner_43a034003984.png",
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_WLFinEv6ypjkczcS83FZqFpgFZYwQXutRbxGe7oC16g_large_97ced68f81fc.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_WLFinEv6ypjkczcS83FZqFpgFZYwQXutRbxGe7oC16g_small_cb5643d807ab.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_WLFinEv6ypjkczcS83FZqFpgFZYwQXutRbxGe7oC16g_thumb_28d5aae93fa5.png",
+            "imageThumbHash": "RwiGFQIsSJd3iHF++Dh3gHMHB1d3h3BzWA==",
+            "name": "World Liberty Financial",
+            "networkId": 1399811149,
+            "symbol": "WLFI",
+            "totalSupply": "940001545.088893"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": "https://t.me/defiant1s",
+            "twitter": "https://x.com/worldlibertyfi",
+            "website": "https://worldlibertyfinancial.com/"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 59,
+        "txnCount4": 385,
+        "txnCount12": 1578,
+        "txnCount24": 2093,
+        "volume1": "237",
+        "volume5m": "158",
+        "volume4": "12075",
+        "volume12": "55553",
+        "volume24": "66092"
+      },
+      {
+        "change1": "0.0012499570243029046",
+        "change4": "-0.012060195461577893",
+        "change12": "0.005007859232786851",
+        "change24": "0.025200220888679438",
+        "createdAt": 1680357269,
+        "exchanges": [
+          {
+            "address": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0xdb1d10011ad0ff90774d0c6bb92e5c5c8b4461f7",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0xca143ce32fe78f1f7019d7d551a6402fc5350c73",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0xbcfccbde45ce874adcb698cc183debcf17952812",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df",
+            "name": "Uniswap"
+          }
+        ],
+        "liquidity": "277640",
+        "marketCap": "83564583",
+        "pair": {
+          "protocol": "UniswapV3"
+        },
+        "priceUSD": "9.28495367981",
+        "token": {
+          "address": "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd",
+          "decimals": 18,
+          "networkId": 56,
+          "createdAt": 1698683209,
+          "creatorAddress": null,
+          "name": "ChainLink Token",
+          "symbol": "LINK",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd",
+            "circulatingSupply": "696849970.4525868",
+            "cmcId": null,
+            "description": "What is Chainlink?\r\nChainlink is the industry-standard oracle platform bringing the capital markets onchain and powering the majority of decentralized finance (DeFi). Chainlink stands to benefit the most from emerging blockchain-industry trends, such as stablecoin adoption, real-world asset tokenization, and institutional adoption of blockchain technology. Chainlink is powered by the LINK token, which is used to pay for platform services and secure the network\u2019s proper functioning. Chainlink leverages a novel fee model where offchain and onchain revenue from enterprise adoption is converted to LINK tokens and stored in a strategic Chainlink Reserve. \r\n\r\nChainlink is at the forefront of financial innovation and the global tokenization trend. Traditional financial institutions and infrastructures, such as Swift, DTCC, Euroclear, J.P. Morgan, Mastercard, Central Bank of Brazil, UBS, SBI, Fidelity International, ANZ,  and many others are adopting Chainlink as fundamental infrastructure as they move toward tokenizing trillions onchain. Demand for Chainlink has already generated hundreds of millions of dollars in revenue across a variety of traditional and decentralized use cases.\r\n\r\n\r\nChainlink is the only all-in-one platform that fulfills the requirements of any institutional blockchain use case. The Chainlink platform enables developers and institutions to access all the critical data, interoperability, compute, compliance, privacy, and legacy-system connectivity required for advanced blockchain applications that link the onchain and offchain worlds. Chainlink solves four fundamental problems for institutions interacting with tokenized assets:\r\n\r\nThe data problem. Tokenized assets need real-world information to be usable in transactions, such as market pricing, reference data, and proof of reserves data. Chainlink is the market leader in bringing real-world data onchain securely and accurately.\r\nThe liquidity problem. Financial institutions need tokenized assets that can be securely accessed and moved across blockchain networks in order to maximize liquidity. Chainlink CCIP is the only cross-chain interoperability standard that securely connects any public or private blockchain, opening up global markets for tokenized assets.\r\nThe synchronization problem. Tokenized assets must remain synchronized with legacy systems once issued across multiple chains. Chainlink is the only platform that offers reliable offchain data, system connectivity, and secure cross-chain interoperability, enabling a Unified Golden Record that stays with assets anywhere.\r\nThe compliance problem. Regulated institutions require compliance enforcement capabilities such as identity verification (KYC), risk screening (AML), exploit protection, and asset-specific restrictions. The Chainlink Automated Compliance Engine extends existing financial infrastructure for identity and compliance data to blockchains and tokenized assets.\r\n\r\nSince launch, the Chainlink standard has securely enabled tens of trillions in transaction value across dozens of blockchains and published tens of billions of verified messages onchain. Chainlink actively secures the large majority of DeFi protocols across different blockchains, with near total dominance on Ethereum. As a chain-agnostic platform with thousands of users across the world\u2019s largest financial institutions and DeFi protocols, Chainlink accelerates the adoption of blockchain ecosystems and is used by tens of thousands of developers, including protocols such as Aave, GMX, Lido, and many more.\r\nHow does Chainlink work?\r\nChainlink is a set of open standards for onchain data, cross-chain interoperability, and offchain computation. The platform is powered by decentralized oracle networks (DONs), which are composed of independent oracle node operators that come to consensus over any arbitrary input to deliver highly secure and reliable data, computation, and value to its intended destination. Chainlink node operators include traditional Web2 telecommunication providers, leading data providers, and Web3 infrastructure providers such as Deutsche Telekom, Swisscom, Vodafone, and Infura.\r\n\r\n\r\nThe Chainlink data standard, including Data Feeds and Data Streams, is used to supply DeFi with financial market data; tokenized assets with proof of reserve (PoR), net asset value (NAV), assets under management (AUM); traditional institutions with identity and compliance data; and decentralized applications (dApps) with virtually any type of data point they need to function. \r\nThe Chainlink interoperability standard, powered by the Cross-Chain Interoperability Protocol (CCIP), enables data and value to move seamlessly across any public and private blockchain, as well as facilitates communication between blockchains and traditional systems, such as banks, governments, and enterprises. CCIP secures tens of billions of dollars in asset value and has enabled the transfer of billions of dollars in cross-chain value.\r\nThe Chainlink compute standard, powered by the Chainlink Runtime Environment (CRE) enables developers to easily build an application that combines any data, any blockchain, any legacy systems, and computation into a unified application. With CRE, developers can easily adapt the application to support new connections without having to rewrite the app.\r\nWhat is the LINK token?\r\nLINK is the native token of the Chainlink Network, used for both payments and staking. Users can pay for Chainlink services in LINK tokens or in alternative assets (e.g., gas tokens) that are automatically converted into LINK via Payment Abstraction and stored in a strategic Chainlink Reserve. The Reserve is designed to support the long-term growth and sustainability of the Chainlink Network by accumulating LINK tokens using offchain revenue from large enterprises that are adopting the Chainlink standard and from onchain service usage, which has already generated hundreds of millions in revenue. Network service providers, such as node operators and LINK Stakers, also earn rewards in LINK tokens, which can be staked to support the cryptoeconomic security of the Chainlink Network.\r\n\r\nThe Chainlink platform supports a range of billing and payment models, including usage-based payments (e.g., subscription contracts and per-call models), revenue-sharing agreements (e.g., percentage of application revenue or recaptured MEV), Chainlink Build (i.e., a program where projects allocate a portion of their token supply), and Chainlink Scale (i.e., a program where blockchain ecosystems cover Chainlink service operating costs). \r\nChainlink Staking adds an additional layer of cryptoeconomic security to the Chainlink Network where LINK is staked (locked up) and can be slashed (forfeited) as a penalty if service providers fail to meet predefined performance requirements. Both node operators and community stakers play a critical role in supporting the reliability and integrity of the Chainlink Network.\r\n",
+            "id": "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd:56",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/56_0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd_large.png",
+            "imageSmallUrl": "https://token-media.defined.fi/56_0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd_small.png",
+            "imageThumbUrl": "https://token-media.defined.fi/56_0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd_thumb.png",
+            "imageThumbHash": "4pIJLwIHOKd4d4hwiX2IONh4i4AHCHcA",
+            "name": "ChainLink Token",
+            "networkId": 56,
+            "symbol": "LINK",
+            "totalSupply": "9000000"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": "https://telegram.me/chainlinkofficial",
+            "twitter": "https://twitter.com/chainlink",
+            "website": "https://chain.link/"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 61,
+        "txnCount4": 285,
+        "txnCount12": 532,
+        "txnCount24": 971,
+        "volume1": "4597",
+        "volume5m": "0",
+        "volume4": "29449",
+        "volume12": "50297",
+        "volume24": "111534"
+      },
+      {
+        "change1": "-0.004481535559413888",
+        "change4": "0.006323974762656535",
+        "change12": "0.023362439192840413",
+        "change24": "0.032798724866208044",
+        "createdAt": 1738872455,
+        "exchanges": [
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          },
+          {
+            "address": "Eo7WjKq67rjJQSZxS6z3YkapzY3eMj6Xy8X5EQVn5UaB",
+            "name": "Meteora Pools"
+          }
+        ],
+        "liquidity": "2740",
+        "marketCap": "83483674",
+        "pair": {
+          "protocol": "Orca"
+        },
+        "priceUSD": "0.0834837134908",
+        "token": {
+          "address": "DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7",
+          "decimals": 6,
+          "networkId": 1399811149,
+          "createdAt": null,
+          "creatorAddress": null,
+          "name": "Drift",
+          "symbol": "DRIFT",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7",
+            "circulatingSupply": "387756079.663475",
+            "cmcId": 31278,
+            "description": "Drift (DRIFT) is a cryptocurrency launched in 2022and operates on the Solana platform. Drift has a current supply of 1,000,000,000 with 297,566,100.33235 in circulation. The last known price of Drift is 0.50281207 USD and is up 0.94 over the last 24 hours. It is currently trading on 175 active market(s) with $27,929,650.17 traded over the last 24 hours. More information can be found at https://www.drift.trade/.",
+            "id": "DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7:1399811149",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7_large_45c133666ff8.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7_small_f3cc6e5d3917.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7_thumb_224d136c3679.png",
+            "imageThumbHash": "D/eFDQQsJ9mJZ4N/t7+N+GOHB1eHh3BzWA==",
+            "name": "Drift",
+            "networkId": 1399811149,
+            "symbol": "DRIFT",
+            "totalSupply": "999999526.140431"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 91,
+        "txnCount4": 221,
+        "txnCount12": 346,
+        "txnCount24": 507,
+        "volume1": "2383",
+        "volume5m": "1",
+        "volume4": "4446",
+        "volume12": "6791",
+        "volume24": "8752"
+      },
+      {
+        "change1": "-0.000015783373028086798",
+        "change4": "-0.014866942385710439",
+        "change12": "-0.009952011874124932",
+        "change24": "-0.005053474757049416",
+        "createdAt": 1772511913,
+        "exchanges": [
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "vrTGoBuy5rYSxAfV3jaRJWHH6nN9WK4NRExGxsk1bCJ",
+            "name": "Zora"
+          }
+        ],
+        "liquidity": "37400",
+        "marketCap": "78569607.27421181",
+        "pair": {
+          "protocol": "Meteora"
+        },
+        "priceUSD": "0.0175770933578",
+        "token": {
+          "address": "soKqZS9pASwBNS46G388nhK7XVtPaTyReffXEd3zora",
+          "decimals": 9,
+          "networkId": 1399811149,
+          "createdAt": 1753708512,
+          "creatorAddress": "CT5NrMccWtJnseNuM1GpNhaDYBrKZT8W8m2fK1jjtfv9",
+          "name": "Zora",
+          "symbol": "ZORA",
+          "freezable": null,
+          "mintable": "CT5NrMccWtJnseNuM1GpNhaDYBrKZT8W8m2fK1jjtfv9",
+          "isScam": null,
+          "info": {
+            "address": "soKqZS9pASwBNS46G388nhK7XVtPaTyReffXEd3zora",
+            "circulatingSupply": 4469999998,
+            "cmcId": null,
+            "description": "The world's attention market.",
+            "id": "soKqZS9pASwBNS46G388nhK7XVtPaTyReffXEd3zora:1399811149",
+            "imageBannerUrl": "https://token-media.defined.fi/1399811149_soKqZS9pASwBNS46G388nhK7XVtPaTyReffXEd3zora_banner_2aa9d59e9da7.png",
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_soKqZS9pASwBNS46G388nhK7XVtPaTyReffXEd3zora_large_small_thumb_d8ad5365-b0ed-4164-a7a3-9b041a6f43ce.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_soKqZS9pASwBNS46G388nhK7XVtPaTyReffXEd3zora_large_small_thumb_d8ad5365-b0ed-4164-a7a3-9b041a6f43ce.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_soKqZS9pASwBNS46G388nhK7XVtPaTyReffXEd3zora_large_small_thumb_d8ad5365-b0ed-4164-a7a3-9b041a6f43ce.png",
+            "imageThumbHash": "KfcJJwLzy3eulGiOVyOopUdnmG73u0MP",
+            "name": "Zora",
+            "networkId": 1399811149,
+            "symbol": "ZORA",
+            "totalSupply": "190086097.462464146"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": "https://x.com/zora",
+            "website": "https://t.co/Vx66LlHGb8"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 18,
+        "txnCount4": 67,
+        "txnCount12": 149,
+        "txnCount24": 317,
+        "volume1": "4744",
+        "volume5m": "0",
+        "volume4": "18679",
+        "volume12": "31341",
+        "volume24": "64222"
+      },
+      {
+        "change1": "0.007561375875253026",
+        "change4": "-0.007509079227342284",
+        "change12": "0.019945399072577336",
+        "change24": "0.02527162275313434",
+        "createdAt": 1710952439,
+        "exchanges": [
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "9W959DqEETiGZocYWCQPaJ6sBmUzgfxXfqGeTEdp3aQP",
+            "name": "Orca Token Swap V2"
+          }
+        ],
+        "liquidity": "201035",
+        "marketCap": "71680843",
+        "pair": {
+          "protocol": "Orca"
+        },
+        "priceUSD": "0.955750108681",
+        "token": {
+          "address": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+          "decimals": 6,
+          "networkId": 1399811149,
+          "createdAt": 1627975953,
+          "creatorAddress": "2YM8LrJGRtsDcWeqsjX2EQwJfhArxyDdtDzgt7vrwwbV",
+          "name": "Orca",
+          "symbol": "ORCA",
+          "freezable": null,
+          "mintable": "23zF9Azpe9CN4iPeTsQndD1mQpcb5Gz1qFREL5gPTZvG",
+          "isScam": null,
+          "info": {
+            "address": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+            "circulatingSupply": "60157201.946309",
+            "cmcId": 11165,
+            "description": "Orca is the most trusted DEX on Solana, built by DeFi OGs for the best trading and LPing experience. \n\nThe Orca protocol is centered around a Concentrated Liquidity Automated Market Maker (CLMM) with powerful features that allow users to access constant-product-like functionalities. Orca focuses on creating the most user-friendly environment for traders and LPs of varying experience levels, as well as for ecosystem builder",
+            "id": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE:1399811149",
+            "imageBannerUrl": "https://token-media.defined.fi/1399811149_orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE_banner_bd1966bb7eee.png",
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE_large_2c0c9bac494b.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE_small_ba578a1edb2f.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE_thumb_4abf931fad69.png",
+            "imageThumbHash": "5DqGHQIs2semSl+UwvuIvo/oCFeIh4CDVw==",
+            "name": "Orca",
+            "networkId": 1399811149,
+            "symbol": "ORCA",
+            "totalSupply": "74999565.29305"
+          },
+          "socialLinks": {
+            "discord": "https://discord.gg/a2SSVmYX7T",
+            "telegram": null,
+            "twitter": "https://x.com/orca_so",
+            "website": "https://www.orca.so/"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 198,
+        "txnCount4": 786,
+        "txnCount12": 1676,
+        "txnCount24": 3139,
+        "volume1": "22852",
+        "volume5m": "0",
+        "volume4": "127913",
+        "volume12": "285355",
+        "volume24": "533978"
+      },
+      {
+        "change1": "-0.002745305903149216",
+        "change4": "-0.013329136394698612",
+        "change12": "0.007038630598427979",
+        "change24": "0.022908638616750607",
+        "createdAt": 1761036495,
+        "exchanges": [
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          },
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          },
+          {
+            "address": "Eo7WjKq67rjJQSZxS6z3YkapzY3eMj6Xy8X5EQVn5UaB",
+            "name": "Meteora Pools"
+          },
+          {
+            "address": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
+            "name": "Raydium"
+          },
+          {
+            "address": "ZERor4xhbUycZ6gb9ntrhqscUcZmAbQDjEAtCf4hbZY",
+            "name": "ZeroFi"
+          }
+        ],
+        "liquidity": "951336",
+        "marketCap": "32903212",
+        "pair": {
+          "protocol": "RaydiumClmm"
+        },
+        "priceUSD": "0.0329037967431",
+        "token": {
+          "address": "METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m",
+          "decimals": 6,
+          "networkId": 1399811149,
+          "createdAt": 1634244739,
+          "creatorAddress": "CPqaAMQicq2uhCoxc8SNFNq8iWSHs7j7qdJGyehfUdC6",
+          "name": "Metaplex",
+          "symbol": "MPLX",
+          "freezable": null,
+          "mintable": "BHkk3RTd4Ue6JnqXpa9QHTXbn575ycR8hxVmYx4E254k",
+          "isScam": null,
+          "info": {
+            "address": "METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m",
+            "circulatingSupply": "562572981",
+            "cmcId": 21870,
+            "description": "Metaplex (MPLX) is the standard for launching tokens and NFTs on Solana. Used to create 99% of tokens and NFTs on Solana, Metaplex powers the network\u2019s biggest stablecoins, RWAs, DEXs, launchpads, wallets, DePIN networks, DeFi apps and games, with more than 900 million assets created and over $10 billion in transaction value. 50% of Metaplex protocol revenue is used to buy back MPLX for the Metaplex DAO.",
+            "id": "METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m:1399811149",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m_large_bb9173279f30.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m_small_bd55d0fc3a70.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m_thumb_2b567d361b8b.png",
+            "imageThumbHash": "CAgOBwAnZ6iHd3iAfIiHqGeHCQAAAAAA",
+            "name": "Metaplex",
+            "networkId": 1399811149,
+            "symbol": "MPLX",
+            "totalSupply": "999982239.927835"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 96,
+        "txnCount4": 744,
+        "txnCount12": 1508,
+        "txnCount24": 2958,
+        "volume1": "4450",
+        "volume5m": "98",
+        "volume4": "41162",
+        "volume12": "62483",
+        "volume24": "127205"
+      },
+      {
+        "change1": "0.009916259845694409",
+        "change4": "-0.03570870188327429",
+        "change12": "0.012781469388570317",
+        "change24": "0.05239665442894248",
+        "createdAt": 1738820726,
+        "exchanges": [
+          {
+            "address": "Eo7WjKq67rjJQSZxS6z3YkapzY3eMj6Xy8X5EQVn5UaB",
+            "name": "Meteora Pools"
+          },
+          {
+            "address": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+            "name": "Meteora"
+          },
+          {
+            "address": "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
+            "name": "Raydium CLMM"
+          },
+          {
+            "address": "PhoeNiXZ8ByJGLkxNfZRnkUfjvmuYqLR89jjFHGqdXY",
+            "name": "Phoenix"
+          },
+          {
+            "address": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+            "name": "Orca"
+          }
+        ],
+        "liquidity": "469739",
+        "marketCap": "20257537",
+        "pair": {
+          "protocol": "MeteoraPools"
+        },
+        "priceUSD": "0.749991046102",
+        "token": {
+          "address": "3iQL8BFS2vE7mww4ehAqQHAsbmRNCrPxizWAT2Zfyr9y",
+          "decimals": 9,
+          "networkId": 1399811149,
+          "createdAt": 1738029763,
+          "creatorAddress": "7ST5Juwkiyn33HgCNW69PzvBfUdgA7j39giD2a6Lbfr2",
+          "name": "Virtual Protocol",
+          "symbol": "VIRTUAL",
+          "freezable": "G2TEhgzHBrY7rLefMMeoEaEvUac5kpdx5bj7c5Yvx5qa",
+          "mintable": "G2TEhgzHBrY7rLefMMeoEaEvUac5kpdx5bj7c5Yvx5qa",
+          "isScam": null,
+          "info": {
+            "address": "3iQL8BFS2vE7mww4ehAqQHAsbmRNCrPxizWAT2Zfyr9y",
+            "circulatingSupply": "656082020.5934123",
+            "cmcId": null,
+            "description": "The ecosystem for the creation and co-ownership of autonomous AI Agents. Building the first autonomous agentic network state.",
+            "id": "3iQL8BFS2vE7mww4ehAqQHAsbmRNCrPxizWAT2Zfyr9y:1399811149",
+            "imageBannerUrl": "https://token-media.defined.fi/1399811149_3iQL8BFS2vE7mww4ehAqQHAsbmRNCrPxizWAT2Zfyr9y_banner_7a2eba923e6a.png",
+            "imageLargeUrl": "https://token-media.defined.fi/1399811149_3iQL8BFS2vE7mww4ehAqQHAsbmRNCrPxizWAT2Zfyr9y_large_591b3b0297c3.png",
+            "imageSmallUrl": "https://token-media.defined.fi/1399811149_3iQL8BFS2vE7mww4ehAqQHAsbmRNCrPxizWAT2Zfyr9y_small_f5f6eb15fe18.png",
+            "imageThumbUrl": "https://token-media.defined.fi/1399811149_3iQL8BFS2vE7mww4ehAqQHAsbmRNCrPxizWAT2Zfyr9y_thumb_58476f5fee4d.png",
+            "imageThumbHash": "N7iFFQIP9jiGeI+CN7BwGx/4UMfEdBQ56w==",
+            "name": "Virtual Protocol",
+            "networkId": 1399811149,
+            "symbol": "VIRTUAL",
+            "totalSupply": "27010372.145996934"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": "https://t.me/virtuals",
+            "twitter": "https://x.com/virtuals_io",
+            "website": "https://app.virtuals.io/"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 15,
+        "txnCount4": 234,
+        "txnCount12": 571,
+        "txnCount24": 1040,
+        "volume1": "1663",
+        "volume5m": "0",
+        "volume4": "22052",
+        "volume12": "43414",
+        "volume24": "74024"
+      },
+      {
+        "change1": "0.005611939896549726",
+        "change4": "-0.009141764069962772",
+        "change12": "0.0432198352073026",
+        "change24": "0.022230533805049704",
+        "createdAt": 1758552377,
+        "exchanges": [
+          {
+            "address": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0xdb1d10011ad0ff90774d0c6bb92e5c5c8b4461f7",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0xca143ce32fe78f1f7019d7d551a6402fc5350c73",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0xb7e5848e1d0cb457f2026670fcb9bbdb7e9e039c",
+            "name": null
+          }
+        ],
+        "liquidity": "144369",
+        "marketCap": "12807950",
+        "pair": {
+          "protocol": "UniswapV3"
+        },
+        "priceUSD": "0.111248938594",
+        "token": {
+          "address": "0x405fbc9004d857903bfd6b3357792d71a50726b0",
+          "decimals": 18,
+          "networkId": 56,
+          "createdAt": 1758552377,
+          "creatorAddress": null,
+          "name": "Plasma",
+          "symbol": "XPL",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "0x405fbc9004d857903bfd6b3357792d71a50726b0",
+            "circulatingSupply": "1888888888.8889",
+            "cmcId": 36645,
+            "description": "Plasma is the layer 1 blockchain building the stablecoin infrastructure for a new global financial system. \r\n\r\nIt is purpose-built for global stablecoin payments, offering zero-fee USD\u20ae transfers and custom gas tokens to help realise the stablecoin promise of permissionless access to financial services for everyone, everywhere. \r\n\r\nPlasma\u2019s global payments coverage and inbound suite of products position it as the native chain for stablecoin payments.",
+            "id": "0x405fbc9004d857903bfd6b3357792d71a50726b0:56",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/56_0x405fbc9004d857903bfd6b3357792d71a50726b0_large_3963eee4a336.png",
+            "imageSmallUrl": "https://token-media.defined.fi/56_0x405fbc9004d857903bfd6b3357792d71a50726b0_small_0cdfc36922f9.png",
+            "imageThumbUrl": "https://token-media.defined.fi/56_0x405fbc9004d857903bfd6b3357792d71a50726b0_thumb_1f0fe99cf551.png",
+            "imageThumbHash": "zteFBQAsBYyHeKONNwWHU3A4B1eHh3BzWA==",
+            "name": "Plasma",
+            "networkId": 56,
+            "symbol": "XPL",
+            "totalSupply": "115128743.289152"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 826,
+        "txnCount4": 4402,
+        "txnCount12": 9118,
+        "txnCount24": 16763,
+        "volume1": "70078",
+        "volume5m": "5163",
+        "volume4": "390118",
+        "volume12": "810397",
+        "volume24": "1439670"
+      },
+      {
+        "change1": "0.004030090552044211",
+        "change4": "-0.02111690662399316",
+        "change12": "-0.004826436878814683",
+        "change24": "0.042590748018463985",
+        "createdAt": 1738574883,
+        "exchanges": [
+          {
+            "address": "0x5e7bb104d84c7cb9b682aac2f3d509f5f406809a",
+            "name": "Aerodrome Slipstream"
+          },
+          {
+            "address": "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+            "name": "PancakeSwap"
+          },
+          {
+            "address": "0xc5396866754799b9720125b104ae01d935ab9c7b",
+            "name": null
+          },
+          {
+            "address": "0x498581ff718922c3f8e6a244956af099b2652b2b",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0x829ce74128ea95c72aa379168df529feaa464aee",
+            "name": null
+          }
+        ],
+        "liquidity": "172355",
+        "marketCap": "2790289",
+        "pair": {
+          "protocol": "AerodromeSlipstream"
+        },
+        "priceUSD": "114.249087274",
+        "token": {
+          "address": "0x63706e401c06ac8513145b7687a14804d17f814b",
+          "decimals": 18,
+          "networkId": 8453,
+          "createdAt": 1735833683,
+          "creatorAddress": "0x4801eb5a2a6e2d04f019098364878c70a05158f1",
+          "name": "Aave Token",
+          "symbol": "AAVE",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "0x63706e401c06ac8513145b7687a14804d17f814b",
+            "circulatingSupply": "15167075.11260728",
+            "cmcId": null,
+            "description": "Aave is a decentralized money market protocol where users can lend and borrow cryptocurrency across 20 different assets as collateral. The protocol has a native token called AAVE, which is also a governance token that lets the community decide the direction of the protocol in a collective manner. Lenders can\u00a0earn interest by providing liquidity to the market, while borrowers can borrow by collateralizing their cryptoassets to take out loans from the liquidity pools.\r\n\r\n",
+            "id": "0x63706e401c06ac8513145b7687a14804d17f814b:8453",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/8453_0x63706e401c06ac8513145b7687a14804d17f814b_large.png",
+            "imageSmallUrl": "https://token-media.defined.fi/8453_0x63706e401c06ac8513145b7687a14804d17f814b_small.png",
+            "imageThumbUrl": "https://token-media.defined.fi/8453_0x63706e401c06ac8513145b7687a14804d17f814b_thumb.png",
+            "imageThumbHash": "cAWGFQAsWGiPdXQJh1iPhAq3B1h3h3BzVw==",
+            "name": "Aave Token",
+            "networkId": 8453,
+            "symbol": "AAVE",
+            "totalSupply": "24422.856163505786292064"
+          },
+          "socialLinks": {
+            "discord": "https://aave.com/discord",
+            "telegram": "https://telegram.me/Aavesome",
+            "twitter": "https://twitter.com/aave",
+            "website": "https://app.aave.com/"
+          },
+          "launchpad": null
+        },
+        "txnCount1": 1,
+        "txnCount4": 122,
+        "txnCount12": 192,
+        "txnCount24": 428,
+        "volume1": "395",
+        "volume5m": "0",
+        "volume4": "58669",
+        "volume12": "89693",
+        "volume24": "216608"
+      },
+      {
+        "change1": "0.0071818567809312246",
+        "change4": "-0.007807891847607664",
+        "change12": "0.0050460750260204095",
+        "change24": "0.04080132614885473",
+        "createdAt": 1734153961,
+        "exchanges": [
+          {
+            "address": "0x5e7bb104d84c7cb9b682aac2f3d509f5f406809a",
+            "name": "Aerodrome Slipstream"
+          },
+          {
+            "address": "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0x498581ff718922c3f8e6a244956af099b2652b2b",
+            "name": "Uniswap"
+          },
+          {
+            "address": "0x420dd381b31aef6683db6b902084cb0ffece40da",
+            "name": "Aerodrome"
+          }
+        ],
+        "liquidity": "6405",
+        "marketCap": "793326",
+        "pair": {
+          "protocol": "AerodromeSlipstream"
+        },
+        "priceUSD": "1.29482014525",
+        "token": {
+          "address": "0xa99f6e6785da0f5d6fb42495fe424bce029eeb3e",
+          "decimals": 18,
+          "networkId": 8453,
+          "createdAt": 1731484105,
+          "creatorAddress": "0x59aad2c81b86df6e4a0dae51c5c5bd45ba451875",
+          "name": "Pendle",
+          "symbol": "PENDLE",
+          "freezable": null,
+          "mintable": null,
+          "isScam": null,
+          "info": {
+            "address": "0xa99f6e6785da0f5d6fb42495fe424bce029eeb3e",
+            "circulatingSupply": "166411271.8384256",
+            "cmcId": null,
+            "description": "Pendle is a protocol that enables the tokenization and trading of future yield. With the creation of a novel AMM that supports assets with time decay, Pendle gives users more control over future yield by providing optionality and opportunities for its utilization. ",
+            "id": "0xa99f6e6785da0f5d6fb42495fe424bce029eeb3e:8453",
+            "imageBannerUrl": null,
+            "imageLargeUrl": "https://token-media.defined.fi/8453_0xa99f6e6785da0f5d6fb42495fe424bce029eeb3e_large_99c16cf6933f.png",
+            "imageSmallUrl": "https://token-media.defined.fi/8453_0xa99f6e6785da0f5d6fb42495fe424bce029eeb3e_small_eb91e9f33664.png",
+            "imageThumbUrl": "https://token-media.defined.fi/8453_0xa99f6e6785da0f5d6fb42495fe424bce029eeb3e_thumb_f18f207c00cf.png",
+            "imageThumbHash": "a+eFDQA0hH+dVJUItnOfNPdJCIZ4h4J7eA==",
+            "name": "Pendle",
+            "networkId": 8453,
+            "symbol": "PENDLE",
+            "totalSupply": "612691.794202831390010977"
+          },
+          "socialLinks": {
+            "discord": null,
+            "telegram": null,
+            "twitter": null,
+            "website": null
+          },
+          "launchpad": null
+        },
+        "txnCount1": 17,
+        "txnCount4": 101,
+        "txnCount12": 171,
+        "txnCount24": 296,
+        "volume1": "1217",
+        "volume5m": "396",
+        "volume4": "8771",
+        "volume12": "15411",
+        "volume24": "29569"
+      }
+    ],
+    "statusCode": 200
+  },
+  "captured_at": "2026-03-13T12:09:18.263543"
+}

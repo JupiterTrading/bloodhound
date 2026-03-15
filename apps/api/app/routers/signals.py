@@ -4,7 +4,7 @@ GET /v1/signals
 """
 
 from fastapi import APIRouter, Query
-from app.services import clickhouse
+from app.services import analytics
 from app.services.redis_cache import cache_get, cache_set, TTL_WALLET_STATS
 
 router = APIRouter()
@@ -55,7 +55,7 @@ async def signals_feed(
     if cached := await cache_get(cache_key):
         return cached
 
-    rows = await clickhouse.get_recent_signals(
+    rows = await analytics.get_recent_signals(
         signal_types=signal_types,
         confidence=confidence,
         wallet_address=wallet if not wallet_addresses else None,
@@ -127,7 +127,7 @@ async def new_pairs_feed(
         types = ["new_dex_pair"]
 
     try:
-        rows = await clickhouse.get_recent_signals(
+        rows = await analytics.get_recent_signals(
             signal_types=types,
             limit=limit,
             offset=0,

@@ -8,26 +8,36 @@ interface SkeletonProps {
   height?: string | number;
   borderRadius?: string | number;
   style?: React.CSSProperties;
+  className?: string;
 }
 
 export function Skeleton({
   width = "100%",
   height = 16,
-  borderRadius = 4,
+  borderRadius = 6,
   style,
+  className = "",
 }: SkeletonProps) {
   return (
     <span
-      style={{
-        display: "block",
-        width,
-        height,
+      className={`block relative overflow-hidden ${className}`}
+      style={{ 
+        width, 
+        height, 
         borderRadius,
-        background: "var(--bg-elevated)",
-        animation: "skeletonPulse 1.6s ease-in-out infinite",
-        ...style,
+        background: "linear-gradient(135deg, var(--bg-elevated), var(--bg-hover))",
+        ...style 
       }}
-    />
+    >
+      <span 
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(90deg, transparent, rgba(233,48,208,0.08), rgba(0,212,255,0.05), transparent)",
+          backgroundSize: "200% 100%",
+          animation: "shimmer 1.5s ease-in-out infinite",
+        }}
+      />
+    </span>
   );
 }
 

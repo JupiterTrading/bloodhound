@@ -2,6 +2,8 @@
 
 import { useQuery } from "@tanstack/react-query";
 
+type StatusType = "success" | "warning" | "error" | "muted";
+
 async function fetchSlot(): Promise<{ slot: number; ts: number }> {
   const res = await fetch("https://api.mainnet-beta.solana.com", {
     method: "POST",
@@ -38,69 +40,36 @@ export function StatusBar() {
     retry: false,
   });
 
-  // Slot is "synced" if we fetched it within the last 15 seconds
   const slotFresh = slotData && Date.now() - slotData.ts < 15_000;
-  const indexerColor = slotFresh ? "#22c55e" : slotData ? "#f59e0b" : "var(--text-muted)";
+  const indexerStatus: StatusType = slotFresh ? "success" : slotData ? "warning" : "muted";
   const indexerLabel = slotFresh ? "Indexer: synced" : slotData ? "Indexer: lagging" : "Indexer: connecting";
 
-  const apiColor = apiOk === undefined ? "var(--text-muted)" : apiOk ? "#22c55e" : "#b30000";
+  const apiStatus: StatusType = apiOk === undefined ? "muted" : apiOk ? "success" : "error";
   const apiLabel = apiOk === undefined ? "API: connecting" : apiOk ? "API: operational" : "API: degraded";
 
   return (
-    <footer
-      style={{
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: "32px",
-        background: "var(--bg-base)",
-        borderTop: "1px solid var(--border)",
-        display: "flex",
-        alignItems: "center",
-        paddingInline: "24px",
-        gap: "24px",
-        zIndex: 100,
-      }}
-    >
-      <StatusPill color="#22c55e" label="Mainnet" />
-      <StatusPill color={indexerColor} label={indexerLabel} />
-      <StatusPill color={apiColor} label={apiLabel} />
-      <span
-        style={{
-          fontFamily: "JetBrains Mono, monospace",
-          fontSize: "11px",
-          color: "var(--text-muted)",
-          marginLeft: "auto",
-        }}
-      >
+    <footer className="fixed bottom-0 left-0 right-0 h-8 bg-[var(--bg-base)] border-t border-[var(--border)] flex items-center px-6 gap-6 z-[100]">
+      <StatusPill status="success" label="Mainnet" />
+      <StatusPill status={indexerStatus} label={indexerLabel} />
+      <StatusPill status={apiStatus} label={apiLabel} />
+      <span className="font-mono text-[11px] text-[var(--text-muted)] ml-auto">
         {slotData?.slot != null ? `Slot #${slotData.slot.toLocaleString()}` : "Slot: connecting..."}
       </span>
     </footer>
   );
 }
 
-function StatusPill({ color, label }: { color: string; label: string }) {
+function StatusPill({ status, label }: { status: StatusType; label: string }) {
+  const dotClass = {
+    success: "status-dot-live",
+    warning: "status-dot-warning",
+    error: "status-dot-error",
+    muted: "status-dot-muted",
+  }[status];
+
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "6px",
-        fontFamily: "JetBrains Mono, monospace",
-        fontSize: "11px",
-        color: "var(--text-muted)",
-      }}
-    >
-      <span
-        style={{
-          width: "6px",
-          height: "6px",
-          borderRadius: "50%",
-          background: color,
-          animation: "pulse 2s infinite",
-        }}
-      />
+    <div className="flex items-center gap-1.5 font-mono text-[11px] text-[var(--text-muted)]">
+      <span className={`status-dot ${dotClass}`} />
       {label}
     </div>
   );

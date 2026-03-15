@@ -1,0 +1,177 @@
+{
+  "endpoint": "GET /v2/userTokens/aggregatedSnapshot",
+  "url": "https://prod-api.fomo.family/v2/userTokens/aggregatedSnapshot?userId=2e955ffc-6fac-578a-93d8-3324605f6bed&timestamp=2026-03-12T17:09:49.342Z",
+  "request_headers": {
+    "content-type": "application/json",
+    "x-app-installation-id": "install_bc7884b4-0c4a-465b-903a-33e17158ff11",
+    "accept": "*/*",
+    "baggage": "sentry-environment=production,sentry-public_key=4e163b6befe2112027dfa32cd92ca3ba,sentry-trace_id=e750d77c91574c0a8339e9d8943348c5,sentry-org_id=4508656189702144,sentry-transaction=user,sentry-sampled=false,sentry-sample_rand=0.8856860553036695,sentry-sample_rate=0.0001",
+    "authorization": "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkI4SXlObWU1V0lZRnJIclJRVDBLdFlPRlFIUjFKVXFnaGVTMHhSZHR1QVkifQ.eyJzaWQiOiJjbWt6ZW5oa2MwNXM4am8wY3RrbHo1cmpqIiwiaXNzIjoicHJpdnkuaW8iLCJpYXQiOjE3NzM0MjE3NTcsImF1ZCI6ImNtNmg0ODVvMzAwbjN6ajl5bDZ2cGVkcTciLCJzdWIiOiJkaWQ6cHJpdnk6Y21rejA2N2RkMDF5Z2puMGNhaXc5aWNrcCIsImV4cCI6MTc3MzQyNTM1N30.KSKe7Zlqq97fc4QPfjM7DRQFJn2TbIjhiI5oDtSDVmm1sYOZq8Vd2Zn-4ks9I-Iepjj6jRmPmI_rhyeOayLexA",
+    "priority": "u=3, i",
+    "x-supported-chains": "1399811149,8453,56,143",
+    "accept-encoding": "gzip, deflate, br",
+    "accept-language": "en-US,en;q=0.9",
+    "sentry-trace": "e750d77c91574c0a8339e9d8943348c5-bfe2da5e3ab8959b-0",
+    "user-agent": "fomo/1.60.4/280/ios/iPhone 17 Pro Max/Apple"
+  },
+  "request_body": null,
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:09:49 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "cf-ray": "9dbca60818b1fb24-BNA",
+    "cf-cache-status": "DYNAMIC",
+    "content-encoding": "gzip",
+    "etag": "W/\"7f2-RP6Y8Wivf8pVqjD1F7AKiY8SiL0\"",
+    "server": "cloudflare",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "vary": "Origin, Accept-Encoding",
+    "access-control-allow-credentials": "true",
+    "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+    "cross-origin-opener-policy": "same-origin",
+    "cross-origin-resource-policy": "same-origin",
+    "origin-agent-cluster": "?1",
+    "referrer-policy": "no-referrer",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-download-options": "noopen",
+    "x-frame-options": "SAMEORIGIN",
+    "x-permitted-cross-domain-policies": "none",
+    "x-request-id": "3087d44d-e9b3-4d43-8e65-869ae0923434",
+    "x-xss-protection": "0",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "response_body": {
+    "success": true,
+    "message": "User token snapshot stats found",
+    "responseObject": [
+      {
+        "snapshotId": 1773334800,
+        "pnl": 1851578.0315067573,
+        "equity": 532754.5525286186
+      },
+      {
+        "snapshotId": 1773338400,
+        "pnl": 1842355.6868882244,
+        "equity": 523532.2079100855
+      },
+      {
+        "snapshotId": 1773342000,
+        "pnl": 1851483.3057428552,
+        "equity": 532659.8276311423
+      },
+      {
+        "snapshotId": 1773345600,
+        "pnl": 1852312.630920301,
+        "equity": 538487.486444588
+      },
+      {
+        "snapshotId": 1773349200,
+        "pnl": 1849475.6009409917,
+        "equity": 535650.4573291858
+      },
+      {
+        "snapshotId": 1773352800,
+        "pnl": 1847317.439730228,
+        "equity": 518488.4124779062
+      },
+      {
+        "snapshotId": 1773356400,
+        "pnl": 1842160.345542583,
+        "equity": 513529.0276232607
+      },
+      {
+        "snapshotId": 1773360000,
+        "pnl": 1857096.5607808202,
+        "equity": 528465.2428614981
+      },
+      {
+        "snapshotId": 1773363600,
+        "pnl": 1852209.5101913274,
+        "equity": 523577.4160270052
+      },
+      {
+        "snapshotId": 1773367200,
+        "pnl": 1875787.0920392093,
+        "equity": 547156.236269796
+      },
+      {
+        "snapshotId": 1773370800,
+        "pnl": 1911520.5851220803,
+        "equity": 582689.729353471
+      },
+      {
+        "snapshotId": 1773374400,
+        "pnl": 1918264.5535960472,
+        "equity": 589579.7438178766
+      },
+      {
+        "snapshotId": 1773378000,
+        "pnl": 1898614.2067728152,
+        "equity": 569930.3969946443
+      },
+      {
+        "snapshotId": 1773381600,
+        "pnl": 1895492.2812057214,
+        "equity": 566807.1628038893
+      },
+      {
+        "snapshotId": 1773385200,
+        "pnl": 1894967.1925182086,
+        "equity": 541281.599116377
+      },
+      {
+        "snapshotId": 1773388800,
+        "pnl": 1922276.516882838,
+        "equity": 568586.6760240059
+      },
+      {
+        "snapshotId": 1773392400,
+        "pnl": 1936319.8249803777,
+        "equity": 584837.6871295454
+      },
+      {
+        "snapshotId": 1773396000,
+        "pnl": 1929501.35654754,
+        "equity": 575797.5601367077
+      },
+      {
+        "snapshotId": 1773399600,
+        "pnl": 1936111.4692930104,
+        "equity": 582362.6674275242
+      },
+      {
+        "snapshotId": 1773403200,
+        "pnl": 1938489.2269918933,
+        "equity": 533239.9825784072
+      },
+      {
+        "snapshotId": 1773406800,
+        "pnl": 1960104.8412415192,
+        "equity": 554855.5968280331
+      },
+      {
+        "snapshotId": 1773410400,
+        "pnl": 1970750.2185762248,
+        "equity": 565500.9741627387
+      },
+      {
+        "snapshotId": 1773414000,
+        "pnl": 1971622.8728402476,
+        "equity": 566373.6284267615
+      },
+      {
+        "snapshotId": 1773417600,
+        "pnl": 1948443.986655265,
+        "equity": 543189.6516377785
+      },
+      {
+        "snapshotId": 1773421200,
+        "pnl": 1952502.164683304,
+        "equity": 547242.9612278176
+      }
+    ],
+    "statusCode": 200
+  },
+  "captured_at": "2026-03-13T12:09:49.492559"
+}

@@ -1,17 +1,19 @@
 {
   "name": "scripts",
   "version": "1.0.0",
-  "description": "",
+  "description": "Bloodhound data scripts",
   "main": "migrate-clickhouse.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "scrape:axiom": "node scrape-axiom-kols.mjs",
+    "scrape:pumpfun": "node scrape-pumpfun-profiles.mjs",
+    "scrape:trending": "node scrape-trending-kols.mjs",
+    "scrape:all": "node kol-master-scraper.mjs",
+    "seed": "node seed-known-wallets.mjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "cheerio": "^1.2.0",
-    "pg": "^8.19.0"
+    "pg": "^8.19.0",
+    "playwright": "^1.42.0"
   }
 }

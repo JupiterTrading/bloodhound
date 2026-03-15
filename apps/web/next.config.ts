@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
       { hostname: "cdn.geckoterminal.com" },
       { hostname: "assets.coingecko.com" },
       { hostname: "cf-ipfs.com" },
+      { hostname: "gmgn.ai" },
+      { hostname: "*.digitaloceanspaces.com" },
+      { hostname: "pbs.twimg.com" },
+      { hostname: "unavatar.io" },
     ],
   },
   env: {

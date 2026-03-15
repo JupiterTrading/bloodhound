@@ -42,34 +42,15 @@ export function AddressTag({
     <span
       title={showTooltip ? (copied ? "Copied!" : address) : undefined}
       onClick={handleCopy}
-      style={{
-        fontFamily: "JetBrains Mono, ui-monospace, monospace",
-        fontSize: size,
-        color: color ?? "var(--text-secondary)",
-        cursor: "pointer",
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "4px",
-        userSelect: "none",
-        transition: "color 0.1s",
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLSpanElement).style.color = color ?? "var(--text-primary)";
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLSpanElement).style.color = color ?? "var(--text-secondary)";
-      }}
+      className="font-mono inline-flex items-center gap-1 cursor-pointer select-none text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+      style={{ fontSize: size, color }}
     >
       {label && (
-        <span style={{ color: "var(--text-muted)", marginRight: "2px" }}>
-          {label}
-        </span>
+        <span className="text-[var(--text-muted)] mr-0.5">{label}</span>
       )}
       {truncated}
       {copied && (
-        <span style={{ fontSize: 10, color: "var(--accent)", marginLeft: "4px" }}>
-          ✓
-        </span>
+        <span className="text-[10px] text-[var(--accent)] ml-1">✓</span>
       )}
     </span>
   );

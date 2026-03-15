@@ -164,8 +164,8 @@ async def _store_new_pair(
     signature: str,
     deployer: str | None = None,
 ) -> None:
-    """Store detected new pair in Redis and ClickHouse."""
-    from app.services import clickhouse
+    """Store detected new pair in Redis and Supabase."""
+    from app.services import analytics
     
     global seen_tokens
     now = time.time()
@@ -211,7 +211,7 @@ async def _store_new_pair(
     except Exception as e:
         print(f"[launchpad] redis error: {e}")
     
-    # Store in ClickHouse
+    # Store in Supabase
     signal = {
         "signal_type": f"{launchpad}_new_token",
         "confidence": "CONFIRMED",
@@ -223,9 +223,9 @@ async def _store_new_pair(
         "metadata": json.dumps(pair_data["metadata"]),
     }
     try:
-        await clickhouse.insert_signals([signal])
+        await analytics.insert_signals([signal])
     except Exception as e:
-        print(f"[launchpad] clickhouse error: {e}")
+        print(f"[launchpad] signal insert error: {e}")
 
 
 async def _process_log_notification(notification: dict) -> None:

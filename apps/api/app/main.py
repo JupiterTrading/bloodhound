@@ -13,12 +13,14 @@ async def lifespan(app: FastAPI):
     from app.services.pumpfun import run_pumpfun_monitor
     from app.services.new_pair_monitor import run_new_pair_monitor
     from app.services.launchpad_monitor import run_launchpad_monitor
+    from app.services.backfill_worker import start_backfill_worker
 
     tasks = [
         asyncio.create_task(run_poller()),
         asyncio.create_task(run_pumpfun_monitor()),
         asyncio.create_task(run_new_pair_monitor()),
         asyncio.create_task(run_launchpad_monitor()),
+        asyncio.create_task(start_backfill_worker()),
     ]
     yield
     for task in tasks:
@@ -38,7 +40,7 @@ app = FastAPI(
 # CORS — allow Next.js dev server and production domain
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://bloodhound.xyz"],
+    allow_origins=["http://localhost:3000", "http://localhost:3001", "http://localhost:3002", "https://bloodhound.xyz"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -69,18 +71,12 @@ async def platform_stats():
         return cached
 
     try:
-        from app.services.clickhouse import get_client
-        client = get_client()
-
-        tx_result, wallet_result = await asyncio.gather(
-            asyncio.to_thread(client.query, "SELECT count() FROM transfers"),
-            asyncio.to_thread(
-                client.query,
-                "SELECT uniqExact(from_address) FROM transfers"
-            ),
-        )
-        tx_count = int(tx_result.result_rows[0][0] or 0)
-        wallet_count = int(wallet_result.result_rows[0][0] or 0)
+        from app.services.supabase import get_client
+        supabase = get_client()
+        wr_result = supabase.table("wallet_rankings").select("id", count="exact").execute()
+        wallet_count = wr_result.count or 0
+        wt_result = supabase.table("wallet_trades").select("id", count="exact").execute()
+        tx_count = wt_result.count or 0
     except Exception:
         tx_count = 0
         wallet_count = 0
@@ -95,12 +91,51 @@ async def platform_stats():
     return result
 
 
+@app.get("/admin/backfill/status")
+async def backfill_status():
+    """Admin endpoint to monitor backfill worker progress."""
+    from app.services.backfill_worker import get_backfill_stats
+    from app.services.supabase import get_client
+    
+    # Get worker stats
+    worker_stats = get_backfill_stats()
+    
+    # Get backfill progress from DB
+    try:
+        sb = get_client()
+        
+        # Count by status
+        pending = sb.table("wallet_rankings").select("id", count="exact").eq("backfill_status", "pending").execute()
+        complete = sb.table("wallet_rankings").select("id", count="exact").eq("backfill_status", "complete").execute()
+        error = sb.table("wallet_rankings").select("id", count="exact").eq("backfill_status", "error").execute()
+        
+        # Get total trades backfilled
+        trades = sb.table("wallet_trades").select("id", count="exact").execute()
+        
+        return {
+            "worker": worker_stats,
+            "progress": {
+                "pending": pending.count or 0,
+                "complete": complete.count or 0,
+                "error": error.count or 0,
+                "total_trades": trades.count or 0,
+            }
+        }
+    except Exception as e:
+        return {
+            "worker": worker_stats,
+            "error": str(e)
+        }
+
+
 # ---------------------------------------------------------------------------
 # Routers
 # ---------------------------------------------------------------------------
-from app.routers import wallet, webhooks, search, token, tracked, known, signals, ai, tx, leaderboard, events, entity
+from app.routers import wallet, webhooks, search, token, tracked, known, signals, ai, tx, leaderboard, events, entity, kol, rankings
 
 app.include_router(wallet.router,      prefix="/v1/wallet",      tags=["wallet"])
+app.include_router(kol.router,         prefix="/v1/kol",         tags=["kol"])
+app.include_router(rankings.router,    prefix="/v1/rankings",    tags=["rankings"])
 app.include_router(search.router,      prefix="/v1/search",      tags=["search"])
 app.include_router(token.router,       prefix="/v1/token",       tags=["token"])
 app.include_router(tx.router,          prefix="/v1/tx",          tags=["tx"])

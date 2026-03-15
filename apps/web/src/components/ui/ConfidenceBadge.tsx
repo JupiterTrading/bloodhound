@@ -44,31 +44,18 @@ export function ConfidenceBadge({
     return (
       <span
         title={cfg.label}
-        style={{
-          display: "inline-block",
-          width: "8px",
-          height: "8px",
-          borderRadius: "50%",
-          background: color,
-          flexShrink: 0,
-        }}
+        className="inline-block w-2 h-2 rounded-full shrink-0"
+        style={{ background: color }}
       />
     );
   }
 
   return (
     <span
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "5px",
-        fontSize: "11px",
-        fontWeight: 600,
-        letterSpacing: "0.06em",
-        color,
-      }}
+      className="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-wide"
+      style={{ color }}
     >
-      <span style={{ fontSize: "10px" }}>{cfg.symbol}</span>
+      <span className="text-[10px]">{cfg.symbol}</span>
       {showLabel && cfg.label}
     </span>
   );

@@ -19,7 +19,7 @@ from typing import Any
 from app.services.helius import get_wallet_transactions, fetch_full_history
 from app.services.ingestion import parse_helius_transaction, enrich_with_prices
 from app.services.jupiter import get_prices_batch
-from app.services import clickhouse
+from app.services import analytics
 from app.services.signals import detect_signals
 
 POLL_INTERVAL = 300    # seconds between full sweeps (5 min)
@@ -63,9 +63,9 @@ async def _process_tx_batch(
     prices = await get_prices_batch(unique_mints)
     enrich_with_prices(transfer_rows, trade_rows, prices)
 
-    await clickhouse.insert_transactions(tx_rows)
-    await clickhouse.insert_transfers(transfer_rows)
-    await clickhouse.insert_trades(trade_rows)
+    await analytics.insert_transactions(tx_rows)
+    await analytics.insert_transfers(transfer_rows)
+    await analytics.insert_trades(trade_rows)
 
     # Signal detection on this batch
     signals: list[dict] = []
@@ -73,7 +73,7 @@ async def _process_tx_batch(
         try:
             signals = await detect_signals(transfer_rows, wallet_address)
             if signals:
-                await clickhouse.insert_signals(signals)
+                await analytics.insert_signals(signals)
                 print(f"[poller] {len(signals)} signals detected for {wallet_address[:8]}...")
         except Exception as e:
             print(f"[poller] signal detection error {wallet_address[:8]}...: {e}")

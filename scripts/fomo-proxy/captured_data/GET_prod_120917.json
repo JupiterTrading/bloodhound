@@ -1,0 +1,33 @@
+{
+  "endpoint": "GET /prod",
+  "url": "https://status.fomo.family/prod",
+  "request_headers": {
+    "accept": "*/*",
+    "user-agent": "fomo/1.60.4/280/ios/iPhone 17 Pro Max/Apple",
+    "priority": "u=3, i",
+    "accept-language": "en-US,en;q=0.9",
+    "accept-encoding": "gzip, deflate, br"
+  },
+  "request_body": null,
+  "response_status": 200,
+  "response_headers": {
+    "date": "Fri, 13 Mar 2026 17:09:17 GMT",
+    "content-type": "application/json",
+    "content-encoding": "br",
+    "server": "cloudflare",
+    "cf-ray": "9dbca53f483ffb2b-BNA",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "response_body": {
+    "success": "true",
+    "message": "Successfully got status",
+    "responseObject": {
+      "statusSeverity": "STABLE",
+      "loginStatusSeverity": "STABLE",
+      "softUpgradeVersion": "1.60.3",
+      "softUpgradeMessage": "Please update your app to maximize performance"
+    },
+    "statusCode": 200
+  },
+  "captured_at": "2026-03-13T12:09:17.364177"
+}
