@@ -475,13 +475,22 @@ function TopCard({ entry, rank, showUsd, onSelect }: { entry: KolRanking; rank: 
       className={`group relative isolate overflow-hidden rounded-[16px] cursor-pointer transition-all duration-200 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]`}
       style={{ 
         background: 'rgba(16,17,20,0.9)',
-        border: big ? '2px solid rgba(255,255,255,0.08)' : '2px solid rgba(255,255,255,0.05)',
+        border: '2px solid rgba(255,255,255,0.05)',
       }}
     >
+      {/* Gradient border glow for #1 card */}
+      {big && (
+        <div className="pointer-events-none absolute inset-0 z-[3] rounded-[16px]" style={{
+          boxShadow: 'inset 0 0 0 1px rgba(220,38,38,0.15), 0 0 60px -10px rgba(220,38,38,0.1)',
+        }} />
+      )}
+      {/* Inner dark overlay */}
+      <div className="pointer-events-none absolute inset-0 z-[1] h-full w-full rounded-[16px]" style={{ background: 'var(--bg-base)', opacity: 0.35 }} />
+      {/* Blurred PFP background */}
       {entry.profile.twitter_handle && (
-        <div className="pointer-events-none absolute inset-0 z-[-1] overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 z-[0] overflow-hidden">
           <div
-            className="h-full w-full scale-150 blur-[100px] saturate-[1.75] brightness-[0.3] opacity-[0.12]"
+            className="h-full w-full scale-150 blur-[100px] saturate-[1.75] brightness-[0.5] opacity-[0.1]"
             style={{ backgroundImage: `url(https://unavatar.io/twitter/${entry.profile.twitter_handle})`, backgroundSize: "cover" }}
           />
         </div>
