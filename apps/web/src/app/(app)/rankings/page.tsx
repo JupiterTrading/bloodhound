@@ -141,15 +141,15 @@ export default function RankingsPage() {
   const rows = showTop3 ? filtered.slice(3) : filtered;
 
   return (
-    <div style={{ maxWidth: 1280, margin: "0 auto", padding: "24px 32px 60px" }}>
+    <div style={{ maxWidth: 1420, margin: "0 auto", padding: "0 24px 40px" }}>
       {/* ── Row 1: Tabs + Contribute + Search ── */}
-      <div className="flex items-center justify-between mb-6 gap-4 flex-wrap">
-        <div className="flex items-center gap-7">
+      <div className="flex items-center justify-between mb-4 gap-4 flex-wrap">
+        <div className="flex items-center gap-[24px]">
           {TABS.map((t) => (
             <button
               key={t.id}
               onClick={() => setTab(t.id)}
-              className={`text-[16px] font-medium cursor-pointer transition-colors duration-100 active:scale-[0.96] ${
+              className={`text-[16px] font-medium leading-[21px] cursor-pointer transition-all duration-[65ms] ease-out active:scale-[0.96] ${
                 tab === t.id
                   ? "text-[var(--text-primary)]"
                   : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
@@ -162,11 +162,11 @@ export default function RankingsPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setShowContribute(true)}
-            className="flex items-center gap-1.5 px-5 py-2.5 text-[14px] font-medium text-[var(--accent)] border border-[var(--accent)]/30 rounded-full hover:bg-[var(--accent-subtle)] cursor-pointer transition-all active:scale-[0.96]"
+            className="flex items-center gap-[7px] h-[36px] px-[12px] text-[14px] font-medium text-[var(--accent)] border border-[var(--border)] rounded-full hover:bg-[rgba(255,255,255,0.03)] cursor-pointer transition-all duration-[65ms] active:scale-[0.96]"
           >
             + Contribute
           </button>
-          <div className="flex items-center gap-2 h-[36px] px-4 border border-[var(--border)] rounded-full hover:border-[var(--border-strong)] focus-within:border-[var(--accent)] transition-colors">
+          <div className="flex items-center gap-[8px] h-[32px] pl-[12px] pr-[4px] border border-[var(--border)] rounded-full hover:bg-[rgba(255,255,255,0.03)] transition-colors">
             <svg className="w-4 h-4 text-[var(--text-muted)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>
@@ -175,7 +175,7 @@ export default function RankingsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={`Search ${isKol ? "KOLs" : tab === "global" ? "Global" : "Tracked"}...`}
-              className="bg-transparent text-[13px] text-[var(--text-primary)] outline-none w-[160px] placeholder:text-[var(--text-muted)]"
+              className="bg-transparent text-[12px] font-medium text-[var(--text-primary)] outline-none w-[160px] placeholder:text-[var(--text-muted)]"
             />
             {search && (
               <button onClick={() => setSearch("")} className="text-[var(--text-muted)] hover:text-[var(--text-primary)] cursor-pointer">
@@ -189,12 +189,12 @@ export default function RankingsPage() {
       </div>
 
       {/* ── Row 2: Sort + Asc/Desc | Period ── */}
-      <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
-        <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
+        <div className="flex items-center gap-[8px]">
           <div className="relative" ref={sortRef}>
             <button
               onClick={() => setShowSortDropdown(!showSortDropdown)}
-              className="flex items-center gap-2 h-[40px] px-5 text-[14px] bg-[var(--bg-surface)] border border-[var(--border)] rounded-full text-[var(--text-primary)] cursor-pointer hover:bg-[var(--bg-hover)] transition-colors"
+              className="flex items-center gap-[7px] h-[36px] pl-[12px] pr-[10px] text-[14px] border border-[var(--border)] rounded-full text-[var(--text-primary)] cursor-pointer hover:bg-[rgba(255,255,255,0.03)] transition-all duration-[65ms]"
             >
               <span className="text-[var(--text-muted)] text-[13px]">Sort by</span>
               <span className="font-semibold">{SORT_OPTIONS.find((o) => o.id === sortBy)?.label ?? "PnL SOL"}</span>
@@ -230,7 +230,7 @@ export default function RankingsPage() {
           </div>
           <button
             onClick={() => setSortDir(sortDir === "desc" ? "asc" : "desc")}
-            className="flex items-center justify-center w-[38px] h-[38px] bg-[var(--bg-surface)] border border-[var(--border)] rounded-full text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)] cursor-pointer transition-colors"
+            className="flex items-center justify-center w-[36px] h-[36px] border border-[var(--border)] rounded-full text-[var(--text-secondary)] hover:bg-[rgba(255,255,255,0.03)] hover:text-[var(--text-primary)] cursor-pointer transition-all duration-[65ms]"
             title={sortDir === "desc" ? "Sort Descending" : "Sort Ascending"}
           >
             <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -247,7 +247,7 @@ export default function RankingsPage() {
             <button
               key={p.id}
               onClick={() => setPeriod(p.id)}
-              className={`px-3 py-1.5 text-[15px] font-medium cursor-pointer transition-colors duration-100 rounded-lg active:scale-[0.96] ${
+              className={`h-[32px] px-[8px] text-[14px] font-medium cursor-pointer rounded-[8px] transition-all duration-[65ms] ease-out active:scale-[0.96] ${
                 period === p.id ? "text-[var(--accent)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
@@ -259,7 +259,7 @@ export default function RankingsPage() {
 
       {/* ── Top 3 Cards (KOL tab) ── */}
       {showTop3 && !isLoading && top3.length > 0 && (
-        <div className="mb-10">
+        <div className="mb-[16px]">
           {top3[0] && (
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <div className="text-center text-[16px] font-medium text-[var(--text-muted)] mb-2.5">1</div>
@@ -267,7 +267,7 @@ export default function RankingsPage() {
             </motion.div>
           )}
           {(top3[1] || top3[2]) && (
-            <div className="grid grid-cols-2 gap-6 mt-6">
+            <div className="grid grid-cols-2 gap-[16px] mt-[16px]">
               {top3[1] && (
                 <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
                   <div className="text-center text-[16px] font-medium text-[var(--text-muted)] mb-2.5">2</div>
@@ -312,23 +312,20 @@ export default function RankingsPage() {
       )}
 
       {/* ── Traders Table ── */}
-      <div className="rounded-[16px] bg-[var(--bg-surface)] overflow-hidden" style={{ border: '1px solid rgba(42,32,32,0.6)' }}>
-        <div className="flex items-center justify-between px-6 py-4">
+      <div className="rounded-[16px] overflow-hidden" style={{ background: 'rgba(252,252,252,0.00135)', border: '1px solid rgba(252,252,252,0.05)' }}>
+        <div className="flex items-center justify-between h-[52px] min-h-[52px] px-[24px]">
           <span className="text-[16px] font-semibold text-[var(--text-primary)]">
             {tab === "tracked" ? "Tracked Wallets" : "Traders"}
           </span>
           <div className="flex items-center gap-2.5">
             <button
               onClick={() => setShowUsd(!showUsd)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 text-[13px] font-medium border rounded-lg cursor-pointer transition-all active:scale-[0.96] ${
-                showUsd
-                  ? "text-[var(--text-primary)] bg-[var(--bg-elevated)] border-[var(--border-strong)]"
-                  : "text-[var(--text-secondary)] bg-transparent border-[var(--border)]"
-              } hover:bg-[var(--bg-hover)]`}
+              className="flex h-[32px] min-h-[32px] items-center gap-[4px] rounded-full pl-[10px] pr-[8px] text-[14px] font-medium text-[var(--text-primary)] cursor-pointer transition-colors duration-150 hover:bg-[rgba(252,252,252,0.1)]"
+              style={{ background: 'rgba(252,252,252,0.05)' }}
               title={showUsd ? "Switch to SOL" : "Switch to USD"}
             >
               {showUsd ? "USD" : "SOL"}
-              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="w-[14px] h-[14px]" style={{ opacity: 0.65 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
               </svg>
             </button>
@@ -351,7 +348,8 @@ export default function RankingsPage() {
             )}
             <button
               onClick={() => setViewMode(viewMode === "list" ? "gallery" : "list")}
-              className="flex items-center justify-center w-9 h-9 text-[var(--text-muted)] bg-transparent border border-[var(--border)] rounded-lg hover:bg-[var(--bg-hover)] hover:text-[var(--text-secondary)] transition-colors cursor-pointer"
+              className="flex h-[32px] min-h-[32px] w-[32px] items-center justify-center rounded-[4px] text-[var(--text-primary)] cursor-pointer transition-colors duration-150 hover:bg-[rgba(252,252,252,0.1)]"
+              style={{ background: 'rgba(252,252,252,0.05)' }}
               title={viewMode === "list" ? "Gallery view" : "List view"}
             >
               {viewMode === "list" ? (
@@ -388,18 +386,17 @@ export default function RankingsPage() {
         ) : (
           <>
             {/* Table header - Axiom style: subtle, no harsh bg */}
-            <div className="grid grid-cols-[55px_1.6fr_110px_90px_100px_110px_100px_90px] gap-4 px-7 py-3.5 text-[13px] text-[var(--text-muted)]" style={{ borderBottom: '1px solid rgba(42,32,32,0.4)' }}>
-              <div>Rank</div>
-              <div>{tab === "global" || tab === "tracked" ? "Wallet" : "Trader"}</div>
-              <div className="text-right">PNL</div>
-              <div className="text-right">Win Rate</div>
-              <div className="text-right">Positions</div>
-              <div className="text-right">Trades</div>
-              <div className="text-right">Volume</div>
-              <div className="text-right">Avg Hold</div>
+            <div className="flex h-[40px] min-h-[40px] w-full items-center gap-[16px] whitespace-nowrap px-[24px] text-[14px] font-normal text-[var(--text-muted)]">
+              <div className="w-[80px] shrink-0">Rank</div>
+              <div className="flex-1">{tab === "global" || tab === "tracked" ? "Wallet" : "Trader"}</div>
+              <div className="flex-1">PNL</div>
+              <div className="flex-1">Win Rate</div>
+              <div className="flex-1">Positions</div>
+              <div className="flex-1">Trades</div>
+              <div className="flex-1">Volume</div>
+              <div className="flex-1">Avg Hold</div>
             </div>
-            {/* Rows - NO max-height, show all */}
-            <div>
+            <div className="min-h-[720px] w-full pb-[32px]">
               {isLoading ? (
                 Array.from({ length: 10 }).map((_, i) => (
                   <div key={i} className="h-[60px] animate-pulse bg-[var(--bg-surface)]" style={{ opacity: 1 - i * 0.08, borderBottom: '1px solid rgba(42,32,32,0.2)' }} />
@@ -456,8 +453,8 @@ function TopCard({ entry, rank, showUsd, onSelect }: { entry: KolRanking; rank: 
       onClick={() => onSelect(entry)}
       className={`group relative isolate overflow-hidden rounded-[16px] cursor-pointer transition-all duration-200 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]`}
       style={{ 
-        background: 'rgba(16,13,13,0.8)',
-        border: big ? '1px solid rgba(100,120,255,0.2)' : '1px solid rgba(42,32,32,0.6)',
+        background: 'rgba(16,17,20,0.9)',
+        border: big ? '2px solid rgba(255,255,255,0.08)' : '2px solid rgba(255,255,255,0.05)',
       }}
     >
       {entry.profile.twitter_handle && (
@@ -557,12 +554,13 @@ function TraderRow({
   return (
     <div
       onClick={() => onSelect(entry)}
-      className="table-row-interactive grid grid-cols-[55px_1.6fr_110px_90px_100px_110px_100px_90px] gap-4 px-7 py-5 items-center group cursor-pointer"
-      style={{ borderBottom: '1px solid rgba(42,32,32,0.2)' }}
+      className="group relative flex h-[72px] min-h-[72px] w-full cursor-pointer items-center gap-[16px] overflow-hidden whitespace-nowrap px-[24px] transition-colors duration-150 hover:bg-[rgba(252,252,252,0.02)]"
     >
-      <div className="text-[15px] font-semibold text-[var(--text-muted)] tabular-nums">{rank}</div>
+      {/* Rank */}
+      <div className="w-[80px] shrink-0 text-[16px] font-medium text-[var(--text-muted)] tabular-nums">{rank}</div>
 
-      <div className="flex items-center gap-3.5 min-w-0">
+      {/* Trader */}
+      <div className="flex flex-1 items-center gap-[12px] min-w-0">
         <PfpImage
           handle={isKol ? entry.profile.twitter_handle : null}
           pfp={entry.profile.twitter_pfp_url}
@@ -570,8 +568,8 @@ function TraderRow({
           size={40}
         />
         <div className="min-w-0">
-          <div className="flex items-center gap-1.5">
-            <span className="text-[15px] font-semibold text-[var(--text-primary)] truncate group-hover:text-[var(--accent)] transition-colors">
+          <div className="flex items-center gap-[6px]">
+            <span className="text-[16px] font-medium text-[var(--text-primary)] truncate group-hover:text-[var(--accent)] transition-colors">
               {isKol ? entry.profile.display_name : truncAddr(entry.profile.id)}
             </span>
             {entry.profile.verified && <VerifyBadge />}
@@ -584,44 +582,51 @@ function TraderRow({
         </div>
       </div>
 
-      <div className="text-right">
-        <span className={`text-[15px] font-mono font-bold tabular-nums ${pos ? "text-[var(--success)]" : "text-[var(--error)]"}`}>
+      {/* PNL */}
+      <div className="flex-1">
+        <span className={`text-[16px] font-medium tabular-nums ${pos ? "text-[var(--success)]" : "text-[var(--error)]"}`}>
           {fmtPnl(pnl, !showUsd)}
         </span>
       </div>
 
-      <div className="text-right text-[15px] font-mono tabular-nums text-[var(--text-primary)]">
+      {/* Win Rate */}
+      <div className="flex-1 text-[16px] tabular-nums text-[var(--text-primary)]">
         {entry.win_rate > 0 ? `${entry.win_rate.toFixed(1)}%` : "\u2014"}
       </div>
 
-      <div className="text-right">
-        <div className="text-[15px] font-mono tabular-nums text-[var(--text-primary)]">
-          {entry.positions > 0 ? entry.positions : "\u2014"}
+      {/* Positions */}
+      <div className="flex-1">
+        <div className="text-[16px] tabular-nums text-[var(--text-primary)]">
+          {entry.positions > 0 ? entry.positions.toLocaleString() : "\u2014"}
         </div>
         {(entry.positions_win > 0 || entry.positions_loss > 0) && (
-          <div className="flex items-center justify-end gap-1.5 mt-0.5 text-[12px] font-mono tabular-nums">
-            <span className="text-[var(--success)]">{entry.positions_win}</span>
-            <span className="text-[var(--error)]">{entry.positions_loss}</span>
+          <div className="flex items-center gap-[6px] mt-0.5 text-[12px] tabular-nums">
+            <span className="text-[var(--success)]">{entry.positions_win.toLocaleString()}</span>
+            <span className="text-[var(--error)]">{entry.positions_loss.toLocaleString()}</span>
           </div>
         )}
       </div>
 
-      <div className="text-right">
-        <div className="text-[15px] font-mono tabular-nums text-[var(--text-primary)]">
+      {/* Trades */}
+      <div className="flex-1">
+        <div className="text-[16px] tabular-nums text-[var(--text-primary)]">
           {entry.trade_count > 0 ? entry.trade_count.toLocaleString() : "\u2014"}
         </div>
         {(entry.winning_trades > 0 || entry.losing_trades > 0) && (
-          <div className="flex items-center justify-end gap-1.5 mt-0.5 text-[12px] font-mono tabular-nums">
+          <div className="flex items-center gap-[6px] mt-0.5 text-[12px] tabular-nums">
             <span className="text-[var(--success)]">{entry.winning_trades.toLocaleString()}</span>
             <span className="text-[var(--error)]">{entry.losing_trades.toLocaleString()}</span>
           </div>
         )}
       </div>
 
-      <div className="text-right text-[15px] font-mono tabular-nums text-[var(--text-primary)]">
+      {/* Volume */}
+      <div className="flex-1 text-[16px] tabular-nums text-[var(--text-primary)]">
         {fmtVol(vol, !showUsd)}
       </div>
-      <div className="text-right text-[15px] font-mono tabular-nums text-[var(--text-muted)]">
+
+      {/* Avg Hold */}
+      <div className="flex-1 text-[16px] tabular-nums text-[var(--text-muted)]">
         {fmtHold(entry.avg_hold_time_mins ?? 0)}
       </div>
     </div>
