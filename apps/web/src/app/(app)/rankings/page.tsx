@@ -38,6 +38,22 @@ type Tab = (typeof TABS)[number]["id"];
 type Period = (typeof PERIODS)[number]["id"];
 type SortBy = (typeof SORT_OPTIONS)[number]["id"];
 
+/* ═══ SOL Icon (proper Solana logo) ═══ */
+
+function SolLogo({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 398 312" className="shrink-0">
+      <linearGradient id="sol-a" x1="360.879" x2="141.213" y1="351.455" y2="-69.294" gradientTransform="matrix(1 0 0 -1 0 314)" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stopColor="#00FFA3"/>
+        <stop offset="1" stopColor="#DC1FFF"/>
+      </linearGradient>
+      <path fill="url(#sol-a)" d="M64.6 237.9c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.5c-5.8 0-8.7-7-4.6-11.1l62.7-62.7z"/>
+      <path fill="url(#sol-a)" d="M64.6 3.8C67.1 1.4 70.4 0 73.8 0h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.5c-5.8 0-8.7-7-4.6-11.1L64.6 3.8z"/>
+      <path fill="url(#sol-a)" d="M333.1 120.1c-2.4-2.4-5.7-3.8-9.2-3.8H6.5c-5.8 0-8.7 7-4.6 11.1l62.7 62.7c2.4 2.4 5.7 3.8 9.2 3.8h317.4c5.8 0 8.7-7 4.6-11.1l-62.7-62.7z"/>
+    </svg>
+  );
+}
+
 /* ═══ Formatters ═══ */
 
 function fmtPnl(n: number, isSol: boolean): string {
@@ -76,7 +92,7 @@ function truncAddr(a: string): string {
 }
 
 function sanitize(s: string): string {
-  return s.replace(/[<>"'&]/g, '').trim().slice(0, 200);
+  return s.replace(/[<>"'&]/g, "").trim().slice(0, 200);
 }
 
 /* ═══ Main Page ═══ */
@@ -97,9 +113,7 @@ export default function RankingsPage() {
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
-      if (sortRef.current && !sortRef.current.contains(e.target as Node)) {
-        setShowSortDropdown(false);
-      }
+      if (sortRef.current && !sortRef.current.contains(e.target as Node)) setShowSortDropdown(false);
     }
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
@@ -111,15 +125,7 @@ export default function RankingsPage() {
 
   const { data, isLoading } = useQuery({
     queryKey: ["rankings", tab, period, sortBy, sortDir, page],
-    queryFn: () =>
-      kolApi.rankings({
-        wallet_type: walletTypeParam,
-        period,
-        sort_by: sortBy,
-        sort_dir: sortDir,
-        limit: pageSize,
-        offset,
-      }),
+    queryFn: () => kolApi.rankings({ wallet_type: walletTypeParam, period, sort_by: sortBy, sort_dir: sortDir, limit: pageSize, offset }),
     staleTime: 15_000,
     refetchInterval: 15_000,
   });
@@ -128,331 +134,252 @@ export default function RankingsPage() {
 
   const all = data?.rankings ?? [];
   const filtered = search
-    ? all.filter(
-        (r) =>
-          r.profile.display_name.toLowerCase().includes(search.toLowerCase()) ||
-          (r.profile.twitter_handle || "").toLowerCase().includes(search.toLowerCase())
-      )
+    ? all.filter((r) => r.profile.display_name.toLowerCase().includes(search.toLowerCase()) || (r.profile.twitter_handle || "").toLowerCase().includes(search.toLowerCase()))
     : all;
 
   const isKol = tab === "kol";
   const showTop3 = isKol && !search;
   const top3 = showTop3 ? filtered.slice(0, 3) : [];
   const rows = showTop3 ? filtered.slice(3) : filtered;
-
   const topKolHandle = top3[0]?.profile.twitter_handle;
 
   return (
-    <div className="relative" style={{ maxWidth: 1420, margin: "0 auto", padding: "0 24px 40px" }}>
-      {/* ── Hero background gradient (Axiom-style blurred PFP from #1 KOL) ── */}
+    <div className="relative isolate w-full min-h-screen">
+      {/* ── Hero BG gradient from #1 KOL PFP ── */}
       {topKolHandle && (
-        <div className="pointer-events-none absolute left-0 right-0 top-0 z-[-1] select-none overflow-hidden" style={{ height: 750 }}>
-          <div className="absolute inset-0 z-[-2]" style={{ background: 'var(--bg-base)' }} />
-          <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: 300, background: 'linear-gradient(to top, var(--bg-base), transparent)' }} />
-          <div className="absolute left-0 right-0 top-0 z-[-1]" style={{ height: 750, filter: 'blur(100px) saturate(1.75) brightness(0.5)' }}>
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-[-1] select-none overflow-hidden" style={{ height: 750 }}>
+          <div className="absolute inset-0 z-[-2]" style={{ background: "var(--bg-base)" }} />
+          <div className="absolute bottom-0 inset-x-0 z-0" style={{ height: 300, background: "linear-gradient(to top, var(--bg-base), transparent)" }} />
+          <div className="absolute inset-x-0 top-0 z-[-1]" style={{ height: 750, filter: "blur(100px) saturate(1.75) brightness(0.5)" }}>
             <div className="h-full w-full" style={{ opacity: 0.1 }}>
-              <img
-                alt=""
-                src={`https://unavatar.io/twitter/${topKolHandle}`}
-                className="h-full w-full object-fill"
-                style={{ position: 'absolute', inset: 0 }}
-                loading="eager"
+              <img alt="" src={`https://unavatar.io/twitter/${topKolHandle}`} className="h-full w-full object-fill" style={{ position: "absolute", inset: 0 }} loading="eager" />
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="w-full max-w-[1420px] mx-auto px-[24px]">
+        {/* ═══ Row 1: Page tabs + Apply + Search ═══ */}
+        <div className="flex items-center justify-between pt-[24px] pb-[16px] gap-[16px] flex-wrap">
+          <div className="flex items-center gap-[24px]">
+            {TABS.map((t) => (
+              <button key={t.id} onClick={() => setTab(t.id)}
+                className={`text-[16px] font-medium leading-[21px] cursor-pointer transition-all duration-[65ms] ease-out active:scale-[0.96] ${
+                  tab === t.id ? "text-[var(--text-primary)]" : "text-[rgba(119,122,140,1)] hover:text-[rgba(200,201,209,1)]"
+                }`}
+              >{t.label}</button>
+            ))}
+          </div>
+          <div className="flex items-center gap-[12px]">
+            <button onClick={() => setShowContribute(true)}
+              className="flex items-center gap-[4px] h-[36px] px-[12px] text-[14px] font-medium text-[var(--text-primary)] rounded-full cursor-pointer transition-all duration-150 hover:bg-[rgba(252,252,252,0.1)]"
+              style={{ border: "1px solid rgba(255,255,255,0.05)" }}
+            >+ Apply</button>
+            <div className="flex h-[32px] w-[280px] cursor-text items-center gap-[8px] rounded-full pl-[12px] pr-[4px] transition-colors duration-150 hover:bg-[rgba(252,252,252,0.035)]"
+              style={{ border: "1px solid rgba(255,255,255,0.05)" }}>
+              <svg className="w-[16px] h-[16px] shrink-0" style={{ color: "rgba(252,252,252,0.9)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
+              <input type="text" value={search} onChange={(e) => setSearch(e.target.value)}
+                placeholder={`Search ${isKol ? "KOLs" : tab === "global" ? "Global" : "Tracked"}...`}
+                className="flex-1 bg-transparent text-[14px] font-medium text-[var(--text-primary)] outline-none placeholder:font-medium placeholder:text-[rgba(252,252,252,0.6)]"
               />
+              {search && (
+                <button onClick={() => setSearch("")} className="text-[rgba(252,252,252,0.4)] hover:text-[var(--text-primary)] cursor-pointer pr-[4px]">
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+              )}
             </div>
           </div>
         </div>
-      )}
 
-      {/* ── Row 1: Tabs + Contribute + Search ── */}
-      <div className="flex items-center justify-between mb-4 gap-4 flex-wrap">
-        <div className="flex items-center gap-[24px]">
-          {TABS.map((t) => (
-            <button
-              key={t.id}
-              onClick={() => setTab(t.id)}
-              className={`text-[16px] font-medium leading-[21px] cursor-pointer transition-all duration-[65ms] ease-out active:scale-[0.96] ${
-                tab === t.id
-                  ? "text-[var(--text-primary)]"
-                  : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => setShowContribute(true)}
-            className="group flex items-center gap-[4px] h-[32px] px-[8px] text-[12px] font-medium text-[var(--text-primary)] rounded-full hover:bg-[rgba(252,252,252,0.1)] cursor-pointer transition-all duration-150"
-          >
-            + Contribute
-          </button>
-          <div className="group flex h-[32px] w-[320px] cursor-text items-center gap-[8px] rounded-full pl-[8px] pr-[2px] font-normal transition-colors duration-150 hover:bg-[rgba(252,252,252,0.035)]" style={{ border: '1px solid rgba(255,255,255,0.05)' }}>
-            <svg className="w-4 h-4 text-[var(--text-muted)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder={`Search ${isKol ? "KOLs" : tab === "global" ? "Global" : "Tracked"}...`}
-              className="flex-1 bg-transparent text-[14px] font-medium text-[var(--text-primary)] outline-none placeholder:font-medium placeholder:text-[rgba(252,252,252,0.6)]"
-            />
-            {search && (
-              <button onClick={() => setSearch("")} className="text-[var(--text-muted)] hover:text-[var(--text-primary)] cursor-pointer">
-                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+        {/* ═══ Row 2: Sort + Direction | Timeframes ═══ */}
+        <div className="flex items-center justify-between pb-[16px] gap-[16px] flex-wrap">
+          <div className="flex items-center gap-[8px]">
+            <div className="relative" ref={sortRef}>
+              <button onClick={() => setShowSortDropdown(!showSortDropdown)}
+                className="flex items-center gap-[7px] h-[36px] pl-[12px] pr-[10px] text-[14px] rounded-full text-[var(--text-primary)] cursor-pointer hover:bg-[rgba(255,255,255,0.03)] transition-all duration-[65ms]"
+                style={{ border: "1px solid rgba(255,255,255,0.05)" }}
+              >
+                <span className="text-[rgba(119,122,140,1)] text-[14px]">Sort by</span>
+                <span className="font-medium">{SORT_OPTIONS.find((o) => o.id === sortBy)?.label ?? "PnL SOL"}</span>
+                <svg className="w-[16px] h-[16px]" style={{ color: "rgba(252,252,252,0.6)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
               </button>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* ── Row 2: Sort + Asc/Desc | Period ── */}
-      <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
-        <div className="flex items-center gap-[8px]">
-          <div className="relative" ref={sortRef}>
-            <button
-              onClick={() => setShowSortDropdown(!showSortDropdown)}
-              className="flex items-center gap-[7px] h-[36px] pl-[12px] pr-[10px] text-[14px] border border-[var(--border)] rounded-full text-[var(--text-primary)] cursor-pointer hover:bg-[rgba(255,255,255,0.03)] transition-all duration-[65ms]"
-            >
-              <span className="text-[var(--text-muted)] text-[13px]">Sort by</span>
-              <span className="font-semibold">{SORT_OPTIONS.find((o) => o.id === sortBy)?.label ?? "PnL SOL"}</span>
-              <svg className="w-3.5 h-3.5 text-[var(--text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <AnimatePresence>
-              {showSortDropdown && (
-                <motion.div
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute top-full left-0 mt-1.5 w-[200px] bg-[var(--bg-elevated)] border border-[var(--border)] rounded-xl shadow-2xl z-50 overflow-hidden py-1"
-                >
-                  {SORT_OPTIONS.map((o) => (
-                    <button
-                      key={o.id}
-                      onClick={() => { setSortBy(o.id); setShowSortDropdown(false); }}
-                      className={`w-full text-left px-4 py-2.5 text-[14px] cursor-pointer transition-colors ${
-                        sortBy === o.id
-                          ? "bg-[var(--accent-subtle)] text-[var(--accent)] font-medium"
-                          : "text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]"
-                      }`}
-                    >
-                      {o.label}
-                    </button>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-          <button
-            onClick={() => setSortDir(sortDir === "desc" ? "asc" : "desc")}
-            className="group flex h-[32px] w-[32px] items-center justify-center rounded-full transition-all duration-150 hover:bg-[rgba(255,255,255,0.1)]" style={{ border: '1px solid rgba(255,255,255,0.035)', background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(20px)' }}
-            title={sortDir === "desc" ? "Sort Descending" : "Sort Ascending"}
-          >
-            <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              {sortDir === "desc" ? (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 4h13M3 8h9M3 12h5m8-4v12m0 0l-4-4m4 4l4-4" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 4h13M3 8h9M3 12h5m8 4V4m0 0l-4 4m4-4l4 4" />
-              )}
-            </svg>
-          </button>
-        </div>
-        <div className="flex items-center gap-1">
-          {PERIODS.map((p) => (
-            <button
-              key={p.id}
-              onClick={() => setPeriod(p.id)}
-              className={`h-[32px] px-[8px] text-[14px] font-medium cursor-pointer rounded-[4px] transition-all duration-[65ms] ease-out active:scale-[0.96] ${
-                period === p.id ? "text-[var(--accent)]" : "text-[var(--text-primary)] hover:bg-[rgba(220,38,38,0.2)] hover:text-[var(--accent)]"
-              }`}
-            >
-              {p.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* ── Top 3 Cards (KOL tab) ── */}
-      {showTop3 && !isLoading && top3.length > 0 && (
-        <div className="mb-[16px]">
-          {top3[0] && (
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <div className="text-center text-[16px] font-medium text-[var(--text-muted)] mb-2.5">1</div>
-              <TopCard entry={top3[0]} rank={1} showUsd={showUsd} onSelect={setSelectedKol} />
-            </motion.div>
-          )}
-          {(top3[1] || top3[2]) && (
-            <div className="grid grid-cols-2 gap-[16px] mt-[16px]">
-              {top3[1] && (
-                <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
-                  <div className="text-center text-[16px] font-medium text-[var(--text-muted)] mb-2.5">2</div>
-                  <TopCard entry={top3[1]} rank={2} showUsd={showUsd} onSelect={setSelectedKol} />
-                </motion.div>
-              )}
-              {top3[2] && (
-                <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>
-                  <div className="text-center text-[16px] font-medium text-[var(--text-muted)] mb-2.5">3</div>
-                  <TopCard entry={top3[2]} rank={3} showUsd={showUsd} onSelect={setSelectedKol} />
-                </motion.div>
-              )}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* ── Loading skeleton ── */}
-      {isLoading && isKol && (
-        <div className="mb-8 space-y-5">
-          <div className="h-[170px] rounded-[16px] bg-[var(--bg-surface)] border border-[var(--border)] animate-pulse" />
-          <div className="grid grid-cols-2 gap-5">
-            <div className="h-[140px] rounded-[16px] bg-[var(--bg-surface)] border border-[var(--border)] animate-pulse" />
-            <div className="h-[140px] rounded-[16px] bg-[var(--bg-surface)] border border-[var(--border)] animate-pulse" />
-          </div>
-        </div>
-      )}
-
-      {/* ── Tracked Empty State ── */}
-      {tab === "tracked" && !isLoading && filtered.length === 0 && (
-        <div className="rounded-[16px] bg-[var(--bg-surface)] border border-[var(--border)] p-16 mb-8 text-center">
-          <div className="w-14 h-14 mx-auto mb-5 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)]">
-            <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-            </svg>
-          </div>
-          <h3 className="text-[16px] font-semibold text-[var(--accent)] mb-2">No wallet data available</h3>
-          <p className="text-[14px] text-[var(--text-muted)] max-w-[400px] mx-auto">
-            Add some wallets to your account to see their performance rankings and statistics.
-          </p>
-        </div>
-      )}
-
-      {/* ── Traders Table ── */}
-      <div className="rounded-[16px] overflow-hidden" style={{ background: 'rgba(252,252,252,0.00135)', border: '1px solid rgba(252,252,252,0.05)' }}>
-        <div className="flex items-center justify-between h-[52px] min-h-[52px] px-[24px]">
-          <span className="text-[16px] font-semibold text-[var(--text-primary)]">
-            {tab === "tracked" ? "Tracked Wallets" : "Traders"}
-          </span>
-          <div className="flex items-center gap-2.5">
-            <button
-              onClick={() => setShowUsd(!showUsd)}
-              className="flex h-[32px] min-h-[32px] items-center gap-[4px] rounded-full pl-[10px] pr-[8px] text-[14px] font-medium text-[var(--text-primary)] cursor-pointer transition-colors duration-150 hover:bg-[rgba(252,252,252,0.1)]"
-              style={{ background: 'rgba(252,252,252,0.05)' }}
-              title={showUsd ? "Switch to SOL" : "Switch to USD"}
-            >
-              {showUsd ? "USD" : "SOL"}
-              <svg className="w-[14px] h-[14px]" style={{ opacity: 0.65 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-              </svg>
-            </button>
-            {tab === "global" && (
-              <div className="flex items-center gap-1">
-                {[1, 2, 3, 4].map((p) => (
-                  <button
-                    key={p}
-                    onClick={() => setPage(p)}
-                    className={`w-8 h-8 text-[13px] font-medium rounded-lg cursor-pointer transition-colors ${
-                      page === p
-                        ? "bg-[var(--accent-subtle)] text-[var(--accent)]"
-                        : "text-[var(--text-secondary)] bg-[var(--bg-elevated)] hover:bg-[var(--bg-hover)]"
-                    }`}
+              <AnimatePresence>
+                {showSortDropdown && (
+                  <motion.div initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.15 }}
+                    className="absolute top-full left-0 mt-[4px] w-[200px] rounded-[12px] shadow-2xl z-50 overflow-hidden py-[4px]"
+                    style={{ background: "rgb(16,17,20)", border: "1px solid rgba(50,53,66,0.6)" }}
                   >
-                    {p}
-                  </button>
-                ))}
-              </div>
-            )}
-            <button
-              onClick={() => setViewMode(viewMode === "list" ? "gallery" : "list")}
-              className="flex h-[32px] min-h-[32px] w-[32px] items-center justify-center rounded-[4px] text-[var(--text-primary)] cursor-pointer transition-colors duration-150 hover:bg-[rgba(252,252,252,0.1)]"
-              style={{ background: 'rgba(252,252,252,0.05)' }}
-              title={viewMode === "list" ? "Gallery view" : "List view"}
+                    {SORT_OPTIONS.map((o) => (
+                      <button key={o.id} onClick={() => { setSortBy(o.id); setShowSortDropdown(false); }}
+                        className={`w-full text-left px-[16px] py-[10px] text-[14px] cursor-pointer transition-colors ${
+                          sortBy === o.id ? "text-[var(--accent)] font-medium" : "text-[rgba(200,201,209,1)] hover:bg-[rgba(255,255,255,0.04)]"
+                        }`}
+                      >{o.label}</button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+            <button onClick={() => setSortDir(sortDir === "desc" ? "asc" : "desc")}
+              className="flex h-[32px] w-[32px] items-center justify-center rounded-full transition-all duration-150 hover:bg-[rgba(255,255,255,0.1)]"
+              style={{ border: "1px solid rgba(255,255,255,0.035)", background: "rgba(255,255,255,0.05)" }}
             >
-              {viewMode === "list" ? (
-                <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
-                </svg>
-              ) : (
-                <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
-                </svg>
-              )}
+              <svg className="w-[16px] h-[16px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                {sortDir === "desc"
+                  ? <path strokeLinecap="round" strokeLinejoin="round" d="M3 4h13M3 8h9M3 12h5m8-4v12m0 0l-4-4m4 4l4-4" />
+                  : <path strokeLinecap="round" strokeLinejoin="round" d="M3 4h13M3 8h9M3 12h5m8 4V4m0 0l-4 4m4-4l4 4" />}
+              </svg>
             </button>
+          </div>
+          <div className="flex items-center gap-[16px]">
+            {PERIODS.map((p) => (
+              <button key={p.id} onClick={() => setPeriod(p.id)}
+                className={`h-[32px] px-[8px] text-[14px] font-medium cursor-pointer rounded-[8px] transition-all duration-[65ms] active:scale-[0.96] ${
+                  period === p.id ? "text-[rgb(82,111,255)]" : "text-[var(--text-primary)] hover:bg-[rgba(82,111,255,0.2)] hover:text-[rgb(82,111,255)]"
+                }`}
+              >{p.label}</button>
+            ))}
           </div>
         </div>
 
-        {viewMode === "gallery" ? (
-          <div className="px-5 pb-5">
-            {isLoading ? (
-              <div className="space-y-3">
-                {Array.from({ length: 4 }).map((_, i) => (
-                  <div key={i} className="h-[120px] rounded-[12px] bg-[var(--bg-elevated)] animate-pulse" />
-                ))}
-              </div>
-            ) : rows.length === 0 && top3.length === 0 ? (
-              <div className="py-16 text-center text-[var(--text-muted)] text-[15px]">No rankings data available</div>
-            ) : (
-              <div className="space-y-3">
-                {rows.map((entry, i) => (
-                  <GalleryCard key={entry.profile.id} entry={entry} rank={showTop3 ? i + 4 : i + 1} showUsd={showUsd} onSelect={setSelectedKol} />
-                ))}
+        {/* ═══ Top 3 Hero Cards (KOL tab only, hidden during search) ═══ */}
+        {showTop3 && !isLoading && top3.length > 0 && (
+          <div className="pb-[24px]">
+            {/* Rank 1 — full width */}
+            {top3[0] && (
+              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+                <div className="flex justify-center mb-[8px]">
+                  <div className="w-[28px] h-[28px] rounded-full flex items-center justify-center text-[14px] font-bold" style={{ background: "rgba(82,111,255,0.15)", color: "rgb(82,111,255)", border: "1px solid rgba(82,111,255,0.3)" }}>1</div>
+                </div>
+                <TopCard entry={top3[0]} rank={1} showUsd={showUsd} onSelect={setSelectedKol} />
+              </motion.div>
+            )}
+            {/* Ranks 2 & 3 — side by side */}
+            {(top3[1] || top3[2]) && (
+              <div className="grid grid-cols-2 gap-[16px] mt-[16px]">
+                {top3[1] && (
+                  <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
+                    <div className="flex items-center gap-[8px] mb-[8px]">
+                      <div className="w-[28px] h-[28px] rounded-full flex items-center justify-center text-[14px] font-bold" style={{ background: "rgba(252,252,252,0.05)", color: "rgba(200,201,209,1)", border: "1px solid rgba(255,255,255,0.08)" }}>2</div>
+                    </div>
+                    <TopCard entry={top3[1]} rank={2} showUsd={showUsd} onSelect={setSelectedKol} />
+                  </motion.div>
+                )}
+                {top3[2] && (
+                  <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>
+                    <div className="flex items-center justify-end gap-[8px] mb-[8px]">
+                      <div className="w-[28px] h-[28px] rounded-full flex items-center justify-center text-[14px] font-bold" style={{ background: "rgba(252,252,252,0.05)", color: "rgba(200,201,209,1)", border: "1px solid rgba(255,255,255,0.08)" }}>3</div>
+                    </div>
+                    <TopCard entry={top3[2]} rank={3} showUsd={showUsd} onSelect={setSelectedKol} />
+                  </motion.div>
+                )}
               </div>
             )}
           </div>
-        ) : (
-          <>
-            {/* Table header - Axiom style: subtle, no harsh bg */}
-            <div className="flex h-[40px] min-h-[40px] w-full items-center gap-[16px] whitespace-nowrap px-[24px] text-[14px] font-normal text-[var(--text-muted)]">
-              <div className="w-[80px] shrink-0">Rank</div>
-              <div className="flex-1">{tab === "global" || tab === "tracked" ? "Wallet" : "Trader"}</div>
-              <div className="flex-1">PNL</div>
-              <div className="flex-1">Win Rate</div>
-              <div className="flex-1">Positions</div>
-              <div className="flex-1">Trades</div>
-              <div className="flex-1">Volume</div>
-              <div className="flex-1">Avg Hold</div>
-            </div>
-            <div className="min-h-[720px] w-full pb-[32px]">
-              {isLoading ? (
-                Array.from({ length: 10 }).map((_, i) => (
-                  <div key={i} className="h-[60px] animate-pulse bg-[var(--bg-surface)]" style={{ opacity: 1 - i * 0.08, borderBottom: '1px solid rgba(42,32,32,0.2)' }} />
-                ))
-              ) : rows.length === 0 && top3.length === 0 ? (
-                <div className="px-6 py-16 text-center text-[var(--text-muted)] text-[15px]">No rankings data available</div>
-              ) : (
-                rows.map((entry, i) => (
-                  <TraderRow
-                    key={entry.profile.id}
-                    entry={entry}
-                    rank={showTop3 ? i + 4 : i + 1}
-                    isKol={isKol}
-                    showUsd={showUsd}
-                    onSelect={setSelectedKol}
-                  />
-                ))
-              )}
-            </div>
-          </>
         )}
 
-        {!isLoading && filtered.length > 0 && (
-          <div className="px-[24px] py-3 text-[13px] text-[var(--text-faint)]" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-            Showing {filtered.length} traders
+        {/* Loading skeleton */}
+        {isLoading && isKol && (
+          <div className="pb-[24px] space-y-[16px]">
+            <div className="h-[180px] rounded-[16px] animate-pulse" style={{ background: "rgba(252,252,252,0.02)" }} />
+            <div className="grid grid-cols-2 gap-[16px]">
+              <div className="h-[150px] rounded-[16px] animate-pulse" style={{ background: "rgba(252,252,252,0.02)" }} />
+              <div className="h-[150px] rounded-[16px] animate-pulse" style={{ background: "rgba(252,252,252,0.02)" }} />
+            </div>
           </div>
         )}
+
+        {/* ═══ Traders Table ═══ */}
+        <div className="rounded-[16px] overflow-hidden" style={{ background: "rgba(252,252,252,0.00135)", border: "1px solid rgba(252,252,252,0.05)" }}>
+          {/* Table title bar */}
+          <div className="flex items-center justify-between h-[52px] px-[24px]">
+            <span className="text-[16px] font-semibold text-[var(--text-primary)]">{tab === "tracked" ? "Tracked Wallets" : "Traders"}</span>
+            <div className="flex items-center gap-[16px]">
+              {/* SOL/USD toggle */}
+              <button onClick={() => setShowUsd(!showUsd)}
+                className="flex h-[32px] items-center gap-[4px] rounded-full pl-[10px] pr-[8px] text-[14px] font-medium text-[var(--text-primary)] cursor-pointer transition-colors duration-150 hover:bg-[rgba(252,252,252,0.1)]"
+                style={{ background: "rgba(252,252,252,0.055)", border: "1px solid rgba(255,255,255,0.035)" }}
+                title={showUsd ? "Switch to SOL" : "Switch to USD"}
+              >
+                {showUsd ? "USD" : "SOL"}
+                <svg className="w-[14px] h-[14px]" style={{ opacity: 0.65 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" /></svg>
+              </button>
+              {/* Pagination (Global tab) */}
+              {tab === "global" && (
+                <div className="flex items-center gap-[4px]">
+                  {[1, 2, 3, 4].map((p) => (
+                    <button key={p} onClick={() => setPage(p)}
+                      className={`w-[28px] h-[28px] text-[13px] font-medium rounded-[4px] cursor-pointer transition-colors ${
+                        page === p ? "text-[var(--text-primary)]" : "text-[rgba(119,122,140,1)] hover:text-[var(--text-primary)]"
+                      }`}
+                      style={{ background: page === p ? "rgba(252,252,252,0.08)" : "rgba(252,252,252,0.03)" }}
+                    >{p}</button>
+                  ))}
+                </div>
+              )}
+              {/* Gallery/List toggle */}
+              <button onClick={() => setViewMode(viewMode === "list" ? "gallery" : "list")}
+                className="flex h-[32px] w-[32px] items-center justify-center rounded-[4px] text-[var(--text-primary)] cursor-pointer transition-colors duration-150 hover:bg-[rgba(252,252,252,0.1)]"
+                style={{ background: "rgba(252,252,252,0.05)" }}
+              >
+                {viewMode === "list"
+                  ? <svg className="w-[16px] h-[16px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
+                  : <svg className="w-[16px] h-[16px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" /></svg>}
+              </button>
+            </div>
+          </div>
+
+          {viewMode === "gallery" ? (
+            /* Gallery view */
+            <div className="px-[24px] pb-[24px] overflow-y-auto" style={{ maxHeight: "calc(100vh - 400px)" }}>
+              {isLoading ? (
+                <div className="space-y-[12px]">{Array.from({ length: 4 }).map((_, i) => (<div key={i} className="h-[120px] rounded-[16px] animate-pulse" style={{ background: "rgba(252,252,252,0.02)" }} />))}</div>
+              ) : rows.length === 0 && top3.length === 0 ? (
+                <div className="py-[64px] text-center text-[rgba(119,122,140,1)] text-[15px]">No rankings data available</div>
+              ) : (
+                <div className="space-y-[12px]">
+                  {rows.map((entry, i) => (
+                    <GalleryCard key={entry.profile.id} entry={entry} rank={showTop3 ? i + 4 : i + 1} showUsd={showUsd} onSelect={setSelectedKol} />
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            /* List view */
+            <>
+              <div className="flex h-[40px] w-full items-center gap-[16px] whitespace-nowrap px-[24px] text-[14px] font-normal text-[rgba(119,122,140,1)]" style={{ paddingRight: 34 }}>
+                <div className="w-[80px] shrink-0">Rank</div>
+                <div className="flex-1">{tab === "global" || tab === "tracked" ? "Wallet" : "Trader"}</div>
+                <div className="flex-1">PNL</div>
+                <div className="flex-1">Win Rate</div>
+                <div className="flex-1">Positions</div>
+                <div className="flex-1">Trades</div>
+                <div className="flex-1">Volume</div>
+                <div className="flex-1">Avg Hold</div>
+              </div>
+              {/* Scrollable rows */}
+              <div className="overflow-y-auto pb-[32px]" style={{ maxHeight: "calc(100vh - 400px)", minHeight: 400 }}>
+                {isLoading ? (
+                  Array.from({ length: 10 }).map((_, i) => (<div key={i} className="h-[72px] animate-pulse" style={{ opacity: 1 - i * 0.08, background: "rgba(252,252,252,0.01)" }} />))
+                ) : rows.length === 0 && top3.length === 0 ? (
+                  <div className="px-[24px] py-[64px] text-center text-[rgba(119,122,140,1)] text-[15px]">No rankings data available</div>
+                ) : (
+                  rows.map((entry, i) => (
+                    <TraderRow key={entry.profile.id} entry={entry} rank={showTop3 ? i + 4 : i + 1} isKol={isKol} showUsd={showUsd} onSelect={setSelectedKol} />
+                  ))
+                )}
+              </div>
+            </>
+          )}
+        </div>
       </div>
 
-      {/* ── Contribute Modal ── */}
+      {/* Modals */}
       <AnimatePresence>
         {showContribute && <ContributeModal onClose={() => setShowContribute(false)} />}
       </AnimatePresence>
-
-      {/* ── KOL Profile Popup ── */}
       <AnimatePresence>
         {selectedKol && <KolProfilePopup entry={selectedKol} onClose={() => setSelectedKol(null)} />}
       </AnimatePresence>
@@ -467,88 +394,57 @@ function TopCard({ entry, rank, showUsd, onSelect }: { entry: KolRanking; rank: 
   const pnlUsd = entry.pnl_usd;
   const pos = pnl >= 0;
   const big = rank === 1;
-  const pfpSize = big ? 64 : 52;
 
   return (
-    <div
-      onClick={() => onSelect(entry)}
-      className={`group relative isolate overflow-hidden rounded-[16px] cursor-pointer transition-all duration-200 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]`}
-      style={{ 
-        background: 'rgba(16,17,20,0.9)',
-        border: '2px solid rgba(255,255,255,0.05)',
-      }}
+    <div onClick={() => onSelect(entry)}
+      className="group relative isolate overflow-hidden rounded-[16px] cursor-pointer transition-all duration-200 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
+      style={{ background: "rgba(16,17,20,0.9)", border: big ? "2px solid rgba(82,111,255,0.2)" : "2px solid rgba(255,255,255,0.05)" }}
     >
-      {/* Gradient border glow for #1 card */}
-      {big && (
-        <div className="pointer-events-none absolute inset-0 z-[3] rounded-[16px]" style={{
-          boxShadow: 'inset 0 0 0 1px rgba(220,38,38,0.15), 0 0 60px -10px rgba(220,38,38,0.1)',
-        }} />
-      )}
-      {/* Inner dark overlay */}
-      <div className="pointer-events-none absolute inset-0 z-[1] h-full w-full rounded-[16px]" style={{ background: 'var(--bg-base)', opacity: 0.35 }} />
-      {/* Blurred PFP background */}
+      {/* Glow border for #1 */}
+      {big && <div className="pointer-events-none absolute inset-[-1px] z-[3] rounded-[16px]" style={{ boxShadow: "inset 0 0 0 1px rgba(82,111,255,0.15), 0 0 80px -15px rgba(82,111,255,0.15)" }} />}
+      {/* BG overlay */}
+      <div className="pointer-events-none absolute inset-0 z-[1] rounded-[16px]" style={{ background: "var(--bg-base)", opacity: 0.35 }} />
+      {/* Blurred PFP */}
       {entry.profile.twitter_handle && (
         <div className="pointer-events-none absolute inset-0 z-[0] overflow-hidden">
-          <div
-            className="h-full w-full scale-150 blur-[100px] saturate-[1.75] brightness-[0.5] opacity-[0.1]"
-            style={{ backgroundImage: `url(https://unavatar.io/twitter/${entry.profile.twitter_handle})`, backgroundSize: "cover" }}
-          />
+          <div className="h-full w-full scale-150 blur-[100px] saturate-[1.75] brightness-[0.5] opacity-[0.1]"
+            style={{ backgroundImage: `url(https://unavatar.io/twitter/${entry.profile.twitter_handle})`, backgroundSize: "cover" }} />
         </div>
       )}
-
+      {/* Content */}
       <div className="relative z-10 p-[24px]">
-        <div className="flex items-start justify-between gap-4 mb-5">
-          <div className="flex items-center gap-3.5">
-            <PfpImage handle={entry.profile.twitter_handle} pfp={entry.profile.twitter_pfp_url} name={entry.profile.display_name} size={pfpSize} />
+        <div className="flex items-start justify-between gap-[16px] mb-[16px]">
+          <div className="flex items-center gap-[12px]">
+            <PfpImage handle={entry.profile.twitter_handle} pfp={entry.profile.twitter_pfp_url} name={entry.profile.display_name} size={big ? 64 : 48} />
             <div>
-              <div className="flex items-center gap-2.5">
-                <span className={`${big ? "text-[19px]" : "text-[16px]"} font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors`}>
-                  {entry.profile.display_name}
-                </span>
-                <span className="text-[14px] text-[var(--text-muted)]">
-                  {entry.win_rate > 0 ? `${entry.win_rate.toFixed(2)}%` : ""}
-                </span>
+              <div className="flex items-center gap-[8px]">
+                <span className={`${big ? "text-[18px]" : "text-[16px]"} font-medium text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors`}>{entry.profile.display_name}</span>
+                <span className="text-[14px] text-[rgba(119,122,140,1)]">{entry.win_rate > 0 ? `${entry.win_rate.toFixed(2)}%` : ""}</span>
               </div>
-              <div className="flex items-center gap-1.5 mt-1">
-                <XIcon />
-              </div>
+              <div className="flex items-center gap-[6px] mt-[4px]"><XIcon /></div>
             </div>
           </div>
           <div className="text-right shrink-0">
-            <div className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-faint)]">PNL</div>
-            <div className="flex items-center justify-end gap-1">
-              {!showUsd && <SolIcon size={15} />}
-              <span className={`${big ? "text-[24px]" : "text-[20px]"} font-bold font-mono tabular-nums ${pos ? "text-[var(--success)]" : "text-[var(--error)]"}`}>
-                {fmtPnl(pnl, !showUsd)}
-              </span>
+            <div className="text-[11px] uppercase tracking-wider text-[rgba(119,122,140,1)]">PNL</div>
+            <div className="flex items-center justify-end gap-[4px]">
+              {!showUsd && <SolLogo size={14} />}
+              <span className={`${big ? "text-[24px]" : "text-[20px]"} font-bold tabular-nums ${pos ? "text-[rgb(47,227,172)]" : "text-[rgb(236,57,122)]"}`}>{fmtPnl(pnl, !showUsd)}</span>
             </div>
-            <div className={`text-[13px] font-mono tabular-nums ${pnlUsd >= 0 ? "text-[var(--success)]" : "text-[var(--error)]"}`}>
-              {fmtPnl(pnlUsd, false)}
-            </div>
+            <div className={`text-[13px] tabular-nums ${pnlUsd >= 0 ? "text-[rgb(47,227,172)]" : "text-[rgb(236,57,122)]"}`}>{fmtPnl(pnlUsd, false)}</div>
           </div>
         </div>
-
-        <div className="h-px mb-[16px]" style={{ background: 'rgba(255,255,255,0.05)' }} />
-
-        <div className="flex items-center gap-[12px] text-[var(--text-primary)]">
+        <div className="h-px mb-[16px]" style={{ background: "rgba(255,255,255,0.05)" }} />
+        <div className="flex items-center gap-[24px]">
           <StatBlock value={entry.positions > 0 ? String(entry.positions) : "\u2014"} label="Positions" win={entry.positions_win} loss={entry.positions_loss} />
           <StatBlock value={entry.trade_count > 0 ? entry.trade_count.toLocaleString() : "\u2014"} label="Trades" win={entry.winning_trades} loss={entry.losing_trades} />
-          <div className="flex items-center gap-[12px]">
-            <div className="flex items-center gap-[4px]">
-              {!showUsd && <SolIcon size={13} />}
-              <span className="text-[14px] font-medium tabular-nums">
-                {fmtVol(showUsd ? entry.volume_usd : entry.volume_sol, !showUsd)}
-              </span>
-            </div>
-            {!showUsd && entry.volume_usd > 0 && (
-              <span className="text-[12px] text-[var(--text-muted)] tabular-nums">${fmtVol(entry.volume_usd, false).replace("$", "")}</span>
-            )}
-            <span className="text-[12px] text-[var(--text-muted)]">Volume</span>
+          <div className="flex items-center gap-[8px]">
+            {!showUsd && <SolLogo size={13} />}
+            <span className="text-[14px] font-medium tabular-nums text-[var(--text-primary)]">{fmtVol(showUsd ? entry.volume_usd : entry.volume_sol, !showUsd)}</span>
+            {!showUsd && entry.volume_usd > 0 && <span className="text-[12px] text-[rgba(119,122,140,1)]">${fmtVol(entry.volume_usd, false).replace("$", "")}</span>}
           </div>
-          <div>
-            <span className="text-[14px] font-medium tabular-nums">{fmtHold(entry.avg_hold_time_mins ?? 0)}</span>
-            <span className="text-[12px] text-[var(--text-muted)] ml-[4px]">Avg. Hold Time</span>
-          </div>
+          <div className="text-[12px] text-[rgba(119,122,140,1)]">Volume</div>
+          <div><span className="text-[14px] font-medium tabular-nums text-[var(--text-primary)]">{fmtHold(entry.avg_hold_time_mins ?? 0)}</span></div>
+          <div className="text-[12px] text-[rgba(119,122,140,1)]">Avg. Hold Time</div>
         </div>
       </div>
     </div>
@@ -559,11 +455,11 @@ function StatBlock({ value, label, win, loss }: { value: string; label: string; 
   return (
     <div className="flex flex-col items-start gap-[3px]">
       <span className="flex h-[24px] items-center text-[14px] font-medium leading-none text-[var(--text-primary)]">{value}</span>
-      <span className="text-[12px] leading-none text-[var(--text-muted)]">{label}</span>
+      <span className="text-[12px] leading-none text-[rgba(119,122,140,1)]">{label}</span>
       {(win > 0 || loss > 0) && (
         <div className="flex items-center gap-[6px] mt-[2px]">
-          <span className="text-[11px] font-medium leading-none text-[var(--success)]">{win.toLocaleString()}</span>
-          <span className="text-[11px] font-medium leading-none text-[var(--error)]">{loss.toLocaleString()}</span>
+          <span className="text-[11px] font-medium leading-none text-[rgb(47,227,172)]">{win.toLocaleString()}</span>
+          <span className="text-[11px] font-medium leading-none text-[rgb(236,57,122)]">{loss.toLocaleString()}</span>
         </div>
       )}
     </div>
@@ -572,103 +468,66 @@ function StatBlock({ value, label, win, loss }: { value: string; label: string; 
 
 /* ═══ Trader Row ═══ */
 
-function TraderRow({
-  entry, rank, isKol, showUsd, onSelect,
-}: {
-  entry: KolRanking; rank: number; isKol: boolean; showUsd: boolean; onSelect: (k: KolRanking) => void;
-}) {
+function TraderRow({ entry, rank, isKol, showUsd, onSelect }: { entry: KolRanking; rank: number; isKol: boolean; showUsd: boolean; onSelect: (k: KolRanking) => void }) {
   const pnl = showUsd ? entry.pnl_usd : entry.pnl_sol;
   const pos = pnl >= 0;
   const vol = showUsd ? entry.volume_usd : entry.volume_sol;
 
   return (
-    <div
-      onClick={() => onSelect(entry)}
+    <div onClick={() => onSelect(entry)}
       className="group/tablerow relative flex h-[72px] min-h-[72px] w-full cursor-pointer flex-row items-center justify-start gap-[16px] overflow-hidden whitespace-nowrap bg-transparent px-[24px] transition-colors duration-150 hover:bg-[rgba(252,252,252,0.02)]"
     >
-      {/* Hover PFP blur background */}
+      {/* Hover PFP blur */}
       {isKol && entry.profile.twitter_handle && (
         <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover/tablerow:opacity-100">
           <div className="absolute inset-y-0 -left-[100px] right-[50%] blur-[60px] brightness-[0.65] saturate-[1.3]">
             <img alt="" loading="eager" src={`https://unavatar.io/twitter/${entry.profile.twitter_handle}`} className="absolute inset-0 h-full w-full object-cover opacity-[0.25]" />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-white/[0.08] via-white/0 to-transparent blur-[20px]" style={{ mixBlendMode: 'overlay' }} />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/[0.08] via-white/0 to-transparent blur-[20px]" style={{ mixBlendMode: "overlay" }} />
         </div>
       )}
-
-      {/* Rank */}
-      <div className="relative z-10 w-[80px] shrink-0 text-[14px] font-normal text-[var(--text-secondary)] tabular-nums">{rank}</div>
-
-      {/* Trader */}
+      <div className="relative z-10 w-[80px] shrink-0 text-[14px] font-normal text-[rgba(200,201,209,1)] tabular-nums">{rank}</div>
       <div className="relative z-10 flex flex-1 items-center gap-[8px] min-w-0">
-        <PfpImage
-          handle={isKol ? entry.profile.twitter_handle : null}
-          pfp={entry.profile.twitter_pfp_url}
-          name={entry.profile.display_name}
-          size={44}
-        />
+        <PfpImage handle={isKol ? entry.profile.twitter_handle : null} pfp={entry.profile.twitter_pfp_url} name={entry.profile.display_name} size={44} />
         <div className="min-w-0">
           <div className="flex items-center gap-[6px]">
-            <span className="text-[16px] font-medium text-[var(--text-primary)] truncate group-hover:text-[var(--accent)] transition-colors">
-              {isKol ? entry.profile.display_name : truncAddr(entry.profile.id)}
-            </span>
-            {entry.profile.verified && <VerifyBadge />}
+            <span className="text-[16px] font-medium text-[var(--text-primary)] truncate group-hover/tablerow:text-[var(--accent)] transition-colors">{isKol ? entry.profile.display_name : truncAddr(entry.profile.id)}</span>
           </div>
-          {isKol && entry.profile.twitter_handle && (
-            <div className="flex items-center gap-1 mt-0.5">
-              <XIcon small />
-            </div>
-          )}
+          {isKol && entry.profile.twitter_handle && <div className="flex items-center gap-1 mt-0.5"><XIcon small /></div>}
         </div>
       </div>
-
-      {/* PNL */}
       <div className="relative z-10 flex-1">
-        <span className={`text-[16px] font-medium tabular-nums ${pos ? "text-[var(--success)]" : "text-[var(--error)]"}`}>
-          {fmtPnl(pnl, !showUsd)}
-        </span>
-      </div>
-
-      {/* Win Rate */}
-      <div className="relative z-10 flex-1 text-[16px] tabular-nums text-[var(--text-primary)]">
-        {entry.win_rate > 0 ? `${entry.win_rate.toFixed(1)}%` : "\u2014"}
-      </div>
-
-      {/* Positions */}
-      <div className="relative z-10 flex-1">
-        <div className="text-[16px] tabular-nums text-[var(--text-primary)]">
-          {entry.positions > 0 ? entry.positions.toLocaleString() : "\u2014"}
+        <div className="flex items-center gap-[4px]">
+          {!showUsd && <SolLogo size={12} />}
+          <span className={`text-[16px] font-medium tabular-nums ${pos ? "text-[rgb(47,227,172)]" : "text-[rgb(236,57,122)]"}`}>{fmtPnl(pnl, !showUsd)}</span>
         </div>
+      </div>
+      <div className="relative z-10 flex-1 text-[16px] tabular-nums text-[var(--text-primary)]">{entry.win_rate > 0 ? `${entry.win_rate.toFixed(1)}%` : "\u2014"}</div>
+      <div className="relative z-10 flex-1">
+        <div className="text-[16px] tabular-nums text-[var(--text-primary)]">{entry.positions > 0 ? entry.positions.toLocaleString() : "\u2014"}</div>
         {(entry.positions_win > 0 || entry.positions_loss > 0) && (
-          <div className="flex items-center gap-[6px] mt-0.5 text-[12px] tabular-nums">
-            <span className="text-[var(--success)]">{entry.positions_win.toLocaleString()}</span>
-            <span className="text-[var(--error)]">{entry.positions_loss.toLocaleString()}</span>
+          <div className="flex items-center gap-[6px] mt-[2px] text-[12px] tabular-nums">
+            <span className="text-[rgb(47,227,172)]">{entry.positions_win.toLocaleString()}</span>
+            <span className="text-[rgb(236,57,122)]">{entry.positions_loss.toLocaleString()}</span>
           </div>
         )}
       </div>
-
-      {/* Trades */}
       <div className="relative z-10 flex-1">
-        <div className="text-[16px] tabular-nums text-[var(--text-primary)]">
-          {entry.trade_count > 0 ? entry.trade_count.toLocaleString() : "\u2014"}
-        </div>
+        <div className="text-[16px] tabular-nums text-[var(--text-primary)]">{entry.trade_count > 0 ? entry.trade_count.toLocaleString() : "\u2014"}</div>
         {(entry.winning_trades > 0 || entry.losing_trades > 0) && (
-          <div className="flex items-center gap-[6px] mt-0.5 text-[12px] tabular-nums">
-            <span className="text-[var(--success)]">{entry.winning_trades.toLocaleString()}</span>
-            <span className="text-[var(--error)]">{entry.losing_trades.toLocaleString()}</span>
+          <div className="flex items-center gap-[6px] mt-[2px] text-[12px] tabular-nums">
+            <span className="text-[rgb(47,227,172)]">{entry.winning_trades.toLocaleString()}</span>
+            <span className="text-[rgb(236,57,122)]">{entry.losing_trades.toLocaleString()}</span>
           </div>
         )}
       </div>
-
-      {/* Volume */}
-      <div className="relative z-10 flex-1 text-[16px] tabular-nums text-[var(--text-primary)]">
-        {fmtVol(vol, !showUsd)}
+      <div className="relative z-10 flex-1">
+        <div className="flex items-center gap-[4px] text-[16px] tabular-nums text-[var(--text-primary)]">
+          {!showUsd && <SolLogo size={12} />}
+          {fmtVol(vol, !showUsd)}
+        </div>
       </div>
-
-      {/* Avg Hold */}
-      <div className="relative z-10 flex-1 text-[16px] tabular-nums text-[var(--text-muted)]">
-        {fmtHold(entry.avg_hold_time_mins ?? 0)}
-      </div>
+      <div className="relative z-10 flex-1 text-[16px] tabular-nums text-[rgba(119,122,140,1)]">{fmtHold(entry.avg_hold_time_mins ?? 0)}</div>
     </div>
   );
 }
@@ -681,193 +540,110 @@ function GalleryCard({ entry, rank, showUsd, onSelect }: { entry: KolRanking; ra
   const pos = pnl >= 0;
 
   return (
-    <div
-      onClick={() => onSelect(entry)}
-      className="group relative overflow-hidden rounded-[14px] p-5 cursor-pointer hover:bg-[var(--bg-hover)] transition-all duration-150"
-      style={{ background: 'rgba(16,13,13,0.6)', border: '1px solid rgba(42,32,32,0.4)' }}
+    <div onClick={() => onSelect(entry)}
+      className="group relative overflow-hidden rounded-[16px] p-[24px] cursor-pointer transition-all duration-150 hover:bg-[rgba(252,252,252,0.02)]"
+      style={{ border: "2px solid rgba(255,255,255,0.05)" }}
     >
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-3.5">
-          <span className="text-[15px] font-semibold text-[var(--text-muted)] tabular-nums w-7">{rank}</span>
+      <div className="flex items-center justify-between gap-[16px]">
+        <div className="flex items-center gap-[12px]">
+          <span className="text-[14px] font-normal text-[rgba(200,201,209,1)] tabular-nums w-[32px]">{rank}</span>
           <PfpImage handle={entry.profile.twitter_handle} pfp={entry.profile.twitter_pfp_url} name={entry.profile.display_name} size={44} />
           <div>
-            <div className="flex items-center gap-2">
-              <span className="text-[16px] font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
-                {entry.profile.display_name}
-              </span>
-              <span className="text-[14px] text-[var(--text-muted)]">{entry.win_rate > 0 ? `${entry.win_rate.toFixed(2)}%` : ""}</span>
+            <div className="flex items-center gap-[8px]">
+              <span className="text-[16px] font-medium text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">{entry.profile.display_name}</span>
+              <span className="text-[14px] text-[rgba(119,122,140,1)]">{entry.win_rate > 0 ? `${entry.win_rate.toFixed(2)}%` : ""}</span>
             </div>
-            <div className="flex items-center gap-1.5 mt-0.5"><XIcon small /></div>
+            <div className="flex items-center gap-[6px] mt-[4px]"><XIcon small /></div>
           </div>
         </div>
         <div className="text-right">
-          <div className="text-[11px] font-mono uppercase text-[var(--text-faint)]">PNL</div>
-          <div className={`text-[19px] font-bold font-mono tabular-nums ${pos ? "text-[var(--success)]" : "text-[var(--error)]"}`}>
-            {fmtPnl(pnl, !showUsd)}
+          <div className="text-[11px] uppercase text-[rgba(119,122,140,1)]">PNL</div>
+          <div className="flex items-center justify-end gap-[4px]">
+            {!showUsd && <SolLogo size={13} />}
+            <span className={`text-[18px] font-bold tabular-nums ${pos ? "text-[rgb(47,227,172)]" : "text-[rgb(236,57,122)]"}`}>{fmtPnl(pnl, !showUsd)}</span>
           </div>
-          <div className={`text-[12px] font-mono tabular-nums ${pnlUsd >= 0 ? "text-[var(--success)]" : "text-[var(--error)]"}`}>
-            {fmtPnl(pnlUsd, false)}
-          </div>
+          <div className={`text-[12px] tabular-nums ${pnlUsd >= 0 ? "text-[rgb(47,227,172)]" : "text-[rgb(236,57,122)]"}`}>{fmtPnl(pnlUsd, false)}</div>
         </div>
       </div>
-      <div className="h-px my-3.5" style={{ background: 'rgba(42,32,32,0.4)' }} />
-      <div className="grid grid-cols-5 gap-4 text-[var(--text-primary)]">
+      <div className="h-px my-[16px]" style={{ background: "rgba(255,255,255,0.05)" }} />
+      <div className="flex items-center gap-[24px]">
         <StatBlock value={String(entry.positions || "\u2014")} label="Positions" win={entry.positions_win} loss={entry.positions_loss} />
         <StatBlock value={entry.trade_count > 0 ? entry.trade_count.toLocaleString() : "\u2014"} label="Trades" win={entry.winning_trades} loss={entry.losing_trades} />
-        <div>
-          <div className="text-[15px] font-bold font-mono tabular-nums">{fmtVol(showUsd ? entry.volume_usd : entry.volume_sol, !showUsd)}</div>
-          <div className="text-[11px] text-[var(--text-faint)]">Volume</div>
+        <div className="flex items-center gap-[4px]">
+          {!showUsd && <SolLogo size={12} />}
+          <span className="text-[14px] font-medium tabular-nums">{fmtVol(showUsd ? entry.volume_usd : entry.volume_sol, !showUsd)}</span>
+          {!showUsd && entry.volume_usd > 0 && <span className="text-[12px] text-[rgba(119,122,140,1)]">${fmtVol(entry.volume_usd, false).replace("$", "")}</span>}
         </div>
-        <div>
-          <div className="text-[15px] font-bold font-mono tabular-nums">{fmtHold(entry.avg_hold_time_mins ?? 0)}</div>
-          <div className="text-[11px] text-[var(--text-faint)]">Avg. Hold Time</div>
-        </div>
+        <div className="text-[12px] text-[rgba(119,122,140,1)]">Volume</div>
+        <div><span className="text-[14px] font-medium tabular-nums">{fmtHold(entry.avg_hold_time_mins ?? 0)}</span></div>
+        <div className="text-[12px] text-[rgba(119,122,140,1)]">Avg. Hold Time</div>
       </div>
     </div>
   );
 }
 
-/* ═══ Contribute Modal — Redesigned ═══ */
+/* ═══ Contribute Modal ═══ */
 
 function ContributeModal({ onClose }: { onClose: () => void }) {
-  const [mode, setMode] = useState<"apply" | "submit">("apply");
   const [wallet, setWallet] = useState("");
   const [twitter, setTwitter] = useState("");
   const [telegram, setTelegram] = useState("");
   const [discord, setDiscord] = useState("");
-  const [evidence, setEvidence] = useState("");
-  const [kolName, setKolName] = useState("");
   const [status, setStatus] = useState<"idle" | "busy" | "ok" | "err">("idle");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const cleanWallet = sanitize(wallet);
-    if (!cleanWallet || cleanWallet.length < 32 || cleanWallet.length > 44) return;
-    if (!/^[A-Za-z0-9]+$/.test(cleanWallet)) return;
+    const w = sanitize(wallet);
+    if (!w || w.length < 32 || w.length > 44 || !/^[A-Za-z0-9]+$/.test(w)) return;
     setStatus("busy");
     try {
-      await kolApi.submit({
-        wallet_address: cleanWallet,
-        twitter_handle: sanitize(twitter) || undefined,
-        display_name: sanitize(kolName) || undefined,
-        evidence_text: sanitize(evidence) || undefined,
-      });
+      await kolApi.submit({ wallet_address: w, twitter_handle: sanitize(twitter) || undefined, display_name: sanitize(twitter) || undefined });
       setStatus("ok");
       setTimeout(onClose, 1500);
-    } catch {
-      setStatus("err");
-      setTimeout(() => setStatus("idle"), 3000);
-    }
+    } catch { setStatus("err"); setTimeout(() => setStatus("idle"), 3000); }
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[500] flex items-center justify-center bg-black/60 backdrop-blur-sm"
-      onClick={onClose}
-    >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.95 }}
-        transition={{ duration: 0.2 }}
-        className="w-full max-w-[520px] rounded-[16px] shadow-2xl overflow-hidden"
-        style={{ background: 'rgb(16,17,20)', border: '1px solid rgba(50,53,66,0.6)' }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between px-7 py-5" style={{ borderBottom: '1px solid rgba(50,53,66,0.4)' }}>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[500] flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={onClose}>
+      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ duration: 0.2 }}
+        className="w-full max-w-[480px] rounded-[16px] shadow-2xl overflow-hidden"
+        style={{ background: "rgb(16,17,20)", border: "1px solid rgba(50,53,66,0.6)" }} onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between px-[24px] py-[20px]" style={{ borderBottom: "1px solid rgba(50,53,66,0.4)" }}>
           <h2 className="text-[17px] font-semibold text-[var(--text-primary)]">Add KOL</h2>
-          <button onClick={onClose} className="text-[var(--text-muted)] hover:text-[var(--text-primary)] cursor-pointer transition-colors">
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+          <button onClick={onClose} className="text-[rgba(119,122,140,1)] hover:text-[var(--text-primary)] cursor-pointer"><svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
         </div>
-
-        <form onSubmit={handleSubmit} className="px-7 py-6 space-y-5">
-          {/* Select wallet */}
+        <form onSubmit={handleSubmit} className="px-[24px] py-[24px] space-y-[20px]">
           <div>
-            <label className="block text-[14px] font-medium text-[var(--text-primary)] mb-2">Select your wallet</label>
+            <label className="block text-[14px] font-medium text-[var(--text-primary)] mb-[8px]">Select your wallet</label>
+            <input value={wallet} onChange={(e) => setWallet(e.target.value)} placeholder="Select a wallet" required
+              className="w-full text-[14px] py-[12px] px-[16px] rounded-[12px] outline-none" style={{ background: "rgb(24,24,26)", border: "1px solid rgba(50,53,66,0.5)", color: "var(--text-primary)" }} />
+          </div>
+          <div>
+            <label className="block text-[14px] font-medium text-[var(--text-primary)] mb-[8px]">Twitter Handle *</label>
             <div className="relative">
-              <input
-                value={wallet}
-                onChange={(e) => setWallet(e.target.value)}
-                placeholder="Select a wallet"
-                required
-                className="w-full text-[14px] font-mono py-3 px-4 rounded-xl outline-none transition-colors"
-                style={{ background: 'rgb(24,24,26)', border: '1px solid rgba(50,53,66,0.5)', color: 'var(--text-primary)' }}
-              />
+              <span className="absolute left-[16px] top-1/2 -translate-y-1/2"><XIcon /></span>
+              <input value={twitter} onChange={(e) => setTwitter(e.target.value)} placeholder="@username"
+                className="w-full text-[14px] py-[12px] pl-[40px] pr-[16px] rounded-[12px] outline-none" style={{ background: "rgb(24,24,26)", border: "1px solid rgba(50,53,66,0.5)", color: "var(--text-primary)" }} />
             </div>
           </div>
-
-          {/* Twitter - with X icon */}
           <div>
-            <label className="block text-[14px] font-medium text-[var(--text-primary)] mb-2">Twitter Handle *</label>
-            <div className="relative">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2">
-                <XIcon />
-              </span>
-              <input
-                value={twitter}
-                onChange={(e) => setTwitter(e.target.value)}
-                placeholder="@username"
-                className="w-full text-[14px] py-3 pl-10 pr-4 rounded-xl outline-none transition-colors"
-                style={{ background: 'rgb(24,24,26)', border: '1px solid rgba(50,53,66,0.5)', color: 'var(--text-primary)' }}
-              />
-            </div>
+            <label className="block text-[14px] font-medium text-[var(--text-primary)] mb-[8px]">Telegram Handle</label>
+            <input value={telegram} onChange={(e) => setTelegram(e.target.value)} placeholder="username"
+              className="w-full text-[14px] py-[12px] px-[16px] rounded-[12px] outline-none" style={{ background: "rgb(24,24,26)", border: "1px solid rgba(50,53,66,0.5)", color: "var(--text-primary)" }} />
           </div>
-
-          {/* Telegram - with icon */}
           <div>
-            <label className="block text-[14px] font-medium text-[var(--text-primary)] mb-2">Telegram Handle</label>
-            <div className="relative">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)]">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-              </span>
-              <input
-                value={telegram}
-                onChange={(e) => setTelegram(e.target.value)}
-                placeholder="username"
-                className="w-full text-[14px] py-3 pl-10 pr-4 rounded-xl outline-none transition-colors"
-                style={{ background: 'rgb(24,24,26)', border: '1px solid rgba(50,53,66,0.5)', color: 'var(--text-primary)' }}
-              />
-            </div>
+            <label className="block text-[14px] font-medium text-[var(--text-primary)] mb-[8px]">Discord Handle</label>
+            <input value={discord} onChange={(e) => setDiscord(e.target.value)} placeholder="username#0000"
+              className="w-full text-[14px] py-[12px] px-[16px] rounded-[12px] outline-none" style={{ background: "rgb(24,24,26)", border: "1px solid rgba(50,53,66,0.5)", color: "var(--text-primary)" }} />
           </div>
-
-          {/* Discord - with icon */}
-          <div>
-            <label className="block text-[14px] font-medium text-[var(--text-primary)] mb-2">Discord Handle</label>
-            <div className="relative">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)]">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
-              </span>
-              <input
-                value={discord}
-                onChange={(e) => setDiscord(e.target.value)}
-                placeholder="username#0000"
-                className="w-full text-[14px] py-3 pl-10 pr-4 rounded-xl outline-none transition-colors"
-                style={{ background: 'rgb(24,24,26)', border: '1px solid rgba(50,53,66,0.5)', color: 'var(--text-primary)' }}
-              />
-            </div>
+          <div className="flex items-center justify-end gap-[16px] pt-[8px]">
+            <button type="button" onClick={onClose} className="text-[14px] text-[rgba(119,122,140,1)] hover:text-[var(--text-primary)] cursor-pointer">Cancel</button>
+            <button type="submit" disabled={status === "busy" || !wallet.trim()}
+              className="px-[20px] py-[10px] text-[14px] font-semibold text-white rounded-[12px] cursor-pointer transition-all hover:opacity-90 disabled:opacity-50"
+              style={{ background: "rgb(82,111,255)" }}>{status === "busy" ? "Submitting..." : status === "ok" ? "Done!" : "Add KOL"}</button>
           </div>
-
-          {/* Actions */}
-          <div className="flex items-center justify-end gap-4 pt-3">
-            <button type="button" onClick={onClose} className="text-[14px] text-[var(--text-muted)] hover:text-[var(--text-primary)] cursor-pointer transition-colors">
-              Cancel
-            </button>
-            <button
-              type="submit"
-              disabled={status === "busy" || !wallet.trim()}
-              className="px-5 py-2.5 text-[14px] font-semibold text-white rounded-xl cursor-pointer transition-all hover:opacity-90 disabled:opacity-50"
-              style={{ background: 'rgb(82,111,255)' }}
-            >
-              {status === "busy" ? "Submitting..." : status === "ok" ? "Done!" : "Add KOL"}
-            </button>
-          </div>
-          {status === "err" && <p className="text-[12px] text-[var(--error)]">Submission failed. Please try again.</p>}
+          {status === "err" && <p className="text-[12px] text-[rgb(236,57,122)]">Submission failed. Please try again.</p>}
         </form>
       </motion.div>
     </motion.div>
@@ -879,33 +655,23 @@ function ContributeModal({ onClose }: { onClose: () => void }) {
 function PfpImage({ handle, pfp, name, size }: { handle: string | null; pfp: string | null; name: string; size: number }) {
   const [idx, setIdx] = useState(0);
   const px = `${size}px`;
-  const r = "rounded-[8px]";
   const srcs: string[] = [];
   if (handle) srcs.push(`https://unavatar.io/twitter/${handle}`);
   if (pfp) srcs.push(pfp);
   const src = srcs[idx];
   if (src) {
     return (
-      <div className="relative shrink-0" style={{ width: px, height: px }}>
-        <div className="pointer-events-none absolute inset-0 z-[15] rounded-[8px]" style={{ border: '1px solid rgba(255,255,255,0.1)' }} />
-        <img
-          src={src}
-          alt={name}
-          width={size}
-          height={size}
-          className={`${r} h-full w-full object-cover`}
-          style={{ width: px, height: px, boxShadow: '0 8px 16px -2px rgba(0,0,0,0.2), 0 4px 8px -1px rgba(0,0,0,0.1)' }}
-          onError={() => (idx < srcs.length - 1 ? setIdx(idx + 1) : setIdx(srcs.length))}
-          loading="lazy"
-        />
+      <div className="relative shrink-0 group/pfp" style={{ width: px, height: px }}>
+        <div className="pointer-events-none absolute inset-0 z-[15] rounded-[8px]" style={{ border: "1px solid rgba(255,255,255,0.1)" }} />
+        <img src={src} alt={name} width={size} height={size} className="rounded-[8px] h-full w-full object-cover"
+          style={{ boxShadow: "0 8px 16px -2px rgba(0,0,0,0.2), 0 4px 8px -1px rgba(0,0,0,0.1)" }}
+          onError={() => (idx < srcs.length - 1 ? setIdx(idx + 1) : setIdx(srcs.length))} loading="lazy" />
       </div>
     );
   }
   return (
-    <div
-      className={`${r} flex items-center justify-center text-white font-bold shrink-0`}
-      style={{ width: px, height: px, fontSize: `${Math.round(size * 0.38)}px`, background: 'linear-gradient(135deg, var(--accent), var(--accent-muted))', border: '1px solid rgba(255,255,255,0.1)' }}
-    >
+    <div className="flex items-center justify-center text-white font-bold shrink-0 rounded-[8px]"
+      style={{ width: px, height: px, fontSize: `${Math.round(size * 0.38)}px`, background: "linear-gradient(135deg, var(--accent), var(--accent-muted))", border: "1px solid rgba(255,255,255,0.1)" }}>
       {name?.charAt(0)?.toUpperCase() || "?"}
     </div>
   );
@@ -914,28 +680,8 @@ function PfpImage({ handle, pfp, name, size }: { handle: string | null; pfp: str
 function XIcon({ small }: { small?: boolean } = {}) {
   const s = small ? 12 : 14;
   return (
-    <svg width={s} height={s} viewBox="0 0 24 24" fill="currentColor" className="text-[var(--text-muted)] shrink-0">
+    <svg width={s} height={s} viewBox="0 0 24 24" fill="currentColor" className="shrink-0" style={{ color: "rgba(119,122,140,1)" }}>
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
-  );
-}
-
-function SolIcon({ size = 14 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className="shrink-0">
-      <path d="M4 17.5L8 13.5H20L16 17.5H4Z" fill="currentColor" className="text-[var(--text-secondary)]" />
-      <path d="M4 6.5L8 10.5H20L16 6.5H4Z" fill="currentColor" className="text-[var(--text-secondary)]" />
-      <path d="M4 12L8 8H20L16 12H4Z" fill="currentColor" className="text-[var(--text-secondary)]" />
-    </svg>
-  );
-}
-
-function VerifyBadge() {
-  return (
-    <div className="shrink-0 rounded-full bg-[var(--accent)] flex items-center justify-center" style={{ width: 15, height: 15 }}>
-      <svg style={{ width: 9, height: 9 }} fill="currentColor" viewBox="0 0 20 20" className="text-white">
-        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-      </svg>
-    </div>
   );
 }

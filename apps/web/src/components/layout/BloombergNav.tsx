@@ -82,7 +82,7 @@ export function BloombergNav() {
   if (!isClient) return null;
 
   return (
-    <div className="bloomberg-nav fixed top-0 left-0 right-0 h-8 bg-[#0c0a0a] border-b border-[var(--border-subtle)] z-[300] flex items-center overflow-hidden">
+    <div className="bloomberg-nav fixed top-14 left-0 right-0 h-8 bg-[#0c0a0a] border-b border-[var(--border-subtle)] z-[250] flex items-center overflow-hidden">
       {/* Price Ticker - scrolling marquee */}
       <div className="flex-1 overflow-hidden relative">
         <div className="flex items-center gap-6 animate-ticker whitespace-nowrap">

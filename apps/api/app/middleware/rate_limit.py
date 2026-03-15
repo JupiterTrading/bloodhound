@@ -67,6 +67,11 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         if any(path.startswith(ex) for ex in self.EXCLUDED_PATHS):
             return await call_next(request)
 
+        # Skip rate limiting for local development
+        host = request.headers.get("host", "")
+        if host.startswith("localhost") or host.startswith("127.0.0.1"):
+            return await call_next(request)
+
         # ── 1. Check for API key (bh_* Bearer token) ─────────────────────────
         auth_header = request.headers.get("Authorization", "")
         if auth_header.startswith("Bearer bh_"):
