@@ -441,7 +441,7 @@ export default function RankingsPage() {
         )}
 
         {!isLoading && filtered.length > 0 && (
-          <div className="px-6 py-3 text-[13px] text-[var(--text-faint)]" style={{ borderTop: '1px solid rgba(42,32,32,0.4)' }}>
+          <div className="px-[24px] py-3 text-[13px] text-[var(--text-faint)]" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
             Showing {filtered.length} traders
           </div>
         )}
@@ -487,7 +487,7 @@ function TopCard({ entry, rank, showUsd, onSelect }: { entry: KolRanking; rank: 
         </div>
       )}
 
-      <div className={`relative z-10 ${big ? "px-7 py-6" : "px-6 py-5"}`}>
+      <div className="relative z-10 p-[24px]">
         <div className="flex items-start justify-between gap-4 mb-5">
           <div className="flex items-center gap-3.5">
             <PfpImage handle={entry.profile.twitter_handle} pfp={entry.profile.twitter_pfp_url} name={entry.profile.display_name} size={pfpSize} />
@@ -519,26 +519,26 @@ function TopCard({ entry, rank, showUsd, onSelect }: { entry: KolRanking; rank: 
           </div>
         </div>
 
-        <div className="h-px mb-4" style={{ background: 'rgba(42,32,32,0.5)' }} />
+        <div className="h-px mb-[16px]" style={{ background: 'rgba(255,255,255,0.05)' }} />
 
-        <div className="grid grid-cols-5 gap-5 text-[var(--text-primary)]">
+        <div className="flex items-center gap-[12px] text-[var(--text-primary)]">
           <StatBlock value={entry.positions > 0 ? String(entry.positions) : "\u2014"} label="Positions" win={entry.positions_win} loss={entry.positions_loss} />
           <StatBlock value={entry.trade_count > 0 ? entry.trade_count.toLocaleString() : "\u2014"} label="Trades" win={entry.winning_trades} loss={entry.losing_trades} />
-          <div>
-            <div className="flex items-center gap-1">
+          <div className="flex items-center gap-[12px]">
+            <div className="flex items-center gap-[4px]">
               {!showUsd && <SolIcon size={13} />}
-              <span className="text-[17px] font-bold font-mono tabular-nums">
+              <span className="text-[14px] font-medium tabular-nums">
                 {fmtVol(showUsd ? entry.volume_usd : entry.volume_sol, !showUsd)}
               </span>
             </div>
             {!showUsd && entry.volume_usd > 0 && (
-              <div className="text-[11px] text-[var(--text-faint)] mt-0.5">${fmtVol(entry.volume_usd, false).replace("$", "")}</div>
+              <span className="text-[12px] text-[var(--text-muted)] tabular-nums">${fmtVol(entry.volume_usd, false).replace("$", "")}</span>
             )}
-            <div className="text-[11px] text-[var(--text-faint)]">Volume</div>
+            <span className="text-[12px] text-[var(--text-muted)]">Volume</span>
           </div>
           <div>
-            <div className="text-[17px] font-bold font-mono tabular-nums">{fmtHold(entry.avg_hold_time_mins ?? 0)}</div>
-            <div className="text-[11px] text-[var(--text-faint)] mt-0.5">Avg. Hold Time</div>
+            <span className="text-[14px] font-medium tabular-nums">{fmtHold(entry.avg_hold_time_mins ?? 0)}</span>
+            <span className="text-[12px] text-[var(--text-muted)] ml-[4px]">Avg. Hold Time</span>
           </div>
         </div>
       </div>
@@ -548,13 +548,13 @@ function TopCard({ entry, rank, showUsd, onSelect }: { entry: KolRanking; rank: 
 
 function StatBlock({ value, label, win, loss }: { value: string; label: string; win: number; loss: number }) {
   return (
-    <div>
-      <div className="text-[17px] font-bold font-mono tabular-nums">{value}</div>
-      <div className="text-[11px] text-[var(--text-faint)] mt-0.5">{label}</div>
+    <div className="flex flex-col items-start gap-[3px]">
+      <span className="flex h-[24px] items-center text-[14px] font-medium leading-none text-[var(--text-primary)]">{value}</span>
+      <span className="text-[12px] leading-none text-[var(--text-muted)]">{label}</span>
       {(win > 0 || loss > 0) && (
-        <div className="flex items-center gap-2 mt-1 text-[12px] font-mono tabular-nums">
-          <span className="text-[var(--success)]">{win.toLocaleString()}</span>
-          <span className="text-[var(--error)]">{loss.toLocaleString()}</span>
+        <div className="flex items-center gap-[6px] mt-[2px]">
+          <span className="text-[11px] font-medium leading-none text-[var(--success)]">{win.toLocaleString()}</span>
+          <span className="text-[11px] font-medium leading-none text-[var(--error)]">{loss.toLocaleString()}</span>
         </div>
       )}
     </div>
