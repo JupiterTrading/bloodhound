@@ -140,8 +140,29 @@ export default function RankingsPage() {
   const top3 = showTop3 ? filtered.slice(0, 3) : [];
   const rows = showTop3 ? filtered.slice(3) : filtered;
 
+  const topKolHandle = top3[0]?.profile.twitter_handle;
+
   return (
-    <div style={{ maxWidth: 1420, margin: "0 auto", padding: "0 24px 40px" }}>
+    <div className="relative" style={{ maxWidth: 1420, margin: "0 auto", padding: "0 24px 40px" }}>
+      {/* ── Hero background gradient (Axiom-style blurred PFP from #1 KOL) ── */}
+      {topKolHandle && (
+        <div className="pointer-events-none absolute left-0 right-0 top-0 z-[-1] select-none overflow-hidden" style={{ height: 750 }}>
+          <div className="absolute inset-0 z-[-2]" style={{ background: 'var(--bg-base)' }} />
+          <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: 300, background: 'linear-gradient(to top, var(--bg-base), transparent)' }} />
+          <div className="absolute left-0 right-0 top-0 z-[-1]" style={{ height: 750, filter: 'blur(100px) saturate(1.75) brightness(0.5)' }}>
+            <div className="h-full w-full" style={{ opacity: 0.1 }}>
+              <img
+                alt=""
+                src={`https://unavatar.io/twitter/${topKolHandle}`}
+                className="h-full w-full object-fill"
+                style={{ position: 'absolute', inset: 0 }}
+                loading="eager"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ── Row 1: Tabs + Contribute + Search ── */}
       <div className="flex items-center justify-between mb-4 gap-4 flex-wrap">
         <div className="flex items-center gap-[24px]">
@@ -162,11 +183,11 @@ export default function RankingsPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setShowContribute(true)}
-            className="flex items-center gap-[7px] h-[36px] px-[12px] text-[14px] font-medium text-[var(--accent)] border border-[var(--border)] rounded-full hover:bg-[rgba(255,255,255,0.03)] cursor-pointer transition-all duration-[65ms] active:scale-[0.96]"
+            className="group flex items-center gap-[4px] h-[32px] px-[8px] text-[12px] font-medium text-[var(--text-primary)] rounded-full hover:bg-[rgba(252,252,252,0.1)] cursor-pointer transition-all duration-150"
           >
             + Contribute
           </button>
-          <div className="flex items-center gap-[8px] h-[32px] pl-[12px] pr-[4px] border border-[var(--border)] rounded-full hover:bg-[rgba(255,255,255,0.03)] transition-colors">
+          <div className="group flex h-[32px] w-[320px] cursor-text items-center gap-[8px] rounded-full pl-[8px] pr-[2px] font-normal transition-colors duration-150 hover:bg-[rgba(252,252,252,0.035)]" style={{ border: '1px solid rgba(255,255,255,0.05)' }}>
             <svg className="w-4 h-4 text-[var(--text-muted)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>
@@ -175,7 +196,7 @@ export default function RankingsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={`Search ${isKol ? "KOLs" : tab === "global" ? "Global" : "Tracked"}...`}
-              className="bg-transparent text-[12px] font-medium text-[var(--text-primary)] outline-none w-[160px] placeholder:text-[var(--text-muted)]"
+              className="flex-1 bg-transparent text-[14px] font-medium text-[var(--text-primary)] outline-none placeholder:font-medium placeholder:text-[rgba(252,252,252,0.6)]"
             />
             {search && (
               <button onClick={() => setSearch("")} className="text-[var(--text-muted)] hover:text-[var(--text-primary)] cursor-pointer">
@@ -230,7 +251,7 @@ export default function RankingsPage() {
           </div>
           <button
             onClick={() => setSortDir(sortDir === "desc" ? "asc" : "desc")}
-            className="flex items-center justify-center w-[36px] h-[36px] border border-[var(--border)] rounded-full text-[var(--text-secondary)] hover:bg-[rgba(255,255,255,0.03)] hover:text-[var(--text-primary)] cursor-pointer transition-all duration-[65ms]"
+            className="group flex h-[32px] w-[32px] items-center justify-center rounded-full transition-all duration-150 hover:bg-[rgba(255,255,255,0.1)]" style={{ border: '1px solid rgba(255,255,255,0.035)', background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(20px)' }}
             title={sortDir === "desc" ? "Sort Descending" : "Sort Ascending"}
           >
             <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -247,8 +268,8 @@ export default function RankingsPage() {
             <button
               key={p.id}
               onClick={() => setPeriod(p.id)}
-              className={`h-[32px] px-[8px] text-[14px] font-medium cursor-pointer rounded-[8px] transition-all duration-[65ms] ease-out active:scale-[0.96] ${
-                period === p.id ? "text-[var(--accent)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              className={`h-[32px] px-[8px] text-[14px] font-medium cursor-pointer rounded-[4px] transition-all duration-[65ms] ease-out active:scale-[0.96] ${
+                period === p.id ? "text-[var(--accent)]" : "text-[var(--text-primary)] hover:bg-[rgba(220,38,38,0.2)] hover:text-[var(--accent)]"
               }`}
             >
               {p.label}
