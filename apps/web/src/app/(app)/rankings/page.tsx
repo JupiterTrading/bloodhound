@@ -584,18 +584,28 @@ function TraderRow({
   return (
     <div
       onClick={() => onSelect(entry)}
-      className="group relative flex h-[72px] min-h-[72px] w-full cursor-pointer items-center gap-[16px] overflow-hidden whitespace-nowrap px-[24px] transition-colors duration-150 hover:bg-[rgba(252,252,252,0.02)]"
+      className="group/tablerow relative flex h-[72px] min-h-[72px] w-full cursor-pointer flex-row items-center justify-start gap-[16px] overflow-hidden whitespace-nowrap bg-transparent px-[24px] transition-colors duration-150 hover:bg-[rgba(252,252,252,0.02)]"
     >
+      {/* Hover PFP blur background */}
+      {isKol && entry.profile.twitter_handle && (
+        <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover/tablerow:opacity-100">
+          <div className="absolute inset-y-0 -left-[100px] right-[50%] blur-[60px] brightness-[0.65] saturate-[1.3]">
+            <img alt="" loading="eager" src={`https://unavatar.io/twitter/${entry.profile.twitter_handle}`} className="absolute inset-0 h-full w-full object-cover opacity-[0.25]" />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-white/[0.08] via-white/0 to-transparent blur-[20px]" style={{ mixBlendMode: 'overlay' }} />
+        </div>
+      )}
+
       {/* Rank */}
-      <div className="w-[80px] shrink-0 text-[16px] font-medium text-[var(--text-muted)] tabular-nums">{rank}</div>
+      <div className="relative z-10 w-[80px] shrink-0 text-[14px] font-normal text-[var(--text-secondary)] tabular-nums">{rank}</div>
 
       {/* Trader */}
-      <div className="flex flex-1 items-center gap-[12px] min-w-0">
+      <div className="relative z-10 flex flex-1 items-center gap-[8px] min-w-0">
         <PfpImage
           handle={isKol ? entry.profile.twitter_handle : null}
           pfp={entry.profile.twitter_pfp_url}
           name={entry.profile.display_name}
-          size={40}
+          size={44}
         />
         <div className="min-w-0">
           <div className="flex items-center gap-[6px]">
@@ -613,19 +623,19 @@ function TraderRow({
       </div>
 
       {/* PNL */}
-      <div className="flex-1">
+      <div className="relative z-10 flex-1">
         <span className={`text-[16px] font-medium tabular-nums ${pos ? "text-[var(--success)]" : "text-[var(--error)]"}`}>
           {fmtPnl(pnl, !showUsd)}
         </span>
       </div>
 
       {/* Win Rate */}
-      <div className="flex-1 text-[16px] tabular-nums text-[var(--text-primary)]">
+      <div className="relative z-10 flex-1 text-[16px] tabular-nums text-[var(--text-primary)]">
         {entry.win_rate > 0 ? `${entry.win_rate.toFixed(1)}%` : "\u2014"}
       </div>
 
       {/* Positions */}
-      <div className="flex-1">
+      <div className="relative z-10 flex-1">
         <div className="text-[16px] tabular-nums text-[var(--text-primary)]">
           {entry.positions > 0 ? entry.positions.toLocaleString() : "\u2014"}
         </div>
@@ -638,7 +648,7 @@ function TraderRow({
       </div>
 
       {/* Trades */}
-      <div className="flex-1">
+      <div className="relative z-10 flex-1">
         <div className="text-[16px] tabular-nums text-[var(--text-primary)]">
           {entry.trade_count > 0 ? entry.trade_count.toLocaleString() : "\u2014"}
         </div>
@@ -651,12 +661,12 @@ function TraderRow({
       </div>
 
       {/* Volume */}
-      <div className="flex-1 text-[16px] tabular-nums text-[var(--text-primary)]">
+      <div className="relative z-10 flex-1 text-[16px] tabular-nums text-[var(--text-primary)]">
         {fmtVol(vol, !showUsd)}
       </div>
 
       {/* Avg Hold */}
-      <div className="flex-1 text-[16px] tabular-nums text-[var(--text-muted)]">
+      <div className="relative z-10 flex-1 text-[16px] tabular-nums text-[var(--text-muted)]">
         {fmtHold(entry.avg_hold_time_mins ?? 0)}
       </div>
     </div>
