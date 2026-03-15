@@ -879,29 +879,32 @@ function ContributeModal({ onClose }: { onClose: () => void }) {
 function PfpImage({ handle, pfp, name, size }: { handle: string | null; pfp: string | null; name: string; size: number }) {
   const [idx, setIdx] = useState(0);
   const px = `${size}px`;
-  const r = size >= 48 ? "rounded-[12px]" : "rounded-[8px]";
+  const r = "rounded-[8px]";
   const srcs: string[] = [];
   if (handle) srcs.push(`https://unavatar.io/twitter/${handle}`);
   if (pfp) srcs.push(pfp);
   const src = srcs[idx];
   if (src) {
     return (
-      <img
-        src={src}
-        alt={name}
-        width={size}
-        height={size}
-        className={`${r} border border-[var(--border)] group-hover:border-[var(--accent)]/50 pfp-hover object-cover shrink-0`}
-        style={{ width: px, height: px }}
-        onError={() => (idx < srcs.length - 1 ? setIdx(idx + 1) : setIdx(srcs.length))}
-        loading="lazy"
-      />
+      <div className="relative shrink-0" style={{ width: px, height: px }}>
+        <div className="pointer-events-none absolute inset-0 z-[15] rounded-[8px]" style={{ border: '1px solid rgba(255,255,255,0.1)' }} />
+        <img
+          src={src}
+          alt={name}
+          width={size}
+          height={size}
+          className={`${r} h-full w-full object-cover`}
+          style={{ width: px, height: px, boxShadow: '0 8px 16px -2px rgba(0,0,0,0.2), 0 4px 8px -1px rgba(0,0,0,0.1)' }}
+          onError={() => (idx < srcs.length - 1 ? setIdx(idx + 1) : setIdx(srcs.length))}
+          loading="lazy"
+        />
+      </div>
     );
   }
   return (
     <div
-      className={`${r} border border-[var(--border)] bg-gradient-to-br from-[var(--accent)] to-[var(--accent-muted)] flex items-center justify-center text-white font-bold shrink-0`}
-      style={{ width: px, height: px, fontSize: `${Math.round(size * 0.38)}px` }}
+      className={`${r} flex items-center justify-center text-white font-bold shrink-0`}
+      style={{ width: px, height: px, fontSize: `${Math.round(size * 0.38)}px`, background: 'linear-gradient(135deg, var(--accent), var(--accent-muted))', border: '1px solid rgba(255,255,255,0.1)' }}
     >
       {name?.charAt(0)?.toUpperCase() || "?"}
     </div>
