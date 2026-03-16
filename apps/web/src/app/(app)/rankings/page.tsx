@@ -120,7 +120,7 @@ export default function RankingsPage() {
   }, []);
 
   const walletTypeParam = tab === "global" ? "all" : tab;
-  const pageSize = 100;
+  const pageSize = 200;
   const offset = (page - 1) * pageSize;
 
   const { data, isLoading } = useQuery({
@@ -160,7 +160,7 @@ export default function RankingsPage() {
 
       <div className="w-full max-w-[1420px] mx-auto px-[24px]">
         {/* ═══ Row 1: Page tabs + Apply + Search ═══ */}
-        <div className="flex items-center justify-between pt-[24px] pb-[16px] gap-[16px] flex-wrap">
+        <div className="flex items-center justify-between pt-[16px] pb-[16px] gap-[16px] flex-wrap">
           <div className="flex items-center gap-[24px]">
             {TABS.map((t) => (
               <button key={t.id} onClick={() => setTab(t.id)}
@@ -246,7 +246,7 @@ export default function RankingsPage() {
 
         {/* ═══ Top 3 Hero Cards (KOL tab only, hidden during search) ═══ */}
         {showTop3 && !isLoading && top3.length > 0 && (
-          <div className="pb-[24px]">
+          <div className="pb-[32px]">
             {/* Rank 1 — full width */}
             {top3[0] && (
               <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
@@ -433,18 +433,22 @@ function TopCard({ entry, rank, showUsd, onSelect }: { entry: KolRanking; rank: 
             <div className={`text-[13px] tabular-nums ${pnlUsd >= 0 ? "text-[rgb(47,227,172)]" : "text-[rgb(236,57,122)]"}`}>{fmtPnl(pnlUsd, false)}</div>
           </div>
         </div>
-        <div className="h-px mb-[16px]" style={{ background: "rgba(255,255,255,0.05)" }} />
-        <div className="flex items-center gap-[24px]">
+        <div className="h-px mb-[16px]" style={{ background: "rgba(255,255,255,0.04)" }} />
+        <div className="flex items-start gap-[32px]">
           <StatBlock value={entry.positions > 0 ? String(entry.positions) : "\u2014"} label="Positions" win={entry.positions_win} loss={entry.positions_loss} />
           <StatBlock value={entry.trade_count > 0 ? entry.trade_count.toLocaleString() : "\u2014"} label="Trades" win={entry.winning_trades} loss={entry.losing_trades} />
-          <div className="flex items-center gap-[8px]">
-            {!showUsd && <SolLogo size={13} />}
-            <span className="text-[14px] font-medium tabular-nums text-[var(--text-primary)]">{fmtVol(showUsd ? entry.volume_usd : entry.volume_sol, !showUsd)}</span>
-            {!showUsd && entry.volume_usd > 0 && <span className="text-[12px] text-[rgba(119,122,140,1)]">${fmtVol(entry.volume_usd, false).replace("$", "")}</span>}
+          <div className="flex flex-col items-start gap-[3px]">
+            <div className="flex items-center gap-[4px]">
+              {!showUsd && <SolLogo size={13} />}
+              <span className="flex h-[24px] items-center text-[14px] font-medium leading-none tabular-nums text-[var(--text-primary)]">{fmtVol(showUsd ? entry.volume_usd : entry.volume_sol, !showUsd)}</span>
+              {!showUsd && entry.volume_usd > 0 && <span className="text-[12px] text-[rgba(119,122,140,1)] tabular-nums">${fmtVol(entry.volume_usd, false).replace("$", "")}</span>}
+            </div>
+            <span className="text-[12px] leading-none text-[rgba(119,122,140,1)]">Volume</span>
           </div>
-          <div className="text-[12px] text-[rgba(119,122,140,1)]">Volume</div>
-          <div><span className="text-[14px] font-medium tabular-nums text-[var(--text-primary)]">{fmtHold(entry.avg_hold_time_mins ?? 0)}</span></div>
-          <div className="text-[12px] text-[rgba(119,122,140,1)]">Avg. Hold Time</div>
+          <div className="flex flex-col items-start gap-[3px]">
+            <span className="flex h-[24px] items-center text-[14px] font-medium leading-none tabular-nums text-[var(--text-primary)]">{fmtHold(entry.avg_hold_time_mins ?? 0)}</span>
+            <span className="text-[12px] leading-none text-[rgba(119,122,140,1)]">Avg. Hold Time</span>
+          </div>
         </div>
       </div>
     </div>
