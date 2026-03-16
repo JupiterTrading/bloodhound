@@ -247,13 +247,15 @@ export default function RankingsPage() {
         {/* ═══ Top 3 Hero Cards (KOL tab only, hidden during search) ═══ */}
         {showTop3 && !isLoading && top3.length > 0 && (
           <div className="pb-[32px]">
-            {/* Rank 1 — full width */}
+            {/* Rank 1 — centered, same proportional width as 2+3 combined */}
             {top3[0] && (
-              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex flex-col items-center">
                 <div className="flex justify-center mb-[8px]">
                   <div className="w-[28px] h-[28px] rounded-full flex items-center justify-center text-[14px] font-bold" style={{ background: "rgba(82,111,255,0.15)", color: "rgb(82,111,255)", border: "1px solid rgba(82,111,255,0.3)" }}>1</div>
                 </div>
-                <TopCard entry={top3[0]} rank={1} showUsd={showUsd} onSelect={setSelectedKol} />
+                <div className="w-full max-w-[680px]">
+                  <TopCard entry={top3[0]} rank={1} showUsd={showUsd} onSelect={setSelectedKol} />
+                </div>
               </motion.div>
             )}
             {/* Ranks 2 & 3 — side by side */}
@@ -569,18 +571,22 @@ function GalleryCard({ entry, rank, showUsd, onSelect }: { entry: KolRanking; ra
           <div className={`text-[12px] tabular-nums ${pnlUsd >= 0 ? "text-[rgb(47,227,172)]" : "text-[rgb(236,57,122)]"}`}>{fmtPnl(pnlUsd, false)}</div>
         </div>
       </div>
-      <div className="h-px my-[16px]" style={{ background: "rgba(255,255,255,0.05)" }} />
-      <div className="flex items-center gap-[24px]">
+      <div className="h-px my-[16px]" style={{ background: "rgba(255,255,255,0.04)" }} />
+      <div className="flex items-start gap-[32px]">
         <StatBlock value={String(entry.positions || "\u2014")} label="Positions" win={entry.positions_win} loss={entry.positions_loss} />
         <StatBlock value={entry.trade_count > 0 ? entry.trade_count.toLocaleString() : "\u2014"} label="Trades" win={entry.winning_trades} loss={entry.losing_trades} />
-        <div className="flex items-center gap-[4px]">
-          {!showUsd && <SolLogo size={12} />}
-          <span className="text-[14px] font-medium tabular-nums">{fmtVol(showUsd ? entry.volume_usd : entry.volume_sol, !showUsd)}</span>
-          {!showUsd && entry.volume_usd > 0 && <span className="text-[12px] text-[rgba(119,122,140,1)]">${fmtVol(entry.volume_usd, false).replace("$", "")}</span>}
+        <div className="flex flex-col items-start gap-[3px]">
+          <div className="flex items-center gap-[4px]">
+            {!showUsd && <SolLogo size={12} />}
+            <span className="flex h-[24px] items-center text-[14px] font-medium leading-none tabular-nums text-[var(--text-primary)]">{fmtVol(showUsd ? entry.volume_usd : entry.volume_sol, !showUsd)}</span>
+            {!showUsd && entry.volume_usd > 0 && <span className="text-[12px] text-[rgba(119,122,140,1)] tabular-nums">${fmtVol(entry.volume_usd, false).replace("$", "")}</span>}
+          </div>
+          <span className="text-[12px] leading-none text-[rgba(119,122,140,1)]">Volume</span>
         </div>
-        <div className="text-[12px] text-[rgba(119,122,140,1)]">Volume</div>
-        <div><span className="text-[14px] font-medium tabular-nums">{fmtHold(entry.avg_hold_time_mins ?? 0)}</span></div>
-        <div className="text-[12px] text-[rgba(119,122,140,1)]">Avg. Hold Time</div>
+        <div className="flex flex-col items-start gap-[3px]">
+          <span className="flex h-[24px] items-center text-[14px] font-medium leading-none tabular-nums text-[var(--text-primary)]">{fmtHold(entry.avg_hold_time_mins ?? 0)}</span>
+          <span className="text-[12px] leading-none text-[rgba(119,122,140,1)]">Avg. Hold Time</span>
+        </div>
       </div>
     </div>
   );
